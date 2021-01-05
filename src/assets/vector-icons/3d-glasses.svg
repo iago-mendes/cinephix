@@ -7,13 +7,13 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="112.64291mm"
-   height="63.746826mm"
-   viewBox="0 0 112.64291 63.746826"
+   width="135.69592mm"
+   height="79.44883mm"
+   viewBox="0 0 135.69593 79.448829"
    version="1.1"
    id="svg198"
    inkscape:version="1.0.1 (0767f8302a, 2020-10-17)"
-   sodipodi:docname="3d-glasses.svg">
+   sodipodi:docname="3d-glasses-shadow.svg">
   <defs
      id="defs192">
     <filter
@@ -48,6 +48,40 @@
          in2="offset"
          in="SourceGraphic" />
     </filter>
+    <filter
+       style="color-interpolation-filters:sRGB"
+       inkscape:label="Drop Shadow"
+       id="filter207"
+       width="1.2"
+       height="1.22">
+      <feFlood
+         flood-opacity="1"
+         flood-color="rgb(0,0,0)"
+         result="flood"
+         id="feFlood197" />
+      <feComposite
+         in="flood"
+         in2="SourceGraphic"
+         operator="in"
+         result="composite1"
+         id="feComposite199" />
+      <feGaussianBlur
+         in="composite1"
+         stdDeviation="3"
+         result="blur"
+         id="feGaussianBlur201" />
+      <feOffset
+         dx="3"
+         dy="3"
+         result="offset"
+         id="feOffset203" />
+      <feComposite
+         in="SourceGraphic"
+         in2="offset"
+         operator="over"
+         result="composite2"
+         id="feComposite205" />
+    </filter>
   </defs>
   <sodipodi:namedview
      id="base"
@@ -56,9 +90,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.4568724"
-     inkscape:cx="230.70888"
-     inkscape:cy="148.18278"
+     inkscape:zoom="0.41660281"
+     inkscape:cx="-237.22631"
+     inkscape:cy="239.61302"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      inkscape:document-rotation="0"
@@ -76,7 +110,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -84,10 +118,11 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(-18.494445,-103.57488)">
+     transform="translate(-150.58451,-68.549533)">
     <g
        id="g248"
-       transform="rotate(0.75684082,74.894976,135.65144)">
+       transform="rotate(0.75684082,2267.4402,10988.556)"
+       style="filter:url(#filter207)">
       <path
          sodipodi:nodetypes="sssscccsssscsccccccccccccccsssss"
          id="path1156-5"
