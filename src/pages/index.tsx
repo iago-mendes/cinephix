@@ -1,6 +1,7 @@
 import {GetStaticProps} from 'next'
 import Head from 'next/head'
 import {useEffect, useState} from 'react'
+import useSWR from 'swr'
 
 import Container from '../styles/pages/index'
 import api from '../services/api'
@@ -15,6 +16,21 @@ interface HomeProps
 const Home: React.FC<HomeProps> = ({staticHome}) =>
 {
 	const [home, setHome] = useState<Array<Media | Celebrity>>(staticHome)
+	const [search, setSearch] = useState('')
+	const {data, error} = useSWR(`/api/getHome?search=${search}`)
+
+	useEffect(() =>
+	{
+		if (search === '' || error)
+		{
+			setHome(staticHome)
+
+			if (error)
+				console.log('[error]', error)
+		}
+		else if (data && data.home)
+			setHome(data.home)
+	}, [data, error, search, staticHome])
 
 	function isMedia(item: Media | Celebrity): item is Media
 	{
@@ -31,19 +47,40 @@ const Home: React.FC<HomeProps> = ({staticHome}) =>
 			<Head>
 				<title>Home</title>
 			</Head>
-			<main>
-				{home.map(item =>
-				{
-					if (isMedia(item))
-						return (
-							<MediaCard media={item} showOverview key={item.id} />
-						)
-					else if (isCelebrity(item))
-						return (
-							<CelebrityCard celebrity={item} showKnownFor />
-						)
-				})}
-			</main>
+
+			<header>
+				<input
+					type="text"
+					placeholder='Search for a movie, tv show or celebrity'
+					value={search}
+					onChange={e => setSearch(e.target.value)}
+				/>
+			</header>
+
+			{
+				!data && search !== ''
+				? <h1>Loading...</h1>
+				: home.length === 0 && search !== ''
+					? (
+						<div className="noResults">
+							<h1>No results found!</h1>
+						</div>
+					)
+					: (
+						<main>
+							{home.map(item =>
+							{
+								if (isMedia(item))
+									return (
+										<MediaCard media={item} showOverview key={item.id} />
+									)
+								else if (isCelebrity(item))
+									return (
+										<CelebrityCard celebrity={item} showKnownFor key={item.id} />
+									)
+							})}
+						</main>
+				)}
 		</Container>
 	)
 }
