@@ -19,15 +19,25 @@ interface MediaCardProps
 
 const MediaCard: React.FC<MediaCardProps> = ({media, showOverview = false}) =>
 {
+	function truncateText(text: string, length: number)
+	{
+		let truncated = text
+
+		if (truncated.length > length)
+			truncated = truncated.substr(0, length) + '...';
+
+		return truncated;
+	}
+
 	return (
 		<Container>
 			<div className='img'>
 				<Image src={media.image} width={780} height={1170} layout='responsive' />
 			</div>
 			<div className='info'>
-				<h1>{media.title}</h1>
+				<h1>{truncateText(media.title, 25)}</h1>
 				<h3>{media.date}</h3>
-				{showOverview && <p>{media.overview}</p>}
+				{showOverview && <p>{truncateText(media.overview, 150)}</p>}
 			</div>
 		</Container>
 	)

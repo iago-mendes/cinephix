@@ -6,7 +6,8 @@ const Container = styled.div`
 	justify-content: space-between;
 
 	background-color: ${p => p.theme.red};
-	width: 50rem;
+	height: 15rem;
+	width: calc(15rem * 500 / 164);
 	padding: 1rem;
 
 	border-radius: 1rem;
@@ -24,11 +25,12 @@ const Container = styled.div`
 	.info
 	{
 		width: 75%;
+		height: 100%;
 
 		display: flex;
 		flex-direction: column;
 		align-items: flex-start;
-		gap: 1rem;
+		justify-content: space-between;
 
 		color: ${p => p.theme.white};
 
