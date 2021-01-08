@@ -5,16 +5,16 @@ const Container = styled.div`
 	align-items: center;
 	justify-content: space-between;
 
-	background-color: ${p => p.theme.red};
-	height: 15rem;
-	width: calc(15rem * 500 / 164);
+	background-color: ${p => p.theme.orange};
+	height: calc((40rem - 2rem) * 0.3 * 1.5 + 2rem);
+	width: 40rem;
 	padding: 1rem;
 
 	border-radius: 1rem;
 
 	.img
 	{
-		width: 20%;
+		width: 30%;
 
 		img
 		{
@@ -24,7 +24,7 @@ const Container = styled.div`
 
 	.info
 	{
-		width: 75%;
+		width: 65%;
 		height: 100%;
 
 		display: flex;
@@ -32,7 +32,7 @@ const Container = styled.div`
 		align-items: flex-start;
 		justify-content: space-between;
 
-		color: ${p => p.theme.white};
+		color: ${p => p.theme.black};
 
 		h1
 		{
@@ -40,6 +40,9 @@ const Container = styled.div`
 			font-weight: 700;
 
 			font-size: 2.5rem;
+			height: 35%;
+			
+			overflow: hidden;
 		}
 
 		h3
@@ -48,6 +51,11 @@ const Container = styled.div`
 			font-weight: 400;
 
 			font-size: 1.5rem;
+
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			gap: 0.5rem;
 		}
 
 		p
@@ -56,6 +64,9 @@ const Container = styled.div`
 			font-weight: 400;
 
 			font-size: 1.5rem;
+			height: 45%;
+
+			overflow: hidden;
 		}
 
 	}

@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import {FiCalendar} from 'react-icons/fi'
 
 import Container from '../styles/components/MediaCard'
 
@@ -47,9 +48,12 @@ const MediaCard: React.FC<MediaCardProps> = ({media, showOverview = false}) =>
 				<Image src={media.image} width={780} height={1170} layout='responsive' />
 			</div>
 			<div className='info'>
-				<h1>{truncateText(media.title, 25)}</h1>
-				<h3>{formatDate(media.date)}</h3>
-				{showOverview && <p>{truncateText(media.overview, 150)}</p>}
+				<h1>{truncateText(media.title, 35)}</h1>
+				<h3>
+					<FiCalendar size={15} />
+					{formatDate(media.date)}
+				</h3>
+				{showOverview && <p>{truncateText(media.overview, 120)}</p>}
 			</div>
 		</Container>
 	)

@@ -34,13 +34,15 @@ const Home: React.FC<HomeProps> = ({staticHome}) =>
 			<Head>
 				<title>Home</title>
 			</Head>
-			{home.map(item =>
-			{
-				if (isMedia(item))
-					return (
-						<MediaCard media={item} showOverview key={item.id} />
-					)
-			})}
+			<main>
+				{home.map(item =>
+				{
+					if (isMedia(item))
+						return (
+							<MediaCard media={item} showOverview key={item.id} />
+						)
+				})}
+			</main>
 		</Container>
 	)
 }
