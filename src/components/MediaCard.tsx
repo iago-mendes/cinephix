@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import {FiCalendar} from 'react-icons/fi'
+import {CSSProperties} from 'styled-components'
 
 import Container from '../styles/components/MediaCard'
 
@@ -16,9 +17,11 @@ interface MediaCardProps
 {
 	media: Media
 	showOverview?: boolean
+
+	style?: CSSProperties
 }
 
-const MediaCard: React.FC<MediaCardProps> = ({media, showOverview = false}) =>
+const MediaCard: React.FC<MediaCardProps> = ({media, showOverview = false, style = {}}) =>
 {
 	function truncateText(text: string, length: number)
 	{
@@ -43,7 +46,7 @@ const MediaCard: React.FC<MediaCardProps> = ({media, showOverview = false}) =>
 	}
 
 	return (
-		<Container>
+		<Container style={style} >
 			<div className='img'>
 				<Image src={media.image} width={780} height={1170} layout='responsive' />
 			</div>

@@ -5,15 +5,7 @@ import {useEffect, useState} from 'react'
 import Container from '../styles/pages/index'
 import api from '../services/api'
 import MediaCard, {Media} from '../components/MediaCard'
-
-interface Celebrity
-{
-	id: number
-	image: string
-	name: string
-	knownForDepartment: string
-	knownFor: Media[]
-}
+import CelebrityCard, {Celebrity} from '../components/CelebrityCard'
 
 interface HomeProps
 {
@@ -29,6 +21,11 @@ const Home: React.FC<HomeProps> = ({staticHome}) =>
     return 'title' in item
 	}
 
+	function isCelebrity(item: Celebrity | Celebrity): item is Celebrity
+	{
+    return 'name' in item
+	}
+
 	return (
 		<Container>
 			<Head>
@@ -40,6 +37,10 @@ const Home: React.FC<HomeProps> = ({staticHome}) =>
 					if (isMedia(item))
 						return (
 							<MediaCard media={item} showOverview key={item.id} />
+						)
+					else if (isCelebrity(item))
+						return (
+							<CelebrityCard celebrity={item} showKnownFor />
 						)
 				})}
 			</main>
