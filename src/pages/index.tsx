@@ -1,18 +1,10 @@
 import {GetStaticProps} from 'next'
 import Head from 'next/head'
-import {useEffect} from 'react'
+import {useEffect, useState} from 'react'
 
 import Container from '../styles/pages/index'
 import api from '../services/api'
-
-interface Media
-{
-	id: number
-	image: string
-	title: string
-	overview: string
-	date: string
-}
+import MediaCard, {Media} from '../components/MediaCard'
 
 interface Celebrity
 {
@@ -30,14 +22,25 @@ interface HomeProps
 
 const Home: React.FC<HomeProps> = ({staticHome}) =>
 {
-	useEffect(() => console.log('[staticHome]', staticHome), [staticHome])
+	const [home, setHome] = useState<Array<Media | Celebrity>>(staticHome)
+
+	function isMedia(item: Media | Celebrity): item is Media
+	{
+    return 'title' in item
+	}
 
 	return (
 		<Container>
 			<Head>
 				<title>Home</title>
 			</Head>
-			<h1>Hello world!</h1>
+			{home.map(item =>
+			{
+				if (isMedia(item))
+					return (
+						<MediaCard media={item} showOverview key={item.id} />
+					)
+			})}
 		</Container>
 	)
 }
