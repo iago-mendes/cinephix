@@ -15,7 +15,7 @@ export default createGlobalStyle`
 
 	body
 	{
-		
+		background-color: ${p => p.theme.white}
 	}
 
 	#__next

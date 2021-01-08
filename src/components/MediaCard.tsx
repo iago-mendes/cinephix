@@ -14,17 +14,17 @@ export interface Media
 interface MediaCardProps
 {
 	media: Media
-	showOverview: boolean
+	showOverview?: boolean
 }
 
-const MediaCard: React.FC<MediaCardProps> = ({media, showOverview}) =>
+const MediaCard: React.FC<MediaCardProps> = ({media, showOverview = false}) =>
 {
 	return (
 		<Container>
-			<div className="img">
+			<div className='img'>
 				<Image src={media.image} width={780} height={1170} layout='responsive' />
 			</div>
-			<div className="info">
+			<div className='info'>
 				<h1>{media.title}</h1>
 				<h3>{media.date}</h3>
 				{showOverview && <p>{media.overview}</p>}
