@@ -12,6 +12,8 @@ const Container = styled.div`
 		height: 30rem;
 		position: relative;
 
+		box-shadow: 0px 5px 5px rgba(0,0,0,0.5);
+
 		.icons
 		{
 			display: flex;
@@ -81,6 +83,7 @@ const Container = styled.div`
 			border-radius: 100rem;
 
 			color: ${p => p.theme.blue};
+			box-shadow: 0px 5px 5px rgba(0,0,0,0.5);
 
 			input
 			{
