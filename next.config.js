@@ -12,5 +12,11 @@ module.exports = withImages({
 	{
 		apiUrl: process.env.API_URL,
 		apiKey: process.env.API_KEY
+	},
+	serverRuntimeConfig:
+	{
+		authSecret: process.env.AUTH_SECRET,
+		googleClientId: process.env.GOOGLE_CLIENT_ID,
+		googleClientSecret: process.env.GOOGLE_CLIENT_SECRET
 	}
 })

@@ -1,11 +1,17 @@
 import Link from 'next/link'
 import {BiUserCircle} from 'react-icons/bi'
+import {signIn, useSession} from 'next-auth/client'
+import {useEffect} from 'react'
 
 import Container from '../styles/components/Menu'
 import logo from '../assets/logo-name.svg'
 
 const Menu: React.FC = () =>
 {
+	const [session, loading] = useSession()
+
+	useEffect(() => console.log('[session]', session), [session])
+
 	return (
 		<Container>
 			<img src={logo} alt='Cinephix' className='logo' />
@@ -22,7 +28,7 @@ const Menu: React.FC = () =>
 					</Link>				
 				</div>
 				<div className='user'>
-					<span>Sign in</span>
+					<span onClick={() => signIn('google')} >Sign in</span>
 					<button>
 						<BiUserCircle size={35} />
 					</button>
