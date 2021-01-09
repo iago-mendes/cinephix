@@ -2,11 +2,20 @@ import {GetStaticProps} from 'next'
 import Head from 'next/head'
 import {useEffect, useState} from 'react'
 import useSWR from 'swr'
+import {FaSearch} from 'react-icons/fa'
 
 import Container from '../styles/pages/index'
 import api from '../services/api'
 import MediaCard, {Media} from '../components/MediaCard'
 import CelebrityCard, {Celebrity} from '../components/CelebrityCard'
+
+import logo from '../assets/logo-name.svg'
+import glasses from '../assets/vector-icons/3d-glasses.svg'
+import camera from '../assets/vector-icons/camera.svg'
+import film from '../assets/vector-icons/film.svg'
+import marker from '../assets/vector-icons/marker.svg'
+import microfone from '../assets/vector-icons/microfone.svg'
+import popcorn from '../assets/vector-icons/popcorn.svg'
 
 interface HomeProps
 {
@@ -49,12 +58,26 @@ const Home: React.FC<HomeProps> = ({staticHome}) =>
 			</Head>
 
 			<header>
-				<input
-					type="text"
-					placeholder='Search for a movie, tv show or celebrity'
-					value={search}
-					onChange={e => setSearch(e.target.value)}
-				/>
+				<div className="icons">
+					<img src={camera} alt="Camera"/>
+					<img src={glasses} alt="Glasses"/>
+					<img src={film} alt="Film"/>
+				</div>
+				<img src={logo} alt="Cinephix" className='logo' />
+				<div className="icons">
+					<img src={marker} alt="Marker"/>
+					<img src={popcorn} alt="Popcorn"/>
+					<img src={microfone} alt="Microfone"/>
+				</div>
+				<div className="search">
+					<FaSearch size={25} />
+					<input
+						type="text"
+						placeholder='Search for a movie, tv show or celebrity'
+						value={search}
+						onChange={e => setSearch(e.target.value)}
+					/>
+				</div>
 			</header>
 
 			{
