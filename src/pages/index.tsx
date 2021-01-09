@@ -9,7 +9,7 @@ import api from '../services/api'
 import MediaCard, {Media} from '../components/MediaCard'
 import CelebrityCard, {Celebrity} from '../components/CelebrityCard'
 
-import logo from '../assets/logo-name.svg'
+import logo from '../assets/logo-name-shadow.svg'
 import glasses from '../assets/vector-icons/3d-glasses.svg'
 import camera from '../assets/vector-icons/camera.svg'
 import film from '../assets/vector-icons/film.svg'
