@@ -27,35 +27,36 @@ const Container = styled.div`
 			{
 				max-width: 10rem;
 				max-height: 10rem;
+			}
+		}
 
-				:nth-child(even)
-				{
-					margin-left: 10rem;
-					transform: rotate(25deg);
-				}
-
-				:nth-child(odd)
-				{
-					margin-right: 10rem;
-					transform: rotate(-25deg);
-				}
+		.left
+		{
+			img:nth-child(even)
+			{
+				margin-left: 10rem;
+				transform: rotate(25deg);
 			}
 
-			:last-of-type
+			img:nth-child(odd)
 			{
-				img:nth-child(odd)
-				{
-					margin: 0;
-					margin-left: 10rem;
-					transform: rotate(25deg);
-				}
+				margin-right: 10rem;
+				transform: rotate(-25deg);
+			}
+		}
 
-				img:nth-child(even)
-				{
-					margin: 0;
-					margin-right: 10rem;
-					transform: rotate(-25deg);
-				}
+		.right
+		{
+			img:nth-child(odd)
+			{
+				margin-left: 10rem;
+				transform: rotate(25deg);
+			}
+
+			img:nth-child(even)
+			{
+				margin-right: 10rem;
+				transform: rotate(-25deg);
 			}
 		}
 

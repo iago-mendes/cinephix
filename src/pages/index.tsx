@@ -58,13 +58,13 @@ const Home: React.FC<HomeProps> = ({staticHome}) =>
 			</Head>
 
 			<header>
-				<div className="icons">
+				<div className="icons left">
 					<img src={camera} alt="Camera"/>
 					<img src={glasses} alt="Glasses"/>
 					<img src={film} alt="Film"/>
 				</div>
 				<img src={logo} alt="Cinephix" className='logo' />
-				<div className="icons">
+				<div className="icons right">
 					<img src={marker} alt="Marker"/>
 					<img src={popcorn} alt="Popcorn"/>
 					<img src={microfone} alt="Microfone"/>
