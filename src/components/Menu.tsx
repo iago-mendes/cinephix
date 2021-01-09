@@ -8,10 +8,6 @@ import logo from '../assets/logo-name.svg'
 
 const Menu: React.FC = () =>
 {
-	const [session, loading] = useSession()
-
-	useEffect(() => console.log('[session]', session), [session])
-
 	return (
 		<Container>
 			<img src={logo} alt='Cinephix' className='logo' />
