@@ -15,7 +15,27 @@ export default createGlobalStyle`
 
 	body
 	{
-		background-color: ${p => p.theme.black}
+		background-color: ${p => p.theme.black};
+
+		::-webkit-scrollbar
+		{
+			width: 1rem;
+		}
+
+		::-webkit-scrollbar-track
+		{
+			background-color: ${p => p.theme.orange}26;
+		}
+		
+		::-webkit-scrollbar-thumb
+		{
+			background-color: ${p => p.theme.orange};
+
+			:hover
+			{
+				background-color: ${p => p.theme.orange}bf;
+			}
+		}
 	}
 
 	#__next
