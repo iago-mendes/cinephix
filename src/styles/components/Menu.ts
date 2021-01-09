@@ -93,11 +93,14 @@ const Container = styled.nav`
 				}
 			}
 
-			button
+			button, img
 			{
 				display: flex;
 				align-items: center;
 				justify-content: center;
+
+				width: 35px;
+				height: 35px;
 
 				border: none;
 				border-radius: 100rem;
