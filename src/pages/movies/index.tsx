@@ -4,12 +4,12 @@ import {useEffect, useState} from 'react'
 import useSWR from 'swr'
 import Image from 'next/image'
 
-import Container from '../../styles/pages/movies/index'
 import api from '../../services/api'
 import MediaCard, {Media} from '../../components/MediaCard'
 import GridPaginate from '../../components/GridPaginate'
 import SearchBox from '../../components/SearchBox'
 import cinema from '../../assets/backgrounds/cinema.png'
+import HeaderWithBackground from '../../components/HeaderWithBackground'
 
 interface MoviesProps
 {
@@ -71,18 +71,14 @@ const Movies: React.FC<MoviesProps> = ({staticMovies}) =>
 	}, [search])
 
 	return (
-		<Container>
+		<div>
 			<Head>
 				<title>Movies</title>
 			</Head>
 
-			<header>
-				<div className='background'>
-					<Image src={cinema} width={1500} height={1000} layout='responsive' quality={10} />
-				</div>
-				<h1>Movies</h1>
+			<HeaderWithBackground background={cinema} display='Movies' >
 				<SearchBox search={search} setSearch={setSearch} display='Search for a movie' />
-			</header>
+			</HeaderWithBackground>
 
 			{
 				movies.length === 0
@@ -99,7 +95,7 @@ const Movies: React.FC<MoviesProps> = ({staticMovies}) =>
 					</GridPaginate>
 				)
 			}
-		</Container>
+		</div>
 	)
 }
 
