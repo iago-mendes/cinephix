@@ -54,7 +54,10 @@ const Home: React.FC<HomeProps> = ({staticHome}) =>
 	useEffect(() =>
 	{
 		if (search === '' && page === 1)
+		{
+			revalidate()
 			setHome(staticHome)
+		}
 		else
 		{
 			revalidate()
@@ -67,6 +70,12 @@ const Home: React.FC<HomeProps> = ({staticHome}) =>
 		if (home)
 			setLoading(false)
 	}, [home])
+
+	useEffect(() =>
+	{
+		setPage(1)
+		setTotalPages(1)
+	}, [search])
 
 	function isMedia(item: Media | Celebrity): item is Media
 	{
