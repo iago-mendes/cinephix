@@ -1,18 +1,22 @@
-import {NextApiHandler} from "next"
+import {NextApiHandler} from 'next'
 
-import api from "../../services/api"
+import api from '../../services/api'
 
 const getHome: NextApiHandler = async (req, res) =>
 {
-	const {search} = req.query
+	const {search, page} = req.query
 
-	const {data} = (search && search !== '')
-		? await api.get(`home?search=${search}`)
-		: await api.get('home')
+	const {data, headers} = await api.get('home', {params: {search, page}})
+
+	const paginate =
+	{
+		page: Number(headers.page),
+		total: Number(headers.totalpages)
+	}
 
 	res.statusCode = 200
 	res.setHeader('Content-Type', 'application/json')
-	res.end(JSON.stringify({home: data}))
+	res.end(JSON.stringify({home: data, paginate}))
 }
 
 export default getHome

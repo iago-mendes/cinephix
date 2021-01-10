@@ -2,12 +2,13 @@ import {GetStaticProps} from 'next'
 import Head from 'next/head'
 import {useEffect, useState} from 'react'
 import useSWR from 'swr'
-import {FaSearch} from 'react-icons/fa'
 
 import Container from '../styles/pages/index'
 import api from '../services/api'
 import MediaCard, {Media} from '../components/MediaCard'
 import CelebrityCard, {Celebrity} from '../components/CelebrityCard'
+import SearchBox from '../components/SearchBox'
+import GridPaginate from '../components/GridPaginate'
 
 import logo from '../assets/logo-name-shadow.svg'
 import glasses from '../assets/vector-icons/3d-glasses.svg'
@@ -16,7 +17,6 @@ import film from '../assets/vector-icons/film.svg'
 import marker from '../assets/vector-icons/marker.svg'
 import microfone from '../assets/vector-icons/microfone.svg'
 import popcorn from '../assets/vector-icons/popcorn.svg'
-import SearchBox from '../components/SearchBox'
 
 interface HomeProps
 {
@@ -25,22 +25,34 @@ interface HomeProps
 
 const Home: React.FC<HomeProps> = ({staticHome}) =>
 {
-	const [home, setHome] = useState<Array<Media | Celebrity>>(staticHome)
 	const [search, setSearch] = useState('')
-	const {data, error} = useSWR(`/api/getHome?search=${search}`)
+	const [page, setPage]	= useState(1)
+	const [totalPages, setTotalPages] = useState(1)
+	
+	const [home, setHome] = useState<Array<Media | Celebrity>>(staticHome)
+	const {data, error} = useSWR(`/api/getHome?search=${search}&page=${page}`)
 
 	useEffect(() =>
 	{
-		if (search === '' || error)
+		if (data)
+		{
+			setPage(data.paginate.page)
+			setTotalPages(data.paginate.total)
+
+			if (search === '' && page === 1)
+				setHome(staticHome)
+			else
+				setHome(data.home)
+		}
+		else if (error)
 		{
 			setHome(staticHome)
+			setPage(1)
+			setTotalPages(1)
 
-			if (error)
-				console.log('[error]', error)
+			console.error(error)
 		}
-		else if (data && data.home)
-			setHome(data.home)
-	}, [data, error, search, staticHome])
+	}, [data, error])
 
 	function isMedia(item: Media | Celebrity): item is Media
 	{
@@ -83,7 +95,7 @@ const Home: React.FC<HomeProps> = ({staticHome}) =>
 						</div>
 					)
 					: (
-						<main>
+						<GridPaginate page={page} setPage={setPage} totalPages={totalPages} >
 							{home.map(item =>
 							{
 								if (isMedia(item))
@@ -95,7 +107,7 @@ const Home: React.FC<HomeProps> = ({staticHome}) =>
 										<CelebrityCard celebrity={item} showKnownFor key={item.id} />
 									)
 							})}
-						</main>
+						</GridPaginate>
 				)}
 		</Container>
 	)
