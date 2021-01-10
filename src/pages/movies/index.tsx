@@ -10,7 +10,6 @@ import MediaCard, {Media} from '../../components/MediaCard'
 import GridPaginate from '../../components/GridPaginate'
 import SearchBox from '../../components/SearchBox'
 import cinema from '../../assets/backgrounds/cinema.png'
-import Loading from '../../components/Loading'
 
 interface MoviesProps
 {
@@ -69,7 +68,7 @@ const Movies: React.FC<MoviesProps> = ({staticMovies}) =>
 			</Head>
 
 			<header>
-				<div className="background">
+				<div className='background'>
 					<Image src={cinema} width={1500} height={1000} layout='responsive' quality={10} />
 				</div>
 				<h1>Movies</h1>
@@ -79,7 +78,7 @@ const Movies: React.FC<MoviesProps> = ({staticMovies}) =>
 			{
 				movies.length === 0
 				? (
-					<div className="noResults">
+					<div className='noResults'>
 						<h1>No results were found!</h1>
 					</div>
 				)
