@@ -2,13 +2,14 @@ import {GetStaticProps} from 'next'
 import Head from 'next/head'
 import {useEffect, useState} from 'react'
 import useSWR from 'swr'
-import {FaSearch} from 'react-icons/fa'
+import Image from 'next/image'
 
 import Container from '../../styles/pages/movies/index'
 import api from '../../services/api'
 import MediaCard, {Media} from '../../components/MediaCard'
 import GridPaginate from '../../components/GridPaginate'
 import SearchBox from '../../components/SearchBox'
+import cinema from '../../assets/backgrounds/cinema.png'
 
 interface MoviesProps
 {
@@ -54,6 +55,10 @@ const Movies: React.FC<MoviesProps> = ({staticMovies}) =>
 			</Head>
 
 			<header>
+				<div className="background">
+					<Image src={cinema} width={1500} height={1000} layout='responsive' quality={10} />
+				</div>
+				<h1>Movies</h1>
 				<SearchBox search={search} setSearch={setSearch} display='Search for a movie' />
 			</header>
 
