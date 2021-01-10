@@ -57,7 +57,7 @@ const CelebrityCard: React.FC<CelebrityCardProps> = ({celebrity, showKnownFor = 
 					<FiUser size={15} />
 					{celebrity.knownForDepartment}
 				</h3>
-				{showKnownFor && (
+				{(showKnownFor && celebrity.knownFor) && (
 					<div className="media">
 						<div className='mediaImg'>
 							<Image src={celebrity.knownFor.image} width={780} height={1170} layout='responsive' />
