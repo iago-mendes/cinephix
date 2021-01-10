@@ -14,7 +14,7 @@ const Container = styled.nav`
 
 	.logo
 	{
-		height: 100%;
+		height: 75%;
 
 		cursor: pointer;
 		transition: 0.25s;

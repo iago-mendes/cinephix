@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import {BiUserCircle} from 'react-icons/bi'
 import {signIn} from 'next-auth/client'
+import {useRouter} from 'next/router'
 
 import Container from '../styles/components/Menu'
 import logo from '../assets/logo-name.svg'
@@ -9,10 +10,11 @@ import useUser from '../hooks/useUser'
 const Menu: React.FC = () =>
 {
 	const {user} = useUser()
+	const Router = useRouter()
 
 	return (
 		<Container>
-			<img src={logo} alt='Cinephix' className='logo' />
+			<img src={logo} alt='Cinephix' className='logo' onClick={() => Router.push('/')} />
 			<div className='container'>
 				<div className='links'>
 					<Link href='/movies' >
