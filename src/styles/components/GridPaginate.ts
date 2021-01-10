@@ -1,8 +1,17 @@
 import styled from 'styled-components'
 
 const Container = styled.div`
+	min-height: calc(100vh - 5rem - 30rem);
+	
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-between;
+
 	main
 	{
+		width: 100%;
+
 		display: grid;
 		grid-auto-rows: calc((40rem - 2rem) * 0.3 * 1.5 + 2rem);
 		grid-template-columns: repeat(auto-fill, minmax(40rem, 1fr));

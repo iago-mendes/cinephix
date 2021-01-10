@@ -10,6 +10,7 @@ import MediaCard, {Media} from '../../components/MediaCard'
 import GridPaginate from '../../components/GridPaginate'
 import SearchBox from '../../components/SearchBox'
 import cinema from '../../assets/backgrounds/cinema.png'
+import Loading from '../../components/Loading'
 
 interface MoviesProps
 {
@@ -18,25 +19,21 @@ interface MoviesProps
 
 const Movies: React.FC<MoviesProps> = ({staticMovies}) =>
 {
-	const [movies, setMovies] = useState<Media[]>(staticMovies)
-
 	const [search, setSearch] = useState('')
 	const [page, setPage] = useState(1)
 	const [totalPages, setTotalPages] = useState(1)
-
-	const {data, error} = useSWR(`/api/getMovies?search=${search}&page=${page}`)
+	const [loading, setLoading] = useState(false)
+	
+	const [movies, setMovies] = useState<Media[]>(staticMovies)
+	const {data, error, revalidate} = useSWR(`/api/getMovies?search=${search}&page=${page}`)
 
 	useEffect(() =>
 	{
 		if (data)
 		{
+			setMovies(data.movies)
 			setPage(data.paginate.page)
 			setTotalPages(data.paginate.total)
-
-			if (search === '' && page === 1)
-				setMovies(staticMovies)
-			else
-				setMovies(data.movies)
 		}
 		else if (error)
 		{
@@ -47,6 +44,23 @@ const Movies: React.FC<MoviesProps> = ({staticMovies}) =>
 			console.error(error)
 		}
 	}, [data, error])
+
+	useEffect(() =>
+	{
+		if (search === '' && page === 1)
+			setMovies(staticMovies)
+		else
+		{
+			revalidate()
+			setLoading(true)
+		}
+	}, [search, page])
+
+	useEffect(() =>
+	{
+		if (movies)
+			setLoading(false)
+	}, [movies])
 
 	return (
 		<Container>
@@ -63,21 +77,19 @@ const Movies: React.FC<MoviesProps> = ({staticMovies}) =>
 			</header>
 
 			{
-				!data && search !== '' && page !== 1
-				? <h1>Loading...</h1>
-				: Movies.length === 0 && search !== ''
-					? (
-						<div className="noResults">
-							<h1>No results found!</h1>
-						</div>
-					)
-					: (
-						<GridPaginate page={page} setPage={setPage} totalPages={totalPages} >
-							{movies.map(item => (
-								<MediaCard media={item} showOverview key={item.id} />
-							))}
-						</GridPaginate>
-					)
+				movies.length === 0
+				? (
+					<div className="noResults">
+						<h1>No results were found!</h1>
+					</div>
+				)
+				: (
+					<GridPaginate page={page} setPage={setPage} totalPages={totalPages} loading={loading} >
+						{movies.map(item => (
+							<MediaCard media={item} showOverview key={item.id} />
+						))}
+					</GridPaginate>
+				)
 			}
 		</Container>
 	)

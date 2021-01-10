@@ -1,6 +1,7 @@
 import {BsChevronBarLeft, BsChevronLeft, BsChevronRight, BsChevronBarRight} from 'react-icons/bs'
 
 import Container from '../styles/components/GridPaginate'
+import Loading from './Loading'
 
 interface GridPaginateProps
 {
@@ -8,9 +9,11 @@ interface GridPaginateProps
 	setPage: Function
 
 	totalPages: number
+
+	loading: boolean
 }
 
-const GridPaginate: React.FC<GridPaginateProps> = ({page, setPage, totalPages, children}) =>
+const GridPaginate: React.FC<GridPaginateProps> = ({page, setPage, totalPages, loading, children}) =>
 {
 	function goBack()
 	{
@@ -26,11 +29,17 @@ const GridPaginate: React.FC<GridPaginateProps> = ({page, setPage, totalPages, c
 
 	return (
 		<Container>
-			<main>
-				{children}
-			</main>
-			<div className="paginate">
-				<div className="buttons">
+			{
+				loading
+				? <Loading style={{marginTop: '10rem'}} />
+				: (
+					<main>
+						{children}
+					</main>
+				)
+			}
+			<div className='paginate'>
+				<div className='buttons'>
 					<button onClick={() => setPage(1)}>
 						<BsChevronBarLeft size={30} />
 					</button>
@@ -38,7 +47,7 @@ const GridPaginate: React.FC<GridPaginateProps> = ({page, setPage, totalPages, c
 						<BsChevronLeft size={30} />
 					</button>
 				</div>
-				<div className="controller">
+				<div className='controller'>
 					<input
 						type='number'
 						value={page}
@@ -48,7 +57,7 @@ const GridPaginate: React.FC<GridPaginateProps> = ({page, setPage, totalPages, c
 					/>
 					<span> / {totalPages}</span>
 				</div>
-				<div className="buttons">
+				<div className='buttons'>
 					<button onClick={goNext}>
 						<BsChevronRight size={30} />
 					</button>
