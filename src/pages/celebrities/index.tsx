@@ -7,7 +7,7 @@ import api from '../../services/api'
 import CelebrityCard, {Celebrity} from '../../components/CelebrityCard'
 import GridPaginate from '../../components/GridPaginate'
 import SearchBox from '../../components/SearchBox'
-import cinema from '../../assets/backgrounds/cinema.png'
+import actors from '../../assets/backgrounds/actors.png'
 import HeaderWithBackground from '../../components/HeaderWithBackground'
 
 interface CelebritiesProps
@@ -75,7 +75,7 @@ const Celebrities: React.FC<CelebritiesProps> = ({staticCelebrities}) =>
 				<title>Celebrities</title>
 			</Head>
 
-			<HeaderWithBackground background={cinema} display='Celebrities' >
+			<HeaderWithBackground background={actors} display='Celebrities' >
 				<SearchBox search={search} setSearch={setSearch} display='Search for a celebrity' />
 			</HeaderWithBackground>
 

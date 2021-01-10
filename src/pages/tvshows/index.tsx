@@ -7,7 +7,7 @@ import api from '../../services/api'
 import MediaCard, {Media} from '../../components/MediaCard'
 import GridPaginate from '../../components/GridPaginate'
 import SearchBox from '../../components/SearchBox'
-import netflix from '../../assets/backgrounds/netflix.png'
+import tv from '../../assets/backgrounds/tv.png'
 import HeaderWithBackground from '../../components/HeaderWithBackground'
 
 interface TvshowsProps
@@ -75,7 +75,7 @@ const Tvshows: React.FC<TvshowsProps> = ({staticTvshows}) =>
 				<title>Tvshows</title>
 			</Head>
 
-			<HeaderWithBackground background={netflix} display='TV Shows' >
+			<HeaderWithBackground background={tv} display='TV Shows' >
 				<SearchBox search={search} setSearch={setSearch} display='Search for a TV show' />
 			</HeaderWithBackground>
 
