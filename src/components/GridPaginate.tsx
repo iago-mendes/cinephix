@@ -1,3 +1,4 @@
+import { ChangeEvent } from 'react'
 import {BsChevronBarLeft, BsChevronLeft, BsChevronRight, BsChevronBarRight} from 'react-icons/bs'
 
 import Container from '../styles/components/GridPaginate'
@@ -27,6 +28,14 @@ const GridPaginate: React.FC<GridPaginateProps> = ({page, setPage, totalPages, l
 			setPage(page + 1)
 	}
 
+	function handlePageChange(e: ChangeEvent<HTMLInputElement>)
+	{
+		const tmpPage = Number(e.target.value)
+
+		if (tmpPage >= 1 && tmpPage <= totalPages)
+			setPage(tmpPage)
+	}
+
 	return (
 		<Container>
 			{
@@ -51,7 +60,7 @@ const GridPaginate: React.FC<GridPaginateProps> = ({page, setPage, totalPages, l
 					<input
 						type='number'
 						value={page}
-						onChange={e => setPage(e.target.value)}
+						onChange={handlePageChange}
 						min={1}
 						max={totalPages}
 					/>
