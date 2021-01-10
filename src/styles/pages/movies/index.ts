@@ -32,9 +32,9 @@ const Container = styled.div`
 			padding: 2rem;
 			padding-left: 5rem;
 			padding-right: 5rem;
-			border: ${p => p.theme.orange} 5px solid;
+			border: ${p => p.theme.primary} 5px solid;
 
-			color: ${p => p.theme.orange};
+			color: ${p => p.theme.primary};
 			font-family: Ubuntu;
 			font-weight: 700;
 			font-size: 5rem;

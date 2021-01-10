@@ -17,7 +17,7 @@ const Container = styled.div`
 	padding-right: 2rem;
 	border-radius: 100rem;
 
-	color: ${p => p.theme.blue};
+	color: ${p => p.theme.secondary};
 	box-shadow: 0px 5px 5px rgba(0,0,0,0.5);
 
 	input
@@ -29,7 +29,7 @@ const Container = styled.div`
 		font-weight: 700;
 		font-size: 2rem;
 
-		color: ${p => p.theme.blue};
+		color: ${p => p.theme.secondary};
 		background: none;
 		border: none;
 	}

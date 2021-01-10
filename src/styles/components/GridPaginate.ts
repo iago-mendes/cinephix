@@ -35,7 +35,7 @@ const Container = styled.div`
 				border: none;
 				padding: 0.5rem;
 
-				color: ${p => p.theme.orange};
+				color: ${p => p.theme.primary};
 				border-radius: 100rem;
 
 				display: flex;
@@ -47,8 +47,8 @@ const Container = styled.div`
 
 				:hover
 				{
-					color: ${p => p.theme.black};
-					background-color: ${p => p.theme.orange};
+					color: ${p => p.theme.background};
+					background-color: ${p => p.theme.primary};
 				}
 			}
 		}
@@ -59,11 +59,11 @@ const Container = styled.div`
 			{
 				background: none;
 				border: none;
-				border-bottom: ${p => p.theme.orange}40 2px solid;
+				border-bottom: ${p => p.theme.primary}40 2px solid;
 
 				font-family: Roboto;
 				font-size: 1.5rem;
-				color: ${p => p.theme.orange};
+				color: ${p => p.theme.primary};
 
 				padding-left: 0.5rem;
 				padding-right: 0.5rem;
@@ -73,7 +73,7 @@ const Container = styled.div`
 			
 				:focus, :hover
 				{
-					border-bottom-color: ${p => p.theme.orange};
+					border-bottom-color: ${p => p.theme.primary};
 				}
 
 				::-webkit-outer-spin-button, ::-webkit-inner-spin-button

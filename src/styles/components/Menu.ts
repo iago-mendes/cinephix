@@ -10,7 +10,7 @@ const Container = styled.nav`
 	padding-right: 2rem;
 
 	height: 5rem;
-	background-color: ${p => p.theme.blue};
+	background-color: ${p => p.theme.secondary};
 
 	.logo
 	{
@@ -44,7 +44,7 @@ const Container = styled.nav`
 				font-weight: 700;
 				font-size: 1.75rem;
 
-				color: ${p => p.theme.orange};
+				color: ${p => p.theme.primary};
 				display: inline-block;
 
 				::after
@@ -53,7 +53,7 @@ const Container = styled.nav`
 					width: 0px;
 					height: 2px;
 					display: block;
-					background: ${p => p.theme.orange};
+					background: ${p => p.theme.primary};
 					transition: 0.25s;
 				}
 
@@ -75,9 +75,9 @@ const Container = styled.nav`
 				font-family: Ubuntu;
 				font-weight: 700;
 				font-size: 1.75rem;
-				color: ${p => p.theme.orange};
+				color: ${p => p.theme.primary};
 
-				border: ${p => p.theme.orange} 2px solid;
+				border: ${p => p.theme.primary} 2px solid;
 				border-radius: 100rem;
 				padding: 0.5rem;
 				padding-left: 1rem;
@@ -88,8 +88,8 @@ const Container = styled.nav`
 
 				:hover
 				{
-					background-color: ${p => p.theme.orange};
-					color: ${p => p.theme.blue};
+					background-color: ${p => p.theme.primary};
+					color: ${p => p.theme.secondary};
 				}
 			}
 
@@ -105,7 +105,7 @@ const Container = styled.nav`
 				border: none;
 				border-radius: 100rem;
 				background: none;
-				color: ${p => p.theme.orange};
+				color: ${p => p.theme.primary};
 
 				cursor: pointer;
 				transition: 0.25s;

@@ -5,7 +5,7 @@ const Container = styled.div`
 	align-items: center;
 	justify-content: space-between;
 
-	background-color: ${p => p.theme.orange};
+	background-color: ${p => p.theme.primary};
 	height: calc((40rem - 2rem) * 0.3 * 1.5 + 2rem);
 	width: 40rem;
 	padding: 1rem;
@@ -33,7 +33,7 @@ const Container = styled.div`
 		align-items: flex-start;
 		justify-content: space-between;
 
-		color: ${p => p.theme.black};
+		color: ${p => p.theme.background};
 
 		h1
 		{
