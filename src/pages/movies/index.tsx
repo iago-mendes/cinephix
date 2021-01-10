@@ -2,7 +2,6 @@ import {GetStaticProps} from 'next'
 import Head from 'next/head'
 import {useEffect, useState} from 'react'
 import useSWR from 'swr'
-import Image from 'next/image'
 
 import api from '../../services/api'
 import MediaCard, {Media} from '../../components/MediaCard'
