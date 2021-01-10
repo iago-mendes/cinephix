@@ -8,6 +8,7 @@ import Container from '../../styles/pages/movies/index'
 import api from '../../services/api'
 import MediaCard, {Media} from '../../components/MediaCard'
 import GridPaginate from '../../components/GridPaginate'
+import SearchBox from '../../components/SearchBox'
 
 interface MoviesProps
 {
@@ -53,15 +54,7 @@ const Movies: React.FC<MoviesProps> = ({staticMovies}) =>
 			</Head>
 
 			<header>
-				<div className="search">
-					<FaSearch size={25} />
-					<input
-						type="text"
-						placeholder='Search for a movie'
-						value={search}
-						onChange={e => setSearch(e.target.value)}
-					/>
-				</div>
+				<SearchBox search={search} setSearch={setSearch} display='Search for a movie' />
 			</header>
 
 			{
