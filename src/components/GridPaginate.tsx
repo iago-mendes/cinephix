@@ -30,7 +30,7 @@ const GridPaginate: React.FC<GridPaginateProps> = ({page, setPage, totalPages, c
 				{children}
 			</main>
 			<div className="paginate">
-				<div className="left">
+				<div className="buttons">
 					<button onClick={() => setPage(1)}>
 						<BsChevronBarLeft size={30} />
 					</button>
@@ -38,7 +38,7 @@ const GridPaginate: React.FC<GridPaginateProps> = ({page, setPage, totalPages, c
 						<BsChevronLeft size={30} />
 					</button>
 				</div>
-				<div className="center">
+				<div className="controller">
 					<input
 						type='number'
 						value={page}
@@ -46,9 +46,9 @@ const GridPaginate: React.FC<GridPaginateProps> = ({page, setPage, totalPages, c
 						min={1}
 						max={totalPages}
 					/>
-					<span>/ {totalPages}</span>
+					<span> / {totalPages}</span>
 				</div>
-				<div className="right">
+				<div className="buttons">
 					<button onClick={goNext}>
 						<BsChevronRight size={30} />
 					</button>

@@ -65,7 +65,7 @@ const Movies: React.FC<MoviesProps> = ({staticMovies}) =>
 			</header>
 
 			{
-				!data && search !== ''
+				!data && search !== '' && page !== 1
 				? <h1>Loading...</h1>
 				: Movies.length === 0 && search !== ''
 					? (
