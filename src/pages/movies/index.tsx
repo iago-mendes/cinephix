@@ -47,7 +47,10 @@ const Movies: React.FC<MoviesProps> = ({staticMovies}) =>
 	useEffect(() =>
 	{
 		if (search === '' && page === 1)
+		{
+			revalidate()
 			setMovies(staticMovies)
+		}
 		else
 		{
 			revalidate()
@@ -60,6 +63,12 @@ const Movies: React.FC<MoviesProps> = ({staticMovies}) =>
 		if (movies)
 			setLoading(false)
 	}, [movies])
+
+	useEffect(() =>
+	{
+		setPage(1)
+		setTotalPages(1)
+	}, [search])
 
 	return (
 		<Container>
