@@ -4,15 +4,19 @@ import api from "../../services/api"
 
 const getMovies: NextApiHandler = async (req, res) =>
 {
-	const {search} = req.query
+	const {search, page} = req.query
 
-	const {data} = (search && search !== '')
-		? await api.get(`movies?search=${search}`)
-		: await api.get('movies')
+	const {data, headers} = await api.get('movies', {params: {search, page}})
+
+		const paginate =
+		{
+			page: Number(headers.page),
+			total: Number(headers.totalpages)
+		}
 
 	res.statusCode = 200
 	res.setHeader('Content-Type', 'application/json')
-	res.end(JSON.stringify({movies: data}))
+	res.end(JSON.stringify({movies: data, paginate}))
 }
 
 export default getMovies

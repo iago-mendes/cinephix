@@ -22,20 +22,29 @@ const Movies: React.FC<MoviesProps> = ({staticMovies}) =>
 	const [page, setPage] = useState(1)
 	const [totalPages, setTotalPages] = useState(1)
 
-	const {data, error} = useSWR(`/api/getMovies?search=${search}`)
+	const {data, error} = useSWR(`/api/getMovies?search=${search}&page=${page}`)
 
 	useEffect(() =>
 	{
-		if (search === '' || error)
+		if (data)
+		{
+			setPage(data.paginate.page)
+			setTotalPages(data.paginate.total)
+
+			if (search === '' && page === 1)
+				setMovies(staticMovies)
+			else
+				setMovies(data.movies)
+		}
+		else if (error)
 		{
 			setMovies(staticMovies)
+			setPage(1)
+			setTotalPages(1)
 
-			if (error)
-				console.log('[error]', error)
+			console.error(error)
 		}
-		else if (data && data.Movies)
-			setMovies(data.Movies)
-	}, [data, error, search, staticMovies])
+	}, [data, error])
 
 	return (
 		<Container>
