@@ -16,6 +16,7 @@ import film from '../assets/vector-icons/film.svg'
 import marker from '../assets/vector-icons/marker.svg'
 import microfone from '../assets/vector-icons/microfone.svg'
 import popcorn from '../assets/vector-icons/popcorn.svg'
+import SearchBox from '../components/SearchBox'
 
 interface HomeProps
 {
@@ -69,15 +70,7 @@ const Home: React.FC<HomeProps> = ({staticHome}) =>
 					<img src={popcorn} alt="Popcorn"/>
 					<img src={microfone} alt="Microfone"/>
 				</div>
-				<div className="search">
-					<FaSearch size={25} />
-					<input
-						type="text"
-						placeholder='Search for a movie, tv show or celebrity'
-						value={search}
-						onChange={e => setSearch(e.target.value)}
-					/>
-				</div>
+				<SearchBox search={search} setSearch={setSearch} display='Search for a movie, TV show, or celebrity' />
 			</header>
 
 			{
