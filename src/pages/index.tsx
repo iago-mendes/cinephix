@@ -28,21 +28,18 @@ const Home: React.FC<HomeProps> = ({staticHome}) =>
 	const [search, setSearch] = useState('')
 	const [page, setPage]	= useState(1)
 	const [totalPages, setTotalPages] = useState(1)
+	const [loading, setLoading] = useState(false)
 	
 	const [home, setHome] = useState<Array<Media | Celebrity>>(staticHome)
-	const {data, error} = useSWR(`/api/getHome?search=${search}&page=${page}`)
+	const {data, error, revalidate} = useSWR(`/api/getHome?search=${search}&page=${page}`)
 
 	useEffect(() =>
 	{
 		if (data)
 		{
+			setHome(data.home)
 			setPage(data.paginate.page)
 			setTotalPages(data.paginate.total)
-
-			if (search === '' && page === 1)
-				setHome(staticHome)
-			else
-				setHome(data.home)
 		}
 		else if (error)
 		{
@@ -53,6 +50,23 @@ const Home: React.FC<HomeProps> = ({staticHome}) =>
 			console.error(error)
 		}
 	}, [data, error])
+
+	useEffect(() =>
+	{
+		if (search === '' && page === 1)
+			setHome(staticHome)
+		else
+		{
+			revalidate()
+			setLoading(true)
+		}
+	}, [search, page])
+
+	useEffect(() =>
+	{
+		if (home)
+			setLoading(false)
+	}, [home])
 
 	function isMedia(item: Media | Celebrity): item is Media
 	{
@@ -71,44 +85,43 @@ const Home: React.FC<HomeProps> = ({staticHome}) =>
 			</Head>
 
 			<header>
-				<div className="icons left">
-					<img src={camera} alt="Camera"/>
-					<img src={glasses} alt="Glasses"/>
-					<img src={film} alt="Film"/>
+				<div className='icons left'>
+					<img src={camera} alt='Camera'/>
+					<img src={glasses} alt='Glasses'/>
+					<img src={film} alt='Film'/>
 				</div>
-				<img src={logo} alt="Cinephix" className='logo' />
-				<div className="icons right">
-					<img src={marker} alt="Marker"/>
-					<img src={popcorn} alt="Popcorn"/>
-					<img src={microfone} alt="Microfone"/>
+				<img src={logo} alt='Cinephix' className='logo' />
+				<div className='icons right'>
+					<img src={marker} alt='Marker'/>
+					<img src={popcorn} alt='Popcorn'/>
+					<img src={microfone} alt='Microfone'/>
 				</div>
 				<SearchBox search={search} setSearch={setSearch} display='Search for a movie, TV show, or celebrity' />
 			</header>
 
 			{
-				!data && search !== ''
-				? <h1>Loading...</h1>
-				: home.length === 0 && search !== ''
-					? (
-						<div className="noResults">
-							<h1>No results found!</h1>
-						</div>
-					)
-					: (
-						<GridPaginate page={page} setPage={setPage} totalPages={totalPages} >
-							{home.map(item =>
-							{
-								if (isMedia(item))
-									return (
-										<MediaCard media={item} showOverview key={item.id} />
-									)
-								else if (isCelebrity(item))
-									return (
-										<CelebrityCard celebrity={item} showKnownFor key={item.id} />
-									)
-							})}
-						</GridPaginate>
-				)}
+				home.length === 0 && search !== ''
+				? (
+					<div className='noResults'>
+						<h1>No results found!</h1>
+					</div>
+				)
+				: (
+					<GridPaginate page={page} setPage={setPage} totalPages={totalPages} loading={loading} >
+						{home.map(item =>
+						{
+							if (isMedia(item))
+								return (
+									<MediaCard media={item} showOverview key={item.id} />
+								)
+							else if (isCelebrity(item))
+								return (
+									<CelebrityCard celebrity={item} showKnownFor key={item.id} />
+								)
+						})}
+					</GridPaginate>
+				)
+			}
 		</Container>
 	)
 }
