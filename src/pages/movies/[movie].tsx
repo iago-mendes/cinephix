@@ -117,12 +117,27 @@ const Movie: React.FC<MovieProps> = ({movie}) =>
 			<div className='cast'>
 				<span>Cast ({movie.credits.cast.length})</span>
 				<Carousel>
-					{movie.credits.cast.map(celebrity => (
-						<SwiperSlide key={celebrity.id} >
+					{movie.credits.cast.map((celebrity, index) => (
+						<SwiperSlide key={index} >
 							<CarouselCard
 								image={celebrity.image}
 								primaryDisplay={celebrity.name}
 								secondaryDisplay={celebrity.character}
+							/>
+						</SwiperSlide>
+					))}
+				</Carousel>
+			</div>
+
+			<div className='crew'>
+				<span>Crew ({movie.credits.crew.length})</span>
+				<Carousel>
+					{movie.credits.crew.map((celebrity, index) => (
+						<SwiperSlide key={index} >
+							<CarouselCard
+								image={celebrity.image}
+								primaryDisplay={celebrity.name}
+								secondaryDisplay={celebrity.department}
 							/>
 						</SwiperSlide>
 					))}

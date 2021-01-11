@@ -161,7 +161,7 @@ const Container = styled.div`
 		}
 	}
 
-	.cast
+	.cast, .crew
 	{
 		display: flex;
 		flex-direction: column;
@@ -182,6 +182,11 @@ const Container = styled.div`
 			padding-left: 1rem;
 			border-left: ${p => p.theme.primary} 5px solid;
 		}
+	}
+
+	.crew
+	{
+		background-color: rgba(0,0,0,0.5);
 	}
 `
 
