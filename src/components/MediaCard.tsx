@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import {useRouter} from 'next/router'
 import {FiCalendar} from 'react-icons/fi'
 import {CSSProperties} from 'styled-components'
 
@@ -11,6 +12,7 @@ export interface Media
 	title: string
 	overview: string
 	date: string
+	type?: string
 }
 
 interface MediaCardProps
@@ -18,11 +20,15 @@ interface MediaCardProps
 	media: Media
 	showOverview?: boolean
 
+	type: string
+
 	style?: CSSProperties
 }
 
-const MediaCard: React.FC<MediaCardProps> = ({media, showOverview = false, style = {}}) =>
+const MediaCard: React.FC<MediaCardProps> = ({media, showOverview = false, type, style = {}}) =>
 {
+	const Router = useRouter()
+
 	function truncateText(text: string, length: number)
 	{
 		let truncated = text
@@ -48,8 +54,13 @@ const MediaCard: React.FC<MediaCardProps> = ({media, showOverview = false, style
 		return formatedDate
 	}
 
+	function handleNavigate()
+	{
+		Router.push(`/${type}s/${media.id}`)
+	}
+
 	return (
-		<Container style={style} >
+		<Container style={style} onClick={handleNavigate} >
 			<div className='img'>
 				<Image src={media.image} width={780} height={1170} layout='responsive' />
 			</div>
