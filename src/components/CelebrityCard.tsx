@@ -4,6 +4,8 @@ import {FiCalendar, FiUser} from 'react-icons/fi'
 
 import Container from '../styles/components/CelebrityCard'
 import {Media} from './MediaCard'
+import formatDate from '../utils/formatDate'
+import truncateText from '../utils/truncateText'
 
 export interface Celebrity
 {
@@ -23,31 +25,6 @@ interface CelebrityCardProps
 const CelebrityCard: React.FC<CelebrityCardProps> = ({celebrity, showKnownFor = false}) =>
 {
 	const Router = useRouter()
-
-	function truncateText(text: string | undefined, length: number)
-	{
-		let truncated = text
-
-		if (truncated.length > length)
-			truncated = truncated.substr(0, length) + '...';
-
-		return truncated;
-	}
-
-	function formatDate(unformatedDate: string | undefined)
-	{
-		const months =
-		[
-			'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'
-		]
-
-		if (unformatedDate === '')
-			return ''
-
-		const date = unformatedDate.split('-').map(s => Number(s))
-		const formatedDate = `${months[date[1]-1]} ${date[2]}, ${date[0]}`
-		return formatedDate
-	}
 
 	function handleNavigate()
 	{
