@@ -3,12 +3,14 @@ import Head from 'next/head'
 import {useEffect} from 'react'
 import {useRouter} from 'next/router'
 import {FiCalendar, FiInfo, FiStar} from 'react-icons/fi'
+import {SwiperSlide} from 'swiper/react'
 
 import Container from '../../styles/pages/movies/[movie]'
 import api from '../../services/api'
 import {Media} from '../../components/MediaCard'
 import Loading from '../../components/Loading'
 import Image from 'next/image'
+import Carousel from '../../components/Carousel'
 
 interface MovieDetails
 {
@@ -111,6 +113,25 @@ const Movie: React.FC<MovieProps> = ({movie}) =>
 					</div>
 				</div>
 			)}
+
+			<div className="cast">
+				<span>Cast</span>
+				<Carousel>
+					{movie.credits.cast.map(celebrity => (
+						<SwiperSlide key={celebrity.id} className='slide' >
+							<div className="card">
+								<div className="img">
+									<Image src={celebrity.image} width={780} height={1170} layout='responsive' />
+								</div>
+								<div className="info">
+									<h1>{celebrity.name}</h1>
+									<h2>{celebrity.character}</h2>
+								</div>
+							</div>
+						</SwiperSlide>
+					))}
+				</Carousel>
+			</div>
 		</Container>
 	)
 }
