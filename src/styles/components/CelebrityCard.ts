@@ -13,6 +13,15 @@ const Container = styled.div`
 	border-radius: 1rem;
 	box-shadow: 5px 5px 5px rgba(0,0,0,0.5);
 
+	cursor: pointer;
+	transition: 0.25s;
+
+	:hover
+	{
+		border-radius: 0;
+		background-color: ${p => p.theme.primary}bf;
+	}
+
 	.img
 	{
 		width: 30%;
