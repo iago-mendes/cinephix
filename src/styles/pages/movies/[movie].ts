@@ -107,8 +107,6 @@ const Container = styled.div`
 		flex-direction: column;
 		align-items: center;
 
-		background-color: rgba(0,0,0,0.5);
-
 		::before, ::after
 		{
 			content: '';
@@ -184,7 +182,7 @@ const Container = styled.div`
 		}
 	}
 
-	.crew
+	.cast
 	{
 		background-color: rgba(0,0,0,0.5);
 	}
