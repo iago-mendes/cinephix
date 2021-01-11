@@ -1,6 +1,6 @@
 import {AppProps} from 'next/app'
 import {ThemeProvider} from 'styled-components'
-import SwiperCore, {Navigation, Pagination} from 'swiper'
+import SwiperCore, {Navigation} from 'swiper'
 import 'swiper/swiper-bundle.css'
 
 import Menu from '../components/Menu'
@@ -9,7 +9,7 @@ import theme from '../styles/theme'
 
 const MyApp: React.FC<AppProps> = ({Component, pageProps}) =>
 {
-	SwiperCore.use([Navigation, Pagination])
+	SwiperCore.use([Navigation])
 
   return (
     <ThemeProvider theme={theme}>

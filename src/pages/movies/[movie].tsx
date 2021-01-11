@@ -115,7 +115,7 @@ const Movie: React.FC<MovieProps> = ({movie}) =>
 			)}
 
 			<div className='cast'>
-				<span>Cast</span>
+				<span>Cast ({movie.credits.cast.length})</span>
 				<Carousel>
 					{movie.credits.cast.map(celebrity => (
 						<SwiperSlide key={celebrity.id} >
