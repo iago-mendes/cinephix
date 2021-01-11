@@ -120,6 +120,7 @@ const Movie: React.FC<MovieProps> = ({movie}) =>
 								image={celebrity.image}
 								primaryDisplay={celebrity.name}
 								secondaryDisplay={celebrity.character}
+								link={`/celebrities/${celebrity.id}`}
 							/>
 						</SwiperSlide>
 					))}
@@ -135,6 +136,7 @@ const Movie: React.FC<MovieProps> = ({movie}) =>
 								image={celebrity.image}
 								primaryDisplay={celebrity.name}
 								secondaryDisplay={celebrity.department}
+								link={`/celebrities/${celebrity.id}`}
 							/>
 						</SwiperSlide>
 					))}
