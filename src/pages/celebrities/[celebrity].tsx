@@ -99,7 +99,7 @@ const Celebrity: React.FC<CelebrityProps> = ({celebrity}) =>
 								image={media.image}
 								primaryDisplay={media.title}
 								secondaryDisplay={media.character}
-								link={`/celebrities/${media.id}`}
+								link={media.type === 'movie' ? `/movies/${media.id}` : `/tvshows/${media.id}`}
 							/>
 						</SwiperSlide>
 					))}
@@ -115,7 +115,7 @@ const Celebrity: React.FC<CelebrityProps> = ({celebrity}) =>
 								image={media.image}
 								primaryDisplay={media.title}
 								secondaryDisplay={media.department}
-								link={`/celebrities/${media.id}`}
+								link={media.type === 'movie' ? `/movies/${media.id}` : `/tvshows/${media.id}`}
 							/>
 						</SwiperSlide>
 					))}
