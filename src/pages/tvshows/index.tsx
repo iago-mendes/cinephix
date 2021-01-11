@@ -89,7 +89,7 @@ const Tvshows: React.FC<TvshowsProps> = ({staticTvshows}) =>
 				: (
 					<GridPaginate page={page} setPage={setPage} totalPages={totalPages} loading={loading} >
 						{tvshows.map(item => (
-							<MediaCard media={item} showOverview key={item.id} />
+							<MediaCard media={item} showOverview key={item.id} type='tvshow' />
 						))}
 					</GridPaginate>
 				)

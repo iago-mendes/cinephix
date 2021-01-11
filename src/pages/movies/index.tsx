@@ -89,7 +89,7 @@ const Movies: React.FC<MoviesProps> = ({staticMovies}) =>
 				: (
 					<GridPaginate page={page} setPage={setPage} totalPages={totalPages} loading={loading} >
 						{movies.map(item => (
-							<MediaCard media={item} showOverview key={item.id} />
+							<MediaCard media={item} showOverview key={item.id} type='movie' />
 						))}
 					</GridPaginate>
 				)
