@@ -2,21 +2,23 @@ import {GetStaticPaths, GetStaticProps} from 'next'
 import Head from 'next/head'
 import {useEffect} from 'react'
 import {useRouter} from 'next/router'
+import {FiCalendar, FiInfo, FiStar} from 'react-icons/fi'
 
 import Container from '../../styles/pages/movies/[movie]'
 import api from '../../services/api'
 import {Media} from '../../components/MediaCard'
 import Loading from '../../components/Loading'
+import Image from 'next/image'
 
 interface MovieDetails
 {
 	id: number
-  title: string
   image: string
-  overview: string
-  status: string
+  title: string
   date: string
+  status: string
   rating: number
+  overview: string
 	collection?:
 	{
     id: number
@@ -66,6 +68,30 @@ const Movie: React.FC<MovieProps> = ({movie}) =>
 			<Head>
 				<title>Movie</title>
 			</Head>
+
+			<main>
+				<div className='img'>
+					<Image src={movie.image} width={780} height={1170} layout='responsive'/>
+				</div>
+				<div className='info'>
+					<h1>{movie.title}</h1>
+					<div className='details'>
+						<div className='detail'>
+							<FiCalendar size={30} />
+							<span>{movie.date}</span>
+						</div>
+						<div className='detail'>
+							<FiInfo size={30} />
+							<span>{movie.status}</span>
+						</div>
+						<div className='detail'>
+							<FiStar size={30} />
+							<span>{movie.rating}</span>
+						</div>
+					</div>
+					<p>{movie.overview}</p>
+				</div>
+			</main>
 		</Container>
 	)
 }
