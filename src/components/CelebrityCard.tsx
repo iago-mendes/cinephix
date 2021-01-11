@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import {useRouter} from 'next/router'
 import {FiCalendar, FiUser} from 'react-icons/fi'
 
 import Container from '../styles/components/CelebrityCard'
@@ -21,6 +22,8 @@ interface CelebrityCardProps
 
 const CelebrityCard: React.FC<CelebrityCardProps> = ({celebrity, showKnownFor = false}) =>
 {
+	const Router = useRouter()
+
 	function truncateText(text: string | undefined, length: number)
 	{
 		let truncated = text
@@ -46,8 +49,13 @@ const CelebrityCard: React.FC<CelebrityCardProps> = ({celebrity, showKnownFor = 
 		return formatedDate
 	}
 
+	function handleNavigate()
+	{
+		Router.push(`/celebrities/${celebrity.id}`)
+	}
+
 	return (
-		<Container>
+		<Container onClick={handleNavigate} >
 			<div className='img'>
 				<Image src={celebrity.image} width={780} height={1170} layout='responsive' />
 			</div>
