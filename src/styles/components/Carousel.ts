@@ -6,7 +6,7 @@ const Container = styled.div`
 		padding-left: 5rem;
 		padding-right: 5rem;
 
-		.slide
+		.swiper-slide
 		{
 			display: flex;
 			align-items: center;
@@ -86,6 +86,22 @@ const Container = styled.div`
 						gap: 0.5rem;
 					}
 				}
+			}
+		}
+
+		.swiper-button-prev, .swiper-button-next
+		{
+			width: 3rem;
+			height: 6rem;
+			border-radius: 100rem;
+
+			color: ${p => p.theme.primary};
+			transition: 0.25s;
+
+			:hover
+			{
+				color: ${p => p.theme.background};
+				background-color: ${p => p.theme.primary};
 			}
 		}
 	}

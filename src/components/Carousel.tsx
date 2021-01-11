@@ -29,17 +29,15 @@ interface CarouselCardProps
 export const CarouselCard: React.FC<CarouselCardProps> = ({image, primaryDisplay, secondaryDisplay}) =>
 {
 	return (
-		<SwiperSlide className='slide' >
-			<div className='card'>
-				<div className='img'>
-					<Image src={image} width={780} height={1170} layout='responsive' />
-				</div>
-				<div className='info'>
-					<h1>{primaryDisplay}</h1>
-					<h2>{secondaryDisplay}</h2>
-				</div>
+		<div className='card'>
+			<div className='img'>
+				<Image src={image} width={780} height={1170} layout='responsive' />
 			</div>
-		</SwiperSlide>
+			<div className='info'>
+				<h1>{primaryDisplay}</h1>
+				<h2>{secondaryDisplay}</h2>
+			</div>
+		</div>
 	)
 }
 

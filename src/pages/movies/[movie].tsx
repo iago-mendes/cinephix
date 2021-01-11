@@ -10,7 +10,7 @@ import api from '../../services/api'
 import {Media} from '../../components/MediaCard'
 import Loading from '../../components/Loading'
 import Image from 'next/image'
-import Carousel from '../../components/Carousel'
+import Carousel, {CarouselCard} from '../../components/Carousel'
 
 interface MovieDetails
 {
@@ -103,31 +103,27 @@ const Movie: React.FC<MovieProps> = ({movie}) =>
 			</main>
 
 			{movie.collection && (
-				<div className="collection">
+				<div className='collection'>
 					<h1>Collection</h1>
-					<div className="main">
+					<div className='main'>
 						<h2>{movie.collection.name}</h2>
-						<div className="img">
+						<div className='img'>
 							<Image src={movie.collection.image} width={780} height={1170} layout='responsive' />
 						</div>
 					</div>
 				</div>
 			)}
 
-			<div className="cast">
+			<div className='cast'>
 				<span>Cast</span>
 				<Carousel>
 					{movie.credits.cast.map(celebrity => (
-						<SwiperSlide key={celebrity.id} className='slide' >
-							<div className="card">
-								<div className="img">
-									<Image src={celebrity.image} width={780} height={1170} layout='responsive' />
-								</div>
-								<div className="info">
-									<h1>{celebrity.name}</h1>
-									<h2>{celebrity.character}</h2>
-								</div>
-							</div>
+						<SwiperSlide key={celebrity.id} >
+							<CarouselCard
+								image={celebrity.image}
+								primaryDisplay={celebrity.name}
+								secondaryDisplay={celebrity.character}
+							/>
 						</SwiperSlide>
 					))}
 				</Carousel>

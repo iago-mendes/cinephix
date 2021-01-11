@@ -107,6 +107,8 @@ const Container = styled.div`
 		flex-direction: column;
 		align-items: center;
 
+		background-color: rgba(0,0,0,0.5);
+
 		::before, ::after
 		{
 			content: '';
@@ -156,6 +158,29 @@ const Container = styled.div`
 					border-radius: 1rem;
 				}
 			}
+		}
+	}
+
+	.cast
+	{
+		display: flex;
+		flex-direction: column;
+		gap: 3rem;
+
+		padding: 1rem;
+		padding-top: 3rem;
+		padding-bottom: 3rem;
+
+		span
+		{
+			font-family: Roboto;
+			font-weight: 700;
+			font-size: 3rem;
+			color: ${p => p.theme.primary};
+
+			margin-left: 5rem;
+			padding-left: 1rem;
+			border-left: ${p => p.theme.primary} 5px solid;
 		}
 	}
 `
