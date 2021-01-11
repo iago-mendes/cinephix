@@ -63,7 +63,7 @@ const Tvshow: React.FC<TvshowProps> = ({tvshow}) =>
 		return <Loading />
 
 	return (
-		<Container>
+		<Container overviewLength={tvshow.overview.length} >
 			<Head>
 				<title>TV Show</title>
 			</Head>

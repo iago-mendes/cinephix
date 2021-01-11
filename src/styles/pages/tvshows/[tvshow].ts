@@ -1,6 +1,11 @@
 import styled from 'styled-components'
 
-const Container = styled.div`
+interface ContainerProps
+{
+	overviewLength: number
+}
+
+const Container = styled.div<ContainerProps>`
 	main
 	{
 		height: calc(100vh - 5rem);
@@ -81,7 +86,7 @@ const Container = styled.div`
 			p
 			{
 				font-family: Roboto;
-				font-size: 2rem;
+				font-size: ${p => p.overviewLength < 500 ? '2rem' : '1.5rem'};
 			}
 
 			ul
