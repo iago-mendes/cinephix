@@ -28,6 +28,7 @@ const Container = styled.div`
 
 			display: flex;
 			flex-direction: column;
+			justify-content: space-around;
 			gap: 2rem;
 
 			color: ${p => p.theme.primary};
@@ -64,6 +65,38 @@ const Container = styled.div`
 			{
 				font-family: Roboto;
 				font-size: 2rem;
+			}
+
+			ul
+			{
+				width: 100%;
+
+				display: grid;
+				grid-auto-rows: 5rem;
+				grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+				grid-gap: 1rem;
+				align-items: center;
+				justify-items: center;
+
+				li
+				{
+					display: flex;
+					align-items: center;
+					justify-content: center;
+
+					text-decoration: none;
+
+					padding: 0.75rem;
+					padding-left: 2rem;
+					padding-right: 2rem;
+
+					border: ${p => p.theme.primary} 1px solid;
+					border-radius: 100rem;
+
+					font-family: Ubuntu;
+					font-weight: 400;
+					font-size: 1.75rem;
+				}
 			}
 		}
 	}

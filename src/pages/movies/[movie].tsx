@@ -90,6 +90,13 @@ const Movie: React.FC<MovieProps> = ({movie}) =>
 						</div>
 					</div>
 					<p>{movie.overview}</p>
+					<ul>
+						{movie.genres.map(genre => (
+							<li key={genre.id} >
+								{genre.name}
+							</li>
+						))}
+					</ul>
 				</div>
 			</main>
 		</Container>
