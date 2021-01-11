@@ -68,9 +68,6 @@ const Container = styled.div`
 						font-weight: 700;
 
 						font-size: 2.5rem;
-						height: 17.5%;
-						
-						overflow: hidden;
 					}
 
 					h2
