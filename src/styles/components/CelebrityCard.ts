@@ -20,6 +20,11 @@ const Container = styled.div`
 	{
 		border-radius: 0;
 		background-color: ${p => p.theme.primary}bf;
+
+		.img img
+		{
+			border-radius: 0;
+		}
 	}
 
 	.img
@@ -29,6 +34,7 @@ const Container = styled.div`
 		img
 		{
 			border-radius: 1rem;
+			transition: 0.25s;
 		}
 	}
 
