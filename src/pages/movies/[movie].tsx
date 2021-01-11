@@ -10,6 +10,7 @@ import api from '../../services/api'
 import {Media} from '../../components/MediaCard'
 import Loading from '../../components/Loading'
 import Carousel, {CarouselCard} from '../../components/Carousel'
+import formatDate from '../../utils/formatDate'
 
 interface MovieDetails
 {
@@ -77,7 +78,7 @@ const Movie: React.FC<MovieProps> = ({movie}) =>
 					<div className='details'>
 						<div className='detail'>
 							<FiCalendar size={30} />
-							<span>{movie.date}</span>
+							<span>{formatDate(movie.date)}</span>
 						</div>
 						<div className='detail'>
 							<FiInfo size={30} />
