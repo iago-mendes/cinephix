@@ -1,15 +1,14 @@
 import {GetStaticPaths, GetStaticProps} from 'next'
 import Head from 'next/head'
-import {useEffect} from 'react'
 import {useRouter} from 'next/router'
 import {FiCalendar, FiInfo, FiStar} from 'react-icons/fi'
 import {SwiperSlide} from 'swiper/react'
+import Image from 'next/image'
 
 import Container from '../../styles/pages/movies/[movie]'
 import api from '../../services/api'
 import {Media} from '../../components/MediaCard'
 import Loading from '../../components/Loading'
-import Image from 'next/image'
 import Carousel, {CarouselCard} from '../../components/Carousel'
 
 interface MovieDetails
@@ -59,8 +58,6 @@ interface MovieProps
 const Movie: React.FC<MovieProps> = ({movie}) =>
 {
 	const Router = useRouter()
-
-	useEffect(() => console.log('[movie]', movie), [movie])
 
 	if (Router.isFallback)
 		return <Loading />
