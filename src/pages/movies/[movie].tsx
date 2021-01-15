@@ -102,9 +102,8 @@ const Movie: React.FC<MovieProps> = ({movie}) =>
 
 			{movie.collection && (
 				<div className='collection'>
-					<h1>Collection</h1>
 					<div className='main'>
-						<h2>{movie.collection.name}</h2>
+						<h1>{movie.collection.name}</h1>
 						<div className='img'>
 							<Image src={movie.collection.image} width={780} height={1170} layout='responsive' />
 						</div>

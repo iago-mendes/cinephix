@@ -106,6 +106,7 @@ const Container = styled.div`
 		display: flex;
 		flex-direction: column;
 		align-items: center;
+		justify-content: space-around;
 
 		::before, ::after
 		{
@@ -119,25 +120,15 @@ const Container = styled.div`
 			margin: 1rem;
 		}
 
-		h1
-		{
-			font-family: Ubuntu;
-			font-weight: 700;
-			font-size: 2.5rem;
-
-			color: ${p => p.theme.primary};
-		}
-
 		.main
 		{
 			display: flex;
 			align-items: center;
 			justify-content: space-around;
 
-			margin-top: 1rem;
 			width: 50%;
 
-			h2
+			h1
 			{
 				font-family: Ubuntu;
 				font-weight: 700;
