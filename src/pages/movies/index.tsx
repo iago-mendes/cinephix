@@ -66,7 +66,8 @@ const Movies: React.FC<MoviesProps> = ({staticMovies}) =>
 	useEffect(() =>
 	{
 		setPage(1)
-		setTotalPages(1)
+		if (search !== '')
+			setTotalPages(1)
 	}, [search])
 
 	return (

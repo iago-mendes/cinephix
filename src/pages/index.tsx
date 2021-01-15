@@ -17,6 +17,7 @@ import film from '../assets/vector-icons/film.svg'
 import marker from '../assets/vector-icons/marker.svg'
 import microfone from '../assets/vector-icons/microfone.svg'
 import popcorn from '../assets/vector-icons/popcorn.svg'
+import { useRouter } from 'next/router'
 
 interface HomeProps
 {
@@ -25,6 +26,8 @@ interface HomeProps
 
 const Home: React.FC<HomeProps> = ({staticHome}) =>
 {
+	const {pathname} = useRouter()
+
 	const [search, setSearch] = useState('')
 	const [page, setPage]	= useState(1)
 	const [totalPages, setTotalPages] = useState(1)
@@ -74,7 +77,8 @@ const Home: React.FC<HomeProps> = ({staticHome}) =>
 	useEffect(() =>
 	{
 		setPage(1)
-		setTotalPages(1)
+		if (search !== '')
+			setTotalPages(1)
 	}, [search])
 
 	function isMedia(item: Media | Celebrity): item is Media

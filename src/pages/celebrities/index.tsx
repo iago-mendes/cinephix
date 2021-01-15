@@ -66,7 +66,8 @@ const Celebrities: React.FC<CelebritiesProps> = ({staticCelebrities}) =>
 	useEffect(() =>
 	{
 		setPage(1)
-		setTotalPages(1)
+		if (search !== '')
+			setTotalPages(1)
 	}, [search])
 
 	return (

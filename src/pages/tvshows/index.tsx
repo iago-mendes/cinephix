@@ -66,7 +66,8 @@ const Tvshows: React.FC<TvshowsProps> = ({staticTvshows}) =>
 	useEffect(() =>
 	{
 		setPage(1)
-		setTotalPages(1)
+		if (search !== '')
+			setTotalPages(1)
 	}, [search])
 
 	return (
