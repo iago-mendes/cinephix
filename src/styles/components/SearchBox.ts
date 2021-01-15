@@ -15,10 +15,17 @@ const Container = styled.div`
 
 	padding-left: 1rem;
 	padding-right: 2rem;
-	border-radius: 100rem;
 
 	color: ${p => p.theme.secondary};
 	box-shadow: 0px 5px 5px rgba(0,0,0,0.5);
+
+	border-radius: 100rem;
+	transition: 0.25s;
+
+	:hover
+	{
+		transform: scale(1.03);
+	}
 
 	input
 	{
