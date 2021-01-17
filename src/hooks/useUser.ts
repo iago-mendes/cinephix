@@ -1,3 +1,4 @@
+import { charCodeAt } from "*.jpg"
 import {useSession} from "next-auth/client"
 import {useEffect, useState} from "react"
 

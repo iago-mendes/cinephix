@@ -4,6 +4,7 @@ import {useEffect} from 'react'
 import {ThemeProvider} from 'styled-components'
 import SwiperCore, {Navigation} from 'swiper'
 import 'swiper/swiper-bundle.css'
+import {Provider as SessionProvider} from 'next-auth/client'
 
 import Menu from '../components/Menu'
 import GlobalStyle from '../styles/global'
@@ -20,13 +21,15 @@ const MyApp: React.FC<AppProps> = ({Component, pageProps}) =>
 		window.scrollTo(0,0)
 	}, [pathname])
 
-  return (
-    <ThemeProvider theme={theme}>
-			<Menu />
-      <Component {...pageProps} />
-      <GlobalStyle />
-    </ThemeProvider>
-  )
+	return (
+		<ThemeProvider theme={theme}>
+			<SessionProvider session={pageProps.session} >
+				<Menu />
+				<Component {...pageProps} />
+				<GlobalStyle />
+			</SessionProvider>
+		</ThemeProvider>
+	)
 }
 
 export default MyApp
