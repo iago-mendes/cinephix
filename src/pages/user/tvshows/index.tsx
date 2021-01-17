@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import {useEffect, useState} from 'react'
-import {DragDropContext, Droppable, Draggable} from 'react-beautiful-dnd'
+import {DragDropContext, Droppable, Draggable, DropResult} from 'react-beautiful-dnd'
 import Image from 'next/image'
 
 import Container from '../../../styles/pages/user/tvshows/index'
@@ -103,6 +103,28 @@ const UserTvshows: React.FC = () =>
 		getTvshows()
 	}, [user])
 
+	function handleDragDrop(res: DropResult)
+	{
+		let tmpStatusList = [...statusList]
+
+		const tvshowId = Number(res.draggableId)
+
+		const previousStatus = Number(res.source.droppableId)
+		tmpStatusList[previousStatus].tvshowIds = tmpStatusList[previousStatus].tvshowIds
+			.filter(id => id !== tvshowId)
+		
+		const newStatus = Number(res.destination.droppableId)
+		tmpStatusList[newStatus].tvshowIds
+			.push(tvshowId)
+
+		const data =
+		{
+			status: statusList[newStatus].title
+		}
+		api.put(`users/${user.email}/tvshows/${tvshowId}`, data)
+		setStatusList(tmpStatusList)
+	}
+
 	if (loading)
 		return <Loading />
 	if (!user)
@@ -116,13 +138,13 @@ const UserTvshows: React.FC = () =>
 
 			<main>
 				<DragDropContext
-					onDragEnd={res => {}}
+					onDragEnd={handleDragDrop}
 				>
 					<div className='dragDropArea'>
-						{statusList.map(status => (
-							<div key={status.title} className='statusColumn' >
+						{statusList.map((status, index) => (
+							<div key={index} className='statusColumn' >
 								<h1>{status.title}</h1>
-								<Droppable droppableId={status.title} >
+								<Droppable droppableId={String(index)} >
 									{provided => (
 										<div {...provided.droppableProps} ref={provided.innerRef} className='droppableArea' >
 											{status.tvshowIds.map((id, index) =>
