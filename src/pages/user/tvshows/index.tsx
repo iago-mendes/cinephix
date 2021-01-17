@@ -2,6 +2,7 @@ import Head from 'next/head'
 import {useEffect, useState} from 'react'
 import {DragDropContext, Droppable, Draggable, DropResult} from 'react-beautiful-dnd'
 import Image from 'next/image'
+import {BiExpand} from 'react-icons/bi'
 
 import Container from '../../../styles/pages/user/tvshows/index'
 import api from '../../../services/api'
@@ -170,6 +171,9 @@ const UserTvshows: React.FC = () =>
 																		<span className='venue'>{tvshow.venue}</span>
 																	</div>
 																</div>
+																<button onClick={() => {}}>
+																	<BiExpand size={20} />
+																</button>
 															</div>
 														)}
 													</Draggable>

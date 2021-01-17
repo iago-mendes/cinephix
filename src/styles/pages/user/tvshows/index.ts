@@ -61,7 +61,21 @@ const Container = styled.div`
 						align-items: center;
 						justify-content: space-between;
 
+						position: relative;
+
 						cursor: move;
+						transition: 0.25s;
+
+						:hover, :active
+						{
+							border-radius: 0;
+							background-color: ${p => p.theme.primary}bf;
+
+							.img img
+							{
+								border-radius: 0;
+							}
+						}
 
 						.img
 						{
@@ -105,6 +119,33 @@ const Container = styled.div`
 								font-size: 1.5rem;
 
 								color: ${p => p.theme.background};
+							}
+						}
+
+						button
+						{
+							position: absolute;
+							bottom: 1rem;
+							right: 1rem;
+
+							background: none;
+							border: none;
+
+							border-radius: 100rem;
+							padding: 0.5rem;
+							color: ${p => p.theme.background};
+
+							display: flex;
+							align-items: center;
+							justify-content: center;
+
+							cursor: pointer;
+							transition: 0.25s;
+
+							:hover
+							{
+								transform: scale(1.25);
+								background-color: ${p => p.theme.black}40;
 							}
 						}
 					}
