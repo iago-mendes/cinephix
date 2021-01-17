@@ -61,36 +61,40 @@ const UserTvshows: React.FC = () =>
 				<title>User TV shows</title>
 			</Head>
 
-			<DragDropContext
-				onDragEnd={res => {}}
-			>
-				{statusList.map(status => (
-					<div key={status.title} >
-						<h1>{status.title}</h1>
-						<Droppable droppableId={status.title} >
-							{provided => (
-								<div {...provided.droppableProps} ref={provided.innerRef} >
-									{status.tvshowIds.map((id, index) =>
-									{
-										const tvshow = tvshowsList[id]
+			<main>
+				<DragDropContext
+					onDragEnd={res => {}}
+				>
+					<div className="dragDropArea">
+						{statusList.map(status => (
+							<div key={status.title} className='statusColumn' >
+								<h1>{status.title}</h1>
+								<Droppable droppableId={status.title} >
+									{provided => (
+										<div {...provided.droppableProps} ref={provided.innerRef} className='droppableArea' >
+											{status.tvshowIds.map((id, index) =>
+											{
+												const tvshow = tvshowsList[id]
 
-										return (
-											<Draggable draggableId={String(id)} index={index} key={id} >
-												{provided => (
-													<div {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef} >
-														<span>{tvshow.data.title}</span>
-													</div>
-												)}
-											</Draggable>
-										)
-									})}
-									{provided.placeholder}
-								</div>
-							)}
-						</Droppable>
+												return (
+													<Draggable draggableId={String(id)} index={index} key={id} >
+														{provided => (
+															<div {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef} className='tvshow' >
+																<span>{tvshow.data.title}</span>
+															</div>
+														)}
+													</Draggable>
+												)
+											})}
+											{provided.placeholder}
+										</div>
+									)}
+								</Droppable>
+							</div>
+						))}
 					</div>
-				))}
-			</DragDropContext>
+				</DragDropContext>
+			</main>
 		</Container>
 	)
 }
