@@ -2,7 +2,7 @@ import Head from 'next/head'
 import { useState } from 'react'
 import {DragDropContext, Droppable, Draggable} from 'react-beautiful-dnd'
 
-import Container, {TvshowListContainer, TvshowContainer} from '../../../styles/pages/[user]/tvshows/index'
+import Container from '../../../styles/pages/user/tvshows/index'
 
 interface TvshowList
 {
@@ -42,14 +42,16 @@ const UserTvshows: React.FC = () =>
 	{
 		1: {data: {title: 'This is a text 1'}},
 		2: {data: {title: 'This is a text 2'}},
+		3: {data: {title: 'This is a text 3'}},
+		4: {data: {title: 'This is a text 4'}},
 	})
 	const [statusList, setStatusList] = useState<Status[]>(
 	[
 		{title: 'Watch list', tvshowIds: [1, 2]},
 		{title: 'Watching', tvshowIds: []},
-		{title: 'Waiting', tvshowIds: []},
+		{title: 'Waiting', tvshowIds: [3]},
 		{title: 'Completed', tvshowIds: []},
-		{title: 'Stopped', tvshowIds: []},
+		{title: 'Stopped', tvshowIds: [4]},
 		{title: 'Paused', tvshowIds: []}
 	])
 
@@ -82,6 +84,7 @@ const UserTvshows: React.FC = () =>
 											</Draggable>
 										)
 									})}
+									{provided.placeholder}
 								</div>
 							)}
 						</Droppable>
