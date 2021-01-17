@@ -1,12 +1,13 @@
 import Head from 'next/head'
 import {useEffect, useState} from 'react'
 import {DragDropContext, Droppable, Draggable} from 'react-beautiful-dnd'
+import Image from 'next/image'
+
+import Container from '../../../styles/pages/user/tvshows/index'
+import api from '../../../services/api'
 import Loading from '../../../components/Loading'
 import NotSigned from '../../../components/NotSigned'
 import useUser from '../../../hooks/useUser'
-import api from '../../../services/api'
-
-import Container from '../../../styles/pages/user/tvshows/index'
 
 interface Tvshow
 {
@@ -117,7 +118,7 @@ const UserTvshows: React.FC = () =>
 				<DragDropContext
 					onDragEnd={res => {}}
 				>
-					<div className="dragDropArea">
+					<div className='dragDropArea'>
 						{statusList.map(status => (
 							<div key={status.title} className='statusColumn' >
 								<h1>{status.title}</h1>
@@ -131,8 +132,22 @@ const UserTvshows: React.FC = () =>
 												return (
 													<Draggable draggableId={String(id)} index={index} key={id} >
 														{provided => (
-															<div {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef} className='tvshow' >
-																<span>{tvshow.data.title}</span>
+															<div
+																className='tvshow'
+																{...provided.draggableProps}
+																{...provided.dragHandleProps}
+																ref={provided.innerRef}
+															>
+																<div className='img'>
+																	<Image src={tvshow.data.image} width={780} height={1170} layout='responsive'/>
+																</div>
+																<div className='info'>
+																	<h2>{tvshow.data.title}</h2>
+																	<div className='details'>
+																		<span className='ratings'>{tvshow.ratings.acting}</span>
+																		<span className='venue'>{tvshow.venue}</span>
+																	</div>
+																</div>
 															</div>
 														)}
 													</Draggable>
