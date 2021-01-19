@@ -21,13 +21,14 @@ const Container = styled.div`
 				background-color: ${p => p.theme.black};
 				width: 32rem;
 				height: fit-content;
-				padding: 1rem;
-				border-radius: 0.5rem;
+
+				padding-top: 1rem;
+				border-top-right-radius: 0.5rem;
+				border-top-left-radius: 0.5rem;
 
 				display: flex;
 				flex-direction: column;
 				align-items: center;
-				gap: 2rem;
 
 				h1
 				{
@@ -36,6 +37,21 @@ const Container = styled.div`
 					font-size: 2.25rem;
 
 					color: ${p => p.theme.primary};
+
+					width: 100%;
+					text-align: center;
+
+					::after
+					{
+						content: '';
+						width: 100%;
+						height: 1px;
+						display: block;
+
+						margin-top: 1rem;
+
+						background: ${p => p.theme.primary}40;
+					}
 				}
 
 				.droppableArea
@@ -43,10 +59,13 @@ const Container = styled.div`
 					width: 100%;
 					height: fit-content;
 					min-height: 10rem;
+					background-color: ${p => p.theme.background}40;
 
 					display: flex;
 					flex-direction: column;
 					gap: 1rem;
+
+					padding: 1rem;
 
 					.tvshow
 					{
@@ -106,6 +125,8 @@ const Container = styled.div`
 								font-size: 2rem;
 
 								color: ${p => p.theme.background};
+
+								word-wrap: break-word;
 							}
 
 							.details
