@@ -12,15 +12,9 @@ import useUser from '../../../hooks/useUser'
 
 interface Tvshow
 {
-	data:
-	{
-		id: number
-		image: string
-		title: string
-		overview: string
-		date: string
-	}
-	status: string
+	id: number
+	image: string
+	title: string
 	venue: string
 	ratings:
 	{
@@ -35,95 +29,74 @@ interface Tvshow
 
 interface TvshowList
 {
-	[id: number]: Tvshow
+	[status: string]: Tvshow[]
 }
 
-interface Status
+const validStatus: {[statusKey: string]: string} = 
 {
-	title: string
-	tvshowIds: number[]
+	watchList: 'Watch list',
+	watching: 'Watching',
+	waiting: 'Waiting',
+	completed: 'Completed',
+	stopped: 'Stopped',
+	paused: 'Paused'
 }
 
 const UserTvshows: React.FC = () =>
 {
 	const {user, loading} = useUser()
 
-	const [tvshowList, setTvshowList] = useState<TvshowList>({})
-	const [statusList, setStatusList] = useState<Status[]>(
-	[
-		{title: 'Watch list', tvshowIds: []},
-		{title: 'Watching', tvshowIds: []},
-		{title: 'Waiting', tvshowIds: []},
-		{title: 'Completed', tvshowIds: []},
-		{title: 'Stopped', tvshowIds: []},
-		{title: 'Paused', tvshowIds: []}
-	])
+	const [tvshowList, setTvshowList] = useState<TvshowList>(
+	{
+		watchList: [],
+		watching: [],
+		waiting: [],
+		completed: [],
+		stopped: [],
+		paused: []
+	})
 
 	useEffect(() =>
 	{
-		async function getTvshows()
+		async function getTvshowList()
 		{
 			if (user)
 			{
-				const {data: tvshows}:{data: Tvshow[]} = await api.get(`users/${user.email}/tvshows`)
-
-				let tmpTvshowList: TvshowList = {}
-				let tmpStatusList: Status[] =
-				[
-					{title: 'Watch list', tvshowIds: []},
-					{title: 'Watching', tvshowIds: []},
-					{title: 'Waiting', tvshowIds: []},
-					{title: 'Completed', tvshowIds: []},
-					{title: 'Stopped', tvshowIds: []},
-					{title: 'Paused', tvshowIds: []}
-				]
-
-				tvshows.map(tvshow =>
-				{
-					tmpTvshowList[tvshow.data.id] = tvshow
-
-					if (tvshow.status === 'Watch list')
-						tmpStatusList[0].tvshowIds.push(tvshow.data.id)
-					if (tvshow.status === 'Watching')
-						tmpStatusList[1].tvshowIds.push(tvshow.data.id)
-					if (tvshow.status === 'Waiting')
-						tmpStatusList[2].tvshowIds.push(tvshow.data.id)
-					if (tvshow.status === 'Completed')
-						tmpStatusList[3].tvshowIds.push(tvshow.data.id)
-					if (tvshow.status === 'Stopped')
-						tmpStatusList[4].tvshowIds.push(tvshow.data.id)
-					if (tvshow.status === 'Paused')
-						tmpStatusList[5].tvshowIds.push(tvshow.data.id)
-				})
-
-				setTvshowList(tmpTvshowList)
-				setStatusList(tmpStatusList)
+				const {data}:{data: TvshowList} = await api.get(`users/${user.email}/tvshows`)
+				setTvshowList(data)
 			}
 		}
 
-		getTvshows()
+		getTvshowList()
 	}, [user])
+
+	useEffect(() => console.log('[tvshowList]', tvshowList), [tvshowList])
 
 	function handleDragDrop(res: DropResult)
 	{
-		let tmpStatusList = [...statusList]
+		let tmpTvshowList = {...tvshowList}
+		const tvshows: Tvshow[] = [].concat(...Object.values(tvshowList))
+		console.log('[tvshows]', tvshows)
 
-		const tvshowId = Number(res.draggableId)
-
-		const previousStatus = Number(res.source.droppableId)
-		tmpStatusList[previousStatus].tvshowIds = tmpStatusList[previousStatus].tvshowIds
-			.filter(id => id !== tvshowId)
+		const previousStatus = res.source.droppableId
+		const previousIndex = res.source.index
+		tmpTvshowList[previousStatus].splice(previousIndex, 1)
 		
-		const newStatus = Number(res.destination.droppableId)
-		tmpStatusList[newStatus].tvshowIds
-			.push(tvshowId)
+		const tvshowId = Number(res.draggableId)
+		const tvshow = tvshows.find(({id}) => id === tvshowId)
+		console.log('[tvshow]', tvshow)
+		
+		const newStatus = res.destination.droppableId
+		const newIndex = res.destination.index
+		tmpTvshowList[newStatus].splice(newIndex, 0, tvshow)
 
+		setTvshowList(tmpTvshowList)
 		const data =
 		{
-			status: statusList[newStatus].title
+			status: newStatus,
+			statusIndex: newIndex
 		}
 		api.put(`users/${user.email}/tvshows/${tvshowId}`, data)
-		setStatusList(tmpStatusList)
 	}
 
 	if (loading)
@@ -142,18 +115,22 @@ const UserTvshows: React.FC = () =>
 					onDragEnd={handleDragDrop}
 				>
 					<div className='dragDropArea'>
-						{statusList.map((status, index) => (
-							<div key={index} className='statusColumn' >
-								<h1>{status.title}</h1>
-								<Droppable droppableId={String(index)} >
-									{provided => (
-										<div {...provided.droppableProps} ref={provided.innerRef} className='droppableArea' >
-											{status.tvshowIds.map((id, index) =>
-											{
-												const tvshow = tvshowList[id]
+						{Object.entries(validStatus).map(([statusKey, statusTitle]) =>
+						{
+							const tvshows = tvshowList[statusKey]
 
-												return (
-													<Draggable draggableId={String(id)} index={index} key={id} >
+							return (
+								<div key={statusKey} className='statusColumn' >
+									<h1>{statusTitle}</h1>
+									<Droppable droppableId={statusKey} >
+										{provided => (
+											<div {...provided.droppableProps} ref={provided.innerRef} className='droppableArea' >
+												{tvshows.map((tvshow, index) => (
+													<Draggable
+														draggableId={String(tvshow.id)}
+														index={index}
+														key={tvshow.id}
+													>
 														{provided => (
 															<div
 																className='tvshow'
@@ -162,10 +139,10 @@ const UserTvshows: React.FC = () =>
 																ref={provided.innerRef}
 															>
 																<div className='img'>
-																	<Image src={tvshow.data.image} width={780} height={1170} layout='responsive'/>
+																	<Image src={tvshow.image} width={780} height={1170} layout='responsive'/>
 																</div>
 																<div className='info'>
-																	<h2>{tvshow.data.title}</h2>
+																	<h2>{tvshow.title}</h2>
 																	<div className='details'>
 																		<span className='ratings'>{tvshow.ratings.acting}</span>
 																		<span className='venue'>{tvshow.venue}</span>
@@ -177,14 +154,14 @@ const UserTvshows: React.FC = () =>
 															</div>
 														)}
 													</Draggable>
-												)
-											})}
-											{provided.placeholder}
-										</div>
-									)}
-								</Droppable>
-							</div>
-						))}
+												))}
+												{provided.placeholder}
+											</div>
+										)}
+									</Droppable>
+								</div>
+							)
+						})}
 					</div>
 				</DragDropContext>
 			</main>
