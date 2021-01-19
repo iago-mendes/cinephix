@@ -70,13 +70,10 @@ const UserTvshows: React.FC = () =>
 		getTvshowList()
 	}, [user])
 
-	useEffect(() => console.log('[tvshowList]', tvshowList), [tvshowList])
-
 	function handleDragDrop(res: DropResult)
 	{
 		let tmpTvshowList = {...tvshowList}
 		const tvshows: Tvshow[] = [].concat(...Object.values(tvshowList))
-		console.log('[tvshows]', tvshows)
 
 		const previousStatus = res.source.droppableId
 		const previousIndex = res.source.index
@@ -84,7 +81,6 @@ const UserTvshows: React.FC = () =>
 		
 		const tvshowId = Number(res.draggableId)
 		const tvshow = tvshows.find(({id}) => id === tvshowId)
-		console.log('[tvshow]', tvshow)
 		
 		const newStatus = res.destination.droppableId
 		const newIndex = res.destination.index
