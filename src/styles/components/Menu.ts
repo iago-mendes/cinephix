@@ -100,7 +100,6 @@ const Container = styled.nav<ContainerProps>`
 				align-items: center;
 				gap: 1rem;
 
-				/* width: 35px; */
 				height: 3.5rem;
 
 				border: none;
