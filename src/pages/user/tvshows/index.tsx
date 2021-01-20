@@ -8,6 +8,7 @@ import api from '../../../services/api'
 import Loading from '../../../components/Loading'
 import NotSigned from '../../../components/NotSigned'
 import useUser from '../../../hooks/useUser'
+import UserTvshowModal from '../../../components/UserTvshowModal'
 
 interface Tvshow
 {
@@ -55,6 +56,8 @@ const UserTvshows: React.FC = () =>
 		paused: []
 	})
 
+	const [isModalOpen, setIsModalOpen] = useState(false)
+
 	useEffect(() =>
 	{
 		async function getTvshowList()
@@ -96,7 +99,7 @@ const UserTvshows: React.FC = () =>
 
 	function handleCardClick(tvshow: Tvshow)
 	{
-		alert(`${tvshow.title} was clicked!`)
+		setIsModalOpen(true)
 	}
 
 	if (loading)
@@ -109,6 +112,11 @@ const UserTvshows: React.FC = () =>
 			<Head>
 				<title>User TV shows</title>
 			</Head>
+
+			<UserTvshowModal
+				isOpen={isModalOpen}
+				setIsOpen={setIsModalOpen}
+			/>
 
 			<main>
 				<DragDropContext
