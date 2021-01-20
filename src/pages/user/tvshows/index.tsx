@@ -2,7 +2,6 @@ import Head from 'next/head'
 import {useEffect, useState} from 'react'
 import {DragDropContext, Droppable, Draggable, DropResult} from 'react-beautiful-dnd'
 import Image from 'next/image'
-import {BiExpand} from 'react-icons/bi'
 
 import Container from '../../../styles/pages/user/tvshows/index'
 import api from '../../../services/api'
@@ -95,6 +94,11 @@ const UserTvshows: React.FC = () =>
 		api.put(`users/${user.email}/tvshows/${tvshowId}`, data)
 	}
 
+	function handleCardClick(tvshow: Tvshow)
+	{
+		alert(`${tvshow.title} was clicked!`)
+	}
+
 	if (loading)
 		return <Loading />
 	if (!user)
@@ -133,6 +137,7 @@ const UserTvshows: React.FC = () =>
 																{...provided.draggableProps}
 																{...provided.dragHandleProps}
 																ref={provided.innerRef}
+																onClick={() => handleCardClick(tvshow)}
 															>
 																<div className='img'>
 																	<Image src={tvshow.image} width={780} height={1170} layout='responsive'/>
@@ -144,9 +149,6 @@ const UserTvshows: React.FC = () =>
 																		<span className='venue'>{tvshow.venue}</span>
 																	</div>
 																</div>
-																<button onClick={() => {}}>
-																	<BiExpand size={20} />
-																</button>
 															</div>
 														)}
 													</Draggable>
