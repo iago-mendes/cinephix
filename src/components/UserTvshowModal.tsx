@@ -53,6 +53,22 @@ interface UserTvshowModalProps
 
 const UserTvshowModal: React.FC<UserTvshowModalProps> = ({isOpen, setIsOpen, tvshow}) =>
 {
+	function getVenueColor(venue: string)
+	{
+		if (venue === 'Netflix')
+			return '#ce0e0e'
+		if (venue === 'Prime Video')
+			return '#1ebbff'
+		if (venue === 'Disney+')
+			return '#2a22c4'
+		if (venue === 'HBO Max')
+			return '#861398'
+		if (venue === 'Movie Theater')
+			return '#803710'
+		if (venue === 'Other')
+			return '#656565'
+	}
+
 	return (
 		<Modal
 			isOpen={isOpen}
@@ -76,7 +92,12 @@ const UserTvshowModal: React.FC<UserTvshowModalProps> = ({isOpen, setIsOpen, tvs
 						<h1>{tvshow.title}</h1>
 						<div className='group'>
 							<label>Venue</label>
-							<span>{tvshow.venue}</span>
+							<span>
+								<svg width={15} height={15} >
+									<circle cx={7.5} cy={7.5} r={7.5} fill={getVenueColor(tvshow.venue)} />
+								</svg>
+								<span style={{marginLeft: 5}} >{tvshow.venue}</span>
+							</span>
 						</div>
 						<div className='group'>
 							<label>Ratings</label>

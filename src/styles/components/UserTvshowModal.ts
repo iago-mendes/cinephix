@@ -104,6 +104,9 @@ const Container = styled.div`
 				{
 					margin-left: 2rem;
 					font-size: 1.75rem;
+
+					display: flex;
+					align-items: center;
 				}
 
 				.rating
