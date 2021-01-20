@@ -2,8 +2,8 @@ import Modal from 'react-modal'
 import {FiX} from 'react-icons/fi'
 import {BiExpand} from 'react-icons/bi'
 
-import Container from '../styles/components/UserTvshowModal'
-import {modalStyle} from '../styles/global'
+import Container from '../../styles/components/modals/UserTvshow'
+import {modalStyle} from '../../styles/global'
 import React from 'react'
 import Image from 'next/image'
 

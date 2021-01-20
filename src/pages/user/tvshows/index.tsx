@@ -8,7 +8,7 @@ import api from '../../../services/api'
 import Loading from '../../../components/Loading'
 import NotSigned from '../../../components/NotSigned'
 import useUser from '../../../hooks/useUser'
-import UserTvshowModal, {defaultTvshow, Tvshow} from '../../../components/UserTvshowModal'
+import UserTvshowModal, {defaultTvshow, Tvshow} from '../../../components/modals/UserTvshow'
 
 interface TvshowList
 {
