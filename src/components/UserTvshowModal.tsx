@@ -81,12 +81,12 @@ const UserTvshowModal: React.FC<UserTvshowModalProps> = ({isOpen, setIsOpen, tvs
 						<div className='group'>
 							<label>Ratings</label>
 							<div className='rating'>
-								<label>Total</label>
+								<label>Total:</label>
 								<span>{tvshow.ratings.acting}</span>
 							</div>
 							{Object.entries(tvshow.ratings).map(([ratingKey, value]) => (
 								<div className='rating' key={ratingKey}>
-									<label>{ratingKey}</label>
+									<label>{ratingKey}:</label>
 									<span>{value}</span>
 								</div>
 							))}
