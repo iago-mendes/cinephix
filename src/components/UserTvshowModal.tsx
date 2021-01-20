@@ -5,16 +5,53 @@ import {BiExpand} from 'react-icons/bi'
 import Container from '../styles/components/UserTvshowModal'
 import {modalStyle} from '../styles/global'
 import React from 'react'
+import Image from 'next/image'
 
 Modal.setAppElement('#__next')
+
+export interface Tvshow
+{
+	id: number
+	image: string
+	title: string
+	venue: string
+	ratings:
+	{
+		engagement?: number
+		consistency?: number
+		screenplay?: number
+		acting?: number
+		cinematography?: number
+		musicAndSound?: number
+	}
+}
+
+export const defaultTvshow =
+{
+	id: 0,
+	image: '',
+	title: '',
+	venue: '',
+	ratings:
+	{
+		engagement: 0,
+		consistency: 0,
+		screenplay: 0,
+		acting: 0,
+		cinematography: 0,
+		musicAndSound: 0
+	}
+}
 
 interface UserTvshowModalProps
 {
 	isOpen: boolean
 	setIsOpen: Function
+
+	tvshow: Tvshow
 }
 
-const UserTvshowModal: React.FC<UserTvshowModalProps> = ({isOpen, setIsOpen}) =>
+const UserTvshowModal: React.FC<UserTvshowModalProps> = ({isOpen, setIsOpen, tvshow}) =>
 {
 	return (
 		<Modal
@@ -31,6 +68,31 @@ const UserTvshowModal: React.FC<UserTvshowModalProps> = ({isOpen, setIsOpen}) =>
 					</button>
 				</header>
 
+				<main>
+					<div className='img'>
+						<Image src={tvshow.image} width={780} height={1170} layout='responsive' />
+					</div>
+					<div className='info'>
+						<h1>{tvshow.title}</h1>
+						<div className='group'>
+							<label>Venue</label>
+							<span>{tvshow.venue}</span>
+						</div>
+						<div className='group'>
+							<label>Ratings</label>
+							<div className='rating'>
+								<label>Total</label>
+								<span>{tvshow.ratings.acting}</span>
+							</div>
+							{Object.entries(tvshow.ratings).map(([ratingKey, value]) => (
+								<div className='rating' key={ratingKey}>
+									<label>{ratingKey}</label>
+									<span>{value}</span>
+								</div>
+							))}
+						</div>
+					</div>
+				</main>
 			</Container>
 		</Modal>
 	)

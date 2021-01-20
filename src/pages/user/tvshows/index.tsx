@@ -8,24 +8,7 @@ import api from '../../../services/api'
 import Loading from '../../../components/Loading'
 import NotSigned from '../../../components/NotSigned'
 import useUser from '../../../hooks/useUser'
-import UserTvshowModal from '../../../components/UserTvshowModal'
-
-interface Tvshow
-{
-	id: number
-	image: string
-	title: string
-	venue: string
-	ratings:
-	{
-		engagement: number
-		consistency: number
-		screenplay: number
-		acting: number
-		cinematography: number
-		musicAndSound: number
-	}
-}
+import UserTvshowModal, {defaultTvshow, Tvshow} from '../../../components/UserTvshowModal'
 
 interface TvshowList
 {
@@ -57,6 +40,7 @@ const UserTvshows: React.FC = () =>
 	})
 
 	const [isModalOpen, setIsModalOpen] = useState(false)
+	const [selectedTvshow, setSelectedTvshow] = useState<Tvshow>(defaultTvshow)
 
 	useEffect(() =>
 	{
@@ -99,6 +83,7 @@ const UserTvshows: React.FC = () =>
 
 	function handleCardClick(tvshow: Tvshow)
 	{
+		setSelectedTvshow(tvshow)
 		setIsModalOpen(true)
 	}
 
@@ -116,6 +101,7 @@ const UserTvshows: React.FC = () =>
 			<UserTvshowModal
 				isOpen={isModalOpen}
 				setIsOpen={setIsModalOpen}
+				tvshow={selectedTvshow}
 			/>
 
 			<main>
