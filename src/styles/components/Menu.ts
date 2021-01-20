@@ -1,6 +1,11 @@
 import styled from 'styled-components'
 
-const Container = styled.nav`
+interface ContainerProps
+{
+	isModalOpen: boolean
+}
+
+const Container = styled.nav<ContainerProps>`
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
@@ -66,10 +71,6 @@ const Container = styled.nav`
 
 		.user
 		{
-			display: flex;
-			align-items: center;
-			gap: 1rem;
-
 			span
 			{
 				font-family: Ubuntu;
@@ -93,14 +94,14 @@ const Container = styled.nav`
 				}
 			}
 
-			button, img
+			button
 			{
 				display: flex;
 				align-items: center;
-				justify-content: center;
+				gap: 1rem;
 
-				width: 35px;
-				height: 35px;
+				/* width: 35px; */
+				height: 3.5rem;
 
 				border: none;
 				border-radius: 100rem;
@@ -112,7 +113,22 @@ const Container = styled.nav`
 
 				:hover
 				{
-					transform: scale(1.1);
+					transform: scale(1.07);
+				}
+
+				.img
+				{
+					max-width: 100%;
+					max-height: 100%;
+					border-radius: 100rem;
+				}
+
+				.indicator
+				{
+					transition: 0.25s;
+
+
+					transform: ${p => p.isModalOpen ? 'rotate(-180deg)' : 'rotate(-90deg)'};
 				}
 			}
 		}

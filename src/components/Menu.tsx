@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import {BiUserCircle} from 'react-icons/bi'
+import {BsFillTriangleFill} from 'react-icons/bs'
 import {signIn} from 'next-auth/client'
 import {useRouter} from 'next/router'
 import {useState} from 'react'
@@ -17,7 +18,9 @@ const Menu: React.FC = () =>
 	const [isModalOpen, setIsModalOpen] = useState(false)
 
 	return (
-		<Container>
+		<Container
+			isModalOpen={isModalOpen}
+		>
 			<UserMenu 
 				isOpen={isModalOpen}
 				setIsOpen={setIsModalOpen}
@@ -40,12 +43,13 @@ const Menu: React.FC = () =>
 					{
 						user
 						? (
-							<button onClick={() => setIsModalOpen(true)} >
+							<button onClick={() => setIsModalOpen(!isModalOpen)} >
 								{
 									user.image
 									? <img src={user.image} alt={user.name} className='img' />
 									: <BiUserCircle size={35} className='img' />
 								}
+								<BsFillTriangleFill size={10} className='indicator' />
 							</button>
 						)
 						: (

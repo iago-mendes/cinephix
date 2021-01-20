@@ -18,7 +18,9 @@ const UserMenu: React.FC<UserMenuProps> = ({isOpen, setIsOpen}) =>
 			isOpen={isOpen}
 			style={modalStyle}
 		>
-			<Container>
+			<Container
+				onMouseLeave={() => setIsOpen(false)}
+			>
 				<div className="detail">
 					<BsFillTriangleFill size={10} />
 				</div>

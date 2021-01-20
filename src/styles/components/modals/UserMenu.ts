@@ -8,7 +8,7 @@ const Container = styled.div`
 	{
 		display: flex;
 		justify-content: flex-end;
-		padding-right: 2rem;
+		padding-right: 4.25rem;
 
 		color: ${p => p.theme.primary};
 	}
