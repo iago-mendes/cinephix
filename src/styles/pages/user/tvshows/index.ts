@@ -8,6 +8,28 @@ const Container = styled.div`
 
 		overflow-x: auto;
 
+		::-webkit-scrollbar
+		{
+			height: 1rem;
+		}
+
+		::-webkit-scrollbar-track
+		{
+			background-color: ${p => p.theme.black}26;
+			border-radius: 1rem;
+		}
+		
+		::-webkit-scrollbar-thumb
+		{
+			background-color: ${p => p.theme.black};
+			border-radius: 1rem;
+
+			:hover
+			{
+				background-color: ${p => p.theme.black}bf;
+			}
+		}
+
 		.dragDropArea
 		{
 			display: flex;
