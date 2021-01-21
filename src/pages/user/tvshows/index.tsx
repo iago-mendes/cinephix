@@ -9,8 +9,8 @@ import Loading from '../../../components/Loading'
 import NotSigned from '../../../components/NotSigned'
 import useUser from '../../../hooks/useUser'
 import UserTvshowModal, {defaultTvshow, Tvshow} from '../../../components/modals/UserTvshow'
-import { FiPlus } from 'react-icons/fi'
-import Search from '../../../components/modals/Search'
+import {FiPlus} from 'react-icons/fi'
+import SelectTvshow from '../../../components/modals/SelectTvshow'
 
 interface TvshowList
 {
@@ -43,7 +43,7 @@ const UserTvshows: React.FC = () =>
 
 	const [isTvshowModalOpen, setIsTvshowModalOpen] = useState(false)
 	const [selectedTvshow, setSelectedTvshow] = useState<Tvshow>(defaultTvshow)
-	const [isSearchModalOpen, setIsSearchModalOpen] = useState(false)
+	const [isSelectTvshowOpen, setIsSelectTvshowOpen] = useState(false)
 
 	useEffect(() =>
 	{
@@ -92,7 +92,7 @@ const UserTvshows: React.FC = () =>
 
 	function handleAddClick()
 	{
-		setIsSearchModalOpen(true)
+		setIsSelectTvshowOpen(true)
 	}
 
 	if (loading)
@@ -112,11 +112,9 @@ const UserTvshows: React.FC = () =>
 				tvshow={selectedTvshow}
 			/>
 
-			<Search
-				isOpen={isSearchModalOpen}
-				setIsOpen={setIsSearchModalOpen}
-				category='tvshows'
-				display='Search for a TV show'
+			<SelectTvshow
+				isOpen={isSelectTvshowOpen}
+				setIsOpen={setIsSelectTvshowOpen}
 			/>
 
 			<main>

@@ -3,21 +3,18 @@ import {FaSearch} from 'react-icons/fa'
 import {FiX} from 'react-icons/fi'
 import Modal from 'react-modal'
 
-import Container from '../../styles/components/modals/Search'
+import Container from '../../styles/components/modals/SelectTvshow'
 import {modalStyle} from '../../styles/global'
 
 Modal.setAppElement('#__next')
 
-interface SearchProps
+interface SelectTvshowProps
 {
 	isOpen: boolean
 	setIsOpen: Function
-
-	category: string
-	display: string
 }
 
-const Search: React.FC<SearchProps> = ({isOpen, setIsOpen, category, display}) =>
+const SelectTvshow: React.FC<SelectTvshowProps> = ({isOpen, setIsOpen}) =>
 {
 	const [search, setSearch] = useState('')
 
@@ -28,23 +25,22 @@ const Search: React.FC<SearchProps> = ({isOpen, setIsOpen, category, display}) =
 		>
 			<Container>
 				<header>
-					<div className='search'>
-						<FaSearch size={25} />
-						<input
-							type='text'
-							placeholder={display}
-							value={search}
-							onChange={e => setSearch(e.target.value)}
-						/>
-					</div>
 					<button onClick={() => setIsOpen(false)} >
 						<FiX size={25} />
 					</button>
 				</header>
-				
+				<div className='search'>
+					<FaSearch size={25} />
+					<input
+						type='text'
+						placeholder='Search for a TV show'
+						value={search}
+						onChange={e => setSearch(e.target.value)}
+					/>
+				</div>				
 			</Container>
 		</Modal>
 	)
 }
 
-export default Search
+export default SelectTvshow
