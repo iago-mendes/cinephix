@@ -116,41 +116,43 @@ const UserTvshows: React.FC = () =>
 							return (
 								<div key={statusKey} className='statusColumn' >
 									<h1>{statusTitle}</h1>
-									<Droppable droppableId={statusKey} >
-										{provided => (
-											<div {...provided.droppableProps} ref={provided.innerRef} className='droppableArea' >
-												{tvshows.map((tvshow, index) => (
-													<Draggable
-														draggableId={String(tvshow.id)}
-														index={index}
-														key={tvshow.id}
-													>
-														{provided => (
-															<div
-																className='tvshow'
-																{...provided.draggableProps}
-																{...provided.dragHandleProps}
-																ref={provided.innerRef}
-																onClick={() => handleCardClick(tvshow)}
-															>
-																<div className='img'>
-																	<Image src={tvshow.image} width={780} height={1170} layout='responsive'/>
-																</div>
-																<div className='info'>
-																	<h2>{tvshow.title}</h2>
-																	<div className='details'>
-																		<span className='ratings'>{tvshow.ratings.acting}</span>
-																		<span className='venue'>{tvshow.venue}</span>
+									<div className='scroll'>
+										<Droppable droppableId={statusKey} >
+											{provided => (
+												<div {...provided.droppableProps} ref={provided.innerRef} className='droppableArea' >
+													{tvshows.map((tvshow, index) => (
+														<Draggable
+															draggableId={String(tvshow.id)}
+															index={index}
+															key={tvshow.id}
+														>
+															{provided => (
+																<div
+																	className='tvshow'
+																	{...provided.draggableProps}
+																	{...provided.dragHandleProps}
+																	ref={provided.innerRef}
+																	onClick={() => handleCardClick(tvshow)}
+																>
+																	<div className='img'>
+																		<Image src={tvshow.image} width={780} height={1170} layout='responsive'/>
+																	</div>
+																	<div className='info'>
+																		<h2>{tvshow.title}</h2>
+																		<div className='details'>
+																			<span className='ratings'>{tvshow.ratings.acting}</span>
+																			<span className='venue'>{tvshow.venue}</span>
+																		</div>
 																	</div>
 																</div>
-															</div>
-														)}
-													</Draggable>
-												))}
-												{provided.placeholder}
-											</div>
-										)}
-									</Droppable>
+															)}
+														</Draggable>
+													))}
+													{provided.placeholder}
+												</div>
+											)}
+										</Droppable>
+									</div>
 								</div>
 							)
 						})}
