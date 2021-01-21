@@ -1,13 +1,14 @@
 import {GetStaticPaths, GetStaticProps} from 'next'
 import Head from 'next/head'
-import {FormEvent, useState} from 'react'
+import {FormEvent, useEffect, useState} from 'react'
 import Select from 'react-select'
+import Image from 'next/image'
+import {useRouter} from 'next/router'
 
 import Container from '../../../../styles/pages/user/tvshows/add/[tvshow]'
 import api from '../../../../services/api'
 import {Media} from '../../../../components/MediaCard'
 import {TvshowDetails} from '../../../tvshows/[tvshow]'
-import Image from 'next/image'
 import Loading from '../../../../components/Loading'
 import {selectStyles} from '../../../../styles/global'
 
@@ -24,6 +25,8 @@ interface AddTvshowProps
 
 const AddTvshow: React.FC<AddTvshowProps> = ({tvshow}) =>
 {
+	const {query} = useRouter()
+
 	const [status, setStatus] = useState('')
 	const [venue, setVenue] = useState('')
 
@@ -46,6 +49,14 @@ const AddTvshow: React.FC<AddTvshowProps> = ({tvshow}) =>
 		{label: 'Movie Theater', value: 'Movie Theater'},
 		{label: 'Other', value: 'Other'}
 	]
+
+	useEffect(() =>
+	{
+		const {status: statusKey} = query
+
+		if (statusKey)
+			setStatus(String(statusKey))
+	}, [query])
 
 	function handleSubmit(e: FormEvent)
 	{
@@ -74,7 +85,7 @@ const AddTvshow: React.FC<AddTvshowProps> = ({tvshow}) =>
 							name='status'
 							value={statusOptions.find(({value}) => value === status)}
 							options={statusOptions}
-							onChange={() => {}}
+							onChange={e => setStatus(e.value)}
 							styles={selectStyles}
 							placeholder='Select a status'
 						/>
@@ -86,7 +97,7 @@ const AddTvshow: React.FC<AddTvshowProps> = ({tvshow}) =>
 							name='venue'
 							value={venueOptions.find(({value}) => value === venue)}
 							options={venueOptions}
-							onChange={() => {}}
+							onChange={e => setVenue(e.value)}
 							styles={selectStyles}
 							placeholder='Select a venue'
 						/>

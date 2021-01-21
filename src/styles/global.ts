@@ -70,7 +70,7 @@ export const modalStyle: Modal.Styles =
 	}
 }
 
-export const selectStyles: StylesConfig<{}, false> =
+export const selectStyles: StylesConfig<{label: string, value: string}, false> =
 {
 	option: (provided, state) => (
 	{
