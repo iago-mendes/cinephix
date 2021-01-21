@@ -23,17 +23,19 @@ interface MediaCardProps
 	showOverview?: boolean
 
 	type: string
+	navigateOnClick?: boolean
 
 	style?: CSSProperties
 }
 
-const MediaCard: React.FC<MediaCardProps> = ({media, showOverview = false, type, style = {}}) =>
+const MediaCard: React.FC<MediaCardProps> = ({media, showOverview = false, type, navigateOnClick = true, style = {}}) =>
 {
 	const Router = useRouter()
 
 	function handleNavigate()
 	{
-		Router.push(`/${type}s/${media.id}`)
+		if (navigateOnClick)
+			Router.push(`/${type}s/${media.id}`)
 	}
 
 	return (

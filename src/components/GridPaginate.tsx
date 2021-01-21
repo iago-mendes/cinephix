@@ -1,5 +1,6 @@
-import { ChangeEvent } from 'react'
+import {ChangeEvent} from 'react'
 import {BsChevronBarLeft, BsChevronLeft, BsChevronRight, BsChevronBarRight} from 'react-icons/bs'
+import {CSSProperties} from 'styled-components'
 
 import Container from '../styles/components/GridPaginate'
 import Loading from './Loading'
@@ -12,9 +13,11 @@ interface GridPaginateProps
 	totalPages: number
 
 	loading: boolean
+
+	style?: CSSProperties
 }
 
-const GridPaginate: React.FC<GridPaginateProps> = ({page, setPage, totalPages, loading, children}) =>
+const GridPaginate: React.FC<GridPaginateProps> = ({page, setPage, totalPages, loading, style = {}, children}) =>
 {
 	function goBack()
 	{
@@ -37,7 +40,7 @@ const GridPaginate: React.FC<GridPaginateProps> = ({page, setPage, totalPages, l
 	}
 
 	return (
-		<Container>
+		<Container style={style} >
 			{
 				loading
 				? <Loading style={{marginTop: '10rem'}} />

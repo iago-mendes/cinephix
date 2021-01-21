@@ -79,6 +79,7 @@ const SelectTvshow: React.FC<SelectTvshowProps> = ({isOpen, setIsOpen}) =>
 		>
 			<Container>
 				<header>
+					<h1>Select a TV show</h1>
 					<button onClick={() => setIsOpen(false)} >
 						<FiX size={25} />
 					</button>
@@ -93,9 +94,15 @@ const SelectTvshow: React.FC<SelectTvshowProps> = ({isOpen, setIsOpen}) =>
 					/>
 				</div>
 				<div className='scroll'>
-					<GridPaginate page={page} setPage={setPage} totalPages={totalPages} loading={loading} >
+					<GridPaginate
+						page={page}
+						setPage={setPage}
+						totalPages={totalPages}
+						loading={loading}
+						style={{minHeight: 'calc(85vh - 12rem)'}}
+					>
 						{tvshows.map(item => (
-							<MediaCard media={item} showOverview key={item.id} type='tvshow' />
+							<MediaCard media={item} showOverview key={item.id} type='tvshow' navigateOnClick={false} />
 						))}
 					</GridPaginate>
 				</div>
