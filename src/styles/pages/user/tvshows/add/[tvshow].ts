@@ -38,7 +38,11 @@ const Container = styled.div`
 			font-size: 4rem;
 		}
 
-		
+		form
+		{
+			width: 100%;
+			height: 75%;
+		}
 	}
 `
 

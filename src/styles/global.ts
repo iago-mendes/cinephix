@@ -1,5 +1,6 @@
-import {createGlobalStyle} from "styled-components";
+import {createGlobalStyle} from 'styled-components';
 import Modal from 'react-modal'
+import {StylesConfig} from 'react-select'
 
 export default createGlobalStyle`
 	:root
@@ -67,4 +68,69 @@ export const modalStyle: Modal.Styles =
 		left: 0,
 		top: 0
 	}
+}
+
+export const selectStyles: StylesConfig<{}, false> =
+{
+	option: (provided, state) => (
+	{
+		cursor: 'pointer',
+
+		fontFamily: 'Roboto',
+		fontSize: '2rem',
+		padding: '1rem',
+
+		transition: '0.1s',
+		color: state.isSelected ? '#23232A' : state.isFocused ? '#FF8A00' : '#7B7B7B',
+		backgroundColor: state.isSelected ? '#FF8A00' : '#23232A'
+	}),
+
+	menu: (provided, state) => (
+	{
+		...provided,
+		fontFamily: 'Roboto',
+		backgroundColor: '#23232A'
+	}),
+
+	control: (provided, state) => (
+	{
+		cursor: 'pointer',
+		
+		transition: '0.25s',
+
+		fontFamily: 'Roboto',
+		fontSize: '2rem',
+
+		width: '100%',
+		backgroundColor: '#23232A',
+
+		borderColor: state.menuIsOpen ? '#FF8A00' : state.isFocused ? '#FF8A0080' : '#7B7B7B',
+		borderWidth: 2,
+		borderStyle: 'solid',
+		borderRadius: 5,
+
+		display: 'flex',
+		alignItems: 'center',
+	}),
+
+	singleValue: (provided, state) => (
+	{
+		...provided,
+
+		color: '#FF8A00'
+	}),
+
+	indicatorSeparator: (provided, state) => (
+	{
+		...provided,
+
+		backgroundColor: state.isFocused ? '#FF8A00' : '#7B7B7B'
+	}),
+
+	dropdownIndicator: (provided, state) => (
+	{
+		...provided,
+
+		color: state.isFocused ? '#FF8A00' : '#7B7B7B'
+	})
 }
