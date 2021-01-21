@@ -8,6 +8,7 @@ import Container from '../../styles/components/modals/SelectTvshow'
 import {modalStyle} from '../../styles/global'
 import MediaCard, {Media} from '../../components/MediaCard'
 import GridPaginate from '../../components/GridPaginate'
+import { useRouter } from 'next/router'
 
 Modal.setAppElement('#__next')
 
@@ -15,10 +16,14 @@ interface SelectTvshowProps
 {
 	isOpen: boolean
 	setIsOpen: Function
+
+	statusKey: string
 }
 
-const SelectTvshow: React.FC<SelectTvshowProps> = ({isOpen, setIsOpen}) =>
+const SelectTvshow: React.FC<SelectTvshowProps> = ({isOpen, setIsOpen, statusKey}) =>
 {
+	const router = useRouter()
+
 	const [search, setSearch] = useState('')
 	const [page, setPage] = useState(1)
 	const [totalPages, setTotalPages] = useState(1)
@@ -72,6 +77,12 @@ const SelectTvshow: React.FC<SelectTvshowProps> = ({isOpen, setIsOpen}) =>
 			setTotalPages(1)
 	}, [search])
 
+	function handleNavigateToAddTvshow(id: number)
+	{
+		setIsOpen(false)
+		router.push(`/user/tvshows/add/${id}?status=${statusKey}`)
+	}
+
 	return (
 		<Modal
 			isOpen={isOpen}
@@ -102,7 +113,14 @@ const SelectTvshow: React.FC<SelectTvshowProps> = ({isOpen, setIsOpen}) =>
 						style={{minHeight: 'calc(85vh - 12rem)'}}
 					>
 						{tvshows.map(item => (
-							<MediaCard media={item} showOverview key={item.id} type='tvshow' navigateOnClick={false} />
+							<MediaCard
+								media={item}
+								showOverview
+								key={item.id}
+								type='tvshow'
+								navigateOnClick={false}
+								onClick={handleNavigateToAddTvshow}
+							/>
 						))}
 					</GridPaginate>
 				</div>

@@ -23,12 +23,15 @@ interface MediaCardProps
 	showOverview?: boolean
 
 	type: string
-	navigateOnClick?: boolean
-
+	
 	style?: CSSProperties
+
+	navigateOnClick?: boolean
+	onClick?: (id: number) => void
 }
 
-const MediaCard: React.FC<MediaCardProps> = ({media, showOverview = false, type, navigateOnClick = true, style = {}}) =>
+const MediaCard: React.FC<MediaCardProps> =
+({media, showOverview = false, type, style = {}, navigateOnClick = true, onClick = () => {}}) =>
 {
 	const Router = useRouter()
 
@@ -36,6 +39,8 @@ const MediaCard: React.FC<MediaCardProps> = ({media, showOverview = false, type,
 	{
 		if (navigateOnClick)
 			Router.push(`/${type}s/${media.id}`)
+		else
+			onClick(media.id)
 	}
 
 	return (

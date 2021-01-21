@@ -44,6 +44,7 @@ const UserTvshows: React.FC = () =>
 	const [isTvshowModalOpen, setIsTvshowModalOpen] = useState(false)
 	const [selectedTvshow, setSelectedTvshow] = useState<Tvshow>(defaultTvshow)
 	const [isSelectTvshowOpen, setIsSelectTvshowOpen] = useState(false)
+	const [selectedStatusKey, setSelectedStatusKey] = useState('')
 
 	useEffect(() =>
 	{
@@ -90,8 +91,9 @@ const UserTvshows: React.FC = () =>
 		setIsTvshowModalOpen(true)
 	}
 
-	function handleAddClick()
+	function handleAddClick(statusKey: string)
 	{
+		setSelectedStatusKey(statusKey)
 		setIsSelectTvshowOpen(true)
 	}
 
@@ -115,6 +117,7 @@ const UserTvshows: React.FC = () =>
 			<SelectTvshow
 				isOpen={isSelectTvshowOpen}
 				setIsOpen={setIsSelectTvshowOpen}
+				statusKey={selectedStatusKey}
 			/>
 
 			<main>
@@ -166,7 +169,7 @@ const UserTvshows: React.FC = () =>
 											)}
 										</Droppable>
 									</div>
-									<button className='add' onClick={() => handleAddClick()}>
+									<button className='add' onClick={() => handleAddClick(statusKey)}>
 										<FiPlus size={25} />
 										<span>Add a TV show</span>
 									</button>
