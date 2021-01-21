@@ -13,7 +13,7 @@ import Carousel, {CarouselCard} from '../../components/Carousel'
 import formatDate from '../../utils/formatDate'
 import React from 'react'
 
-interface TvshowDetails
+export interface TvshowDetails
 {
 	id: number
   image: string
