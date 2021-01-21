@@ -10,6 +10,7 @@ import NotSigned from '../../../components/NotSigned'
 import useUser from '../../../hooks/useUser'
 import UserTvshowModal, {defaultTvshow, Tvshow} from '../../../components/modals/UserTvshow'
 import { FiPlus } from 'react-icons/fi'
+import Search from '../../../components/modals/Search'
 
 interface TvshowList
 {
@@ -40,8 +41,9 @@ const UserTvshows: React.FC = () =>
 		paused: []
 	})
 
-	const [isModalOpen, setIsModalOpen] = useState(false)
+	const [isTvshowModalOpen, setIsTvshowModalOpen] = useState(false)
 	const [selectedTvshow, setSelectedTvshow] = useState<Tvshow>(defaultTvshow)
+	const [isSearchModalOpen, setIsSearchModalOpen] = useState(false)
 
 	useEffect(() =>
 	{
@@ -85,7 +87,12 @@ const UserTvshows: React.FC = () =>
 	function handleCardClick(tvshow: Tvshow)
 	{
 		setSelectedTvshow(tvshow)
-		setIsModalOpen(true)
+		setIsTvshowModalOpen(true)
+	}
+
+	function handleAddClick()
+	{
+		setIsSearchModalOpen(true)
 	}
 
 	if (loading)
@@ -100,9 +107,15 @@ const UserTvshows: React.FC = () =>
 			</Head>
 
 			<UserTvshowModal
-				isOpen={isModalOpen}
-				setIsOpen={setIsModalOpen}
+				isOpen={isTvshowModalOpen}
+				setIsOpen={setIsTvshowModalOpen}
 				tvshow={selectedTvshow}
+			/>
+
+			<Search
+				isOpen={isSearchModalOpen}
+				setIsOpen={setIsSearchModalOpen}
+				category='tvshows'
 			/>
 
 			<main>
@@ -154,7 +167,7 @@ const UserTvshows: React.FC = () =>
 											)}
 										</Droppable>
 									</div>
-									<button className='add' >
+									<button className='add' onClick={() => handleAddClick()}>
 										<FiPlus size={25} />
 										<span>Add a TV show</span>
 									</button>
