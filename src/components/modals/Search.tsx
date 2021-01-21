@@ -1,4 +1,6 @@
-import { FiX } from 'react-icons/fi'
+import {useState} from 'react'
+import {FaSearch} from 'react-icons/fa'
+import {FiX} from 'react-icons/fi'
 import Modal from 'react-modal'
 
 import Container from '../../styles/components/modals/Search'
@@ -12,19 +14,34 @@ interface SearchProps
 	setIsOpen: Function
 
 	category: string
+	display: string
 }
 
-const Search: React.FC<SearchProps> = ({isOpen, setIsOpen}) =>
+const Search: React.FC<SearchProps> = ({isOpen, setIsOpen, category, display}) =>
 {
+	const [search, setSearch] = useState('')
+
 	return (
 		<Modal
 			isOpen={isOpen}
 			style={modalStyle}
 		>
 			<Container>
-				<button className='close' onClick={() => setIsOpen(false)} >
-					<FiX size={25} />
-				</button>
+				<header>
+					<div className='search'>
+						<FaSearch size={25} />
+						<input
+							type='text'
+							placeholder={display}
+							value={search}
+							onChange={e => setSearch(e.target.value)}
+						/>
+					</div>
+					<button onClick={() => setIsOpen(false)} >
+						<FiX size={25} />
+					</button>
+				</header>
+				
 			</Container>
 		</Modal>
 	)

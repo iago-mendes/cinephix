@@ -116,6 +116,7 @@ const UserTvshows: React.FC = () =>
 				isOpen={isSearchModalOpen}
 				setIsOpen={setIsSearchModalOpen}
 				category='tvshows'
+				display='Search for a TV show'
 			/>
 
 			<main>
