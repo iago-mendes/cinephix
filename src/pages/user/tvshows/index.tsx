@@ -9,6 +9,7 @@ import Loading from '../../../components/Loading'
 import NotSigned from '../../../components/NotSigned'
 import useUser from '../../../hooks/useUser'
 import UserTvshowModal, {defaultTvshow, Tvshow} from '../../../components/modals/UserTvshow'
+import { FiPlus } from 'react-icons/fi'
 
 interface TvshowList
 {
@@ -153,6 +154,10 @@ const UserTvshows: React.FC = () =>
 											)}
 										</Droppable>
 									</div>
+									<button className='add' >
+										<FiPlus size={25} />
+										<span>Add a TV show</span>
+									</button>
 								</div>
 							)
 						})}

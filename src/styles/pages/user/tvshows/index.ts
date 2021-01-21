@@ -41,6 +41,7 @@ const Container = styled.div`
 			display: flex;
 			gap: 2rem;
 			padding: 2rem;
+			padding-bottom: 1rem;
 
 			width: fit-content;
 
@@ -85,15 +86,16 @@ const Container = styled.div`
 				.scroll
 				{
 					width: 100%;
-					max-height: calc(100vh - 17.5rem);
+					max-height: calc(100vh - 18.5rem);
 					overflow-y: auto;
 
+					background-color: ${p => p.theme.background}40;
+					
 					.droppableArea
 					{
 						width: 100%;
 						height: fit-content;
 						min-height: 10rem;
-						background-color: ${p => p.theme.background}40;
 
 						display: flex;
 						flex-direction: column;
@@ -176,6 +178,37 @@ const Container = styled.div`
 								}
 							}
 						}
+					}
+				}
+
+				.add
+				{
+					width: 100%;
+					padding: 1rem;
+					background-color: ${p => p.theme.background}40;
+					border: none;
+
+					display: flex;
+					align-items: center;
+					justify-content: center;
+					gap: 1rem;
+
+					color: #4d4d5a;
+
+					cursor: pointer;
+					transition: 0.25s;
+
+					:hover
+					{
+						background: none;
+						color: ${p => p.theme.primary}80;
+					}
+
+					span
+					{
+						font-family: Ubuntu;
+						font-weight: 700;
+						font-size: 1.5rem;
 					}
 				}
 			}
