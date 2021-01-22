@@ -46,17 +46,54 @@ export default createGlobalStyle`
 		
 	}
 
-	.swal2-header
+	.swal2-popup
 	{
-		font-family: Ubuntu;
-		font-size: 15px;
+		background-color: ${p => p.theme.black} !important;
+		color: ${p => p.theme.primary} !important;
+
+		#swal2-title
+		{
+			font-family: Ubuntu;
+			font-size: 25px;
+			color: ${p => p.theme.gray};
+		}
+
+		#swal2-content
+		{
+			font-family: Roboto;
+			font-size: 20px !important;
+			color: ${p => p.theme.gray};
+		}
+
+		.swal2-confirm
+		{
+			background: none !important;
+			padding: 5px !important;
+			padding-left: 10px !important;
+			padding-right: 10px !important;
+
+			color: ${p => p.theme.gray} !important;
+			font-family: Ubuntu !important;
+			font-size: 15px !important;
+
+			border: ${p => p.theme.gray} 2px solid !important;
+			border-radius: 100px !important;
+
+			transition: 0.25s;
+
+			:hover
+			{
+				background-color: ${p => p.theme.gray} !important;
+				color: ${p => p.theme.black} !important;
+			}
+
+			:focus
+			{
+				border: none !important;
+			}
+		}
 	}
 
-	.swal2-content
-	{
-		font-family: Roboto;
-		font-size: 20px !important;
-	}
 `
 
 export const modalStyle: Modal.Styles =

@@ -8,7 +8,7 @@ function confirmAlert(display: string)
 	MySwal.fire({
 		title: display,
 		icon: 'success',
-		timer: 1500,
+		timer: 1750,
 		showConfirmButton: false
 	})
 }

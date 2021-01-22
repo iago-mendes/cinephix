@@ -209,7 +209,7 @@ const AddTvshow: React.FC<AddTvshowProps> = ({tvshow}) =>
 						))}
 					</div>
 					<div className='buttons'>
-						<button className='cancel' title='Cancel' onClick={back}>
+						<button className='cancel' title='Cancel' onClick={back} type='button' >
 							<FiX size={25} />
 						</button>
 						<button className='confirm' title='Confirm' type='submit' >
