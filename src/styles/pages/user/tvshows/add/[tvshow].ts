@@ -79,6 +79,8 @@ const Container = styled.div`
 
 				.rating
 				{
+					height: 2.6rem;
+
 					display: flex;
 					align-items: center;
 					gap: 1rem;
@@ -92,6 +94,11 @@ const Container = styled.div`
 
 						width: fit-content;
 						white-space: nowrap;
+
+						height: 100%;
+						display: flex;
+						align-items: center;
+						justify-content: center;
 					}
 
 					span
@@ -106,6 +113,7 @@ const Container = styled.div`
 						align-items: center;
 						justify-content: space-between;
 
+						height: 100%;
 						width: 100%;
 
 						input[type=number]
@@ -191,7 +199,7 @@ export const RangeInput = styled.input<RangeInputProps>`
 	appearance: none;
 	outline: none;
 
-	background: ${p => p.isUndefined ? p.theme.black : p.theme.primary};
+	background: ${p => p.isUndefined ? p.theme.black : p.theme.primary + 80};
 	width: 20rem;
 	height: 0.5rem;
 	border-radius: 100rem;
@@ -205,7 +213,6 @@ export const RangeInput = styled.input<RangeInputProps>`
 		opacity: 1;
 	}
 
-
 	::-webkit-slider-thumb
 	{
 		-webkit-appearance: none;
@@ -214,7 +221,7 @@ export const RangeInput = styled.input<RangeInputProps>`
 		width: 2rem;
 		height: 2rem;
 		border-radius: 100rem;
-		background: ${p => p.isUndefined ? p.theme.black : p.theme.primary};
+		background: ${p => p.isUndefined ? p.theme.gray : p.theme.primary};
 		cursor: pointer;
 	}
 
@@ -223,7 +230,7 @@ export const RangeInput = styled.input<RangeInputProps>`
 		width: 2rem;
 		height: 2rem;
 		border-radius: 100rem;
-		background: ${p => p.isUndefined ? p.theme.black : p.theme.primary};
+		background: ${p => p.isUndefined ? p.theme.gray : p.theme.primary};
 		cursor: pointer;
 	}
 `
