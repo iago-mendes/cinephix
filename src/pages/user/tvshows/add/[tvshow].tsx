@@ -15,6 +15,7 @@ import {selectStyles} from '../../../../styles/global'
 import useUser from '../../../../hooks/useUser'
 import confirmAlert from '../../../../utils/alerts/confirm'
 import errorAlert from '../../../../utils/alerts/error'
+import calcTotalRating from '../../../../utils/calcTotalRating'
 
 interface SelectOption
 {
@@ -177,7 +178,7 @@ const AddTvshow: React.FC<AddTvshowProps> = ({tvshow}) =>
 						<label>Ratings</label>
 						<div className='rating'>
 							<label>Total:</label>
-							<span>7</span>
+							<span>{calcTotalRating(ratings)}</span>
 						</div>
 						{Object.entries(ratings).map(([ratingKey, value]) => (
 							<div className='rating' key={ratingKey}>
