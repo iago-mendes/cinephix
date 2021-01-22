@@ -49,11 +49,13 @@ export default createGlobalStyle`
 	.swal2-header
 	{
 		font-family: Ubuntu;
+		font-size: 15px;
 	}
 
 	.swal2-content
 	{
 		font-family: Roboto;
+		font-size: 20px !important;
 	}
 `
 

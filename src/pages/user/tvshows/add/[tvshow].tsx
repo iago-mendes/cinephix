@@ -14,6 +14,7 @@ import Loading from '../../../../components/Loading'
 import {selectStyles} from '../../../../styles/global'
 import useUser from '../../../../hooks/useUser'
 import confirmAlert from '../../../../utils/alerts/confirm'
+import errorAlert from '../../../../utils/alerts/error'
 
 interface SelectOption
 {
@@ -118,19 +119,17 @@ const AddTvshow: React.FC<AddTvshowProps> = ({tvshow}) =>
 				musicAndSound: ratings.musicAndSound >= 0 ? ratings.musicAndSound : undefined
 			}
 		}
-
-		confirmAlert(`'${tvshow.title}' was successfully added to your TV shows!`)
 		
-		// api.post(`users/${user.email}/tvshows`, data)
-		// 	.then(() =>
-		// 	{
-		// 		alert(`'${tvshow.title}' was successfully added to your TV shows!`)
-		// 		back()
-		// 	})
-		// 	.catch(err =>
-		// 	{
-		// 		alert(`Something went wrong:\n${err.response.data.message}`)
-		// 	})
+		api.post(`users/${user.email}/tvshows`, data)
+			.then(() =>
+			{
+				confirmAlert(`'${tvshow.title}' was successfully added to your TV shows!`)
+				back()
+			})
+			.catch(err =>
+			{
+				errorAlert(err.response.data.message)
+			})
 	}
 
 	if (!tvshow)
