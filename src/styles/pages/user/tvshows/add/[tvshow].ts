@@ -126,6 +126,57 @@ const Container = styled.div`
 					}
 				}
 			}
+
+			.buttons
+			{
+				display: flex;
+				align-items: center;
+				justify-content: space-around;
+
+				button
+				{
+					display: flex;
+					align-items: center;
+					justify-content: center;
+
+					border: none;
+					background: none;
+
+					width: 4rem;
+					height: 4rem;
+					border-radius: 100rem;
+
+					cursor: pointer;
+					transition: 0.25s;
+
+					:hover
+					{
+						color: ${p => p.theme.background};
+					}
+				}
+
+				.cancel
+				{
+					color: ${p => p.theme.delete};
+					border: ${p => p.theme.delete} 1px solid;
+
+					:hover
+					{
+						background-color: ${p => p.theme.delete}
+					}
+				}
+
+				.confirm
+				{
+					color: ${p => p.theme.confirm};
+					border: ${p => p.theme.confirm} 1px solid;
+
+					:hover
+					{
+						background-color: ${p => p.theme.confirm}
+					}
+				}
+			}
 		}
 	}
 `

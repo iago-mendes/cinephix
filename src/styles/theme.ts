@@ -13,6 +13,9 @@ const theme =
 	primary: '#FF8A00',
 	secondary: '#161C50',
 	background: '#26070B',
+
+	delete: '#c94040',
+	confirm: '#59d359'
 }
 
 export default theme

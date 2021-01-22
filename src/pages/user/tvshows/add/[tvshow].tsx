@@ -4,6 +4,7 @@ import {ChangeEvent, FormEvent, useEffect, useState} from 'react'
 import Select from 'react-select'
 import Image from 'next/image'
 import {useRouter} from 'next/router'
+import {FiCheck, FiX} from 'react-icons/fi'
 
 import Container, {RangeInput} from '../../../../styles/pages/user/tvshows/add/[tvshow]'
 import api from '../../../../services/api'
@@ -150,12 +151,12 @@ const AddTvshow: React.FC<AddTvshowProps> = ({tvshow}) =>
 						{Object.entries(ratings).map(([ratingKey, value]) => (
 							<div className='rating' key={ratingKey}>
 								<label>{ratingsLabels[ratingKey]}:</label>
-								<div className="group">
+								<div className='group'>
 									{
 										value >= 0
 										? (
 											<input
-												type="number"
+												type='number'
 												value={value}
 												onChange={e => handleChangeRating(e, ratingKey)}
 											/>
@@ -175,6 +176,14 @@ const AddTvshow: React.FC<AddTvshowProps> = ({tvshow}) =>
 								</div>
 							</div>
 						))}
+					</div>
+					<div className='buttons'>
+						<button className='cancel' title='Cancel' >
+							<FiX size={25} />
+						</button>
+						<button className='confirm' title='Confirm' type='submit' >
+							<FiCheck size={25} />
+						</button>
 					</div>
 				</form>
 			</div>
