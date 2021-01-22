@@ -87,7 +87,11 @@ const AddTvshow: React.FC<AddTvshowProps> = ({tvshow}) =>
 	function handleChangeRating(e: ChangeEvent<HTMLInputElement>, ratingKey: string)
 	{
 		let tmpRatings = {...ratings}
-		tmpRatings[ratingKey] = Number(e.target.value)
+
+		const rating = Number(e.target.value)
+		if (rating >= 0 && rating <= 10)
+			tmpRatings[ratingKey] = rating
+			
 		setRatings(tmpRatings)
 	}
 
@@ -111,7 +115,7 @@ const AddTvshow: React.FC<AddTvshowProps> = ({tvshow}) =>
 			<div className='info'>
 				<h1>{tvshow.title}</h1>
 				<form onSubmit={handleSubmit} >
-					<div className='field'>
+					<div className='selectField'>
 						<label htmlFor='status'>Status</label>
 						<Select
 							id='status'
@@ -121,9 +125,10 @@ const AddTvshow: React.FC<AddTvshowProps> = ({tvshow}) =>
 							onChange={e => setStatus(e.value)}
 							styles={selectStyles}
 							placeholder='Select a status'
+							className='select'
 						/>
 					</div>
-					<div className='field'>
+					<div className='selectField'>
 						<label htmlFor='venue'>Venue</label>
 						<Select
 							id='venue'
@@ -133,9 +138,10 @@ const AddTvshow: React.FC<AddTvshowProps> = ({tvshow}) =>
 							onChange={e => setVenue(e.value)}
 							styles={selectStyles}
 							placeholder='Select a venue'
+							className='select'
 						/>
 					</div>
-					<div className='field'>
+					<div className='rangeFields'>
 						<label>Ratings</label>
 						<div className='rating'>
 							<label>Total:</label>
@@ -143,15 +149,30 @@ const AddTvshow: React.FC<AddTvshowProps> = ({tvshow}) =>
 						</div>
 						{Object.entries(ratings).map(([ratingKey, value]) => (
 							<div className='rating' key={ratingKey}>
-								<label>{ratingKey}:</label>
-								<RangeInput
-									type='range'
-									min={0}
-									max={10}
-									value={value >= 0 ? value : 5}
-									onChange={e => handleChangeRating(e, ratingKey)}
-									isUndefined={value < 0}
-								/>
+								<label>{ratingsLabels[ratingKey]}:</label>
+								<div className="group">
+									{
+										value >= 0
+										? (
+											<input
+												type="number"
+												value={value}
+												onChange={e => handleChangeRating(e, ratingKey)}
+											/>
+										)
+										: (
+											<span>not rated</span>
+										)
+									}
+									<RangeInput
+										type='range'
+										min={0}
+										max={10}
+										value={value >= 0 ? value : 5}
+										onChange={e => handleChangeRating(e, ratingKey)}
+										isUndefined={value < 0}
+									/>
+								</div>
 							</div>
 						))}
 					</div>

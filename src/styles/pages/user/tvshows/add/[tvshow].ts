@@ -41,7 +41,91 @@ const Container = styled.div`
 		form
 		{
 			width: 100%;
-			height: 75%;
+			height: calc(100% - 5rem);
+
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+
+			label
+			{
+				font-family: Roboto;
+				font-weight: 700;
+				font-size: 2rem;
+
+				border-left: ${p => p.theme.primary} 5px solid;
+				padding-left: 1rem;
+			}
+
+			.selectField
+			{
+				width: 75%;
+
+				display: flex;
+				flex-direction: column;
+				gap: 0.5rem;
+
+				.select
+				{
+					margin-left: 2rem;
+				}
+			}
+
+			.rangeFields
+			{
+				display: flex;
+				flex-direction: column;
+				gap: 0.5rem;
+
+				.rating
+				{
+					display: flex;
+					align-items: center;
+					gap: 1rem;
+
+					label
+					{
+						font-size: 1.75rem;
+						border: 0;
+						padding: 0;
+						margin-left: 2rem;
+
+						width: fit-content;
+						white-space: nowrap;
+					}
+
+					span
+					{
+						font-family: Ubuntu;
+						font-size: 1.75rem;
+					}
+
+					.group
+					{
+						display: flex;
+						align-items: center;
+						justify-content: space-between;
+
+						width: 100%;
+
+						input[type=number]
+						{
+							font-family: Ubuntu;
+							font-size: 1.75rem;
+							color: ${p => p.theme.primary};
+
+							padding-top: 0.25rem;
+							padding-bottom: 0.25rem;
+							padding-left: 0.5rem;
+							width: 5rem;
+
+							background-color: ${p => p.theme.black}40;
+							border: none;
+							border-bottom: ${p => p.theme.gray}40 2px solid;
+						}
+					}
+				}
+			}
 		}
 	}
 `
@@ -57,7 +141,7 @@ export const RangeInput = styled.input<RangeInputProps>`
 	outline: none;
 
 	background: ${p => p.isUndefined ? p.theme.black : p.theme.primary};
-	width: 100%;
+	width: 20rem;
 	height: 0.5rem;
 	border-radius: 100rem;
 
