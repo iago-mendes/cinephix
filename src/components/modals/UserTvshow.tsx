@@ -94,10 +94,14 @@ const UserTvshowModal: React.FC<UserTvshowModalProps> = ({isOpen, setIsOpen, tvs
 						<div className='group'>
 							<label>Venue</label>
 							<span>
-								<svg width={15} height={15} >
-									<circle cx={7.5} cy={7.5} r={7.5} fill={getVenueColor(tvshow.venue)} />
-								</svg>
-								<span style={{marginLeft: 5}} >{tvshow.venue}</span>
+								{
+									tvshow.venue && (
+										<svg width={15} height={15} >
+											<circle cx={7.5} cy={7.5} r={7.5} fill={getVenueColor(tvshow.venue)} />
+										</svg>
+									)
+								}
+								<span style={{marginLeft: 5}} >{tvshow.venue || 'not informed'}</span>
 							</span>
 						</div>
 						<div className='group'>
