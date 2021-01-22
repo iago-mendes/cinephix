@@ -18,7 +18,7 @@ function calcTotalRating(ratings: Ratings)
 	})
 
 	if (n === 0)
-		return 'not rated'
+		return undefined
 	else
 		return Math.round(sum/n * 10) / 10
 }

@@ -178,7 +178,7 @@ const AddTvshow: React.FC<AddTvshowProps> = ({tvshow}) =>
 						<label>Ratings</label>
 						<div className='rating'>
 							<label>Total:</label>
-							<span>{calcTotalRating(ratings)}</span>
+							<span>{calcTotalRating(ratings) || 'not rated'}</span>
 						</div>
 						{Object.entries(ratings).map(([ratingKey, value]) => (
 							<div className='rating' key={ratingKey}>
