@@ -44,6 +44,16 @@ export const defaultTvshow =
 	}
 }
 
+const ratingsLabels: {[ratingKey: string]: string} =
+{
+	engagement: 'Engagement',
+	consistency: 'Consistency',
+	screenplay: 'Screenplay',
+	acting: 'Acting',
+	cinematography: 'Cinematography',
+	musicAndSound: 'Music and sound'
+}
+
 interface UserTvshowModalProps
 {
 	isOpen: boolean
@@ -112,7 +122,7 @@ const UserTvshowModal: React.FC<UserTvshowModalProps> = ({isOpen, setIsOpen, tvs
 							</div>
 							{Object.entries(tvshow.ratings).map(([ratingKey, value]) => (
 								<div className='rating' key={ratingKey}>
-									<label>{ratingKey}:</label>
+									<label>{ratingsLabels[ratingKey]}:</label>
 									<span>{value}</span>
 								</div>
 							))}
