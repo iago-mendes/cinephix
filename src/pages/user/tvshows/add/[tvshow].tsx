@@ -1,11 +1,11 @@
 import {GetStaticPaths, GetStaticProps} from 'next'
 import Head from 'next/head'
-import {FormEvent, useEffect, useState} from 'react'
+import {ChangeEvent, FormEvent, useEffect, useState} from 'react'
 import Select from 'react-select'
 import Image from 'next/image'
 import {useRouter} from 'next/router'
 
-import Container from '../../../../styles/pages/user/tvshows/add/[tvshow]'
+import Container, {RangeInput} from '../../../../styles/pages/user/tvshows/add/[tvshow]'
 import api from '../../../../services/api'
 import {Media} from '../../../../components/MediaCard'
 import {TvshowDetails} from '../../../tvshows/[tvshow]'
@@ -16,6 +16,31 @@ interface SelectOption
 {
 	label: string
 	value: string
+}
+
+interface Ratings
+{
+	[ratingKey: string]: number
+}
+
+const defaultRatings: Ratings =
+{
+	engagement: -1,
+	consistency: -1,
+	screenplay: -1,
+	acting: -1,
+	cinematography: -1,
+	musicAndSound: -1
+}
+
+const ratingsLabels: {[ratingKey: string]: string} =
+{
+	engagement: 'Engagement',
+	consistency: 'Consistency',
+	screenplay: 'Screenplay',
+	acting: 'Acting',
+	cinematography: 'Cinematography',
+	musicAndSound: 'Music and sound'
 }
 
 interface AddTvshowProps
@@ -29,6 +54,7 @@ const AddTvshow: React.FC<AddTvshowProps> = ({tvshow}) =>
 
 	const [status, setStatus] = useState('')
 	const [venue, setVenue] = useState('')
+	const [ratings, setRatings] = useState<Ratings>(defaultRatings)
 
 	const statusOptions: SelectOption[] = 
 	[
@@ -57,6 +83,13 @@ const AddTvshow: React.FC<AddTvshowProps> = ({tvshow}) =>
 		if (statusKey)
 			setStatus(String(statusKey))
 	}, [query])
+
+	function handleChangeRating(e: ChangeEvent<HTMLInputElement>, ratingKey: string)
+	{
+		let tmpRatings = {...ratings}
+		tmpRatings[ratingKey] = Number(e.target.value)
+		setRatings(tmpRatings)
+	}
 
 	function handleSubmit(e: FormEvent)
 	{
@@ -101,6 +134,26 @@ const AddTvshow: React.FC<AddTvshowProps> = ({tvshow}) =>
 							styles={selectStyles}
 							placeholder='Select a venue'
 						/>
+					</div>
+					<div className='field'>
+						<label>Ratings</label>
+						<div className='rating'>
+							<label>Total:</label>
+							<span>7</span>
+						</div>
+						{Object.entries(ratings).map(([ratingKey, value]) => (
+							<div className='rating' key={ratingKey}>
+								<label>{ratingKey}:</label>
+								<RangeInput
+									type='range'
+									min={0}
+									max={10}
+									value={value >= 0 ? value : 5}
+									onChange={e => handleChangeRating(e, ratingKey)}
+									isUndefined={value < 0}
+								/>
+							</div>
+						))}
 					</div>
 				</form>
 			</div>

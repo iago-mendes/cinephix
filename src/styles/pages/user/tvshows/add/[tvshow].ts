@@ -46,4 +46,51 @@ const Container = styled.div`
 	}
 `
 
+interface RangeInputProps
+{
+	isUndefined: boolean
+}
+
+export const RangeInput = styled.input<RangeInputProps>`
+	-webkit-appearance: none; 
+	appearance: none;
+	outline: none;
+
+	background: ${p => p.isUndefined ? p.theme.black : p.theme.primary};
+	width: 100%;
+	height: 0.5rem;
+	border-radius: 100rem;
+
+	opacity: 0.7;
+	-webkit-transition: .2s;
+	transition: opacity .2s;
+
+	:hover
+	{
+		opacity: 1;
+	}
+
+
+	::-webkit-slider-thumb
+	{
+		-webkit-appearance: none;
+		appearance: none;
+
+		width: 2rem;
+		height: 2rem;
+		border-radius: 100rem;
+		background: ${p => p.isUndefined ? p.theme.black : p.theme.primary};
+		cursor: pointer;
+	}
+
+	::-webkit-slider-thumb, ::-moz-range-thumb
+	{
+		width: 2rem;
+		height: 2rem;
+		border-radius: 100rem;
+		background: ${p => p.isUndefined ? p.theme.black : p.theme.primary};
+		cursor: pointer;
+	}
+`
+
 export default Container

@@ -6,7 +6,9 @@ const theme =
 	orange: '#FF8A00',
 	green: '#245655',
 	white: '#D4D4F7',
+
 	black: '#23232A',
+	gray: '#7B7B7B',
 
 	primary: '#FF8A00',
 	secondary: '#161C50',
