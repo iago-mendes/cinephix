@@ -51,7 +51,7 @@ interface AddTvshowProps
 
 const AddTvshow: React.FC<AddTvshowProps> = ({tvshow}) =>
 {
-	const {query} = useRouter()
+	const {query, back} = useRouter()
 
 	const [status, setStatus] = useState('')
 	const [venue, setVenue] = useState('')
@@ -178,7 +178,7 @@ const AddTvshow: React.FC<AddTvshowProps> = ({tvshow}) =>
 						))}
 					</div>
 					<div className='buttons'>
-						<button className='cancel' title='Cancel' >
+						<button className='cancel' title='Cancel' onClick={back}>
 							<FiX size={25} />
 						</button>
 						<button className='confirm' title='Confirm' type='submit' >
