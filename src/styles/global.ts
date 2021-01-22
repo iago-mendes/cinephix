@@ -45,6 +45,16 @@ export default createGlobalStyle`
 	{
 		
 	}
+
+	.swal2-header
+	{
+		font-family: Ubuntu;
+	}
+
+	.swal2-content
+	{
+		font-family: Roboto;
+	}
 `
 
 export const modalStyle: Modal.Styles =

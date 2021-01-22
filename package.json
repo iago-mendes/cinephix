@@ -20,6 +20,8 @@
     "react-modal": "^3.12.1",
     "react-select": "^3.2.0",
     "styled-components": "^5.2.1",
+    "sweetalert2": "^10.13.0",
+    "sweetalert2-react-content": "^3.2.2",
     "swiper": "^6.4.5",
     "swr": "^0.4.0"
   },
