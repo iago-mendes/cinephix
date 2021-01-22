@@ -12,6 +12,7 @@ import {Media} from '../../../../components/MediaCard'
 import {TvshowDetails} from '../../../tvshows/[tvshow]'
 import Loading from '../../../../components/Loading'
 import {selectStyles} from '../../../../styles/global'
+import useUser from '../../../../hooks/useUser'
 
 interface SelectOption
 {
@@ -52,6 +53,7 @@ interface AddTvshowProps
 const AddTvshow: React.FC<AddTvshowProps> = ({tvshow}) =>
 {
 	const {query, back} = useRouter()
+	const {user} = useUser()
 
 	const [status, setStatus] = useState('')
 	const [venue, setVenue] = useState('')
@@ -99,6 +101,33 @@ const AddTvshow: React.FC<AddTvshowProps> = ({tvshow}) =>
 	function handleSubmit(e: FormEvent)
 	{
 		e.preventDefault()
+
+		const data =
+		{
+			id: tvshow.id,
+			status: status,
+			venue: venue !== '' ? venue : undefined,
+			ratings:
+			{
+				engagement: ratings.engagement >= 0 ? ratings.engagement : undefined,
+				consistency: ratings.consistency >= 0 ? ratings.consistency : undefined,
+				screenplay: ratings.screenplay >= 0 ? ratings.screenplay : undefined,
+				acting: ratings.acting >= 0 ? ratings.acting : undefined,
+				cinematography: ratings.cinematography >= 0 ? ratings.cinematography : undefined,
+				musicAndSound: ratings.musicAndSound >= 0 ? ratings.musicAndSound : undefined
+			}
+		}
+		
+		api.post(`users/${user.email}/tvshows`, data)
+			.then(() =>
+			{
+				alert(`'${tvshow.title}' was successfully added to your TV shows!`)
+				back()
+			})
+			.catch(err =>
+			{
+				alert(`Something went wrong:\n${err.response.data.message}`)
+			})
 	}
 
 	if (!tvshow)

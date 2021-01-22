@@ -79,8 +79,8 @@ const SelectTvshow: React.FC<SelectTvshowProps> = ({isOpen, setIsOpen, statusKey
 
 	function handleNavigateToAddTvshow(id: number)
 	{
-		setIsOpen(false)
 		router.push(`/user/tvshows/add/${id}?status=${statusKey}`)
+		setIsOpen(false)
 	}
 
 	return (
@@ -102,6 +102,7 @@ const SelectTvshow: React.FC<SelectTvshowProps> = ({isOpen, setIsOpen, statusKey
 						placeholder='Search for a TV show'
 						value={search}
 						onChange={e => setSearch(e.target.value)}
+						autoFocus
 					/>
 				</div>
 				<div className='scroll'>
