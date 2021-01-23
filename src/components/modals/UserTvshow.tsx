@@ -7,6 +7,7 @@ import {modalStyle} from '../../styles/global'
 import React from 'react'
 import Image from 'next/image'
 import calcTotalRating from '../../utils/getTotalRating'
+import { useRouter } from 'next/router'
 
 Modal.setAppElement('#__next')
 
@@ -64,6 +65,8 @@ interface UserTvshowModalProps
 
 const UserTvshowModal: React.FC<UserTvshowModalProps> = ({isOpen, setIsOpen, tvshow}) =>
 {
+	const {push} = useRouter()
+
 	function getVenueColor(venue: string)
 	{
 		if (venue === 'Netflix')
@@ -80,6 +83,12 @@ const UserTvshowModal: React.FC<UserTvshowModalProps> = ({isOpen, setIsOpen, tvs
 			return '#656565'
 	}
 
+	function handleExpand()
+	{
+		setIsOpen(false)
+		push(`/tvshows/${tvshow.id}`)
+	}
+
 	return (
 		<Modal
 			isOpen={isOpen}
@@ -87,7 +96,7 @@ const UserTvshowModal: React.FC<UserTvshowModalProps> = ({isOpen, setIsOpen, tvs
 		>
 			<Container>
 				<header>
-					<button className='expand' title='Expand' >
+					<button className='expand' title='Expand' onClick={handleExpand} >
 						<BiExpand size={25} />
 					</button>
 					<button className='close' title='Close' onClick={() => setIsOpen(false)} >
