@@ -13,7 +13,8 @@ import Carousel, {CarouselCard} from '../../components/Carousel'
 import formatDate from '../../utils/formatDate'
 import React, { useEffect, useState } from 'react'
 import useUser from '../../hooks/useUser'
-import {Tvshow as UserTvshow, defaultTvshow as defaultUserTvshow} from '../../components/modals/UserTvshow'
+import UserTvshow, {defaultUserTvshow} from '../../models/userTvshow'
+import calcTotalRating from '../../utils/calcTotalRating'
 
 export interface TvshowDetails
 {
@@ -67,10 +68,12 @@ const Tvshow: React.FC<TvshowProps> = ({tvshow}) =>
 	useEffect(() =>
 	{
 		if (user && user.email)
-			api.get(`user/${user.email}/tvshows/${tvshow.id}`)
+			api.get(`users/${user.email}/tvshows/${tvshow.id}`)
 				.then(({data}:{data: UserTvshow}) => setUserTvshow(data))
 				.catch(() => setUserTvshow(defaultUserTvshow))
 	}, [user])
+
+	useEffect(() => console.log('[userTvshow]', userTvshow), [userTvshow])
 
 	if (router.isFallback)
 		return <Loading />
@@ -128,8 +131,23 @@ const Tvshow: React.FC<TvshowProps> = ({tvshow}) =>
 
 			<div className='row userTvshow'>
 				{
-					(user && userTvshow.id !== 0)
-					? ''
+					(user && userTvshow !== defaultUserTvshow)
+					? (
+						<>
+							<div className="group">
+								<label>Your status</label>
+								<span>{userTvshow.status}</span>
+							</div>
+							<div className="group">
+								<label>Your venue</label>
+								<span>{userTvshow.venue}</span>
+							</div>
+							<div className="group">
+								<label>Your rating</label>
+								<span>{calcTotalRating(userTvshow.ratings)}</span>
+							</div>
+						</>
+					)
 					: (
 						<button className='add' onClick={() => router.push(`/user/tvshows/add/${tvshow.id}`)} >
 							<FiPlus size={30} />
