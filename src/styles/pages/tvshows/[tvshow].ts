@@ -49,8 +49,10 @@ const Container = styled.div<ContainerProps>`
 			{
 				display: flex;
 				flex-direction: column;
-				align-items: center;
 				gap: 2rem;
+
+				padding-left: 5rem;
+				padding-right: 5rem;
 
 				.detail
 				{
@@ -77,7 +79,7 @@ const Container = styled.div<ContainerProps>`
 				{
 					display: flex;
 					align-items: center;
-					justify-content: space-around;
+					justify-content: space-between;
 
 					width: 100%;
 				}
