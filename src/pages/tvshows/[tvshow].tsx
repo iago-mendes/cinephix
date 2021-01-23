@@ -69,11 +69,11 @@ const Tvshow: React.FC<TvshowProps> = ({tvshow}) =>
 
 	useEffect(() =>
 	{
-		if (user && user.email)
+		if (user && user.email && tvshow)
 			api.get(`users/${user.email}/tvshows/${tvshow.id}`)
 				.then(({data}:{data: UserTvshow}) => setUserTvshow(data))
 				.catch(() => setUserTvshow(defaultUserTvshow))
-	}, [user])
+	}, [user, tvshow])
 
 	if (router.isFallback)
 		return <Loading />

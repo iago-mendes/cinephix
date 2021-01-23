@@ -131,6 +131,19 @@ const TvshowForm: React.FC<TvshowFormProps> = ({tvshow, method, userTvshow}) =>
 					errorAlert(err.response.data.message)
 				})
 		}
+		else if (method === 'put')
+		{
+			api.put(`users/${user.email}/tvshows/${userTvshow.data.id}`, data)
+				.then(() =>
+				{
+					confirmAlert(`'${tvshow.title}' was successfully edited!`)
+					back()
+				})
+				.catch(err =>
+				{
+					errorAlert(err.response.data.message)
+				})
+		}
 	}
 
 	return (
