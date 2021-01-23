@@ -79,7 +79,7 @@ const SelectTvshow: React.FC<SelectTvshowProps> = ({isOpen, setIsOpen, statusKey
 
 	function handleNavigateToAddTvshow(id: number)
 	{
-		router.push(`/user/tvshows/add/${id}?status=${statusKey}`)
+		router.push(`/user/tvshows/${id}/add?status=${statusKey}`)
 		setIsOpen(false)
 	}
 

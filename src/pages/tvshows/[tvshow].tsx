@@ -157,7 +157,7 @@ const Tvshow: React.FC<TvshowProps> = ({tvshow}) =>
 						</>
 					)
 					: (
-						<button className='add' onClick={() => router.push(`/user/tvshows/add/${tvshow.id}`)} >
+						<button className='add' onClick={() => router.push(`/user/tvshows/${tvshow.id}/add`)} >
 							<FiPlus size={30} />
 							<span>Add to your TV shows</span>
 						</button>
