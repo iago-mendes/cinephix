@@ -15,6 +15,8 @@ import React, { useEffect, useState } from 'react'
 import useUser from '../../hooks/useUser'
 import UserTvshow, {defaultUserTvshow} from '../../models/userTvshow'
 import calcTotalRating from '../../utils/calcTotalRating'
+import getStatusLabel from '../../utils/getStatusLabel'
+import getVenue from '../../utils/getVenue'
 
 export interface TvshowDetails
 {
@@ -135,19 +137,19 @@ const Tvshow: React.FC<TvshowProps> = ({tvshow}) =>
 					? (
 						<>
 							<div className='group'>
-								<label>Your status</label>
-								<span>{userTvshow.status}</span>
+								<label>My status</label>
+								<span>{getStatusLabel(userTvshow.status)}</span>
 							</div>
 							{
 								userTvshow.venue && (
 									<div className='group'>
-										<label>Your venue</label>
-										<span>{userTvshow.venue}</span>
+										<label>My venue</label>
+										<span>{getVenue(userTvshow.venue)}</span>
 									</div>
 								)
 							}
 							<div className='group'>
-								<label>Your rating</label>
+								<label>My rating</label>
 								<span>{calcTotalRating(userTvshow.ratings)}</span>
 							</div>
 						</>
