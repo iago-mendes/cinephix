@@ -83,15 +83,18 @@ const TvshowForm: React.FC<TvshowFormProps> = ({tvshow, method, userTvshow}) =>
 		{
 			setStatus(userTvshow.status)
 			setVenue(userTvshow.venue)
-			setRatings(userTvshow.ratings)
+			Object.entries(userTvshow.ratings).map(([ratingKey, value]) =>
+			{
+				handleChangeRating(ratingKey, undefined, value)
+			})
 		}
 	}, [userTvshow])
 
-	function handleChangeRating(e: ChangeEvent<HTMLInputElement>, ratingKey: string)
+	function handleChangeRating(ratingKey: string, e?: ChangeEvent<HTMLInputElement>, ratingValue?: number)
 	{
 		let tmpRatings = {...ratings}
 
-		const rating = Number(e.target.value)
+		const rating = e ? Number(e.target.value) : ratingValue
 		if (rating >= 0 && rating <= 10)
 			tmpRatings[ratingKey] = rating
 			
@@ -200,7 +203,7 @@ const TvshowForm: React.FC<TvshowFormProps> = ({tvshow, method, userTvshow}) =>
 											<input
 												type='number'
 												value={value}
-												onChange={e => handleChangeRating(e, ratingKey)}
+												onChange={e => handleChangeRating(ratingKey, e)}
 											/>
 										)
 										: (
@@ -212,7 +215,7 @@ const TvshowForm: React.FC<TvshowFormProps> = ({tvshow, method, userTvshow}) =>
 										min={0}
 										max={10}
 										value={value >= 0 ? value : 5}
-										onChange={e => handleChangeRating(e, ratingKey)}
+										onChange={e => handleChangeRating(ratingKey, e)}
 										isUndefined={value < 0}
 									/>
 								</div>
