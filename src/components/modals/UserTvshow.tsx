@@ -1,5 +1,5 @@
 import Modal from 'react-modal'
-import {FiX} from 'react-icons/fi'
+import {FiEdit3, FiX} from 'react-icons/fi'
 import {BiExpand} from 'react-icons/bi'
 
 import Container from '../../styles/components/modals/UserTvshow'
@@ -89,6 +89,12 @@ const UserTvshowModal: React.FC<UserTvshowModalProps> = ({isOpen, setIsOpen, tvs
 		push(`/tvshows/${tvshow.id}`)
 	}
 
+	function handleEdit()
+	{
+		setIsOpen(false)
+		push(`/user/tvshows/${tvshow.id}/edit`)
+	}
+
 	return (
 		<Modal
 			isOpen={isOpen}
@@ -137,6 +143,9 @@ const UserTvshowModal: React.FC<UserTvshowModalProps> = ({isOpen, setIsOpen, tvs
 							))}
 						</div>
 					</div>
+					<button className='edit' title='Edit' onClick={handleEdit} >
+						<FiEdit3 size={30} />
+					</button>
 				</main>
 			</Container>
 		</Modal>

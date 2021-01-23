@@ -54,6 +54,8 @@ const Container = styled.div`
 		
 		padding: 1rem;
 
+		position: relative;
+
 		.img
 		{
 			width: calc((75vh - 4.5rem - 2rem) / 1.5);
@@ -130,6 +132,36 @@ const Container = styled.div`
 						margin: 0;
 					}
 				}
+			}
+		}
+
+		.edit
+		{
+			position: absolute;
+			bottom: 1rem;
+			right: 1rem;
+
+			background: none;
+			border: none;
+			color: ${p => p.theme.primary};
+
+			width: 4rem;
+			height: 4rem;
+			border-radius: 100rem;
+
+			display: flex;
+			align-items: center;
+			justify-content: center;
+
+			cursor: pointer;
+			transition: 0.25s;
+
+			:hover
+			{
+				background-color: ${p => p.theme.primary};
+				color: ${p => p.theme.background};
+
+				transform: scale(1.1);
 			}
 		}
 	}
