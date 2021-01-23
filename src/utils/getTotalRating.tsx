@@ -30,8 +30,8 @@ function getTotalRating(ratings: Ratings, showStars = false, svgSize = 20)
 		return (
 			<>
 				{
-					tmp.map(() => (
-						<BsStarFill size={svgSize} style={{marginRight: 5}} />
+					tmp.map((s, index) => (
+						<BsStarFill size={svgSize} style={{marginRight: 5}} key={index} />
 					))
 				}
 				{
