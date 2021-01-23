@@ -6,7 +6,7 @@ import Container from '../../styles/components/modals/UserTvshow'
 import {modalStyle} from '../../styles/global'
 import React from 'react'
 import Image from 'next/image'
-import calcTotalRating from '../../utils/getTotalRating'
+import getTotalRating from '../../utils/getTotalRating'
 import { useRouter } from 'next/router'
 
 Modal.setAppElement('#__next')
@@ -133,7 +133,17 @@ const UserTvshowModal: React.FC<UserTvshowModalProps> = ({isOpen, setIsOpen, tvs
 							<label>Ratings</label>
 							<div className='rating'>
 								<label>Total:</label>
-								<span>{calcTotalRating(tvshow.ratings) || 'not rated'}</span>
+								{
+									Object.values(tvshow.ratings).length !== 0
+									? (
+										<span>
+											{getTotalRating(tvshow.ratings, true, 15)} ({getTotalRating(tvshow.ratings)})
+										</span>
+									)
+									: (
+										<span>not rated</span>
+									)
+								}
 							</div>
 							{Object.entries(tvshow.ratings).map(([ratingKey, value]) => (
 								<div className='rating' key={ratingKey}>
