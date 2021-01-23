@@ -11,7 +11,7 @@ import useUser from '../../../hooks/useUser'
 import UserTvshowModal, {defaultTvshow, Tvshow} from '../../../components/modals/UserTvshow'
 import {FiPlus} from 'react-icons/fi'
 import SelectTvshow from '../../../components/modals/SelectTvshow'
-import calcTotalRating from '../../../utils/getTotalRating'
+import getTotalRating from '../../../utils/getTotalRating'
 
 interface TvshowList
 {
@@ -160,7 +160,13 @@ const UserTvshows: React.FC = () =>
 																			<div className='info'>
 																				<h2>{tvshow.title}</h2>
 																				<div className='details'>
-																					<span className='ratings'>{calcTotalRating(tvshow.ratings)}</span>
+																					{
+																						Object.values(tvshow.ratings).length !== 0 && (
+																							<span className='ratings'>
+																								{getTotalRating(tvshow.ratings, true, 13)} ({getTotalRating(tvshow.ratings)})
+																							</span>
+																						)
+																					}
 																					<span className='venue'>{tvshow.venue}</span>
 																				</div>
 																			</div>
