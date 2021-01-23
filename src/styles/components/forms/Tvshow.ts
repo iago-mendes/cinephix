@@ -125,11 +125,19 @@ const Container = styled.div`
 							padding-top: 0.25rem;
 							padding-bottom: 0.25rem;
 							padding-left: 0.5rem;
-							width: 5rem;
+							width: 3rem;
 
 							background-color: ${p => p.theme.black}40;
 							border: none;
 							border-bottom: ${p => p.theme.gray}40 2px solid;
+
+							-moz-appearance: textfield;
+
+							::-webkit-outer-spin-button, ::-webkit-inner-spin-button
+							{
+								-webkit-appearance: none;
+								margin: 0;
+							}
 						}
 					}
 				}
