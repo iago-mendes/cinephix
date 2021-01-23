@@ -75,8 +75,6 @@ const Tvshow: React.FC<TvshowProps> = ({tvshow}) =>
 				.catch(() => setUserTvshow(defaultUserTvshow))
 	}, [user])
 
-	useEffect(() => console.log('[userTvshow]', userTvshow), [userTvshow])
-
 	if (router.isFallback)
 		return <Loading />
 
@@ -148,10 +146,14 @@ const Tvshow: React.FC<TvshowProps> = ({tvshow}) =>
 									</div>
 								)
 							}
-							<div className='group'>
-								<label>My rating</label>
-								<span>{getTotalRating(userTvshow.ratings, true)} ({getTotalRating(userTvshow.ratings)})</span>
-							</div>
+							{
+								Object.values(userTvshow.ratings).length !== 0 && (
+									<div className='group'>
+										<label>My rating</label>
+										<span>{getTotalRating(userTvshow.ratings, true)} ({getTotalRating(userTvshow.ratings)})</span>
+									</div>
+								)
+							}
 						</>
 					)
 					: (

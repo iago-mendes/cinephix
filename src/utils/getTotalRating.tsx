@@ -23,9 +23,6 @@ function getTotalRating(ratings: Ratings, showStars = false, svgSize = 20)
 		const avg5 = Math.round(avg) / 2
 		const [fillStars, halfStar] = String(avg5).split('.').map(s => Number(s))
 
-		console.log('[fillStars]', fillStars)
-		console.log('[halfStar]', halfStar)
-
 		let tmp: string[] = []
 		for (let i = 0; i < fillStars; i++)
 			tmp.push('')
