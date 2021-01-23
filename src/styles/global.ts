@@ -65,35 +65,12 @@ export default createGlobalStyle`
 			color: ${p => p.theme.gray};
 		}
 
-		.swal2-confirm
+		.swal2-actions
 		{
-			background: none !important;
-			padding: 5px !important;
-			padding-left: 10px !important;
-			padding-right: 10px !important;
-
-			color: ${p => p.theme.gray} !important;
-			font-family: Ubuntu !important;
 			font-size: 15px !important;
-
-			border: ${p => p.theme.gray} 2px solid !important;
-			border-radius: 100px !important;
-
-			transition: 0.25s;
-
-			:hover
-			{
-				background-color: ${p => p.theme.gray} !important;
-				color: ${p => p.theme.black} !important;
-			}
-
-			:focus
-			{
-				border: none !important;
-			}
+			font-family: Ubuntu !important;
 		}
 	}
-
 `
 
 export const modalStyle: Modal.Styles =
