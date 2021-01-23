@@ -1,7 +1,7 @@
 import {GetStaticPaths, GetStaticProps} from 'next'
 import Head from 'next/head'
 import {useRouter} from 'next/router'
-import {FiCalendar, FiInfo, FiStar, FiArrowRight} from 'react-icons/fi'
+import {FiCalendar, FiInfo, FiStar, FiArrowRight, FiPlus} from 'react-icons/fi'
 import {SwiperSlide} from 'swiper/react'
 import Image from 'next/image'
 
@@ -11,7 +11,9 @@ import {Media} from '../../components/MediaCard'
 import Loading from '../../components/Loading'
 import Carousel, {CarouselCard} from '../../components/Carousel'
 import formatDate from '../../utils/formatDate'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import useUser from '../../hooks/useUser'
+import {Tvshow as UserTvshow, defaultTvshow as defaultUserTvshow} from '../../components/modals/UserTvshow'
 
 export interface TvshowDetails
 {
@@ -57,9 +59,20 @@ interface TvshowProps
 
 const Tvshow: React.FC<TvshowProps> = ({tvshow}) =>
 {
-	const Router = useRouter()
+	const router = useRouter()
+	const {user} = useUser()
 
-	if (Router.isFallback)
+	const [userTvshow, setUserTvshow] = useState<UserTvshow>(defaultUserTvshow)
+
+	useEffect(() =>
+	{
+		if (user && user.email)
+			api.get(`user/${user.email}/tvshows/${tvshow.id}`)
+				.then(({data}:{data: UserTvshow}) => setUserTvshow(data))
+				.catch(() => setUserTvshow(defaultUserTvshow))
+	}, [user])
+
+	if (router.isFallback)
 		return <Loading />
 
 	return (
@@ -81,7 +94,7 @@ const Tvshow: React.FC<TvshowProps> = ({tvshow}) =>
 							<FiArrowRight size={30} />
 							<span>{formatDate(tvshow.endDate)}</span>
 						</div>
-						<div className="group">
+						<div className='group'>
 							<div className='detail'>
 								<FiInfo size={30} />
 								<span>{tvshow.status}</span>
@@ -91,7 +104,7 @@ const Tvshow: React.FC<TvshowProps> = ({tvshow}) =>
 								<span>{tvshow.rating}</span>
 							</div>
 						</div>
-						<div className="group">
+						<div className='group'>
 							<div className='detail'>
 								<strong>Nº of seasons:</strong>
 								<span>{tvshow.seasonsNumber}</span>
@@ -112,6 +125,19 @@ const Tvshow: React.FC<TvshowProps> = ({tvshow}) =>
 					</ul>
 				</div>
 			</main>
+
+			<div className='row'>
+				{
+					(user && userTvshow.id !== 0)
+					? ''
+					: (
+						<button className='add' onClick={() => router.push(`/user/tvshows/add/${tvshow.id}`)} >
+							<FiPlus size={30} />
+							<span>Add to your TV shows</span>
+						</button>
+					)
+				}
+			</div>
 
 			<div className='cast'>
 				<span>Cast ({tvshow.credits.cast.length})</span>
