@@ -1,7 +1,7 @@
 import {GetStaticPaths, GetStaticProps} from 'next'
 import Head from 'next/head'
 import {useRouter} from 'next/router'
-import {FiCalendar, FiInfo, FiStar, FiArrowRight, FiPlus} from 'react-icons/fi'
+import {FiCalendar, FiInfo, FiStar, FiArrowRight, FiPlus, FiEdit3} from 'react-icons/fi'
 import {SwiperSlide} from 'swiper/react'
 import Image from 'next/image'
 
@@ -154,6 +154,9 @@ const Tvshow: React.FC<TvshowProps> = ({tvshow}) =>
 									</div>
 								)
 							}
+							<button className='edit' title='Edit' onClick={() => router.push(`/user/tvshows/${tvshow.id}/edit`)} >
+								<FiEdit3 size={30} />
+							</button>
 						</>
 					)
 					: (

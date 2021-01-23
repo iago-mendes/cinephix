@@ -205,6 +205,32 @@ const Container = styled.div<ContainerProps>`
 				
 			}
 		}
+
+		.edit
+		{
+			background: none;
+			border: none;
+			color: ${p => p.theme.primary};
+
+			width: 4rem;
+			height: 4rem;
+			border-radius: 100rem;
+
+			display: flex;
+			align-items: center;
+			justify-content: center;
+
+			cursor: pointer;
+			transition: 0.25s;
+
+			:hover
+			{
+				background-color: ${p => p.theme.primary};
+				color: ${p => p.theme.background};
+
+				transform: scale(1.1);
+			}
+		}
 	}
 
 	.carousel
