@@ -134,15 +134,19 @@ const Tvshow: React.FC<TvshowProps> = ({tvshow}) =>
 					(user && userTvshow !== defaultUserTvshow)
 					? (
 						<>
-							<div className="group">
+							<div className='group'>
 								<label>Your status</label>
 								<span>{userTvshow.status}</span>
 							</div>
-							<div className="group">
-								<label>Your venue</label>
-								<span>{userTvshow.venue}</span>
-							</div>
-							<div className="group">
+							{
+								userTvshow.venue && (
+									<div className='group'>
+										<label>Your venue</label>
+										<span>{userTvshow.venue}</span>
+									</div>
+								)
+							}
+							<div className='group'>
 								<label>Your rating</label>
 								<span>{calcTotalRating(userTvshow.ratings)}</span>
 							</div>

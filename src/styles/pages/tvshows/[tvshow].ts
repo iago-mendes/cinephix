@@ -126,8 +126,6 @@ const Container = styled.div<ContainerProps>`
 	.row
 	{
 		display: flex;
-		flex-direction: column;
-		gap: 3rem;
 
 		padding: 1rem;
 		padding-top: 3rem;
@@ -143,6 +141,7 @@ const Container = styled.div<ContainerProps>`
 	{
 		align-items: center;
 		justify-content: center;
+		gap: 15rem;
 
 		.add
 		{
@@ -174,10 +173,39 @@ const Container = styled.div<ContainerProps>`
 				font-size: 2rem;
 			}
 		}
+
+		.group
+		{
+			display: flex;
+			flex-direction: column;
+
+			color: ${p => p.theme.primary};
+
+			label
+			{
+				font-family: Roboto;
+				font-weight: 700;
+				font-size: 3rem;
+
+				padding-left: 1rem;
+				border-left: ${p => p.theme.primary} 5px solid;
+			}
+
+			span
+			{
+				font-family: Roboto;
+				font-size: 2rem;
+
+				margin-left: 2rem;
+			}
+		}
 	}
 
 	.carousel
 	{
+		flex-direction: column;
+		gap: 3rem;
+
 		span
 		{
 			font-family: Roboto;
