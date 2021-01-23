@@ -123,7 +123,7 @@ const Container = styled.div<ContainerProps>`
 		}
 	}
 
-	.cast, .crew
+	.row
 	{
 		display: flex;
 		flex-direction: column;
@@ -133,6 +133,51 @@ const Container = styled.div<ContainerProps>`
 		padding-top: 3rem;
 		padding-bottom: 3rem;
 
+		:nth-child(even)
+		{
+			background-color: rgba(0,0,0,0.5);
+		}
+	}
+
+	.userTvshow
+	{
+		align-items: center;
+		justify-content: center;
+
+		.add
+		{
+			display: flex;
+			align-items: center;
+			gap: 1rem;
+
+			background: none;
+			border: ${p => p.theme.primary} 2px solid;
+			border-radius: 100rem;
+			padding: 1rem;
+
+			color: ${p => p.theme.primary};
+			cursor: pointer;
+			transition: 0.25s;
+
+			:hover
+			{
+				background-color: ${p => p.theme.primary};
+				color: ${p => p.theme.background};
+
+				transform: scale(1.05);
+			}
+
+			span
+			{
+				font-family: Ubuntu;
+				font-weight: 700;
+				font-size: 2rem;
+			}
+		}
+	}
+
+	.carousel
+	{
 		span
 		{
 			font-family: Roboto;
@@ -144,11 +189,6 @@ const Container = styled.div<ContainerProps>`
 			padding-left: 1rem;
 			border-left: ${p => p.theme.primary} 5px solid;
 		}
-	}
-
-	.cast
-	{
-		background-color: rgba(0,0,0,0.5);
 	}
 `
 

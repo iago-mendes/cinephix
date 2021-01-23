@@ -126,7 +126,7 @@ const Tvshow: React.FC<TvshowProps> = ({tvshow}) =>
 				</div>
 			</main>
 
-			<div className='row'>
+			<div className='row userTvshow'>
 				{
 					(user && userTvshow.id !== 0)
 					? ''
@@ -139,7 +139,7 @@ const Tvshow: React.FC<TvshowProps> = ({tvshow}) =>
 				}
 			</div>
 
-			<div className='cast'>
+			<div className='row carousel'>
 				<span>Cast ({tvshow.credits.cast.length})</span>
 				<Carousel>
 					{tvshow.credits.cast.map((celebrity, index) => (
@@ -155,7 +155,7 @@ const Tvshow: React.FC<TvshowProps> = ({tvshow}) =>
 				</Carousel>
 			</div>
 
-			<div className='crew'>
+			<div className='row carousel'>
 				<span>Crew ({tvshow.credits.crew.length})</span>
 				<Carousel>
 					{tvshow.credits.crew.map((celebrity, index) => (

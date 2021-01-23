@@ -88,7 +88,7 @@ const Container = styled.div`
 
 		.swiper-button-prev, .swiper-button-next
 		{
-			width: 3rem;
+			width: 3.5rem;
 			height: 6rem;
 			border-radius: 100rem;
 
