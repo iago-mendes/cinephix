@@ -8,7 +8,7 @@ const Container = styled.div`
 	{
 		display: flex;
 		justify-content: flex-end;
-		padding-right: 4.25rem;
+		padding-right: 3rem;
 
 		color: ${p => p.theme.primary};
 	}
@@ -19,7 +19,7 @@ const Container = styled.div`
 		background-color: ${p => p.theme.primary};
 		border-radius: 0.5rem;
 
-		box-shadow: 0px 5px 5px rgba(0,0,0,0.5);
+		box-shadow: 0px 0px 10px rgba(0,0,0);
 
 		.session
 		{
@@ -122,14 +122,11 @@ export const modalStyle: Modal.Styles =
 	{
 		background: 'none',
 		border: 'none',
-		padding: 0,
+		padding: '1rem',
 		width: 'fit-content',
 		height: 'fit-content',
-		left: 'calc(100vw - 20rem - 2rem)',
-		top: '4.5rem',
-
-		boxShadow: '-2.5px 2.5px 2.5px rgba(0,0,0, 0.9)',
-		borderRadius: '0.5rem'
+		left: 'calc(100vw - 20rem - 3rem)',
+		top: '4.5rem'
 	}
 }
 
