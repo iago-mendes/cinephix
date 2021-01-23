@@ -9,6 +9,7 @@ import {Provider as SessionProvider} from 'next-auth/client'
 import Menu from '../components/Menu'
 import GlobalStyle from '../styles/global'
 import theme from '../styles/theme'
+import SessionHandler from '../components/SessionHandler'
 
 const MyApp: React.FC<AppProps> = ({Component, pageProps}) =>
 {
@@ -25,7 +26,9 @@ const MyApp: React.FC<AppProps> = ({Component, pageProps}) =>
 		<ThemeProvider theme={theme}>
 			<SessionProvider session={pageProps.session} >
 				<Menu />
-				<Component {...pageProps} />
+				<SessionHandler>
+					<Component {...pageProps} />
+				</SessionHandler>
 				<GlobalStyle />
 			</SessionProvider>
 		</ThemeProvider>
