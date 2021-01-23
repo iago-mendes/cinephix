@@ -35,9 +35,11 @@ const SessionHandler: React.FC = ({children}) =>
 					<main>
 						<div className="message">
 							<span>To access this page, you need to be signed in.</span>
+							<p>It's really easy</p>
 							<p>
-								It's really easy! You don't have to create an account with us; all you have to do is sign in with your Google account. Simple just like that!
+								You don't have to create an account with us; all you have to do is sign in with your Google account.
 							</p>
+							<p>Simple just like that!</p>
 						</div>
 						<button>
 							<FiLogIn size={30} />
