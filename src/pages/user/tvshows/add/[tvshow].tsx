@@ -55,7 +55,7 @@ interface AddTvshowProps
 
 const AddTvshow: React.FC<AddTvshowProps> = ({tvshow}) =>
 {
-	const {query, back} = useRouter()
+	const {query, back, push} = useRouter()
 	const {user} = useUser()
 
 	const [status, setStatus] = useState('')
@@ -125,7 +125,7 @@ const AddTvshow: React.FC<AddTvshowProps> = ({tvshow}) =>
 			.then(() =>
 			{
 				confirmAlert(`'${tvshow.title}' was successfully added to your TV shows!`)
-				back()
+				push('/user/tvshows')
 			})
 			.catch(err =>
 			{
