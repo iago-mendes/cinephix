@@ -14,7 +14,7 @@ import confirmAlert from '../../utils/alerts/confirm'
 import errorAlert from '../../utils/alerts/error'
 import calcTotalRating from '../../utils/getTotalRating'
 import Ratings, {defaultTvshowRatings} from '../../models/ratings'
-import UserTvshow from '../../models/userTvshow'
+import UserTvshow, { defaultUserTvshow } from '../../models/userTvshow'
 
 interface SelectOption
 {
@@ -76,6 +76,16 @@ const TvshowForm: React.FC<TvshowFormProps> = ({tvshow, method, userTvshow}) =>
 		if (statusKey)
 			setStatus(String(statusKey))
 	}, [query])
+
+	useEffect(() =>
+	{
+		if (userTvshow && userTvshow !== defaultUserTvshow)
+		{
+			setStatus(userTvshow.status)
+			setVenue(userTvshow.venue)
+			setRatings(userTvshow.ratings)
+		}
+	}, [userTvshow])
 
 	function handleChangeRating(e: ChangeEvent<HTMLInputElement>, ratingKey: string)
 	{
