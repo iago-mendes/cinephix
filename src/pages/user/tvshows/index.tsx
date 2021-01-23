@@ -137,34 +137,38 @@ const UserTvshows: React.FC = () =>
 										<Droppable droppableId={statusKey} >
 											{provided => (
 												<div {...provided.droppableProps} ref={provided.innerRef} className='droppableArea' >
-													{tvshows.map((tvshow, index) => (
-														<Draggable
-															draggableId={String(tvshow.id)}
-															index={index}
-															key={tvshow.id}
-														>
-															{provided => (
-																<div
-																	className='tvshow'
-																	{...provided.draggableProps}
-																	{...provided.dragHandleProps}
-																	ref={provided.innerRef}
-																	onClick={() => handleCardClick(tvshow)}
+													{tvshows.map((tvshow, index) =>
+													{
+														if (tvshow)
+															return (
+																<Draggable
+																	draggableId={String(tvshow.id)}
+																	index={index}
+																	key={tvshow.id}
 																>
-																	<div className='img'>
-																		<Image src={tvshow.image} width={780} height={1170} layout='responsive'/>
-																	</div>
-																	<div className='info'>
-																		<h2>{tvshow.title}</h2>
-																		<div className='details'>
-																			<span className='ratings'>{calcTotalRating(tvshow.ratings)}</span>
-																			<span className='venue'>{tvshow.venue}</span>
+																	{provided => (
+																		<div
+																			className='tvshow'
+																			{...provided.draggableProps}
+																			{...provided.dragHandleProps}
+																			ref={provided.innerRef}
+																			onClick={() => handleCardClick(tvshow)}
+																		>
+																			<div className='img'>
+																				<Image src={tvshow.image} width={780} height={1170} layout='responsive'/>
+																			</div>
+																			<div className='info'>
+																				<h2>{tvshow.title}</h2>
+																				<div className='details'>
+																					<span className='ratings'>{calcTotalRating(tvshow.ratings)}</span>
+																					<span className='venue'>{tvshow.venue}</span>
+																				</div>
+																			</div>
 																		</div>
-																	</div>
-																</div>
-															)}
-														</Draggable>
-													))}
+																	)}
+																</Draggable>
+															)
+													})}
 													{provided.placeholder}
 												</div>
 											)}
