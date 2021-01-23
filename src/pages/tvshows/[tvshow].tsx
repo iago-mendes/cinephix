@@ -76,7 +76,7 @@ const Tvshow: React.FC<TvshowProps> = ({tvshow}) =>
 	}, [user, tvshow])
 
 	if (router.isFallback)
-		return <Loading />
+		return <Loading style={{marginTop: 'calc(50vh - 5rem)'}} />
 
 	return (
 		<Container overviewLength={tvshow.overview.length} >
