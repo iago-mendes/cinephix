@@ -4,6 +4,7 @@ import Select from 'react-select'
 import Image from 'next/image'
 import {useRouter} from 'next/router'
 import {FiCheck, FiX} from 'react-icons/fi'
+import {MdClear} from 'react-icons/md'
 
 import Container, {RangeInput} from '../../styles/components/forms/Tvshow'
 import api from '../../services/api'
@@ -98,6 +99,13 @@ const TvshowForm: React.FC<TvshowFormProps> = ({tvshow, method, userTvshow}) =>
 		if (rating >= 0 && rating <= 10)
 			tmpRatings[ratingKey] = rating
 			
+		setRatings(tmpRatings)
+	}
+
+	function handleClearRating(ratingKey: string)
+	{
+		let tmpRatings = {...ratings}
+		tmpRatings[ratingKey] = -1
 		setRatings(tmpRatings)
 	}
 
@@ -210,14 +218,25 @@ const TvshowForm: React.FC<TvshowFormProps> = ({tvshow, method, userTvshow}) =>
 											<span>not rated</span>
 										)
 									}
-									<RangeInput
-										type='range'
-										min={0}
-										max={10}
-										value={value >= 0 ? value : 5}
-										onChange={e => handleChangeRating(ratingKey, e)}
-										isUndefined={value < 0}
-									/>
+									<div className='group2'>
+										<RangeInput
+											type='range'
+											min={0}
+											max={10}
+											value={value >= 0 ? value : 5}
+											onChange={e => handleChangeRating(ratingKey, e)}
+											isUndefined={value < 0}
+										/>
+
+										<button
+											className='clear'
+											title='Clear rating'
+											onClick={() => handleClearRating(ratingKey)}
+											type='button'
+										>
+											<MdClear size={15} />
+										</button>
+									</div>
 								</div>
 							</div>
 						))}

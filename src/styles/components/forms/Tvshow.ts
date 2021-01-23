@@ -139,6 +139,37 @@ const Container = styled.div`
 								margin: 0;
 							}
 						}
+
+						.group2
+						{
+							display: flex;
+							align-items: center;
+							gap: 1rem;
+
+							.clear
+							{
+								background: none;
+								border: none;
+								color: ${p => p.theme.primary};
+
+								width: 2rem;
+								height: 2rem;
+								border-radius: 100rem;
+
+								display: flex;
+								align-items: center;
+								justify-content: center;
+
+								cursor: pointer;
+								transition: 0.25s;
+
+								:hover
+								{
+									background-color: ${p => p.theme.primary};
+									color: ${p => p.theme.background};
+								}
+							}
+						}
 					}
 				}
 			}
