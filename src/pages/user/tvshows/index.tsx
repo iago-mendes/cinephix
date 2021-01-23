@@ -11,7 +11,7 @@ import useUser from '../../../hooks/useUser'
 import UserTvshowModal, {defaultTvshow, Tvshow} from '../../../components/modals/UserTvshow'
 import {FiPlus} from 'react-icons/fi'
 import SelectTvshow from '../../../components/modals/SelectTvshow'
-import calcTotalRating from '../../../utils/calcTotalRating'
+import calcTotalRating from '../../../utils/getTotalRating'
 
 interface TvshowList
 {

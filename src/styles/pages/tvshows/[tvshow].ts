@@ -197,6 +197,10 @@ const Container = styled.div<ContainerProps>`
 				font-size: 2rem;
 
 				margin-left: 2rem;
+
+				display: flex;
+				align-items: center;
+				
 			}
 		}
 	}

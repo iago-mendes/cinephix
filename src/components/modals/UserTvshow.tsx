@@ -6,7 +6,7 @@ import Container from '../../styles/components/modals/UserTvshow'
 import {modalStyle} from '../../styles/global'
 import React from 'react'
 import Image from 'next/image'
-import calcTotalRating from '../../utils/calcTotalRating'
+import calcTotalRating from '../../utils/getTotalRating'
 
 Modal.setAppElement('#__next')
 

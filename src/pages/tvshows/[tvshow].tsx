@@ -14,7 +14,7 @@ import formatDate from '../../utils/formatDate'
 import React, { useEffect, useState } from 'react'
 import useUser from '../../hooks/useUser'
 import UserTvshow, {defaultUserTvshow} from '../../models/userTvshow'
-import calcTotalRating from '../../utils/calcTotalRating'
+import getTotalRating from '../../utils/getTotalRating'
 import getStatusLabel from '../../utils/getStatusLabel'
 import getVenue from '../../utils/getVenue'
 
@@ -150,7 +150,7 @@ const Tvshow: React.FC<TvshowProps> = ({tvshow}) =>
 							}
 							<div className='group'>
 								<label>My rating</label>
-								<span>{calcTotalRating(userTvshow.ratings)}</span>
+								<span>{getTotalRating(userTvshow.ratings, true)} ({getTotalRating(userTvshow.ratings)})</span>
 							</div>
 						</>
 					)

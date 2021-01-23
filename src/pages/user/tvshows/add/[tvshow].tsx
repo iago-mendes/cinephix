@@ -15,7 +15,7 @@ import {selectStyles} from '../../../../styles/global'
 import useUser from '../../../../hooks/useUser'
 import confirmAlert from '../../../../utils/alerts/confirm'
 import errorAlert from '../../../../utils/alerts/error'
-import calcTotalRating from '../../../../utils/calcTotalRating'
+import calcTotalRating from '../../../../utils/getTotalRating'
 
 interface SelectOption
 {
