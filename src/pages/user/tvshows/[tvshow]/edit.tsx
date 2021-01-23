@@ -39,7 +39,9 @@ const EditTvshow: React.FC<EditTvshowProps> = ({tvshow}) =>
 		return <Loading style={{marginTop: 'calc(50vh - 5rem)'}} />
 
 	return (
-		<div>
+		<div
+			style={{position: 'relative'}}
+		>
 			<RemoveButton
 				title={tvshow.title}
 				collection='TV shows'

@@ -54,7 +54,7 @@ const RemoveButton: React.FC<RemoveButtonProps> = ({title, collection, apiRoute}
 	}
 
 	return (
-		<Container onClick={handleClick} >
+		<Container onClick={handleClick} title='Remove' >
 			<FiTrash size={30} />
 		</Container>
 	)
