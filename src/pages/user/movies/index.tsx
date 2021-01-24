@@ -2,14 +2,14 @@ import Head from 'next/head'
 import {useEffect, useState} from 'react'
 import Image from 'next/image'
 import {BsFillTriangleFill} from 'react-icons/bs'
+import Select from 'react-select'
 
 import Container, {Dropdown} from '../../../styles/pages/user/movies/index'
 import api from '../../../services/api'
 import useUser from '../../../hooks/useUser'
 import getTotalRating from '../../../utils/getTotalRating'
 import {UserMovieListed} from '../../../models/userMovie'
-import Select from 'react-select'
-import { selectStyles } from '../../../styles/global'
+import {selectStyles} from '../../../styles/global'
 
 const UserMovies: React.FC = () =>
 {
