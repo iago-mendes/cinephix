@@ -33,9 +33,9 @@ const SessionHandler: React.FC = ({children}) =>
 				<Container>
 					<img src={logo} alt='Cinephix' className='logo' />
 					<main>
-						<div className="message">
-							<span>To access this page, you need to be signed in.</span>
-							<p>It's really easy</p>
+						<div className='message'>
+							<span>You need to be signed in to access this page.</span>
+							<p>It's really easy!</p>
 							<p>
 								You don't have to create an account with us; all you have to do is sign in with your Google account.
 							</p>
