@@ -26,8 +26,6 @@ const Container = styled.div`
 				align-items: center;
 				justify-items: center;
 
-				padding: 1rem;
-
 				.movie
 				{
 					width: 30rem;
@@ -103,6 +101,17 @@ const Container = styled.div`
 					}
 				}
 			}
+		}
+
+		.watchList
+		{
+			background-color: ${p => p.theme.black}40;
+			padding: 1rem;
+			border-radius: 1rem;
+
+			display: flex;
+			flex-direction: column;
+			gap: 1.5rem;
 		}
 	}
 `
