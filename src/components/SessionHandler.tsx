@@ -26,7 +26,7 @@ const SessionHandler: React.FC = ({children}) =>
 	if (privateRoutes.includes(route))
 	{
 		if (loading)
-			return <Loading />
+			return <Loading style={{height: 'calc(100vh - 5rem)'}}/>
 
 		if (!user)
 			return (

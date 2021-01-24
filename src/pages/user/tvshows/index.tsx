@@ -98,11 +98,6 @@ const UserTvshows: React.FC = () =>
 		setIsSelectTvshowOpen(true)
 	}
 
-	if (loading)
-		return <Loading />
-	if (!user)
-		return <NotSigned />
-
 	return (
 		<Container>
 			<Head>
