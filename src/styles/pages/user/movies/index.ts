@@ -11,6 +11,32 @@ const Container = styled.div`
 		gap: 2rem;
 		padding: 2rem;
 
+		.options
+		{
+			display: flex;
+			align-items: center;
+			justify-content: flex-end;
+
+			.sort
+			{
+				display: flex;
+				align-items: center;
+				gap: 0.5rem;
+
+				span
+				{
+					font-family: Roboto;
+					font-size: 2rem;
+					color: ${p => p.theme.primary};
+				}
+
+				.select
+				{
+					width: 20rem;
+				}
+			}
+		}
+
 		.watchList, .watched
 		{
 			width: 100%;

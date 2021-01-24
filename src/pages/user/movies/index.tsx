@@ -8,6 +8,8 @@ import api from '../../../services/api'
 import useUser from '../../../hooks/useUser'
 import getTotalRating from '../../../utils/getTotalRating'
 import {UserMovieListed} from '../../../models/userMovie'
+import Select from 'react-select'
+import { selectStyles } from '../../../styles/global'
 
 const UserMovies: React.FC = () =>
 {
@@ -15,6 +17,14 @@ const UserMovies: React.FC = () =>
 
 	const [movieList, setMovieList] = useState<UserMovieListed[]>([])
 	const [showWatchList, setShowWatchList] = useState(false)
+
+	const sortOptions =
+	[
+		{label: 'Title', value: 'title'},
+		{label: 'Release date', value: 'releaseDate'},
+		{label: 'My ratings', value: 'ratings'}
+	]
+	const [sortOption, setSortOption] = useState(sortOptions[0])
 
 	useEffect(() =>
 	{
@@ -37,6 +47,20 @@ const UserMovies: React.FC = () =>
 			</Head>
 
 			<main>
+				<div className='options'>
+					<div className='sort'>
+						<span>Sort by</span>
+						<Select
+							value={sortOption}
+							options={sortOptions}
+							onChange={setSortOption}
+							styles={selectStyles}
+							placeholder='property'
+							className='select'
+						/>
+					</div>
+				</div>
+
 				<div className='watchList'>
 					<Dropdown 
 						showWatchList={showWatchList}
