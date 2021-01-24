@@ -3,15 +3,16 @@ import {useEffect, useState} from 'react'
 import Image from 'next/image'
 import {BsFillTriangleFill} from 'react-icons/bs'
 import Select from 'react-select'
+import {FiPlus} from 'react-icons/fi'
 
 import Container, {Dropdown} from '../../../styles/pages/user/movies/index'
 import api from '../../../services/api'
 import useUser from '../../../hooks/useUser'
 import getTotalRating from '../../../utils/getTotalRating'
-import {UserMovieListed} from '../../../models/userMovie'
+import {defaultUserMovieListed, UserMovieListed} from '../../../models/userMovie'
 import {selectStyles} from '../../../styles/global'
-import { FiPlus } from 'react-icons/fi'
 import SelectMovie from '../../../components/modals/SelectMovie'
+import UserMovieModal from '../../../components/modals/UserMovie'
 
 const UserMovies: React.FC = () =>
 {
@@ -30,6 +31,9 @@ const UserMovies: React.FC = () =>
 
 	const [isSelectMovieOpen, setIsSelectMovieOpen] = useState(false)
 	const [selectMovieWatchedProp, setSelectMovieWatchedProp] = useState(true)
+
+	const [isUserMovieOpen, setIsUserMovieOpen] = useState(false)
+	const [selectedUserMovie, setSelectedUserMovie] = useState<UserMovieListed>(defaultUserMovieListed)
 
 	useEffect(() =>
 	{
@@ -73,6 +77,12 @@ const UserMovies: React.FC = () =>
 		setIsSelectMovieOpen(true)
 	}
 
+	function handleCardClick(movie: UserMovieListed)
+	{
+		setSelectedUserMovie(movie)
+		setIsUserMovieOpen(true)
+	}
+
 	return (
 		<Container>
 			<Head>
@@ -83,6 +93,12 @@ const UserMovies: React.FC = () =>
 				isOpen={isSelectMovieOpen}
 				setIsOpen={setIsSelectMovieOpen}
 				watched={selectMovieWatchedProp}
+			/>
+
+			<UserMovieModal
+				isOpen={isUserMovieOpen}
+				setIsOpen={setIsUserMovieOpen}
+				movie={selectedUserMovie}
 			/>
 
 			<main>
@@ -118,7 +134,7 @@ const UserMovies: React.FC = () =>
 									<div
 										key={movie.data.id}
 										className='movie'
-										onClick={() => {}}
+										onClick={() => handleCardClick(movie)}
 									>
 										<div className='img'>
 											<Image src={movie.data.image} width={780} height={1170} layout='responsive'/>
@@ -145,7 +161,7 @@ const UserMovies: React.FC = () =>
 							<div
 								key={movie.data.id}
 								className='movie'
-								onClick={() => {}}
+								onClick={() => handleCardClick(movie)}
 							>
 								<div className='img'>
 									<Image src={movie.data.image} width={780} height={1170} layout='responsive'/>
