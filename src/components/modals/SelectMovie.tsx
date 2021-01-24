@@ -8,19 +8,19 @@ import Container from '../../styles/components/modals/Select'
 import {modalStyle} from '../../styles/global'
 import MediaCard, {Media} from '../../components/MediaCard'
 import GridPaginate from '../../components/GridPaginate'
-import { useRouter } from 'next/router'
+import {useRouter} from 'next/router'
 
 Modal.setAppElement('#__next')
 
-interface SelectTvshowProps
+interface SelectMovieProps
 {
 	isOpen: boolean
 	setIsOpen: Function
 
-	statusKey: string
+	watched: boolean
 }
 
-const SelectTvshow: React.FC<SelectTvshowProps> = ({isOpen, setIsOpen, statusKey}) =>
+const SelectMovie: React.FC<SelectMovieProps> = ({isOpen, setIsOpen, watched}) =>
 {
 	const router = useRouter()
 
@@ -29,20 +29,20 @@ const SelectTvshow: React.FC<SelectTvshowProps> = ({isOpen, setIsOpen, statusKey
 	const [totalPages, setTotalPages] = useState(1)
 	const [loading, setLoading] = useState(false)
 	
-	const [tvshows, setTvshows] = useState<Media[]>([])
-	const {data, error, revalidate} = useSWR(`/api/getTvshows?search=${search}&page=${page}`)
+	const [movies, setMovies] = useState<Media[]>([])
+	const {data, error, revalidate} = useSWR(`/api/getMovies?search=${search}&page=${page}`)
 
 	useEffect(() =>
 	{
 		if (data && search !== '')
 		{
-			setTvshows(data.tvshows)
+			setMovies(data.movies)
 			setPage(data.paginate.page)
 			setTotalPages(data.paginate.total)
 		}
 		else if (error)
 		{
-			setTvshows([])
+			setMovies([])
 			setPage(1)
 			setTotalPages(1)
 
@@ -55,7 +55,7 @@ const SelectTvshow: React.FC<SelectTvshowProps> = ({isOpen, setIsOpen, statusKey
 		if (search === '' && page === 1)
 		{
 			revalidate()
-			setTvshows([])
+			setMovies([])
 		}
 		else
 		{
@@ -66,9 +66,9 @@ const SelectTvshow: React.FC<SelectTvshowProps> = ({isOpen, setIsOpen, statusKey
 
 	useEffect(() =>
 	{
-		if (tvshows)
+		if (movies)
 			setLoading(false)
-	}, [tvshows])
+	}, [movies])
 
 	useEffect(() =>
 	{
@@ -77,9 +77,9 @@ const SelectTvshow: React.FC<SelectTvshowProps> = ({isOpen, setIsOpen, statusKey
 			setTotalPages(1)
 	}, [search])
 
-	function handleNavigateToAddTvshow(id: number)
+	function handleNavigateToAddMovie(id: number)
 	{
-		router.push(`/user/tvshows/${id}/add?status=${statusKey}`)
+		router.push(`/user/movies/${id}/add?watched=${watched}`)
 		setIsOpen(false)
 	}
 
@@ -90,7 +90,7 @@ const SelectTvshow: React.FC<SelectTvshowProps> = ({isOpen, setIsOpen, statusKey
 		>
 			<Container>
 				<header>
-					<h1>Select a TV show</h1>
+					<h1>Select a movie</h1>
 					<button onClick={() => setIsOpen(false)} >
 						<FiX size={25} />
 					</button>
@@ -99,7 +99,7 @@ const SelectTvshow: React.FC<SelectTvshowProps> = ({isOpen, setIsOpen, statusKey
 					<FaSearch size={25} />
 					<input
 						type='text'
-						placeholder='Search for a TV show'
+						placeholder='Search for a movie'
 						value={search}
 						onChange={e => setSearch(e.target.value)}
 						autoFocus
@@ -113,14 +113,14 @@ const SelectTvshow: React.FC<SelectTvshowProps> = ({isOpen, setIsOpen, statusKey
 						loading={loading}
 						style={{minHeight: 'calc(85vh - 12rem)'}}
 					>
-						{tvshows.map(item => (
+						{movies.map(item => (
 							<MediaCard
 								media={item}
 								showOverview
 								key={item.id}
 								type='tvshow'
 								navigateOnClick={false}
-								onClick={handleNavigateToAddTvshow}
+								onClick={handleNavigateToAddMovie}
 							/>
 						))}
 					</GridPaginate>
@@ -130,4 +130,4 @@ const SelectTvshow: React.FC<SelectTvshowProps> = ({isOpen, setIsOpen, statusKey
 	)
 }
 
-export default SelectTvshow
+export default SelectMovie

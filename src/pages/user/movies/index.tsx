@@ -11,6 +11,7 @@ import getTotalRating from '../../../utils/getTotalRating'
 import {UserMovieListed} from '../../../models/userMovie'
 import {selectStyles} from '../../../styles/global'
 import { FiPlus } from 'react-icons/fi'
+import SelectMovie from '../../../components/modals/SelectMovie'
 
 const UserMovies: React.FC = () =>
 {
@@ -26,6 +27,9 @@ const UserMovies: React.FC = () =>
 		{label: 'My ratings', value: 'ratings'}
 	]
 	const [sortOption, setSortOption] = useState(sortOptions[0])
+
+	const [isSelectMovieOpen, setIsSelectMovieOpen] = useState(false)
+	const [selectMovieWatchedProp, setSelectMovieWatchedProp] = useState(true)
 
 	useEffect(() =>
 	{
@@ -64,13 +68,22 @@ const UserMovies: React.FC = () =>
 	}
 
 	function handleAddClick(watched: boolean)
-	{}
+	{
+		setSelectMovieWatchedProp(watched)
+		setIsSelectMovieOpen(true)
+	}
 
 	return (
 		<Container>
 			<Head>
 				<title>User movies</title>
 			</Head>
+
+			<SelectMovie
+				isOpen={isSelectMovieOpen}
+				setIsOpen={setIsSelectMovieOpen}
+				watched={selectMovieWatchedProp}
+			/>
 
 			<main>
 				<div className='options'>
