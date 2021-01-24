@@ -10,6 +10,7 @@ import Menu from '../components/Menu'
 import GlobalStyle from '../styles/global'
 import theme from '../styles/theme'
 import SessionHandler from '../components/SessionHandler'
+import Footer from '../components/Footer'
 
 const MyApp: React.FC<AppProps> = ({Component, pageProps}) =>
 {
@@ -29,6 +30,7 @@ const MyApp: React.FC<AppProps> = ({Component, pageProps}) =>
 				<SessionHandler>
 					<Component {...pageProps} />
 				</SessionHandler>
+				<Footer />
 				<GlobalStyle />
 			</SessionProvider>
 		</ThemeProvider>
