@@ -1,9 +1,9 @@
 import Modal from 'react-modal'
-import {FiEdit3, FiX} from 'react-icons/fi'
+import {FiEdit3, FiEye, FiX} from 'react-icons/fi'
 import {BiExpand} from 'react-icons/bi'
 import {useRouter} from 'next/router'
 
-import Container from '../../styles/components/modals/UserTvshow'
+import Container from '../../styles/components/modals/UserMovie'
 import {modalStyle} from '../../styles/global'
 import React from 'react'
 import Image from 'next/image'
@@ -67,29 +67,41 @@ const UserMovieModal: React.FC<UserMovieModalProps> = ({isOpen, setIsOpen, movie
 								</div>
 							)
 						}
-						<div className='group'>
-							<label>Ratings</label>
-							<div className='rating'>
-								<label>Total:</label>
-								{
-									Object.values(movie.ratings).length !== 0
-									? (
-										<span>
-											{getTotalRating(movie.ratings, true, 15)} ({getTotalRating(movie.ratings)})
-										</span>
-									)
-									: (
-										<span>not rated</span>
-									)
-								}
-							</div>
-							{Object.entries(movie.ratings).map(([ratingKey, value]) => (
-								<div className='rating' key={ratingKey}>
-									<label>{getRatingLabel('movie', ratingKey)}:</label>
-									<span>{value}</span>
+						{
+							movie.watched && (
+								<div className='group'>
+									<label>Ratings</label>
+									<div className='rating'>
+										<label>Total:</label>
+										{
+											Object.values(movie.ratings).length !== 0
+											? (
+												<span>
+													{getTotalRating(movie.ratings, true, 15)} ({getTotalRating(movie.ratings)})
+												</span>
+											)
+											: (
+												<span>not rated</span>
+											)
+										}
+									</div>
+									{Object.entries(movie.ratings).map(([ratingKey, value]) => (
+										<div className='rating' key={ratingKey}>
+											<label>{getRatingLabel('movie', ratingKey)}:</label>
+											<span>{value}</span>
+										</div>
+									))}
 								</div>
-							))}
-						</div>
+							)
+						}
+						{
+							!movie.watched && (
+								<button className='move'>
+									<FiEye size={25} />
+									<span>Mark as watched</span>
+								</button>
+							)
+						}
 					</div>
 					<button className='edit' title='Edit' onClick={handleEdit} >
 						<FiEdit3 size={30} />

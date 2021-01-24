@@ -78,6 +78,7 @@ const Container = styled.div`
 
 			display: flex;
 			flex-direction: column;
+			align-items: center;
 			justify-content: center;
 			gap: 2rem;
 
@@ -85,10 +86,13 @@ const Container = styled.div`
 			{
 				font-family: Ubuntu;
 				font-size: 3rem;
+				width: 100%;
 			}
 
 			.group
 			{
+				width: 100%;
+
 				display: flex;
 				flex-direction: column;
 				gap: 0.5rem;
@@ -131,6 +135,39 @@ const Container = styled.div`
 					{
 						margin: 0;
 					}
+				}
+			}
+
+			.move
+			{
+				display: flex;
+				align-items: center;
+				gap: 1rem;
+
+				width: fit-content;
+				background: none;
+				border: ${p => p.theme.primary} 2px solid;
+
+				color: ${p => p.theme.primary};
+				padding: 1rem;
+				border-radius: 100rem;
+
+				cursor: pointer;
+				transition: 0.25s;
+
+				:hover
+				{
+					color: ${p => p.theme.background};
+					background-color: ${p => p.theme.primary};
+
+					transform: scale(1.1);
+				}
+
+				span
+				{
+					font-family: Ubuntu;
+					font-weight: 700;
+					font-size: 2rem;
 				}
 			}
 		}
