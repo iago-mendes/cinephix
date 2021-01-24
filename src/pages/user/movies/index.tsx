@@ -33,12 +33,34 @@ const UserMovies: React.FC = () =>
 			if (user)
 			{
 				const {data}:{data: UserMovieListed[]} = await api.get(`users/${user.email}/movies`)
-				setMovieList(data)
+				setMovieList(handleSort(data))
 			}
 		}
 
 		getMovieList()
 	}, [user])
+
+	useEffect(() =>
+	{
+		handleSort()
+	},[sortOption])
+
+	function handleSort(data?: UserMovieListed[])
+	{
+		let tmpMovieList = data ? [...data] : [...movieList]
+
+		if (sortOption.value === 'title')
+			tmpMovieList.sort((a, b) => a.data.title < b.data.title ? -1 : 1)
+		else if (sortOption.value === 'releaseDate')
+			tmpMovieList.sort((a, b) => a.data.date > b.data.date ? -1 : 1)
+		else if (sortOption.value === 'ratings')
+			tmpMovieList.sort((a, b) => getTotalRating(a.ratings) < getTotalRating(b.ratings) ? -1 : 1)
+
+		if (data)
+			return tmpMovieList
+		else
+			setMovieList(tmpMovieList)
+	}
 
 	return (
 		<Container>
