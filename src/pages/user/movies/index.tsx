@@ -10,6 +10,7 @@ import useUser from '../../../hooks/useUser'
 import getTotalRating from '../../../utils/getTotalRating'
 import {UserMovieListed} from '../../../models/userMovie'
 import {selectStyles} from '../../../styles/global'
+import { FiPlus } from 'react-icons/fi'
 
 const UserMovies: React.FC = () =>
 {
@@ -62,6 +63,9 @@ const UserMovies: React.FC = () =>
 			setMovieList(tmpMovieList)
 	}
 
+	function handleAddClick(watched: boolean)
+	{}
+
 	return (
 		<Container>
 			<Head>
@@ -94,6 +98,9 @@ const UserMovies: React.FC = () =>
 					{
 						showWatchList && (
 							<div className='grid' >
+								<button className='add' title='Add a movie' onClick={() => handleAddClick(false)} >
+									<FiPlus size={30} />
+								</button>
 								{movieList.filter(({watched}) => !watched).map((movie, index) => (
 									<div
 										key={movie.data.id}
@@ -115,8 +122,12 @@ const UserMovies: React.FC = () =>
 						)
 					}
 				</div>
+
 				<div className='watched'>
 					<div className='grid' >
+						<button className='add' title='Add a movie' onClick={() => handleAddClick(true)} >
+							<FiPlus size={30} />
+						</button>
 						{movieList.filter(({watched}) => watched).map((movie) => (
 							<div
 								key={movie.data.id}

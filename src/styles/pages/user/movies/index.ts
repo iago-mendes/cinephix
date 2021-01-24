@@ -126,6 +126,31 @@ const Container = styled.div`
 						}
 					}
 				}
+
+				.add
+				{
+					display: flex;
+					align-items: center;
+					justify-content: center;
+
+					border: none;
+					background: none;
+					color: ${p => p.theme.primary};
+					border: ${p => p.theme.primary} 2px solid;
+
+					width: 4rem;
+					height: 4rem;
+					border-radius: 100rem;
+
+					cursor: pointer;
+					transition: 0.25s;
+
+					:hover
+					{
+						color: ${p => p.theme.background};
+						background-color: ${p => p.theme.primary}
+					}
+				}
 			}
 		}
 
