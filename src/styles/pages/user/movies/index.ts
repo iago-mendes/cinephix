@@ -148,7 +148,9 @@ const Container = styled.div`
 					:hover
 					{
 						color: ${p => p.theme.background};
-						background-color: ${p => p.theme.primary}
+						background-color: ${p => p.theme.primary};
+
+						transform: scale(1.5);
 					}
 				}
 			}
