@@ -107,4 +107,40 @@ const Container = styled.div`
 	}
 `
 
+interface DropdownProps
+{
+	showWatchList: boolean
+}
+
+export const Dropdown = styled.div<DropdownProps>`
+	width: fit-content;
+
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+
+	color: ${p => p.theme.primary};
+
+	cursor: pointer;
+	transition: 0.25s;
+
+	:hover
+	{
+		transform: scale(1.05);
+	}
+
+	span
+	{
+		font-family: Roboto;
+		font-weight: 700;
+		font-size: 2.5rem;
+	}
+
+	svg
+	{
+		transition: 0.25s;
+		transform: ${p => p.showWatchList ? 'rotate(180deg)' : 'rotate(90deg)'};
+	}
+`
+
 export default Container
