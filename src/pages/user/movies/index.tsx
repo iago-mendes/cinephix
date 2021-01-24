@@ -37,15 +37,6 @@ const UserMovies: React.FC = () =>
 
 	useEffect(() =>
 	{
-		async function getMovieList()
-		{
-			if (user)
-			{
-				const {data}:{data: UserMovieListed[]} = await api.get(`users/${user.email}/movies`)
-				setMovieList(handleSort(data))
-			}
-		}
-
 		getMovieList()
 	}, [user])
 
@@ -53,6 +44,15 @@ const UserMovies: React.FC = () =>
 	{
 		handleSort()
 	},[sortOption])
+
+	async function getMovieList()
+	{
+		if (user)
+		{
+			const {data}:{data: UserMovieListed[]} = await api.get(`users/${user.email}/movies`)
+			setMovieList(handleSort(data))
+		}
+	}
 
 	function handleSort(data?: UserMovieListed[])
 	{
@@ -99,6 +99,7 @@ const UserMovies: React.FC = () =>
 				isOpen={isUserMovieOpen}
 				setIsOpen={setIsUserMovieOpen}
 				movie={selectedUserMovie}
+				revalidate={getMovieList}
 			/>
 
 			<main>

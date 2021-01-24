@@ -11,6 +11,10 @@ import getTotalRating from '../../utils/getTotalRating'
 import {UserMovieListed} from '../../models/userMovie'
 import getVenue from '../../utils/getVenue'
 import getRatingLabel from '../../utils/getRatingLabel'
+import api from '../../services/api'
+import useUser from '../../hooks/useUser'
+import confirmAlert from '../../utils/alerts/confirm'
+import errorAlert from '../../utils/alerts/error'
 
 Modal.setAppElement('#__next')
 
@@ -20,10 +24,12 @@ interface UserMovieModalProps
 	setIsOpen: Function
 
 	movie: UserMovieListed
+	revalidate: Function
 }
 
-const UserMovieModal: React.FC<UserMovieModalProps> = ({isOpen, setIsOpen, movie}) =>
+const UserMovieModal: React.FC<UserMovieModalProps> = ({isOpen, setIsOpen, movie, revalidate}) =>
 {
+	const {user} = useUser()
 	const {push} = useRouter()
 
 	function handleExpand()
@@ -36,6 +42,26 @@ const UserMovieModal: React.FC<UserMovieModalProps> = ({isOpen, setIsOpen, movie
 	{
 		setIsOpen(false)
 		push(`/user/movies/${movie.data.id}/edit`)
+	}
+
+	function handleMoveToWatched()
+	{
+		const data =
+		{
+			watched: true
+		}
+
+		api.put(`users/${user.email}/movies/${movie.data.id}`, data)
+			.then(() =>
+			{
+				revalidate()
+				confirmAlert(`'${movie.data.title}' was successfully marked as watched!`)
+				setIsOpen(false)
+			})
+			.catch(err =>
+			{
+				errorAlert(err.response.data.message)
+			})
 	}
 
 	return (
@@ -96,7 +122,7 @@ const UserMovieModal: React.FC<UserMovieModalProps> = ({isOpen, setIsOpen, movie
 						}
 						{
 							!movie.watched && (
-								<button className='move'>
+								<button className='move' onClick={handleMoveToWatched} >
 									<FiEye size={25} />
 									<span>Mark as watched</span>
 								</button>
