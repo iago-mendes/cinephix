@@ -54,6 +54,9 @@ const UserMenu: React.FC<UserMenuProps> = ({isOpen, setIsOpen}) =>
 						<Link href='/user/tvshows'>
 							My TV shows
 						</Link>
+						<Link href='/user/movies'>
+							My movies
+						</Link>
 					</div>
 				</main>
 			</Container>
