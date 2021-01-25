@@ -13,7 +13,7 @@ import useUser from '../../hooks/useUser'
 import confirmAlert from '../../utils/alerts/confirm'
 import errorAlert from '../../utils/alerts/error'
 import calcTotalRating from '../../utils/getTotalRating'
-import Ratings, {defaultTvshowRatings} from '../../models/ratings'
+import Ratings, {defaultMovieRatings} from '../../models/ratings'
 import UserMovie, {defaultUserMovie} from '../../models/userMovie'
 import {SelectOption} from '../../models'
 import getRatingLabel from '../../utils/getRatingLabel'
@@ -33,7 +33,7 @@ const MovieForm: React.FC<MovieFormProps> = ({movie, method, userMovie}) =>
 
 	const [watched, setWatched] = useState(false)
 	const [venue, setVenue] = useState('')
-	const [ratings, setRatings] = useState<Ratings>(defaultTvshowRatings)
+	const [ratings, setRatings] = useState<Ratings>(defaultMovieRatings)
 
 	const venueOptions: SelectOption[] =
 	[
