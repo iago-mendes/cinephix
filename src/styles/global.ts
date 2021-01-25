@@ -46,6 +46,11 @@ export default createGlobalStyle`
 		
 	}
 
+	.page
+	{
+		min-height: calc(100vh - 5rem);
+	}
+
 	.swal2-popup
 	{
 		background-color: ${p => p.theme.black} !important;
