@@ -19,6 +19,7 @@
     "react-icons": "^4.1.0",
     "react-modal": "^3.12.1",
     "react-select": "^3.2.0",
+    "react-switch": "^6.0.0",
     "styled-components": "^5.2.1",
     "sweetalert2": "^10.13.0",
     "sweetalert2-react-content": "^3.2.2",

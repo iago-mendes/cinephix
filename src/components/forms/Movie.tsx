@@ -4,6 +4,7 @@ import Image from 'next/image'
 import {useRouter} from 'next/router'
 import {FiCheck, FiX} from 'react-icons/fi'
 import {MdClear} from 'react-icons/md'
+import Switch from 'react-switch'
 
 import Container, {RangeInput} from '../../styles/components/forms/global'
 import api from '../../services/api'
@@ -140,7 +141,19 @@ const MovieForm: React.FC<MovieFormProps> = ({movie, method, userMovie}) =>
 			<div className='info'>
 				<h1>{movie.title}</h1>
 				<form onSubmit={handleSubmit} >
-					<div className='selectField'>
+					<div className='field'>
+						<label htmlFor='watched'>Watched</label>
+						<Switch
+							name='watched'
+							id='watched'
+							checked={watched}
+							onChange={setWatched}
+							onHandleColor='#d8d8d8'
+							offHandleColor='#d8d8d8'
+							className='switch'
+						/>
+					</div>
+					<div className='field'>
 						<label htmlFor='venue'>Venue</label>
 						<Select
 							id='venue'

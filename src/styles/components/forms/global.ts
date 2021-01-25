@@ -57,7 +57,7 @@ const Container = styled.div`
 				padding-left: 1rem;
 			}
 
-			.selectField
+			.field
 			{
 				width: 75%;
 
@@ -65,7 +65,7 @@ const Container = styled.div`
 				flex-direction: column;
 				gap: 0.5rem;
 
-				.select
+				.select, .switch
 				{
 					margin-left: 2rem;
 				}
