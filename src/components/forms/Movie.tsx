@@ -1,4 +1,3 @@
-import Head from 'next/head'
 import {ChangeEvent, FormEvent, useEffect, useState} from 'react'
 import Select from 'react-select'
 import Image from 'next/image'
@@ -8,57 +7,33 @@ import {MdClear} from 'react-icons/md'
 
 import Container, {RangeInput} from '../../styles/components/forms/global'
 import api from '../../services/api'
-import TvshowDetails from '../../models/tvshow'
+import MovieDetails from '../../models/movie'
 import {selectStyles} from '../../styles/global'
 import useUser from '../../hooks/useUser'
 import confirmAlert from '../../utils/alerts/confirm'
 import errorAlert from '../../utils/alerts/error'
 import calcTotalRating from '../../utils/getTotalRating'
 import Ratings, {defaultTvshowRatings} from '../../models/ratings'
-import UserTvshow, { defaultUserTvshow } from '../../models/userTvshow'
+import UserMovie, {defaultUserMovie} from '../../models/userMovie'
+import {SelectOption} from '../../models'
+import getRatingLabel from '../../utils/getRatingLabel'
 
-interface SelectOption
+interface MovieFormProps
 {
-	label: string
-	value: string
-}
-
-const ratingsLabels: {[ratingKey: string]: string} =
-{
-	engagement: 'Engagement',
-	consistency: 'Consistency',
-	screenplay: 'Screenplay',
-	acting: 'Acting',
-	cinematography: 'Cinematography',
-	musicAndSound: 'Music and sound'
-}
-
-interface TvshowFormProps
-{
-	tvshow: TvshowDetails
+	movie: MovieDetails
 	method: string
 
-	userTvshow?: UserTvshow
+	userMovie?: UserMovie
 }
 
-const TvshowForm: React.FC<TvshowFormProps> = ({tvshow, method, userTvshow}) =>
+const MovieForm: React.FC<MovieFormProps> = ({movie, method, userMovie}) =>
 {
 	const {query, back, push} = useRouter()
 	const {user} = useUser()
 
-	const [status, setStatus] = useState('')
+	const [watched, setWatched] = useState(false)
 	const [venue, setVenue] = useState('')
 	const [ratings, setRatings] = useState<Ratings>(defaultTvshowRatings)
-
-	const statusOptions: SelectOption[] = 
-	[
-		{label: 'Watch list', value: 'watchList'},
-		{label: 'Watching', value: 'watching'},
-		{label: 'Waiting', value: 'waiting'},
-		{label: 'Completed', value: 'completed'},
-		{label: 'Stopped', value: 'stopped'},
-		{label: 'Paused', value: 'paused'}
-	]
 
 	const venueOptions: SelectOption[] =
 	[
@@ -72,24 +47,24 @@ const TvshowForm: React.FC<TvshowFormProps> = ({tvshow, method, userTvshow}) =>
 
 	useEffect(() =>
 	{
-		const {status: statusKey} = query
+		const {watched} = query
 
-		if (statusKey)
-			setStatus(String(statusKey))
+		if (watched && Boolean(watched))
+			setWatched(Boolean(watched))
 	}, [query])
 
 	useEffect(() =>
 	{
-		if (userTvshow && userTvshow !== defaultUserTvshow)
+		if (userMovie && userMovie !== defaultUserMovie)
 		{
-			setStatus(userTvshow.status)
-			setVenue(userTvshow.venue)
-			Object.entries(userTvshow.ratings).map(([ratingKey, value]) =>
+			setWatched(userMovie.watched)
+			setVenue(userMovie.venue)
+			Object.entries(userMovie.ratings).map(([ratingKey, value]) =>
 			{
 				handleChangeRating(ratingKey, undefined, value)
 			})
 		}
-	}, [userTvshow])
+	}, [userMovie])
 
 	function handleChangeRating(ratingKey: string, e?: ChangeEvent<HTMLInputElement>, ratingValue?: number)
 	{
@@ -115,8 +90,8 @@ const TvshowForm: React.FC<TvshowFormProps> = ({tvshow, method, userTvshow}) =>
 
 		const data =
 		{
-			id: tvshow.id,
-			status: status,
+			id: movie.id,
+			watched,
 			venue: venue !== '' ? venue : undefined,
 			ratings:
 			{
@@ -131,11 +106,11 @@ const TvshowForm: React.FC<TvshowFormProps> = ({tvshow, method, userTvshow}) =>
 		
 		if (method === 'post')
 		{
-			api.post(`users/${user.email}/tvshows`, data)
+			api.post(`users/${user.email}/movies`, data)
 				.then(() =>
 				{
-					confirmAlert(`'${tvshow.title}' was successfully added to your TV shows!`)
-					push('/user/tvshows')
+					confirmAlert(`'${movie.title}' was successfully added to your movies!`)
+					push('/user/movies')
 				})
 				.catch(err =>
 				{
@@ -144,10 +119,10 @@ const TvshowForm: React.FC<TvshowFormProps> = ({tvshow, method, userTvshow}) =>
 		}
 		else if (method === 'put')
 		{
-			api.put(`users/${user.email}/tvshows/${userTvshow.data.id}`, data)
+			api.put(`users/${user.email}/movies/${userMovie.data.id}`, data)
 				.then(() =>
 				{
-					confirmAlert(`'${tvshow.title}' was successfully edited!`)
+					confirmAlert(`'${movie.title}' was successfully edited!`)
 					back()
 				})
 				.catch(err =>
@@ -159,29 +134,12 @@ const TvshowForm: React.FC<TvshowFormProps> = ({tvshow, method, userTvshow}) =>
 
 	return (
 		<Container>
-			<Head>
-				<title>Add Tvshow</title>
-			</Head>
-
 			<div className='img'>
-				<Image src={tvshow.image} width={780} height={1170} layout='responsive'/>
+				<Image src={movie.image} width={780} height={1170} layout='responsive'/>
 			</div>
 			<div className='info'>
-				<h1>{tvshow.title}</h1>
+				<h1>{movie.title}</h1>
 				<form onSubmit={handleSubmit} >
-					<div className='selectField'>
-						<label htmlFor='status'>Status</label>
-						<Select
-							id='status'
-							name='status'
-							value={statusOptions.find(({value}) => value === status)}
-							options={statusOptions}
-							onChange={e => setStatus(e.value)}
-							styles={selectStyles}
-							placeholder='Select a status'
-							className='select'
-						/>
-					</div>
 					<div className='selectField'>
 						<label htmlFor='venue'>Venue</label>
 						<Select
@@ -203,7 +161,7 @@ const TvshowForm: React.FC<TvshowFormProps> = ({tvshow, method, userTvshow}) =>
 						</div>
 						{Object.entries(ratings).map(([ratingKey, value]) => (
 							<div className='rating' key={ratingKey}>
-								<label>{ratingsLabels[ratingKey]}:</label>
+								<label>{getRatingLabel('movie', ratingKey)}:</label>
 								<div className='group'>
 									{
 										value >= 0
@@ -255,4 +213,4 @@ const TvshowForm: React.FC<TvshowFormProps> = ({tvshow, method, userTvshow}) =>
 	)
 }
 
-export default TvshowForm
+export default MovieForm
