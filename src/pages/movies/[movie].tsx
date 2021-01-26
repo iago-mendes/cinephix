@@ -1,7 +1,7 @@
 import {GetStaticPaths, GetStaticProps} from 'next'
 import Head from 'next/head'
 import {useRouter} from 'next/router'
-import {FiCalendar, FiInfo, FiStar} from 'react-icons/fi'
+import {FiCalendar, FiEdit3, FiInfo, FiPlus, FiStar} from 'react-icons/fi'
 import {SwiperSlide} from 'swiper/react'
 import Image from 'next/image'
 import {useEffect, useState} from 'react'
@@ -15,6 +15,9 @@ import formatDate from '../../utils/formatDate'
 import MovieDetails from '../../models/movie'
 import useUser from '../../hooks/useUser'
 import UserMovie, {defaultUserMovie} from '../../models/userMovie'
+import getStatusLabel from '../../utils/getStatusLabel'
+import getVenue from '../../utils/getVenue'
+import getTotalRating from '../../utils/getTotalRating'
 
 interface MovieProps
 {
@@ -23,7 +26,7 @@ interface MovieProps
 
 const Movie: React.FC<MovieProps> = ({movie}) =>
 {
-	const Router = useRouter()
+	const router = useRouter()
 	const {user} = useUser()
 
 	const [userMovie, setUserMovie] = useState<UserMovie>(defaultUserMovie)
@@ -36,8 +39,8 @@ const Movie: React.FC<MovieProps> = ({movie}) =>
 				.catch(() => setUserMovie(defaultUserMovie))
 	}, [user, movie])
 
-	if (Router.isFallback)
-		return <Loading />
+	if (router.isFallback)
+		return <Loading style={{height: 'calc(100vh - 5rem)'}} />
 
 	return (
 		<Container>
@@ -86,6 +89,45 @@ const Movie: React.FC<MovieProps> = ({movie}) =>
 					</div>
 				</div>
 			)}
+
+			<div className='row userMovie'>
+				{
+					(user && userMovie !== defaultUserMovie)
+					? (
+						<>
+							<div className='group'>
+								<label>My status</label>
+								<span>{userMovie.watched ? 'Watched' : 'Watch list'}</span>
+							</div>
+							{
+								userMovie.venue && (
+									<div className='group'>
+										<label>My venue</label>
+										<span>{getVenue(userMovie.venue)}</span>
+									</div>
+								)
+							}
+							{
+								Object.values(userMovie.ratings).length !== 0 && (
+									<div className='group'>
+										<label>My rating</label>
+										<span>{getTotalRating(userMovie.ratings, true)} ({getTotalRating(userMovie.ratings)})</span>
+									</div>
+								)
+							}
+							<button className='edit' title='Edit' onClick={() => router.push(`/user/movies/${movie.id}/edit`)} >
+								<FiEdit3 size={30} />
+							</button>
+						</>
+					)
+					: (
+						<button className='add' onClick={() => router.push(`/user/movies/${movie.id}/add`)} >
+							<FiPlus size={30} />
+							<span>Add to your movies</span>
+						</button>
+					)
+				}
+			</div>
 
 			<div className='cast'>
 				<span>Cast ({movie.credits.cast.length})</span>
