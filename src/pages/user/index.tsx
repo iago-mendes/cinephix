@@ -46,7 +46,7 @@ const User: React.FC = () =>
 		]
 
 		const [year, month, day] = unformatedDate.split('T')[0].split('-').map(s => Number(s))
-		return `${months[month]} ${day}, ${year}`
+		return `${months[month-1]} ${day}, ${year}`
 	}
 
 	function handleDelete()
