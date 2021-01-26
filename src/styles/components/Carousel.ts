@@ -99,6 +99,8 @@ const Container = styled.div`
 			{
 				color: ${p => p.theme.background};
 				background-color: ${p => p.theme.primary};
+
+				box-shadow: 0px 0px 10px rgba(0,0,0,0.5);
 			}
 		}
 	}
