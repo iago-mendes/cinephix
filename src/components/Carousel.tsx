@@ -1,16 +1,29 @@
 import Image from 'next/image'
-import { useRouter } from 'next/router'
+import {useRouter} from 'next/router'
 import {Swiper} from 'swiper/react'
 
 import Container from '../styles/components/Carousel'
+import useDimensions from '../hooks/useDimensions'
 
 const Carousel: React.FC = ({children}) =>
 {
+	const {width} = useDimensions()
+
+	function getSlidesPerView()
+	{
+		if (width <= 900)
+			return 1
+		else if (width <= 1250)
+			return 2
+		else
+			return 3
+	}
+
 	return (
 		<Container>
 			<Swiper
 				spaceBetween={50}
-				slidesPerView={3}
+				slidesPerView={getSlidesPerView()}
 				navigation
 				className='swiper'
 			>

@@ -104,6 +104,15 @@ const Container = styled.div`
 			}
 		}
 	}
+
+	@media(max-width: 600px)
+	{
+		.swiper .swiper-slide .card
+		{
+			width: 25rem;
+			height: calc((25rem - 2rem) * 0.3 * 1.5 + 2rem);
+		}
+	}
 `
 
 export default Container
