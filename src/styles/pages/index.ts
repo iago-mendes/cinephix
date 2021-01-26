@@ -71,8 +71,9 @@ const Container = styled.div`
 		header
 		{
 			flex-direction: column;
-			height: 40rem;
-			padding-bottom: 2rem;
+			height: 45rem;
+			padding: 2rem;
+			padding-bottom: 5rem;
 
 			.icons
 			{
@@ -124,7 +125,8 @@ const Container = styled.div`
 
 			.logo
 			{
-				width: 30rem;
+				width: 75vw;
+				max-width: 50rem;
 			}
 		}
 	}
