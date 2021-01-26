@@ -129,7 +129,7 @@ const Movie: React.FC<MovieProps> = ({movie}) =>
 				}
 			</div>
 
-			<div className='cast'>
+			<div className='row carousel'>
 				<span>Cast ({movie.credits.cast.length})</span>
 				<Carousel>
 					{movie.credits.cast.map((celebrity, index) => (
@@ -145,7 +145,7 @@ const Movie: React.FC<MovieProps> = ({movie}) =>
 				</Carousel>
 			</div>
 
-			<div className='crew'>
+			<div className='row carousel'>
 				<span>Crew ({movie.credits.crew.length})</span>
 				<Carousel>
 					{movie.credits.crew.map((celebrity, index) => (
