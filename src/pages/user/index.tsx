@@ -3,6 +3,7 @@ import Image from 'next/image'
 import {useEffect, useState} from 'react'
 import {HiOutlineUserRemove} from 'react-icons/hi'
 import {FiArrowRight} from 'react-icons/fi'
+import Link from 'next/link'
 
 import Container from '../../styles/pages/user/index'
 import Loading from '../../components/Loading'
@@ -10,7 +11,6 @@ import useUser from '../../hooks/useUser'
 import UserInfo, {defaultUser} from '../../models/user'
 import api from '../../services/api'
 import errorAlert from '../../utils/alerts/error'
-import Link from 'next/link'
 
 const User: React.FC = () =>
 {
@@ -67,7 +67,7 @@ const User: React.FC = () =>
 				</button>
 			</main>
 
-			<div className="links">
+			<div className='links'>
 				<Link href='/user/tvshows'>
 					<a>
 						<span>
