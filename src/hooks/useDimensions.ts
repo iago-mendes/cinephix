@@ -2,7 +2,7 @@ import {useEffect, useState} from 'react'
 
 function useDimensions()
 {
-	const [width, setWidth] = useState(1500)
+	const [width, setWidth] = useState(600)
 	const [height, setHeight] = useState(800)
 	
 	useEffect(() =>
