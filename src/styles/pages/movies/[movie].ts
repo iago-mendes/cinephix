@@ -275,6 +275,53 @@ const Container = styled.div`
 			border-left: ${p => p.theme.primary} 5px solid;
 		}
 	}
+
+	@media(max-width: 1000px)
+	{
+		main
+		{
+			height: fit-content;
+
+			flex-direction: column;
+			align-items: center;
+
+			.img
+			{
+				width: 75vw;
+				max-width: 40rem;
+			}
+
+			.info
+			{
+				width: 100%;
+				margin: 0;
+				margin-top: 2rem;
+
+				h1
+				{
+					font-size: 3rem;
+				}
+
+				.details
+				{
+					flex-direction: column;
+					align-items: flex-start;
+					gap: 1rem;
+				}
+			}
+		}
+
+		.userMovie
+		{
+			flex-direction: column;
+			gap: 2rem;
+
+			.group
+			{
+				width: 100%;
+			}
+		}
+	}
 `
 
 export default Container
