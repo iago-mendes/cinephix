@@ -137,6 +137,33 @@ const Container = styled.div`
 		}
 
 	}
+
+	@media(max-width: 600px)
+	{
+		width: 30rem;
+		height: calc((30rem - 2rem) * 0.3 * 1.5 + 2rem);
+
+		font-size: 5px;
+
+		.info
+		{
+			h1
+			{
+				font-size: 1.75rem;
+			}
+
+			.media
+			{
+				width: 16rem;
+				height: calc((16rem - 1rem) * 0.3 * 1.5 + 1rem);
+
+				.mediaInfo h1
+				{
+					font-size: 1.25rem;
+				}
+			}
+		}
+	}
 `
 
 export default Container

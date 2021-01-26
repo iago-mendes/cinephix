@@ -86,6 +86,27 @@ const Container = styled.div`
 		}
 
 	}
+
+	@media(max-width: 600px)
+	{
+		width: 30rem;
+		height: calc((30rem - 2rem) * 0.3 * 1.5 + 2rem);
+
+		font-size: 5px;
+
+		.info
+		{
+			h1
+			{
+				font-size: 1.75rem;
+			}
+
+			p
+			{
+				font-size: 1.2rem;
+			}
+		}
+	}
 `
 
 export default Container

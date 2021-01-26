@@ -81,6 +81,32 @@ const Container = styled.footer`
 			}
 		}
 	}
+
+	@media(max-width: 700px)
+	{
+		flex-direction: column;
+		gap: 1rem;
+
+		.logo
+		{
+			width: 50%;
+		}
+
+		.info
+		{
+			width: 100%;
+
+			.links
+			{
+				display: grid;
+				grid-auto-rows: 3rem;
+				grid-template-columns: repeat(auto-fill, minmax(11rem, 1fr));
+				grid-gap: 1rem;
+				align-items: center;
+				justify-items: center;
+			}
+		}
+	}
 `
 
 export default Container
