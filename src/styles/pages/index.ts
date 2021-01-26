@@ -65,6 +65,69 @@ const Container = styled.div`
 			width: 50rem;
 		}
 	}
+
+	@media(max-width: 1000px)
+	{
+		header
+		{
+			flex-direction: column;
+			height: 40rem;
+			padding-bottom: 2rem;
+
+			.icons
+			{
+				flex-direction: row;
+				justify-content: space-around;
+
+				width: 100%;
+
+				img
+				{
+					max-width: 7rem;
+					max-height: 7rem;
+				}
+			}
+
+			.left
+			{
+				img:nth-child(even)
+				{
+					margin-left: 0;
+					margin-top: 5rem;
+					transform: rotate(25deg);
+				}
+
+				img:nth-child(odd)
+				{
+					margin-right: 0;
+					margin-bottom: 5rem;
+					transform: rotate(-25deg);
+				}
+			}
+
+			.right
+			{
+				img:nth-child(odd)
+				{
+					margin-left: 0;
+					margin-top: 5rem;
+					transform: rotate(25deg);
+				}
+
+				img:nth-child(even)
+				{
+					margin-right: 0;
+					margin-bottom: 5rem;
+					transform: rotate(-25deg);
+				}
+			}
+
+			.logo
+			{
+				width: 30rem;
+			}
+		}
+	}
 `
 
 export default Container

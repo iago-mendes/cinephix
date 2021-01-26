@@ -40,6 +40,11 @@ const Container = styled.div`
 		background: none;
 		border: none;
 	}
+
+	@media(max-width: 1000px)
+	{
+		width: 30rem;
+	}
 `
 
 export default Container
