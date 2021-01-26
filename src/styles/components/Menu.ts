@@ -132,6 +132,18 @@ const Container = styled.nav<ContainerProps>`
 			}
 		}
 	}
+
+	.burger
+	{
+		background: none;
+		border: none;
+
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		color: ${p => p.theme.primary};
+	}
 `
 
 export default Container
