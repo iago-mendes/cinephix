@@ -117,6 +117,40 @@ const Container = styled.div`
 			}
 		}
 	}
+
+	@media(max-width: 1000px)
+	{
+		main
+		{
+			flex-direction: column;
+			gap: 4rem;
+
+			.group
+			{
+				h1
+				{
+					font-size: 2.5rem;
+				}
+
+				h2
+				{
+					font-size: 2rem;
+				}
+			}
+		}
+
+		.links
+		{
+			flex-direction: column;
+			align-items: flex-start;
+			gap: 2rem;
+
+			a
+			{
+				font-size: 2.25rem;
+			}
+		}
+	}
 `
 
 export default Container
