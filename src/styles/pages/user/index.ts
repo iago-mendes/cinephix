@@ -11,14 +11,10 @@ const Container = styled.div`
 
 		border-bottom: ${p => p.theme.primary} 2px solid;
 
-		.img
+		img
 		{
 			width: 25rem;
-
-			img
-			{
-				border-radius: 2rem;
-			}
+			border-radius: 2rem;
 		}
 
 		.group

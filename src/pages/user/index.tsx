@@ -87,9 +87,7 @@ const User: React.FC = () =>
 			</Head>
 
 			<main>
-				<div className='img'>
-					<Image src={user.image} width={100} height={100} layout='responsive'/>
-				</div>
+				<img src={user.image} alt={user.name} />
 				<div className='group'>
 					<h1>{user.name}</h1>
 					<h2>{user.email}</h2>
