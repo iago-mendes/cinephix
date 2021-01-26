@@ -91,7 +91,7 @@ const Tvshow: React.FC<TvshowProps> = ({tvshow}) =>
 				<div className='info'>
 					<h1>{tvshow.title}</h1>
 					<div className='details'>
-						<div className='detail'>
+						<div className='detail dates'>
 							<FiCalendar size={30} />
 							<span>{formatDate(tvshow.startDate)}</span>
 							<FiArrowRight size={30} />

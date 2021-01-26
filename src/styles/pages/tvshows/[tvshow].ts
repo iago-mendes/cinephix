@@ -97,7 +97,7 @@ const Container = styled.div<ContainerProps>`
 
 				display: grid;
 				grid-auto-rows: 5rem;
-				grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+				grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
 				grid-gap: 1rem;
 				align-items: center;
 				justify-items: center;
@@ -109,6 +109,7 @@ const Container = styled.div<ContainerProps>`
 					justify-content: center;
 
 					text-decoration: none;
+					white-space: nowrap;
 
 					padding: 0.75rem;
 					padding-left: 2rem;
@@ -248,6 +249,61 @@ const Container = styled.div<ContainerProps>`
 			margin-left: 5rem;
 			padding-left: 1rem;
 			border-left: ${p => p.theme.primary} 5px solid;
+		}
+	}
+
+	@media(max-width: 1000px)
+	{
+		main
+		{
+			height: fit-content;
+
+			flex-direction: column;
+			align-items: center;
+
+			.img
+			{
+				width: 75vw;
+				max-width: 40rem;
+			}
+
+			.info
+			{
+				width: 100%;
+				margin: 0;
+				margin-top: 2rem;
+
+				h1
+				{
+					font-size: 3rem;
+				}
+
+				.details
+				{
+					padding: 0;
+
+					.detail span, .detail strong
+					{
+						font-size: 1.5rem;
+					}
+
+					.dates span
+					{
+						font-size: 1.4rem;
+					}
+				}
+			}
+		}
+
+		.userTvshow
+		{
+			flex-direction: column;
+			gap: 2rem;
+
+			.group
+			{
+				width: 100%;
+			}
 		}
 	}
 `

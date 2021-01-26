@@ -73,7 +73,7 @@ const Container = styled.div`
 
 				display: grid;
 				grid-auto-rows: 5rem;
-				grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+				grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
 				grid-gap: 1rem;
 				align-items: center;
 				justify-items: center;
@@ -308,6 +308,30 @@ const Container = styled.div`
 					align-items: flex-start;
 					gap: 1rem;
 				}
+			}
+		}
+
+		.collection
+		{
+			::before, ::after
+			{
+				content: '';
+				width: 90%;
+				height: 0.5rem;
+
+				background-color: ${p => p.theme.primary}80;
+				border-radius: 100rem;
+
+				margin: 1rem;
+			}
+
+			.main
+			{
+				display: flex;
+				align-items: center;
+				justify-content: space-around;
+
+				width: 90%;
 			}
 		}
 
