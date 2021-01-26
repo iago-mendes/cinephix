@@ -36,6 +36,22 @@ const Container = styled.header`
 		font-family: Ubuntu;
 		font-weight: 700;
 		font-size: 5rem;
+
+		background-color: rgba(0,0,0,0.5);
+	}
+
+	@media(max-width: 600px)
+	{
+		height: 20rem;
+
+		h1
+		{
+			font-size: 4rem;
+
+			padding: 1rem;
+			padding-left: 3rem;
+			padding-right: 3rem;
+		}
 	}
 `
 
