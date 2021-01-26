@@ -4,6 +4,7 @@ import {useRouter} from 'next/router'
 import {FiCalendar, FiInfo, FiStar} from 'react-icons/fi'
 import {SwiperSlide} from 'swiper/react'
 import Image from 'next/image'
+import {useEffect, useState} from 'react'
 
 import Container from '../../styles/pages/movies/[movie]'
 import api from '../../services/api'
@@ -11,45 +12,9 @@ import {Media} from '../../components/MediaCard'
 import Loading from '../../components/Loading'
 import Carousel, {CarouselCard} from '../../components/Carousel'
 import formatDate from '../../utils/formatDate'
-
-interface MovieDetails
-{
-	id: number
-  image: string
-  title: string
-  date: string
-  status: string
-  rating: number
-  overview: string
-	collection?:
-	{
-    id: number
-    name: string
-    image: string
-  }
-  genres: Array<
-	{
-		id: number
-		name: string
-	}>
-	credits:
-	{
-		cast: Array<
-		{
-			id: number
-			name: string
-			image: string
-			character: string
-		}>
-		crew: Array<
-		{
-			id: number
-			name: string
-			image: string
-			department: string
-		}>
-	}
-}
+import MovieDetails from '../../models/movie'
+import useUser from '../../hooks/useUser'
+import UserMovie, {defaultUserMovie} from '../../models/userMovie'
 
 interface MovieProps
 {
@@ -59,6 +24,17 @@ interface MovieProps
 const Movie: React.FC<MovieProps> = ({movie}) =>
 {
 	const Router = useRouter()
+	const {user} = useUser()
+
+	const [userMovie, setUserMovie] = useState<UserMovie>(defaultUserMovie)
+
+	useEffect(() =>
+	{
+		if (user && user.email && movie)
+			api.get(`users/${user.email}/movies/${movie.id}`)
+				.then(({data}:{data: UserMovie}) => setUserMovie(data))
+				.catch(() => setUserMovie(defaultUserMovie))
+	}, [user, movie])
 
 	if (Router.isFallback)
 		return <Loading />
