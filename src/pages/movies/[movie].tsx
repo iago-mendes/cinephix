@@ -93,39 +93,39 @@ const Movie: React.FC<MovieProps> = ({movie}) =>
 			<div className='row userMovie'>
 				{
 					(user && userMovie !== defaultUserMovie)
-					? (
-						<>
-							<div className='group'>
-								<label>My status</label>
-								<span>{userMovie.watched ? 'Watched' : 'Watch list'}</span>
-							</div>
-							{
-								userMovie.venue && (
-									<div className='group'>
-										<label>My venue</label>
-										<span>{getVenue(userMovie.venue)}</span>
-									</div>
-								)
-							}
-							{
-								Object.values(userMovie.ratings).length !== 0 && (
-									<div className='group'>
-										<label>My rating</label>
-										<span>{getTotalRating(userMovie.ratings, true)} ({getTotalRating(userMovie.ratings)})</span>
-									</div>
-								)
-							}
-							<button className='edit' title='Edit' onClick={() => router.push(`/user/movies/${movie.id}/edit`)} >
-								<FiEdit3 size={30} />
+						? (
+							<>
+								<div className='group'>
+									<label>My status</label>
+									<span>{userMovie.watched ? 'Watched' : 'Watch list'}</span>
+								</div>
+								{
+									userMovie.venue && (
+										<div className='group'>
+											<label>My venue</label>
+											<span>{getVenue(userMovie.venue)}</span>
+										</div>
+									)
+								}
+								{
+									Object.values(userMovie.ratings).length !== 0 && (
+										<div className='group'>
+											<label>My rating</label>
+											<span>{getTotalRating(userMovie.ratings, true)} ({getTotalRating(userMovie.ratings)})</span>
+										</div>
+									)
+								}
+								<button className='edit' title='Edit' onClick={() => router.push(`/user/movies/${movie.id}/edit`)} >
+									<FiEdit3 size={30} />
+								</button>
+							</>
+						)
+						: (
+							<button className='add' onClick={() => router.push(`/user/movies/${movie.id}/add`)} >
+								<FiPlus size={30} />
+								<span>Add to your movies</span>
 							</button>
-						</>
-					)
-					: (
-						<button className='add' onClick={() => router.push(`/user/movies/${movie.id}/add`)} >
-							<FiPlus size={30} />
-							<span>Add to your movies</span>
-						</button>
-					)
+						)
 				}
 			</div>
 
@@ -169,9 +169,9 @@ export const getStaticPaths: GetStaticPaths = async ctx =>
 	const {data: movies}:{data: Media[]} = await api.get('movies')
 
 	const paths = movies.map(movie => (
-	{
-		params: {movie: String(movie.id)}
-	}))
+		{
+			params: {movie: String(movie.id)}
+		}))
 
 	return {
 		paths,

@@ -13,10 +13,10 @@ const config: InitOptions =
 	providers:
 	[
 		Providers.Google(
-		{
-			clientId: env.googleClientId,
-			clientSecret: env.googleClientSecret
-		})
+			{
+				clientId: env.googleClientId,
+				clientSecret: env.googleClientSecret
+			})
 	],
 	jwt:
 	{

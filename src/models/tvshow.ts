@@ -38,17 +38,17 @@ interface TvshowDetails
 export const defaultTvshow: TvshowDetails =
 {
 	id: 0,
-  image: '',
-  title: '',
-  startDate: '',
-  endDate: '',
-  status: '',
-  inProduction: false,
-  rating: 0,
-  seasonsNumber: 0,
-  episodesNumber: 0,
-  overview: '',
-  genres: [],
+	image: '',
+	title: '',
+	startDate: '',
+	endDate: '',
+	status: '',
+	inProduction: false,
+	rating: 0,
+	seasonsNumber: 0,
+	episodesNumber: 0,
+	overview: '',
+	genres: [],
 	credits:
 	{
 		cast: [],

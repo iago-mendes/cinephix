@@ -53,21 +53,21 @@ const Menu: React.FC = () =>
 				<div className='user'>
 					{
 						user
-						? (
-							<button onClick={() => setIsModalOpen(!isModalOpen)} >
-								{
-									user.image
-									? <img src={user.image} alt={user.name} className='img' />
-									: <BiUserCircle size={35} className='img' />
-								}
-								<BsFillTriangleFill size={10} className='indicator' />
-							</button>
-						)
-						: (
-							<span onClick={() => signIn('google')} >
+							? (
+								<button onClick={() => setIsModalOpen(!isModalOpen)} >
+									{
+										user.image
+											? <img src={user.image} alt={user.name} className='img' />
+											: <BiUserCircle size={35} className='img' />
+									}
+									<BsFillTriangleFill size={10} className='indicator' />
+								</button>
+							)
+							: (
+								<span onClick={() => signIn('google')} >
 								Sign in
-							</span>
-						)
+								</span>
+							)
 					}
 				</div>
 			</div>

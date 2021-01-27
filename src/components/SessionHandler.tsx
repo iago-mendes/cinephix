@@ -1,11 +1,11 @@
 import {useRouter} from 'next/router'
-import {useEffect, useState} from 'react';
-import {FiLogIn} from 'react-icons/fi';
-import {signIn} from 'next-auth/client';
+import {useEffect, useState} from 'react'
+import {FiLogIn} from 'react-icons/fi'
+import {signIn} from 'next-auth/client'
 
 import Container from '../styles/components/SessionHandler'
 import Loading from './Loading'
-import useUser from '../hooks/useUser';
+import useUser from '../hooks/useUser'
 import logo from '../assets/logo-name-shadow.svg'
 
 const SessionHandler: React.FC = ({children}) =>

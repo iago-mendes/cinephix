@@ -33,14 +33,14 @@ const UserTvshows: React.FC = () =>
 	const {user, loading} = useUser()
 
 	const [tvshowList, setTvshowList] = useState<TvshowList>(
-	{
-		watchList: [],
-		watching: [],
-		waiting: [],
-		completed: [],
-		stopped: [],
-		paused: []
-	})
+		{
+			watchList: [],
+			watching: [],
+			waiting: [],
+			completed: [],
+			stopped: [],
+			paused: []
+		})
 
 	const [isTvshowModalOpen, setIsTvshowModalOpen] = useState(false)
 	const [selectedTvshow, setSelectedTvshow] = useState<Tvshow>(defaultTvshow)
@@ -63,7 +63,7 @@ const UserTvshows: React.FC = () =>
 
 	function handleDragDrop(res: DropResult)
 	{
-		let tmpTvshowList = {...tvshowList}
+		const tmpTvshowList = {...tvshowList}
 		const tvshows: Tvshow[] = [].concat(...Object.values(tvshowList))
 
 		const previousStatus = res.source.droppableId

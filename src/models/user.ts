@@ -26,12 +26,12 @@ interface User
 
 export const defaultUser: User =
 {
-  _id: '',
-  email: '',
-  joinedAt: '2021-01-01T00:00:00.000Z',
+	_id: '',
+	email: '',
+	joinedAt: '2021-01-01T00:00:00.000Z',
 	movies: [],
-  tvshows: [],
-  tvshowStatus: {}
+	tvshows: [],
+	tvshowStatus: {}
 }
 
 export default User

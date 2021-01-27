@@ -82,18 +82,18 @@ const Movies: React.FC<MoviesProps> = ({staticMovies}) =>
 
 			{
 				movies.length === 0
-				? (
-					<div className='noResults'>
-						<h1>No results were found!</h1>
-					</div>
-				)
-				: (
-					<GridPaginate page={page} setPage={setPage} totalPages={totalPages} loading={loading} >
-						{movies.map(item => (
-							<MediaCard media={item} showOverview key={item.id} type='movie' />
-						))}
-					</GridPaginate>
-				)
+					? (
+						<div className='noResults'>
+							<h1>No results were found!</h1>
+						</div>
+					)
+					: (
+						<GridPaginate page={page} setPage={setPage} totalPages={totalPages} loading={loading} >
+							{movies.map(item => (
+								<MediaCard media={item} showOverview key={item.id} type='movie' />
+							))}
+						</GridPaginate>
+					)
 			}
 		</div>
 	)

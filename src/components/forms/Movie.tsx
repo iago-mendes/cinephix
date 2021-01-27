@@ -69,7 +69,7 @@ const MovieForm: React.FC<MovieFormProps> = ({movie, method, userMovie}) =>
 
 	function handleChangeRating(ratingKey: string, e?: ChangeEvent<HTMLInputElement>, ratingValue?: number)
 	{
-		let tmpRatings = {...ratings}
+		const tmpRatings = {...ratings}
 
 		const rating = e ? Number(e.target.value) : ratingValue
 		if (rating >= 0 && rating <= 10)
@@ -80,7 +80,7 @@ const MovieForm: React.FC<MovieFormProps> = ({movie, method, userMovie}) =>
 
 	function handleClearRating(ratingKey: string)
 	{
-		let tmpRatings = {...ratings}
+		const tmpRatings = {...ratings}
 		tmpRatings[ratingKey] = -1
 		setRatings(tmpRatings)
 	}
@@ -178,16 +178,16 @@ const MovieForm: React.FC<MovieFormProps> = ({movie, method, userMovie}) =>
 								<div className='group'>
 									{
 										value >= 0
-										? (
-											<input
-												type='number'
-												value={value}
-												onChange={e => handleChangeRating(ratingKey, e)}
-											/>
-										)
-										: (
-											<span>not rated</span>
-										)
+											? (
+												<input
+													type='number'
+													value={value}
+													onChange={e => handleChangeRating(ratingKey, e)}
+												/>
+											)
+											: (
+												<span>not rated</span>
+											)
 									}
 									<div className='group2'>
 										<RangeInput

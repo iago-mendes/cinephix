@@ -43,12 +43,12 @@ const GridPaginate: React.FC<GridPaginateProps> = ({page, setPage, totalPages, l
 		<Container style={style} >
 			{
 				loading
-				? <Loading style={{marginTop: '10rem'}} />
-				: (
-					<main>
-						{children}
-					</main>
-				)
+					? <Loading style={{marginTop: '10rem'}} />
+					: (
+						<main>
+							{children}
+						</main>
+					)
 			}
 			<div className='paginate'>
 				<div className='buttons'>

@@ -56,7 +56,7 @@ const UserMovies: React.FC = () =>
 
 	function handleSort(data?: UserMovieListed[])
 	{
-		let tmpMovieList = data ? [...data] : [...movieList]
+		const tmpMovieList = data ? [...data] : [...movieList]
 
 		if (sortOption.value === 'title')
 			tmpMovieList.sort((a, b) => a.data.title < b.data.title ? -1 : 1)

@@ -101,14 +101,14 @@ const UserMovieModal: React.FC<UserMovieModalProps> = ({isOpen, setIsOpen, movie
 										<label>Total:</label>
 										{
 											Object.values(movie.ratings).length !== 0
-											? (
-												<span>
-													{getTotalRating(movie.ratings, true, 15)} ({getTotalRating(movie.ratings)})
-												</span>
-											)
-											: (
-												<span>not rated</span>
-											)
+												? (
+													<span>
+														{getTotalRating(movie.ratings, true, 15)} ({getTotalRating(movie.ratings)})
+													</span>
+												)
+												: (
+													<span>not rated</span>
+												)
 										}
 									</div>
 									{Object.entries(movie.ratings).map(([ratingKey, value]) => (

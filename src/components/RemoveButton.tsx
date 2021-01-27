@@ -25,18 +25,18 @@ const RemoveButton: React.FC<RemoveButtonProps> = ({title, collection, apiRoute}
 	function handleClick()
 	{
 		MySwal.fire(
-		{
-			icon: 'question',
-			title: 'Are you sure?',
-			text: `If you continue, '${title}' will be removed from your ${collection}!`,
-			showCancelButton: true,
-			confirmButtonText: 'Continue'
-		})
-		.then(res =>
-		{
-			if (res.isConfirmed)
-				handleRemove()
-		})
+			{
+				icon: 'question',
+				title: 'Are you sure?',
+				text: `If you continue, '${title}' will be removed from your ${collection}!`,
+				showCancelButton: true,
+				confirmButtonText: 'Continue'
+			})
+			.then(res =>
+			{
+				if (res.isConfirmed)
+					handleRemove()
+			})
 	}
 
 	function handleRemove()

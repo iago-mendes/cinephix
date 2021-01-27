@@ -40,13 +40,13 @@ interface MovieDetails
 export const defaultMovieDetails: MovieDetails =
 {
 	id: 0,
-  image: '',
-  title: '',
-  date: '',
-  status: '',
-  rating: 0,
-  overview: '',
-  genres: [],
+	image: '',
+	title: '',
+	date: '',
+	status: '',
+	rating: 0,
+	overview: '',
+	genres: [],
 	credits:
 	{
 		cast: [],

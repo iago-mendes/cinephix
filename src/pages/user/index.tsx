@@ -55,7 +55,7 @@ const User: React.FC = () =>
 			{
 				icon: 'question',
 				title: 'Are you sure?',
-				text: `If you continue, your account and all your information (TV shows and movies) will be deleted!`,
+				text: 'If you continue, your account and all your information (TV shows and movies) will be deleted!',
 				showCancelButton: true,
 				confirmButtonText: 'Continue'
 			})
@@ -64,15 +64,15 @@ const User: React.FC = () =>
 				if (res.isConfirmed)
 				{
 					api.delete(`users/${userInfo.email}`)
-					.then(() =>
-					{
-						confirmAlert(`Your account was successfully deleted!`)
-						signOut()
-					})
-					.catch(err =>
-					{
-						errorAlert(err.response.data.message)
-					})
+						.then(() =>
+						{
+							confirmAlert('Your account was successfully deleted!')
+							signOut()
+						})
+						.catch(err =>
+						{
+							errorAlert(err.response.data.message)
+						})
 				}
 			})
 	}

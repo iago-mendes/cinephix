@@ -1,6 +1,6 @@
-import {NextApiHandler} from "next"
+import {NextApiHandler} from 'next'
 
-import api from "../../services/api"
+import api from '../../services/api'
 
 const getCelebrities: NextApiHandler = async (req, res) =>
 {

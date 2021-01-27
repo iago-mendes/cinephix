@@ -31,9 +31,9 @@ export const getStaticPaths: GetStaticPaths = async ctx =>
 	const {data: tvshows}:{data: Media[]} = await api.get('tvshows')
 
 	const paths = tvshows.map(tvshow => (
-	{
-		params: {tvshow: String(tvshow.id)}
-	}))
+		{
+			params: {tvshow: String(tvshow.id)}
+		}))
 
 	return {
 		paths,

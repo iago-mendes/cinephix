@@ -130,9 +130,9 @@ export const getStaticPaths: GetStaticPaths = async ctx =>
 	const {data: celebrities}:{data: CelebrityList[]} = await api.get('celebrities')
 
 	const paths = celebrities.map(celebrity => (
-	{
-		params: {celebrity: String(celebrity.id)}
-	}))
+		{
+			params: {celebrity: String(celebrity.id)}
+		}))
 
 	return {
 		paths,

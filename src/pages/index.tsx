@@ -83,12 +83,12 @@ const Home: React.FC<HomeProps> = ({staticHome}) =>
 
 	function isMedia(item: Media | Celebrity): item is Media
 	{
-    return 'title' in item
+		return 'title' in item
 	}
 
 	function isCelebrity(item: Celebrity | Celebrity): item is Celebrity
 	{
-    return 'name' in item
+		return 'name' in item
 	}
 
 	return (
@@ -114,26 +114,26 @@ const Home: React.FC<HomeProps> = ({staticHome}) =>
 
 			{
 				home.length === 0 && search !== ''
-				? (
-					<div className='noResults'>
-						<h1>No results found!</h1>
-					</div>
-				)
-				: (
-					<GridPaginate page={page} setPage={setPage} totalPages={totalPages} loading={loading} >
-						{home.map(item =>
-						{
-							if (isMedia(item))
-								return (
-									<MediaCard media={item} showOverview key={item.id} type={item.type} />
-								)
-							else if (isCelebrity(item))
-								return (
-									<CelebrityCard celebrity={item} showKnownFor key={item.id} />
-								)
-						})}
-					</GridPaginate>
-				)
+					? (
+						<div className='noResults'>
+							<h1>No results found!</h1>
+						</div>
+					)
+					: (
+						<GridPaginate page={page} setPage={setPage} totalPages={totalPages} loading={loading} >
+							{home.map(item =>
+							{
+								if (isMedia(item))
+									return (
+										<MediaCard media={item} showOverview key={item.id} type={item.type} />
+									)
+								else if (isCelebrity(item))
+									return (
+										<CelebrityCard celebrity={item} showKnownFor key={item.id} />
+									)
+							})}
+						</GridPaginate>
+					)
 			}
 		</Container>
 	)

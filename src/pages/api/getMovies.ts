@@ -1,6 +1,6 @@
-import {NextApiHandler} from "next"
+import {NextApiHandler} from 'next'
 
-import api from "../../services/api"
+import api from '../../services/api'
 
 const getMovies: NextApiHandler = async (req, res) =>
 {
@@ -8,7 +8,7 @@ const getMovies: NextApiHandler = async (req, res) =>
 
 	const {data, headers} = await api.get('movies', {params: {search, page}})
 
-		const paginate =
+	const paginate =
 		{
 			page: Number(headers.page),
 			total: Number(headers.totalpages)

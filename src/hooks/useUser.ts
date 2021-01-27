@@ -1,6 +1,6 @@
-import { charCodeAt } from "*.jpg"
-import {useSession} from "next-auth/client"
-import {useEffect, useState} from "react"
+import { charCodeAt } from '*.jpg'
+import {useSession} from 'next-auth/client'
+import {useEffect, useState} from 'react'
 
 interface User
 {

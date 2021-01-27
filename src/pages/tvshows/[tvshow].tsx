@@ -132,39 +132,39 @@ const Tvshow: React.FC<TvshowProps> = ({tvshow}) =>
 			<div className='row userTvshow'>
 				{
 					(user && userTvshow !== defaultUserTvshow)
-					? (
-						<>
-							<div className='group'>
-								<label>My status</label>
-								<span>{getStatusLabel(userTvshow.status)}</span>
-							</div>
-							{
-								userTvshow.venue && (
-									<div className='group'>
-										<label>My venue</label>
-										<span>{getVenue(userTvshow.venue)}</span>
-									</div>
-								)
-							}
-							{
-								Object.values(userTvshow.ratings).length !== 0 && (
-									<div className='group'>
-										<label>My rating</label>
-										<span>{getTotalRating(userTvshow.ratings, true)} ({getTotalRating(userTvshow.ratings)})</span>
-									</div>
-								)
-							}
-							<button className='edit' title='Edit' onClick={() => router.push(`/user/tvshows/${tvshow.id}/edit`)} >
-								<FiEdit3 size={30} />
+						? (
+							<>
+								<div className='group'>
+									<label>My status</label>
+									<span>{getStatusLabel(userTvshow.status)}</span>
+								</div>
+								{
+									userTvshow.venue && (
+										<div className='group'>
+											<label>My venue</label>
+											<span>{getVenue(userTvshow.venue)}</span>
+										</div>
+									)
+								}
+								{
+									Object.values(userTvshow.ratings).length !== 0 && (
+										<div className='group'>
+											<label>My rating</label>
+											<span>{getTotalRating(userTvshow.ratings, true)} ({getTotalRating(userTvshow.ratings)})</span>
+										</div>
+									)
+								}
+								<button className='edit' title='Edit' onClick={() => router.push(`/user/tvshows/${tvshow.id}/edit`)} >
+									<FiEdit3 size={30} />
+								</button>
+							</>
+						)
+						: (
+							<button className='add' onClick={() => router.push(`/user/tvshows/${tvshow.id}/add`)} >
+								<FiPlus size={30} />
+								<span>Add to your TV shows</span>
 							</button>
-						</>
-					)
-					: (
-						<button className='add' onClick={() => router.push(`/user/tvshows/${tvshow.id}/add`)} >
-							<FiPlus size={30} />
-							<span>Add to your TV shows</span>
-						</button>
-					)
+						)
 				}
 			</div>
 
@@ -208,9 +208,9 @@ export const getStaticPaths: GetStaticPaths = async ctx =>
 	const {data: tvshows}:{data: Media[]} = await api.get('tvshows')
 
 	const paths = tvshows.map(tvshow => (
-	{
-		params: {tvshow: String(tvshow.id)}
-	}))
+		{
+			params: {tvshow: String(tvshow.id)}
+		}))
 
 	return {
 		paths,

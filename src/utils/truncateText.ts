@@ -6,7 +6,7 @@ export default function truncateText(text: string | undefined, length: number)
 	let truncated = text
 
 	if (truncated.length > length)
-		truncated = truncated.substr(0, length) + '...';
+		truncated = truncated.substr(0, length) + '...'
 
-	return truncated;
+	return truncated
 }
