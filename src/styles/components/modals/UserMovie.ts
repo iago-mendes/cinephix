@@ -202,6 +202,58 @@ const Container = styled.div`
 			}
 		}
 	}
+
+	@media(max-width: 600px)
+	{
+		width: 95vw;
+		height: 85vh;
+
+		main
+		{
+			flex-direction: column;
+			justify-content: space-around;
+			
+			height: calc(85vh - 4.5rem);
+
+			.img
+			{
+				width: 40vw;
+				max-width: 30rem;
+			}
+
+			.info
+			{
+				margin: 0;
+				width: 100%;
+				height: fit-content;
+
+				gap: 0.5rem;
+
+				h1
+				{
+					font-size: 1.75rem;
+				}
+
+				.group
+				{
+					label
+					{
+						font-size: 1.5rem;
+					}
+
+					span
+					{
+						font-size: 1.25rem;
+					}
+
+					.rating label
+					{
+						font-size: 1.25rem;
+					}
+				}
+			}
+		}
+	}
 `
 
 export default Container

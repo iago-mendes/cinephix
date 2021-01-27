@@ -126,6 +126,21 @@ const Container = styled.div`
 			}
 		}
 	}
+
+	@media(max-width: 600px)
+	{
+		width: 95vw;
+
+		.search
+		{
+			width: 25rem;
+
+			input
+			{
+				font-size: 1.75rem;
+			}
+		}
+	}
 `
 
 export default Container
