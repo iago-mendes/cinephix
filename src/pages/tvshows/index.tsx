@@ -99,7 +99,7 @@ const Tvshows: React.FC<TvshowsProps> = ({staticTvshows}) =>
 	)
 }
 
-export const getStaticProps: GetStaticProps = async ctx =>
+export const getStaticProps: GetStaticProps = async () =>
 {
 	const {data}:{data: Media[]} = await api.get('/tvshows')
 

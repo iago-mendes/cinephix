@@ -58,7 +58,7 @@ const ratingsLabels: {[ratingKey: string]: string} =
 interface UserTvshowModalProps
 {
 	isOpen: boolean
-	setIsOpen: Function
+	setIsOpen: (p: boolean) => void
 
 	tvshow: Tvshow
 }

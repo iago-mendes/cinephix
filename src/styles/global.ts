@@ -117,7 +117,7 @@ export const selectStyles: StylesConfig<{label: string, value: string}, false> =
 			backgroundColor: state.isSelected ? '#FF8A00' : '#23232A'
 		}),
 
-	menu: (provided, state) => (
+	menu: (provided) => (
 		{
 			...provided,
 			fontFamily: 'Roboto',
@@ -145,7 +145,7 @@ export const selectStyles: StylesConfig<{label: string, value: string}, false> =
 			alignItems: 'center',
 		}),
 
-	singleValue: (provided, state) => (
+	singleValue: (provided) => (
 		{
 			...provided,
 

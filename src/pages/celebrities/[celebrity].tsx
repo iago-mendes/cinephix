@@ -125,7 +125,7 @@ const Celebrity: React.FC<CelebrityProps> = ({celebrity}) =>
 	)
 }
 
-export const getStaticPaths: GetStaticPaths = async ctx =>
+export const getStaticPaths: GetStaticPaths = async () =>
 {
 	const {data: celebrities}:{data: CelebrityList[]} = await api.get('celebrities')
 

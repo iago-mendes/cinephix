@@ -8,7 +8,7 @@ import Loading from './Loading'
 interface GridPaginateProps
 {
 	page: number
-	setPage: Function
+	setPage: (p: number) => void
 
 	totalPages: number
 

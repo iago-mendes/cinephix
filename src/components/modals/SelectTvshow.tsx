@@ -15,7 +15,7 @@ Modal.setAppElement('#__next')
 interface SelectTvshowProps
 {
 	isOpen: boolean
-	setIsOpen: Function
+	setIsOpen: (p: boolean) => void
 
 	statusKey: string
 }

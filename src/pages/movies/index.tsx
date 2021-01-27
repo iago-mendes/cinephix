@@ -99,7 +99,7 @@ const Movies: React.FC<MoviesProps> = ({staticMovies}) =>
 	)
 }
 
-export const getStaticProps: GetStaticProps = async ctx =>
+export const getStaticProps: GetStaticProps = async () =>
 {
 	const {data}:{data: Media[]} = await api.get('/movies')
 

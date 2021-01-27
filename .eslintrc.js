@@ -40,6 +40,10 @@ module.exports = {
 		'react/prop-types': [
 			0
 		],
-		'react/react-in-jsx-scope': 'off'
+		'react/react-in-jsx-scope': 'off',
+		'@typescript-eslint/no-empty-function': 'off',
+		'react/no-unescaped-entities': 'off',
+		'@typescript-eslint/explicit-module-boundary-types': 'off',
+		'@typescript-eslint/no-explicit-any': 'off'
 	}
 }

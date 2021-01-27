@@ -26,7 +26,7 @@ const AddTvshow: React.FC<AddTvshowProps> = ({tvshow}) =>
 	)
 }
 
-export const getStaticPaths: GetStaticPaths = async ctx =>
+export const getStaticPaths: GetStaticPaths = async () =>
 {
 	const {data: tvshows}:{data: Media[]} = await api.get('tvshows')
 

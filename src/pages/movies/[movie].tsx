@@ -15,7 +15,6 @@ import formatDate from '../../utils/formatDate'
 import MovieDetails from '../../models/movie'
 import useUser from '../../hooks/useUser'
 import UserMovie, {defaultUserMovie} from '../../models/userMovie'
-import getStatusLabel from '../../utils/getStatusLabel'
 import getVenue from '../../utils/getVenue'
 import getTotalRating from '../../utils/getTotalRating'
 
@@ -164,7 +163,7 @@ const Movie: React.FC<MovieProps> = ({movie}) =>
 	)
 }
 
-export const getStaticPaths: GetStaticPaths = async ctx =>
+export const getStaticPaths: GetStaticPaths = async () =>
 {
 	const {data: movies}:{data: Media[]} = await api.get('movies')
 

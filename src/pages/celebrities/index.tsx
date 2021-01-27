@@ -99,7 +99,7 @@ const Celebrities: React.FC<CelebritiesProps> = ({staticCelebrities}) =>
 	)
 }
 
-export const getStaticProps: GetStaticProps = async ctx =>
+export const getStaticProps: GetStaticProps = async () =>
 {
 	const {data}:{data: Celebrity[]} = await api.get('/celebrities')
 

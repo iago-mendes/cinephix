@@ -131,7 +131,7 @@ const UserMovies: React.FC = () =>
 								<button className='add' title='Add a movie' onClick={() => handleAddClick(false)} >
 									<FiPlus size={30} />
 								</button>
-								{movieList.filter(({watched}) => !watched).map((movie, index) => (
+								{movieList.filter(({watched}) => !watched).map((movie) => (
 									<div
 										key={movie.data.id}
 										className='movie'

@@ -26,7 +26,7 @@ const AddMovie: React.FC<AddMovieProps> = ({movie}) =>
 	)
 }
 
-export const getStaticPaths: GetStaticPaths = async ctx =>
+export const getStaticPaths: GetStaticPaths = async () =>
 {
 	const {data: movies}:{data: Media[]} = await api.get('movies')
 

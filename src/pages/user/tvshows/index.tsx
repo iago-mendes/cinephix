@@ -5,8 +5,6 @@ import Image from 'next/image'
 
 import Container from '../../../styles/pages/user/tvshows/index'
 import api from '../../../services/api'
-import Loading from '../../../components/Loading'
-import NotSigned from '../../../components/NotSigned'
 import useUser from '../../../hooks/useUser'
 import UserTvshowModal, {defaultTvshow, Tvshow} from '../../../components/modals/UserTvshow'
 import {FiPlus} from 'react-icons/fi'
@@ -30,7 +28,7 @@ const validStatus: {[statusKey: string]: string} =
 
 const UserTvshows: React.FC = () =>
 {
-	const {user, loading} = useUser()
+	const {user} = useUser()
 
 	const [tvshowList, setTvshowList] = useState<TvshowList>(
 		{

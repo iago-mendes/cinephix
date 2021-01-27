@@ -12,7 +12,7 @@ Modal.setAppElement('#__next')
 interface UserMenuProps
 {
 	isOpen: boolean
-	setIsOpen: Function
+	setIsOpen: (p: boolean) => void
 }
 
 const UserMenu: React.FC<UserMenuProps> = ({isOpen, setIsOpen}) =>

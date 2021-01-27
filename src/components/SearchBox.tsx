@@ -5,7 +5,7 @@ import Container from '../styles/components/SearchBox'
 interface SearchBoxProps
 {
 	search: string
-	setSearch: Function
+	setSearch: (p: string) => void
 
 	display: string
 }

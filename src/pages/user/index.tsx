@@ -1,5 +1,4 @@
 import Head from 'next/head'
-import Image from 'next/image'
 import {useEffect, useState} from 'react'
 import {HiOutlineUserRemove} from 'react-icons/hi'
 import {FiArrowRight} from 'react-icons/fi'

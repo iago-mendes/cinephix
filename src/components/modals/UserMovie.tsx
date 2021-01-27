@@ -21,10 +21,10 @@ Modal.setAppElement('#__next')
 interface UserMovieModalProps
 {
 	isOpen: boolean
-	setIsOpen: Function
+	setIsOpen: (p: boolean) => void
 
 	movie: UserMovieListed
-	revalidate: Function
+	revalidate: () => void
 }
 
 const UserMovieModal: React.FC<UserMovieModalProps> = ({isOpen, setIsOpen, movie, revalidate}) =>

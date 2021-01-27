@@ -15,7 +15,7 @@ Modal.setAppElement('#__next')
 interface SelectMovieProps
 {
 	isOpen: boolean
-	setIsOpen: Function
+	setIsOpen: (p: boolean) => void
 
 	watched: boolean
 }
