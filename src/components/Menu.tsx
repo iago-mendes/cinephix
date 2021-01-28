@@ -11,6 +11,7 @@ import logo from '../assets/logo-name.svg'
 import useUser from '../hooks/useUser'
 import UserMenu from './modals/UserMenu'
 import useDimensions from '../hooks/useDimensions'
+import BurgerMenu from './modals/BurgerMenu'
 
 const Menu: React.FC = () =>
 {
@@ -19,6 +20,7 @@ const Menu: React.FC = () =>
 	const {width} = useDimensions()
 
 	const [isModalOpen, setIsModalOpen] = useState(false)
+	const [isBurgerMenuOpen, setIsBurgerMenuOpen] = useState(false)
 
 	return (
 		<Container
@@ -29,8 +31,13 @@ const Menu: React.FC = () =>
 				setIsOpen={setIsModalOpen}
 			/>
 
+			<BurgerMenu
+				isOpen={isBurgerMenuOpen}
+				setIsOpen={setIsBurgerMenuOpen}
+			/>
+
 			{width <= 600 && (
-				<button className='burger' >
+				<button className='burger' onClick={() => setIsBurgerMenuOpen(true)}>
 					<FiMenu size={30} />
 				</button>
 			)}
@@ -39,6 +46,9 @@ const Menu: React.FC = () =>
 			<div className='container'>
 				{width > 600 && (
 					<div className='links'>
+						<Link href='/' >
+							Home
+						</Link>
 						<Link href='/movies' >
 							Movies
 						</Link>
