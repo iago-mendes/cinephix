@@ -308,6 +308,14 @@ const Container = styled.div`
 					align-items: flex-start;
 					gap: 1rem;
 				}
+
+				ul li
+				{
+					padding-left: 1rem;
+					padding-right: 1rem;
+
+					font-size: 1.5rem;
+				}
 			}
 		}
 

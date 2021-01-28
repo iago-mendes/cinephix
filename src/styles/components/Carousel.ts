@@ -111,6 +111,14 @@ const Container = styled.div`
 		{
 			width: 25rem;
 			height: calc((25rem - 2rem) * 0.3 * 1.5 + 2rem);
+
+			.info
+			{
+				h1
+				{
+					font-size: 2rem;
+				}
+			}
 		}
 	}
 `

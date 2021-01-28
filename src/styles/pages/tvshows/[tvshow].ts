@@ -292,6 +292,14 @@ const Container = styled.div<ContainerProps>`
 						font-size: 1.4rem;
 					}
 				}
+
+				ul li
+				{
+					padding-left: 1rem;
+					padding-right: 1rem;
+
+					font-size: 1.5rem;
+				}
 			}
 		}
 
