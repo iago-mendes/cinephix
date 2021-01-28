@@ -226,6 +226,79 @@ const Container = styled.div`
 			}
 		}
 	}
+
+	@media(max-width: 600px)
+	{
+		flex-direction: column;
+		align-items: center;
+		gap: 1.5rem;
+
+		height: fit-content;
+
+		.img
+		{
+			width: 75vw;
+			max-width: 40rem;
+		}
+
+		.info
+		{
+			width: 100%;
+			margin: 0;
+
+			h1
+			{
+				font-size: 2.5rem;
+			}
+
+			form
+			{
+				height: fit-content;
+				gap: 3rem;
+
+				label
+				{
+					font-size: 1.75rem;
+				}
+
+				.field
+				{
+					width: 100%;
+				}
+
+				.rangeFields .rating
+				{
+
+					flex-direction: column;
+					align-items: flex-start;
+
+					height: fit-content;
+					padding-left: 2rem;
+
+					label
+					{
+						margin: 0;
+						font-size: 1.5rem;
+					}
+
+					span
+					{
+						font-size: 1.25rem;
+					}
+
+					.group
+					{
+						height: 2.5rem;
+
+						input[type=number]
+						{
+							font-size: 1.25rem;
+						}
+					}
+				}
+			}
+		}
+	}
 `
 
 interface RangeInputProps

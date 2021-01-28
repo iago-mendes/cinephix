@@ -27,6 +27,12 @@ const Container = styled.button`
 
 		transform: scale(1.2);
 	}
+
+	@media(max-width: 600px)
+	{
+		top: 0.5rem;
+		right: 0.5rem;
+	}
 `
 
 export default Container

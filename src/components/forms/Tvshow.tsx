@@ -169,7 +169,7 @@ const TvshowForm: React.FC<TvshowFormProps> = ({tvshow, method, userTvshow}) =>
 			<div className='info'>
 				<h1>{tvshow.title}</h1>
 				<form onSubmit={handleSubmit} >
-					<div className='selectField'>
+					<div className='field'>
 						<label htmlFor='status'>Status</label>
 						<Select
 							id='status'
@@ -182,7 +182,7 @@ const TvshowForm: React.FC<TvshowFormProps> = ({tvshow, method, userTvshow}) =>
 							className='select'
 						/>
 					</div>
-					<div className='selectField'>
+					<div className='field'>
 						<label htmlFor='venue'>Venue</label>
 						<Select
 							id='venue'
