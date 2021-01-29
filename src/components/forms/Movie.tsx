@@ -60,21 +60,25 @@ const MovieForm: React.FC<MovieFormProps> = ({movie, method, userMovie}) =>
 		{
 			setWatched(userMovie.watched)
 			setVenue(userMovie.venue)
+
+			let tmpRatings = {...ratings}
 			Object.entries(userMovie.ratings).map(([ratingKey, value]) =>
 			{
-				handleChangeRating(ratingKey, undefined, value)
+				if (value >= 0 && value <= 10)
+					tmpRatings[ratingKey] = value
 			})
+			setRatings(tmpRatings)
 		}
 	}, [userMovie])
 
-	function handleChangeRating(ratingKey: string, e?: ChangeEvent<HTMLInputElement>, ratingValue?: number)
+	function handleChangeRating(ratingKey: string, e: ChangeEvent<HTMLInputElement>)
 	{
 		const tmpRatings = {...ratings}
 
-		const rating = e ? Number(e.target.value) : ratingValue
+		const rating = Number(e.target.value)
 		if (rating >= 0 && rating <= 10)
 			tmpRatings[ratingKey] = rating
-			
+
 		setRatings(tmpRatings)
 	}
 

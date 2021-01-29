@@ -44,6 +44,7 @@ module.exports = {
 		'@typescript-eslint/no-empty-function': 'off',
 		'react/no-unescaped-entities': 'off',
 		'@typescript-eslint/explicit-module-boundary-types': 'off',
-		'@typescript-eslint/no-explicit-any': 'off'
+		'@typescript-eslint/no-explicit-any': 'off',
+		'prefer-const': 'off'
 	}
 }
