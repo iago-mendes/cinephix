@@ -1,5 +1,4 @@
 import {GetStaticPaths, GetStaticProps} from 'next'
-import Head from 'next/head'
 import {useRouter} from 'next/router'
 import {FiUser} from 'react-icons/fi'
 import {FaBirthdayCake, FaCity} from 'react-icons/fa'
@@ -13,6 +12,7 @@ import Loading from '../../components/Loading'
 import Carousel, {CarouselCard} from '../../components/Carousel'
 import formatDate from '../../utils/formatDate'
 import React from 'react'
+import SEOHead from '../../components/SEOHead'
 
 interface CelebrityDetails
 {
@@ -62,9 +62,11 @@ const Celebrity: React.FC<CelebrityProps> = ({celebrity}) =>
 
 	return (
 		<Container biographyLength={celebrity.biography.length} >
-			<Head>
-				<title>Celebrity</title>
-			</Head>
+			<SEOHead
+				title={`${celebrity.name} | Cinephix`}
+				description={celebrity.biography}
+				image={celebrity.image}
+			/>
 
 			<main>
 				<div className='img'>

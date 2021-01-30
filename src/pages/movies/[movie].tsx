@@ -1,5 +1,4 @@
 import {GetStaticPaths, GetStaticProps} from 'next'
-import Head from 'next/head'
 import {useRouter} from 'next/router'
 import {FiCalendar, FiEdit3, FiInfo, FiPlus, FiStar} from 'react-icons/fi'
 import {SwiperSlide} from 'swiper/react'
@@ -17,6 +16,7 @@ import useUser from '../../hooks/useUser'
 import UserMovie, {defaultUserMovie} from '../../models/userMovie'
 import getVenue from '../../utils/getVenue'
 import getTotalRating from '../../utils/getTotalRating'
+import SEOHead from '../../components/SEOHead'
 
 interface MovieProps
 {
@@ -43,9 +43,11 @@ const Movie: React.FC<MovieProps> = ({movie}) =>
 
 	return (
 		<Container>
-			<Head>
-				<title>Movie</title>
-			</Head>
+			<SEOHead
+				title={`${movie.title} | Cinephix`}
+				description={movie.overview}
+				image={movie.image}
+			/>
 
 			<main>
 				<div className='img'>

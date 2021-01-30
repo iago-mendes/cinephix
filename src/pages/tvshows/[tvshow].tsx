@@ -1,5 +1,4 @@
 import {GetStaticPaths, GetStaticProps} from 'next'
-import Head from 'next/head'
 import {useRouter} from 'next/router'
 import {FiCalendar, FiInfo, FiStar, FiArrowRight, FiPlus, FiEdit3} from 'react-icons/fi'
 import {SwiperSlide} from 'swiper/react'
@@ -17,6 +16,7 @@ import UserTvshow, {defaultUserTvshow} from '../../models/userTvshow'
 import getTotalRating from '../../utils/getTotalRating'
 import getStatusLabel from '../../utils/getStatusLabel'
 import getVenue from '../../utils/getVenue'
+import SEOHead from '../../components/SEOHead'
 
 export interface TvshowDetails
 {
@@ -80,9 +80,11 @@ const Tvshow: React.FC<TvshowProps> = ({tvshow}) =>
 
 	return (
 		<Container overviewLength={tvshow.overview.length} >
-			<Head>
-				<title>TV Show</title>
-			</Head>
+			<SEOHead
+				title={`${tvshow.title} | Cinephix`}
+				description={tvshow.overview}
+				image={tvshow.image}
+			/>
 
 			<main>
 				<div className='img'>
