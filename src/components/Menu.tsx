@@ -7,7 +7,7 @@ import {useState} from 'react'
 import {FiMenu} from 'react-icons/fi'
 
 import Container from '../styles/components/Menu'
-import logo from '../assets/logo-name.svg'
+import logo from '../assets/logo/name.svg'
 import useUser from '../hooks/useUser'
 import UserMenu from './modals/UserMenu'
 import useDimensions from '../hooks/useDimensions'

@@ -10,7 +10,7 @@ import CelebrityCard, {Celebrity} from '../components/CelebrityCard'
 import SearchBox from '../components/SearchBox'
 import GridPaginate from '../components/GridPaginate'
 
-import logo from '../assets/logo-name-shadow.svg'
+import logo from '../assets/logo/name.svg'
 import glasses from '../assets/vector-icons/3d-glasses.svg'
 import camera from '../assets/vector-icons/camera.svg'
 import film from '../assets/vector-icons/film.svg'

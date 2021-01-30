@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import Container from '../styles/components/Footer'
 
-import logo from '../assets/logo-name-shadow.svg'
+import logo from '../assets/logo/name.svg'
 
 const Footer: React.FC = () =>
 {
