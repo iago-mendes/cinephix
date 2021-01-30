@@ -1,4 +1,3 @@
-import Head from 'next/head'
 import {useEffect, useState} from 'react'
 import Image from 'next/image'
 import {BsFillTriangleFill} from 'react-icons/bs'
@@ -13,6 +12,7 @@ import {defaultUserMovieListed, UserMovieListed} from '../../../models/userMovie
 import {selectStyles} from '../../../styles/global'
 import SelectMovie from '../../../components/modals/SelectMovie'
 import UserMovieModal from '../../../components/modals/UserMovie'
+import SEOHead from '../../../components/SEOHead'
 
 const UserMovies: React.FC = () =>
 {
@@ -85,9 +85,9 @@ const UserMovies: React.FC = () =>
 
 	return (
 		<Container>
-			<Head>
-				<title>User movies</title>
-			</Head>
+			<SEOHead
+				title='My movies | Cinephix'
+			/>
 
 			<SelectMovie
 				isOpen={isSelectMovieOpen}

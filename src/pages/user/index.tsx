@@ -1,4 +1,3 @@
-import Head from 'next/head'
 import {useEffect, useState} from 'react'
 import {HiOutlineUserRemove} from 'react-icons/hi'
 import {FiArrowRight} from 'react-icons/fi'
@@ -14,6 +13,7 @@ import UserInfo, {defaultUser} from '../../models/user'
 import api from '../../services/api'
 import errorAlert from '../../utils/alerts/error'
 import confirmAlert from '../../utils/alerts/confirm'
+import SEOHead from '../../components/SEOHead'
 
 const MySwal = withReactContent(Swal)
 
@@ -81,9 +81,9 @@ const User: React.FC = () =>
 
 	return (
 		<Container className='page' >
-			<Head>
-				<title>User</title>
-			</Head>
+			<SEOHead
+				title='My profile | Cinephix'
+			/>
 
 			<main>
 				<img src={user.image} alt={user.name} />

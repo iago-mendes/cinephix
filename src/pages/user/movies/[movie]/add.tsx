@@ -5,6 +5,7 @@ import {Media} from '../../../../components/MediaCard'
 import MovieDetails from '../../../../models/movie'
 import Loading from '../../../../components/Loading'
 import MovieForm from '../../../../components/forms/Movie'
+import SEOHead from '../../../../components/SEOHead'
 
 interface AddMovieProps
 {
@@ -18,6 +19,12 @@ const AddMovie: React.FC<AddMovieProps> = ({movie}) =>
 
 	return (
 		<div>
+			<SEOHead
+				title={`Add ${movie.title} | Cinephix`}
+				description={movie.overview}
+				image={movie.image}
+			/>
+
 			<MovieForm
 				movie={movie}
 				method='post'

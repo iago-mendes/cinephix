@@ -9,6 +9,7 @@ import MovieForm from '../../../../components/forms/Movie'
 import useUser from '../../../../hooks/useUser'
 import UserMovie, { defaultUserMovie } from '../../../../models/userMovie'
 import RemoveButton from '../../../../components/RemoveButton'
+import SEOHead from '../../../../components/SEOHead'
 
 interface EditMovieProps
 {
@@ -42,6 +43,12 @@ const EditMovie: React.FC<EditMovieProps> = ({movie}) =>
 		<div
 			style={{position: 'relative'}}
 		>
+			<SEOHead
+				title={`Edit ${movie.title} | Cinephix`}
+				description={movie.overview}
+				image={movie.image}
+			/>
+
 			<RemoveButton
 				title={movie.title}
 				collection='movies'

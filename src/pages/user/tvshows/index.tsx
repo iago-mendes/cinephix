@@ -1,4 +1,3 @@
-import Head from 'next/head'
 import {useEffect, useState} from 'react'
 import {DragDropContext, Droppable, Draggable, DropResult} from 'react-beautiful-dnd'
 import Image from 'next/image'
@@ -10,6 +9,7 @@ import UserTvshowModal, {defaultTvshow, Tvshow} from '../../../components/modals
 import {FiPlus} from 'react-icons/fi'
 import SelectTvshow from '../../../components/modals/SelectTvshow'
 import getTotalRating from '../../../utils/getTotalRating'
+import SEOHead from '../../../components/SEOHead'
 
 interface TvshowList
 {
@@ -98,9 +98,9 @@ const UserTvshows: React.FC = () =>
 
 	return (
 		<Container>
-			<Head>
-				<title>User TV shows</title>
-			</Head>
+			<SEOHead
+				title='My TV shows | Cinephix'
+			/>
 
 			<UserTvshowModal
 				isOpen={isTvshowModalOpen}

@@ -9,6 +9,7 @@ import TvshowForm from '../../../../components/forms/Tvshow'
 import UserTvshow, {defaultUserTvshow} from '../../../../models/userTvshow'
 import useUser from '../../../../hooks/useUser'
 import RemoveButton from '../../../../components/RemoveButton'
+import SEOHead from '../../../../components/SEOHead'
 
 interface EditTvshowProps
 {
@@ -42,6 +43,12 @@ const EditTvshow: React.FC<EditTvshowProps> = ({tvshow}) =>
 		<div
 			style={{position: 'relative'}}
 		>
+			<SEOHead
+				title={`Edit ${tvshow.title} | Cinephix`}
+				description={tvshow.overview}
+				image={tvshow.image}
+			/>
+
 			<RemoveButton
 				title={tvshow.title}
 				collection='TV shows'
