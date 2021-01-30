@@ -1,5 +1,4 @@
 import {GetStaticProps} from 'next'
-import Head from 'next/head'
 import {useEffect, useState} from 'react'
 import useSWR from 'swr'
 
@@ -17,6 +16,7 @@ import film from '../assets/vector-icons/film.svg'
 import marker from '../assets/vector-icons/marker.svg'
 import microfone from '../assets/vector-icons/microfone.svg'
 import popcorn from '../assets/vector-icons/popcorn.svg'
+import SEOHead from '../components/SEOHead'
 
 interface HomeProps
 {
@@ -90,9 +90,7 @@ const Home: React.FC<HomeProps> = ({staticHome}) =>
 
 	return (
 		<Container>
-			<Head>
-				<title>Home</title>
-			</Head>
+			<SEOHead />
 
 			<header>
 				<div className='icons left'>

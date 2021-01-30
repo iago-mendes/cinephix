@@ -1,5 +1,4 @@
 import {GetStaticProps} from 'next'
-import Head from 'next/head'
 import {useEffect, useState} from 'react'
 import useSWR from 'swr'
 
@@ -9,6 +8,7 @@ import GridPaginate from '../../components/GridPaginate'
 import SearchBox from '../../components/SearchBox'
 import actors from '../../assets/backgrounds/actors.png'
 import HeaderWithBackground from '../../components/HeaderWithBackground'
+import SEOHead from '../../components/SEOHead'
 
 interface CelebritiesProps
 {
@@ -72,9 +72,9 @@ const Celebrities: React.FC<CelebritiesProps> = ({staticCelebrities}) =>
 
 	return (
 		<div>
-			<Head>
-				<title>Celebrities</title>
-			</Head>
+			<SEOHead
+				title='Celebrities | Cinephix'
+			/>
 
 			<HeaderWithBackground background={actors} display='Celebrities' >
 				<SearchBox search={search} setSearch={setSearch} display='Search for a celebrity' />

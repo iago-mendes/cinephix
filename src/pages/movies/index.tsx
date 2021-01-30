@@ -1,5 +1,4 @@
 import {GetStaticProps} from 'next'
-import Head from 'next/head'
 import {useEffect, useState} from 'react'
 import useSWR from 'swr'
 
@@ -9,6 +8,7 @@ import GridPaginate from '../../components/GridPaginate'
 import SearchBox from '../../components/SearchBox'
 import cinema from '../../assets/backgrounds/cinema.png'
 import HeaderWithBackground from '../../components/HeaderWithBackground'
+import SEOHead from '../../components/SEOHead'
 
 interface MoviesProps
 {
@@ -72,9 +72,9 @@ const Movies: React.FC<MoviesProps> = ({staticMovies}) =>
 
 	return (
 		<div>
-			<Head>
-				<title>Movies</title>
-			</Head>
+			<SEOHead
+				title='Movies | Cinephix'
+			/>
 
 			<HeaderWithBackground background={cinema} display='Movies' >
 				<SearchBox search={search} setSearch={setSearch} display='Search for a movie' />

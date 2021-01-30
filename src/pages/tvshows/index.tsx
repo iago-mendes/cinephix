@@ -1,5 +1,4 @@
 import {GetStaticProps} from 'next'
-import Head from 'next/head'
 import {useEffect, useState} from 'react'
 import useSWR from 'swr'
 
@@ -9,6 +8,7 @@ import GridPaginate from '../../components/GridPaginate'
 import SearchBox from '../../components/SearchBox'
 import tv from '../../assets/backgrounds/tv.png'
 import HeaderWithBackground from '../../components/HeaderWithBackground'
+import SEOHead from '../../components/SEOHead'
 
 interface TvshowsProps
 {
@@ -72,9 +72,9 @@ const Tvshows: React.FC<TvshowsProps> = ({staticTvshows}) =>
 
 	return (
 		<div>
-			<Head>
-				<title>Tvshows</title>
-			</Head>
+			<SEOHead
+				title='TV Shows | Cinephix'
+			/>
 
 			<HeaderWithBackground background={tv} display='TV Shows' >
 				<SearchBox search={search} setSearch={setSearch} display='Search for a TV show' />
