@@ -17,9 +17,14 @@ const Container = styled.nav<ContainerProps>`
 	height: 5rem;
 	background-color: ${p => p.theme.secondary};
 
-	.logo
+	.logos
 	{
 		height: 75%;
+		width: 20rem;
+
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
 
 		cursor: pointer;
 		transition: 0.25s;
@@ -27,6 +32,16 @@ const Container = styled.nav<ContainerProps>`
 		:hover
 		{
 			transform: scale(1.05);
+		}
+
+		.icon
+		{
+			width: 20%;
+		}
+
+		.name
+		{
+			width: 75%;
 		}
 	}
 
@@ -143,6 +158,14 @@ const Container = styled.nav<ContainerProps>`
 		justify-content: center;
 
 		color: ${p => p.theme.primary};
+	}
+
+	@media(max-width: 600px)
+	{
+		.logos
+		{
+			width: 15rem;
+		}
 	}
 `
 

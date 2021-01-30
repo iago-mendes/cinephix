@@ -8,15 +8,29 @@ const Container = styled.footer`
 	align-items: center;
 	justify-content: space-between;
 
-	.logo
+	.logos
 	{
 		width: 25%;
 
 		display: flex;
+		flex-direction: column;
 		align-items: center;
-		justify-content: center;
+		gap: 1rem;
 
-		img
+		cursor: pointer;
+		transition: 0.25s;
+
+		:hover
+		{
+			transform: scale(1.05);
+		}
+
+		.icon
+		{
+			width: 25%;
+		}
+
+		.name
 		{
 			width: 100%;
 		}
@@ -85,11 +99,11 @@ const Container = styled.footer`
 	@media(max-width: 700px)
 	{
 		flex-direction: column;
-		gap: 1rem;
+		gap: 2rem;
 
-		.logo
+		.logos
 		{
-			width: 50%;
+			width: 100%;
 		}
 
 		.info

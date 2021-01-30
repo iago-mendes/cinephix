@@ -1,14 +1,21 @@
 import Link from 'next/link'
 import Container from '../styles/components/Footer'
+import Image from 'next/image'
 
-import logo from '../assets/logo/name.svg'
+import logoName from '../assets/logo/name.svg'
+import logoIcon from '../assets/logo/icon.svg'
 
 const Footer: React.FC = () =>
 {
 	return (
 		<Container>
-			<div className='logo'>
-				<img src={logo} alt='Cinephix'/>
+			<div className='logos'>
+				<div className='icon'>
+					<Image src={logoIcon} width={1000} height={1000} layout='responsive' />
+				</div>
+				<div className='name'>
+					<Image src={logoName} width={1000} height={200} layout='responsive' />
+				</div>
 			</div>
 			<div className='info'>
 				<div className='links'>
