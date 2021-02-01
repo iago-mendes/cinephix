@@ -25,8 +25,8 @@ const Container = styled.div`
 
 			img
 			{
-				max-width: 10rem;
-				max-height: 10rem;
+				max-width: 7rem;
+				max-height: 7rem;
 			}
 		}
 
@@ -99,8 +99,8 @@ const Container = styled.div`
 
 				img
 				{
-					max-width: 5rem;
-					max-height: 5rem;
+					max-width: 3rem;
+					max-height: 3rem;
 				}
 			}
 
@@ -109,14 +109,14 @@ const Container = styled.div`
 				img:nth-child(odd)
 				{
 					margin: 0;
-					margin-top: 2.5rem;
+					margin-top: 1rem;
 					transform: rotate(25deg);
 				}
 
 				img:nth-child(even)
 				{
 					margin: 0;
-					margin-bottom: 2.5rem;
+					margin-bottom: 1rem;
 					transform: rotate(-25deg);
 				}
 			}
@@ -126,21 +126,21 @@ const Container = styled.div`
 				img:nth-child(odd)
 				{
 					margin: 0;
-					margin-top: 2.5rem;
+					margin-top: 1rem;
 					transform: rotate(25deg);
 				}
 
 				img:nth-child(even)
 				{
 					margin: 0;
-					margin-bottom: 2.5rem;
+					margin-bottom: 1rem;
 					transform: rotate(-25deg);
 				}
 			}
 
 			.logos
 			{
-				width: 75vw;
+				width: 60vw;
 				max-width: 50rem;
 			}
 		}

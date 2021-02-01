@@ -7,13 +7,13 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="92.140663mm"
-   height="114.33417mm"
-   viewBox="0 0 92.140663 114.33417"
+   width="78.62175mm"
+   height="96.464363mm"
+   viewBox="0 0 78.62175 96.464365"
    version="1.1"
    id="svg318"
    inkscape:version="1.0.1 (0767f8302a, 2020-10-17)"
-   sodipodi:docname="popcorn-shadow.svg">
+   sodipodi:docname="popcorn.svg">
   <defs
      id="defs312">
     <filter
@@ -123,14 +123,14 @@
   </defs>
   <sodipodi:namedview
      id="base"
-     pagecolor="#ffffff"
+     pagecolor="#5b5b5b"
      bordercolor="#666666"
      borderopacity="1.0"
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.5614179"
-     inkscape:cx="235.28323"
-     inkscape:cy="344.94664"
+     inkscape:zoom="0.79396481"
+     inkscape:cx="30.148403"
+     inkscape:cy="238.75974"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      inkscape:document-rotation="0"
@@ -148,7 +148,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -156,11 +156,9 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(-180.36799,-86.433159)">
+     transform="translate(-50.619196,-90.815508)">
     <g
-       id="g46"
-       style="filter:url(#filter58)"
-       transform="translate(134.66363,2.709421)">
+       id="g46">
       <path
          id="path280"
          style="fill:#ffe799;fill-opacity:1;stroke:#1d1d1d;stroke-width:1.74965;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"

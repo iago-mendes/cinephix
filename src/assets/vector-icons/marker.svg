@@ -7,23 +7,23 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="51.217007mm"
-   height="54.512501mm"
-   viewBox="0 0 51.217006 54.512501"
+   width="38.311054mm"
+   height="40.925678mm"
+   viewBox="0 0 38.311054 40.925678"
    version="1.1"
    id="svg1724"
    inkscape:version="1.0.1 (0767f8302a, 2020-10-17)"
-   sodipodi:docname="marker-shadow.svg">
+   sodipodi:docname="marker.svg">
   <defs
      id="defs1718">
     <filter
        style="color-interpolation-filters:sRGB"
        inkscape:label="Drop Shadow"
        id="filter71"
-       x="-0.14"
-       y="-0.15000001"
-       width="1.41"
-       height="1.4">
+       x="-0.039999999"
+       y="-0.039999999"
+       width="1.25"
+       height="1.25">
       <feFlood
          flood-opacity="1"
          flood-color="rgb(0,0,0)"
@@ -60,9 +60,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.82762238"
-     inkscape:cx="19.984483"
-     inkscape:cy="90.351375"
+     inkscape:zoom="1.1704348"
+     inkscape:cx="5.0688995"
+     inkscape:cy="82.314191"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      inkscape:document-rotation="0"
@@ -88,11 +88,9 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(-98.529034,-86.796677)">
+     transform="translate(-43.25502,-93.890966)">
     <g
-       id="g59"
-       style="filter:url(#filter71)"
-       transform="translate(59.247282,-2.3670162)">
+       id="g59">
       <path
          d="M 79.437476,119.3414 H 47.782371 v 14.60042 H 79.437476 V 119.3414"
          style="fill:#ffffff;fill-opacity:0.6;fill-rule:evenodd;stroke:#23232a;stroke-width:0.0352778;stroke-opacity:1"

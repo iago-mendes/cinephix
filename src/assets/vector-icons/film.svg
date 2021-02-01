@@ -7,23 +7,21 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="51.957088mm"
-   height="51.697128mm"
-   viewBox="0 0 51.957088 51.697128"
+   width="35.270351mm"
+   height="35.31921mm"
+   viewBox="0 0 35.270351 35.31921"
    version="1.1"
    id="svg1016"
    inkscape:version="1.0.1 (0767f8302a, 2020-10-17)"
-   sodipodi:docname="film-shadow.svg">
+   sodipodi:docname="film.svg">
   <defs
      id="defs1010">
     <filter
        style="color-interpolation-filters:sRGB"
        inkscape:label="Drop Shadow"
        id="filter227"
-       width="1.55"
-       height="1.54"
-       x="-0.23"
-       y="-0.23999999">
+       width="1.38"
+       height="1.38">
       <feFlood
          flood-opacity="1"
          flood-color="rgb(0,0,0)"
@@ -60,9 +58,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.2449253"
-     inkscape:cx="-8.5841343"
-     inkscape:cy="56.68068"
+     inkscape:zoom="1.7605903"
+     inkscape:cx="147.1485"
+     inkscape:cy="66.744244"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      inkscape:document-rotation="0"
@@ -88,11 +86,9 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(-79.959255,-123.09161)">
+     transform="translate(-33.769587,-140.33444)">
     <g
-       id="g215"
-       style="filter:url(#filter227)"
-       transform="translate(53.024605,-10.060969)">
+       id="g215">
       <rect
          style="fill:#d4d4f7;fill-opacity:1;stroke:none;stroke-width:0.79375"
          id="rect1102"
