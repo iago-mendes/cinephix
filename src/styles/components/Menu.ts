@@ -158,6 +158,14 @@ const Container = styled.nav<ContainerProps>`
 		justify-content: center;
 
 		color: ${p => p.theme.primary};
+
+		cursor: pointer;
+		transition: 0.25s;
+
+		:hover
+		{
+			transform: scale(1.1);
+		}
 	}
 
 	@media(max-width: 1000px)

@@ -28,6 +28,14 @@ const Container = styled.div`
 			justify-content: center;
 
 			color: ${p => p.theme.primary};
+
+			cursor: pointer;
+			transition: 0.25s;
+
+			:hover
+			{
+				transform: scale(1.1);
+			}
 		}
 	}
 
@@ -35,7 +43,7 @@ const Container = styled.div`
 	{
 		height: calc(100vh - 5rem);
 		background-color: ${p => p.theme.secondary};
-		box-shadow: 5px 0px 5px rgba(0,0,0,0.5);
+		box-shadow: 5px 5px 5px rgba(0,0,0,0.5);
 
 		display: flex;
 		align-items: center;
