@@ -160,7 +160,7 @@ const Container = styled.nav<ContainerProps>`
 		color: ${p => p.theme.primary};
 	}
 
-	@media(max-width: 600px)
+	@media(max-width: 1000px)
 	{
 		.logos
 		{

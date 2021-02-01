@@ -36,7 +36,7 @@ const Menu: React.FC = () =>
 				setIsOpen={setIsBurgerMenuOpen}
 			/>
 
-			{width <= 600 && (
+			{width <= 1000 && (
 				<button className='burger' onClick={() => setIsBurgerMenuOpen(true)}>
 					<FiMenu size={30} />
 				</button>
@@ -54,7 +54,7 @@ const Menu: React.FC = () =>
 			</Link>
 			
 			<div className='container'>
-				{width > 600 && (
+				{width > 1000 && (
 					<div className='links'>
 						<Link href='/' >
 							Home
