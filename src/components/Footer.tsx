@@ -9,14 +9,17 @@ const Footer: React.FC = () =>
 {
 	return (
 		<Container>
-			<div className='logos'>
-				<div className='icon'>
-					<Image src={logoIcon} width={1000} height={1000} layout='responsive' />
+			<Link href='/' >
+				<div className='logos'>
+					<div className='icon'>
+						<Image src={logoIcon} width={1000} height={1000} layout='responsive' />
+					</div>
+					<div className='name'>
+						<Image src={logoName} width={1000} height={200} layout='responsive' />
+					</div>
 				</div>
-				<div className='name'>
-					<Image src={logoName} width={1000} height={200} layout='responsive' />
-				</div>
-			</div>
+			</Link>
+
 			<div className='info'>
 				<div className='links'>
 					<Link href='/' >Home</Link>
