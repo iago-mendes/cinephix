@@ -45,6 +45,11 @@ const Container = styled.div`
 	{
 		width: 75vw;
 		max-width: 50rem;
+
+		input
+		{
+			font-size: 1.75rem;
+		}
 	}
 `
 

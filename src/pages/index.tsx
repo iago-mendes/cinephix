@@ -1,6 +1,7 @@
 import {GetStaticProps} from 'next'
 import {useEffect, useState} from 'react'
 import useSWR from 'swr'
+import Image from 'next/image'
 
 import Container from '../styles/pages/index'
 import api from '../services/api'
@@ -9,7 +10,8 @@ import CelebrityCard, {Celebrity} from '../components/CelebrityCard'
 import SearchBox from '../components/SearchBox'
 import GridPaginate from '../components/GridPaginate'
 
-import logo from '../assets/logo/name.svg'
+import logoName from '../assets/logo/name.svg'
+import logoIcon from '../assets/logo/icon.svg'
 import glasses from '../assets/vector-icons/3d-glasses.svg'
 import camera from '../assets/vector-icons/camera.svg'
 import film from '../assets/vector-icons/film.svg'
@@ -98,7 +100,14 @@ const Home: React.FC<HomeProps> = ({staticHome}) =>
 					<img src={glasses} alt='Glasses'/>
 					<img src={film} alt='Film'/>
 				</div>
-				<img src={logo} alt='Cinephix' className='logo' />
+				<div className='logos'>
+					<div className='icon'>
+						<Image src={logoIcon} width={1000} height={1000} layout='responsive' />
+					</div>
+					<div className='name'>
+						<Image src={logoName} width={1000} height={200} layout='responsive' />
+					</div>
+				</div>
 				<div className='icons right'>
 					<img src={marker} alt='Marker'/>
 					<img src={popcorn} alt='Popcorn'/>

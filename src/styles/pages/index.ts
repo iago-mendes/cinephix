@@ -60,9 +60,24 @@ const Container = styled.div`
 			}
 		}
 
-		.logo
+		.logos
 		{
 			width: 50rem;
+
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			gap: 1rem;
+
+			.icon
+			{
+				width: 25%;
+			}
+
+			.name
+			{
+				width: 100%;
+			}
 		}
 	}
 
@@ -71,9 +86,9 @@ const Container = styled.div`
 		header
 		{
 			flex-direction: column;
-			height: 45rem;
+			height: fit-content;
 			padding: 2rem;
-			padding-bottom: 5rem;
+			padding-bottom: 4rem;
 
 			.icons
 			{
@@ -84,24 +99,24 @@ const Container = styled.div`
 
 				img
 				{
-					max-width: 7rem;
-					max-height: 7rem;
+					max-width: 5rem;
+					max-height: 5rem;
 				}
 			}
 
 			.left
 			{
-				img:nth-child(even)
+				img:nth-child(odd)
 				{
-					margin-left: 0;
-					margin-top: 5rem;
+					margin: 0;
+					margin-top: 2.5rem;
 					transform: rotate(25deg);
 				}
 
-				img:nth-child(odd)
+				img:nth-child(even)
 				{
-					margin-right: 0;
-					margin-bottom: 5rem;
+					margin: 0;
+					margin-bottom: 2.5rem;
 					transform: rotate(-25deg);
 				}
 			}
@@ -110,20 +125,20 @@ const Container = styled.div`
 			{
 				img:nth-child(odd)
 				{
-					margin-left: 0;
-					margin-top: 5rem;
+					margin: 0;
+					margin-top: 2.5rem;
 					transform: rotate(25deg);
 				}
 
 				img:nth-child(even)
 				{
-					margin-right: 0;
-					margin-bottom: 5rem;
+					margin: 0;
+					margin-bottom: 2.5rem;
 					transform: rotate(-25deg);
 				}
 			}
 
-			.logo
+			.logos
 			{
 				width: 75vw;
 				max-width: 50rem;
