@@ -6,7 +6,7 @@ const Container = styled.div`
 	
 	main
 	{
-		color: ${p => p.theme.white};
+		color: ${p => p.theme.textBlack};
 		font-family: Roboto;
 		font-size: 1.5rem;
 
@@ -34,7 +34,7 @@ const Container = styled.div`
 		a
 		{
 			text-decoration: none;
-			color: ${p => p.theme.white};
+			color: ${p => p.theme.textBlack};
 			font-weight: 700;
 
 			:hover
