@@ -43,6 +43,14 @@ const Container = styled.div`
 			}
 		}
 	}
+
+	@media(max-width: 700px)
+	{
+		main a
+		{
+			word-break: break-all;
+		}
+	}
 `
 
 export default Container

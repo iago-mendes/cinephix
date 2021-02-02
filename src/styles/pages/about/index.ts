@@ -72,7 +72,7 @@ const Container = styled.div`
 
 		display: grid;
 		grid-auto-rows: 5rem;
-		grid-template-columns: repeat(auto-fill, minmax(40rem, 1fr));
+		grid-template-columns: repeat(auto-fill, minmax(30rem, 1fr));
 		grid-gap: 2rem;
 		align-items: center;
 		justify-items: center;
@@ -101,6 +101,33 @@ const Container = styled.div`
 			{
 				width: 100%;
 			}
+		}
+	}
+
+	@media(max-width: 700px)
+	{
+		gap: 2rem;
+
+		header
+		{
+			flex-direction: column;
+			gap: 1rem;
+
+			.icon
+			{
+				width: 50%;
+			}
+
+			.name
+			{
+				width: 75%;
+			}
+		}
+
+		main .question
+		{
+			padding-left: 1rem;
+			padding-right: 1rem;
 		}
 	}
 `
