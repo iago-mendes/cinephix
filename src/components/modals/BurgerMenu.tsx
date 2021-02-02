@@ -29,7 +29,7 @@ const BurgerMenu: React.FC<UserMenuProps> = ({isOpen, setIsOpen}) =>
 			>
 				<header>
 					<button className='close' onClick={close} >
-						<FiX size={30} />
+						<FiX size={35} />
 					</button>
 				</header>
 				<nav>
