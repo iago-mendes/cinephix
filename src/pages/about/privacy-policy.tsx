@@ -4,7 +4,7 @@ import SEOHead from '../../components/SEOHead'
 const PrivacyPolicy: React.FC = () =>
 {
 	return (
-		<Container>
+		<Container className='page' >
 			<SEOHead
 				title='Privacy Policy | Cinephix'
 			/>
