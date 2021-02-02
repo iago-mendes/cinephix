@@ -34,8 +34,6 @@ const Container = styled.div`
 
 		overflow-x: auto;
 
-		
-
 		.dragDropArea
 		{
 			display: flex;
