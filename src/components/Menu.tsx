@@ -4,7 +4,6 @@ import {BsFillTriangleFill} from 'react-icons/bs'
 import {signIn} from 'next-auth/client'
 import {useState} from 'react'
 import {FiMenu} from 'react-icons/fi'
-import Image from 'next/image'
 
 import Container from '../styles/components/Menu'
 import logoName from '../assets/logo/name.svg'
@@ -44,12 +43,8 @@ const Menu: React.FC = () =>
 
 			<Link href='/'>
 				<div className='logos'>
-					<div className='icon'>
-						<Image src={logoIcon} width={1000} height={1000} layout='responsive' />
-					</div>
-					<div className='name'>
-						<Image src={logoName} width={1000} height={200} layout='responsive' />
-					</div>
+					<img src={logoIcon} className='icon' />
+					<img src={logoName} className='name' />
 				</div>
 			</Link>
 			

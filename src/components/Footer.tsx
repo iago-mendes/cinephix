@@ -1,6 +1,5 @@
 import Link from 'next/link'
 import Container from '../styles/components/Footer'
-import Image from 'next/image'
 
 import logoName from '../assets/logo/name.svg'
 import logoIcon from '../assets/logo/icon.svg'
@@ -11,12 +10,8 @@ const Footer: React.FC = () =>
 		<Container>
 			<Link href='/' >
 				<div className='logos'>
-					<div className='icon'>
-						<Image src={logoIcon} width={1000} height={1000} layout='responsive' />
-					</div>
-					<div className='name'>
-						<Image src={logoName} width={1000} height={200} layout='responsive' />
-					</div>
+					<img src={logoIcon} className='icon' />
+					<img src={logoName} className='name' />
 				</div>
 			</Link>
 
