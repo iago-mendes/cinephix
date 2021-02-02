@@ -1,0 +1,44 @@
+import styled from 'styled-components'
+
+const Container = styled.div`
+	background-color: ${p => p.theme.green};
+	padding: 2rem;
+	
+	main
+	{
+		color: ${p => p.theme.white};
+		font-family: Roboto;
+		font-size: 1.5rem;
+
+		h1, h2
+		{
+			margin-top: 1rem;
+			margin-bottom: 0.5rem;
+		}
+
+		p
+		{
+			text-indent: 2rem;
+		}
+
+		ul li
+		{
+			margin-left: 5rem;
+			list-style-type: disc;
+		}
+
+		a
+		{
+			text-decoration: none;
+			color: ${p => p.theme.white};
+			font-weight: 700;
+
+			:hover
+			{
+				text-decoration: underline;
+			}
+		}
+	}
+`
+
+export default Container
