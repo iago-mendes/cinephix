@@ -77,6 +77,16 @@ export default createGlobalStyle`
 			font-family: Ubuntu !important;
 		}
 	}
+
+	.cookie-banner.react-cookie-banner
+	{
+		/* background-color: ${p => p.theme.primary}80; */
+		background-color: green;
+	
+		.cookie-message {
+			font-weight: 400;
+		}
+	}
 `
 
 export const modalStyle: Modal.Styles =
