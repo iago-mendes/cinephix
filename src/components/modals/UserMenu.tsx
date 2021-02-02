@@ -48,14 +48,20 @@ const UserMenu: React.FC<UserMenuProps> = ({isOpen, setIsOpen}) =>
 						</button>
 					</div>
 					<div className='links'>
-						<Link href='/user'>
-							My profile
+						<Link href='/user' >
+							<a onClick={() => setIsOpen(false)} >
+								My profile
+							</a>
 						</Link>
 						<Link href='/user/tvshows'>
-							My TV shows
+							<a onClick={() => setIsOpen(false)} >
+								My TV shows
+							</a>
 						</Link>
 						<Link href='/user/movies'>
-							My movies
+							<a onClick={() => setIsOpen(false)} >
+								My movies
+							</a>
 						</Link>
 					</div>
 				</main>
