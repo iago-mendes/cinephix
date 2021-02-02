@@ -126,53 +126,51 @@ const UserTvshows: React.FC = () =>
 							return (
 								<div key={statusKey} className='statusColumn' >
 									<h1>{statusTitle}</h1>
-									<div className='scroll'>
-										<Droppable droppableId={statusKey} >
-											{provided => (
-												<div {...provided.droppableProps} ref={provided.innerRef} className='droppableArea' >
-													{tvshows.map((tvshow, index) =>
-													{
-														if (tvshow)
-															return (
-																<Draggable
-																	draggableId={String(tvshow.id)}
-																	index={index}
-																	key={tvshow.id}
-																>
-																	{provided => (
-																		<div
-																			className='tvshow'
-																			{...provided.draggableProps}
-																			{...provided.dragHandleProps}
-																			ref={provided.innerRef}
-																			onClick={() => handleCardClick(tvshow)}
-																		>
-																			<div className='img'>
-																				<Image src={tvshow.image} width={780} height={1170} layout='responsive'/>
-																			</div>
-																			<div className='info'>
-																				<h2>{tvshow.title}</h2>
-																				<div className='details'>
-																					{
-																						Object.values(tvshow.ratings).length !== 0 && (
-																							<span className='ratings'>
-																								{getTotalRating(tvshow.ratings, true, 13)} ({getTotalRating(tvshow.ratings)})
-																							</span>
-																						)
-																					}
-																					<span className='venue'>{tvshow.venue}</span>
-																				</div>
+									<Droppable droppableId={statusKey} >
+										{provided => (
+											<div {...provided.droppableProps} ref={provided.innerRef} className='droppableArea' >
+												{tvshows.map((tvshow, index) =>
+												{
+													if (tvshow)
+														return (
+															<Draggable
+																draggableId={String(tvshow.id)}
+																index={index}
+																key={tvshow.id}
+															>
+																{provided => (
+																	<div
+																		className='tvshow'
+																		{...provided.draggableProps}
+																		{...provided.dragHandleProps}
+																		ref={provided.innerRef}
+																		onClick={() => handleCardClick(tvshow)}
+																	>
+																		<div className='img'>
+																			<Image src={tvshow.image} width={780} height={1170} layout='responsive'/>
+																		</div>
+																		<div className='info'>
+																			<h2>{tvshow.title}</h2>
+																			<div className='details'>
+																				{
+																					Object.values(tvshow.ratings).length !== 0 && (
+																						<span className='ratings'>
+																							{getTotalRating(tvshow.ratings, true, 13)} ({getTotalRating(tvshow.ratings)})
+																						</span>
+																					)
+																				}
+																				<span className='venue'>{tvshow.venue}</span>
 																			</div>
 																		</div>
-																	)}
-																</Draggable>
-															)
-													})}
-													{provided.placeholder}
-												</div>
-											)}
-										</Droppable>
-									</div>
+																	</div>
+																)}
+															</Draggable>
+														)
+												})}
+												{provided.placeholder}
+											</div>
+										)}
+									</Droppable>
 									<button className='add' onClick={() => handleAddClick(statusKey)}>
 										<FiPlus size={25} />
 										<span>Add a TV show</span>
