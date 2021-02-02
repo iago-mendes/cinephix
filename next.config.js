@@ -11,7 +11,8 @@ module.exports = withImages({
 	publicRuntimeConfig:
 	{
 		apiUrl: process.env.API_URL,
-		apiKey: process.env.API_KEY
+		apiKey: process.env.API_KEY,
+		analyticsId: process.env.GA_TRACKING_ID
 	},
 	serverRuntimeConfig:
 	{

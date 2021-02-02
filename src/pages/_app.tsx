@@ -11,12 +11,24 @@ import GlobalStyle from '../styles/global'
 import theme from '../styles/theme'
 import SessionHandler from '../components/SessionHandler'
 import Footer from '../components/Footer'
+import * as gtag from '../utils/gtag'
 
 const MyApp: React.FC<AppProps> = ({Component, pageProps}) =>
 {
 	SwiperCore.use([Navigation])
 
-	const {pathname} = useRouter()
+	const {pathname, events} = useRouter()
+
+	useEffect(() =>
+	{
+		const handleRouteChange = (url: URL) =>
+		{
+			gtag.pageview(url)
+		}
+		
+		events.on('routeChangeComplete', handleRouteChange)
+		return () => events.off('routeChangeComplete', handleRouteChange)
+	}, [events])
 
 	useEffect(() =>
 	{
