@@ -1,5 +1,5 @@
 import {useEffect, useState} from 'react'
-import {DragDropContext, Droppable, Draggable, DropResult} from 'react-beautiful-dnd'
+import {DragDropContext, Droppable, Draggable, DropResult, resetServerContext} from 'react-beautiful-dnd'
 import Image from 'next/image'
 
 import Container from '../../../styles/pages/user/tvshows/index'
@@ -10,6 +10,7 @@ import {FiPlus} from 'react-icons/fi'
 import SelectTvshow from '../../../components/modals/SelectTvshow'
 import getTotalRating from '../../../utils/getTotalRating'
 import SEOHead from '../../../components/SEOHead'
+import {GetServerSideProps} from 'next'
 
 interface TvshowList
 {
@@ -183,6 +184,15 @@ const UserTvshows: React.FC = () =>
 			</main>
 		</Container>
 	)
+}
+
+export const getServerSideProps: GetServerSideProps = async () =>
+{
+	resetServerContext()
+
+	return {
+		props: {}
+	}
 }
 
 export default UserTvshows
