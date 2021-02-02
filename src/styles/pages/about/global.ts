@@ -10,6 +10,10 @@ const Container = styled.div`
 		font-family: Roboto;
 		font-size: 1.5rem;
 
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+
 		h1, h2
 		{
 			margin-top: 1rem;
