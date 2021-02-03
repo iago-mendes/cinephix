@@ -44,6 +44,9 @@ const About: React.FC = () =>
 				<Link href='/about/disclaimer'>
 					Disclaimer
 				</Link>
+				<Link href='/about/media-data'>
+					Media data
+				</Link>
 			</div>
 		</Container>
 	)
