@@ -24,7 +24,7 @@ const Footer: React.FC = () =>
 					<Link href='/about' >About</Link>
 				</div>
 				<div className='attribution'>
-					<Link href='/about/data'>Media data</Link> from <a target='_blank' rel='noreferrer' href='https://www.themoviedb.org/'>TMDb</a>.
+					<Link href='/about/media-data'>Media data</Link> from <a target='_blank' rel='noreferrer' href='https://www.themoviedb.org/'>TMDb</a>.
 				</div>
 			</div>
 		</Container>

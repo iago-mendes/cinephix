@@ -14,6 +14,13 @@ const Container = styled.div`
 		flex-direction: column;
 		gap: 0.5rem;
 
+		img
+		{
+			margin-left: 2rem;
+			margin-top: 2rem;
+			margin-bottom: 2rem;
+		}
+
 		h1, h2
 		{
 			margin-top: 1rem;
@@ -46,9 +53,17 @@ const Container = styled.div`
 
 	@media(max-width: 700px)
 	{
-		main a
+		main
 		{
-			word-break: break-all;
+			img
+			{
+				margin-left: 0;
+			}
+
+			a
+			{
+				word-break: break-all;
+			}
 		}
 	}
 `
