@@ -1,94 +1,41 @@
-import Link from 'next/link'
-import {CSSProperties} from 'react'
-import Banner from 'react-cookie-banner'
+import {useEffect} from 'react'
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
+import {useRouter} from 'next/router'
 
-import useDimensions from '../hooks/useDimensions'
+const MySwal = withReactContent(Swal)
 
-const CookieBanner: React.FC = () =>
+const CookieBanner: React.FC= () =>
 {
-	const {width} = useDimensions()
+	const {push, pathname} = useRouter()
 
-	const bannerDesktopStyle: CSSProperties =
+	useEffect(() =>
 	{
-		position: 'fixed',
-		bottom: '2rem',
-		right: '2rem',
+		const cookieConsent = localStorage.getItem('user-has-accepted-cookies')
+		if (!cookieConsent && pathname !== '/about/privacy-policy')
+			showBanner()
+	}, [pathname])
 
-		width: '50vw',
-		height: '20vh',
-		padding: '1rem',
-
-		backgroundColor: '#26070B',
-		boxShadow: '0px 0px 5px #000',
-		borderRadius: '1rem',
-
-		display: 'flex',
-		alignItems: 'flex-end',
-		justifyContent: 'space-between',
-		flexDirection: 'column',
+	function showBanner()
+	{
+		MySwal.fire(
+			{
+				icon: 'info',
+				title: 'Cookies',
+				text: 'This site uses cookies to provide you with a great user experience. By using Cinephix, you accept our policies.',
+				showCancelButton: true,
+				cancelButtonText: 'See Privacy Policy'
+			})
+			.then(res =>
+			{
+				if (res.isConfirmed)
+					localStorage.setItem('user-has-accepted-cookies', 'true')
+				else if (res.isDismissed)
+					push('/about/privacy-policy')
+			})
 	}
 
-	const bannerMobileStyle: CSSProperties =
-	{
-		position: 'fixed',
-		bottom: '2rem',
-		right: '2rem',
-
-		width: 'calc(100vw - 4rem)',
-		height: '20vh',
-		padding: '1rem',
-
-		backgroundColor: '#26070B',
-		boxShadow: '0px 0px 5px #000',
-		borderRadius: '1rem',
-
-		display: 'flex',
-		alignItems: 'flex-end',
-		justifyContent: 'space-between',
-		flexDirection: 'column',
-	}
-
-	return (
-		<Banner
-			message='This site uses cookies to provide you with a great user experience. By using Cinephix, you accept our policies. '
-			cookie='user-has-accepted-cookies'
-			buttonMessage='Ok'
-			link={(
-				<Link href='/about/privacy-policy' >
-					<a style={{color: '#7B7B7B'}} >
-						Privacy Policy
-					</a>
-				</Link>
-			)}
-			className='cookie-banner'
-			styles={{
-				banner: width <= 700 ? bannerMobileStyle : bannerDesktopStyle,
-				message:
-				{
-					fontFamily: 'Ubuntu',
-					fontWeight: 700,
-					fontSize: '1.75rem',
-					lineHeight: '2rem',
-					color: '#FF8A00',
-
-					width: '100%',
-					textAlign: 'left',
-				},
-				button:
-				{
-					position: 'static',
-					backgroundColor: '#FF8A00',
-					color: '#26070B',
-
-					borderRadius: '1rem',
-
-					fontFamily: 'Ubuntu',
-					fontWeight: 700,
-					fontSize: '1.75rem',
-				}
-			}}
-		/>
-	)
+	return null
 }
 
 export default CookieBanner
