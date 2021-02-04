@@ -14,7 +14,11 @@ const PrivacyPolicy: React.FC = () =>
 
 				<p>At Cinephix, accessible from cinephix.com, one of our main priorities is the privacy of our visitors. This Privacy Policy document contains types of information that is collected and recorded by Cinephix and how we use it.</p>
 
-				<p>If you have additional questions or require more information about our Privacy Policy, do not hesitate to contact us. Our Privacy Policy was created with the help of the <a target='_blank' rel='noreferrer' href='https://www.generateprivacypolicy.com'>Privacy Policy Generator</a>.</p>
+				<p>If you have additional questions or require more information about our Privacy Policy, do not hesitate to contact us at <strong>contact@cinephix.com</strong>.</p>
+
+				<h2>Google user data</h2>
+
+				<p>When users sign in with their Google account, Cinephix only has read access to 3 pieces of information: e-mail, name, and image. The e-mail is used as an identification in our data centers, linking all user-specific information (like movies, TV shows, ratings, etc.) to it. The name and image are used only as a visual feature in the front-end applications. Those 3 pieces of information can be seen by other Cinephix users.</p>
 
 				<h2>Log Files</h2>
 
@@ -32,7 +36,7 @@ const PrivacyPolicy: React.FC = () =>
 
 				<h2>Our Advertising Partners</h2>
 
-				<p>Some of advertisers on our site may use cookies and web beacons. Our advertising partners are listed below. Each of our advertising partners has their own Privacy Policy for their policies on user data. For easier access, we hyperlinked to their Privacy Policies below.</p>
+				<p>Some advertisers on our site may use cookies and web beacons. Our advertising partners are listed below. Each of our advertising partners has their own Privacy Policy for their policies on user data. For easier access, we hyperlinked to their Privacy Policies below.</p>
 
 				<ul>
 					<li>
@@ -59,11 +63,11 @@ const PrivacyPolicy: React.FC = () =>
 
 				<p>Another part of our priority is adding protection for children while using the internet. We encourage parents and guardians to observe, participate in, and/or monitor and guide their online activity.</p>
 
-				<p>Cinephix does not knowingly collect any Personal Identifiable Information from children under the age of 13. If you think that your child provided this kind of information on our website, we strongly encourage you to contact us immediately and we will do our best efforts to promptly remove such information from our records.</p>
+				<p>Cinephix does not knowingly collect any Personal Identifiable Information from children under the age of 13. If you think that your child provided this kind of information on our website, we strongly encourage you to contact us immediately, and we will do our best efforts to promptly remove such information from our records.</p>
 
 				<h2>Online Privacy Policy Only</h2>
 
-				<p>This Privacy Policy applies only to our online activities and is valid for visitors to our website with regards to the information that they shared and/or collect in Cinephix. This policy is not applicable to any information collected offline or via channels other than this website.</p>
+				<p>This Privacy Policy applies only to our online activities and is valid for visitors to our website regarding the information that they shared and/or collect in Cinephix. This policy is not applicable to any information collected offline or via channels other than this website.</p>
 
 				<h2>Consent</h2>
 
