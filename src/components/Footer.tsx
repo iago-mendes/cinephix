@@ -22,6 +22,7 @@ const Footer: React.FC = () =>
 					<Link href='/tvshows' >TV shows</Link>
 					<Link href='/celebrities' >Celebrities</Link>
 					<Link href='/about' >About</Link>
+					<Link href='/about/privacy-policy' >Privacy Policy</Link>
 				</div>
 				<div className='attribution'>
 					<Link href='/about/media-data'>Media data</Link> from <a target='_blank' rel='noreferrer' href='https://www.themoviedb.org/'>TMDb</a>.

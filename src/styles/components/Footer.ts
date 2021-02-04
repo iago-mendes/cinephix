@@ -50,9 +50,12 @@ const Container = styled.footer`
 		{
 			width: 100%;
 
-			display: flex;
+			display: grid;
+			grid-auto-rows: 3rem;
+			grid-template-columns: repeat(auto-fill, minmax(13.5rem, 1fr));
+			grid-gap: 1rem;
 			align-items: center;
-			justify-content: space-between;
+			justify-items: center;
 
 			a
 			{
@@ -109,16 +112,6 @@ const Container = styled.footer`
 		.info
 		{
 			width: 100%;
-
-			.links
-			{
-				display: grid;
-				grid-auto-rows: 3rem;
-				grid-template-columns: repeat(auto-fill, minmax(11rem, 1fr));
-				grid-gap: 1rem;
-				align-items: center;
-				justify-items: center;
-			}
 		}
 	}
 `
