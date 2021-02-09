@@ -13,7 +13,7 @@ const CookieBanner: React.FC= () =>
 	{
 		const cookieConsent = localStorage.getItem('user-has-accepted-cookies')
 		if (!cookieConsent && pathname !== '/about/privacy-policy')
-			showBanner()
+			setTimeout(showBanner, 5000)
 	}, [pathname])
 
 	function showBanner()
