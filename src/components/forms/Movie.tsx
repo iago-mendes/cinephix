@@ -100,9 +100,8 @@ const MovieForm: React.FC<MovieFormProps> = ({movie, method, userMovie}) =>
 			venue: venue !== '' ? venue : undefined,
 			ratings:
 			{
-				engagement: ratings.engagement >= 0 ? ratings.engagement : undefined,
-				consistency: ratings.consistency >= 0 ? ratings.consistency : undefined,
 				screenplay: ratings.screenplay >= 0 ? ratings.screenplay : undefined,
+				pacing: ratings.pacing >= 0 ? ratings.pacing : undefined,
 				acting: ratings.acting >= 0 ? ratings.acting : undefined,
 				cinematography: ratings.cinematography >= 0 ? ratings.cinematography : undefined,
 				musicAndSound: ratings.musicAndSound >= 0 ? ratings.musicAndSound : undefined
