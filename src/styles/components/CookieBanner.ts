@@ -54,6 +54,14 @@ const Container = styled.div`
 			border: none;
 			border-radius: 0.5rem;
 			padding: 0.5rem;
+
+			cursor: pointer;
+			transition: 0.25s;
+
+			:hover
+			{
+				transform: scale(1.1);
+			}
 		}
 
 		.accept
