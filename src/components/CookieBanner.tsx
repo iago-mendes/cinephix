@@ -43,7 +43,7 @@ const CookieBanner: React.FC = () =>
 				</button>
 				<div className='message'>
 					<h2>Cookies</h2>
-					<p>This site uses cookies to provide you with a great user experience. By using Cinephix, you accept our policies.</p>
+					<p>This site uses cookies to provide you a great user experience. By using Cinephix, you accept our policies.</p>
 				</div>
 				<div className='buttons'>
 					<button className='accept' onClick={acceptCookies} >Ok</button>
