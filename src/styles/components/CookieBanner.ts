@@ -83,6 +83,11 @@ const Container = styled.div`
 
 		cursor: pointer;
 	}
+
+	@media(max-width: 1000px)
+	{
+		width: calc(100vw - 2rem)
+	}
 `
 
 export default Container
