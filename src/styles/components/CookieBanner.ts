@@ -1,10 +1,7 @@
 import styled from 'styled-components'
 
 const Container = styled.div`
-	position: fixed;
-	right: 1rem;
-	bottom: 1rem;
-	z-index: 1;
+	position: relative;
 
 	width: 50vw;
 	padding: 1rem;

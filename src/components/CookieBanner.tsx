@@ -1,6 +1,7 @@
 import {useEffect, useState} from 'react'
 import {useRouter} from 'next/router'
 import {FiX} from 'react-icons/fi'
+import {motion} from 'framer-motion'
 
 import Container from '../styles/components/CookieBanner'
 
@@ -32,19 +33,24 @@ const CookieBanner: React.FC = () =>
 		return null
 	
 	return (
-		<Container>
-			<button id='close'onClick={acceptCookies} >
-				<FiX size={20} />
-			</button>
-			<div className='message'>
-				<h2>Cookies</h2>
-				<p>This site uses cookies to provide you with a great user experience. By using Cinephix, you accept our policies.</p>
-			</div>
-			<div className='buttons'>
-				<button className='accept' onClick={acceptCookies} >Ok</button>
-				<button onClick={seePrivacyPolicy} >See Privacy Policy</button>
-			</div>
-		</Container>
+		<motion.div
+			animate={{scale: [0, 1.1, 0.9, 1], position: 'fixed', right: '1rem', bottom: '1rem', zIndex: 1}}
+			transition={{ duration: 0.5 }}
+		>
+			<Container>
+				<button id='close'onClick={acceptCookies} >
+					<FiX size={20} />
+				</button>
+				<div className='message'>
+					<h2>Cookies</h2>
+					<p>This site uses cookies to provide you with a great user experience. By using Cinephix, you accept our policies.</p>
+				</div>
+				<div className='buttons'>
+					<button className='accept' onClick={acceptCookies} >Ok</button>
+					<button onClick={seePrivacyPolicy} >See Privacy Policy</button>
+				</div>
+			</Container>
+		</motion.div>
 	)
 }
 
