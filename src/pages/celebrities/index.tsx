@@ -80,21 +80,17 @@ const Celebrities: React.FC<CelebritiesProps> = ({staticCelebrities}) =>
 				<SearchBox search={search} setSearch={setSearch} display='Search for a celebrity' />
 			</HeaderWithBackground>
 
-			{
-				celebrities.length === 0
-					? (
-						<div className='noResults'>
-							<h1>No results were found!</h1>
-						</div>
-					)
-					: (
-						<GridPaginate page={page} setPage={setPage} totalPages={totalPages} loading={loading} >
-							{celebrities.map(celebrity => (
-								<CelebrityCard celebrity={celebrity} showKnownFor key={celebrity.id} />
-							))}
-						</GridPaginate>
-					)
-			}
+			<GridPaginate
+				page={page}
+				setPage={setPage}
+				totalPages={totalPages}
+				loading={loading}
+				noResults={celebrities.length === 0}
+			>
+				{celebrities.map(celebrity => (
+					<CelebrityCard celebrity={celebrity} showKnownFor key={celebrity.id} />
+				))}
+			</GridPaginate>
 		</div>
 	)
 }

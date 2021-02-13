@@ -80,21 +80,17 @@ const Tvshows: React.FC<TvshowsProps> = ({staticTvshows}) =>
 				<SearchBox search={search} setSearch={setSearch} display='Search for a TV show' />
 			</HeaderWithBackground>
 
-			{
-				tvshows.length === 0
-					? (
-						<div className='noResults'>
-							<h1>No results were found!</h1>
-						</div>
-					)
-					: (
-						<GridPaginate page={page} setPage={setPage} totalPages={totalPages} loading={loading} >
-							{tvshows.map(item => (
-								<MediaCard media={item} showOverview key={item.id} type='tvshow' />
-							))}
-						</GridPaginate>
-					)
-			}
+			<GridPaginate
+				page={page}
+				setPage={setPage}
+				totalPages={totalPages}
+				loading={loading}
+				noResults={tvshows.length === 0}
+			>
+				{tvshows.map(item => (
+					<MediaCard media={item} showOverview key={item.id} type='tvshow' />
+				))}
+			</GridPaginate>
 		</div>
 	)
 }

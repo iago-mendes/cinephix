@@ -116,29 +116,25 @@ const Home: React.FC<HomeProps> = ({staticHome}) =>
 				<SearchBox search={search} setSearch={setSearch} display='Search for a movie, TV show, or celebrity' />
 			</header>
 
-			{
-				home.length === 0 && search !== ''
-					? (
-						<div className='noResults'>
-							<h1>No results found!</h1>
-						</div>
-					)
-					: (
-						<GridPaginate page={page} setPage={setPage} totalPages={totalPages} loading={loading} >
-							{home.map(item =>
-							{
-								if (isMedia(item))
-									return (
-										<MediaCard media={item} showOverview key={item.id} type={item.type} />
-									)
-								else if (isCelebrity(item))
-									return (
-										<CelebrityCard celebrity={item} showKnownFor key={item.id} />
-									)
-							})}
-						</GridPaginate>
-					)
-			}
+			<GridPaginate
+				page={page}
+				setPage={setPage}
+				totalPages={totalPages}
+				loading={loading}
+				noResults={home.length === 0}
+			>
+				{home.map(item =>
+				{
+					if (isMedia(item))
+						return (
+							<MediaCard media={item} showOverview key={item.id} type={item.type} />
+						)
+					else if (isCelebrity(item))
+						return (
+							<CelebrityCard celebrity={item} showKnownFor key={item.id} />
+						)
+				})}
+			</GridPaginate>
 		</Container>
 	)
 }

@@ -13,11 +13,12 @@ interface GridPaginateProps
 	totalPages: number
 
 	loading: boolean
+	noResults: boolean
 
 	style?: CSSProperties
 }
 
-const GridPaginate: React.FC<GridPaginateProps> = ({page, setPage, totalPages, loading, style = {}, children}) =>
+const GridPaginate: React.FC<GridPaginateProps> = ({page, setPage, totalPages, loading, style = {}, noResults, children}) =>
 {
 	function goBack()
 	{
@@ -42,13 +43,19 @@ const GridPaginate: React.FC<GridPaginateProps> = ({page, setPage, totalPages, l
 	return (
 		<Container style={style} >
 			{
-				loading
-					? <Loading style={{marginTop: '10rem'}} />
-					: (
-						<main>
-							{children}
-						</main>
+				noResults
+					? (
+						<div className='noResults'>
+							<h1>No results found!</h1>
+						</div>
 					)
+					: loading
+						? <Loading style={{marginTop: '10rem'}} />
+						: (
+							<main>
+								{children}
+							</main>
+						)
 			}
 			<div className='paginate'>
 				<div className='buttons'>
