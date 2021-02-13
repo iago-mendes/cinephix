@@ -8,7 +8,6 @@ import Container from '../../styles/components/modals/Select'
 import {modalStyle} from '../../styles/global'
 import MediaCard, {Media} from '../cards/Media'
 import GridPaginate from '../../components/GridPaginate'
-import {useRouter} from 'next/router'
 
 Modal.setAppElement('#__next')
 
@@ -22,8 +21,6 @@ interface SelectMovieProps
 
 const SelectMovie: React.FC<SelectMovieProps> = ({isOpen, setIsOpen, watched}) =>
 {
-	const router = useRouter()
-
 	const [search, setSearch] = useState('')
 	const [page, setPage] = useState(1)
 	const [totalPages, setTotalPages] = useState(1)
@@ -77,12 +74,6 @@ const SelectMovie: React.FC<SelectMovieProps> = ({isOpen, setIsOpen, watched}) =
 			setTotalPages(1)
 	}, [search])
 
-	function handleNavigateToAddMovie(id: number)
-	{
-		router.push(`/user/movies/${id}/add?watched=${watched}`)
-		setIsOpen(false)
-	}
-
 	return (
 		<Modal
 			isOpen={isOpen}
@@ -120,9 +111,8 @@ const SelectMovie: React.FC<SelectMovieProps> = ({isOpen, setIsOpen, watched}) =
 								media={item}
 								showOverview
 								key={item.id}
-								type='tvshow'
-								navigateOnClick={false}
-								onClick={handleNavigateToAddMovie}
+								link={`/user/movies/${item.id}/add?watched=${watched}`}
+								onClick={() => setIsOpen(false)}
 							/>
 						))}
 					</GridPaginate>

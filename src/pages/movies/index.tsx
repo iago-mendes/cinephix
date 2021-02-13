@@ -88,7 +88,12 @@ const Movies: React.FC<MoviesProps> = ({staticMovies}) =>
 				noResults={movies.length === 0}
 			>
 				{movies.map(item => (
-					<MediaCard media={item} showOverview key={item.id} type='movie' />
+					<MediaCard
+						media={item}
+						showOverview
+						key={item.id}
+						link={`movies/${item.id}`}
+					/>
 				))}
 			</GridPaginate>
 		</div>

@@ -88,7 +88,12 @@ const Tvshows: React.FC<TvshowsProps> = ({staticTvshows}) =>
 				noResults={tvshows.length === 0}
 			>
 				{tvshows.map(item => (
-					<MediaCard media={item} showOverview key={item.id} type='tvshow' />
+					<MediaCard
+						media={item}
+						showOverview
+						key={item.id}
+						link={`tvshows/${item.id}`}
+					/>
 				))}
 			</GridPaginate>
 		</div>

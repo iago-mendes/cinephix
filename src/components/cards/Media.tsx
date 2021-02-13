@@ -22,20 +22,22 @@ interface MediaCardProps
 	media: Media
 	showOverview?: boolean
 
-	type: string
+	link: string
 	
 	style?: CSSProperties
+	onClick?: (p: any) => void
 }
 
 const MediaCard: React.FC<MediaCardProps> =
-({media, showOverview = false, type, style = {}}) =>
+({media, showOverview = false, link, style = {}, onClick = () => {}}) =>
 {
 	return (
-		<Link href={`/${type}s/${media.id}`} >
+		<Link href={link} >
 			<Container
 				style={style}
 				as='a'
-				href={`/${type}s/${media.id}`}
+				href={link}
+				onClick={onClick}
 			>
 				<div className='img'>
 					<Image src={media.image} width={780} height={1170} layout='responsive' />

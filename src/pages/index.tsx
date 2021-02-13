@@ -127,7 +127,7 @@ const Home: React.FC<HomeProps> = ({staticHome}) =>
 				{
 					if (isMedia(item))
 						return (
-							<MediaCard media={item} showOverview key={item.id} type={item.type} />
+							<MediaCard media={item} showOverview key={item.id} link={`/${item.type}s/${item.id}`} />
 						)
 					else if (isCelebrity(item))
 						return (
