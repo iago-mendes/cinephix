@@ -30,9 +30,11 @@ const config: InitOptions =
 			{
 				const data =
 				{
-					email: message.user.email
+					image: message.user.image,
+					name: message.user.name
 				}
-				api.post('users', data).catch(() => console.log('user already exists'))
+				
+				api.post(`users/${message.user.email}`, data)
 			}
 		}
 	}
