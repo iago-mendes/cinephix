@@ -113,6 +113,7 @@ const SelectTvshow: React.FC<SelectTvshowProps> = ({isOpen, setIsOpen, statusKey
 						totalPages={totalPages}
 						loading={loading}
 						style={{minHeight: 'calc(85vh - 12rem)'}}
+						noResults={tvshows.length === 0 && search != ''}
 					>
 						{tvshows.map(item => (
 							<MediaCard

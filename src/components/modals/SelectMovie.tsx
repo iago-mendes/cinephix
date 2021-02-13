@@ -113,6 +113,7 @@ const SelectMovie: React.FC<SelectMovieProps> = ({isOpen, setIsOpen, watched}) =
 						totalPages={totalPages}
 						loading={loading}
 						style={{minHeight: 'calc(85vh - 12rem)'}}
+						noResults={movies.length === 0 && search != ''}
 					>
 						{movies.map(item => (
 							<MediaCard

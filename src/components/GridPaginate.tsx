@@ -43,14 +43,14 @@ const GridPaginate: React.FC<GridPaginateProps> = ({page, setPage, totalPages, l
 	return (
 		<Container style={style} >
 			{
-				noResults
-					? (
-						<div className='noResults'>
-							<h1>No results found!</h1>
-						</div>
-					)
-					: loading
-						? <Loading style={{marginTop: '10rem'}} />
+				loading
+					? <Loading style={{marginTop: '10rem'}} />
+					: noResults
+						? (
+							<div className='noResults'>
+								<h1>No results found!</h1>
+							</div>
+						)
 						: (
 							<main>
 								{children}
