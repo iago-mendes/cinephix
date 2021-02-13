@@ -1,6 +1,6 @@
 import Image from 'next/image'
-import {useRouter} from 'next/router'
 import {FiCalendar, FiUser} from 'react-icons/fi'
+import Link from 'next/link'
 
 import Container from '../styles/components/CelebrityCard'
 import {Media} from './MediaCard'
@@ -24,40 +24,35 @@ interface CelebrityCardProps
 
 const CelebrityCard: React.FC<CelebrityCardProps> = ({celebrity, showKnownFor = false}) =>
 {
-	const Router = useRouter()
-
-	function handleNavigate()
-	{
-		Router.push(`/celebrities/${celebrity.id}`)
-	}
-
 	return (
-		<Container onClick={handleNavigate} >
-			<div className='img'>
-				<Image src={celebrity.image} width={780} height={1170} layout='responsive' />
-			</div>
-			<div className='info'>
-				<h1>{truncateText(celebrity.name, 20)}</h1>
-				<h3>
-					<FiUser size={15} />
-					{celebrity.knownForDepartment}
-				</h3>
-				{(showKnownFor && celebrity.knownFor) && (
-					<div className="media">
-						<div className='mediaImg'>
-							<Image src={celebrity.knownFor.image} width={780} height={1170} layout='responsive' />
+		<Link href={`/celebrities/${celebrity.id}`} >
+			<Container as='a' href={`/celebrities/${celebrity.id}`} >
+				<div className='img'>
+					<Image src={celebrity.image} width={780} height={1170} layout='responsive' />
+				</div>
+				<div className='info'>
+					<h1>{truncateText(celebrity.name, 20)}</h1>
+					<h3>
+						<FiUser size={15} />
+						{celebrity.knownForDepartment}
+					</h3>
+					{(showKnownFor && celebrity.knownFor) && (
+						<div className="media">
+							<div className='mediaImg'>
+								<Image src={celebrity.knownFor.image} width={780} height={1170} layout='responsive' />
+							</div>
+							<div className='mediaInfo'>
+								<h1>{truncateText(celebrity.knownFor.title, 35)}</h1>
+								<h3>
+									<FiCalendar size={15} />
+									{formatDate(celebrity.knownFor.date)}
+								</h3>
+							</div>
 						</div>
-						<div className='mediaInfo'>
-							<h1>{truncateText(celebrity.knownFor.title, 35)}</h1>
-							<h3>
-								<FiCalendar size={15} />
-								{formatDate(celebrity.knownFor.date)}
-							</h3>
-						</div>
-					</div>
-				)}
-			</div>
-		</Container>
+					)}
+				</div>
+			</Container>
+		</Link>
 	)
 }
 

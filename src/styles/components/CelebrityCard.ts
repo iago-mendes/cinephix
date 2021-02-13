@@ -13,6 +13,8 @@ const Container = styled.div`
 	border-radius: 1rem;
 	box-shadow: 5px 5px 5px rgba(0,0,0,0.5);
 
+	text-decoration: none;
+
 	cursor: pointer;
 	transition: 0.25s;
 

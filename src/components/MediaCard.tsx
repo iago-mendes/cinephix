@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import {useRouter} from 'next/router'
+import Link from 'next/link'
 import {FiCalendar} from 'react-icons/fi'
 import {CSSProperties} from 'styled-components'
 
@@ -25,38 +25,31 @@ interface MediaCardProps
 	type: string
 	
 	style?: CSSProperties
-
-	navigateOnClick?: boolean
-	onClick?: (id: number) => void
 }
 
 const MediaCard: React.FC<MediaCardProps> =
-({media, showOverview = false, type, style = {}, navigateOnClick = true, onClick = () => {}}) =>
+({media, showOverview = false, type, style = {}}) =>
 {
-	const Router = useRouter()
-
-	function handleNavigate()
-	{
-		if (navigateOnClick)
-			Router.push(`/${type}s/${media.id}`)
-		else
-			onClick(media.id)
-	}
-
 	return (
-		<Container style={style} onClick={handleNavigate} >
-			<div className='img'>
-				<Image src={media.image} width={780} height={1170} layout='responsive' />
-			</div>
-			<div className='info'>
-				<h1>{truncateText(media.title, 35)}</h1>
-				<h3>
-					<FiCalendar size={15} />
-					{formatDate(media.date)}
-				</h3>
-				{showOverview && <p>{truncateText(media.overview, 120)}</p>}
-			</div>
-		</Container>
+		<Link href={`/${type}s/${media.id}`} >
+			<Container
+				style={style}
+				as='a'
+				href={`/${type}s/${media.id}`}
+			>
+				<div className='img'>
+					<Image src={media.image} width={780} height={1170} layout='responsive' />
+				</div>
+				<div className='info'>
+					<h1>{truncateText(media.title, 35)}</h1>
+					<h3>
+						<FiCalendar size={15} />
+						{formatDate(media.date)}
+					</h3>
+					{showOverview && <p>{truncateText(media.overview, 120)}</p>}
+				</div>
+			</Container>
+		</Link>
 	)
 }
 
