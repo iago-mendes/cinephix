@@ -20,6 +20,7 @@ const SearchBox: React.FC<SearchBoxProps> = ({search, setSearch, display}) =>
 				placeholder={display}
 				value={search}
 				onChange={e => setSearch(e.target.value)}
+				maxLength={100}
 			/>
 		</Container>
 	)

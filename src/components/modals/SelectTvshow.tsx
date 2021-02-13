@@ -103,6 +103,7 @@ const SelectTvshow: React.FC<SelectTvshowProps> = ({isOpen, setIsOpen, statusKey
 						value={search}
 						onChange={e => setSearch(e.target.value)}
 						autoFocus
+						maxLength={100}
 					/>
 				</div>
 				<div className='scroll'>

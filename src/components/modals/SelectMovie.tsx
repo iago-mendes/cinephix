@@ -103,6 +103,7 @@ const SelectMovie: React.FC<SelectMovieProps> = ({isOpen, setIsOpen, watched}) =
 						value={search}
 						onChange={e => setSearch(e.target.value)}
 						autoFocus
+						maxLength={100}
 					/>
 				</div>
 				<div className='scroll'>
