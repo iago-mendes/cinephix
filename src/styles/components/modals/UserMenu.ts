@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import Modal from 'react-modal'
 
 const Container = styled.div`
 	width: 20rem;
@@ -109,25 +108,5 @@ const Container = styled.div`
 		}
 	}
 `
-
-export const modalStyle: Modal.Styles =
-{
-	overlay:
-	{
-		zIndex: 1,
-		width: 'fit-content',
-		height: 'fit-content'
-	},
-	content:
-	{
-		background: 'none',
-		border: 'none',
-		padding: '1rem',
-		width: 'fit-content',
-		height: 'fit-content',
-		left: 'calc(100vw - 20rem - 3rem)',
-		top: '4.5rem'
-	}
-}
 
 export default Container
