@@ -3,7 +3,7 @@ import {useEffect, useState} from 'react'
 import useSWR from 'swr'
 
 import api from '../../services/api'
-import MediaCard, {Media} from '../../components/MediaCard'
+import MediaCard, {Media} from '../../components/cards/Media'
 import GridPaginate from '../../components/GridPaginate'
 import SearchBox from '../../components/SearchBox'
 import tv from '../../assets/backgrounds/tv.png'

@@ -3,7 +3,7 @@ import {useRouter} from 'next/router'
 import {FiX} from 'react-icons/fi'
 import {motion} from 'framer-motion'
 
-import Container from '../styles/components/CookieBanner'
+import Container from '../../styles/components/modals/CookieBanner'
 
 const CookieBanner: React.FC = () =>
 {

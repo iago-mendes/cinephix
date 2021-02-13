@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
-import Container from '../styles/components/CarouselCard'
+import Container from '../../styles/components/cards/Carousel'
 
 interface CarouselCardProps
 {

@@ -6,7 +6,7 @@ import useSWR from 'swr'
 
 import Container from '../../styles/components/modals/Select'
 import {modalStyle} from '../../styles/global'
-import MediaCard, {Media} from '../../components/MediaCard'
+import MediaCard, {Media} from '../cards/Media'
 import GridPaginate from '../../components/GridPaginate'
 import { useRouter } from 'next/router'
 

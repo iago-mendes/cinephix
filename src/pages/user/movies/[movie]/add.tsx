@@ -1,7 +1,7 @@
 import {GetStaticPaths, GetStaticProps} from 'next'
 
 import api from '../../../../services/api'
-import {Media} from '../../../../components/MediaCard'
+import {Media} from '../../../../components/cards/Media'
 import MovieDetails from '../../../../models/movie'
 import Loading from '../../../../components/Loading'
 import MovieForm from '../../../../components/forms/Movie'

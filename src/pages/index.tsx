@@ -5,8 +5,8 @@ import Image from 'next/image'
 
 import Container from '../styles/pages/index'
 import api from '../services/api'
-import MediaCard, {Media} from '../components/MediaCard'
-import CelebrityCard, {Celebrity} from '../components/CelebrityCard'
+import MediaCard, {Media} from '../components/cards/Media'
+import CelebrityCard, {Celebrity} from '../components/cards/Celebrity'
 import SearchBox from '../components/SearchBox'
 import GridPaginate from '../components/GridPaginate'
 

@@ -12,7 +12,7 @@ import theme from '../styles/theme'
 import SessionHandler from '../components/SessionHandler'
 import Footer from '../components/Footer'
 import * as gtag from '../utils/gtag'
-import CookieBanner from '../components/CookieBanner'
+import CookieBanner from '../components/modals/CookieBanner'
 
 const MyApp: React.FC<AppProps> = ({Component, pageProps}) =>
 {

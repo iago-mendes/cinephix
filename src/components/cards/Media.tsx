@@ -3,9 +3,9 @@ import Link from 'next/link'
 import {FiCalendar} from 'react-icons/fi'
 import {CSSProperties} from 'styled-components'
 
-import Container from '../styles/components/MediaCard'
-import formatDate from '../utils/formatDate'
-import truncateText from '../utils/truncateText'
+import Container from '../../styles/components/cards/Media'
+import formatDate from '../../utils/formatDate'
+import truncateText from '../../utils/truncateText'
 
 export interface Media
 {

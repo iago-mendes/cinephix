@@ -3,7 +3,7 @@ import {useEffect, useState} from 'react'
 import useSWR from 'swr'
 
 import api from '../../services/api'
-import CelebrityCard, {Celebrity} from '../../components/CelebrityCard'
+import CelebrityCard, {Celebrity} from '../../components/cards/Celebrity'
 import GridPaginate from '../../components/GridPaginate'
 import SearchBox from '../../components/SearchBox'
 import actors from '../../assets/backgrounds/actors.png'
