@@ -113,7 +113,7 @@ const Movie: React.FC<MovieProps> = ({movie}) =>
 									Object.values(userMovie.ratings).length !== 0 && (
 										<div className='group'>
 											<label>My rating</label>
-											<span>{getTotalRating(userMovie.ratings, true)} ({getTotalRating(userMovie.ratings)})</span>
+											<span>{getTotalRating(userMovie.ratings, true)}</span>
 										</div>
 									)
 								}

@@ -172,9 +172,9 @@ const UserMovies: React.FC = () =>
 									<div className='details'>
 										{
 											Object.values(movie.ratings).length !== 0 && (
-												<span className='ratings'>
-													{getTotalRating(movie.ratings, true, 13)} ({getTotalRating(movie.ratings)})
-												</span>
+												<div className='ratings'>
+													{getTotalRating(movie.ratings, true)}
+												</div>
 											)
 										}
 										<span className='venue'>{movie.venue}</span>

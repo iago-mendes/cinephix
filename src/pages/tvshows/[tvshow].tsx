@@ -153,7 +153,7 @@ const Tvshow: React.FC<TvshowProps> = ({tvshow}) =>
 									Object.values(userTvshow.ratings).length !== 0 && (
 										<div className='group'>
 											<label>My rating</label>
-											<span>{getTotalRating(userTvshow.ratings, true)} ({getTotalRating(userTvshow.ratings)})</span>
+											<span>{getTotalRating(userTvshow.ratings, true)}</span>
 										</div>
 									)
 								}

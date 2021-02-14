@@ -154,11 +154,7 @@ const UserTvshows: React.FC = () =>
 																			<h2>{tvshow.title}</h2>
 																			<div className='details'>
 																				{
-																					Object.values(tvshow.ratings).length !== 0 && (
-																						<span className='ratings'>
-																							{getTotalRating(tvshow.ratings, true, 13)} ({getTotalRating(tvshow.ratings)})
-																						</span>
-																					)
+																					Object.values(tvshow.ratings).length !== 0 && getTotalRating(tvshow.ratings, true)
 																				}
 																				<span className='venue'>{tvshow.venue}</span>
 																			</div>

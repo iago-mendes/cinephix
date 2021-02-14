@@ -1,8 +1,9 @@
 import {BsStarFill, BsStarHalf} from 'react-icons/bs'
 
 import Ratings from '../models/ratings'
+import Container from '../styles/utils/getTotalRating'
 
-function getTotalRating(ratings: Ratings, showStars = false, svgSize = 20)
+function getTotalRating(ratings: Ratings, showStars = false)
 {
 	let sum = 0
 	let n = 0
@@ -28,18 +29,21 @@ function getTotalRating(ratings: Ratings, showStars = false, svgSize = 20)
 			tmp.push('')
 
 		return (
-			<>
-				{
-					tmp.map((s, index) => (
-						<BsStarFill size={svgSize} style={{marginRight: 5}} key={index} />
-					))
-				}
-				{
-					halfStar && (
-						<BsStarHalf size={svgSize} />
-					)
-				}
-			</>
+			<Container>
+				<div className='stars'>
+					{
+						tmp.map((s, index) => (
+							<BsStarFill key={index} />
+						))
+					}
+					{
+						halfStar && (
+							<BsStarHalf />
+						)
+					}
+				</div>
+				<span>({avg})</span>
+			</Container>
 		)
 	}
 
