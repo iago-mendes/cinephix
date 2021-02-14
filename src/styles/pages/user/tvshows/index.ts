@@ -46,7 +46,6 @@ const Container = styled.div`
 			.statusColumn
 			{
 				background-color: ${p => p.theme.black};
-				width: 33rem;
 				height: fit-content;
 
 				padding-top: 1rem;
@@ -55,7 +54,6 @@ const Container = styled.div`
 
 				display: flex;
 				flex-direction: column;
-				align-items: center;
 
 				h1
 				{
@@ -83,14 +81,12 @@ const Container = styled.div`
 
 				.droppableArea
 				{
-					width: 100%;
 					height: fit-content;
 					min-height: 10rem;
 					background-color: ${p => p.theme.background}40;
 
 					display: flex;
 					flex-direction: column;
-					align-items: center;
 					gap: 1rem;
 
 					padding: 1rem;
@@ -200,6 +196,28 @@ const Container = styled.div`
 						font-weight: 700;
 						font-size: 1.5rem;
 					}
+				}
+			}
+		}
+	}
+
+	@media(max-width: 600px)
+	{
+		main .dragDropArea .statusColumn .droppableArea .tvshow
+		{
+			width: 20rem;
+			height: calc((20rem - 1rem) * 0.4 * 1.5 + 1rem);
+
+			.info
+			{
+				h2
+				{
+					font-size: 1.5rem;
+				}
+
+				.details
+				{
+					font-size: 1rem;
 				}
 			}
 		}
