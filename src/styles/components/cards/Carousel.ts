@@ -49,6 +49,9 @@ const Container = styled.div`
 		align-items: flex-start;
 		justify-content: space-between;
 
+		padding-top: 1rem;
+		padding-bottom: 1rem;
+
 		color: ${p => p.theme.background};
 
 		h1
@@ -70,6 +73,26 @@ const Container = styled.div`
 			align-items: center;
 			justify-content: center;
 			gap: 0.5rem;
+		}
+	}
+
+	@media(max-width: 600px)
+	{
+		width: 20rem;
+		padding: 0.5rem;
+		height: calc((20rem - 1rem) * 0.3 * 1.5 + 1rem);
+
+		.info
+		{
+			h1
+			{
+				font-size: 1.75rem;
+			}
+
+			h2
+			{
+				font-size: 1.25rem;
+			}
 		}
 	}
 `
