@@ -3,7 +3,7 @@ import {BiUserCircle} from 'react-icons/bi'
 import {BsFillTriangleFill} from 'react-icons/bs'
 import {signIn} from 'next-auth/client'
 import {useState} from 'react'
-import {FiMenu} from 'react-icons/fi'
+import {FiMenu, FiX} from 'react-icons/fi'
 
 import Container from '../styles/components/Menu'
 import logoName from '../assets/logo/name.svg'
@@ -30,15 +30,17 @@ const Menu: React.FC = () =>
 				setIsOpen={setIsModalOpen}
 			/>
 
-			<BurgerMenu
-				isOpen={isBurgerMenuOpen}
-				setIsOpen={setIsBurgerMenuOpen}
-			/>
-
 			{width <= 1000 && (
-				<button className='burger' onClick={() => setIsBurgerMenuOpen(true)}>
-					<FiMenu size={30} />
-				</button>
+				<div className='burger' >
+					<button onClick={() => setIsBurgerMenuOpen(!isBurgerMenuOpen)}>
+						{!isBurgerMenuOpen && <FiMenu size={30} />}
+						{isBurgerMenuOpen && <FiX size={30} />}
+					</button>
+					<BurgerMenu
+						isOpen={isBurgerMenuOpen}
+						setIsOpen={setIsBurgerMenuOpen}
+					/>
+				</div>
 			)}
 
 			<Link href='/'>

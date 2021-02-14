@@ -1,10 +1,9 @@
-import Modal from 'react-modal'
-import {FiX} from 'react-icons/fi'
 import Link from 'next/link'
+import {motion} from 'framer-motion'
+import {useRouter} from 'next/router'
+import {useEffect} from 'react'
 
-import Container, {modalStyle} from '../../styles/components/modals/BurgerMenu'
-
-Modal.setAppElement('#__next')
+import Container from '../../styles/components/modals/BurgerMenu'
 
 interface UserMenuProps
 {
@@ -14,48 +13,62 @@ interface UserMenuProps
 
 const BurgerMenu: React.FC<UserMenuProps> = ({isOpen, setIsOpen}) =>
 {
-	function close()
+	const {pathname} = useRouter()
+
+	useEffect(() =>
 	{
 		setIsOpen(false)
-	}
+	}, [pathname])
 
 	return (
-		<Modal
-			isOpen={isOpen}
-			style={modalStyle}
+		<motion.div
+			initial={false}
+			transition={{duration: 0.25}}
+			animate={isOpen ? 'open' : 'closed'}
+			variants=
+				{{
+					open:
+					{
+						width: 'fit-content',
+						opacity: 1,
+						overflowY: 'auto'
+					},
+					closed:
+					{
+						width: 0,
+						opacity: 0,
+						overflowY: 'hidden'
+					}
+				}}
+			style=
+				{{
+					position: 'fixed',
+					top: '5rem',
+					left: 0,
+					zIndex: 100,
+
+					height: 'calc(100vh - 5rem)',
+					overflowX: 'hidden',
+					boxShadow: '5px 5px 5px rgba(0,0, 0, 0.5)'
+				}}
 		>
 			<Container
-				onMouseLeave={close}
+				onMouseLeave={() => setIsOpen(false)}
 			>
-				<header>
-					<button className='close' onClick={close} >
-						<FiX size={35} />
-					</button>
-				</header>
-				<nav>
-					<Link href='/' >
-						<a onClick={close}>
-							Home
-						</a>
-					</Link>
-					<Link href='/movies' >
-						<a onClick={close}>
-							Movies
-						</a>
-					</Link>
-					<Link href='/tvshows' >
-						<a onClick={close}>
-							TV shows
-						</a>
-					</Link>
-					<Link href='/celebrities' >
-						<a onClick={close}>
-							Celebrities
-						</a>
-					</Link>
-				</nav>
+				<Link href='/' >
+						Home
+				</Link>
+				<Link href='/movies' >
+						Movies
+				</Link>
+				<Link href='/tvshows' >
+						TV shows
+				</Link>
+				<Link href='/celebrities' >
+						Celebrities
+				</Link>
 			</Container>
-		</Modal>
+		</motion.div>
 	)
 }
 

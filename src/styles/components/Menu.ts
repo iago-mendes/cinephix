@@ -150,21 +150,24 @@ const Container = styled.nav<ContainerProps>`
 
 	.burger
 	{
-		background: none;
-		border: none;
-
-		display: flex;
-		align-items: center;
-		justify-content: center;
-
-		color: ${p => p.theme.primary};
-
-		cursor: pointer;
-		transition: 0.25s;
-
-		:hover
+		button
 		{
-			transform: scale(1.1);
+			background: none;
+			border: none;
+
+			display: flex;
+			align-items: center;
+			justify-content: center;
+
+			color: ${p => p.theme.primary};
+
+			cursor: pointer;
+			transition: 0.25s;
+
+			:hover
+			{
+				transform: scale(1.1);
+			}
 		}
 	}
 
