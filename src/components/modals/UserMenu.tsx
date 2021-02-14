@@ -2,10 +2,12 @@ import {BsFillTriangleFill} from 'react-icons/bs'
 import {FiLogOut} from 'react-icons/fi'
 import {signOut} from 'next-auth/client'
 import {motion} from 'framer-motion'
+import {useRouter} from 'next/router'
+import {useEffect} from 'react'
+import Link from 'next/link'
 
 import Container from '../../styles/components/modals/UserMenu'
 import useUser from '../../hooks/useUser'
-import Link from 'next/link'
 
 interface UserMenuProps
 {
@@ -16,6 +18,12 @@ interface UserMenuProps
 const UserMenu: React.FC<UserMenuProps> = ({isOpen, setIsOpen}) =>
 {
 	const {user} = useUser()
+	const {pathname} = useRouter()
+
+	useEffect(() =>
+	{
+		setIsOpen(false)
+	}, [pathname])
 
 	function handleSignOut()
 	{
@@ -34,21 +42,21 @@ const UserMenu: React.FC<UserMenuProps> = ({isOpen, setIsOpen}) =>
 			variants=
 				{{
 					open:
-				{
-					height: 'fit-content',
-					opacity: 1,
-				},
+					{
+						height: 'fit-content',
+						opacity: 1,
+					},
 					closed:
-				{
-					height: 0,
-					opacity: 0,
-				}
+					{
+						height: 0,
+						opacity: 0,
+					}
 				}}
 			style=
 				{{
 					position: 'absolute',
 					right: 0,
-					top: '5rem',
+					top: '3.5rem',
 					zIndex: 100,
 
 					overflow: 'hidden',
@@ -56,9 +64,7 @@ const UserMenu: React.FC<UserMenuProps> = ({isOpen, setIsOpen}) =>
 					paddingTop: 0,
 				}}
 		>
-			<Container
-				onMouseLeave={() => setIsOpen(false)}
-			>
+			<Container>
 				<div className='detail'>
 					<BsFillTriangleFill size={10} />
 				</div>
@@ -70,21 +76,15 @@ const UserMenu: React.FC<UserMenuProps> = ({isOpen, setIsOpen}) =>
 							<span>Sign out</span>
 						</button>
 					</div>
-					<div className='links'>
+					<div className='userLinks'>
 						<Link href='/user' >
-							<a onClick={() => setIsOpen(false)} >
-								My profile
-							</a>
+							My profile
 						</Link>
 						<Link href='/user/tvshows'>
-							<a onClick={() => setIsOpen(false)} >
-								My TV shows
-							</a>
+							My TV shows
 						</Link>
 						<Link href='/user/movies'>
-							<a onClick={() => setIsOpen(false)} >
-								My movies
-							</a>
+							My movies
 						</Link>
 					</div>
 				</main>

@@ -7,7 +7,7 @@ const Container = styled.div`
 	{
 		display: flex;
 		justify-content: flex-end;
-		padding-right: 3rem;
+		padding-right: 2.25rem;
 
 		color: ${p => p.theme.primary};
 	}
@@ -69,7 +69,7 @@ const Container = styled.div`
 			}
 		}
 
-		.links
+		.userLinks
 		{
 			display: flex;
 			flex-direction: column;

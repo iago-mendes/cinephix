@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 interface ContainerProps
 {
-	isModalOpen: boolean
+	isUserMenuOpen: boolean
 }
 
 const Container = styled.nav<ContainerProps>`
@@ -86,7 +86,9 @@ const Container = styled.nav<ContainerProps>`
 
 		.user
 		{
-			span
+			position: relative;
+
+			span.signIn
 			{
 				font-family: Ubuntu;
 				font-weight: 700;
@@ -109,7 +111,7 @@ const Container = styled.nav<ContainerProps>`
 				}
 			}
 
-			button
+			button.dropdown
 			{
 				display: flex;
 				align-items: center;
@@ -142,7 +144,7 @@ const Container = styled.nav<ContainerProps>`
 					transition: 0.25s;
 
 
-					transform: ${p => p.isModalOpen ? 'rotate(-180deg)' : 'rotate(-90deg)'};
+					transform: ${p => p.isUserMenuOpen ? 'rotate(-180deg)' : 'rotate(-90deg)'};
 				}
 			}
 		}

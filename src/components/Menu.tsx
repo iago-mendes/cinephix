@@ -18,17 +18,13 @@ const Menu: React.FC = () =>
 	const {user} = useUser()
 	const {width} = useDimensions()
 
-	const [isModalOpen, setIsModalOpen] = useState(false)
+	const [isUserMenuOpen, setIsUserMenuOpen] = useState(false)
 	const [isBurgerMenuOpen, setIsBurgerMenuOpen] = useState(false)
 
 	return (
 		<Container
-			isModalOpen={isModalOpen}
+			isUserMenuOpen={isUserMenuOpen}
 		>
-			<UserMenu 
-				isOpen={isModalOpen}
-				setIsOpen={setIsModalOpen}
-			/>
 
 			{width <= 1000 && (
 				<div className='burger' >
@@ -67,11 +63,14 @@ const Menu: React.FC = () =>
 						</Link>				
 					</div>
 				)}
-				<div className='user'>
+				<div
+					className='user'
+					onMouseLeave={() => setIsUserMenuOpen(false)}
+				>
 					{
 						user
 							? (
-								<button onClick={() => setIsModalOpen(!isModalOpen)} >
+								<button className='dropdown' onClick={() => setIsUserMenuOpen(!isUserMenuOpen)} >
 									{
 										user.image
 											? <img src={user.image} alt={user.name} className='img' />
@@ -81,11 +80,15 @@ const Menu: React.FC = () =>
 								</button>
 							)
 							: (
-								<span onClick={() => signIn('google')} >
-								Sign in
+								<span className='signIn' onClick={() => signIn('google')} >
+									Sign in
 								</span>
 							)
 					}
+					<UserMenu 
+						isOpen={isUserMenuOpen}
+						setIsOpen={setIsUserMenuOpen}
+					/>
 				</div>
 			</div>
 		</Container>
