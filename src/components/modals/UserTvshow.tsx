@@ -137,7 +137,7 @@ const UserTvshowModal: React.FC<UserTvshowModalProps> = ({isOpen, setIsOpen, tvs
 									Object.values(tvshow.ratings).length !== 0
 										? (
 											<span>
-												{getTotalRating(tvshow.ratings, true, 15)} ({getTotalRating(tvshow.ratings)})
+												{getTotalRating(tvshow.ratings, true)} ({getTotalRating(tvshow.ratings)})
 											</span>
 										)
 										: (

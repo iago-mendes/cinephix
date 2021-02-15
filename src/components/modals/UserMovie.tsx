@@ -103,7 +103,7 @@ const UserMovieModal: React.FC<UserMovieModalProps> = ({isOpen, setIsOpen, movie
 											Object.values(movie.ratings).length !== 0
 												? (
 													<span>
-														{getTotalRating(movie.ratings, true, 15)} ({getTotalRating(movie.ratings)})
+														{getTotalRating(movie.ratings, true)} ({getTotalRating(movie.ratings)})
 													</span>
 												)
 												: (
