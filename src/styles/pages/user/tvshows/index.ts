@@ -132,6 +132,7 @@ const Container = styled.div`
 					gap: 1rem;
 
 					padding: 1rem;
+					width: 32rem;
 
 					.tvshow
 					{
@@ -245,21 +246,34 @@ const Container = styled.div`
 
 	@media(max-width: 600px)
 	{
-		main .dragDropArea .statusColumn .droppableArea .tvshow
+		main .dragDropArea .statusColumn
 		{
-			width: 20rem;
-			height: calc((20rem - 1rem) * 0.4 * 1.5 + 1rem);
-
-			.info
+			header .group h1
 			{
-				h2
-				{
-					font-size: 1.5rem;
-				}
+				font-size: 1.75rem;
+			}
 
-				.details
+			.droppableArea
+			{
+				width: 22rem;
+
+				.tvshow
 				{
-					font-size: 1rem;
+					width: 20rem;
+					height: calc((20rem - 1rem) * 0.4 * 1.5 + 1rem);
+
+					.info
+					{
+						h2
+						{
+							font-size: 1.5rem;
+						}
+
+						.details
+						{
+							font-size: 1rem;
+						}
+					}
 				}
 			}
 		}
