@@ -1,6 +1,8 @@
 import {useEffect, useState} from 'react'
 import {DragDropContext, Droppable, Draggable, DropResult, resetServerContext} from 'react-beautiful-dnd'
 import Image from 'next/image'
+import {GetServerSideProps} from 'next'
+import {BiQuestionMark, BiSort} from 'react-icons/bi'
 
 import Container from '../../../styles/pages/user/tvshows/index'
 import api from '../../../services/api'
@@ -10,7 +12,6 @@ import {FiPlus} from 'react-icons/fi'
 import SelectTvshow from '../../../components/modals/SelectTvshow'
 import getTotalRating from '../../../utils/getTotalRating'
 import SEOHead from '../../../components/SEOHead'
-import {GetServerSideProps} from 'next'
 
 interface TvshowList
 {
@@ -126,7 +127,27 @@ const UserTvshows: React.FC = () =>
 
 							return (
 								<div key={statusKey} className='statusColumn' >
-									<h1>{statusTitle}</h1>
+									<header>
+										<div className='group'>
+											<h1>{statusTitle} ({tvshows.length})</h1>
+											<div className='buttons'>
+												<div className='statusInfo'>
+													<button
+														title='Status information'
+													>
+														<BiQuestionMark size={20} />
+													</button>
+												</div>
+												<div className='sort'>
+													<button
+														title='Sort TV shows'
+													>
+														<BiSort size={20} />
+													</button>
+												</div>
+											</div>
+										</div>
+									</header>
 									<Droppable droppableId={statusKey} >
 										{provided => (
 											<div {...provided.droppableProps} ref={provided.innerRef} className='droppableArea' >

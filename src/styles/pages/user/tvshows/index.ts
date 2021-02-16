@@ -55,16 +55,9 @@ const Container = styled.div`
 				display: flex;
 				flex-direction: column;
 
-				h1
+				header
 				{
-					font-family: Roboto;
-					font-weight: 700;
-					font-size: 2.25rem;
-
-					color: ${p => p.theme.primary};
-
 					width: 100%;
-					text-align: center;
 
 					::after
 					{
@@ -76,6 +69,55 @@ const Container = styled.div`
 						margin-top: 1rem;
 
 						background: ${p => p.theme.primary}40;
+					}
+
+					.group
+					{
+						display: flex;
+						align-items: center;
+						justify-content: space-between;
+
+						padding-left: 1rem;
+						padding-right: 1rem;
+
+						h1
+						{
+							font-family: Roboto;
+							font-weight: 700;
+							font-size: 2.25rem;
+
+							color: ${p => p.theme.primary};
+						}
+
+						.buttons
+						{
+							display: flex;
+							gap: 1rem;
+
+							button
+							{
+								background: none;
+								border: none;
+								border-radius: 100rem;
+
+								width: 2.5rem;
+								height: 2.5rem;
+
+								display: flex;
+								align-items: center;
+								justify-content: center;
+
+								color: ${p => p.theme.primary}80;
+								cursor: pointer;
+								transition: 0.25s;
+
+								:hover
+								{
+									color: ${p => p.theme.primary};
+									background-color: ${p => p.theme.gray}40;
+								}
+							}
+						}
 					}
 				}
 
