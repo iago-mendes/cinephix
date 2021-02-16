@@ -12,6 +12,7 @@ import {FiPlus} from 'react-icons/fi'
 import SelectTvshow from '../../../components/modals/SelectTvshow'
 import getTotalRating from '../../../utils/getTotalRating'
 import SEOHead from '../../../components/SEOHead'
+import truncateText from '../../../utils/truncateText'
 
 interface TvshowList
 {
@@ -172,7 +173,7 @@ const UserTvshows: React.FC = () =>
 																			<Image src={tvshow.image} width={780} height={1170} layout='responsive'/>
 																		</div>
 																		<div className='info'>
-																			<h2>{tvshow.title}</h2>
+																			<h2>{truncateText(tvshow.title, 35)}</h2>
 																			<div className='details'>
 																				{
 																					Object.values(tvshow.ratings).length !== 0 && getTotalRating(tvshow.ratings, true)
