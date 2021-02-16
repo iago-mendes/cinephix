@@ -3,6 +3,7 @@ import Image from 'next/image'
 import {BsFillTriangleFill} from 'react-icons/bs'
 import Select from 'react-select'
 import {FiPlus} from 'react-icons/fi'
+import {motion} from 'framer-motion'
 
 import Container, {Dropdown} from '../../../styles/pages/user/movies/index'
 import api from '../../../services/api'
@@ -126,32 +127,50 @@ const UserMovies: React.FC = () =>
 						<BsFillTriangleFill size={25}/>
 						<span>Watch list</span>
 					</Dropdown>
-					{
-						showWatchList && (
-							<div className='grid' >
-								<button className='add' title='Add a movie' onClick={() => handleAddClick(false)} >
-									<FiPlus size={30} />
-								</button>
-								{movieList.filter(({watched}) => !watched).map((movie) => (
-									<div
-										key={movie.data.id}
-										className='movie'
-										onClick={() => handleCardClick(movie)}
-									>
-										<div className='img'>
-											<Image src={movie.data.image} width={780} height={1170} layout='responsive'/>
-										</div>
-										<div className='info'>
-											<h2>{movie.data.title}</h2>
-											<div className='details'>
-												<span className='venue'>{movie.venue}</span>
-											</div>
-										</div>
+					<motion.div
+						className='grid'
+						initial={false}
+						transition={{duration: 0.25}}
+						animate={showWatchList ? 'open' : 'closed'}
+						variants=
+							{{
+								open:
+								{
+									height: 'fit-content',
+									opacity: 1,
+								},
+								closed:
+								{
+									height: 0,
+									opacity: 0,
+								}
+							}}
+						style=
+							{{
+								overflow: 'hidden'
+							}}
+					>
+						<button className='add' title='Add a movie' onClick={() => handleAddClick(false)} >
+							<FiPlus size={30} />
+						</button>
+						{movieList.filter(({watched}) => !watched).map((movie) => (
+							<div
+								key={movie.data.id}
+								className='movie'
+								onClick={() => handleCardClick(movie)}
+							>
+								<div className='img'>
+									<Image src={movie.data.image} width={780} height={1170} layout='responsive'/>
+								</div>
+								<div className='info'>
+									<h2>{movie.data.title}</h2>
+									<div className='details'>
+										<span className='venue'>{movie.venue}</span>
 									</div>
-								))}
+								</div>
 							</div>
-						)
-					}
+						))}
+					</motion.div>
 				</div>
 
 				<div className='watched'>
