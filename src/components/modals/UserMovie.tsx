@@ -1,10 +1,7 @@
-import Modal from 'react-modal'
-import {FiEdit3, FiEye, FiX} from 'react-icons/fi'
-import {BiExpand} from 'react-icons/bi'
+import {FiEdit3, FiEye} from 'react-icons/fi'
 import {useRouter} from 'next/router'
 
 import Container from '../../styles/components/modals/UserMovie'
-import {modalStyle} from '../../styles/global'
 import React from 'react'
 import Image from 'next/image'
 import getTotalRating from '../../utils/getTotalRating'
@@ -15,8 +12,7 @@ import api from '../../services/api'
 import useUser from '../../hooks/useUser'
 import confirmAlert from '../../utils/alerts/confirm'
 import errorAlert from '../../utils/alerts/error'
-
-Modal.setAppElement('#__next')
+import ModalContainer from './Container'
 
 interface UserMovieModalProps
 {
@@ -31,12 +27,6 @@ const UserMovieModal: React.FC<UserMovieModalProps> = ({isOpen, setIsOpen, movie
 {
 	const {user} = useUser()
 	const {push} = useRouter()
-
-	function handleExpand()
-	{
-		setIsOpen(false)
-		push(`/movies/${movie.data.id}`)
-	}
 
 	function handleEdit()
 	{
@@ -65,76 +55,63 @@ const UserMovieModal: React.FC<UserMovieModalProps> = ({isOpen, setIsOpen, movie
 	}
 
 	return (
-		<Modal
+		<ModalContainer
 			isOpen={isOpen}
-			style={modalStyle}
+			setIsOpen={setIsOpen}
+
+			expandLink={`/movies/${movie.data.id}`}
 		>
 			<Container>
-				<header>
-					<button className='expand' title='Expand' onClick={handleExpand} >
-						<BiExpand size={25} />
-					</button>
-					<button className='close' title='Close' onClick={() => setIsOpen(false)} >
-						<FiX size={25} />
-					</button>
-				</header>
-
-				<main>
-					<div className='img'>
-						<Image src={movie.data.image} width={780} height={1170} layout='responsive' />
-					</div>
-					<div className='info'>
-						<h1>{movie.data.title}</h1>
-						{
-							movie.venue && (
-								<div className='group'>
-									<label>Venue</label>
-									<span>{getVenue(movie.venue)}</span>
+				<div className='img'>
+					<Image src={movie.data.image} width={780} height={1170} layout='responsive' />
+				</div>
+				<div className='info'>
+					<h1>{movie.data.title}</h1>
+					{
+						movie.venue && (
+							<div className='group'>
+								<label>Venue</label>
+								<span>{getVenue(movie.venue)}</span>
+							</div>
+						)
+					}
+					{
+						movie.watched && (
+							<div className='group'>
+								<label>Ratings</label>
+								<div className='rating'>
+									<label>Total:</label>
+									{
+										Object.values(movie.ratings).length !== 0
+											? getTotalRating(movie.ratings, true)
+											: (
+												<span>not rated</span>
+											)
+									}
 								</div>
-							)
-						}
-						{
-							movie.watched && (
-								<div className='group'>
-									<label>Ratings</label>
-									<div className='rating'>
-										<label>Total:</label>
-										{
-											Object.values(movie.ratings).length !== 0
-												? (
-													<span>
-														{getTotalRating(movie.ratings, true)} ({getTotalRating(movie.ratings)})
-													</span>
-												)
-												: (
-													<span>not rated</span>
-												)
-										}
+								{Object.entries(movie.ratings).map(([ratingKey, value]) => (
+									<div className='rating' key={ratingKey}>
+										<label>{getRatingLabel('movie', ratingKey)}:</label>
+										<span>{value}</span>
 									</div>
-									{Object.entries(movie.ratings).map(([ratingKey, value]) => (
-										<div className='rating' key={ratingKey}>
-											<label>{getRatingLabel('movie', ratingKey)}:</label>
-											<span>{value}</span>
-										</div>
-									))}
-								</div>
-							)
-						}
-						{
-							!movie.watched && (
-								<button className='move' onClick={handleMoveToWatched} >
-									<FiEye size={25} />
-									<span>Mark as watched</span>
-								</button>
-							)
-						}
-					</div>
-					<button className='edit' title='Edit' onClick={handleEdit} >
-						<FiEdit3 size={30} />
-					</button>
-				</main>
+								))}
+							</div>
+						)
+					}
+					{
+						!movie.watched && (
+							<button className='move' onClick={handleMoveToWatched} >
+								<FiEye size={25} />
+								<span>Mark as watched</span>
+							</button>
+						)
+					}
+				</div>
+				<button className='edit' title='Edit' onClick={handleEdit} >
+					<FiEdit3 size={30} />
+				</button>
 			</Container>
-		</Modal>
+		</ModalContainer>
 	)
 }
 

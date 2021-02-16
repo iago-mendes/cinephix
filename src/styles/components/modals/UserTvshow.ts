@@ -127,7 +127,6 @@ const Container = styled.div`
 	@media(max-width: 1000px)
 	{
 		flex-direction: column;
-		justify-content: space-around;
 		gap: 1rem;
 
 		height: fit-content;
@@ -145,29 +144,6 @@ const Container = styled.div`
 			height: fit-content;
 
 			gap: 1rem;
-
-			/* h1
-			{
-				font-size: 1.75rem;
-			}
-
-			.group
-			{
-				label
-				{
-					font-size: 1.5rem;
-				}
-
-				span
-				{
-					font-size: 1.25rem;
-				}
-
-				.rating label
-				{
-					font-size: 1.25rem;
-				}
-			} */
 		}
 	}
 `
