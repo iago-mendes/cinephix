@@ -1,15 +1,11 @@
-import Modal from 'react-modal'
-import {FiEdit3, FiX} from 'react-icons/fi'
-import {BiExpand} from 'react-icons/bi'
+import {FiEdit3} from 'react-icons/fi'
 
 import Container from '../../styles/components/modals/UserTvshow'
-import {modalStyle} from '../../styles/global'
 import React from 'react'
 import Image from 'next/image'
 import getTotalRating from '../../utils/getTotalRating'
 import { useRouter } from 'next/router'
-
-Modal.setAppElement('#__next')
+import ModalContainer from './Container'
 
 export interface Tvshow
 {
@@ -83,12 +79,6 @@ const UserTvshowModal: React.FC<UserTvshowModalProps> = ({isOpen, setIsOpen, tvs
 			return '#656565'
 	}
 
-	function handleExpand()
-	{
-		setIsOpen(false)
-		push(`/tvshows/${tvshow.id}`)
-	}
-
 	function handleEdit()
 	{
 		setIsOpen(false)
@@ -96,69 +86,56 @@ const UserTvshowModal: React.FC<UserTvshowModalProps> = ({isOpen, setIsOpen, tvs
 	}
 
 	return (
-		<Modal
+		<ModalContainer
 			isOpen={isOpen}
-			style={modalStyle}
+			setIsOpen={setIsOpen}
+
+			expandLink={`/tvshows/${tvshow.id}`}
 		>
 			<Container>
-				<header>
-					<button className='expand' title='Expand' onClick={handleExpand} >
-						<BiExpand size={25} />
-					</button>
-					<button className='close' title='Close' onClick={() => setIsOpen(false)} >
-						<FiX size={25} />
-					</button>
-				</header>
-
-				<main>
-					<div className='img'>
-						<Image src={tvshow.image} width={780} height={1170} layout='responsive' />
+				<div className='img'>
+					<Image src={tvshow.image} width={780} height={1170} layout='responsive' />
+				</div>
+				<div className='info'>
+					<h1>{tvshow.title}</h1>
+					<div className='group'>
+						<label>Venue</label>
+						<span>
+							{
+								tvshow.venue && (
+									<svg width={15} height={15} >
+										<circle cx={7.5} cy={7.5} r={7.5} fill={getVenueColor(tvshow.venue)} />
+									</svg>
+								)
+							}
+							<span style={{marginLeft: 5}} >{tvshow.venue || 'not informed'}</span>
+						</span>
 					</div>
-					<div className='info'>
-						<h1>{tvshow.title}</h1>
-						<div className='group'>
-							<label>Venue</label>
-							<span>
-								{
-									tvshow.venue && (
-										<svg width={15} height={15} >
-											<circle cx={7.5} cy={7.5} r={7.5} fill={getVenueColor(tvshow.venue)} />
-										</svg>
+					<div className='group'>
+						<label>Ratings</label>
+						<div className='rating'>
+							<label>Total:</label>
+							{
+								Object.values(tvshow.ratings).length !== 0
+									? getTotalRating(tvshow.ratings, true)
+									: (
+										<span>not rated</span>
 									)
-								}
-								<span style={{marginLeft: 5}} >{tvshow.venue || 'not informed'}</span>
-							</span>
+							}
 						</div>
-						<div className='group'>
-							<label>Ratings</label>
-							<div className='rating'>
-								<label>Total:</label>
-								{
-									Object.values(tvshow.ratings).length !== 0
-										? (
-											<span>
-												{getTotalRating(tvshow.ratings, true)} ({getTotalRating(tvshow.ratings)})
-											</span>
-										)
-										: (
-											<span>not rated</span>
-										)
-								}
+						{Object.entries(tvshow.ratings).map(([ratingKey, value]) => (
+							<div className='rating' key={ratingKey}>
+								<label>{ratingsLabels[ratingKey]}:</label>
+								<span>{value}</span>
 							</div>
-							{Object.entries(tvshow.ratings).map(([ratingKey, value]) => (
-								<div className='rating' key={ratingKey}>
-									<label>{ratingsLabels[ratingKey]}:</label>
-									<span>{value}</span>
-								</div>
-							))}
-						</div>
+						))}
 					</div>
-					<button className='edit' title='Edit' onClick={handleEdit} >
-						<FiEdit3 size={30} />
-					</button>
-				</main>
+				</div>
+				<button className='edit' title='Edit' onClick={handleEdit} >
+					<FiEdit3 size={30} />
+				</button>
 			</Container>
-		</Modal>
+		</ModalContainer>
 	)
 }
 

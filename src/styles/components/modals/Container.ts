@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 const Container = styled.div`
-	width: 50vw;
+	width: 75vw;
 	height: 75vh;
 
 	header
@@ -10,6 +10,7 @@ const Container = styled.div`
 		align-items: center;
 		justify-content: space-between;
 
+		height: 5rem;
 		padding: 0.5rem;
 		padding-left: 2rem;
 		padding-right: 2rem;
@@ -45,58 +46,22 @@ const Container = styled.div`
 
 	main
 	{
-		background-color: ${p => p.theme.background};		
+		background-color: ${p => p.theme.background};
+		width: 100%;
+		height: calc(75vh - 5rem);
+
+		overflow-y: auto;
+		overflow-x: hidden;
 	}
 
-	@media(max-width: 600px)
+	@media(max-width: 1000px)
 	{
 		width: 95vw;
 		height: 85vh;
 
 		main
 		{
-			flex-direction: column;
-			justify-content: space-around;
-			
-			height: calc(85vh - 4.5rem);
-
-			.img
-			{
-				width: 40vw;
-				max-width: 30rem;
-			}
-
-			.info
-			{
-				margin: 0;
-				width: 100%;
-				height: fit-content;
-
-				gap: 0.5rem;
-
-				h1
-				{
-					font-size: 1.75rem;
-				}
-
-				.group
-				{
-					label
-					{
-						font-size: 1.5rem;
-					}
-
-					span
-					{
-						font-size: 1.25rem;
-					}
-
-					.rating label
-					{
-						font-size: 1.25rem;
-					}
-				}
-			}
+			height: calc(85vh - 5rem);
 		}
 	}
 `
