@@ -167,6 +167,7 @@ const MovieForm: React.FC<MovieFormProps> = ({movie, method, userMovie}) =>
 							styles={selectStyles}
 							placeholder='Select a venue'
 							className='select'
+							isSearchable={false}
 						/>
 					</div>
 					<div className='rangeFields'>

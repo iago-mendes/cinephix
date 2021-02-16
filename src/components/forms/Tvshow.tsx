@@ -184,6 +184,7 @@ const TvshowForm: React.FC<TvshowFormProps> = ({tvshow, method, userTvshow}) =>
 							styles={selectStyles}
 							placeholder='Select a status'
 							className='select'
+							isSearchable={false}
 						/>
 					</div>
 					<div className='field'>
@@ -197,6 +198,7 @@ const TvshowForm: React.FC<TvshowFormProps> = ({tvshow, method, userTvshow}) =>
 							styles={selectStyles}
 							placeholder='Select a venue'
 							className='select'
+							isSearchable={false}
 						/>
 					</div>
 					<div className='rangeFields'>

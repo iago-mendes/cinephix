@@ -113,6 +113,7 @@ const UserMovies: React.FC = () =>
 							styles={selectStyles}
 							placeholder='property'
 							className='select'
+							isSearchable={false}
 						/>
 					</div>
 				</div>
