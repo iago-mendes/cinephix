@@ -44,11 +44,13 @@ const UserMenu: React.FC<UserMenuProps> = ({isOpen, setIsOpen}) =>
 					open:
 					{
 						height: 'fit-content',
+						width: 'fit-content',
 						opacity: 1,
 					},
 					closed:
 					{
 						height: 0,
+						width: 0,
 						opacity: 0,
 					}
 				}}
@@ -60,6 +62,7 @@ const UserMenu: React.FC<UserMenuProps> = ({isOpen, setIsOpen}) =>
 					zIndex: 100,
 
 					overflow: 'hidden',
+					direction: 'rtl',
 					padding: '1rem',
 					paddingTop: 0,
 				}}
