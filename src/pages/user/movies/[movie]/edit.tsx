@@ -42,6 +42,7 @@ const EditMovie: React.FC<EditMovieProps> = ({movie}) =>
 	return (
 		<div
 			style={{position: 'relative'}}
+			className='page'
 		>
 			<SEOHead
 				title={`Edit ${movie.title} | Cinephix`}

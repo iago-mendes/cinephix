@@ -42,6 +42,7 @@ const EditTvshow: React.FC<EditTvshowProps> = ({tvshow}) =>
 	return (
 		<div
 			style={{position: 'relative'}}
+			className='page'
 		>
 			<SEOHead
 				title={`Edit ${tvshow.title} | Cinephix`}

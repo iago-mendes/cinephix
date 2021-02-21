@@ -85,7 +85,7 @@ const UserMovies: React.FC = () =>
 	}
 
 	return (
-		<Container>
+		<Container className='page' >
 			<SEOHead
 				title='My movies | Cinephix'
 			/>

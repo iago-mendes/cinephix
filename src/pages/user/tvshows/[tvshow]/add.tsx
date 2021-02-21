@@ -18,7 +18,7 @@ const AddTvshow: React.FC<AddTvshowProps> = ({tvshow}) =>
 		return <Loading style={{marginTop: 'calc(50vh - 5rem)'}} />
 
 	return (
-		<div>
+		<div className='page' >
 			<SEOHead
 				title={`Add ${tvshow.title} | Cinephix`}
 				description={tvshow.overview}

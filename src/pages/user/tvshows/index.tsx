@@ -100,7 +100,7 @@ const UserTvshows: React.FC = () =>
 	}
 
 	return (
-		<Container>
+		<Container className='page' >
 			<SEOHead
 				title='My TV shows | Cinephix'
 			/>

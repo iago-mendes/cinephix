@@ -91,7 +91,7 @@ const Home: React.FC<HomeProps> = ({staticHome}) =>
 	}
 
 	return (
-		<Container>
+		<Container className='page' >
 			<SEOHead />
 
 			<header>

@@ -62,7 +62,7 @@ const Celebrity: React.FC<CelebrityProps> = ({celebrity}) =>
 		return <Loading />
 
 	return (
-		<Container biographyLength={celebrity.biography.length} >
+		<Container biographyLength={celebrity.biography.length} className='page' >
 			<SEOHead
 				title={`${celebrity.name} | Cinephix`}
 				description={celebrity.biography}

@@ -43,7 +43,7 @@ const Movie: React.FC<MovieProps> = ({movie}) =>
 		return <Loading style={{height: 'calc(100vh - 5rem)'}} />
 
 	return (
-		<Container>
+		<Container className='page' >
 			<SEOHead
 				title={`${movie.title} | Cinephix`}
 				description={movie.overview}

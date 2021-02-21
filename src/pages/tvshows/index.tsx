@@ -71,7 +71,7 @@ const Tvshows: React.FC<TvshowsProps> = ({staticTvshows}) =>
 	}, [search])
 
 	return (
-		<div>
+		<div className='page' >
 			<SEOHead
 				title='TV Shows | Cinephix'
 			/>

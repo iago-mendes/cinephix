@@ -18,7 +18,7 @@ const AddMovie: React.FC<AddMovieProps> = ({movie}) =>
 		return <Loading style={{marginTop: 'calc(50vh - 5rem)'}} />
 
 	return (
-		<div>
+		<div className='page' >
 			<SEOHead
 				title={`Add ${movie.title} | Cinephix`}
 				description={movie.overview}

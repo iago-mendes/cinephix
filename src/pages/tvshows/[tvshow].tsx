@@ -80,7 +80,7 @@ const Tvshow: React.FC<TvshowProps> = ({tvshow}) =>
 		return <Loading style={{marginTop: 'calc(50vh - 5rem)'}} />
 
 	return (
-		<Container overviewLength={tvshow.overview.length} >
+		<Container overviewLength={tvshow.overview.length} className='page' >
 			<SEOHead
 				title={`${tvshow.title} | Cinephix`}
 				description={tvshow.overview}
