@@ -15,9 +15,9 @@ import SEOHead from '../../../components/SEOHead'
 import truncateText from '../../../utils/truncateText'
 import UserTvshow, {defaultUserTvshow, statusInfo} from '../../../models/userTvshow'
 import infoAlert from '../../../utils/alerts/info'
-import SortModal from '../../../components/modals/SortTvshows'
+import SortTvshowsModal from '../../../components/modals/SortTvshows'
 
-interface TvshowList
+export interface TvshowList
 {
 	[status: string]: UserTvshow[]
 }
@@ -143,7 +143,12 @@ const UserTvshows: React.FC = () =>
 												<button title='Status information' onClick={() => handleShowStatusInfo(statusKey)} >
 													<BiQuestionMark size={20} />
 												</button>
-												<SortModal />
+												<SortTvshowsModal
+													statusKey={statusKey}
+													statusTvshows={tvshows}
+													tvshowList={tvshowList}
+													setTvshowList={setTvshowList}
+												/>
 												<button title='Add a TV show' onClick={() => handleAddClick(statusKey)}>
 													<FiPlus size={20} />
 												</button>

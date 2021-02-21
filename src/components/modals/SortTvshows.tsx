@@ -5,14 +5,19 @@ import {FiX} from 'react-icons/fi'
 
 import Container from '../../styles/components/modals/SortTvshows'
 import useClickOutside from '../../hooks/useClickOutside'
+import UserTvshow from '../../models/userTvshow'
+import {TvshowList} from '../../pages/user/tvshows/index'
 
 interface SortTvshowsModalProps
 {
 	statusKey: string
-	tvshows: []
+	statusTvshows: UserTvshow[]
+
+	tvshowList: TvshowList
+	setTvshowList: (p: TvshowList) => void
 }
 
-const SortTvshowsModal: React.FC<SortTvshowsModalProps> = ({statusKey, tvshows}) =>
+const SortTvshowsModal: React.FC<SortTvshowsModalProps> = ({statusKey, statusTvshows: tvshows, tvshowList, setTvshowList}) =>
 {
 	const [showOptions, setShowOptions] = useState(false)
 	const ref = useClickOutside(() => setShowOptions(false))
