@@ -4,6 +4,7 @@ import {useRouter} from 'next/router'
 import {useEffect} from 'react'
 
 import Container from '../../styles/components/modals/BurgerMenu'
+import useClickOutside from '../../hooks/useClickOutside'
 
 interface UserMenuProps
 {
@@ -14,6 +15,7 @@ interface UserMenuProps
 const BurgerMenu: React.FC<UserMenuProps> = ({isOpen, setIsOpen}) =>
 {
 	const {pathname} = useRouter()
+	const ref = useClickOutside(() => setIsOpen(false))
 
 	useEffect(() =>
 	{
@@ -53,7 +55,7 @@ const BurgerMenu: React.FC<UserMenuProps> = ({isOpen, setIsOpen}) =>
 				}}
 		>
 			<Container
-				onMouseLeave={() => setIsOpen(false)}
+				ref={ref}
 			>
 				<Link href='/' >
 						Home

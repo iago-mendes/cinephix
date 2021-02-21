@@ -12,11 +12,13 @@ import useUser from '../hooks/useUser'
 import UserMenu from './modals/UserMenu'
 import useDimensions from '../hooks/useDimensions'
 import BurgerMenu from './modals/BurgerMenu'
+import useClickOutside from '../hooks/useClickOutside'
 
 const Menu: React.FC = () =>
 {
 	const {user} = useUser()
 	const {width} = useDimensions()
+	const userRef = useClickOutside(() => setIsUserMenuOpen(false))
 
 	const [isUserMenuOpen, setIsUserMenuOpen] = useState(false)
 	const [isBurgerMenuOpen, setIsBurgerMenuOpen] = useState(false)
@@ -65,7 +67,7 @@ const Menu: React.FC = () =>
 				)}
 				<div
 					className='user'
-					onMouseLeave={() => setIsUserMenuOpen(false)}
+					ref={userRef}
 				>
 					{
 						user
