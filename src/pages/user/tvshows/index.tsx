@@ -7,16 +7,18 @@ import {BiQuestionMark, BiSort} from 'react-icons/bi'
 import Container from '../../../styles/pages/user/tvshows/index'
 import api from '../../../services/api'
 import useUser from '../../../hooks/useUser'
-import UserTvshowModal, {defaultTvshow, Tvshow} from '../../../components/modals/UserTvshow'
+import UserTvshowModal from '../../../components/modals/UserTvshow'
 import {FiPlus} from 'react-icons/fi'
 import SelectTvshow from '../../../components/modals/SelectTvshow'
 import getTotalRating from '../../../utils/getTotalRating'
 import SEOHead from '../../../components/SEOHead'
 import truncateText from '../../../utils/truncateText'
+import UserTvshow, {defaultUserTvshow, statusInfo} from '../../../models/userTvshow'
+import infoAlert from '../../../utils/alerts/info'
 
 interface TvshowList
 {
-	[status: string]: Tvshow[]
+	[status: string]: UserTvshow[]
 }
 
 const validStatus: {[statusKey: string]: string} = 
@@ -44,7 +46,7 @@ const UserTvshows: React.FC = () =>
 		})
 
 	const [isTvshowModalOpen, setIsTvshowModalOpen] = useState(false)
-	const [selectedTvshow, setSelectedTvshow] = useState<Tvshow>(defaultTvshow)
+	const [selectedTvshow, setSelectedTvshow] = useState<UserTvshow>(defaultUserTvshow)
 	const [isSelectTvshowOpen, setIsSelectTvshowOpen] = useState(false)
 	const [selectedStatusKey, setSelectedStatusKey] = useState('')
 
@@ -65,7 +67,7 @@ const UserTvshows: React.FC = () =>
 	function handleDragDrop(res: DropResult)
 	{
 		const tmpTvshowList = {...tvshowList}
-		const tvshows: Tvshow[] = [].concat(...Object.values(tvshowList))
+		const tvshows: UserTvshow[] = [].concat(...Object.values(tvshowList))
 
 		const previousStatus = res.source.droppableId
 		const previousIndex = res.source.index
@@ -87,7 +89,7 @@ const UserTvshows: React.FC = () =>
 		api.put(`users/${user.email}/tvshows/${tvshowId}`, data)
 	}
 
-	function handleCardClick(tvshow: Tvshow)
+	function handleCardClick(tvshow: UserTvshow)
 	{
 		setSelectedTvshow(tvshow)
 		setIsTvshowModalOpen(true)
@@ -97,6 +99,11 @@ const UserTvshows: React.FC = () =>
 	{
 		setSelectedStatusKey(statusKey)
 		setIsSelectTvshowOpen(true)
+	}
+
+	function handleShowStatusInfo(statusKey: string)
+	{
+		infoAlert(`Status: ${validStatus[statusKey]}`, statusInfo[statusKey])
 	}
 
 	return (
@@ -132,13 +139,9 @@ const UserTvshows: React.FC = () =>
 										<div className='group'>
 											<h1>{statusTitle} ({tvshows.length})</h1>
 											<div className='buttons'>
-												<div className='statusInfo'>
-													<button
-														title='Status information'
-													>
-														<BiQuestionMark size={20} />
-													</button>
-												</div>
+												<button title='Status information' onClick={() => handleShowStatusInfo(statusKey)} >
+													<BiQuestionMark size={20} />
+												</button>
 												<div className='sort'>
 													<button
 														title='Sort TV shows'

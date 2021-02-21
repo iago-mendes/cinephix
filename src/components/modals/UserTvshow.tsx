@@ -6,6 +6,7 @@ import Image from 'next/image'
 import getTotalRating from '../../utils/getTotalRating'
 import { useRouter } from 'next/router'
 import ModalContainer from './Container'
+import UserTvshow from '../../models/userTvshow'
 
 export interface Tvshow
 {
@@ -56,7 +57,7 @@ interface UserTvshowModalProps
 	isOpen: boolean
 	setIsOpen: (p: boolean) => void
 
-	tvshow: Tvshow
+	tvshow: UserTvshow
 }
 
 const UserTvshowModal: React.FC<UserTvshowModalProps> = ({isOpen, setIsOpen, tvshow}) =>
