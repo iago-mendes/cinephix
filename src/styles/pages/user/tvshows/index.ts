@@ -248,9 +248,23 @@ const Container = styled.div`
 	{
 		main .dragDropArea .statusColumn
 		{
-			header .group h1
+			header .group
 			{
-				font-size: 1.75rem;
+				h1
+				{
+					font-size: 1.75rem;
+				}
+
+				.buttons
+				{
+					gap: 0;
+
+					button
+					{
+						width: 2.25rem;
+						height: 2.25rem;
+					}
+				}
 			}
 
 			.droppableArea

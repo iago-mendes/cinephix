@@ -146,6 +146,9 @@ const UserTvshows: React.FC = () =>
 														<BiSort size={20} />
 													</button>
 												</div>
+												<button title='Add a TV show' onClick={() => handleAddClick(statusKey)}>
+													<FiPlus size={20} />
+												</button>
 											</div>
 										</div>
 									</header>
