@@ -59,7 +59,7 @@ const Celebrity: React.FC<CelebrityProps> = ({celebrity}) =>
 	const Router = useRouter()
 
 	if (Router.isFallback)
-		return <Loading />
+		return <Loading style={{marginTop: 'calc(50vh - 5rem)'}} />
 
 	return (
 		<Container biographyLength={celebrity.biography.length} className='page' >
