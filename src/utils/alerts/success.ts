@@ -3,7 +3,7 @@ import withReactContent from 'sweetalert2-react-content'
 
 const MySwal = withReactContent(Swal)
 
-function confirmAlert(display: string)
+function successAlert(display: string)
 {
 	MySwal.fire({
 		title: display,
@@ -13,4 +13,4 @@ function confirmAlert(display: string)
 	})
 }
 
-export default confirmAlert
+export default successAlert

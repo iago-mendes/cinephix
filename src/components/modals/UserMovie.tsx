@@ -10,7 +10,7 @@ import getVenue from '../../utils/getVenue'
 import getRatingLabel from '../../utils/getRatingLabel'
 import api from '../../services/api'
 import useUser from '../../hooks/useUser'
-import confirmAlert from '../../utils/alerts/confirm'
+import successAlert from '../../utils/alerts/success'
 import errorAlert from '../../utils/alerts/error'
 import ModalContainer from './Container'
 
@@ -45,7 +45,7 @@ const UserMovieModal: React.FC<UserMovieModalProps> = ({isOpen, setIsOpen, movie
 			.then(() =>
 			{
 				revalidate()
-				confirmAlert(`'${movie.data.title}' was successfully marked as watched!`)
+				successAlert(`'${movie.data.title}' was successfully marked as watched!`)
 				setIsOpen(false)
 			})
 			.catch(err =>

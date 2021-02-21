@@ -4,7 +4,7 @@ import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
 
 import Container from '../styles/components/RemoveButton'
-import confirmAlert from '../utils/alerts/confirm'
+import successAlert from '../utils/alerts/success'
 import errorAlert from '../utils/alerts/error'
 import api from '../services/api'
 
@@ -44,7 +44,7 @@ const RemoveButton: React.FC<RemoveButtonProps> = ({title, collection, apiRoute}
 		api.delete(apiRoute)
 			.then(() =>
 			{
-				confirmAlert(`'${title}' was successfully removed from your ${collection}!`)
+				successAlert(`'${title}' was successfully removed from your ${collection}!`)
 				back()
 			})
 			.catch(err =>

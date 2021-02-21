@@ -12,7 +12,7 @@ import useUser from '../../hooks/useUser'
 import UserInfo, {defaultUser} from '../../models/user'
 import api from '../../services/api'
 import errorAlert from '../../utils/alerts/error'
-import confirmAlert from '../../utils/alerts/confirm'
+import successAlert from '../../utils/alerts/success'
 import SEOHead from '../../components/SEOHead'
 
 const MySwal = withReactContent(Swal)
@@ -65,7 +65,7 @@ const User: React.FC = () =>
 					api.delete(`users/${userInfo.email}`)
 						.then(() =>
 						{
-							confirmAlert('Your account was successfully deleted!')
+							successAlert('Your account was successfully deleted!')
 							signOut()
 						})
 						.catch(err =>

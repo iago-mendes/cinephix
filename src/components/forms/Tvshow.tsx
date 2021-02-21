@@ -11,7 +11,7 @@ import api from '../../services/api'
 import TvshowDetails from '../../models/tvshow'
 import {selectStyles} from '../../styles/global'
 import useUser from '../../hooks/useUser'
-import confirmAlert from '../../utils/alerts/confirm'
+import successAlert from '../../utils/alerts/success'
 import errorAlert from '../../utils/alerts/error'
 import calcTotalRating from '../../utils/getTotalRating'
 import Ratings, {defaultTvshowRatings} from '../../models/ratings'
@@ -138,7 +138,7 @@ const TvshowForm: React.FC<TvshowFormProps> = ({tvshow, method, userTvshow}) =>
 			api.post(`users/${user.email}/tvshows`, data)
 				.then(() =>
 				{
-					confirmAlert(`'${tvshow.title}' was successfully added to your TV shows!`)
+					successAlert(`'${tvshow.title}' was successfully added to your TV shows!`)
 					push('/user/tvshows')
 				})
 				.catch(err =>
@@ -151,7 +151,7 @@ const TvshowForm: React.FC<TvshowFormProps> = ({tvshow, method, userTvshow}) =>
 			api.put(`users/${user.email}/tvshows/${userTvshow.data.id}`, data)
 				.then(() =>
 				{
-					confirmAlert(`'${tvshow.title}' was successfully edited!`)
+					successAlert(`'${tvshow.title}' was successfully edited!`)
 					back()
 				})
 				.catch(err =>

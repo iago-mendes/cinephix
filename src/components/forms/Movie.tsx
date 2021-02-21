@@ -11,7 +11,7 @@ import api from '../../services/api'
 import MovieDetails from '../../models/movie'
 import {selectStyles} from '../../styles/global'
 import useUser from '../../hooks/useUser'
-import confirmAlert from '../../utils/alerts/confirm'
+import successAlert from '../../utils/alerts/success'
 import errorAlert from '../../utils/alerts/error'
 import calcTotalRating from '../../utils/getTotalRating'
 import Ratings, {defaultMovieRatings} from '../../models/ratings'
@@ -113,7 +113,7 @@ const MovieForm: React.FC<MovieFormProps> = ({movie, method, userMovie}) =>
 			api.post(`users/${user.email}/movies`, data)
 				.then(() =>
 				{
-					confirmAlert(`'${movie.title}' was successfully added to your movies!`)
+					successAlert(`'${movie.title}' was successfully added to your movies!`)
 					push('/user/movies')
 				})
 				.catch(err =>
@@ -126,7 +126,7 @@ const MovieForm: React.FC<MovieFormProps> = ({movie, method, userMovie}) =>
 			api.put(`users/${user.email}/movies/${userMovie.data.id}`, data)
 				.then(() =>
 				{
-					confirmAlert(`'${movie.title}' was successfully edited!`)
+					successAlert(`'${movie.title}' was successfully edited!`)
 					back()
 				})
 				.catch(err =>
