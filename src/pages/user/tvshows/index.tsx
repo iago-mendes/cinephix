@@ -15,7 +15,7 @@ import SEOHead from '../../../components/SEOHead'
 import truncateText from '../../../utils/truncateText'
 import UserTvshow, {defaultUserTvshow, statusInfo} from '../../../models/userTvshow'
 import infoAlert from '../../../utils/alerts/info'
-import SortModal from '../../../components/modals/Sort'
+import SortModal from '../../../components/modals/SortTvshows'
 
 interface TvshowList
 {

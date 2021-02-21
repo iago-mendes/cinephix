@@ -3,10 +3,16 @@ import {BiSort} from 'react-icons/bi'
 import {motion} from 'framer-motion'
 import {FiX} from 'react-icons/fi'
 
-import Container from '../../styles/components/modals/Sort'
+import Container from '../../styles/components/modals/SortTvshows'
 import useClickOutside from '../../hooks/useClickOutside'
 
-const SortModal: React.FC = () =>
+interface SortTvshowsModalProps
+{
+	statusKey: string
+	tvshows: []
+}
+
+const SortTvshowsModal: React.FC<SortTvshowsModalProps> = ({statusKey, tvshows}) =>
 {
 	const [showOptions, setShowOptions] = useState(false)
 	const ref = useClickOutside(() => setShowOptions(false))
@@ -72,4 +78,4 @@ const SortModal: React.FC = () =>
 	)
 }
 
-export default SortModal
+export default SortTvshowsModal
