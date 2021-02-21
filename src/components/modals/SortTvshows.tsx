@@ -7,6 +7,9 @@ import Container from '../../styles/components/modals/SortTvshows'
 import useClickOutside from '../../hooks/useClickOutside'
 import UserTvshow from '../../models/userTvshow'
 import {TvshowList} from '../../pages/user/tvshows/index'
+import getTotalRating from '../../utils/getTotalRating'
+import api from '../../services/api'
+import useUser from '../../hooks/useUser'
 
 interface SortTvshowsModalProps
 {
@@ -17,10 +20,37 @@ interface SortTvshowsModalProps
 	setTvshowList: (p: TvshowList) => void
 }
 
-const SortTvshowsModal: React.FC<SortTvshowsModalProps> = ({statusKey, statusTvshows: tvshows, tvshowList, setTvshowList}) =>
+const SortTvshowsModal: React.FC<SortTvshowsModalProps> = ({statusKey, statusTvshows, tvshowList, setTvshowList}) =>
 {
+	const {user} = useUser()
+
 	const [showOptions, setShowOptions] = useState(false)
 	const ref = useClickOutside(() => setShowOptions(false))
+
+	async function handleSort(option: string)
+	{
+		setShowOptions(false)
+
+		let tvshows = statusTvshows
+
+		if (option === 'title')
+			tvshows.sort((a, b) => a.title < b.title ? -1 : 1)
+		if (option === 'rating')
+			tvshows.sort((a, b) => getTotalRating(a.ratings) > getTotalRating(b.ratings) ? -1 : 1)
+		if (option === 'rating-')
+			tvshows.sort((a, b) => getTotalRating(a.ratings) < getTotalRating(b.ratings) ? -1 : 1)
+
+		const data =
+		{
+			tvshows: tvshows.map(tvshow => tvshow.id)
+		}
+
+		await api.put(`users/${user.email}/tvshows/status/${statusKey}`, data)
+
+		let tmpTvshowList = tvshowList
+		tmpTvshowList[statusKey] = tvshows
+		setTvshowList(tmpTvshowList)
+	}
 
 	return (
 		<Container ref={ref} >
@@ -71,11 +101,21 @@ const SortTvshowsModal: React.FC<SortTvshowsModalProps> = ({statusKey, statusTvs
 						</div>
 					</header>
 					<ul>
-						<li>Title (alphabetically)</li>
-						<li>Release date (newest first)</li>
-						<li>Release date (oldest first)</li>
-						<li>My rating (highest first)</li>
-						<li>My rating (lowest first)</li>
+						<li onClick={() => handleSort('title')} >
+							Title (alphabetically)
+						</li>
+						{/* <li onClick={() => handleSort('date')} >
+							Release date (newest first)
+						</li>
+						<li onClick={() => handleSort('date-')} >
+							Release date (oldest first)
+						</li> */}
+						<li onClick={() => handleSort('rating')} >
+							My rating (highest first)
+						</li>
+						<li onClick={() => handleSort('rating-')} >
+							My rating (lowest first)
+						</li>
 					</ul>
 				</div>
 			</motion.div>
