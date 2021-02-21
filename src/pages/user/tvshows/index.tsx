@@ -2,7 +2,7 @@ import {useEffect, useState} from 'react'
 import {DragDropContext, Droppable, Draggable, DropResult, resetServerContext} from 'react-beautiful-dnd'
 import Image from 'next/image'
 import {GetServerSideProps} from 'next'
-import {BiQuestionMark, BiSort} from 'react-icons/bi'
+import {BiQuestionMark} from 'react-icons/bi'
 
 import Container from '../../../styles/pages/user/tvshows/index'
 import api from '../../../services/api'
@@ -15,6 +15,7 @@ import SEOHead from '../../../components/SEOHead'
 import truncateText from '../../../utils/truncateText'
 import UserTvshow, {defaultUserTvshow, statusInfo} from '../../../models/userTvshow'
 import infoAlert from '../../../utils/alerts/info'
+import SortModal from '../../../components/modals/Sort'
 
 interface TvshowList
 {
@@ -142,13 +143,7 @@ const UserTvshows: React.FC = () =>
 												<button title='Status information' onClick={() => handleShowStatusInfo(statusKey)} >
 													<BiQuestionMark size={20} />
 												</button>
-												<div className='sort'>
-													<button
-														title='Sort TV shows'
-													>
-														<BiSort size={20} />
-													</button>
-												</div>
+												<SortModal />
 												<button title='Add a TV show' onClick={() => handleAddClick(statusKey)}>
 													<FiPlus size={20} />
 												</button>
