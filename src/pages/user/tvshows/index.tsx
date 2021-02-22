@@ -16,6 +16,8 @@ import truncateText from '../../../utils/truncateText'
 import {defaultUserTvshowListed, statusInfo, UserTvshowListed} from '../../../models/userTvshow'
 import infoAlert from '../../../utils/alerts/info'
 import SortTvshowsModal from '../../../components/modals/SortTvshows'
+import useSWR from 'swr'
+import dataFetcher from '../../../services/dataFetcher'
 
 export interface TvshowList
 {
@@ -45,6 +47,7 @@ const UserTvshows: React.FC = () =>
 			stopped: [],
 			paused: []
 		})
+	const {data, revalidate} = useSWR(`users/${user ? user.email : undefined}/tvshows`, dataFetcher)
 
 	const [isTvshowModalOpen, setIsTvshowModalOpen] = useState(false)
 	const [selectedTvshow, setSelectedTvshow] = useState<UserTvshowListed>(defaultUserTvshowListed)
@@ -53,17 +56,9 @@ const UserTvshows: React.FC = () =>
 
 	useEffect(() =>
 	{
-		async function getTvshowList()
-		{
-			if (user)
-			{
-				const {data}:{data: TvshowList} = await api.get(`users/${user.email}/tvshows`)
-				setTvshowList(data)
-			}
-		}
-
-		getTvshowList()
-	}, [user])
+		if (data)
+			setTvshowList(data)
+	}, [data])
 
 	function handleDragDrop(res: DropResult)
 	{
