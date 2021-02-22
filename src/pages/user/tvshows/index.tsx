@@ -24,6 +24,16 @@ export interface TvshowList
 	[status: string]: UserTvshowListed[]
 }
 
+const defaultTvshowList: TvshowList =
+{
+	watchList: [],
+	watching: [],
+	waiting: [],
+	completed: [],
+	stopped: [],
+	paused: []
+}
+
 const validStatus: {[statusKey: string]: string} = 
 {
 	watchList: 'Watch list',
@@ -38,16 +48,8 @@ const UserTvshows: React.FC = () =>
 {
 	const {user} = useUser()
 
-	const [tvshowList, setTvshowList] = useState<TvshowList>(
-		{
-			watchList: [],
-			watching: [],
-			waiting: [],
-			completed: [],
-			stopped: [],
-			paused: []
-		})
-	const {data, revalidate} = useSWR(`users/${user ? user.email : undefined}/tvshows`, dataFetcher)
+	const [tvshowList, setTvshowList] = useState<TvshowList>(defaultTvshowList)
+	const {data, revalidate} = useSWR(`users/${user ? user.email : undefined}/tvshows`, url => dataFetcher(url, defaultTvshowList))
 
 	const [isTvshowModalOpen, setIsTvshowModalOpen] = useState(false)
 	const [selectedTvshow, setSelectedTvshow] = useState<UserTvshowListed>(defaultUserTvshowListed)
