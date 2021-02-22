@@ -20,9 +20,11 @@ interface SortTvshowsModalProps
 	setTvshowList: (p: TvshowList) => void
 
 	revalidate: () => void
+	setLoading: (p: boolean) => void
 }
 
-const SortTvshowsModal: React.FC<SortTvshowsModalProps> = ({statusKey, statusTvshows, tvshowList, setTvshowList, revalidate}) =>
+const SortTvshowsModal: React.FC<SortTvshowsModalProps> =
+({statusKey, statusTvshows, tvshowList, setTvshowList, revalidate, setLoading}) =>
 {
 	const {user} = useUser()
 
@@ -32,6 +34,7 @@ const SortTvshowsModal: React.FC<SortTvshowsModalProps> = ({statusKey, statusTvs
 	async function handleSort(option: string)
 	{
 		setShowOptions(false)
+		setLoading(true)
 
 		let tvshows = statusTvshows
 
@@ -54,6 +57,7 @@ const SortTvshowsModal: React.FC<SortTvshowsModalProps> = ({statusKey, statusTvs
 		setTvshowList(tmpTvshowList)
 
 		revalidate()
+		setLoading(false)
 	}
 
 	return (

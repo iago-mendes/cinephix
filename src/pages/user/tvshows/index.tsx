@@ -50,6 +50,7 @@ const UserTvshows: React.FC = () =>
 
 	const [tvshowList, setTvshowList] = useState<TvshowList>(defaultTvshowList)
 	const {data, revalidate} = useSWR(`users/${user ? user.email : undefined}/tvshows`, url => dataFetcher(url, defaultTvshowList))
+	const [loading, setLoading] = useState(false)
 
 	const [isTvshowModalOpen, setIsTvshowModalOpen] = useState(false)
 	const [selectedTvshow, setSelectedTvshow] = useState<UserTvshowListed>(defaultUserTvshowListed)
@@ -61,6 +62,13 @@ const UserTvshows: React.FC = () =>
 		if (data)
 			setTvshowList(data)
 	}, [data])
+
+	useEffect(() =>
+	{
+		setLoading(false)
+	}, [tvshowList])
+
+	useEffect(() => console.log('[loading]', loading), [loading])
 
 	function handleDragDrop(res: DropResult)
 	{
@@ -146,6 +154,7 @@ const UserTvshows: React.FC = () =>
 													tvshowList={tvshowList}
 													setTvshowList={setTvshowList}
 													revalidate={revalidate}
+													setLoading={setLoading}
 												/>
 												<button title='Add a TV show' onClick={() => handleAddClick(statusKey)}>
 													<FiPlus size={20} />
