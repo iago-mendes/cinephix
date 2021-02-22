@@ -15,7 +15,7 @@ import successAlert from '../../utils/alerts/success'
 import errorAlert from '../../utils/alerts/error'
 import calcTotalRating from '../../utils/getTotalRating'
 import Ratings, {defaultTvshowRatings} from '../../models/ratings'
-import UserTvshow, { defaultUserTvshow } from '../../models/userTvshow'
+import {defaultUserTvshowDetails, UserTvshowDetails} from '../../models/userTvshow'
 
 interface SelectOption
 {
@@ -38,7 +38,7 @@ interface TvshowFormProps
 	tvshow: TvshowDetails
 	method: string
 
-	userTvshow?: UserTvshow
+	userTvshow?: UserTvshowDetails
 }
 
 const TvshowForm: React.FC<TvshowFormProps> = ({tvshow, method, userTvshow}) =>
@@ -80,7 +80,7 @@ const TvshowForm: React.FC<TvshowFormProps> = ({tvshow, method, userTvshow}) =>
 
 	useEffect(() =>
 	{
-		if (userTvshow && userTvshow !== defaultUserTvshow)
+		if (userTvshow && userTvshow !== defaultUserTvshowDetails)
 		{
 			setStatus(userTvshow.status)
 			setVenue(userTvshow.venue)

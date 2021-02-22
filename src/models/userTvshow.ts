@@ -1,6 +1,7 @@
 import Ratings, {defaultTvshowRatings} from './ratings'
+import TvshowDetails, { defaultTvshow } from './tvshow'
 
-interface UserTvshow
+export interface UserTvshowListed
 {
 	id: number
 	title: string
@@ -9,7 +10,7 @@ interface UserTvshow
 	ratings: Ratings
 }
 
-export const defaultUserTvshow: UserTvshow =
+export const defaultUserTvshowListed: UserTvshowListed =
 {
 	id: 0,
 	image: '',
@@ -28,4 +29,18 @@ export const statusInfo: {[statusKey: string]: string} =
 	paused: 'This status is dedicated to TV shows you have already started watching, stopped before its end, AND you plan on finishing it some day.'
 }
 
-export default UserTvshow
+export interface UserTvshowDetails
+{
+	data: TvshowDetails
+	status: string
+	venue: string
+	ratings: Ratings
+}
+
+export const defaultUserTvshowDetails: UserTvshowDetails =
+{
+	data: defaultTvshow,
+	status: '',
+	venue: '',
+	ratings: defaultTvshowRatings
+}

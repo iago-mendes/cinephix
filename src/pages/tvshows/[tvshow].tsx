@@ -13,7 +13,7 @@ import CarouselCard from '../../components/cards/Carousel'
 import formatDate from '../../utils/formatDate'
 import React, { useEffect, useState } from 'react'
 import useUser from '../../hooks/useUser'
-import UserTvshow, {defaultUserTvshow} from '../../models/userTvshow'
+import {UserTvshowDetails, defaultUserTvshowDetails} from '../../models/userTvshow'
 import getTotalRating from '../../utils/getTotalRating'
 import getStatusLabel from '../../utils/getStatusLabel'
 import getVenue from '../../utils/getVenue'
@@ -66,14 +66,14 @@ const Tvshow: React.FC<TvshowProps> = ({tvshow}) =>
 	const router = useRouter()
 	const {user} = useUser()
 
-	const [userTvshow, setUserTvshow] = useState<UserTvshow>(defaultUserTvshow)
+	const [userTvshow, setUserTvshow] = useState<UserTvshowDetails>(defaultUserTvshowDetails)
 
 	useEffect(() =>
 	{
 		if (user && user.email && tvshow)
 			api.get(`users/${user.email}/tvshows/${tvshow.id}`)
-				.then(({data}:{data: UserTvshow}) => setUserTvshow(data))
-				.catch(() => setUserTvshow(defaultUserTvshow))
+				.then(({data}:{data: UserTvshowDetails}) => setUserTvshow(data))
+				.catch(() => setUserTvshow(defaultUserTvshowDetails))
 	}, [user, tvshow])
 
 	if (router.isFallback)
@@ -134,7 +134,7 @@ const Tvshow: React.FC<TvshowProps> = ({tvshow}) =>
 
 			<div className='row userTvshow'>
 				{
-					(user && userTvshow !== defaultUserTvshow)
+					(user && userTvshow !== defaultUserTvshowDetails)
 						? (
 							<>
 								<div className='group'>

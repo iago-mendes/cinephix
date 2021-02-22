@@ -6,7 +6,7 @@ import {Media} from '../../../../components/cards/Media'
 import TvshowDetails from '../../../../models/tvshow'
 import Loading from '../../../../components/Loading'
 import TvshowForm from '../../../../components/forms/Tvshow'
-import UserTvshow, {defaultUserTvshow} from '../../../../models/userTvshow'
+import {UserTvshowDetails, defaultUserTvshowDetails} from '../../../../models/userTvshow'
 import useUser from '../../../../hooks/useUser'
 import RemoveButton from '../../../../components/RemoveButton'
 import SEOHead from '../../../../components/SEOHead'
@@ -20,14 +20,14 @@ const EditTvshow: React.FC<EditTvshowProps> = ({tvshow}) =>
 {
 	const {user} = useUser()
 
-	const [userTvshow, setUserTvshow] = useState<UserTvshow>(defaultUserTvshow)
+	const [userTvshow, setUserTvshow] = useState<UserTvshowDetails>(defaultUserTvshowDetails)
 	const [removeRoute, setRemoveRoute] = useState('')
 
 	useEffect(() =>
 	{
 		if (user && tvshow)
 			api.get(`users/${user.email}/tvshows/${tvshow.id}`)
-				.then(({data}:{data: UserTvshow}) => setUserTvshow(data))
+				.then(({data}:{data: UserTvshowDetails}) => setUserTvshow(data))
 	}, [user, tvshow])
 
 	useEffect(() =>

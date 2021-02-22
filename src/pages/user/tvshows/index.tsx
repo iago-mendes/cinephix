@@ -13,13 +13,13 @@ import SelectTvshow from '../../../components/modals/SelectTvshow'
 import getTotalRating from '../../../utils/getTotalRating'
 import SEOHead from '../../../components/SEOHead'
 import truncateText from '../../../utils/truncateText'
-import UserTvshow, {defaultUserTvshow, statusInfo} from '../../../models/userTvshow'
+import {defaultUserTvshowListed, statusInfo, UserTvshowListed} from '../../../models/userTvshow'
 import infoAlert from '../../../utils/alerts/info'
 import SortTvshowsModal from '../../../components/modals/SortTvshows'
 
 export interface TvshowList
 {
-	[status: string]: UserTvshow[]
+	[status: string]: UserTvshowListed[]
 }
 
 const validStatus: {[statusKey: string]: string} = 
@@ -47,7 +47,7 @@ const UserTvshows: React.FC = () =>
 		})
 
 	const [isTvshowModalOpen, setIsTvshowModalOpen] = useState(false)
-	const [selectedTvshow, setSelectedTvshow] = useState<UserTvshow>(defaultUserTvshow)
+	const [selectedTvshow, setSelectedTvshow] = useState<UserTvshowListed>(defaultUserTvshowListed)
 	const [isSelectTvshowOpen, setIsSelectTvshowOpen] = useState(false)
 	const [selectedStatusKey, setSelectedStatusKey] = useState('')
 
@@ -68,7 +68,7 @@ const UserTvshows: React.FC = () =>
 	function handleDragDrop(res: DropResult)
 	{
 		const tmpTvshowList = {...tvshowList}
-		const tvshows: UserTvshow[] = [].concat(...Object.values(tvshowList))
+		const tvshows: UserTvshowListed[] = [].concat(...Object.values(tvshowList))
 
 		const previousStatus = res.source.droppableId
 		const previousIndex = res.source.index
@@ -90,7 +90,7 @@ const UserTvshows: React.FC = () =>
 		api.put(`users/${user.email}/tvshows/${tvshowId}`, data)
 	}
 
-	function handleCardClick(tvshow: UserTvshow)
+	function handleCardClick(tvshow: UserTvshowListed)
 	{
 		setSelectedTvshow(tvshow)
 		setIsTvshowModalOpen(true)

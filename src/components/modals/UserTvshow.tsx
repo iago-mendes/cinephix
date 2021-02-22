@@ -6,7 +6,7 @@ import Image from 'next/image'
 import getTotalRating from '../../utils/getTotalRating'
 import { useRouter } from 'next/router'
 import ModalContainer from './Container'
-import UserTvshow from '../../models/userTvshow'
+import {UserTvshowListed as UserTvshow} from '../../models/userTvshow'
 
 export interface Tvshow
 {

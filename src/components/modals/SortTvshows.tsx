@@ -5,7 +5,7 @@ import {FiX} from 'react-icons/fi'
 
 import Container from '../../styles/components/modals/SortTvshows'
 import useClickOutside from '../../hooks/useClickOutside'
-import UserTvshow from '../../models/userTvshow'
+import {UserTvshowListed as UserTvshow} from '../../models/userTvshow'
 import {TvshowList} from '../../pages/user/tvshows/index'
 import getTotalRating from '../../utils/getTotalRating'
 import api from '../../services/api'
