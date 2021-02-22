@@ -143,6 +143,7 @@ const UserTvshows: React.FC = () =>
 													statusTvshows={tvshows}
 													tvshowList={tvshowList}
 													setTvshowList={setTvshowList}
+													revalidate={revalidate}
 												/>
 												<button title='Add a TV show' onClick={() => handleAddClick(statusKey)}>
 													<FiPlus size={20} />
