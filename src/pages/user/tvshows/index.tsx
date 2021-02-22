@@ -18,6 +18,7 @@ import infoAlert from '../../../utils/alerts/info'
 import SortTvshowsModal from '../../../components/modals/SortTvshows'
 import useSWR from 'swr'
 import dataFetcher from '../../../services/dataFetcher'
+import LoadingModal from '../../../components/modals/Loading'
 
 export interface TvshowList
 {
@@ -128,6 +129,10 @@ const UserTvshows: React.FC = () =>
 				isOpen={isSelectTvshowOpen}
 				setIsOpen={setIsSelectTvshowOpen}
 				statusKey={selectedStatusKey}
+			/>
+
+			<LoadingModal
+				isOpen={loading}
 			/>
 
 			<main>
