@@ -12,7 +12,8 @@ module.exports = withImages({
 	{
 		apiUrl: process.env.API_URL,
 		apiKey: process.env.API_KEY,
-		analyticsId: process.env.GA_TRACKING_ID
+		analyticsId: process.env.GA_TRACKING_ID,
+		adsClient: process.env.DATA_AD_CLIENT
 	},
 	serverRuntimeConfig:
 	{
