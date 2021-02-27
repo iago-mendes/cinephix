@@ -61,8 +61,8 @@ const Container = styled.div`
 	.search
 	{
 		background-color: ${p => p.theme.white};
-		width: 50rem;
 		height: 4rem;
+		width: 75%;
 
 		display: flex;
 		align-items: center;
@@ -133,8 +133,6 @@ const Container = styled.div`
 
 		.search
 		{
-			width: 25rem;
-
 			input
 			{
 				font-size: 1.75rem;
