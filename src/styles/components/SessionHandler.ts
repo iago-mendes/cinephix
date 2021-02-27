@@ -74,6 +74,27 @@ const Container = styled.div`
 			}
 		}
 	}
+
+	@media(max-width: 700px)
+	{
+		img
+		{
+			width: 90vw;
+		}
+
+		main
+		{
+			flex-direction: column-reverse;
+			gap: 2rem;
+
+			width: 90vw;
+
+			.message
+			{
+				width: 100%;
+			}
+		}
+	}
 `
 
 export default Container
