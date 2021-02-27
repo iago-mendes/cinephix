@@ -13,8 +13,8 @@ const Container = styled.div`
 
 		img
 		{
-			width: 25rem;
-			border-radius: 2rem;
+			width: 15rem;
+			border-radius: 1rem;
 		}
 
 		.group
@@ -149,6 +149,14 @@ const Container = styled.div`
 			{
 				font-size: 2.25rem;
 			}
+		}
+	}
+
+	@media(min-width: 1000px)
+	{
+		main
+		{
+			padding: 10rem 2rem;
 		}
 	}
 `
