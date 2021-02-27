@@ -5,7 +5,9 @@ const Container = styled.div`
 	padding: 2rem;
 
 	display: flex;
+	align-items: center;
 	justify-content: space-between;
+	gap: 2rem;
 
 	.img
 	{
@@ -227,7 +229,7 @@ const Container = styled.div`
 		}
 	}
 
-	@media(max-width: 600px)
+	@media(max-width: 1024px)
 	{
 		flex-direction: column;
 		align-items: center;
@@ -297,6 +299,18 @@ const Container = styled.div`
 					}
 				}
 			}
+		}
+	}
+
+	@media(max-width: 350px)
+	{
+		.info form .rangeFields .rating .group
+		{
+			height: fit-content;
+
+			flex-direction: column;
+			align-items: flex-start;
+			gap: 1rem;
 		}
 	}
 `
