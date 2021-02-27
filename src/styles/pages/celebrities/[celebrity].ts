@@ -13,6 +13,8 @@ const Container = styled.div<ContainerProps>`
 
 		display: flex;
 		justify-content: space-between;
+		align-items: center;
+		gap: 2rem;
 
 		.img
 		{
@@ -110,7 +112,7 @@ const Container = styled.div<ContainerProps>`
 		background-color: rgba(0,0,0,0.5);
 	}
 
-	@media(max-width: 1000px)
+	@media(max-width: 1024px)
 	{
 		main
 		{

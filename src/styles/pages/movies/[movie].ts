@@ -8,6 +8,8 @@ const Container = styled.div`
 
 		display: flex;
 		justify-content: space-between;
+		align-items: center;
+		gap: 2rem;
 
 		.img
 		{
@@ -276,7 +278,7 @@ const Container = styled.div`
 		}
 	}
 
-	@media(max-width: 1000px)
+	@media(max-width: 1024px)
 	{
 		main
 		{
