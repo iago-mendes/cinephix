@@ -11,6 +11,7 @@ import SEOHead from '../../components/SEOHead'
 import Carousel from '../../components/Carousel'
 import CarouselCard from '../../components/cards/Carousel'
 import MediaCard from '../../components/cards/Media'
+import EventMediaCard from '../../components/cards/EventMedia'
 
 interface EventProps
 {
@@ -50,7 +51,10 @@ const Event: React.FC<EventProps> = ({event}) =>
 						<Carousel className='carousel' >
 							{['movies', 'tvshows'].includes(category.type) && category.media.map((media, index) => (
 								<SwiperSlide key={index} >
-									<h1>{media.title}</h1>
+									<EventMediaCard
+										media={media}
+										link={`${category.type}/${media.id}`}
+									/>
 								</SwiperSlide>
 							))}
 							{category.type === 'celebrities' && category.celebrities.map(({celebrity}, index) => (
