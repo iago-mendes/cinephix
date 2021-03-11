@@ -29,7 +29,7 @@ const EventCelebrityCard: React.FC<EventCelebrityCardProps> = ({eventCelebrity, 
 				</div>
 				<div className='info'>
 					<span className='name' >
-						{truncateText(celebrity.name + celebrity.name + celebrity.name + celebrity.name, 35)}
+						{truncateText(celebrity.name, 35)}
 					</span>
 					<div className='media'>
 						<div className='mediaImg'>
@@ -37,7 +37,7 @@ const EventCelebrityCard: React.FC<EventCelebrityCardProps> = ({eventCelebrity, 
 						</div>
 						<div className='mediaInfo'>
 							<span className='title' >
-								{truncateText(media.title + media.title + media.title, 15)}
+								{truncateText(media.title, 15)}
 							</span>
 							<span className='date' >
 								<FiCalendar size={15} />
