@@ -6,6 +6,7 @@ import oscars from '../../assets/backgrounds/oscars.jpg'
 import HeaderWithBackground from '../../components/HeaderWithBackground'
 import SEOHead from '../../components/SEOHead'
 import {EventListed} from '../../models/event'
+import EventCard from '../../components/cards/Event'
 
 interface MoviesProps
 {
@@ -31,8 +32,11 @@ const Movies: React.FC<MoviesProps> = ({events}) =>
 
 				hidePaginate
 			>
-				{events.map(event => (
-					<h1 key={event.id} >{event.name}</h1>
+				{events.map((event, index) => (
+					<EventCard
+						key={index}
+						event={event}
+					/>
 				))}
 			</GridPaginate>
 		</div>
