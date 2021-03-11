@@ -42,6 +42,22 @@ export default createGlobalStyle`
 		}
 	}
 
+	body, input, textarea, button
+	{
+		font-family: Roboto;
+	}
+	
+	button
+	{
+		cursor: pointer;
+	}
+	
+	a
+	{
+		color: inherit;
+		text-decoration: none;
+	}
+
 	#__next
 	{
 		
