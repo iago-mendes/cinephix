@@ -20,25 +20,20 @@ const Event: React.FC<EventProps> = ({event}) =>
 		return <Loading style={{height: 'calc(100vh - 5rem)'}} />
 
 	return (
-		<Container className='page' >
+		<Container color={event.color} className='page' >
 			<SEOHead
 				title={`${event.name} | Cinephix`}
 				description={event.description}
 			/>
 
-			<main>
-				<svg width={50} height={50}>
-					<rect width={50} height={50} fill={event.color} />
-				</svg>
-				<div className='info'>
-					<h1 className='name'>
-						{event.name}
-					</h1>
-					<p className='description'>
-						{event.description}
-					</p>
-				</div>
-			</main>
+			<header>
+				<h1 className='name'>
+					{event.name}
+				</h1>
+				<p className='description'>
+					{event.description}
+				</p>
+			</header>
 
 		</Container>
 	)
