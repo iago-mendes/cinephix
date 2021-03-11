@@ -51,6 +51,7 @@ const Container = styled.div`
 		justify-content: space-between;
 
 		color: ${p => p.theme.background};
+		overflow: hidden;
 
 		.title
 		{

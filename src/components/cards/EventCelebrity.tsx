@@ -28,7 +28,7 @@ const EventCelebrityCard: React.FC<EventCelebrityCardProps> = ({eventCelebrity, 
 					<Image src={celebrity.image} width={780} height={1170} layout='responsive' />
 				</div>
 				<div className='info'>
-					<span className='title' >
+					<span className='name' >
 						{truncateText(celebrity.name + celebrity.name + celebrity.name + celebrity.name, 35)}
 					</span>
 					<div className='media'>
@@ -36,11 +36,13 @@ const EventCelebrityCard: React.FC<EventCelebrityCardProps> = ({eventCelebrity, 
 							<Image src={media.image} width={780} height={1170} layout='responsive' />
 						</div>
 						<div className='mediaInfo'>
-							<h1>{truncateText(media.title, 35)}</h1>
-							<h3>
+							<span className='title' >
+								{truncateText(media.title + media.title + media.title, 15)}
+							</span>
+							<span className='date' >
 								<FiCalendar size={15} />
 								{formatDate(media.date)}
-							</h3>
+							</span>
 						</div>
 					</div>
 				</div>
