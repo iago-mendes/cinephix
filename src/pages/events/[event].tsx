@@ -9,9 +9,8 @@ import Loading from '../../components/Loading'
 import EventDetails from '../../models/event'
 import SEOHead from '../../components/SEOHead'
 import Carousel from '../../components/Carousel'
-import CarouselCard from '../../components/cards/Carousel'
-import MediaCard from '../../components/cards/Media'
 import EventMediaCard from '../../components/cards/EventMedia'
+import EventCelebrityCard from '../../components/cards/EventCelebrity'
 
 interface EventProps
 {
@@ -57,9 +56,12 @@ const Event: React.FC<EventProps> = ({event}) =>
 									/>
 								</SwiperSlide>
 							))}
-							{category.type === 'celebrities' && category.celebrities.map(({celebrity}, index) => (
+							{category.type === 'celebrities' && category.celebrities.map((eventCelebrity, index) => (
 								<SwiperSlide key={index} >
-									<h1>{celebrity.name}</h1>
+									<EventCelebrityCard
+										eventCelebrity={eventCelebrity}
+										link={`/celebrities/${eventCelebrity.celebrity.id}`}
+									/>
 								</SwiperSlide>
 							))}
 						</Carousel>
