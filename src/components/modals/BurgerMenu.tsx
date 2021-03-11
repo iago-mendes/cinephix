@@ -5,6 +5,7 @@ import {useEffect} from 'react'
 
 import Container from '../../styles/components/modals/BurgerMenu'
 import useClickOutside from '../../hooks/useClickOutside'
+import routes from '../../../db/routes.json'
 
 interface UserMenuProps
 {
@@ -57,18 +58,11 @@ const BurgerMenu: React.FC<UserMenuProps> = ({isOpen, setIsOpen}) =>
 			<Container
 				ref={ref}
 			>
-				<Link href='/' >
-						Home
-				</Link>
-				<Link href='/movies' >
-						Movies
-				</Link>
-				<Link href='/tvshows' >
-						TV shows
-				</Link>
-				<Link href='/celebrities' >
-						Celebrities
-				</Link>
+				{routes.map((route, index) => (
+					<Link key={index} href={route.link} >
+						{route.text}
+					</Link>
+				))}
 			</Container>
 		</motion.div>
 	)

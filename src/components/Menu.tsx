@@ -13,6 +13,7 @@ import UserMenu from './modals/UserMenu'
 import useDimensions from '../hooks/useDimensions'
 import BurgerMenu from './modals/BurgerMenu'
 import useClickOutside from '../hooks/useClickOutside'
+import routes from '../../db/routes.json'
 
 const Menu: React.FC = () =>
 {
@@ -51,18 +52,11 @@ const Menu: React.FC = () =>
 			<div className='container'>
 				{width > 1000 && (
 					<div className='links'>
-						<Link href='/' >
-							Home
-						</Link>
-						<Link href='/movies' >
-							Movies
-						</Link>
-						<Link href='/tvshows' >
-							TV shows
-						</Link>
-						<Link href='/celebrities' >
-							Celebrities
-						</Link>				
+						{routes.map((route, index) => (
+							<Link key={index} href={route.link} >
+								{route.text}
+							</Link>
+						))}
 					</div>
 				)}
 				<div

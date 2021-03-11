@@ -1,0 +1,22 @@
+[
+	{
+		"link": "/",
+		"text": "Home"
+	},
+	{
+		"link": "/events",
+		"text": "Events"
+	},
+	{
+		"link": "/movies",
+		"text": "Movies"
+	},
+	{
+		"link": "/tvshows",
+		"text": "TV shows"
+	},
+	{
+		"link": "/celebrities",
+		"text": "Celebrities"
+	}
+]
