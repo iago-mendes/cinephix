@@ -26,14 +26,14 @@ const EventMediaCard: React.FC<EventMediaCardProps> = ({media, link}) =>
 				</div>
 				<div className='info'>
 					<span className='title' >
-						{truncateText(media.title, 35)}
+						{truncateText(media.title + media.title + media.title + media.title, 35)}
 					</span>
 					<span className='date' >
 						<FiCalendar size={15} />
 						{formatDate(media.date)}
 					</span>
 					<p className='overview' >
-						{truncateText(media.overview, 120)}
+						{truncateText(media.overview, 50)}
 					</p>
 				</div>
 			</Container>
