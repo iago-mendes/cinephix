@@ -28,6 +28,8 @@ const Movies: React.FC<MoviesProps> = ({events}) =>
 				totalPages={1}
 				loading={false}
 				noResults={events.length === 0}
+
+				hidePaginate
 			>
 				{events.map(event => (
 					<h1 key={event.id} >{event.name}</h1>

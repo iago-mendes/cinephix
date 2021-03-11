@@ -16,9 +16,12 @@ interface GridPaginateProps
 	noResults: boolean
 
 	style?: CSSProperties
+
+	hidePaginate?: boolean
 }
 
-const GridPaginate: React.FC<GridPaginateProps> = ({page, setPage, totalPages, loading, style = {}, noResults, children}) =>
+const GridPaginate: React.FC<GridPaginateProps> =
+({page, setPage, totalPages, loading, style = {}, noResults, children, hidePaginate = false}) =>
 {
 	function goBack()
 	{
@@ -57,34 +60,37 @@ const GridPaginate: React.FC<GridPaginateProps> = ({page, setPage, totalPages, l
 							</main>
 						)
 			}
-			<div className='paginate'>
-				<div className='buttons'>
-					<button onClick={() => setPage(1)}>
-						<BsChevronBarLeft size={30} />
-					</button>
-					<button onClick={goBack}>
-						<BsChevronLeft size={30} />
-					</button>
+
+			{!hidePaginate && (
+				<div className='paginate'>
+					<div className='buttons'>
+						<button onClick={() => setPage(1)}>
+							<BsChevronBarLeft size={30} />
+						</button>
+						<button onClick={goBack}>
+							<BsChevronLeft size={30} />
+						</button>
+					</div>
+					<div className='controller'>
+						<input
+							type='number'
+							value={page}
+							onChange={handlePageChange}
+							min={1}
+							max={totalPages}
+						/>
+						<span> / {totalPages}</span>
+					</div>
+					<div className='buttons'>
+						<button onClick={goNext}>
+							<BsChevronRight size={30} />
+						</button>
+						<button>
+							<BsChevronBarRight size={30} onClick={() => setPage(totalPages)}/>
+						</button>
+					</div>
 				</div>
-				<div className='controller'>
-					<input
-						type='number'
-						value={page}
-						onChange={handlePageChange}
-						min={1}
-						max={totalPages}
-					/>
-					<span> / {totalPages}</span>
-				</div>
-				<div className='buttons'>
-					<button onClick={goNext}>
-						<BsChevronRight size={30} />
-					</button>
-					<button>
-						<BsChevronBarRight size={30} onClick={() => setPage(totalPages)}/>
-					</button>
-				</div>
-			</div>
+			)}
 		</Container>
 	)
 }
