@@ -20,13 +20,17 @@ interface CelebrityCardProps
 {
 	celebrity: Celebrity
 	showKnownFor?: boolean
+	width?: number | string
 }
 
-const CelebrityCard: React.FC<CelebrityCardProps> = ({celebrity, showKnownFor = false}) =>
+const CelebrityCard: React.FC<CelebrityCardProps> = ({celebrity, showKnownFor = false, width = '40rem'}) =>
 {
 	return (
 		<Link href={`/celebrities/${celebrity.id}`} >
-			<Container as='a' href={`/celebrities/${celebrity.id}`} >
+			<Container
+				as='a'
+				href={`/celebrities/${celebrity.id}`}
+			>
 				<div className='img'>
 					<Image src={celebrity.image} width={780} height={1170} layout='responsive' />
 				</div>

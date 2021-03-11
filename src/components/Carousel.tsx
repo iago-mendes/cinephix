@@ -3,7 +3,12 @@ import {Swiper} from 'swiper/react'
 import Container from '../styles/components/Carousel'
 import useDimensions from '../hooks/useDimensions'
 
-const Carousel: React.FC = ({children}) =>
+interface CarouselProps
+{
+	className?: string
+}
+
+const Carousel: React.FC<CarouselProps> = ({children, className}) =>
 {
 	const {width} = useDimensions()
 
@@ -18,7 +23,7 @@ const Carousel: React.FC = ({children}) =>
 	}
 
 	return (
-		<Container>
+		<Container className={className} >
 			<Swiper
 				spaceBetween={50}
 				slidesPerView={getSlidesPerView()}

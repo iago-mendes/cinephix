@@ -1,11 +1,16 @@
 import {GetStaticPaths, GetStaticProps} from 'next'
 import {useRouter} from 'next/router'
+import {BiQuestionMark} from 'react-icons/bi'
+import {SwiperSlide} from 'swiper/react'
 
 import Container from '../../styles/pages/events/[event]'
 import api from '../../services/api'
 import Loading from '../../components/Loading'
 import EventDetails from '../../models/event'
 import SEOHead from '../../components/SEOHead'
+import Carousel from '../../components/Carousel'
+import CarouselCard from '../../components/cards/Carousel'
+import MediaCard from '../../components/cards/Media'
 
 interface EventProps
 {
@@ -34,6 +39,29 @@ const Event: React.FC<EventProps> = ({event}) =>
 					{event.description}
 				</p>
 			</header>
+
+			{event.categories.map((category, index) => (
+				<div className='category' key={index} >
+					<div className='title'>
+						<h2 className='name' >{category.name}</h2>
+						<button title='Status information' onClick={() => {}} >
+							<BiQuestionMark size={20} />
+						</button>
+						<Carousel className='carousel' >
+							{['movies', 'tvshows'].includes(category.type) && category.media.map((media, index) => (
+								<SwiperSlide key={index} >
+									<h1>{media.title}</h1>
+								</SwiperSlide>
+							))}
+							{category.type === 'celebrities' && category.celebrities.map(({celebrity}, index) => (
+								<SwiperSlide key={index} >
+									<h1>{celebrity.name}</h1>
+								</SwiperSlide>
+							))}
+						</Carousel>
+					</div>
+				</div>
+			))}
 
 		</Container>
 	)
