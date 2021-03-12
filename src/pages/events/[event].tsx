@@ -1,6 +1,7 @@
 import {GetStaticPaths, GetStaticProps} from 'next'
 import {useRouter} from 'next/router'
 import {SwiperSlide} from 'swiper/react'
+import {FiPlus} from 'react-icons/fi'
 
 import Container from '../../styles/pages/events/[event]'
 import api from '../../services/api'
@@ -38,6 +39,15 @@ const Event: React.FC<EventProps> = ({event}) =>
 					{event.description}
 				</p>
 			</header>
+
+			<div className='actions'>
+				<button>
+					<FiPlus size={30} />
+					<span>
+						Create group
+					</span>
+				</button>
+			</div>
 
 			{event.categories.map((category, index) => (
 				<div className='category' key={index} >

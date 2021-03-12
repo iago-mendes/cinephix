@@ -35,6 +35,47 @@ const Container = styled.div<ContainerProps>`
 		}
 	}
 
+	.actions
+	{
+		width: 100%;
+		padding: 5rem;
+
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 1rem;
+
+		button
+		{
+			background: none;
+			color: ${p => p.theme.primary};
+			border: ${p => p.theme.primary} 2px solid;
+			border-radius: 100rem;
+
+			display: flex;
+			align-items: center;
+			gap: 1rem;
+
+			padding: 0.5rem 1rem;
+			transition: 0.25s;
+
+			:hover
+			{
+				background-color: ${p => p.theme.primary};
+				color: ${p => p.theme.background};
+
+				transform: scale(1.1);
+			}
+
+			span
+			{
+				font-family: Ubuntu;
+				font-weight: 700;
+				font-size: 2rem;
+			}
+		}
+	}
+
 	.category
 	{
 		display: flex;
