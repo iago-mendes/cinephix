@@ -1,6 +1,5 @@
 import {GetStaticPaths, GetStaticProps} from 'next'
 import {useRouter} from 'next/router'
-import {BiQuestionMark} from 'react-icons/bi'
 import {SwiperSlide} from 'swiper/react'
 
 import Container from '../../styles/pages/events/[event]'
@@ -42,30 +41,33 @@ const Event: React.FC<EventProps> = ({event}) =>
 
 			{event.categories.map((category, index) => (
 				<div className='category' key={index} >
-					<div className='title'>
-						<h2 className='name' >{category.name}</h2>
-						<button title='Status information' onClick={() => {}} >
-							<BiQuestionMark size={20} />
-						</button>
-						<Carousel className='carousel' >
-							{['movies', 'tvshows'].includes(category.type) && category.media.map((media, index) => (
-								<SwiperSlide key={index} >
-									<EventMediaCard
-										media={media}
-										link={`${category.type}/${media.id}`}
-									/>
-								</SwiperSlide>
-							))}
-							{category.type === 'celebrities' && category.celebrities.map((eventCelebrity, index) => (
-								<SwiperSlide key={index} >
-									<EventCelebrityCard
-										eventCelebrity={eventCelebrity}
-										link={`/celebrities/${eventCelebrity.celebrity.id}`}
-									/>
-								</SwiperSlide>
-							))}
-						</Carousel>
+					<div className='header'>
+						<h2 className='name' >
+							{category.name}
+						</h2>
+						<p className='description'>
+							{category.description}
+						</p>
 					</div>
+					<Carousel className='carousel' >
+						{['movies', 'tvshows'].includes(category.type) && category.media.map((media, index) => (
+							<SwiperSlide key={index} >
+								<EventMediaCard
+									media={media}
+									link={`${category.type}/${media.id}`}
+								/>
+							</SwiperSlide>
+						))}
+						{category.type === 'celebrities' && category.celebrities.map((eventCelebrity, index) => (
+							<SwiperSlide key={index} >
+								<EventCelebrityCard
+									eventCelebrity={eventCelebrity}
+									link={`/celebrities/${eventCelebrity.celebrity.id}`}
+								/>
+							</SwiperSlide>
+						))}
+					</Carousel>
+					
 				</div>
 			))}
 
