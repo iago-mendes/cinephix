@@ -10,6 +10,7 @@ const CreateGroup: React.FC = () =>
 			/>
 
 			<GroupForm
+				method='post'
 			/>
 		</div>
 	)

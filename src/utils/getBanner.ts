@@ -14,10 +14,7 @@ export function chooseRandomBanner()
 	const index = Math.floor(Math.random() * (max - min) ) + min
 	const path = banners[index].path
 
-	return {
-		path,
-		url: getBanner(path)
-	}
+	return path
 }
 
 export default getBanner

@@ -1,14 +1,17 @@
-import {useState} from 'react'
+import {useEffect, useState} from 'react'
 
 import Container from '../../styles/components/forms/Group'
 import {GroupRaw} from '../../models/group'
+import getBanner, { chooseRandomBanner } from '../../utils/getBanner'
+import Image from 'next/image'
 
 interface GroupFormProps
 {
+	method: string
 	group?: GroupRaw
 }
 
-const GroupForm: React.FC<GroupFormProps> = () =>
+const GroupForm: React.FC<GroupFormProps> = ({method}) =>
 {
 	const [nickname, setNickname] = useState('')
 	const [urlId, setUrlId] = useState('')
@@ -17,8 +20,26 @@ const GroupForm: React.FC<GroupFormProps> = () =>
 	const [description, setDescription] = useState('')
 	const [participantEmails, setParticipantEmails] = useState<string[]>([])
 
+	useEffect(() =>
+	{
+		if (method === 'post')
+		{
+			const randomBanner = chooseRandomBanner()
+			setBanner(randomBanner)
+		}
+	}, [])
+
 	return (
 		<Container>
+			<header>
+				<div className='img' >
+					<Image src={getBanner(banner)} width={1500} height={750} layout='responsive' />
+				</div>
+				<button title='Change banner' onClick={() => {}} >
+					Change banner
+				</button>
+			</header>
+			
 			{/* nickname */}
 			<div className='text field'>
 				<label htmlFor='nickname'>Nickname</label>
