@@ -37,6 +37,8 @@ interface Group
 	description: string
 	participants: Array<
 	{
+		image: string
+		name: string
 		email: string
 		isOwner: true
 		predictions: Array<
