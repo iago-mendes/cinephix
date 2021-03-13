@@ -11,6 +11,9 @@ import {SelectOption} from '../../models'
 import {selectStyles} from '../../styles/global'
 import api from '../../services/api'
 import {EventListed} from '../../models/event'
+import successAlert from '../../utils/alerts/success'
+import errorAlert from '../../utils/alerts/error'
+import useUser from '../../hooks/useUser'
 
 interface GroupFormProps
 {
@@ -20,7 +23,8 @@ interface GroupFormProps
 
 const GroupForm: React.FC<GroupFormProps> = ({method}) =>
 {
-	const {query, back} = useRouter()
+	const {user} = useUser()
+	const {query, back, push} = useRouter()
 
 	const [banner, setBanner] = useState('')
 	const [nickname, setNickname] = useState('')
@@ -85,7 +89,46 @@ const GroupForm: React.FC<GroupFormProps> = ({method}) =>
 	}
 
 	function handleSubmit()
-	{}
+	{
+		const participants =
+		[
+			{
+				email: user.email,
+				isOwner: true,
+				predictions: []
+			},
+			...participantEmails.map(email => (
+				{
+					email,
+					isOwner: false,
+					predictions: []
+				}))
+		]
+
+		const data =
+		{
+			nickname,
+			urlId,
+			banner,
+			event,
+			description,
+			participants
+		}
+
+		if (method === 'post')
+		{
+			api.post('groups', data)
+				.then(() =>
+				{
+					successAlert(`'${nickname}' was successfully created!`)
+					push('/groups')
+				})
+				.catch(err =>
+				{
+					errorAlert(err.response.data.message)
+				})
+		}
+	}
 
 	return (
 		<Container onSubmit={e => e.preventDefault()} >
@@ -152,6 +195,15 @@ const GroupForm: React.FC<GroupFormProps> = ({method}) =>
 			<div className='field'>
 				<label htmlFor='participantEmail'>Participants</label>
 				<ul className='list' >
+					<li className='text' >
+						<input
+							type='email'
+							name='participantEmail'
+							id={'participantEmail-owner'}
+							value={user ? user.email : ''}
+							readOnly
+						/>
+					</li>
 					{participantEmails.map((email, index) => (
 						<li key={index} className='text' >
 							<input
