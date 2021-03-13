@@ -19,7 +19,7 @@ interface EventProps
 
 const Event: React.FC<EventProps> = ({event}) =>
 {
-	const {isFallback} = useRouter()
+	const {isFallback, push} = useRouter()
 
 	if (isFallback)
 		return <Loading style={{height: 'calc(100vh - 5rem)'}} />
@@ -41,7 +41,9 @@ const Event: React.FC<EventProps> = ({event}) =>
 			</header>
 
 			<div className='actions'>
-				<button>
+				<button
+					onClick={() => push(`/groups/create?event=${event.id}`)}
+				>
 					<FiPlus size={30} />
 					<span>
 						Create group

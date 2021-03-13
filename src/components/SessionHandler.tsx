@@ -14,7 +14,7 @@ const SessionHandler: React.FC = ({children}) =>
 	const {pathname} = useRouter()
 	const [route, setRoute] = useState('')
 
-	const privateRoutes = ['user']
+	const privateRoutes = ['user', 'groups']
 
 	useEffect(() =>
 	{
