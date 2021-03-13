@@ -83,6 +83,9 @@ const UserMenu: React.FC<UserMenuProps> = ({isOpen, setIsOpen}) =>
 						<Link href='/user' >
 							My profile
 						</Link>
+						<Link href='/groups' >
+							My groups
+						</Link>
 						<Link href='/user/tvshows'>
 							My TV shows
 						</Link>
