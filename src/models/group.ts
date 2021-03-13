@@ -1,3 +1,5 @@
+import {EventListed} from './event'
+
 export interface GroupRaw
 {
 	_id: string
@@ -16,4 +18,13 @@ export interface GroupRaw
 			guess: number
 		}>
 	}>
+}
+
+export interface GroupListed
+{
+	nickname: string
+	urlId: string
+	banner: string
+	event: EventListed
+	description: string
 }
