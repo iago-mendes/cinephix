@@ -10,6 +10,7 @@ import {SelectOption} from '../../models'
 import {selectStyles} from '../../styles/global'
 import api from '../../services/api'
 import {EventListed} from '../../models/event'
+import { FiMinus, FiPlus } from 'react-icons/fi'
 
 interface GroupFormProps
 {
@@ -62,8 +63,29 @@ const GroupForm: React.FC<GroupFormProps> = ({method}) =>
 		}
 	}, [query, eventOptions])
 
+	function handleAddParticipant()
+	{
+		let tmpParticipantEmails = [...participantEmails]
+		tmpParticipantEmails.push('')
+		setParticipantEmails(tmpParticipantEmails)
+	}
+
+	function handleRemoveParticipant(index: number)
+	{
+		let tmpParticipantEmails = [...participantEmails]
+		tmpParticipantEmails.splice(index, 1)
+		setParticipantEmails(tmpParticipantEmails)
+	}
+
+	function handleChangeParticipant(email: string, index: number)
+	{
+		let tmpParticipantEmails = [...participantEmails]
+		tmpParticipantEmails[index] = email
+		setParticipantEmails(tmpParticipantEmails)
+	}
+
 	return (
-		<Container>
+		<Container onSubmit={e => e.preventDefault()} >
 			<header>
 				<div className='img' >
 					<Image src={getBanner(banner)} width={1500} height={750} layout='responsive' />
@@ -119,6 +141,29 @@ const GroupForm: React.FC<GroupFormProps> = ({method}) =>
 					className='select'
 					isSearchable={false}
 				/>
+			</div>
+			{/* participantEmails */}
+			<div className='field'>
+				<label htmlFor='participantEmail'>Participants</label>
+				<ul className='list' >
+					{participantEmails.map((email, index) => (
+						<li key={index} >
+							<input
+								type='email'
+								name='participantEmail'
+								id={`participantEmail-${index}`}
+								value={email}
+								onChange={e => handleChangeParticipant(e.target.value, index)}
+							/>
+							<button className='remove' onClick={() => handleRemoveParticipant(index)} >
+								<FiMinus size={20} />
+							</button>
+						</li>
+					))}
+					<button className='add' onClick={handleAddParticipant} >
+						<FiPlus size={25} />
+					</button>
+				</ul>
 			</div>
 		</Container>
 	)
