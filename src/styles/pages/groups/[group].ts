@@ -125,6 +125,31 @@ const Container = styled.div`
 		}
 	}
 
+	section.event
+	{
+		padding-bottom: 0;
+
+		.category
+		{
+			display: flex;
+			flex-direction: column;
+			gap: 1rem;
+
+			padding: 2rem 0;
+
+			:nth-child(odd)
+			{
+				background-color: rgba(0,0,0,0.5);
+			}
+
+			h3
+			{
+				font-size: 2rem;
+				margin-left: 3rem;
+			}
+		}
+	}
+
 	@media(min-width: 1000px)
 	{
 		header

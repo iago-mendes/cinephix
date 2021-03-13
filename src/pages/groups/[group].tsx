@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import {GetStaticPaths, GetStaticProps} from 'next'
 import {SwiperSlide} from 'swiper/react'
+import {useRouter} from 'next/router'
 
 import SEOHead from '../../components/SEOHead'
 import Container from '../../styles/pages/groups/[group]'
@@ -9,6 +10,9 @@ import getBanner from '../../utils/getBanner'
 import api from '../../services/api'
 import Carousel from '../../components/Carousel'
 import truncateText from '../../utils/truncateText'
+import Loading from '../../components/Loading'
+import EventMediaCard from '../../components/cards/EventMedia'
+import EventCelebrityCard from '../../components/cards/EventCelebrity'
 
 interface GroupProps
 {
@@ -17,6 +21,11 @@ interface GroupProps
 
 const Group: React.FC<GroupProps> = ({group}) =>
 {
+	const {isFallback} = useRouter()
+
+	if (isFallback)
+		return <Loading style={{height: 'calc(100vh - 5rem)'}} />
+
 	return (
 		<Container className='page' >
 			<SEOHead
@@ -65,6 +74,39 @@ const Group: React.FC<GroupProps> = ({group}) =>
 						</SwiperSlide>
 					))}
 				</Carousel>
+			</section>
+
+			<section className="event">
+				<h2>
+					{group.event.name}
+				</h2>
+				{group.event.categories.map((category, index) => (
+					<div className='category' key={index} >
+						<div className='header'>
+							<h3 className='name' >
+								{category.name}
+							</h3>
+						</div>
+						<Carousel className='carousel' >
+							{['movies', 'tvshows'].includes(category.type) && category.media.map((media, index) => (
+								<SwiperSlide key={index} >
+									<EventMediaCard
+										media={media}
+										link={`${category.type}/${media.id}`}
+									/>
+								</SwiperSlide>
+							))}
+							{category.type === 'celebrities' && category.celebrities.map((eventCelebrity, index) => (
+								<SwiperSlide key={index} >
+									<EventCelebrityCard
+										eventCelebrity={eventCelebrity}
+										link={`/celebrities/${eventCelebrity.celebrity.id}`}
+									/>
+								</SwiperSlide>
+							))}
+						</Carousel>
+					</div>
+				))}
 			</section>
 		</Container>
 	)
