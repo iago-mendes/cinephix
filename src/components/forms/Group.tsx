@@ -2,6 +2,7 @@ import {useEffect, useState} from 'react'
 import Select from 'react-select'
 import {useRouter} from 'next/router'
 import Image from 'next/image'
+import {FiCheck, FiMinus, FiPlus, FiX} from 'react-icons/fi'
 
 import Container from '../../styles/components/forms/Group'
 import {GroupRaw} from '../../models/group'
@@ -10,7 +11,6 @@ import {SelectOption} from '../../models'
 import {selectStyles} from '../../styles/global'
 import api from '../../services/api'
 import {EventListed} from '../../models/event'
-import { FiMinus, FiPlus } from 'react-icons/fi'
 
 interface GroupFormProps
 {
@@ -20,7 +20,7 @@ interface GroupFormProps
 
 const GroupForm: React.FC<GroupFormProps> = ({method}) =>
 {
-	const {query} = useRouter()
+	const {query, back} = useRouter()
 
 	const [banner, setBanner] = useState('')
 	const [nickname, setNickname] = useState('')
@@ -83,6 +83,9 @@ const GroupForm: React.FC<GroupFormProps> = ({method}) =>
 		tmpParticipantEmails[index] = email
 		setParticipantEmails(tmpParticipantEmails)
 	}
+
+	function handleSubmit()
+	{}
 
 	return (
 		<Container onSubmit={e => e.preventDefault()} >
@@ -164,6 +167,15 @@ const GroupForm: React.FC<GroupFormProps> = ({method}) =>
 						<FiPlus size={25} />
 					</button>
 				</ul>
+			</div>
+
+			<div className='buttons'>
+				<button className='cancel' title='Cancel' onClick={back} type='button' >
+					<FiX size={25} />
+				</button>
+				<button className='confirm' title='Confirm' type='submit' onClick={handleSubmit} >
+					<FiCheck size={25} />
+				</button>
 			</div>
 		</Container>
 	)
