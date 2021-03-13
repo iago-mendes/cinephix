@@ -107,6 +107,7 @@ const GroupForm: React.FC<GroupFormProps> = ({method}) =>
 					type='text'
 					value={nickname}
 					onChange={e => setNickname(e.target.value)}
+					placeholder='E.g.: Avengers'
 				/>
 			</div>
 			{/* urlId */}
@@ -118,6 +119,7 @@ const GroupForm: React.FC<GroupFormProps> = ({method}) =>
 					type='text'
 					value={urlId}
 					onChange={e => setUrlId(e.target.value)}
+					placeholder='E.g.: avengers'
 				/>
 			</div>
 			{/* description */}
@@ -128,6 +130,7 @@ const GroupForm: React.FC<GroupFormProps> = ({method}) =>
 					id='description'
 					value={description}
 					onChange={e => setDescription(e.target.value)}
+					placeholder="E.g.: Earth's mightiest heroes"
 				/>
 			</div>
 			{/* event */}
@@ -150,7 +153,7 @@ const GroupForm: React.FC<GroupFormProps> = ({method}) =>
 				<label htmlFor='participantEmail'>Participants</label>
 				<ul className='list' >
 					{participantEmails.map((email, index) => (
-						<li key={index} >
+						<li key={index} className='text' >
 							<input
 								type='email'
 								name='participantEmail'
