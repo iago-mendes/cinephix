@@ -34,7 +34,7 @@ const Groups: React.FC = () =>
 			/>
 
 			<header>
-				<h1>My movies</h1>
+				<h1>My groups</h1>
 			</header>
 
 			<main>
