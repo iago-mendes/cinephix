@@ -142,6 +142,11 @@ const Container = styled.form`
 
 			width: 100%;
 
+			input
+			{
+				width: 85%;
+			}
+
 			button.remove:hover
 			{
 				background-color: ${p => p.theme.delete};
@@ -204,6 +209,28 @@ const Container = styled.form`
 			{
 				background-color: ${p => p.theme.confirm}
 			}
+		}
+	}
+
+	@media(min-width: 1000px)
+	{
+		header
+		{
+			height: 30rem;
+			overflow: hidden;
+
+			display: flex;
+			align-items: center;
+
+			.img
+			{
+				width: 100%;
+			}
+		}
+
+		.field
+		{
+			width: 60%;
 		}
 	}
 `

@@ -27,7 +27,7 @@ const GroupForm: React.FC<GroupFormProps> = ({method}) =>
 	const [urlId, setUrlId] = useState('')
 	const [event, setEvent] = useState('')
 	const [description, setDescription] = useState('')
-	const [participantEmails, setParticipantEmails] = useState<string[]>([])
+	const [participantEmails, setParticipantEmails] = useState<string[]>([''])
 
 	const [eventOptions, setEventOptions] = useState<SelectOption[]>([])
 
