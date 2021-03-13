@@ -8,6 +8,7 @@ import GroupInterface, {GroupListed} from '../../models/group'
 import getBanner from '../../utils/getBanner'
 import api from '../../services/api'
 import Carousel from '../../components/Carousel'
+import truncateText from '../../utils/truncateText'
 
 interface GroupProps
 {
@@ -19,7 +20,7 @@ const Group: React.FC<GroupProps> = ({group}) =>
 	return (
 		<Container className='page' >
 			<SEOHead
-				title='group'
+				title={`${group.nickname} | Cinephix`}
 			/>
 
 			<header>
@@ -28,29 +29,31 @@ const Group: React.FC<GroupProps> = ({group}) =>
 				</div>
 			</header>
 
-			<h1 className='nickname' >
-				{group.nickname}
-			</h1>
+			<section className='group'>
+				<h1 className='nickname' >
+					{group.nickname}
+				</h1>
 
-			<p className='description' >
-				{group.description}
-			</p>
+				<p className='description' >
+					{group.description}
+				</p>
+			</section>
 
 			<section className='participants'>
 				<h2>Participants</h2>
 				<Carousel className='carousel' >
 					{group.participants.map((participant, index) => (
 						<SwiperSlide key={index} >
-							<div className={'participant' + participant.isOwner ? ' owner' : ''} >
+							<div className={participant.isOwner ? 'participant owner' : 'participant'} >
 								<div className='img'>
-									<Image src={participant.image} width={100} height={100} />
+									<Image src={participant.image} width={100} height={100} layout='responsive' />
 								</div>
 								<div className='info'>
-									<span>
-										{participant.name}
+									<span className='name' >
+										{truncateText(participant.name, 20)}
 									</span>
 									<span>
-										{participant.email}
+										{truncateText(participant.email, 15)}
 									</span>
 									{participant.isOwner && (
 										<span>
