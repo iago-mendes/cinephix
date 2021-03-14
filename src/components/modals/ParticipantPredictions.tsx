@@ -60,28 +60,6 @@ const ParticipantPredictionsModal: React.FC<ParticipantPredictionsModalProps> =
 							)}
 						</div>
 					))}
-
-					{participant.predictions.map((prediction, index) => (
-						<div className='prediction' key={index} >
-							<h2>
-								{prediction.category.name}
-							</h2>
-
-							{isCelebrity(prediction.guess) && (
-								<EventCelebrityCard
-									eventCelebrity={prediction.guess}
-									link={`/groups/${groupUrlId}`}
-								/>
-							)}
-
-							{isMedia(prediction.guess) && (
-								<EventMediaCard
-									media={prediction.guess}
-									link={`/groups/${groupUrlId}`}
-								/>
-							)}
-						</div>
-					))}
 				</div>
 			</Container>
 		</ModalContainer>
