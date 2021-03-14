@@ -5,7 +5,7 @@ const Container = styled.div`
 
 	display: flex;
 	flex-direction: column;
-	justify-content: space-between;
+	justify-content: space-around;
 	gap: 2rem;
 
 	width: 100%;
