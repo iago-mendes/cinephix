@@ -24,12 +24,14 @@ interface GroupProps
 	group: GroupInterface
 }
 
-const Group: React.FC<GroupProps> = ({group}) =>
+const Group: React.FC<GroupProps> = ({group: staticGroup}) =>
 {
 	const {user} = useUser()
-	const {isFallback, push} = useRouter()
+	const {isFallback, push, pathname} = useRouter()
 
+	const [group, setGroup] = useState<GroupInterface>(staticGroup)
 	const [isOwner, setIsOwner] = useState(false)
+
 	const [isMakePredictionsOpen, setIsMakePredictionsOpen] = useState(false)
 	const [isParticipantPredictionsOpen, setIsParticipantPredictionsOpen] = useState(false)
 	const [selectedParticipant, setSelectedParticipant] = useState<GroupParticipant>(group.participants[0])
@@ -47,10 +49,21 @@ const Group: React.FC<GroupProps> = ({group}) =>
 		}
 	}, [user])
 
+	useEffect(updateGroup, [pathname])
+
 	function openParticipantPredictions(participant: GroupParticipant)
 	{
 		setSelectedParticipant(participant)
 		setIsParticipantPredictionsOpen(true)
+	}
+
+	function updateGroup()
+	{
+		api.get(`groups/${group.urlId}`)
+			.then(({data}:{data: GroupInterface}) =>
+			{
+				setGroup(data)
+			})
 	}
 
 	if (isFallback)
@@ -67,6 +80,7 @@ const Group: React.FC<GroupProps> = ({group}) =>
 				setIsOpen={setIsMakePredictionsOpen}
 
 				group={group}
+				updateGroup={updateGroup}
 			/>
 
 			<ParticipantPredictionsModal
@@ -202,7 +216,7 @@ export const getStaticProps: GetStaticProps = async ctx =>
 
 	return {
 		props: {group},
-		revalidate: 5
+		revalidate: 1
 	}
 }
 

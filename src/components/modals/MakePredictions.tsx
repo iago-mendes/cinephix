@@ -18,9 +18,10 @@ interface MakePredictionsModalProps
 	setIsOpen: (p: boolean) => void
 
 	group: Group
+	updateGroup: () => void
 }
 
-const MakePredictionsModal: React.FC<MakePredictionsModalProps> = ({isOpen, setIsOpen, group}) =>
+const MakePredictionsModal: React.FC<MakePredictionsModalProps> = ({isOpen, setIsOpen, group, updateGroup}) =>
 {
 	const {user} = useUser()
 	
@@ -62,6 +63,7 @@ const MakePredictionsModal: React.FC<MakePredictionsModalProps> = ({isOpen, setI
 			.then(() =>
 			{
 				successAlert('Your predictions were successfully saved!')
+				updateGroup()
 				setIsOpen(false)
 			})
 			.catch(err =>
