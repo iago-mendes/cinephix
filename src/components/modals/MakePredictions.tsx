@@ -1,5 +1,6 @@
 import Select from 'react-select'
 import {useEffect, useState} from 'react'
+import {FiCheck, FiX} from 'react-icons/fi'
 
 import Container from '../../styles/components/modals/MakePredictions'
 import ModalContainer from './Container'
@@ -8,6 +9,8 @@ import {selectStyles} from '../../styles/global'
 import {SelectOption} from '../../models'
 import Group, {GroupRawPrediction} from '../../models/group'
 import api from '../../services/api'
+import successAlert from '../../utils/alerts/success'
+import errorAlert from '../../utils/alerts/error'
 
 interface MakePredictionsModalProps
 {
@@ -46,6 +49,25 @@ const MakePredictionsModal: React.FC<MakePredictionsModalProps> = ({isOpen, setI
 			tmpPredictions[existingIndex].guess = guess
 		
 		setPredictions(tmpPredictions)
+	}
+
+	function handleSubmit()
+	{
+		const data =
+		{
+			predictions
+		}
+
+		api.put(`groups/${group.urlId}/participants/${user.email}`, data)
+			.then(() =>
+			{
+				successAlert('Your predictions were successfully saved!')
+				setIsOpen(false)
+			})
+			.catch(err =>
+			{
+				errorAlert(err.response.data.message)
+			})
 	}
 
 	return (
@@ -95,6 +117,15 @@ const MakePredictionsModal: React.FC<MakePredictionsModalProps> = ({isOpen, setI
 						</div>
 					)
 				})}
+
+				<div className='buttons'>
+					<button className='cancel' title='Cancel' onClick={() => setIsOpen(false)} >
+						<FiX size={25} />
+					</button>
+					<button className='confirm' title='Confirm' onClick={handleSubmit} >
+						<FiCheck size={25} />
+					</button>
+				</div>
 			</Container>
 		</ModalContainer>
 	)
