@@ -22,10 +22,12 @@ const User: React.FC = () =>
 	const {user} = useUser()
 
 	const [userInfo, setUserInfo] = useState<UserInfo>(defaultUser)
+	const [groupsNumber, setGroupsNumber] = useState(0)
 
 	useEffect(() =>
 	{
 		if (user)
+		{
 			api.get(`users/${user.email}`)
 				.then(({data}:{data: UserInfo}) =>
 				{
@@ -35,6 +37,13 @@ const User: React.FC = () =>
 				{
 					errorAlert(err.response.data.message)
 				})
+			
+			api.get(`groups/participants/${user.email}`)
+				.then(({data}:{data: any[]}) =>
+				{
+					setGroupsNumber(data.length)
+				})
+		}
 	}, [user])
 
 	function formatDate(unformatedDate: string)
@@ -99,6 +108,14 @@ const User: React.FC = () =>
 			</main>
 
 			<div className='links'>
+				<Link href='/groups'>
+					<a>
+						<span>
+							My groups ({groupsNumber})
+							<FiArrowRight size={40} />
+						</span>
+					</a>
+				</Link>
 				<Link href='/user/tvshows'>
 					<a>
 						<span>
