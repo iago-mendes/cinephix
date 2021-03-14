@@ -96,38 +96,40 @@ export interface GroupEvent
 	}>
 }
 
+export interface GroupParticipant
+{
+	image: string
+	name: string
+	email: string
+	isOwner: boolean
+	predictions: Array<
+	{
+		category:
+		{
+			id: string
+			name: string
+			description: string
+			type: string
+		}
+		guess:
+		{
+			id: number
+			image: string
+			title: string
+			overview: string
+			date: string
+			type: string
+		}
+	}>
+}
+
 interface Group
 {
 	urlId: string
 	banner: string
 	nickname: string
 	description: string
-	participants: Array<
-	{
-		image: string
-		name: string
-		email: string
-		isOwner: boolean
-		predictions: Array<
-		{
-			category:
-			{
-				id: string
-				name: string
-				description: string
-				type: string
-			}
-			guess:
-			{
-				id: 484718
-				image: string
-				title: string
-				overview: string
-				date: string
-				type: string
-			}
-		}>
-	}>
+	participants: GroupParticipant[]
 	event: GroupEvent
 }
 

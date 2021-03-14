@@ -6,7 +6,7 @@ import {useEffect, useState} from 'react'
 
 import SEOHead from '../../../components/SEOHead'
 import Container from '../../../styles/pages/groups/[group]'
-import GroupInterface, {GroupListed} from '../../../models/group'
+import GroupInterface, {GroupListed, GroupParticipant} from '../../../models/group'
 import getBanner from '../../../utils/getBanner'
 import api from '../../../services/api'
 import Carousel from '../../../components/Carousel'
@@ -17,6 +17,7 @@ import EventCelebrityCard from '../../../components/cards/EventCelebrity'
 import useUser from '../../../hooks/useUser'
 import Link from 'next/link'
 import MakePredictionsModal from '../../../components/modals/MakePredictions'
+import ParticipantPredictionsModal from '../../../components/modals/ParticipantPredictions'
 
 interface GroupProps
 {
@@ -30,6 +31,8 @@ const Group: React.FC<GroupProps> = ({group}) =>
 
 	const [isOwner, setIsOwner] = useState(false)
 	const [isMakePredictionsOpen, setIsMakePredictionsOpen] = useState(false)
+	const [isParticipantPredictionsOpen, setIsParticipantPredictionsOpen] = useState(false)
+	const [selectedParticipant, setSelectedParticipant] = useState<GroupParticipant>(group.participants[0])
 
 	useEffect(() =>
 	{
@@ -43,6 +46,12 @@ const Group: React.FC<GroupProps> = ({group}) =>
 				setIsOwner(participant.isOwner)
 		}
 	}, [user])
+
+	function openParticipantPredictions(participant: GroupParticipant)
+	{
+		setSelectedParticipant(participant)
+		setIsParticipantPredictionsOpen(true)
+	}
 
 	if (isFallback)
 		return <Loading style={{height: 'calc(100vh - 5rem)'}} />
@@ -58,6 +67,14 @@ const Group: React.FC<GroupProps> = ({group}) =>
 				setIsOpen={setIsMakePredictionsOpen}
 
 				group={group}
+			/>
+
+			<ParticipantPredictionsModal
+				isOpen={isParticipantPredictionsOpen}
+				setIsOpen={setIsParticipantPredictionsOpen}
+
+				participant={selectedParticipant}
+				eventName={group.event.name}
 			/>
 
 			<header>
@@ -92,7 +109,10 @@ const Group: React.FC<GroupProps> = ({group}) =>
 				<Carousel className='carousel' >
 					{group.participants.map((participant, index) => (
 						<SwiperSlide key={index} >
-							<div className={participant.isOwner ? 'participant owner' : 'participant'} >
+							<div
+								className={participant.isOwner ? 'participant owner' : 'participant'}
+								onClick={() => openParticipantPredictions(participant)}
+							>
 								<div className='img'>
 									<Image src={participant.image} width={100} height={100} layout='responsive' />
 								</div>
