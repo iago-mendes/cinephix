@@ -7,6 +7,8 @@ const Container = styled.form`
 	gap: 2rem;
 
 	padding-bottom: 2rem;
+
+	position: relative;
 	
 	header
 	{

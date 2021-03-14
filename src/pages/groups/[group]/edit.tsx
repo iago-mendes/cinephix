@@ -5,6 +5,7 @@ import SEOHead from '../../../components/SEOHead'
 import GroupForm from '../../../components/forms/Group'
 import {GroupRaw, defaultGroupRaw} from '../../../models/group'
 import api from '../../../services/api'
+import RemoveButton from '../../../components/RemoveButton'
 
 const EditGroup: React.FC = () =>
 {
@@ -23,9 +24,19 @@ const EditGroup: React.FC = () =>
 	}, [])
 
 	return (
-		<div className='page' >
+		<div
+			className='page'
+			style={{position: 'relative'}}
+		>
 			<SEOHead
 				title='Edit group | Cinephix'
+			/>
+
+			<RemoveButton
+				title={group.nickname}
+				collection='groups'
+
+				apiRoute={`groups/${urlId}`}
 			/>
 
 			<GroupForm
