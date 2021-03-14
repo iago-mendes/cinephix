@@ -152,7 +152,7 @@ const Group: React.FC<GroupProps> = ({group}) =>
 								<SwiperSlide key={index} >
 									<EventMediaCard
 										media={media}
-										link={`/groups/${group.urlId}`}
+										link={`/${category.type}/${media.id}`}
 									>
 										<button className='guesses'>
 											{media.participants.length}
@@ -164,7 +164,7 @@ const Group: React.FC<GroupProps> = ({group}) =>
 								<SwiperSlide key={index} >
 									<EventCelebrityCard
 										eventCelebrity={eventCelebrity}
-										link={`/groups/${group.urlId}`}
+										link={`/celebrities/${eventCelebrity.celebrity.id}`}
 									>
 										<button className='guesses' title='View participants' >
 											{eventCelebrity.participants.length}

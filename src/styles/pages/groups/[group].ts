@@ -204,13 +204,6 @@ const Container = styled.div`
 				font-family: Ubuntu;
 				font-weight: 700;
 				font-size: 1.75rem;
-
-				transition: 0.25s;
-
-				:hover
-				{
-					border-radius: 0;
-				}
 			}
 		}
 	}
