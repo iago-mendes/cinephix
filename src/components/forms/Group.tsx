@@ -14,6 +14,7 @@ import {EventListed} from '../../models/event'
 import successAlert from '../../utils/alerts/success'
 import errorAlert from '../../utils/alerts/error'
 import useUser from '../../hooks/useUser'
+import SelectBannerModal from '../modals/SelectBanner'
 
 interface GroupFormProps
 {
@@ -34,6 +35,8 @@ const GroupForm: React.FC<GroupFormProps> = ({method, group}) =>
 	const [participantEmails, setParticipantEmails] = useState<string[]>([''])
 
 	const [eventOptions, setEventOptions] = useState<SelectOption[]>([])
+
+	const [isSelectBannerOpen, setIsSelectBannerOpen] = useState(false)
 
 	useEffect(() =>
 	{
@@ -161,11 +164,19 @@ const GroupForm: React.FC<GroupFormProps> = ({method, group}) =>
 
 	return (
 		<Container onSubmit={e => e.preventDefault()} >
+			<SelectBannerModal
+				isOpen={isSelectBannerOpen}
+				setIsOpen={setIsSelectBannerOpen}
+
+				banner={banner}
+				setBanner={setBanner}
+			/>
+
 			<header>
 				<div className='img' >
 					<Image src={getBanner(banner)} width={1500} height={750} layout='responsive' />
 				</div>
-				<button title='Change banner' onClick={() => {}} >
+				<button title='Change banner' onClick={() => setIsSelectBannerOpen(true)} >
 					Change banner
 				</button>
 			</header>
