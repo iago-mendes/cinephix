@@ -37,6 +37,7 @@ const EditGroup: React.FC = () =>
 				collection='groups'
 
 				apiRoute={`groups/${urlId}`}
+				redirectRoute='/groups'
 			/>
 
 			<GroupForm

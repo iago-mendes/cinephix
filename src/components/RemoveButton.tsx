@@ -16,11 +16,12 @@ interface RemoveButtonProps
 	collection: string
 
 	apiRoute: string
+	redirectRoute?: string
 }
 
-const RemoveButton: React.FC<RemoveButtonProps> = ({title, collection, apiRoute}) =>
+const RemoveButton: React.FC<RemoveButtonProps> = ({title, collection, apiRoute, redirectRoute}) =>
 {
-	const {back} = useRouter()
+	const {back, push} = useRouter()
 
 	function handleClick()
 	{
@@ -45,7 +46,10 @@ const RemoveButton: React.FC<RemoveButtonProps> = ({title, collection, apiRoute}
 			.then(() =>
 			{
 				successAlert(`'${title}' was successfully removed from your ${collection}!`)
-				back()
+				if (redirectRoute)
+					push(redirectRoute)
+				else
+					back()
 			})
 			.catch(err =>
 			{

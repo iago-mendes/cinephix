@@ -4,6 +4,7 @@ import {useRouter} from 'next/router'
 import Image from 'next/image'
 import {FiCheck, FiMinus, FiPlus, FiX} from 'react-icons/fi'
 
+import banners from '../../../db/banners.json'
 import Container from '../../styles/components/forms/Group'
 import {GroupRaw} from '../../models/group'
 import getBanner, {chooseRandomBanner} from '../../utils/getBanner'
@@ -27,7 +28,7 @@ const GroupForm: React.FC<GroupFormProps> = ({method, group}) =>
 	const {user} = useUser()
 	const {query, back, push} = useRouter()
 
-	const [banner, setBanner] = useState('')
+	const [banner, setBanner] = useState(banners[0].path)
 	const [nickname, setNickname] = useState('')
 	const [urlId, setUrlId] = useState('')
 	const [event, setEvent] = useState('')
@@ -116,13 +117,15 @@ const GroupForm: React.FC<GroupFormProps> = ({method, group}) =>
 				isOwner: true,
 				predictions: []
 			},
-			...participantEmails.map(email => (
+			...participantEmails.filter(email => email !== '').map(email => (
 				{
 					email,
 					isOwner: false,
 					predictions: []
 				}))
 		]
+
+		console.log('[participants]', participants)
 
 		const data =
 		{
