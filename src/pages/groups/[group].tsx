@@ -2,6 +2,7 @@ import Image from 'next/image'
 import {GetStaticPaths, GetStaticProps} from 'next'
 import {SwiperSlide} from 'swiper/react'
 import {useRouter} from 'next/router'
+import {useEffect, useState} from 'react'
 
 import SEOHead from '../../components/SEOHead'
 import Container from '../../styles/pages/groups/[group]'
@@ -13,6 +14,8 @@ import truncateText from '../../utils/truncateText'
 import Loading from '../../components/Loading'
 import EventMediaCard from '../../components/cards/EventMedia'
 import EventCelebrityCard from '../../components/cards/EventCelebrity'
+import useUser from '../../hooks/useUser'
+import Link from 'next/link'
 
 interface GroupProps
 {
@@ -21,7 +24,23 @@ interface GroupProps
 
 const Group: React.FC<GroupProps> = ({group}) =>
 {
-	const {isFallback} = useRouter()
+	const {user} = useUser()
+	const {isFallback, push} = useRouter()
+
+	const [isOwner, setIsOwner] = useState(false)
+
+	useEffect(() =>
+	{
+		if (user)
+		{
+			const participant = group.participants.find(({email}) => email === user.email)
+
+			if (!participant)
+				push('/groups')
+			else
+				setIsOwner(participant.isOwner)
+		}
+	}, [user])
 
 	if (isFallback)
 		return <Loading style={{height: 'calc(100vh - 5rem)'}} />
@@ -46,6 +65,14 @@ const Group: React.FC<GroupProps> = ({group}) =>
 				<p className='description' >
 					{group.description}
 				</p>
+			</section>
+
+			<section className='actions'>
+				{isOwner && (
+					<Link href={`/groups/${group.urlId}/edit`} >
+						Edit group
+					</Link>
+				)}
 			</section>
 
 			<section className='participants'>
