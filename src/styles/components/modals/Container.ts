@@ -52,6 +52,26 @@ const Container = styled.div`
 
 		overflow-y: auto;
 		overflow-x: hidden;
+
+		::-webkit-scrollbar
+		{
+			width: 1rem;
+		}
+
+		::-webkit-scrollbar-track
+		{
+			background-color: ${p => p.theme.primary}26;
+		}
+		
+		::-webkit-scrollbar-thumb
+		{
+			background-color: ${p => p.theme.primary};
+
+			:hover
+			{
+				background-color: ${p => p.theme.primary}bf;
+			}
+		}
 	}
 
 	@media(max-width: 1000px)

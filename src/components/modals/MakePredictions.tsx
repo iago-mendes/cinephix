@@ -102,10 +102,11 @@ const MakePredictionsModal: React.FC<MakePredictionsModalProps> = ({isOpen, setI
 
 					return (
 						<div className='category' key={index} >
-							<label htmlFor='event'>Event</label>
+							<label htmlFor='prediction' >
+								{category.name}
+							</label>
 							<Select
-								id='event'
-								name='event'
+								name='prediction'
 								value={prediction && options.find(({value}) => Number(value) === prediction.guess)}
 								options={options}
 								onChange={e => handleSelectPrediction(category.id, Number(e.value))}
