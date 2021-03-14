@@ -1,22 +1,90 @@
+import Select from 'react-select'
+import {useEffect, useState} from 'react'
+
 import Container from '../../styles/components/modals/MakePredictions'
-import React from 'react'
 import ModalContainer from './Container'
+import useUser from '../../hooks/useUser'
+import {selectStyles} from '../../styles/global'
+import {SelectOption} from '../../models'
+import Group, {GroupEvent, GroupRawPrediction} from '../../models/group'
+import api from '../../services/api'
 
 interface MakePredictionsModalProps
 {
 	isOpen: boolean
 	setIsOpen: (p: boolean) => void
+
+	group: Group
 }
 
-const MakePredictionsModal: React.FC<MakePredictionsModalProps> = ({isOpen, setIsOpen}) =>
+const MakePredictionsModal: React.FC<MakePredictionsModalProps> = ({isOpen, setIsOpen, group}) =>
 {
+	const {user} = useUser()
+	
+	const [predictions, setPredictions] = useState<GroupRawPrediction[]>([])
+
+	const event = group.event
+
+	useEffect(() =>
+	{
+		if (user)
+			api.get(`groups/${group.urlId}/participants/${user.email}/raw`)
+				.then(({data}:{data: {predictions: GroupRawPrediction[]}}) =>
+				{
+					setPredictions(data.predictions)
+				})
+	}, [user])
+
+	function handleSelectPrediction(category: string, guess: number)
+	{}
+
 	return (
 		<ModalContainer
 			isOpen={isOpen}
 			setIsOpen={setIsOpen}
 		>
 			<Container>
-				asidjasfosi
+				<h1>
+					My predictions for the {event.name}
+				</h1>
+
+				{event.categories.map((category, index) =>
+				{
+					const options: SelectOption[] = category.type === 'celebrities'
+						? category.celebrities.map(eventCelebrity => (
+							{
+								label: `${eventCelebrity.celebrity.name} (${eventCelebrity.media.title})`,
+								value: String(eventCelebrity.celebrity.id)
+							}))
+						: category.media.map(media => (
+							{
+								label: media.title,
+								value: String(media.id)
+							}))
+					
+					const selectName = category.type === 'celebrities'
+						? 'celebrity'
+						: category.media[0].type
+					
+					const prediction = predictions.find(prediction => prediction.category === category.id)
+
+					return (
+						<div className='category' key={index} >
+							<label htmlFor='event'>Event</label>
+							<Select
+								id='event'
+								name='event'
+								value={prediction && options.find(({value}) => Number(value) === prediction.guess)}
+								options={options}
+								onChange={e => handleSelectPrediction(category.id, Number(e.value))}
+								styles={selectStyles}
+								placeholder={`Select a ${selectName}`}
+								className='select'
+								isSearchable={false}
+							/>
+						</div>
+					)
+				})}
 			</Container>
 		</ModalContainer>
 	)

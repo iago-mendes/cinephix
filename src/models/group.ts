@@ -1,5 +1,11 @@
 import {EventListed} from './event'
 
+export interface GroupRawPrediction
+{
+	category: string
+	guess: number
+}
+
 export interface GroupRaw
 {
 	_id: string
@@ -12,11 +18,7 @@ export interface GroupRaw
 	{
 		email: string
 		isOwner: boolean
-		predictions: Array<
-		{
-			category: string
-			guess: number
-		}>
+		predictions: GroupRawPrediction[]
 	}>
 }
 
@@ -40,6 +42,60 @@ export interface GroupListed
 	description: string
 }
 
+export interface GroupEvent
+{
+	id: string
+	name: string
+	color: string
+	description: string
+	categories: Array<
+	{
+		id: string
+		name: string
+		description: string
+		type: string
+		media: Array<
+		{
+			id: number
+			image: string
+			title: string
+			overview: string
+			date: string
+			type: string
+			participants: Array<
+			{
+				email: string
+				image: string
+				name: string
+			}>
+		}>
+		celebrities: Array<
+		{
+			celebrity:
+			{
+				id: number
+				image: string
+				name: string
+			}
+			media:
+			{
+				id: number
+				image: string
+				title: string
+				overview: string
+				date: string
+				type: string
+			}
+			participants: Array<
+			{
+				email: string
+				image: string
+				name: string
+			}>
+		}>
+	}>
+}
+
 interface Group
 {
 	urlId: string
@@ -51,7 +107,7 @@ interface Group
 		image: string
 		name: string
 		email: string
-		isOwner: true
+		isOwner: boolean
 		predictions: Array<
 		{
 			category:
@@ -72,59 +128,7 @@ interface Group
 			}
 		}>
 	}>
-	event:
-	{
-		id: string
-		name: string
-		color: string
-		description: string
-		categories: Array<
-		{
-			id: string
-			name: string
-			description: string
-			type: string
-			media: Array<
-			{
-				id: 484718
-				image: string
-				title: string
-				overview: string
-				date: string
-				type: string
-				participants: Array<
-				{
-					email: string
-					image: string
-					name: string
-				}>
-			}>
-			celebrities: Array<
-			{
-				celebrity:
-				{
-					id: 1753914
-					image: string
-					name: string
-				}
-				media:
-				{
-					id: 583689
-					image: string
-					title: string
-					overview: string
-					date: string
-					type: string
-				}
-				participants: Array<
-				{
-					email: string
-					image: string
-					name: string
-				}>
-			}>
-		}>
-	}
+	event: GroupEvent
 }
 
 export default Group

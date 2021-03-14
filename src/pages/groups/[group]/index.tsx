@@ -56,6 +56,8 @@ const Group: React.FC<GroupProps> = ({group}) =>
 			<MakePredictionsModal
 				isOpen={isMakePredictionsOpen}
 				setIsOpen={setIsMakePredictionsOpen}
+
+				group={group}
 			/>
 
 			<header>
