@@ -29,7 +29,7 @@ const Container = styled.div`
 	svg
 	{
 		border-radius: 2.5rem;
-		border: ${p => p.theme.background} 0.5rem solid;
+		border: ${p => p.theme.background} 3px solid;
 
 		transition: 0.25s;
 	}
