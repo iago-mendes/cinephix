@@ -6,7 +6,7 @@ import ModalContainer from './Container'
 import useUser from '../../hooks/useUser'
 import {selectStyles} from '../../styles/global'
 import {SelectOption} from '../../models'
-import Group, {GroupEvent, GroupRawPrediction} from '../../models/group'
+import Group, {GroupRawPrediction} from '../../models/group'
 import api from '../../services/api'
 
 interface MakePredictionsModalProps
@@ -27,7 +27,7 @@ const MakePredictionsModal: React.FC<MakePredictionsModalProps> = ({isOpen, setI
 
 	useEffect(() =>
 	{
-		if (user)
+		if (user && predictions.length === 0)
 			api.get(`groups/${group.urlId}/participants/${user.email}/raw`)
 				.then(({data}:{data: {predictions: GroupRawPrediction[]}}) =>
 				{
@@ -36,7 +36,17 @@ const MakePredictionsModal: React.FC<MakePredictionsModalProps> = ({isOpen, setI
 	}, [user])
 
 	function handleSelectPrediction(category: string, guess: number)
-	{}
+	{
+		let tmpPredictions = [...predictions]
+
+		const existingIndex = tmpPredictions.findIndex(prediction => prediction.category === category)
+		if (existingIndex < 0)
+			tmpPredictions.push({category, guess})
+		else
+			tmpPredictions[existingIndex].guess = guess
+		
+		setPredictions(tmpPredictions)
+	}
 
 	return (
 		<ModalContainer
