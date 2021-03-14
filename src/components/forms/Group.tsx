@@ -16,6 +16,7 @@ import successAlert from '../../utils/alerts/success'
 import errorAlert from '../../utils/alerts/error'
 import useUser from '../../hooks/useUser'
 import SelectBannerModal from '../modals/SelectBanner'
+import slugify from '../../utils/slugify'
 
 interface GroupFormProps
 {
@@ -86,6 +87,15 @@ const GroupForm: React.FC<GroupFormProps> = ({method, group}) =>
 			setParticipantEmails(tmpParticipantEmails)
 		}
 	}, [group])
+
+	useEffect(() =>
+	{
+		if (method === 'post')
+		{
+			const tmpUrlId = slugify(nickname)
+			setUrlId(tmpUrlId)
+		}
+	}, [nickname])
 
 	function handleAddParticipant()
 	{
