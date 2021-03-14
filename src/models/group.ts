@@ -20,6 +20,17 @@ export interface GroupRaw
 	}>
 }
 
+export const defaultGroupRaw: GroupRaw =
+{
+	_id: '',
+	nickname: '',
+	urlId: '',
+	banner: '',
+	event: '',
+	description: '',
+	participants: []
+}
+
 export interface GroupListed
 {
 	nickname: string
