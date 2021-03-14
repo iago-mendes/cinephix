@@ -16,6 +16,7 @@ import EventMediaCard from '../../../components/cards/EventMedia'
 import EventCelebrityCard from '../../../components/cards/EventCelebrity'
 import useUser from '../../../hooks/useUser'
 import Link from 'next/link'
+import MakePredictionsModal from '../../../components/modals/MakePredictions'
 
 interface GroupProps
 {
@@ -28,6 +29,7 @@ const Group: React.FC<GroupProps> = ({group}) =>
 	const {isFallback, push} = useRouter()
 
 	const [isOwner, setIsOwner] = useState(false)
+	const [isMakePredictionsOpen, setIsMakePredictionsOpen] = useState(false)
 
 	useEffect(() =>
 	{
@@ -49,6 +51,11 @@ const Group: React.FC<GroupProps> = ({group}) =>
 		<Container className='page' >
 			<SEOHead
 				title={`${group.nickname} | Cinephix`}
+			/>
+
+			<MakePredictionsModal
+				isOpen={isMakePredictionsOpen}
+				setIsOpen={setIsMakePredictionsOpen}
 			/>
 
 			<header>
@@ -73,7 +80,7 @@ const Group: React.FC<GroupProps> = ({group}) =>
 						Edit group
 					</Link>
 				)}
-				<button title='Make predictions' >
+				<button title='Make predictions' onClick={() => setIsMakePredictionsOpen(true)} >
 					Make predictions
 				</button>
 			</section>
