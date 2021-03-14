@@ -38,27 +38,51 @@ const ParticipantPredictionsModal: React.FC<ParticipantPredictionsModalProps> =
 					{participant.name}'s predictions for the {eventName}
 				</h1>
 
-				{participant.predictions.map((prediction, index) => (
-					<div className='prediction' key={index} >
-						<h2>
-							{prediction.category.name}
-						</h2>
+				<div className='grid' >
+					{participant.predictions.map((prediction, index) => (
+						<div className='prediction' key={index} >
+							<h2>
+								{prediction.category.name}
+							</h2>
 
-						{isCelebrity(prediction.guess) && (
-							<EventCelebrityCard
-								eventCelebrity={prediction.guess}
-								link={`/groups/${groupUrlId}`}
-							/>
-						)}
+							{isCelebrity(prediction.guess) && (
+								<EventCelebrityCard
+									eventCelebrity={prediction.guess}
+									link={`/groups/${groupUrlId}`}
+								/>
+							)}
 
-						{isMedia(prediction.guess) && (
-							<EventMediaCard
-								media={prediction.guess}
-								link={`/groups/${groupUrlId}`}
-							/>
-						)}
-					</div>
-				))}
+							{isMedia(prediction.guess) && (
+								<EventMediaCard
+									media={prediction.guess}
+									link={`/groups/${groupUrlId}`}
+								/>
+							)}
+						</div>
+					))}
+
+					{participant.predictions.map((prediction, index) => (
+						<div className='prediction' key={index} >
+							<h2>
+								{prediction.category.name}
+							</h2>
+
+							{isCelebrity(prediction.guess) && (
+								<EventCelebrityCard
+									eventCelebrity={prediction.guess}
+									link={`/groups/${groupUrlId}`}
+								/>
+							)}
+
+							{isMedia(prediction.guess) && (
+								<EventMediaCard
+									media={prediction.guess}
+									link={`/groups/${groupUrlId}`}
+								/>
+							)}
+						</div>
+					))}
+				</div>
 			</Container>
 		</ModalContainer>
 	)
