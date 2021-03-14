@@ -18,6 +18,11 @@ const Container = styled.div`
 		font-size: 2.5rem;
 	}
 
+	.message
+	{
+		font-size: 2rem;
+	}
+
 	.grid
 	{
 		width: 100%;

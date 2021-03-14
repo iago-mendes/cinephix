@@ -12,11 +12,10 @@ interface ParticipantPredictionsModalProps
 
 	participant: GroupParticipant
 	eventName: string
-	groupUrlId: string
 }
 
 const ParticipantPredictionsModal: React.FC<ParticipantPredictionsModalProps> =
-({isOpen, setIsOpen, participant, eventName, groupUrlId}) =>
+({isOpen, setIsOpen, participant, eventName}) =>
 {
 	function isMedia(item: EventMedia | EventCelebrity): item is EventMedia
 	{
@@ -38,6 +37,12 @@ const ParticipantPredictionsModal: React.FC<ParticipantPredictionsModalProps> =
 					{participant.name}'s predictions for the {eventName}
 				</h1>
 
+				{participant.predictions.length === 0 && (
+					<span className='message'>
+						This participant hasn't made any predictions yet!
+					</span>
+				)}
+
 				<div className='grid' >
 					{participant.predictions.map((prediction, index) => (
 						<div className='prediction' key={index} >
@@ -48,14 +53,14 @@ const ParticipantPredictionsModal: React.FC<ParticipantPredictionsModalProps> =
 							{isCelebrity(prediction.guess) && (
 								<EventCelebrityCard
 									eventCelebrity={prediction.guess}
-									link={`/groups/${groupUrlId}`}
+									link={`/celebrities/${prediction.guess.celebrity.id}`}
 								/>
 							)}
 
 							{isMedia(prediction.guess) && (
 								<EventMediaCard
 									media={prediction.guess}
-									link={`/groups/${groupUrlId}`}
+									link={`/${prediction.category.type}/${prediction.guess.id}`}
 								/>
 							)}
 						</div>

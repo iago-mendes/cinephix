@@ -75,7 +75,6 @@ const Group: React.FC<GroupProps> = ({group}) =>
 
 				participant={selectedParticipant}
 				eventName={group.event.name}
-				groupUrlId={group.urlId}
 			/>
 
 			<header>
