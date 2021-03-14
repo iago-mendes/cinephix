@@ -21,7 +21,7 @@ interface GroupFormProps
 	group?: GroupRaw
 }
 
-const GroupForm: React.FC<GroupFormProps> = ({method}) =>
+const GroupForm: React.FC<GroupFormProps> = ({method, group}) =>
 {
 	const {user} = useUser()
 	const {query, back, push} = useRouter()
@@ -66,6 +66,22 @@ const GroupForm: React.FC<GroupFormProps> = ({method}) =>
 				setEvent(tmpEvent.value)
 		}
 	}, [query, eventOptions])
+
+	useEffect(() =>
+	{
+		if (method === 'put')
+		{
+			setBanner(group.banner)
+			setNickname(group.nickname)
+			setUrlId(group.urlId)
+			setEvent(group.event)
+			setDescription(group.description)
+
+			const tmpParticipantEmails = group.participants.map(participant => participant.email)
+				.filter(email => email != user.email)
+			setParticipantEmails(tmpParticipantEmails)
+		}
+	}, [group])
 
 	function handleAddParticipant()
 	{
@@ -121,7 +137,20 @@ const GroupForm: React.FC<GroupFormProps> = ({method}) =>
 				.then(() =>
 				{
 					successAlert(`'${nickname}' was successfully created!`)
-					push('/groups')
+					push(`/groups/${urlId}`)
+				})
+				.catch(err =>
+				{
+					errorAlert(err.response.data.message)
+				})
+		}
+		else if (method === 'put')
+		{
+			api.put(`groups/${group.urlId}`, data)
+				.then(() =>
+				{
+					successAlert(`'${nickname}' was successfully edited!`)
+					push(`/groups/${group.urlId}`)
 				})
 				.catch(err =>
 				{
@@ -163,6 +192,7 @@ const GroupForm: React.FC<GroupFormProps> = ({method}) =>
 					value={urlId}
 					onChange={e => setUrlId(e.target.value)}
 					placeholder='E.g.: avengers'
+					disabled={method === 'put'}
 				/>
 			</div>
 			{/* description */}
