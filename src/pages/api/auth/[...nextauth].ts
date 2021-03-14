@@ -35,6 +35,7 @@ const config: InitOptions =
 				}
 				
 				api.post(`users/${message.user.email}`, data)
+					.catch(error => console.log('[error]', error))
 			}
 		}
 	}
