@@ -76,7 +76,7 @@ const Group: React.FC<GroupProps> = ({group}) =>
 				</Carousel>
 			</section>
 
-			<section className="event">
+			<section className='event'>
 				<h2>
 					{group.event.name}
 				</h2>
@@ -92,16 +92,24 @@ const Group: React.FC<GroupProps> = ({group}) =>
 								<SwiperSlide key={index} >
 									<EventMediaCard
 										media={media}
-										link={`${category.type}/${media.id}`}
-									/>
+										link={`/groups/${group.urlId}`}
+									>
+										<button className='guesses'>
+											{media.participants.length}
+										</button>
+									</EventMediaCard>
 								</SwiperSlide>
 							))}
 							{category.type === 'celebrities' && category.celebrities.map((eventCelebrity, index) => (
 								<SwiperSlide key={index} >
 									<EventCelebrityCard
 										eventCelebrity={eventCelebrity}
-										link={`/celebrities/${eventCelebrity.celebrity.id}`}
-									/>
+										link={`/groups/${group.urlId}`}
+									>
+										<button className='guesses' title='View participants' >
+											{eventCelebrity.participants.length}
+										</button>
+									</EventCelebrityCard>
 								</SwiperSlide>
 							))}
 						</Carousel>

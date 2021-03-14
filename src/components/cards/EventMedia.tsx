@@ -13,9 +13,8 @@ interface EventMediaCardProps
 	link: string
 }
 
-const EventMediaCard: React.FC<EventMediaCardProps> = ({media, link}) =>
+const EventMediaCard: React.FC<EventMediaCardProps> = ({media, link, children}) =>
 {
-
 	return (
 		<Link href={link} >
 			<Container
@@ -37,6 +36,7 @@ const EventMediaCard: React.FC<EventMediaCardProps> = ({media, link}) =>
 						{truncateText(media.overview, 50)}
 					</p>
 				</div>
+				{children}
 			</Container>
 		</Link>
 	)

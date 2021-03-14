@@ -13,7 +13,7 @@ interface EventCelebrityCardProps
 	link: string
 }
 
-const EventCelebrityCard: React.FC<EventCelebrityCardProps> = ({eventCelebrity, link}) =>
+const EventCelebrityCard: React.FC<EventCelebrityCardProps> = ({eventCelebrity, link, children}) =>
 {
 	const celebrity = eventCelebrity.celebrity
 	const media = eventCelebrity.media
@@ -46,6 +46,7 @@ const EventCelebrityCard: React.FC<EventCelebrityCardProps> = ({eventCelebrity, 
 						</div>
 					</div>
 				</div>
+				{children}
 			</Container>
 		</Link>
 	)

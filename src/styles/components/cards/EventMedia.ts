@@ -14,6 +14,7 @@ const Container = styled.div`
 	box-shadow: 5px 5px 5px rgba(0,0,0,0.5);
 	
 	text-decoration: none;
+	position: relative;
 
 	cursor: pointer;
 	transition: 0.25s;
