@@ -73,6 +73,9 @@ const Group: React.FC<GroupProps> = ({group}) =>
 						Edit group
 					</Link>
 				)}
+				<button title='Make predictions' >
+					Make predictions
+				</button>
 			</section>
 
 			<section className='participants'>

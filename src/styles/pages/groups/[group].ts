@@ -62,6 +62,44 @@ const Container = styled.div`
 		}
 	}
 
+	section.actions
+	{
+		width: 100%;
+
+		display: grid;
+		grid-auto-rows: 5rem;
+		grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+		grid-gap: 1rem;
+		align-items: center;
+		justify-items: center;
+
+		a, button
+		{
+			max-width: 20rem;
+			max-height: 5rem;
+
+			background: none;
+			border: ${p => p.theme.primary} 2px solid;
+			border-radius: 100rem;
+			padding: 0.75rem 2rem;
+
+			color: ${p => p.theme.primary};
+			font-family: Ubuntu;
+			font-weight: 700;
+			font-size: 1.75rem;
+
+			transition: 0.25s;
+
+			:hover
+			{
+				background-color: ${p => p.theme.primary};
+				color: ${p => p.theme.background};
+
+				transform: scale(1.1);
+			}
+		}
+	}
+
 	section.participants
 	{
 		.participant
