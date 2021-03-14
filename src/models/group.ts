@@ -1,4 +1,4 @@
-import {EventListed} from './event'
+import {EventCelebrity, EventListed, EventMedia} from './event'
 
 export interface GroupRawPrediction
 {
@@ -111,15 +111,7 @@ export interface GroupParticipant
 			description: string
 			type: string
 		}
-		guess:
-		{
-			id: number
-			image: string
-			title: string
-			overview: string
-			date: string
-			type: string
-		}
+		guess: EventMedia | EventCelebrity
 	}>
 }
 

@@ -1,6 +1,9 @@
 import Container from '../../styles/components/modals/ParticipantPredictions'
 import ModalContainer from './Container'
 import {GroupParticipant} from '../../models/group'
+import EventCelebrityCard from '../cards/EventCelebrity'
+import { EventCelebrity, EventMedia } from '../../models/event'
+import EventMediaCard from '../cards/EventMedia'
 
 interface ParticipantPredictionsModalProps
 {
@@ -9,11 +12,22 @@ interface ParticipantPredictionsModalProps
 
 	participant: GroupParticipant
 	eventName: string
+	groupUrlId: string
 }
 
 const ParticipantPredictionsModal: React.FC<ParticipantPredictionsModalProps> =
-({isOpen, setIsOpen, participant, eventName}) =>
+({isOpen, setIsOpen, participant, eventName, groupUrlId}) =>
 {
+	function isMedia(item: EventMedia | EventCelebrity): item is EventMedia
+	{
+		return 'title' in item
+	}
+
+	function isCelebrity(item: EventCelebrity | EventMedia): item is EventCelebrity
+	{
+		return 'celebrity' in item
+	}
+
 	return (
 		<ModalContainer
 			isOpen={isOpen}
@@ -29,6 +43,20 @@ const ParticipantPredictionsModal: React.FC<ParticipantPredictionsModalProps> =
 						<h2>
 							{prediction.category.name}
 						</h2>
+
+						{isCelebrity(prediction.guess) && (
+							<EventCelebrityCard
+								eventCelebrity={prediction.guess}
+								link={`/groups/${groupUrlId}`}
+							/>
+						)}
+
+						{isMedia(prediction.guess) && (
+							<EventMediaCard
+								media={prediction.guess}
+								link={`/groups/${groupUrlId}`}
+							/>
+						)}
 					</div>
 				))}
 			</Container>
