@@ -34,11 +34,11 @@ const Group: React.FC<GroupProps> = ({group: staticGroup}) =>
 
 	const [isMakePredictionsOpen, setIsMakePredictionsOpen] = useState(false)
 	const [isParticipantPredictionsOpen, setIsParticipantPredictionsOpen] = useState(false)
-	const [selectedParticipant, setSelectedParticipant] = useState<GroupParticipant>(group.participants[0])
+	const [selectedParticipant, setSelectedParticipant] = useState<GroupParticipant>(group && group.participants[0])
 
 	useEffect(() =>
 	{
-		if (user)
+		if (user && group)
 		{
 			const participant = group.participants.find(({email}) => email === user.email)
 
@@ -47,7 +47,7 @@ const Group: React.FC<GroupProps> = ({group: staticGroup}) =>
 			else
 				setIsOwner(participant.isOwner)
 		}
-	}, [user])
+	}, [user, group])
 
 	useEffect(updateGroup, [pathname])
 
