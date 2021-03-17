@@ -24,7 +24,7 @@ const Container = styled.div`
 		flex-direction: column;
 		gap: 1rem;
 
-		max-width: 100%;
+		width: 100%;
 		padding: 3rem 0;
 
 		border-top: ${p => p.theme.primary} 2px solid;
