@@ -66,7 +66,7 @@ const Event: React.FC<EventProps> = ({event}) =>
 							<SwiperSlide key={index} >
 								<EventMediaCard
 									media={media}
-									link={`${category.type}/${media.id}`}
+									link={`/${category.type}/${media.id}`}
 								/>
 							</SwiperSlide>
 						))}
