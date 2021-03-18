@@ -3,7 +3,6 @@ import Document, {DocumentInitialProps, DocumentContext, Html, Head, Main, NextS
 import {ServerStyleSheet} from 'styled-components'
 
 import {analyticsId} from '../utils/gtag'
-import {adsClient} from '../utils/googleAds'
 
 export default class MyDocument extends Document
 {
@@ -63,7 +62,7 @@ export default class MyDocument extends Document
 					/>
 
 					<script
-						data-ad-client={adsClient}
+						data-ad-client='ca-pub-7920836956538831'
 						async
 						src='https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js'
 					/>
