@@ -1,0 +1,7 @@
+User-agent: *
+
+Sitemap: https://cinephix.com/sitemap.xml
+
+Disallow: /about/*
+Disallow: /user/*
+Disallow: /groups/*
