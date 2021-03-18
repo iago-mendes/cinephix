@@ -13,6 +13,7 @@ import SessionHandler from '../components/SessionHandler'
 import Footer from '../components/Footer'
 import * as gtag from '../utils/gtag'
 import CookieBanner from '../components/modals/CookieBanner'
+import BannerAd from '../components/ads/Banner'
 
 const MyApp: React.FC<AppProps> = ({Component, pageProps}) =>
 {
@@ -39,6 +40,7 @@ const MyApp: React.FC<AppProps> = ({Component, pageProps}) =>
 	return (
 		<ThemeProvider theme={theme}>
 			<CookieBanner />
+			<BannerAd />
 			<SessionProvider session={pageProps.session} >
 				<Menu />
 				<SessionHandler>
