@@ -34,7 +34,7 @@ const CookieBanner: React.FC = () =>
 	
 	return (
 		<motion.div
-			animate={{scale: [0, 1, 0.9, 1], position: 'fixed', right: '1rem', bottom: '1rem', zIndex: 1}}
+			animate={{scale: [0, 1, 0.9, 1], position: 'fixed', right: '1rem', bottom: '1rem', zIndex: 2}}
 			transition={{ duration: 0.5 }}
 		>
 			<Container>
