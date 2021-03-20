@@ -14,6 +14,7 @@ import {selectStyles} from '../../../styles/global'
 import SelectMovie from '../../../components/modals/SelectMovie'
 import UserMovieModal from '../../../components/modals/UserMovie'
 import SEOHead from '../../../components/SEOHead'
+import truncateText from '../../../utils/truncateText'
 
 const UserMovies: React.FC = () =>
 {
@@ -163,7 +164,7 @@ const UserMovies: React.FC = () =>
 									<Image src={movie.data.image} width={780} height={1170} layout='responsive'/>
 								</div>
 								<div className='info'>
-									<h2>{movie.data.title}</h2>
+									<h2>{truncateText(movie.data.title, 30)}</h2>
 									<div className='details'>
 										<span className='venue'>{movie.venue}</span>
 									</div>
@@ -188,7 +189,7 @@ const UserMovies: React.FC = () =>
 									<Image src={movie.data.image} width={780} height={1170} layout='responsive'/>
 								</div>
 								<div className='info'>
-									<h2>{movie.data.title}</h2>
+									<h2>{truncateText(movie.data.title, 30)}</h2>
 									<div className='details'>
 										{
 											Object.values(movie.ratings).length !== 0 && (
