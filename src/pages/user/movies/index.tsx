@@ -24,8 +24,8 @@ const UserMovies: React.FC = () =>
 
 	const sortOptions =
 	[
-		{label: 'Title', value: 'title'},
 		{label: 'Release date', value: 'releaseDate'},
+		{label: 'Title', value: 'title'},
 		{label: 'My ratings', value: 'ratings'}
 	]
 	const [sortOption, setSortOption] = useState(sortOptions[0])
