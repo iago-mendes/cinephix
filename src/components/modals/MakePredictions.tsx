@@ -11,6 +11,7 @@ import Group, {GroupRawPrediction} from '../../models/group'
 import api from '../../services/api'
 import successAlert from '../../utils/alerts/success'
 import errorAlert from '../../utils/alerts/error'
+import {MySwal} from '../../utils/alerts'
 
 interface MakePredictionsModalProps
 {
@@ -26,18 +27,24 @@ const MakePredictionsModal: React.FC<MakePredictionsModalProps> = ({isOpen, setI
 	const {user} = useUser()
 	
 	const [predictions, setPredictions] = useState<GroupRawPrediction[]>([])
+	const [madeChanges, setMadeChanges] = useState(false)
 
 	const event = group.event
 
 	useEffect(() =>
 	{
 		if (user && predictions.length === 0)
-			api.get(`groups/${group.urlId}/participants/${user.email}/raw`)
-				.then(({data}:{data: {predictions: GroupRawPrediction[]}}) =>
-				{
-					setPredictions(data.predictions)
-				})
-	}, [user])
+			fetchPredictions()
+	}, [user, isOpen])
+
+	function fetchPredictions()
+	{
+		api.get(`groups/${group.urlId}/participants/${user.email}/raw`)
+			.then(({data}:{data: {predictions: GroupRawPrediction[]}}) =>
+			{
+				setPredictions(data.predictions)
+			})
+	}
 
 	function handleSelectPrediction(category: string, guess: number)
 	{
@@ -50,6 +57,35 @@ const MakePredictionsModal: React.FC<MakePredictionsModalProps> = ({isOpen, setI
 			tmpPredictions[existingIndex].guess = guess
 		
 		setPredictions(tmpPredictions)
+		setMadeChanges(true)
+	}
+
+	function handleClose()
+	{
+		if (!madeChanges)
+		{
+			setPredictions([])
+			setMadeChanges(false)
+			return setIsOpen(false)
+		}
+		
+		MySwal.fire(
+			{
+				icon: 'question',
+				title: 'Are you sure?',
+				text: 'If you continue, your predictions will not be saved!',
+				showCancelButton: true,
+				confirmButtonText: 'Continue'
+			})
+			.then(res =>
+			{
+				if (res.isConfirmed)
+				{
+					setPredictions([])
+					setMadeChanges(false)
+					setIsOpen(false)
+				}
+			})
 	}
 
 	function handleSubmit()
@@ -75,7 +111,7 @@ const MakePredictionsModal: React.FC<MakePredictionsModalProps> = ({isOpen, setI
 	return (
 		<ModalContainer
 			isOpen={isOpen}
-			handleClose={() => setIsOpen(false)}
+			handleClose={handleClose}
 		>
 			<Container>
 				<h1>

@@ -1,8 +1,6 @@
 import Modal from 'react-modal'
 import {FiX} from 'react-icons/fi'
 import {BiExpand} from 'react-icons/bi'
-import {useEffect} from 'react'
-import {useRouter} from 'next/router'
 import Link from 'next/link'
 
 import Container from '../../styles/components/modals/Container'
@@ -20,13 +18,6 @@ interface ModalContainerProps
 
 const ModalContainer: React.FC<ModalContainerProps> = ({isOpen, handleClose, expandLink, children}) =>
 {
-	const {pathname} = useRouter()
-
-	useEffect(() =>
-	{
-		handleClose()
-	}, [pathname])
-
 	return (
 		<Modal
 			isOpen={isOpen}
@@ -36,12 +27,12 @@ const ModalContainer: React.FC<ModalContainerProps> = ({isOpen, handleClose, exp
 				<header>
 					{expandLink && (
 						<Link href={expandLink} >
-							<a className='expand' title='Expand' >
+							<a className='expand' title='Expand' onClick={handleClose} >
 								<BiExpand size={25} />
 							</a>
 						</Link>
 					)}
-					<button className='close' title='Close' onClick={() => handleClose()} >
+					<button className='close' title='Close' onClick={handleClose} >
 						<FiX size={25} />
 					</button>
 				</header>
