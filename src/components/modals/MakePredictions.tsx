@@ -27,7 +27,6 @@ const MakePredictionsModal: React.FC<MakePredictionsModalProps> = ({isOpen, setI
 	const {user} = useUser()
 	
 	const [predictions, setPredictions] = useState<GroupRawPrediction[]>([])
-	const [madeChanges, setMadeChanges] = useState(false)
 
 	const event = group.event
 
@@ -57,23 +56,15 @@ const MakePredictionsModal: React.FC<MakePredictionsModalProps> = ({isOpen, setI
 			tmpPredictions[existingIndex].guess = guess
 		
 		setPredictions(tmpPredictions)
-		setMadeChanges(true)
 	}
 
 	function handleClose()
 	{
-		if (!madeChanges)
-		{
-			setPredictions([])
-			setMadeChanges(false)
-			return setIsOpen(false)
-		}
-		
 		MySwal.fire(
 			{
 				icon: 'question',
 				title: 'Are you sure?',
-				text: 'If you continue, your predictions will not be saved!',
+				text: 'If you continue, your changes will not be saved!',
 				showCancelButton: true,
 				confirmButtonText: 'Continue'
 			})
@@ -82,7 +73,6 @@ const MakePredictionsModal: React.FC<MakePredictionsModalProps> = ({isOpen, setI
 				if (res.isConfirmed)
 				{
 					setPredictions([])
-					setMadeChanges(false)
 					setIsOpen(false)
 				}
 			})
