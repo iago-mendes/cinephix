@@ -75,7 +75,7 @@ const MakePredictionsModal: React.FC<MakePredictionsModalProps> = ({isOpen, setI
 	return (
 		<ModalContainer
 			isOpen={isOpen}
-			setIsOpen={setIsOpen}
+			handleClose={() => setIsOpen(false)}
 		>
 			<Container>
 				<h1>

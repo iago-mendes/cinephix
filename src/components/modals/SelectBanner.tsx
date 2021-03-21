@@ -26,7 +26,7 @@ const SelectBannerModal: React.FC<SelectBannerModalProps> =
 	return (
 		<ModalContainer
 			isOpen={isOpen}
-			setIsOpen={setIsOpen}
+			handleClose={() => setIsOpen(false)}
 		>
 			<Container>
 				<h1>

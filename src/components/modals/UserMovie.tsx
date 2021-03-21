@@ -57,7 +57,7 @@ const UserMovieModal: React.FC<UserMovieModalProps> = ({isOpen, setIsOpen, movie
 	return (
 		<ModalContainer
 			isOpen={isOpen}
-			setIsOpen={setIsOpen}
+			handleClose={() => setIsOpen(false)}
 
 			expandLink={`/movies/${movie.data.id}`}
 		>

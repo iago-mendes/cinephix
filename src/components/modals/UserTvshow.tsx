@@ -89,7 +89,7 @@ const UserTvshowModal: React.FC<UserTvshowModalProps> = ({isOpen, setIsOpen, tvs
 	return (
 		<ModalContainer
 			isOpen={isOpen}
-			setIsOpen={setIsOpen}
+			handleClose={() => setIsOpen(false)}
 
 			expandLink={`/tvshows/${tvshow.id}`}
 		>

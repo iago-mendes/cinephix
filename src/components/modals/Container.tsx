@@ -13,18 +13,18 @@ Modal.setAppElement('#__next')
 interface ModalContainerProps
 {
 	isOpen: boolean
-	setIsOpen: (p: boolean) => void
+	handleClose: () => void
 
 	expandLink?: string
 }
 
-const ModalContainer: React.FC<ModalContainerProps> = ({isOpen, setIsOpen, expandLink, children}) =>
+const ModalContainer: React.FC<ModalContainerProps> = ({isOpen, handleClose, expandLink, children}) =>
 {
 	const {pathname} = useRouter()
 
 	useEffect(() =>
 	{
-		setIsOpen(false)
+		handleClose()
 	}, [pathname])
 
 	return (
@@ -41,7 +41,7 @@ const ModalContainer: React.FC<ModalContainerProps> = ({isOpen, setIsOpen, expan
 							</a>
 						</Link>
 					)}
-					<button className='close' title='Close' onClick={() => setIsOpen(false)} >
+					<button className='close' title='Close' onClick={() => handleClose()} >
 						<FiX size={25} />
 					</button>
 				</header>

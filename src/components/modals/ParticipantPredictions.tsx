@@ -30,7 +30,7 @@ const ParticipantPredictionsModal: React.FC<ParticipantPredictionsModalProps> =
 	return (
 		<ModalContainer
 			isOpen={isOpen}
-			setIsOpen={setIsOpen}
+			handleClose={() => setIsOpen(false)}
 		>
 			<Container>
 				<h1>
