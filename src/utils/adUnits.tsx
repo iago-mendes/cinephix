@@ -1,4 +1,4 @@
-export const leaderboardAd: React.FC = () => (
+export const LeaderboardAd: React.FC = () => (
 	<ins
 		className='adsbygoogle'
 		style=
@@ -12,7 +12,7 @@ export const leaderboardAd: React.FC = () => (
 	/>
 )
 
-export const mediumRectangleAd: React.FC = () => (
+export const MediumRectangleAd: React.FC = () => (
 	<ins
 		className='adsbygoogle'
 		style=
@@ -26,7 +26,7 @@ export const mediumRectangleAd: React.FC = () => (
 	/>
 )
 
-export const largeMobileBannerAd: React.FC = () => (
+export const LargeMobileBannerAd: React.FC = () => (
 	<ins
 		className='adsbygoogle'
 		style=

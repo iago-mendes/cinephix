@@ -19,6 +19,7 @@ import SortTvshowsModal from '../../../components/modals/SortTvshows'
 import useSWR from 'swr'
 import dataFetcher from '../../../services/dataFetcher'
 import LoadingModal from '../../../components/modals/Loading'
+import HorizontalAd from '../../../components/ads/Horizontal'
 
 export interface TvshowList
 {
@@ -68,8 +69,6 @@ const UserTvshows: React.FC = () =>
 	{
 		setLoading(false)
 	}, [tvshowList])
-
-	useEffect(() => console.log('[loading]', loading), [loading])
 
 	function handleDragDrop(res: DropResult)
 	{
@@ -134,6 +133,8 @@ const UserTvshows: React.FC = () =>
 			<LoadingModal
 				isOpen={loading}
 			/>
+
+			<HorizontalAd />
 
 			<main>
 				<DragDropContext
