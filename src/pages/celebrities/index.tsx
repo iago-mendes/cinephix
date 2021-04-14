@@ -9,6 +9,7 @@ import SearchBox from '../../components/SearchBox'
 import actors from '../../assets/backgrounds/actors.png'
 import HeaderWithBackground from '../../components/HeaderWithBackground'
 import SEOHead from '../../components/SEOHead'
+import CardAd from '../../components/ads/Card'
 
 interface CelebritiesProps
 {
@@ -87,8 +88,17 @@ const Celebrities: React.FC<CelebritiesProps> = ({staticCelebrities}) =>
 				loading={loading}
 				noResults={celebrities.length === 0}
 			>
-				{celebrities.map(celebrity => (
-					<CelebrityCard celebrity={celebrity} showKnownFor key={celebrity.id} />
+				{celebrities.map((celebrity, index) => (
+					<>
+						<CelebrityCard
+							celebrity={celebrity}
+							showKnownFor
+							key={celebrity.id}
+						/>
+						{index === 9 && (
+							<CardAd />
+						)}
+					</>
 				))}
 			</GridPaginate>
 		</div>

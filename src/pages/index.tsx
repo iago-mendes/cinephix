@@ -19,6 +19,7 @@ import marker from '../assets/vector-icons/marker.svg'
 import microfone from '../assets/vector-icons/microfone.svg'
 import popcorn from '../assets/vector-icons/popcorn.svg'
 import SEOHead from '../components/SEOHead'
+import CardAd from '../components/ads/Card'
 
 interface HomeProps
 {
@@ -123,15 +124,25 @@ const Home: React.FC<HomeProps> = ({staticHome}) =>
 				loading={loading}
 				noResults={home.length === 0}
 			>
-				{home.map(item =>
+				{home.map((item, index) =>
 				{
 					if (isMedia(item))
 						return (
-							<MediaCard media={item} showOverview key={item.id} link={`/${item.type}s/${item.id}`} />
+							<>
+								<MediaCard media={item} showOverview key={item.id} link={`/${item.type}s/${item.id}`} />
+								{index === 9 && (
+									<CardAd />
+								)}
+							</>
 						)
 					else if (isCelebrity(item))
 						return (
-							<CelebrityCard celebrity={item} showKnownFor key={item.id} />
+							<>
+								<CelebrityCard celebrity={item} showKnownFor key={item.id} />
+								{index === 9 && (
+									<CardAd />
+								)}
+							</>
 						)
 				})}
 			</GridPaginate>

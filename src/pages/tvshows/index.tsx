@@ -9,6 +9,7 @@ import SearchBox from '../../components/SearchBox'
 import tv from '../../assets/backgrounds/tv.png'
 import HeaderWithBackground from '../../components/HeaderWithBackground'
 import SEOHead from '../../components/SEOHead'
+import CardAd from '../../components/ads/Card'
 
 interface TvshowsProps
 {
@@ -87,13 +88,18 @@ const Tvshows: React.FC<TvshowsProps> = ({staticTvshows}) =>
 				loading={loading}
 				noResults={tvshows.length === 0}
 			>
-				{tvshows.map(item => (
-					<MediaCard
-						media={item}
-						showOverview
-						key={item.id}
-						link={`tvshows/${item.id}`}
-					/>
+				{tvshows.map((item, index) => (
+					<>
+						<MediaCard
+							media={item}
+							showOverview
+							key={item.id}
+							link={`tvshows/${item.id}`}
+						/>
+						{index === 9 && (
+							<CardAd />
+						)}
+					</>
 				))}
 			</GridPaginate>
 		</div>

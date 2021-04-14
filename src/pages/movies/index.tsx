@@ -9,6 +9,7 @@ import SearchBox from '../../components/SearchBox'
 import cinema from '../../assets/backgrounds/cinema.png'
 import HeaderWithBackground from '../../components/HeaderWithBackground'
 import SEOHead from '../../components/SEOHead'
+import CardAd from '../../components/ads/Card'
 
 interface MoviesProps
 {
@@ -87,13 +88,18 @@ const Movies: React.FC<MoviesProps> = ({staticMovies}) =>
 				loading={loading}
 				noResults={movies.length === 0}
 			>
-				{movies.map(item => (
-					<MediaCard
-						media={item}
-						showOverview
-						key={item.id}
-						link={`movies/${item.id}`}
-					/>
+				{movies.map((item, index) => (
+					<>
+						<MediaCard
+							media={item}
+							showOverview
+							key={item.id}
+							link={`movies/${item.id}`}
+						/>
+						{index === 9 && (
+							<CardAd />
+						)}
+					</>
 				))}
 			</GridPaginate>
 		</div>
