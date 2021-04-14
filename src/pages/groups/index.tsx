@@ -9,6 +9,7 @@ import useUser from '../../hooks/useUser'
 import api from '../../services/api'
 import truncateText from '../../utils/truncateText'
 import Link from 'next/link'
+import HorizontalAd from '../../components/ads/Horizontal'
 
 const Groups: React.FC = () =>
 {
@@ -32,6 +33,8 @@ const Groups: React.FC = () =>
 			<SEOHead
 				title='My groups | Cinephix'
 			/>
+
+			<HorizontalAd />
 
 			<header>
 				<h1>My groups</h1>

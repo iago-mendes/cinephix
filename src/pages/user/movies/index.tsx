@@ -15,6 +15,7 @@ import SelectMovie from '../../../components/modals/SelectMovie'
 import UserMovieModal from '../../../components/modals/UserMovie'
 import SEOHead from '../../../components/SEOHead'
 import truncateText from '../../../utils/truncateText'
+import HorizontalAd from '../../../components/ads/Horizontal'
 
 const UserMovies: React.FC = () =>
 {
@@ -103,6 +104,8 @@ const UserMovies: React.FC = () =>
 				movie={selectedUserMovie}
 				revalidate={getMovieList}
 			/>
+
+			<HorizontalAd />
 
 			<main>
 				<div className='options'>

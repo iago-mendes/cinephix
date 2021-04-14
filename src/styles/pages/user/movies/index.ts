@@ -1,8 +1,14 @@
 import styled from 'styled-components'
 
 const Container = styled.div`
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
 	main
 	{
+		width: 100%;
+
 		height: fit-content;
 		min-height: calc(100vh - 5rem);
 
