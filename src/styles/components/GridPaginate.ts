@@ -13,9 +13,9 @@ const Container = styled.div`
 		width: 100%;
 
 		display: grid;
-		grid-auto-rows: calc((40rem - 2rem) * 0.3 * 1.5 + 2rem);
 		grid-template-columns: repeat(auto-fill, minmax(40rem, 1fr));
-		grid-gap: 2rem;
+		grid-auto-rows: 250px;
+		grid-gap: 0.5rem;
 		align-items: center;
 		justify-items: center;
 		
@@ -126,7 +126,7 @@ const Container = styled.div`
 	{
 		main
 		{
-			grid-template-columns: repeat(auto-fill, minmax(30rem, 1fr));
+			grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
 			grid-auto-rows: calc((30rem - 2rem) * 0.3 * 1.5 + 2rem);
 		}
 
