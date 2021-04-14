@@ -1,6 +1,10 @@
 import styled from 'styled-components'
 
 const Container = styled.div`
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
 	*
 	{
 		::-webkit-scrollbar
@@ -32,6 +36,7 @@ const Container = styled.div`
 		height: fit-content;
 		min-height: calc(100vh - 5rem);
 
+		width: 100%;
 		overflow-x: auto;
 
 		.dragDropArea

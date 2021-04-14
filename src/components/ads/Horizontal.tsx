@@ -6,15 +6,20 @@ const HorizontalAd: React.FC = () =>
 {
 	const {width} = useDimensions()
 
+	if (width < 360)
+		return null
+
 	return (
 		<Container>
 			<span>Advertisement</span>
 
-			{
-				width < 700
-					? <LargeMobileBannerAd />
-					: <LeaderboardAd />
-			}
+			{width >= 800 && (
+				<LeaderboardAd />
+			)}
+
+			{width < 800 && (
+				<LargeMobileBannerAd />
+			)}
 		</Container>
 	)
 }
