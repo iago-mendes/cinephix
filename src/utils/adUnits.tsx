@@ -1,4 +1,24 @@
+import getConfig from 'next/config'
 import { useEffect } from 'react'
+
+declare global
+{
+	interface Window
+	{
+		adsbygoogle: any
+	}
+}
+
+const {publicRuntimeConfig: env} = getConfig()
+
+function adScript()
+{
+	if (env.env === 'development')
+		return
+
+	window.adsbygoogle = window.adsbygoogle || []
+	window.adsbygoogle.push({})
+}
 
 export const LeaderboardAd: React.FC = () => {
 	useEffect(() =>
@@ -61,18 +81,4 @@ export const LargeMobileBannerAd: React.FC = () => {
 			data-ad-slot='6001084721'
 		/>
 	)
-}
-
-declare global
-{
-	interface Window
-	{
-		adsbygoogle: any
-	}
-}
-
-function adScript()
-{
-	window.adsbygoogle = window.adsbygoogle || []
-	window.adsbygoogle.push({})
 }
