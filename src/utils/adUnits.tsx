@@ -15,9 +15,14 @@ export const LeaderboardAd: React.FC = () => (
 			data-ad-client='ca-pub-7920836956538831'
 			data-ad-slot='7349825410'
 		/>
-		<script>
-			(adsbygoogle = window.adsbygoogle || []).push({});
-		</script>
+		<script
+			dangerouslySetInnerHTML=
+				{{
+					__html: `
+						(adsbygoogle = window.adsbygoogle || []).push({});
+					`
+				}}
+		/>
 	</>
 )
 
@@ -38,9 +43,14 @@ export const MediumRectangleAd: React.FC = () => (
 			data-ad-client='ca-pub-7920836956538831'
 			data-ad-slot='7697309778'
 		/>
-		<script>
-			(adsbygoogle = window.adsbygoogle || []).push({});
-		</script>
+		<script
+			dangerouslySetInnerHTML=
+				{{
+					__html: `
+						(adsbygoogle = window.adsbygoogle || []).push({});
+					`
+				}}
+		/>
 	</>
 )
 
@@ -61,8 +71,13 @@ export const LargeMobileBannerAd: React.FC = () => (
 			data-ad-client='ca-pub-7920836956538831'
 			data-ad-slot='6001084721'
 		/>
-		<script>
-			(adsbygoogle = window.adsbygoogle || []).push({});
-		</script>
+		<script
+			dangerouslySetInnerHTML=
+				{{
+					__html: `
+						(adsbygoogle = window.adsbygoogle || []).push({});
+					`
+				}}
+		/>
 	</>
 )
