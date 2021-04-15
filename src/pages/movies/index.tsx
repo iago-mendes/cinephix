@@ -97,7 +97,7 @@ const Movies: React.FC<MoviesProps> = ({staticMovies}) =>
 							link={`movies/${item.id}`}
 						/>
 						{index === 9 && (
-							<CardAd />
+							<CardAd key='ad' />
 						)}
 					</>
 				))}

@@ -96,7 +96,7 @@ const Celebrities: React.FC<CelebritiesProps> = ({staticCelebrities}) =>
 							key={celebrity.id}
 						/>
 						{index === 9 && (
-							<CardAd />
+							<CardAd key='ad' />
 						)}
 					</>
 				))}

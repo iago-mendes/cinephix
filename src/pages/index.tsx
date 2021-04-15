@@ -131,7 +131,7 @@ const Home: React.FC<HomeProps> = ({staticHome}) =>
 							<>
 								<MediaCard media={item} showOverview key={item.id} link={`/${item.type}s/${item.id}`} />
 								{index === 9 && (
-									<CardAd />
+									<CardAd key='ad' />
 								)}
 							</>
 						)
@@ -140,7 +140,7 @@ const Home: React.FC<HomeProps> = ({staticHome}) =>
 							<>
 								<CelebrityCard celebrity={item} showKnownFor key={item.id} />
 								{index === 9 && (
-									<CardAd />
+									<CardAd key='ad' />
 								)}
 							</>
 						)

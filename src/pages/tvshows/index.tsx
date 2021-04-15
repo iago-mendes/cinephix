@@ -97,7 +97,7 @@ const Tvshows: React.FC<TvshowsProps> = ({staticTvshows}) =>
 							link={`tvshows/${item.id}`}
 						/>
 						{index === 9 && (
-							<CardAd />
+							<CardAd key='ad' />
 						)}
 					</>
 				))}
