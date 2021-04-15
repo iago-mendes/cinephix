@@ -1,26 +1,32 @@
+import { useEffect, useState } from 'react'
+import { FiX } from 'react-icons/fi'
+import useDimensions from '../../hooks/useDimensions'
+
 import Container from '../../styles/components/ads/Banner'
+import HorizontalAd from './Horizontal'
 
 const BannerAd: React.FC = () =>
 {
-	return null
+	const [show, setShow] = useState(false)
+	const {width} = useDimensions()
+
+	useEffect(() =>
+	{
+		setTimeout(() => setShow(true), 10 * 1000)
+	}, [])
+
+	if (width < 360 || !show)
+		return null
 
 	return (
 		<Container>
-			<script
-				async
-				src='https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js'
-			/>
-			<ins
-				className='adsbygoogle'
-				data-ad-client='ca-pub-7920836956538831'
-				data-ad-slot='8065342993'
-				style={{display: 'block'}}
-				data-ad-format='auto'
-				data-full-width-responsive='true'
-			/>
-			<script>
-				(adsbygoogle = window.adsbygoogle || []).push({});
-			</script>
+			<div className='closeContainer'>
+				<button onClick={() => setShow(false)} >
+					<FiX />
+				</button>
+			</div>
+
+			<HorizontalAd />
 		</Container>
 	)
 }
