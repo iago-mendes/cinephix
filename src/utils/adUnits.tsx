@@ -1,9 +1,12 @@
-export const LeaderboardAd: React.FC = () => (
-	<>
-		<script
-			async
-			src='https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js'
-		/>
+import { useEffect } from 'react'
+
+export const LeaderboardAd: React.FC = () => {
+	useEffect(() =>
+	{
+		adScript()
+	}, [])
+
+	return (
 		<ins
 			className='adsbygoogle'
 			style=
@@ -15,23 +18,16 @@ export const LeaderboardAd: React.FC = () => (
 			data-ad-client='ca-pub-7920836956538831'
 			data-ad-slot='7349825410'
 		/>
-		<script
-			dangerouslySetInnerHTML=
-				{{
-					__html: `
-						(adsbygoogle = window.adsbygoogle || []).push({});
-					`
-				}}
-		/>
-	</>
-)
+	)
+}
 
-export const MediumRectangleAd: React.FC = () => (
-	<>
-		<script
-			async
-			src='https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js'
-		/>
+export const MediumRectangleAd: React.FC = () => {
+	useEffect(() =>
+	{
+		adScript()
+	}, [])
+
+	return (
 		<ins
 			className='adsbygoogle'
 			style=
@@ -43,23 +39,16 @@ export const MediumRectangleAd: React.FC = () => (
 			data-ad-client='ca-pub-7920836956538831'
 			data-ad-slot='7697309778'
 		/>
-		<script
-			dangerouslySetInnerHTML=
-				{{
-					__html: `
-						(adsbygoogle = window.adsbygoogle || []).push({});
-					`
-				}}
-		/>
-	</>
-)
+	)
+}
 
-export const LargeMobileBannerAd: React.FC = () => (
-	<>
-		<script
-			async
-			src='https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js'
-		/>
+export const LargeMobileBannerAd: React.FC = () => {
+	useEffect(() =>
+	{
+		adScript()
+	}, [])
+
+	return (
 		<ins
 			className='adsbygoogle'
 			style=
@@ -71,13 +60,19 @@ export const LargeMobileBannerAd: React.FC = () => (
 			data-ad-client='ca-pub-7920836956538831'
 			data-ad-slot='6001084721'
 		/>
-		<script
-			dangerouslySetInnerHTML=
-				{{
-					__html: `
-						(adsbygoogle = window.adsbygoogle || []).push({});
-					`
-				}}
-		/>
-	</>
-)
+	)
+}
+
+declare global
+{
+	interface Window
+	{
+		adsbygoogle: any
+	}
+}
+
+function adScript()
+{
+	window.adsbygoogle = window.adsbygoogle || []
+	window.adsbygoogle.push({})
+}
