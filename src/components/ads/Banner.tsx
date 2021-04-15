@@ -2,6 +2,8 @@ import Container from '../../styles/components/ads/Banner'
 
 const BannerAd: React.FC = () =>
 {
+	return null
+
 	return (
 		<Container>
 			<script
