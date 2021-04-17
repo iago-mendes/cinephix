@@ -134,7 +134,6 @@ const Container = styled.div`
 
 					display: flex;
 					flex-direction: column;
-					gap: 1rem;
 
 					padding: 1rem;
 					width: 32rem;
@@ -145,6 +144,8 @@ const Container = styled.div`
 						padding: 0.5rem;
 						height: calc((30rem - 1rem) * 0.4 * 1.5 + 1rem);
 
+						margin-bottom: 1rem;
+
 						background-color: ${p => p.theme.primary};
 						border-radius: 1rem;
 
@@ -153,7 +154,7 @@ const Container = styled.div`
 						justify-content: space-between;
 
 						cursor: pointer;
-						transition: 0.25s;
+						transition: border-radius 0.25s, background-color 0.25s;
 
 						:hover, :active
 						{
@@ -173,6 +174,7 @@ const Container = styled.div`
 							img
 							{
 								border-radius: 0.5rem;
+								transition: border-radius 0.25s;
 							}
 						}
 
