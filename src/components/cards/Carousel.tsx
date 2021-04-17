@@ -2,6 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 import Container from '../../styles/components/cards/Carousel'
+import truncateText from '../../utils/truncateText'
 
 interface CarouselCardProps
 {
@@ -24,8 +25,8 @@ const CarouselCard: React.FC<CarouselCardProps> = ({image, primaryDisplay, secon
 					<Image src={image} width={780} height={1170} layout='responsive' />
 				</div>
 				<div className='info'>
-					<h1>{primaryDisplay}</h1>
-					<h2>{secondaryDisplay}</h2>
+					<h1>{truncateText(primaryDisplay, 20)}</h1>
+					<h2>{truncateText(secondaryDisplay, 20)}</h2>
 				</div>
 			</Container>
 		</Link>
