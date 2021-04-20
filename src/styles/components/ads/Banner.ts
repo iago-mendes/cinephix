@@ -8,7 +8,7 @@ const Container = styled.div`
 	bottom: 0;
 	left: 0;
 	
-	z-index: 1;
+	z-index: 2;
 	
 	background-color: ${p => p.theme.background};
 	box-shadow: 0px -5px 5px #000;
