@@ -27,7 +27,6 @@ const ParticipantPredictionsModal: React.FC<ParticipantPredictionsModalProps> =
 	{
 		return 'celebrity' in item
 	}
-	console.log('<< participant.predictions >>', participant.predictions)
 
 	return (
 		<ModalContainer
