@@ -4,6 +4,7 @@ import {GroupParticipant} from '../../models/group'
 import EventCelebrityCard from '../cards/EventCelebrity'
 import { EventCelebrity, EventMedia } from '../../models/event'
 import EventMediaCard from '../cards/EventMedia'
+import WinnerSign from '../WinnerSign'
 
 interface ParticipantPredictionsModalProps
 {
@@ -26,6 +27,7 @@ const ParticipantPredictionsModal: React.FC<ParticipantPredictionsModalProps> =
 	{
 		return 'celebrity' in item
 	}
+	console.log('<< participant.predictions >>', participant.predictions)
 
 	return (
 		<ModalContainer
@@ -54,14 +56,22 @@ const ParticipantPredictionsModal: React.FC<ParticipantPredictionsModalProps> =
 								<EventCelebrityCard
 									eventCelebrity={prediction.guess}
 									link={`/celebrities/${prediction.guess.celebrity.id}`}
-								/>
+								>
+									{prediction.guess.isResult === true && (
+										<WinnerSign />
+									)}
+								</EventCelebrityCard>
 							)}
 
 							{isMedia(prediction.guess) && (
 								<EventMediaCard
 									media={prediction.guess}
 									link={`/${prediction.category.type}/${prediction.guess.id}`}
-								/>
+								>
+									{prediction.guess.isResult === true && (
+										<WinnerSign />
+									)}
+								</EventMediaCard>
 							)}
 						</div>
 					))}

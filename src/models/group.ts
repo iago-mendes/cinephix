@@ -113,7 +113,10 @@ export interface GroupParticipant
 			description: string
 			type: string
 		}
-		guess: EventMedia | EventCelebrity
+		guess: (EventMedia | EventCelebrity) &
+		{
+			isResult?: boolean
+		}
 	}>
 	points?: number
 	isWinner?: boolean
