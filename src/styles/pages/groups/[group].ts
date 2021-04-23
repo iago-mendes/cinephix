@@ -185,27 +185,31 @@ const Container = styled.div`
 				font-size: 2rem;
 				margin-left: 3rem;
 			}
-
-			.guesses
-			{
-				position: absolute;
-				bottom: 0.5rem;
-				right: 0.5rem;
-
-				width: 5rem;
-				height: 5rem;
-
-				background-color: ${p => p.theme.background};
-				border: none;
-				border-radius: 2.5rem;
-				box-shadow: 0px 0px 5px rgba(0,0,0,0.5);
-
-				color: ${p => p.theme.primary};
-				font-family: Ubuntu;
-				font-weight: 700;
-				font-size: 1.75rem;
-			}
 		}
+	}
+
+	.floatingNumber
+	{
+		position: absolute;
+		bottom: 0.5rem;
+		right: 0.5rem;
+
+		width: 3.5rem;
+		height: 3.5rem;
+
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		background-color: ${p => p.theme.background};
+		border: none;
+		border-radius: 2.5rem;
+		box-shadow: 0px 0px 5px rgba(0,0,0,0.5);
+
+		color: ${p => p.theme.primary};
+		font-family: Ubuntu;
+		font-weight: 700;
+		font-size: 1.75rem;
 	}
 
 	@media(min-width: 1000px)

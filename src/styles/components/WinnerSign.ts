@@ -9,6 +9,8 @@ const Container = styled.div`
 	font-size: 7.5rem;
 	transform: rotate(45deg);
 
+	z-index: 1;
+
 	svg
 	{
 		stroke: ${p => p.theme.background};

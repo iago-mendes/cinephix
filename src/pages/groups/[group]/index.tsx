@@ -148,6 +148,12 @@ const Group: React.FC<GroupProps> = ({group: staticGroup}) =>
 								{participant.isWinner === true && (
 									<WinnerSign />
 								)}
+
+								{participant.points != undefined && (
+									<div className='floatingNumber' >
+										{participant.points}
+									</div>
+								)}
 							</div>
 						</SwiperSlide>
 					))}
@@ -172,9 +178,9 @@ const Group: React.FC<GroupProps> = ({group: staticGroup}) =>
 										media={media}
 										link={`/${category.type}/${media.id}`}
 									>
-										<button className='guesses'>
+										<div className='floatingNumber' >
 											{media.participants.length}
-										</button>
+										</div>
 
 										{media.isResult === true && (
 											<WinnerSign />
@@ -188,9 +194,9 @@ const Group: React.FC<GroupProps> = ({group: staticGroup}) =>
 										eventCelebrity={eventCelebrity}
 										link={`/celebrities/${eventCelebrity.celebrity.id}`}
 									>
-										<button className='guesses' title='View participants' >
+										<div className='floatingNumber' >
 											{eventCelebrity.participants.length}
-										</button>
+										</div>
 
 										{eventCelebrity.isResult === true && (
 											<WinnerSign />
