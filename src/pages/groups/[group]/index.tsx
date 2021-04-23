@@ -18,6 +18,7 @@ import useUser from '../../../hooks/useUser'
 import Link from 'next/link'
 import MakePredictionsModal from '../../../components/modals/MakePredictions'
 import ParticipantPredictionsModal from '../../../components/modals/ParticipantPredictions'
+import WinnerSign from '../../../components/WinnerSign'
 
 interface GroupProps
 {
@@ -124,7 +125,7 @@ const Group: React.FC<GroupProps> = ({group: staticGroup}) =>
 					{group.participants.map((participant, index) => (
 						<SwiperSlide key={index} >
 							<div
-								className={participant.isOwner ? 'participant owner' : 'participant'}
+								className='participant'
 								onClick={() => openParticipantPredictions(participant)}
 							>
 								<div className='img'>
@@ -143,6 +144,10 @@ const Group: React.FC<GroupProps> = ({group: staticGroup}) =>
 										</span>
 									)}
 								</div>
+
+								{participant.isWinner === true && (
+									<WinnerSign />
+								)}
 							</div>
 						</SwiperSlide>
 					))}
@@ -170,6 +175,10 @@ const Group: React.FC<GroupProps> = ({group: staticGroup}) =>
 										<button className='guesses'>
 											{media.participants.length}
 										</button>
+
+										{media.isResult === true && (
+											<WinnerSign />
+										)}
 									</EventMediaCard>
 								</SwiperSlide>
 							))}
@@ -182,6 +191,10 @@ const Group: React.FC<GroupProps> = ({group: staticGroup}) =>
 										<button className='guesses' title='View participants' >
 											{eventCelebrity.participants.length}
 										</button>
+
+										{eventCelebrity.isResult === true && (
+											<WinnerSign />
+										)}
 									</EventCelebrityCard>
 								</SwiperSlide>
 							))}

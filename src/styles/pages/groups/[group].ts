@@ -113,6 +113,8 @@ const Container = styled.div`
 			display: flex;
 			gap: 1rem;
 
+			position: relative;
+
 			cursor: pointer;
 			transition: 0.25s;
 
