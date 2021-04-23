@@ -46,6 +46,8 @@ const Container = styled.div`
 		justify-content: space-around;
 
 		width: 100%;
+		margin-top: 10rem;
+		margin-bottom: 7.5rem;
 
 		button
 		{
