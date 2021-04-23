@@ -179,7 +179,7 @@ const Group: React.FC<GroupProps> = ({group: staticGroup}) =>
 										link={`/${category.type}/${media.id}`}
 									>
 										<div className='floatingNumber' >
-											{media.participants.length}
+											{media.predictionsQuantity}
 										</div>
 
 										{media.isResult === true && (
@@ -195,7 +195,7 @@ const Group: React.FC<GroupProps> = ({group: staticGroup}) =>
 										link={`/celebrities/${eventCelebrity.celebrity.id}`}
 									>
 										<div className='floatingNumber' >
-											{eventCelebrity.participants.length}
+											{eventCelebrity.predictionsQuantity}
 										</div>
 
 										{eventCelebrity.isResult === true && (

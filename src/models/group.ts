@@ -62,12 +62,7 @@ export interface GroupEvent
 			overview: string
 			date: string
 			type: string
-			participants: Array<
-			{
-				email: string
-				image: string
-				name: string
-			}>
+			predictionsQuantity: number
 			isResult?: boolean
 		}>
 		celebrities: Array<
@@ -87,12 +82,7 @@ export interface GroupEvent
 				date: string
 				type: string
 			}
-			participants: Array<
-			{
-				email: string
-				image: string
-				name: string
-			}>
+			predictionsQuantity: number
 			isResult?: boolean
 		}>
 	}>
