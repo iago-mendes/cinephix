@@ -68,6 +68,7 @@ export interface GroupEvent
 				image: string
 				name: string
 			}>
+			isResult?: boolean
 		}>
 		celebrities: Array<
 		{
@@ -92,6 +93,7 @@ export interface GroupEvent
 				image: string
 				name: string
 			}>
+			isResult?: boolean
 		}>
 	}>
 }
@@ -113,6 +115,8 @@ export interface GroupParticipant
 		}
 		guess: EventMedia | EventCelebrity
 	}>
+	points?: number
+	isWinner?: boolean
 }
 
 interface Group
