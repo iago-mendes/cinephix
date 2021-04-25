@@ -48,6 +48,11 @@ export interface GroupEvent
 	name: string
 	color: string
 	description: string
+	status:
+	{
+		isOpen: boolean
+		hasResults: boolean
+	}
 	categories: Array<
 	{
 		id: string
