@@ -114,9 +114,11 @@ const Group: React.FC<GroupProps> = ({group: staticGroup}) =>
 						Edit group
 					</Link>
 				)}
-				<button title='Make predictions' onClick={() => setIsMakePredictionsOpen(true)} >
-					Make predictions
-				</button>
+				{!group.event.status.hasResults && (
+					<button title='Make predictions' onClick={() => setIsMakePredictionsOpen(true)} >
+						Make predictions
+					</button>
+				)}
 			</section>
 
 			<section className='participants'>
