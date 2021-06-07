@@ -1,0 +1,15 @@
+[{
+	"relation":
+	[
+		"delegate_permission/common.handle_all_urls"
+	],
+	"target" :
+	{
+		"namespace": "android_app",
+		"package_name": "com.cinephix.twa",
+		"sha256_cert_fingerprints":
+		[
+			"A5:1A:DF:29:39:A4:B3:9B:FA:FC:4F:E5:43:6F:55:6B:0E:E1:2C:4B:A8:79:3D:6E:4C:3E:60:D2:67:D5:88:30"
+		]
+	}
+}]
