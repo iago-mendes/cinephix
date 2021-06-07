@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-interface ContainerProps
+type ContainerProps =
 {
 	isUserMenuOpen: boolean
 }
@@ -45,44 +45,45 @@ const Container = styled.nav<ContainerProps>`
 		}
 	}
 
+	.links
+	{
+		display: flex;
+		align-items: center;
+		gap: 2rem;
+
+		a
+		{
+			text-decoration: none;
+			font-family: Ubuntu;
+			font-weight: 700;
+			font-size: 1.75rem;
+
+			color: ${p => p.theme.primary};
+			display: inline-block;
+
+			::after
+			{
+				content: '';
+				width: 0px;
+				height: 2px;
+				display: block;
+				background: ${p => p.theme.primary};
+				transition: 0.25s;
+			}
+
+			:hover::after
+			{
+				width: 100%;
+			}
+		}
+	}
+
 	.container
 	{
 		display: flex;
 		align-items: center;
 		gap: 5rem;
 
-		.links
-		{
-			display: flex;
-			align-items: center;
-			gap: 2rem;
-
-			a
-			{
-				text-decoration: none;
-				font-family: Ubuntu;
-				font-weight: 700;
-				font-size: 1.75rem;
-
-				color: ${p => p.theme.primary};
-				display: inline-block;
-
-				::after
-				{
-					content: '';
-					width: 0px;
-					height: 2px;
-					display: block;
-					background: ${p => p.theme.primary};
-					transition: 0.25s;
-				}
-
-				:hover::after
-				{
-					width: 100%;
-				}
-			}
-		}
 
 		.user
 		{
@@ -150,26 +151,26 @@ const Container = styled.nav<ContainerProps>`
 		}
 	}
 
-	.burger
+	button.controller
 	{
-		button
+		font-size: 3rem;
+		color: ${p => p.theme.primary};
+
+		background: none;
+		border: none;
+		border-radius: 5rem;
+
+		padding: 0.5rem;
+
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		transition: background-color 0.25s;
+
+		:hover
 		{
-			background: none;
-			border: none;
-
-			display: flex;
-			align-items: center;
-			justify-content: center;
-
-			color: ${p => p.theme.primary};
-
-			cursor: pointer;
-			transition: 0.25s;
-
-			:hover
-			{
-				transform: scale(1.1);
-			}
+			background-color: ${p => p.theme.black};
 		}
 	}
 
@@ -179,6 +180,40 @@ const Container = styled.nav<ContainerProps>`
 		{
 			width: 15rem;
 		}
+	}
+`
+
+type BurgerMenuProps =
+{
+	isOpen: boolean
+}
+
+export const BurgerMenu = styled.div<BurgerMenuProps>`
+	position: fixed;
+	left: ${p => p.isOpen ? 0 : '-100vw'};
+	top: 0;
+	z-index: 2;
+
+	width: 75vw;
+	height: 100vh;
+	background-color: ${p => p.theme.secondary};
+	box-shadow: 5px 0px 5px rgba(0,0, 0, 0.5);
+
+	overflow-y: auto;
+	padding: 1rem;
+
+	transition: left 0.25s;
+
+	button.controller
+	{
+		margin-left: auto;
+		margin-bottom: 5rem;
+	}
+
+	.links
+	{
+		flex-direction: column;
+		gap: 3rem;
 	}
 `
 

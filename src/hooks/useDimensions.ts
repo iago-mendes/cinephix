@@ -4,6 +4,9 @@ function useDimensions()
 {
 	const [width, setWidth] = useState(600)
 	const [height, setHeight] = useState(800)
+
+	const inMobile = width <= 1000
+	const inDesktop = width > 1000
 	
 	useEffect(() =>
 	{
@@ -19,7 +22,7 @@ function useDimensions()
 		setHeight(window.innerHeight)
 	}
 
-	return {width, height}
+	return {width, height, inMobile, inDesktop}
 }
 
 export default useDimensions
