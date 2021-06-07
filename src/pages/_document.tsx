@@ -34,6 +34,12 @@ export default class MyDocument extends Document
 			
 	render(): JSX.Element
 	{
+		const pwa =
+		{
+			name: 'Cinephix',
+			description: 'The Cinephix application is a place where people passionate about movies and TV shows can pursue their interest. Here, you can search and discover new content, as well as organize your entertainment media. For example, you can separate your TV shows by status, add movies to your watch list, rate all your media, and more.'
+		}
+
 		return (
 			<Html lang='en'>
 				<Head>
@@ -66,6 +72,20 @@ export default class MyDocument extends Document
 						async
 						src='https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js'
 					/>
+
+					{/* PWA */}
+					<meta name='application-name' content={pwa.name} />
+					<meta name='apple-mobile-web-app-capable' content='yes' />
+					<meta name='apple-mobile-web-app-status-bar-style' content='default' />
+					<meta name='apple-mobile-web-app-title' content={pwa.name} />
+					<meta name='description' content={pwa.description} />
+					<meta name='format-detection' content='telephone=no' />
+					<meta name='mobile-web-app-capable' content='yes' />
+					<meta name='theme-color' content='#161C50' />
+
+					<link rel='apple-touch-icon' sizes='64x64' href='/favicon.svg' />
+					<link rel='manifest' href='/manifest.json' />
+					<link rel='shortcut icon' href='/favicon.svg' type='image/svg+xml' />
 				</Head>
 
 				<body>

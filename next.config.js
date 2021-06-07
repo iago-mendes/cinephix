@@ -1,6 +1,7 @@
 const withImages = require('next-images')
+const withPWA = require('next-pwa')
 
-module.exports = withImages({
+module.exports = withPWA(withImages({
 	esModule: true,
 	images:
 	{
@@ -20,5 +21,9 @@ module.exports = withImages({
 		authSecret: process.env.AUTH_SECRET,
 		googleClientId: process.env.GOOGLE_CLIENT_ID,
 		googleClientSecret: process.env.GOOGLE_CLIENT_SECRET
+	},
+	pwa:
+	{
+		dest: 'public'
 	}
-})
+}))
