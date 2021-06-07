@@ -18,6 +18,7 @@ import Ratings, {defaultMovieRatings} from '../../models/ratings'
 import UserMovie, {defaultUserMovie} from '../../models/userMovie'
 import {SelectOption} from '../../models'
 import getRatingLabel from '../../utils/getRatingLabel'
+import venues from '../../../db/venues.json'
 
 interface MovieFormProps
 {
@@ -36,15 +37,11 @@ const MovieForm: React.FC<MovieFormProps> = ({movie, method, userMovie}) =>
 	const [venue, setVenue] = useState('')
 	const [ratings, setRatings] = useState<Ratings>(defaultMovieRatings)
 
-	const venueOptions: SelectOption[] =
-	[
-		{label: 'Netflix', value: 'Netflix'},
-		{label: 'Prime Video', value: 'Prime Video'},
-		{label: 'Disney+', value: 'Disney+'},
-		{label: 'HBO Max', value: 'HBO Max'},
-		{label: 'Movie Theater', value: 'Movie Theater'},
-		{label: 'Other', value: 'Other'}
-	]
+	const venueOptions: SelectOption[] = venues.map(({name}) => (
+		{
+			label: name,
+			value: name
+		}))
 
 	useEffect(() =>
 	{

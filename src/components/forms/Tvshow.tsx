@@ -16,6 +16,7 @@ import errorAlert from '../../utils/alerts/error'
 import calcTotalRating from '../../utils/getTotalRating'
 import Ratings, {defaultTvshowRatings} from '../../models/ratings'
 import {defaultUserTvshowDetails, UserTvshowDetails} from '../../models/userTvshow'
+import venues from '../../../db/venues.json'
 
 interface SelectOption
 {
@@ -60,15 +61,11 @@ const TvshowForm: React.FC<TvshowFormProps> = ({tvshow, method, userTvshow}) =>
 		{label: 'Paused', value: 'paused'}
 	]
 
-	const venueOptions: SelectOption[] =
-	[
-		{label: 'Netflix', value: 'Netflix'},
-		{label: 'Prime Video', value: 'Prime Video'},
-		{label: 'Disney+', value: 'Disney+'},
-		{label: 'HBO Max', value: 'HBO Max'},
-		{label: 'Movie Theater', value: 'Movie Theater'},
-		{label: 'Other', value: 'Other'}
-	]
+	const venueOptions: SelectOption[] = venues.map(({name}) => (
+		{
+			label: name,
+			value: name
+		}))
 
 	useEffect(() =>
 	{

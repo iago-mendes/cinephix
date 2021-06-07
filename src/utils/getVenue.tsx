@@ -1,19 +1,15 @@
+import venues from '../../db/venues.json'
+
 function getVenue(venue: string)
 {
 	function getColor()
 	{
-		if (venue === 'Netflix')
-			return '#ce0e0e'
-		if (venue === 'Prime Video')
-			return '#1ebbff'
-		if (venue === 'Disney+')
-			return '#2a22c4'
-		if (venue === 'HBO Max')
-			return '#861398'
-		if (venue === 'Movie Theater')
-			return '#803710'
-		if (venue === 'Other')
-			return '#656565'
+		const venueOption = venues.find(({name}) => name === venue)
+
+		if (!venueOption)
+			return '#000000'
+		else
+			return venueOption.color
 	}
 
 	return (
