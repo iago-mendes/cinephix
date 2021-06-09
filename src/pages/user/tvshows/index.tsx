@@ -16,8 +16,6 @@ import truncateText from '../../../utils/truncateText'
 import {defaultUserTvshowListed, statusInfo, UserTvshowListed} from '../../../models/userTvshow'
 import infoAlert from '../../../utils/alerts/info'
 import SortTvshowsModal from '../../../components/modals/SortTvshows'
-import useSWR from 'swr'
-import dataFetcher from '../../../services/dataFetcher'
 import LoadingModal from '../../../components/modals/Loading'
 import HorizontalAd from '../../../components/ads/Horizontal'
 
@@ -51,7 +49,6 @@ const UserTvshows: React.FC = () =>
 	const {user} = useUser()
 
 	const [tvshowList, setTvshowList] = useState<TvshowList>(defaultTvshowList)
-	const {data, revalidate} = useSWR(`users/${user ? user.email : undefined}/tvshows`, url => dataFetcher(url, defaultTvshowList))
 	const [loading, setLoading] = useState(false)
 
 	const [isTvshowModalOpen, setIsTvshowModalOpen] = useState(false)
@@ -61,14 +58,24 @@ const UserTvshows: React.FC = () =>
 
 	useEffect(() =>
 	{
-		if (data)
-			setTvshowList(data)
-	}, [data])
+		updateTvshowList()
+	}, [user])
 
-	useEffect(() =>
+	async function updateTvshowList()
 	{
+		if (!user || !user.email)
+			return setTvshowList(defaultTvshowList)
+		
+		await api.get(`users/${user.email}/tvshows`)
+			.then(({data}) => setTvshowList(data))
+			.catch(error =>
+			{
+				console.log('<< error >>', error)
+				setTvshowList(defaultTvshowList)
+			})
+		
 		setLoading(false)
-	}, [tvshowList])
+	}
 
 	function handleDragDrop(res: DropResult)
 	{
@@ -159,7 +166,7 @@ const UserTvshows: React.FC = () =>
 													statusTvshows={tvshows}
 													tvshowList={tvshowList}
 													setTvshowList={setTvshowList}
-													revalidate={revalidate}
+													revalidate={updateTvshowList}
 													setLoading={setLoading}
 												/>
 												<button title='Add a TV show' onClick={() => handleAddClick(statusKey)}>

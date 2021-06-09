@@ -1,6 +1,5 @@
 import {GetStaticProps} from 'next'
 import {useEffect, useState} from 'react'
-import useSWR from 'swr'
 
 import api from '../../services/api'
 import CelebrityCard, {Celebrity} from '../../components/cards/Celebrity'
@@ -10,6 +9,7 @@ import actors from '../../assets/backgrounds/actors.png'
 import HeaderWithBackground from '../../components/HeaderWithBackground'
 import SEOHead from '../../components/SEOHead'
 import CardAd from '../../components/ads/Card'
+import { updatePaginatedData } from '../../utils/updatePaginatedData'
 
 interface CelebritiesProps
 {
@@ -24,52 +24,21 @@ const Celebrities: React.FC<CelebritiesProps> = ({staticCelebrities}) =>
 	const [loading, setLoading] = useState(false)
 	
 	const [celebrities, setCelebrities] = useState<Celebrity[]>(staticCelebrities)
-	const {data, error, revalidate} = useSWR(`/api/getCelebrities?search=${search}&page=${page}`)
 
 	useEffect(() =>
 	{
-		if (data)
-		{
-			setCelebrities(data.celebrities)
-			setPage(data.paginate.page)
-			setTotalPages(data.paginate.total)
-		}
-		else if (error)
-		{
-			setCelebrities(staticCelebrities)
-			setPage(1)
-			setTotalPages(1)
-
-			console.error(error)
-		}
-	}, [data, error])
-
-	useEffect(() =>
-	{
-		if (search === '' && page === 1)
-		{
-			revalidate()
-			setCelebrities(staticCelebrities)
-		}
-		else
-		{
-			revalidate()
-			setLoading(true)
-		}
+		updatePaginatedData(
+			{
+				route: 'celebrities',
+				setData: setCelebrities,
+				setLoading,
+				search,
+				page,
+				setPage,
+				setTotalPages,
+				defaultData: staticCelebrities
+			})
 	}, [search, page])
-
-	useEffect(() =>
-	{
-		if (celebrities)
-			setLoading(false)
-	}, [celebrities])
-
-	useEffect(() =>
-	{
-		setPage(1)
-		if (search !== '')
-			setTotalPages(1)
-	}, [search])
 
 	return (
 		<div className='page' >

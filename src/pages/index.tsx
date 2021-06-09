@@ -1,6 +1,5 @@
 import {GetStaticProps} from 'next'
 import {useEffect, useState} from 'react'
-import useSWR from 'swr'
 import Image from 'next/image'
 
 import Container from '../styles/pages/index'
@@ -20,6 +19,7 @@ import microfone from '../assets/vector-icons/microfone.svg'
 import popcorn from '../assets/vector-icons/popcorn.svg'
 import SEOHead from '../components/SEOHead'
 import CardAd from '../components/ads/Card'
+import { updatePaginatedData } from '../utils/updatePaginatedData'
 
 interface HomeProps
 {
@@ -34,52 +34,21 @@ const Home: React.FC<HomeProps> = ({staticHome}) =>
 	const [loading, setLoading] = useState(false)
 	
 	const [home, setHome] = useState<Array<Media | Celebrity>>(staticHome)
-	const {data, error, revalidate} = useSWR(`/api/getHome?search=${search}&page=${page}`)
 
 	useEffect(() =>
 	{
-		if (data)
-		{
-			setHome(data.home)
-			setPage(data.paginate.page)
-			setTotalPages(data.paginate.total)
-		}
-		else if (error)
-		{
-			setHome(staticHome)
-			setPage(1)
-			setTotalPages(1)
-
-			console.error(error)
-		}
-	}, [data, error])
-
-	useEffect(() =>
-	{
-		if (search === '' && page === 1)
-		{
-			revalidate()
-			setHome(staticHome)
-		}
-		else
-		{
-			revalidate()
-			setLoading(true)
-		}
+		updatePaginatedData(
+			{
+				route: 'home',
+				setData: setHome,
+				setLoading,
+				search,
+				page,
+				setPage,
+				setTotalPages,
+				defaultData: staticHome
+			})
 	}, [search, page])
-
-	useEffect(() =>
-	{
-		if (home)
-			setLoading(false)
-	}, [home])
-
-	useEffect(() =>
-	{
-		setPage(1)
-		if (search !== '')
-			setTotalPages(1)
-	}, [search])
 
 	function isMedia(item: Media | Celebrity): item is Media
 	{

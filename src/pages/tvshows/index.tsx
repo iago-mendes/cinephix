@@ -1,6 +1,5 @@
 import {GetStaticProps} from 'next'
 import {useEffect, useState} from 'react'
-import useSWR from 'swr'
 
 import api from '../../services/api'
 import MediaCard, {Media} from '../../components/cards/Media'
@@ -10,6 +9,7 @@ import tv from '../../assets/backgrounds/tv.png'
 import HeaderWithBackground from '../../components/HeaderWithBackground'
 import SEOHead from '../../components/SEOHead'
 import CardAd from '../../components/ads/Card'
+import { updatePaginatedData } from '../../utils/updatePaginatedData'
 
 interface TvshowsProps
 {
@@ -24,52 +24,21 @@ const Tvshows: React.FC<TvshowsProps> = ({staticTvshows}) =>
 	const [loading, setLoading] = useState(false)
 	
 	const [tvshows, setTvshows] = useState<Media[]>(staticTvshows)
-	const {data, error, revalidate} = useSWR(`/api/getTvshows?search=${search}&page=${page}`)
 
 	useEffect(() =>
 	{
-		if (data)
-		{
-			setTvshows(data.tvshows)
-			setPage(data.paginate.page)
-			setTotalPages(data.paginate.total)
-		}
-		else if (error)
-		{
-			setTvshows(staticTvshows)
-			setPage(1)
-			setTotalPages(1)
-
-			console.error(error)
-		}
-	}, [data, error])
-
-	useEffect(() =>
-	{
-		if (search === '' && page === 1)
-		{
-			revalidate()
-			setTvshows(staticTvshows)
-		}
-		else
-		{
-			revalidate()
-			setLoading(true)
-		}
+		updatePaginatedData(
+			{
+				route: 'tvshows',
+				setData: setTvshows,
+				setLoading,
+				search,
+				page,
+				setPage,
+				setTotalPages,
+				defaultData: staticTvshows
+			})
 	}, [search, page])
-
-	useEffect(() =>
-	{
-		if (tvshows)
-			setLoading(false)
-	}, [tvshows])
-
-	useEffect(() =>
-	{
-		setPage(1)
-		if (search !== '')
-			setTotalPages(1)
-	}, [search])
 
 	return (
 		<div className='page' >

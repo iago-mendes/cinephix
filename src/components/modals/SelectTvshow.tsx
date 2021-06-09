@@ -2,12 +2,12 @@ import {useEffect, useState} from 'react'
 import {FaSearch} from 'react-icons/fa'
 import {FiX} from 'react-icons/fi'
 import Modal from 'react-modal'
-import useSWR from 'swr'
 
 import Container from '../../styles/components/modals/Select'
 import {modalStyle} from '../../styles/global'
 import MediaCard, {Media} from '../cards/Media'
 import GridPaginate from '../../components/GridPaginate'
+import { updatePaginatedData } from '../../utils/updatePaginatedData'
 
 Modal.setAppElement('#__next')
 
@@ -27,52 +27,20 @@ const SelectTvshow: React.FC<SelectTvshowProps> = ({isOpen, setIsOpen, statusKey
 	const [loading, setLoading] = useState(false)
 	
 	const [tvshows, setTvshows] = useState<Media[]>([])
-	const {data, error, revalidate} = useSWR(`/api/getTvshows?search=${search}&page=${page}`)
 
 	useEffect(() =>
 	{
-		if (data && search !== '')
-		{
-			setTvshows(data.tvshows)
-			setPage(data.paginate.page)
-			setTotalPages(data.paginate.total)
-		}
-		else if (error)
-		{
-			setTvshows([])
-			setPage(1)
-			setTotalPages(1)
-
-			console.error(error)
-		}
-	}, [data, error])
-
-	useEffect(() =>
-	{
-		if (search === '' && page === 1)
-		{
-			revalidate()
-			setTvshows([])
-		}
-		else
-		{
-			revalidate()
-			setLoading(true)
-		}
+		updatePaginatedData(
+			{
+				route: 'tvshows',
+				setData: setTvshows,
+				setLoading,
+				search,
+				page,
+				setPage,
+				setTotalPages
+			})
 	}, [search, page])
-
-	useEffect(() =>
-	{
-		if (tvshows)
-			setLoading(false)
-	}, [tvshows])
-
-	useEffect(() =>
-	{
-		setPage(1)
-		if (search !== '')
-			setTotalPages(1)
-	}, [search])
 
 	return (
 		<Modal
