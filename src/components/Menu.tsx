@@ -106,7 +106,7 @@ const Menu: React.FC = () =>
 const RouteOptions: React.FC = () =>
 {
 	return (
-		<div className="links">
+		<div className='links'>
 			<Link href='/' >Home</Link>
 			<Link href='/events' >Events</Link>
 			<Link href='/movies' >Movies</Link>

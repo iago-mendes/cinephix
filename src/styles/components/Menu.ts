@@ -166,11 +166,12 @@ const Container = styled.nav<ContainerProps>`
 		align-items: center;
 		justify-content: center;
 
-		transition: background-color 0.25s;
+		transition: background-color 0.25s, color 0.25s;
 
 		:hover
 		{
-			background-color: ${p => p.theme.black};
+			background-color: ${p => p.theme.primary};
+			color: ${p => p.theme.secondary};
 		}
 	}
 
@@ -214,6 +215,11 @@ export const BurgerMenu = styled.div<BurgerMenuProps>`
 	{
 		flex-direction: column;
 		gap: 3rem;
+
+		a
+		{
+			font-size: 2rem;
+		}
 	}
 `
 
