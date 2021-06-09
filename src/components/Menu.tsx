@@ -1,11 +1,12 @@
 import Link from 'next/link'
-import {BiUserCircle} from 'react-icons/bi'
-import {BsFillTriangleFill} from 'react-icons/bs'
-import {signIn} from 'next-auth/client'
-import {useState} from 'react'
-import {FiMenu, FiX} from 'react-icons/fi'
+import { BiUserCircle } from 'react-icons/bi'
+import { BsFillTriangleFill } from 'react-icons/bs'
+import { signIn } from 'next-auth/client'
+import { useEffect, useState } from 'react'
+import { FiMenu, FiX } from 'react-icons/fi'
+import { useRouter } from 'next/router'
 
-import Container, {BurgerMenu} from '../styles/components/Menu'
+import Container, { BurgerMenu } from '../styles/components/Menu'
 import logoName from '../assets/logo/name.svg'
 import logoIcon from '../assets/logo/icon.svg'
 import useUser from '../hooks/useUser'
@@ -17,17 +18,23 @@ const Menu: React.FC = () =>
 {
 	const {user} = useUser()
 	const {inMobile, inDesktop} = useDimensions()
+	const {pathname} = useRouter()
+	
+	const [isUserMenuOpen, setIsUserMenuOpen] = useState(false)
 	const userRef = useClickOutside(() => setIsUserMenuOpen(false))
+
+	const [isBurgerMenuOpen, setIsBurgerMenuOpen] = useState(false)
 	const burgerRef = useClickOutside(() => setIsBurgerMenuOpen(false))
 
-	const [isUserMenuOpen, setIsUserMenuOpen] = useState(false)
-	const [isBurgerMenuOpen, setIsBurgerMenuOpen] = useState(false)
+	useEffect(() =>
+	{
+		setIsBurgerMenuOpen(false)
+	}, [pathname])
 
 	return (
 		<Container
 			isUserMenuOpen={isUserMenuOpen}
 		>
-
 			{inMobile && (
 				<div className='burger' >
 					<button
