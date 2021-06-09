@@ -113,6 +113,7 @@ const Container = styled.div`
 
 		width: 100%;
 		height: calc(100vh - 5rem - 30rem - 10rem);
+		padding: 2rem;
 
 		h1
 		{

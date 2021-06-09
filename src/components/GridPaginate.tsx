@@ -18,10 +18,21 @@ interface GridPaginateProps
 	style?: CSSProperties
 
 	hidePaginate?: boolean
+	noResultsMessage?: string
 }
 
 const GridPaginate: React.FC<GridPaginateProps> =
-({page, setPage, totalPages, loading, style = {}, noResults, children, hidePaginate = false}) =>
+({
+	page,
+	setPage,
+	totalPages,
+	loading,
+	style = {},
+	noResults,
+	children,
+	hidePaginate = false,
+	noResultsMessage = 'No results found!'
+}) =>
 {
 	function goBack()
 	{
@@ -51,7 +62,7 @@ const GridPaginate: React.FC<GridPaginateProps> =
 					: noResults
 						? (
 							<div className='noResults'>
-								<h1>No results found!</h1>
+								<h1>{noResultsMessage}</h1>
 							</div>
 						)
 						: (

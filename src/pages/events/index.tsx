@@ -8,12 +8,12 @@ import SEOHead from '../../components/SEOHead'
 import {EventListed} from '../../models/event'
 import EventCard from '../../components/cards/Event'
 
-interface MoviesProps
+interface EventsProps
 {
 	events: EventListed[]
 }
 
-const Movies: React.FC<MoviesProps> = ({events}) =>
+const Events: React.FC<EventsProps> = ({events}) =>
 {
 	return (
 		<div className='page' >
@@ -31,6 +31,7 @@ const Movies: React.FC<MoviesProps> = ({events}) =>
 				noResults={events.length === 0}
 
 				hidePaginate
+				noResultsMessage='No events open at the moment!'
 			>
 				{events.map((event, index) => (
 					<EventCard
@@ -53,4 +54,4 @@ export const getStaticProps: GetStaticProps = async () =>
 	}
 }
 
-export default Movies
+export default Events
