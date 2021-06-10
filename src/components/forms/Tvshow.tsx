@@ -1,4 +1,3 @@
-import Head from 'next/head'
 import {ChangeEvent, FormEvent, useEffect, useState} from 'react'
 import Select from 'react-select'
 import Image from 'next/image'
@@ -8,15 +7,16 @@ import {MdClear} from 'react-icons/md'
 
 import Container, {RangeInput} from '../../styles/components/forms/global'
 import api from '../../services/api'
-import TvshowDetails from '../../models/tvshow'
+import TvshowDetails, {loadingTvshow} from '../../models/tvshow'
 import {selectStyles} from '../../styles/global'
 import useUser from '../../hooks/useUser'
 import successAlert from '../../utils/alerts/success'
 import errorAlert from '../../utils/alerts/error'
 import calcTotalRating from '../../utils/getTotalRating'
 import Ratings, {defaultTvshowRatings} from '../../models/ratings'
-import {defaultUserTvshowDetails, UserTvshowDetails} from '../../models/userTvshow'
+import {UserTvshowDetails} from '../../models/userTvshow'
 import venues from '../../../db/venues.json'
+import { SkeletonLoading } from '../../utils/skeletonLoading'
 
 interface SelectOption
 {
@@ -36,20 +36,24 @@ const ratingsLabels: {[ratingKey: string]: string} =
 
 interface TvshowFormProps
 {
-	tvshow: TvshowDetails
 	method: string
 
 	userTvshow?: UserTvshowDetails
 }
 
-const TvshowForm: React.FC<TvshowFormProps> = ({tvshow, method, userTvshow}) =>
+const TvshowForm: React.FC<TvshowFormProps> = ({method}) =>
 {
 	const {query, back, push} = useRouter()
 	const {user} = useUser()
 
+	const tvshowId = Number(query.tvshow)
+	const statusKey = String(query.status)
+
 	const [status, setStatus] = useState('')
 	const [venue, setVenue] = useState('')
 	const [ratings, setRatings] = useState<Ratings>(defaultTvshowRatings)
+
+	const [tvshow, setTvshow] = useState(loadingTvshow)
 
 	const statusOptions: SelectOption[] = 
 	[
@@ -69,28 +73,34 @@ const TvshowForm: React.FC<TvshowFormProps> = ({tvshow, method, userTvshow}) =>
 
 	useEffect(() =>
 	{
-		const {status: statusKey} = query
+		if (method === 'put' && user && tvshowId)
+			api.get(`users/${user.email}/tvshows/${tvshowId}`)
+				.then(({data}:{data: UserTvshowDetails}) =>
+				{
+					setStatus(data.status)
+					setVenue(data.venue)
 
-		if (statusKey)
-			setStatus(String(statusKey))
-	}, [query])
+					let tmpRatings = {...ratings}
+					Object.entries(data.ratings).map(([ratingKey, value]) =>
+					{
+						if (value >= 0 && value <= 10)
+							tmpRatings[ratingKey] = value
+					})
+					setRatings(tmpRatings)
+				})
+		
+		if (tvshowId)
+			api.get(`tvshows/${tvshowId}`)
+				.then(({data}:{data: TvshowDetails}) => setTvshow(data))
+	}, [user, tvshowId])
 
 	useEffect(() =>
 	{
-		if (userTvshow && userTvshow !== defaultUserTvshowDetails)
-		{
-			setStatus(userTvshow.status)
-			setVenue(userTvshow.venue)
+		console.log('<< statusKey >>', statusKey)
 
-			let tmpRatings = {...ratings}
-			Object.entries(userTvshow.ratings).map(([ratingKey, value]) =>
-			{
-				if (value >= 0 && value <= 10)
-					tmpRatings[ratingKey] = value
-			})
-			setRatings(tmpRatings)
-		}
-	}, [userTvshow])
+		if (statusKey)
+			setStatus(statusKey)
+	}, [statusKey])
 
 	function handleChangeRating(ratingKey: string, e?: ChangeEvent<HTMLInputElement>)
 	{
@@ -145,7 +155,7 @@ const TvshowForm: React.FC<TvshowFormProps> = ({tvshow, method, userTvshow}) =>
 		}
 		else if (method === 'put')
 		{
-			api.put(`users/${user.email}/tvshows/${userTvshow.data.id}`, data)
+			api.put(`users/${user.email}/tvshows/${tvshowId}`, data)
 				.then(() =>
 				{
 					successAlert(`'${tvshow.title}' was successfully edited!`)
@@ -160,15 +170,20 @@ const TvshowForm: React.FC<TvshowFormProps> = ({tvshow, method, userTvshow}) =>
 
 	return (
 		<Container>
-			<Head>
-				<title>Add Tvshow</title>
-			</Head>
-
 			<div className='img'>
-				<Image src={tvshow.image} width={780} height={1170} layout='responsive'/>
+				{
+					tvshow.title === '_loading'
+						? <SkeletonLoading />
+						: <Image src={tvshow.image} width={780} height={1170} layout='responsive'/>
+				}
 			</div>
+
 			<div className='info'>
-				<h1>{tvshow.title}</h1>
+				{
+					tvshow.title === '_loading'
+						? <SkeletonLoading height='2.5rem' width='20rem' />
+						: <h1>{tvshow.title}</h1>
+				}
 				<form onSubmit={handleSubmit} >
 					<div className='field'>
 						<label htmlFor='status'>Status</label>

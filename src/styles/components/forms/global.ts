@@ -11,6 +11,7 @@ const Container = styled.div`
 
 	.img
 	{
+		height: calc(100vh - 5rem - 4rem);
 		width: calc((100vh - 5rem - 4rem) / 1.5);
 		max-width: calc(50% - 5rem);
 
@@ -239,6 +240,7 @@ const Container = styled.div`
 
 		.img
 		{
+			height: calc(75vw * 1.5);
 			width: 75vw;
 			max-width: 40rem;
 		}

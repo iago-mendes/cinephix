@@ -1,4 +1,4 @@
-interface TvshowDetails
+type TvshowDetails =
 {
 	id: number
   image: string
@@ -34,6 +34,7 @@ interface TvshowDetails
 		}>
 	}
 }
+export default TvshowDetails
 
 export const defaultTvshow: TvshowDetails =
 {
@@ -56,4 +57,23 @@ export const defaultTvshow: TvshowDetails =
 	}
 }
 
-export default TvshowDetails
+export const loadingTvshow: TvshowDetails =
+{
+	id: 0,
+	image: '',
+	title: '_loading',
+	startDate: '',
+	endDate: '',
+	status: '',
+	inProduction: false,
+	rating: 0,
+	seasonsNumber: 0,
+	episodesNumber: 0,
+	overview: '',
+	genres: [],
+	credits:
+	{
+		cast: [],
+		crew: []
+	}
+}

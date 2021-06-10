@@ -1,43 +1,29 @@
-import {GetStaticPaths, GetStaticProps} from 'next'
 import {useEffect, useState} from 'react'
 
-import api from '../../../../services/api'
-import {Media} from '../../../../components/cards/Media'
-import TvshowDetails from '../../../../models/tvshow'
 import Loading from '../../../../components/Loading'
 import TvshowForm from '../../../../components/forms/Tvshow'
-import {UserTvshowDetails, defaultUserTvshowDetails} from '../../../../models/userTvshow'
 import useUser from '../../../../hooks/useUser'
 import RemoveButton from '../../../../components/RemoveButton'
 import SEOHead from '../../../../components/SEOHead'
+import { useRouter } from 'next/router'
 
-interface EditTvshowProps
-{
-	tvshow: TvshowDetails
-}
-
-const EditTvshow: React.FC<EditTvshowProps> = ({tvshow}) =>
+const EditTvshow: React.FC = () =>
 {
 	const {user} = useUser()
+	const {query} = useRouter()
 
-	const [userTvshow, setUserTvshow] = useState<UserTvshowDetails>(defaultUserTvshowDetails)
+	const {tvshow} = query
+
 	const [removeRoute, setRemoveRoute] = useState('')
 
 	useEffect(() =>
 	{
-		if (user && tvshow)
-			api.get(`users/${user.email}/tvshows/${tvshow.id}`)
-				.then(({data}:{data: UserTvshowDetails}) => setUserTvshow(data))
-	}, [user, tvshow])
+		if (user)
+			setRemoveRoute(`/users/${user.email}/tvshows/${tvshow}`)
+	}, [user])
 
-	useEffect(() =>
-	{
-		if (user && userTvshow)
-			setRemoveRoute(`/users/${user.email}/tvshows/${userTvshow.data.id}`)
-	}, [user, userTvshow])
-
-	if (!tvshow)
-		return <Loading style={{marginTop: 'calc(50vh - 5rem)'}} />
+	if (!tvshow || Number.isNaN(Number(tvshow)))
+		return <Loading style={{marginTop: 'auto', marginBottom: 'auto'}} />
 
 	return (
 		<div
@@ -45,51 +31,20 @@ const EditTvshow: React.FC<EditTvshowProps> = ({tvshow}) =>
 			className='page'
 		>
 			<SEOHead
-				title={`Edit ${tvshow.title} | Cinephix`}
-				description={tvshow.overview}
-				image={tvshow.image}
+				title='Edit TV show | Cinephix'
 			/>
 
 			<RemoveButton
-				title={tvshow.title}
+				title={'tvshow.title'}
 				collection='TV shows'
 				apiRoute={removeRoute}
 			/>
 
 			<TvshowForm
-				tvshow={tvshow}
 				method='put'
-				userTvshow={userTvshow}
 			/>
 		</div>
 	)
-}
-
-export const getStaticPaths: GetStaticPaths = async () =>
-{
-	const {data: tvshows}:{data: Media[]} = await api.get('tvshows')
-
-	const paths = tvshows.map(tvshow => (
-		{
-			params: {tvshow: String(tvshow.id)}
-		}))
-
-	return {
-		paths,
-		fallback: true
-	}
-}
-
-export const getStaticProps: GetStaticProps = async ctx =>
-{
-	const {tvshow: id} = ctx.params
-
-	const {data: tvshow}:{data: TvshowDetails} = await api.get(`tvshows/${id}`)
-
-	return {
-		props: {tvshow},
-		revalidate: 60
-	}
 }
 
 export default EditTvshow
