@@ -73,6 +73,13 @@ const TvshowForm: React.FC<TvshowFormProps> = ({method}) =>
 
 	useEffect(() =>
 	{
+		if (tvshowId)
+			api.get(`tvshows/${tvshowId}`)
+				.then(({data}:{data: TvshowDetails}) => setTvshow(data))
+	}, [tvshowId])
+
+	useEffect(() =>
+	{
 		if (method === 'put' && user && tvshowId)
 			api.get(`users/${user.email}/tvshows/${tvshowId}`)
 				.then(({data}:{data: UserTvshowDetails}) =>
@@ -88,16 +95,10 @@ const TvshowForm: React.FC<TvshowFormProps> = ({method}) =>
 					})
 					setRatings(tmpRatings)
 				})
-		
-		if (tvshowId)
-			api.get(`tvshows/${tvshowId}`)
-				.then(({data}:{data: TvshowDetails}) => setTvshow(data))
 	}, [user, tvshowId])
 
 	useEffect(() =>
 	{
-		console.log('<< statusKey >>', statusKey)
-
 		if (statusKey)
 			setStatus(statusKey)
 	}, [statusKey])

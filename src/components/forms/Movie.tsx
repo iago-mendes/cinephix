@@ -8,34 +8,37 @@ import Switch from 'react-switch'
 
 import Container, {RangeInput} from '../../styles/components/forms/global'
 import api from '../../services/api'
-import MovieDetails from '../../models/movie'
+import MovieDetails, { loadingMovie } from '../../models/movie'
 import {selectStyles} from '../../styles/global'
 import useUser from '../../hooks/useUser'
 import successAlert from '../../utils/alerts/success'
 import errorAlert from '../../utils/alerts/error'
 import calcTotalRating from '../../utils/getTotalRating'
 import Ratings, {defaultMovieRatings} from '../../models/ratings'
-import UserMovie, {defaultUserMovie} from '../../models/userMovie'
+import UserMovie from '../../models/userMovie'
 import {SelectOption} from '../../models'
 import getRatingLabel from '../../utils/getRatingLabel'
 import venues from '../../../db/venues.json'
+import { SkeletonLoading } from '../../utils/skeletonLoading'
 
 interface MovieFormProps
 {
-	movie: MovieDetails
 	method: string
-
-	userMovie?: UserMovie
 }
 
-const MovieForm: React.FC<MovieFormProps> = ({movie, method, userMovie}) =>
+const MovieForm: React.FC<MovieFormProps> = ({method}) =>
 {
 	const {query, back, push} = useRouter()
 	const {user} = useUser()
 
+	const movieId = Number(query.movie)
+	const watchedFromRoute = Boolean(query.watched)
+
 	const [watched, setWatched] = useState(false)
 	const [venue, setVenue] = useState('')
 	const [ratings, setRatings] = useState<Ratings>(defaultMovieRatings)
+
+	const [movie, setMovie] = useState(loadingMovie)
 
 	const venueOptions: SelectOption[] = venues.map(({name}) => (
 		{
@@ -45,28 +48,35 @@ const MovieForm: React.FC<MovieFormProps> = ({movie, method, userMovie}) =>
 
 	useEffect(() =>
 	{
-		const {watched} = query
-
-		if (watched && Boolean(watched))
-			setWatched(Boolean(watched))
-	}, [query])
+		if (!Number.isNaN(movieId))
+			api.get(`movies/${movieId}`)
+				.then(({data}:{data: MovieDetails}) => setMovie(data))
+	}, [movieId])
 
 	useEffect(() =>
 	{
-		if (userMovie && userMovie !== defaultUserMovie)
-		{
-			setWatched(userMovie.watched)
-			setVenue(userMovie.venue)
+		if (method === 'put' && user && !Number.isNaN(movieId))
+			api.get(`users/${user.email}/movies/${movieId}`)
+				.then(({data}:{data: UserMovie}) =>
+				{
+					setWatched(data.watched)
+					setVenue(data.venue)
 
-			let tmpRatings = {...ratings}
-			Object.entries(userMovie.ratings).map(([ratingKey, value]) =>
-			{
-				if (value >= 0 && value <= 10)
-					tmpRatings[ratingKey] = value
-			})
-			setRatings(tmpRatings)
-		}
-	}, [userMovie])
+					let tmpRatings = {...ratings}
+					Object.entries(data.ratings).map(([ratingKey, value]) =>
+					{
+						if (value >= 0 && value <= 10)
+							tmpRatings[ratingKey] = value
+					})
+					setRatings(tmpRatings)
+				})
+	}, [user, movieId])
+
+	useEffect(() =>
+	{
+		if (watchedFromRoute != undefined)
+			setWatched(watchedFromRoute)
+	}, [watchedFromRoute])
 
 	function handleChangeRating(ratingKey: string, e: ChangeEvent<HTMLInputElement>)
 	{
@@ -120,7 +130,7 @@ const MovieForm: React.FC<MovieFormProps> = ({movie, method, userMovie}) =>
 		}
 		else if (method === 'put')
 		{
-			api.put(`users/${user.email}/movies/${userMovie.data.id}`, data)
+			api.put(`users/${user.email}/movies/${movieId}`, data)
 				.then(() =>
 				{
 					successAlert(`'${movie.title}' was successfully edited!`)
@@ -136,10 +146,19 @@ const MovieForm: React.FC<MovieFormProps> = ({movie, method, userMovie}) =>
 	return (
 		<Container>
 			<div className='img'>
-				<Image src={movie.image} width={780} height={1170} layout='responsive'/>
+				{
+					movie.title === '_loading'
+						? <SkeletonLoading />
+						: <Image src={movie.image} width={780} height={1170} layout='responsive'/>
+				}
 			</div>
+
 			<div className='info'>
-				<h1>{movie.title}</h1>
+				{
+					movie.title === '_loading'
+						? <SkeletonLoading height='2.5rem' width='20rem' />
+						: <h1>{movie.title}</h1>
+				}
 				<form onSubmit={handleSubmit} >
 					<div className='field'>
 						<label htmlFor='watched'>Watched</label>

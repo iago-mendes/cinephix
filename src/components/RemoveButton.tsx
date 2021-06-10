@@ -12,7 +12,7 @@ const MySwal = withReactContent(Swal)
 
 interface RemoveButtonProps
 {
-	title: string
+	title?: string
 	collection: string
 
 	apiRoute: string
@@ -25,11 +25,15 @@ const RemoveButton: React.FC<RemoveButtonProps> = ({title, collection, apiRoute,
 
 	function handleClick()
 	{
+		const text = title
+			? `If you continue, '${title}' will be removed from your ${collection}!`
+			: `If you continue, it will be removed from your ${collection}!`
+
 		MySwal.fire(
 			{
 				icon: 'question',
 				title: 'Are you sure?',
-				text: `If you continue, '${title}' will be removed from your ${collection}!`,
+				text,
 				showCancelButton: true,
 				confirmButtonText: 'Continue'
 			})

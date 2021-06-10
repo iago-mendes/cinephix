@@ -54,4 +54,21 @@ export const defaultMovieDetails: MovieDetails =
 	}
 }
 
+export const loadingMovie: MovieDetails =
+{
+	id: 0,
+	image: '',
+	title: '_loading',
+	date: '',
+	status: '',
+	rating: 0,
+	overview: '',
+	genres: [],
+	credits:
+	{
+		cast: [],
+		crew: []
+	}
+}
+
 export default MovieDetails

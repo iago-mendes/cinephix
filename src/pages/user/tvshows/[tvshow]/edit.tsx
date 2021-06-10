@@ -35,7 +35,6 @@ const EditTvshow: React.FC = () =>
 			/>
 
 			<RemoveButton
-				title={'tvshow.title'}
 				collection='TV shows'
 				apiRoute={removeRoute}
 			/>

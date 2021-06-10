@@ -1,43 +1,29 @@
-import {GetStaticPaths, GetStaticProps} from 'next'
 import {useEffect, useState} from 'react'
 
-import api from '../../../../services/api'
-import {Media} from '../../../../components/cards/Media'
-import MovieDetails from '../../../../models/movie'
 import Loading from '../../../../components/Loading'
 import MovieForm from '../../../../components/forms/Movie'
-import useUser from '../../../../hooks/useUser'
-import UserMovie, { defaultUserMovie } from '../../../../models/userMovie'
 import RemoveButton from '../../../../components/RemoveButton'
 import SEOHead from '../../../../components/SEOHead'
+import { useRouter } from 'next/router'
+import useUser from '../../../../hooks/useUser'
 
-interface EditMovieProps
-{
-	movie: MovieDetails
-}
-
-const EditMovie: React.FC<EditMovieProps> = ({movie}) =>
+const EditMovie: React.FC = () =>
 {
 	const {user} = useUser()
+	const {query} = useRouter()
 
-	const [userMovie, setUserMovie] = useState<UserMovie>(defaultUserMovie)
+	const {movie} = query
+
 	const [removeRoute, setRemoveRoute] = useState('')
 
 	useEffect(() =>
 	{
 		if (user && movie)
-			api.get(`users/${user.email}/movies/${movie.id}`)
-				.then(({data}:{data: UserMovie}) => setUserMovie(data))
+			setRemoveRoute(`/users/${user.email}/movies/${movie}`)
 	}, [user, movie])
 
-	useEffect(() =>
-	{
-		if (user && userMovie)
-			setRemoveRoute(`/users/${user.email}/movies/${userMovie.data.id}`)
-	}, [user, userMovie])
-
-	if (!movie)
-		return <Loading style={{marginTop: 'calc(50vh - 5rem)'}} />
+	if (!movie || Number.isNaN(Number(movie)))
+		return <Loading style={{marginTop: 'auto', marginBottom: 'auto'}} />
 
 	return (
 		<div
@@ -45,51 +31,19 @@ const EditMovie: React.FC<EditMovieProps> = ({movie}) =>
 			className='page'
 		>
 			<SEOHead
-				title={`Edit ${movie.title} | Cinephix`}
-				description={movie.overview}
-				image={movie.image}
+				title='Edit movie | Cinephix'
 			/>
 
 			<RemoveButton
-				title={movie.title}
 				collection='movies'
 				apiRoute={removeRoute}
 			/>
 
 			<MovieForm
-				movie={movie}
 				method='put'
-				userMovie={userMovie}
 			/>
 		</div>
 	)
-}
-
-export const getStaticPaths: GetStaticPaths = async () =>
-{
-	const {data: movies}:{data: Media[]} = await api.get('movies')
-
-	const paths = movies.map(movie => (
-		{
-			params: {movie: String(movie.id)}
-		}))
-
-	return {
-		paths,
-		fallback: true
-	}
-}
-
-export const getStaticProps: GetStaticProps = async ctx =>
-{
-	const {movie: id} = ctx.params
-
-	const {data: movie}:{data: MovieDetails} = await api.get(`movies/${id}`)
-
-	return {
-		props: {movie},
-		revalidate: 60
-	}
 }
 
 export default EditMovie
