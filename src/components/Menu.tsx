@@ -147,10 +147,10 @@ const RouteOptions: React.FC<{showAbout?: boolean}> = ({showAbout = false}) =>
 	return (
 		<div className='links'>
 			<Link href='/' >Home</Link>
-			<Link href='/events' >Events</Link>
 			<Link href='/movies' >Movies</Link>
 			<Link href='/tvshows' >TV shows</Link>
 			<Link href='/celebrities' >Celebrities</Link>
+			<Link href='/events' >Events</Link>
 			{showAbout && (
 				<Link href='/about' >About</Link>
 			)}
