@@ -4,7 +4,7 @@ function useDimensions()
 {
 	const [width, setWidth] = useState(360)
 	const [height, setHeight] = useState(640)
-	let oldHeight = 640
+	let oldHeight = 0
 
 	const inMobile = width <= 1000
 	const inDesktop = width > 1000
