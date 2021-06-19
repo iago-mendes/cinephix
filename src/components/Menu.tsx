@@ -50,11 +50,18 @@ const Menu: React.FC = () =>
 
 		const isScrollingDown = newScroll >= oldScroll
 
-		const tmpMenuSpace = newScroll < 50
-			? 0
-			: isScrollingDown
+		let tmpMenuSpace: number
+
+		if (inMobile)
+			tmpMenuSpace = isScrollingDown
 				? -50
 				: 0
+		else
+			tmpMenuSpace = newScroll < 50
+				? 0
+				: isScrollingDown
+					? -50
+					: 0
 		
 		scroll = newScroll
 		setMenuSpace(tmpMenuSpace)

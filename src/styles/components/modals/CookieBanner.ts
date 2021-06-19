@@ -13,6 +13,7 @@ const Container = styled.div`
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
+	gap: 1rem;
 
 	.message
 	{
@@ -57,7 +58,7 @@ const Container = styled.div`
 
 			:hover
 			{
-				transform: scale(1.1);
+				transform: scale(1.05);
 			}
 		}
 
@@ -86,7 +87,26 @@ const Container = styled.div`
 
 	@media(max-width: 1000px)
 	{
-		width: calc(100vw - 2rem)
+		margin-left: 1rem;
+		width: calc(100vw - 3rem);
+
+		.message
+		{
+			h2
+			{
+				font-size: 1.5rem;
+			}
+
+			p
+			{
+				font-size: 1.25rem;
+			}
+		}
+
+		.buttons button
+		{
+			font-size: 1.5rem;
+		}
 	}
 `
 

@@ -8,14 +8,14 @@ import HorizontalAd from './Horizontal'
 const BannerAd: React.FC = () =>
 {
 	const [show, setShow] = useState(false)
-	const {width} = useDimensions()
+	const {inMobile} = useDimensions()
 
 	useEffect(() =>
 	{
 		setTimeout(() => setShow(true), 10 * 1000)
 	}, [])
 
-	if (width < 360 || !show)
+	if (inMobile || !show)
 		return null
 
 	return (
