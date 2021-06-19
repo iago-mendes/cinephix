@@ -36,6 +36,20 @@ const Container = styled.footer`
 		}
 	}
 
+	.attribution
+	{
+		font-family: Roboto;
+		font-size: 1.25rem;
+		
+		color: ${p => p.theme.gray};
+
+		a
+		{
+			color: ${p => p.theme.gray};
+			text-decoration: underline;
+		}
+	}
+
 	.info
 	{
 		width: 70%;
@@ -84,35 +98,12 @@ const Container = styled.footer`
 				}
 			}
 		}
-
-		.attribution
-		{
-			font-family: Roboto;
-			font-size: 1.25rem;
-			
-			color: ${p => p.theme.gray};
-
-			a
-			{
-				color: ${p => p.theme.gray};
-			}
-		}
 	}
 
-	@media(max-width: 700px)
+	@media(max-width: 1000px)
 	{
-		flex-direction: column;
-		gap: 2rem;
-
-		.logos
-		{
-			width: 100%;
-		}
-
-		.info
-		{
-			width: 100%;
-		}
+		justify-content: center;
+		padding: 1rem;
 	}
 `
 

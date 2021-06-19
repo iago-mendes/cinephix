@@ -55,7 +55,7 @@ const Menu: React.FC = () =>
 							<FiX />
 						</button>
 
-						<RouteOptions />
+						<RouteOptions showAbout />
 					</BurgerMenu>
 				</div>
 			)}
@@ -103,7 +103,7 @@ const Menu: React.FC = () =>
 	)
 }
 
-const RouteOptions: React.FC = () =>
+const RouteOptions: React.FC<{showAbout?: boolean}> = ({showAbout = false}) =>
 {
 	return (
 		<div className='links'>
@@ -112,6 +112,9 @@ const RouteOptions: React.FC = () =>
 			<Link href='/movies' >Movies</Link>
 			<Link href='/tvshows' >TV shows</Link>
 			<Link href='/celebrities' >Celebrities</Link>
+			{showAbout && (
+				<Link href='/about' >About</Link>
+			)}
 		</div>
 	)
 }
