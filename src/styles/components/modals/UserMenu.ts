@@ -108,6 +108,20 @@ const Container = styled.div`
 			}
 		}
 	}
+
+	@media (max-width: 1000px)
+	{
+		.detail svg
+		{
+			transform: rotate(180deg);
+		}
+
+		main
+		{
+			margin-top: 0;
+			margin-bottom: -3px;
+		}
+	}
 `
 
 export default Container

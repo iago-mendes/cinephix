@@ -26,14 +26,44 @@ const Menu: React.FC = () =>
 	const [isBurgerMenuOpen, setIsBurgerMenuOpen] = useState(false)
 	const burgerRef = useClickOutside(() => setIsBurgerMenuOpen(false))
 
+	const [menuSpace, setMenuSpace] = useState(0)
+	let scroll = 0
+
+	useEffect(() =>
+	{
+		window.addEventListener('scroll', handleScroll, {passive: true})
+
+		return () => window.removeEventListener('scroll', handleScroll)
+	}, [])
+
 	useEffect(() =>
 	{
 		setIsBurgerMenuOpen(false)
 	}, [pathname])
 
+	function handleScroll()
+	{
+		setIsUserMenuOpen(false)
+
+		const oldScroll = scroll
+		const newScroll = window.scrollY
+
+		const isScrollingDown = newScroll >= oldScroll
+
+		const tmpMenuSpace = newScroll < 50
+			? 0
+			: isScrollingDown
+				? -50
+				: 0
+		
+		scroll = newScroll
+		setMenuSpace(tmpMenuSpace)
+	}
+
 	return (
 		<Container
 			isUserMenuOpen={isUserMenuOpen}
+			menuSpace={menuSpace}
 		>
 			{inMobile && (
 				<div className='burger' >
@@ -63,7 +93,9 @@ const Menu: React.FC = () =>
 			<Link href='/'>
 				<div className='logos'>
 					<img src={logoIcon} className='icon' />
-					<img src={logoName} className='name' />
+					{inDesktop && (
+						<img src={logoName} className='name' />
+					)}
 				</div>
 			</Link>
 			

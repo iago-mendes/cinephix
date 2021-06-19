@@ -8,6 +8,7 @@ import Link from 'next/link'
 
 import Container from '../../styles/components/modals/UserMenu'
 import useUser from '../../hooks/useUser'
+import useDimensions from '../../hooks/useDimensions'
 
 interface UserMenuProps
 {
@@ -19,6 +20,7 @@ const UserMenu: React.FC<UserMenuProps> = ({isOpen, setIsOpen}) =>
 {
 	const {user} = useUser()
 	const {pathname} = useRouter()
+	const {inMobile, inDesktop} = useDimensions()
 
 	useEffect(() =>
 	{
@@ -58,19 +60,24 @@ const UserMenu: React.FC<UserMenuProps> = ({isOpen, setIsOpen}) =>
 				{{
 					position: 'absolute',
 					right: 0,
-					top: '3.5rem',
+					top: inMobile ? 'unset' : '3.5rem',
+					bottom: inMobile ? '3.5rem' : 'unset',
 					zIndex: 100,
 
 					overflow: 'hidden',
 					direction: 'rtl',
 					padding: '1rem',
-					paddingTop: 0,
+					paddingTop: inMobile ? '1rem' : 0,
+					paddingBottom: inMobile ? 0 : '1rem',
 				}}
 		>
 			<Container>
-				<div className='detail'>
-					<BsFillTriangleFill size={10} />
-				</div>
+				{inDesktop && (
+					<div className='detail'>
+						<BsFillTriangleFill size={10} />
+					</div>
+				)}
+				
 				<main>
 					<div className='session'>
 						<p>Signed in as <strong>{user.email}</strong></p>
@@ -94,6 +101,12 @@ const UserMenu: React.FC<UserMenuProps> = ({isOpen, setIsOpen}) =>
 						</Link>
 					</div>
 				</main>
+
+				{inMobile && (
+					<div className='detail'>
+						<BsFillTriangleFill size={10} />
+					</div>
+				)}
 			</Container>
 		</motion.div>
 	)
