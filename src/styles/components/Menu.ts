@@ -188,9 +188,14 @@ const Container = styled.nav<ContainerProps>`
 		top: unset;
 		bottom: ${p => p.menuSpace}px;
 
+		.burger
+		{
+			width: 10rem;
+		}
+
 		.logos
 		{
-			width: 15rem;
+			width: 6rem;
 			position: relative;
 			justify-content: center;
 
@@ -205,9 +210,19 @@ const Container = styled.nav<ContainerProps>`
 			}
 		}
 
-		.container .user button.dropdown .indicator
+		.container
 		{
-			transform: ${p => p.isUserMenuOpen ? 'rotate(0deg)' : 'rotate(-90deg)'};
+			width: 10rem;
+
+			.user
+			{
+				margin-left: auto;
+
+				button.dropdown .indicator
+				{
+					transform: ${p => p.isUserMenuOpen ? 'rotate(0deg)' : 'rotate(-90deg)'};
+				}
+			}
 		}
 	}
 `
