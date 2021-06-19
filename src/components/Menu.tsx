@@ -17,7 +17,7 @@ import useClickOutside from '../hooks/useClickOutside'
 const Menu: React.FC = () =>
 {
 	const {user} = useUser()
-	const {inMobile, inDesktop} = useDimensions()
+	const {inMobile, inDesktop, isVirtualKeyboardOpen} = useDimensions()
 	const {pathname} = useRouter()
 	
 	const [isUserMenuOpen, setIsUserMenuOpen] = useState(false)
@@ -40,6 +40,14 @@ const Menu: React.FC = () =>
 	{
 		setIsBurgerMenuOpen(false)
 	}, [pathname])
+
+	useEffect(() =>
+	{
+		if (isVirtualKeyboardOpen)
+			setMenuSpace(-50)
+		else
+			setMenuSpace(0)
+	}, [isVirtualKeyboardOpen])
 
 	function handleScroll()
 	{
