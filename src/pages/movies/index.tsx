@@ -25,6 +25,10 @@ const Movies: React.FC<MoviesProps> = ({staticMovies}) =>
 	
 	const [movies, setMovies] = useState<Media[]>(staticMovies)
 
+	const moviesWithAd = movies.length < 10
+		? movies
+		: [...movies.slice(0, 10), {...movies[9], id: -1}, ...movies.slice(10)]
+
 	useEffect(() =>
 	{
 		updatePaginatedData(
@@ -57,19 +61,22 @@ const Movies: React.FC<MoviesProps> = ({staticMovies}) =>
 				loading={loading}
 				noResults={movies.length === 0}
 			>
-				{movies.map((item, index) => (
-					<>
-						<MediaCard
-							media={item}
-							showOverview
-							key={item.id}
-							link={`movies/${item.id}`}
-						/>
-						{index === 9 && (
-							<CardAd key='ad' />
-						)}
-					</>
-				))}
+				{moviesWithAd.map((item, index) =>
+				{
+					if (item.id < 0)
+						return (
+							<CardAd key={index} />
+						)
+					else
+						return (
+							<MediaCard
+								media={item}
+								showOverview
+								key={index}
+								link={`movies/${item.id}`}
+							/>
+						)
+				})}
 			</GridPaginate>
 		</div>
 	)

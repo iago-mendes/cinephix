@@ -35,6 +35,10 @@ const Home: React.FC<HomeProps> = ({staticHome}) =>
 	
 	const [home, setHome] = useState<Array<Media | Celebrity>>(staticHome)
 
+	const homeWithAd = home.length < 10
+		? home
+		: [...home.slice(0, 10), {...home[9], id: -1}, ...home.slice(10)]
+
 	useEffect(() =>
 	{
 		updatePaginatedData(
@@ -93,25 +97,19 @@ const Home: React.FC<HomeProps> = ({staticHome}) =>
 				loading={loading}
 				noResults={home.length === 0}
 			>
-				{home.map((item, index) =>
+				{homeWithAd.map((item, index) =>
 				{
-					if (isMedia(item))
+					if (item.id < 0)
 						return (
-							<>
-								<MediaCard media={item} showOverview key={item.id} link={`/${item.type}s/${item.id}`} />
-								{index === 9 && (
-									<CardAd key='ad' />
-								)}
-							</>
+							<CardAd key={index} />
+						)
+					else if (isMedia(item))
+						return (
+							<MediaCard media={item} showOverview key={index} link={`/${item.type}s/${item.id}`} />
 						)
 					else if (isCelebrity(item))
 						return (
-							<>
-								<CelebrityCard celebrity={item} showKnownFor key={item.id} />
-								{index === 9 && (
-									<CardAd key='ad' />
-								)}
-							</>
+							<CelebrityCard celebrity={item} showKnownFor key={index} />
 						)
 				})}
 			</GridPaginate>

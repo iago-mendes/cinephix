@@ -25,6 +25,10 @@ const Tvshows: React.FC<TvshowsProps> = ({staticTvshows}) =>
 	
 	const [tvshows, setTvshows] = useState<Media[]>(staticTvshows)
 
+	const tvshowsWithAd = tvshows.length < 10
+		? tvshows
+		: [...tvshows.slice(0, 10), {...tvshows[9], id: -1}, ...tvshows.slice(10)]
+
 	useEffect(() =>
 	{
 		updatePaginatedData(
@@ -57,19 +61,21 @@ const Tvshows: React.FC<TvshowsProps> = ({staticTvshows}) =>
 				loading={loading}
 				noResults={tvshows.length === 0}
 			>
-				{tvshows.map((item, index) => (
-					<>
+				{tvshowsWithAd.map((item, index) =>
+				{
+					if (item.id < 0)
+						return (
+							<CardAd key={index} />
+						)
+					return (
 						<MediaCard
 							media={item}
 							showOverview
-							key={item.id}
+							key={index}
 							link={`tvshows/${item.id}`}
 						/>
-						{index === 9 && (
-							<CardAd key='ad' />
-						)}
-					</>
-				))}
+					)
+				})}
 			</GridPaginate>
 		</div>
 	)

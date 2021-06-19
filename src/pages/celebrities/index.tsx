@@ -25,6 +25,10 @@ const Celebrities: React.FC<CelebritiesProps> = ({staticCelebrities}) =>
 	
 	const [celebrities, setCelebrities] = useState<Celebrity[]>(staticCelebrities)
 
+	const celebritiesWithAd = celebrities.length < 10
+		? celebrities
+		: [...celebrities.slice(0, 10), {...celebrities[9], id: -1}, ...celebrities.slice(10)]
+
 	useEffect(() =>
 	{
 		updatePaginatedData(
@@ -57,18 +61,20 @@ const Celebrities: React.FC<CelebritiesProps> = ({staticCelebrities}) =>
 				loading={loading}
 				noResults={celebrities.length === 0}
 			>
-				{celebrities.map((celebrity, index) => (
-					<>
+				{celebritiesWithAd.map((celebrity, index) =>
+				{
+					if (celebrity.id < 0)
+						return (
+							<CardAd key={index} />
+						)
+					return (
 						<CelebrityCard
 							celebrity={celebrity}
 							showKnownFor
-							key={celebrity.id}
+							key={index}
 						/>
-						{index === 9 && (
-							<CardAd key='ad' />
-						)}
-					</>
-				))}
+					)
+				})}
 			</GridPaginate>
 		</div>
 	)
