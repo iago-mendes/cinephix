@@ -5,18 +5,15 @@ const Container = styled.div`
 	width: 100vw;
 	height: 100vh;
 
-	padding-bottom: 1rem;
-	padding-top: 5rem;
+	padding: 1rem 0;
 	overflow-y: auto;
 	overflow-x: hidden;
 
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
+	display: unset;
 
 	.close
 	{
+		width: fit-content;
 		margin-left: auto;
 		margin-right: 1rem;
 
@@ -61,6 +58,9 @@ const Container = styled.div`
 		padding: 1rem;
 		margin: 1rem;
 
+		margin-left: auto;
+		margin-right: auto;
+
 		position: relative;
 
 		span
@@ -86,7 +86,6 @@ const Container = styled.div`
 	{
 		width: 50vw;
 		height: 90vh;
-		padding-top: 12.5rem;
 
 		::-webkit-scrollbar
 		{
