@@ -40,6 +40,14 @@ const Container = styled.div`
 
 			color: ${p => p.theme.primary};
 			font-size: 20px;
+
+			transition: background-color 0.25s, color 0.25s;
+
+			:hover
+			{
+				background-color: ${p => p.theme.primary};
+				color: ${p => p.theme.background};
+			}
 		}
 	}
 `

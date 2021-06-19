@@ -82,3 +82,24 @@ export const LargeMobileBannerAd: React.FC = () => {
 		/>
 	)
 }
+
+export const LargeSkyscraperAd: React.FC = () => {
+	useEffect(() =>
+	{
+		adScript()
+	}, [])
+
+	return (
+		<ins
+			className='adsbygoogle'
+			style=
+				{{
+					display: 'inline-block',
+					width: '300px',
+					height: '600px'
+				}}
+			data-ad-client='ca-pub-7920836956538831'
+			data-ad-slot='9673898511'
+		/>
+	)
+}

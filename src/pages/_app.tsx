@@ -14,6 +14,7 @@ import Footer from '../components/Footer'
 import * as gtag from '../utils/gtag'
 import CookieBanner from '../components/modals/CookieBanner'
 import BannerAd from '../components/ads/Banner'
+import ModalAd from '../components/ads/Modal'
 
 const MyApp: React.FC<AppProps> = ({Component, pageProps}) =>
 {
@@ -41,6 +42,7 @@ const MyApp: React.FC<AppProps> = ({Component, pageProps}) =>
 		<ThemeProvider theme={theme}>
 			<CookieBanner />
 			<BannerAd />
+			<ModalAd />
 			<SessionProvider session={pageProps.session} >
 				<Menu />
 				<SessionHandler>
