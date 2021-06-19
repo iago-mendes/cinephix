@@ -21,6 +21,8 @@ export default createGlobalStyle`
 	{
 		background-color: ${p => p.theme.background};
 
+		overscroll-behavior: contain;
+
 		::-webkit-scrollbar
 		{
 			width: 1rem;
@@ -91,6 +93,17 @@ export default createGlobalStyle`
 		{
 			font-size: 15px !important;
 			font-family: Ubuntu !important;
+		}
+	}
+
+	@media (max-width: 1000px)
+	{
+		body
+		{
+			-webkit-user-select: none;
+			-moz-user-select: -moz-none;
+			-ms-user-select: none;
+			user-select: none;
 		}
 	}
 `
