@@ -224,8 +224,9 @@ export const getStaticPaths: GetStaticPaths = async () =>
 export const getStaticProps: GetStaticProps = async ctx =>
 {
 	const {tvshow: id} = ctx.params
+	const language = ctx.locale
 
-	const {data: tvshow}:{data: TvshowDetails} = await api.get(`tvshows/${id}`)
+	const {data: tvshow}:{data: TvshowDetails} = await api.get(`tvshows/${id}`, {params: {language}})
 
 	return {
 		props: {tvshow},

@@ -3,6 +3,7 @@ import {DragDropContext, Droppable, Draggable, DropResult, resetServerContext} f
 import Image from 'next/image'
 import {GetServerSideProps} from 'next'
 import {BiQuestionMark} from 'react-icons/bi'
+import { useRouter } from 'next/router'
 
 import Container from '../../../styles/pages/user/tvshows/index'
 import api from '../../../services/api'
@@ -50,6 +51,7 @@ const validStatus: {[statusKey: string]: string} =
 const UserTvshows: React.FC = () =>
 {
 	const {user} = useUser()
+	const {locale: language} = useRouter()
 
 	const [tvshowList, setTvshowList] = useState<TvshowList>(defaultTvshowList)
 	const [loading, setLoading] = useState(false)
@@ -69,7 +71,7 @@ const UserTvshows: React.FC = () =>
 		if (!user || !user.email)
 			return setTvshowList(defaultTvshowList)
 		
-		await api.get(`users/${user.email}/tvshows`)
+		await api.get(`users/${user.email}/tvshows`, {params: {language}})
 			.then(({data}) => setTvshowList(data))
 			.catch(error =>
 			{

@@ -232,8 +232,9 @@ export const getStaticPaths: GetStaticPaths = async () =>
 export const getStaticProps: GetStaticProps = async ctx =>
 {
 	const {group: urlId} = ctx.params
+	const language = ctx.locale
 
-	const {data: group}:{data: GroupInterface} = await api.get(`groups/${urlId}`)
+	const {data: group}:{data: GroupInterface} = await api.get(`groups/${urlId}`, {params: {language}})
 
 	return {
 		props: {group},

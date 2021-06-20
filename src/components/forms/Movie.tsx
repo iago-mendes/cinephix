@@ -28,7 +28,7 @@ interface MovieFormProps
 
 const MovieForm: React.FC<MovieFormProps> = ({method}) =>
 {
-	const {query, back, push} = useRouter()
+	const {query, back, push, locale: language} = useRouter()
 	const {user} = useUser()
 
 	const movieId = Number(query.movie)
@@ -49,14 +49,14 @@ const MovieForm: React.FC<MovieFormProps> = ({method}) =>
 	useEffect(() =>
 	{
 		if (!Number.isNaN(movieId))
-			api.get(`movies/${movieId}`)
+			api.get(`movies/${movieId}`, {params: {language}})
 				.then(({data}:{data: MovieDetails}) => setMovie(data))
 	}, [movieId])
 
 	useEffect(() =>
 	{
 		if (method === 'put' && user && !Number.isNaN(movieId))
-			api.get(`users/${user.email}/movies/${movieId}`)
+			api.get(`users/${user.email}/movies/${movieId}`, {params: {language}})
 				.then(({data}:{data: UserMovie}) =>
 				{
 					setWatched(data.watched)

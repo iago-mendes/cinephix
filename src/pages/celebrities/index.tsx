@@ -10,6 +10,7 @@ import HeaderWithBackground from '../../components/HeaderWithBackground'
 import SEOHead from '../../components/SEOHead'
 import CardAd from '../../components/ads/Card'
 import { updatePaginatedData } from '../../utils/updatePaginatedData'
+import { useRouter } from 'next/router'
 
 interface CelebritiesProps
 {
@@ -18,6 +19,8 @@ interface CelebritiesProps
 
 const Celebrities: React.FC<CelebritiesProps> = ({staticCelebrities}) =>
 {
+	const {locale: language} = useRouter()
+
 	const [search, setSearch] = useState('')
 	const [page, setPage] = useState(1)
 	const [totalPages, setTotalPages] = useState(1)
@@ -40,7 +43,8 @@ const Celebrities: React.FC<CelebritiesProps> = ({staticCelebrities}) =>
 				page,
 				setPage,
 				setTotalPages,
-				defaultData: staticCelebrities
+				defaultData: staticCelebrities,
+				language
 			})
 	}, [search, page])
 
@@ -80,9 +84,11 @@ const Celebrities: React.FC<CelebritiesProps> = ({staticCelebrities}) =>
 	)
 }
 
-export const getStaticProps: GetStaticProps = async () =>
+export const getStaticProps: GetStaticProps = async ctx =>
 {
-	const {data}:{data: Celebrity[]} = await api.get('/celebrities')
+	const language = ctx.locale
+
+	const {data}:{data: Celebrity[]} = await api.get('/celebrities', {params: {language}})
 
 	return {
 		props: {staticCelebrities: data},

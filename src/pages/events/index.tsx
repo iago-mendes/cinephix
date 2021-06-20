@@ -44,9 +44,11 @@ const Events: React.FC<EventsProps> = ({events}) =>
 	)
 }
 
-export const getStaticProps: GetStaticProps = async () =>
+export const getStaticProps: GetStaticProps = async ctx =>
 {
-	const {data}:{data: EventListed[]} = await api.get('/events')
+	const language = ctx.locale
+
+	const {data}:{data: EventListed[]} = await api.get('/events', {params: {language}})
 
 	return {
 		props: {events: data},

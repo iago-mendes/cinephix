@@ -43,7 +43,7 @@ interface TvshowFormProps
 
 const TvshowForm: React.FC<TvshowFormProps> = ({method}) =>
 {
-	const {query, back, push} = useRouter()
+	const {query, back, push, locale: language} = useRouter()
 	const {user} = useUser()
 
 	const tvshowId = Number(query.tvshow)
@@ -74,14 +74,14 @@ const TvshowForm: React.FC<TvshowFormProps> = ({method}) =>
 	useEffect(() =>
 	{
 		if (tvshowId)
-			api.get(`tvshows/${tvshowId}`)
+			api.get(`tvshows/${tvshowId}`, {params: {language}})
 				.then(({data}:{data: TvshowDetails}) => setTvshow(data))
 	}, [tvshowId])
 
 	useEffect(() =>
 	{
 		if (method === 'put' && user && tvshowId)
-			api.get(`users/${user.email}/tvshows/${tvshowId}`)
+			api.get(`users/${user.email}/tvshows/${tvshowId}`, {params: {language}})
 				.then(({data}:{data: UserTvshowDetails}) =>
 				{
 					setStatus(data.status)

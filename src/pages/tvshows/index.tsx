@@ -10,6 +10,7 @@ import HeaderWithBackground from '../../components/HeaderWithBackground'
 import SEOHead from '../../components/SEOHead'
 import CardAd from '../../components/ads/Card'
 import { updatePaginatedData } from '../../utils/updatePaginatedData'
+import { useRouter } from 'next/router'
 
 interface TvshowsProps
 {
@@ -18,6 +19,8 @@ interface TvshowsProps
 
 const Tvshows: React.FC<TvshowsProps> = ({staticTvshows}) =>
 {
+	const {locale: language} = useRouter()
+
 	const [search, setSearch] = useState('')
 	const [page, setPage] = useState(1)
 	const [totalPages, setTotalPages] = useState(1)
@@ -40,7 +43,8 @@ const Tvshows: React.FC<TvshowsProps> = ({staticTvshows}) =>
 				page,
 				setPage,
 				setTotalPages,
-				defaultData: staticTvshows
+				defaultData: staticTvshows,
+				language
 			})
 	}, [search, page])
 
@@ -81,9 +85,10 @@ const Tvshows: React.FC<TvshowsProps> = ({staticTvshows}) =>
 	)
 }
 
-export const getStaticProps: GetStaticProps = async () =>
+export const getStaticProps: GetStaticProps = async ctx =>
 {
-	const {data}:{data: Media[]} = await api.get('/tvshows')
+	const language = ctx.locale
+	const {data}:{data: Media[]} = await api.get('/tvshows', {params: {language}})
 
 	return {
 		props: {staticTvshows: data},

@@ -20,6 +20,7 @@ import popcorn from '../assets/vector-icons/popcorn.svg'
 import SEOHead from '../components/SEOHead'
 import CardAd from '../components/ads/Card'
 import { updatePaginatedData } from '../utils/updatePaginatedData'
+import { useRouter } from 'next/router'
 
 interface HomeProps
 {
@@ -28,6 +29,8 @@ interface HomeProps
 
 const Home: React.FC<HomeProps> = ({staticHome}) =>
 {
+	const {locale: language} = useRouter()
+
 	const [search, setSearch] = useState('')
 	const [page, setPage]	= useState(1)
 	const [totalPages, setTotalPages] = useState(1)
@@ -50,7 +53,8 @@ const Home: React.FC<HomeProps> = ({staticHome}) =>
 				page,
 				setPage,
 				setTotalPages,
-				defaultData: staticHome
+				defaultData: staticHome,
+				language
 			})
 	}, [search, page])
 
@@ -117,9 +121,10 @@ const Home: React.FC<HomeProps> = ({staticHome}) =>
 	)
 }
 
-export const getStaticProps: GetStaticProps = async () =>
+export const getStaticProps: GetStaticProps = async ctx =>
 {
-	const {data}:{data: Array<Media | Celebrity>} = await api.get('/home')
+	const language = ctx.locale
+	const {data}:{data: Array<Media | Celebrity>} = await api.get('/home', {params: {language}})
 
 	return {
 		props: {staticHome: data},

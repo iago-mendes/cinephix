@@ -105,8 +105,9 @@ export const getStaticPaths: GetStaticPaths = async () =>
 export const getStaticProps: GetStaticProps = async ctx =>
 {
 	const {event: id} = ctx.params
+	const language = ctx.locale
 
-	const {data: event}:{data: EventDetails} = await api.get(`events/${id}`)
+	const {data: event}:{data: EventDetails} = await api.get(`events/${id}`, {params: {language}})
 
 	return {
 		props: {event},

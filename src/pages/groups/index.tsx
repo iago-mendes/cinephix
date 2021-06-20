@@ -14,14 +14,14 @@ import HorizontalAd from '../../components/ads/Horizontal'
 const Groups: React.FC = () =>
 {
 	const {user} = useUser()
-	const {push} = useRouter()
+	const {push, locale: language} = useRouter()
 
 	const [groups, setGroups] = useState<GroupListed[]>([])
 
 	useEffect(() =>
 	{
 		if (user)
-			api.get(`groups/participants/${user.email}`)
+			api.get(`groups/participants/${user.email}`, {params: {language}})
 				.then(({data}:{data: GroupListed[]}) =>
 				{
 					setGroups(data)

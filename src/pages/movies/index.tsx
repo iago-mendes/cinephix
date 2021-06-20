@@ -10,6 +10,7 @@ import HeaderWithBackground from '../../components/HeaderWithBackground'
 import SEOHead from '../../components/SEOHead'
 import CardAd from '../../components/ads/Card'
 import { updatePaginatedData } from '../../utils/updatePaginatedData'
+import { useRouter } from 'next/router'
 
 interface MoviesProps
 {
@@ -18,6 +19,8 @@ interface MoviesProps
 
 const Movies: React.FC<MoviesProps> = ({staticMovies}) =>
 {
+	const {locale: language} = useRouter()
+
 	const [search, setSearch] = useState('')
 	const [page, setPage] = useState(1)
 	const [totalPages, setTotalPages] = useState(1)
@@ -40,7 +43,8 @@ const Movies: React.FC<MoviesProps> = ({staticMovies}) =>
 				page,
 				setPage,
 				setTotalPages,
-				defaultData: staticMovies
+				defaultData: staticMovies,
+				language
 			})
 	}, [search, page])
 
@@ -82,9 +86,10 @@ const Movies: React.FC<MoviesProps> = ({staticMovies}) =>
 	)
 }
 
-export const getStaticProps: GetStaticProps = async () =>
+export const getStaticProps: GetStaticProps = async ctx =>
 {
-	const {data}:{data: Media[]} = await api.get('/movies')
+	const language = ctx.locale
+	const {data}:{data: Media[]} = await api.get('/movies', {params: {language}})
 
 	return {
 		props: {staticMovies: data},

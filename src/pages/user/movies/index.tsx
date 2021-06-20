@@ -4,6 +4,7 @@ import {BsFillTriangleFill} from 'react-icons/bs'
 import Select from 'react-select'
 import {FiPlus} from 'react-icons/fi'
 import {motion} from 'framer-motion'
+import { useRouter } from 'next/router'
 
 import Container, {Dropdown} from '../../../styles/pages/user/movies/index'
 import api from '../../../services/api'
@@ -21,6 +22,7 @@ import { SkeletonLoading } from '../../../utils/skeletonLoading'
 const UserMovies: React.FC = () =>
 {
 	const {user} = useUser()
+	const {locale: language} = useRouter()
 
 	const defaultMovieList: UserMovieListed[] = Array(7).fill(loadingUserMovieListed)
 	const [movieList, setMovieList] = useState<UserMovieListed[]>(defaultMovieList)
@@ -54,7 +56,7 @@ const UserMovies: React.FC = () =>
 	{
 		if (user)
 		{
-			const {data}:{data: UserMovieListed[]} = await api.get(`users/${user.email}/movies`)
+			const {data}:{data: UserMovieListed[]} = await api.get(`users/${user.email}/movies`, {params: {language}})
 			setMovieList(handleSort(data))
 		}
 	}

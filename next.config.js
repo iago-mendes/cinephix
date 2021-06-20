@@ -25,5 +25,10 @@ module.exports = withPWA(withImages({
 	pwa:
 	{
 		dest: 'public'
-	}
+	},
+	i18n:
+	{
+    locales: ['en-US', 'pt-BR'],
+    defaultLocale: 'en-US',
+  }
 }))

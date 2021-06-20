@@ -14,6 +14,7 @@ type UpdatePaginatedDataProps =
 	setTotalPages: (totalPages: number) => void
 
 	defaultData?: any
+	language?: string
 }
 
 export async function updatePaginatedData
@@ -25,13 +26,14 @@ export async function updatePaginatedData
 	page,
 	setPage,
 	setTotalPages,
-	defaultData = []
+	defaultData = [],
+	language
 }:UpdatePaginatedDataProps)
 {
 	if (!(search === '' && page === 1))
 		setLoading(true)
 
-	await api.get(route, {params: {search, page}})
+	await api.get(route, {params: {search, page, language}})
 		.then(({data, headers}) =>
 		{
 			setData(data)
