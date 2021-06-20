@@ -19,12 +19,12 @@ const Container = styled.div`
 	color: ${p => p.theme.secondary};
 	box-shadow: 0px 5px 5px rgba(0,0,0,0.5);
 
-	border-radius: 100rem;
-	transition: 0.25s;
+	border-radius: 2rem;
+	transition: border-radius 0.25s;
 
 	:hover
 	{
-		transform: scale(1.03);
+		border-radius: 0;
 	}
 
 	input
@@ -48,7 +48,7 @@ const Container = styled.div`
 
 		input
 		{
-			font-size: 1.75rem;
+			font-size: 1.5rem;
 		}
 	}
 `
