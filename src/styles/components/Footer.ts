@@ -104,6 +104,7 @@ const Container = styled.footer`
 	{
 		justify-content: center;
 		padding: 1rem;
+		padding-bottom: 7.5rem;
 	}
 `
 

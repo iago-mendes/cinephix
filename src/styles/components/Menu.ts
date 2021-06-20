@@ -3,7 +3,6 @@ import styled from 'styled-components'
 type ContainerProps =
 {
 	isUserMenuOpen: boolean
-	menuSpace: number
 }
 
 const Container = styled.nav<ContainerProps>`
@@ -16,14 +15,7 @@ const Container = styled.nav<ContainerProps>`
 	padding-right: 2rem;
 
 	height: 5rem;
-	width: 100vw;
 	background-color: ${p => p.theme.secondary};
-
-	position: fixed;
-	top: ${p => p.menuSpace}px;
-	z-index: 2;
-
-	transition: top 0.2s, bottom 0.2s;
 
 	.logos
 	{
@@ -185,8 +177,10 @@ const Container = styled.nav<ContainerProps>`
 
 	@media(max-width: 1000px)
 	{
-		top: unset;
-		bottom: ${p => p.menuSpace}px;
+		position: fixed;
+		z-index: 2;
+		bottom: 0;
+		width: 100%;
 
 		.burger
 		{
@@ -205,8 +199,7 @@ const Container = styled.nav<ContainerProps>`
 				height: 6rem;
 
 				position: absolute;
-				bottom: ${p => p.menuSpace}px;
-				transition: bottom 0.2s;
+				bottom: 0;
 			}
 		}
 

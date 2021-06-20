@@ -68,7 +68,6 @@ export default createGlobalStyle`
 	.page
 	{
 		min-height: calc(100vh - 5rem);
-		margin-top: 5rem;
 	}
 
 	.swal2-popup
@@ -105,12 +104,6 @@ export default createGlobalStyle`
 			-moz-user-select: -moz-none;
 			-ms-user-select: none;
 			user-select: none;
-		}
-
-		.page
-		{
-			min-height: 100vh;
-			margin-top: 0;
 		}
 	}
 `

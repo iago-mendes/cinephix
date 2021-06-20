@@ -26,59 +26,17 @@ const Menu: React.FC = () =>
 	const [isBurgerMenuOpen, setIsBurgerMenuOpen] = useState(false)
 	const burgerRef = useClickOutside(() => setIsBurgerMenuOpen(false))
 
-	const [menuSpace, setMenuSpace] = useState(0)
-	let scroll = 0
-
-	useEffect(() =>
-	{
-		window.addEventListener('scroll', handleScroll, {passive: true})
-
-		return () => window.removeEventListener('scroll', handleScroll)
-	}, [])
-
 	useEffect(() =>
 	{
 		setIsBurgerMenuOpen(false)
 	}, [pathname])
 
-	useEffect(() =>
-	{
-		if (isVirtualKeyboardOpen)
-			setMenuSpace(-50)
-		else
-			setMenuSpace(0)
-	}, [isVirtualKeyboardOpen])
-
-	function handleScroll()
-	{
-		setIsUserMenuOpen(false)
-
-		const oldScroll = scroll
-		const newScroll = window.scrollY
-
-		const isScrollingDown = newScroll >= oldScroll
-
-		let tmpMenuSpace: number
-
-		if (inMobile)
-			tmpMenuSpace = isScrollingDown
-				? -50
-				: 0
-		else
-			tmpMenuSpace = newScroll < 50
-				? 0
-				: isScrollingDown
-					? -50
-					: 0
-		
-		scroll = newScroll
-		setMenuSpace(tmpMenuSpace)
-	}
+	if (isVirtualKeyboardOpen)
+		return null
 
 	return (
 		<Container
 			isUserMenuOpen={isUserMenuOpen}
-			menuSpace={menuSpace}
 		>
 			{inMobile && (
 				<div className='burger' >
