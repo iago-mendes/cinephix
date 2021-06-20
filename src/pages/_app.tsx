@@ -15,6 +15,7 @@ import * as gtag from '../utils/gtag'
 import CookieBanner from '../components/modals/CookieBanner'
 import BannerAd from '../components/ads/Banner'
 import ModalAd from '../components/ads/Modal'
+import {UserStatusProvider} from '../contexts/UserStatus'
 
 const MyApp: React.FC<AppProps> = ({Component, pageProps}) =>
 {
@@ -44,12 +45,14 @@ const MyApp: React.FC<AppProps> = ({Component, pageProps}) =>
 			<BannerAd />
 			<ModalAd />
 			<SessionProvider session={pageProps.session} >
-				<Menu />
-				<SessionHandler>
-					<Component {...pageProps} />
-				</SessionHandler>
-				<Footer />
-				<GlobalStyle />
+				<UserStatusProvider>
+					<Menu />
+					<SessionHandler>
+						<Component {...pageProps} />
+					</SessionHandler>
+					<Footer />
+					<GlobalStyle />
+				</UserStatusProvider>
 			</SessionProvider>
 		</ThemeProvider>
 	)

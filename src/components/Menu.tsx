@@ -13,12 +13,14 @@ import useUser from '../hooks/useUser'
 import UserMenu from './modals/UserMenu'
 import useDimensions from '../hooks/useDimensions'
 import useClickOutside from '../hooks/useClickOutside'
+import { useUserStatus } from '../contexts/UserStatus'
 
 const Menu: React.FC = () =>
 {
 	const {user} = useUser()
-	const {inMobile, inDesktop, isVirtualKeyboardOpen} = useDimensions()
+	const {inMobile, inDesktop} = useDimensions()
 	const {pathname} = useRouter()
+	const {isTyping} = useUserStatus()
 	
 	const [isUserMenuOpen, setIsUserMenuOpen] = useState(false)
 	const userRef = useClickOutside(() => setIsUserMenuOpen(false))
@@ -31,7 +33,7 @@ const Menu: React.FC = () =>
 		setIsBurgerMenuOpen(false)
 	}, [pathname])
 
-	if (isVirtualKeyboardOpen)
+	if (isTyping && inMobile)
 		return null
 
 	return (

@@ -4,13 +4,10 @@ function useDimensions()
 {
 	const [width, setWidth] = useState(360)
 	const [height, setHeight] = useState(640)
-	let oldHeight = 0
 
 	const inMobile = width <= 1000
 	const inDesktop = width > 1000
 
-	const [isVirtualKeyboardOpen, setIsVirtualKeyboardOpen] = useState(false)
-	
 	useEffect(() =>
 	{
 		updateDimensions()
@@ -21,17 +18,11 @@ function useDimensions()
 
 	function updateDimensions()
 	{
-		const newHeight = window.innerHeight
-		
-		const tmpIsVirtualKeyboardOpen = inMobile && newHeight < oldHeight
-		setIsVirtualKeyboardOpen(tmpIsVirtualKeyboardOpen)
-		oldHeight = newHeight
-
 		setWidth(window.innerWidth)
 		setHeight(window.innerHeight)
 	}
 
-	return {width, height, inMobile, inDesktop, isVirtualKeyboardOpen}
+	return {width, height, inMobile, inDesktop}
 }
 
 export default useDimensions
