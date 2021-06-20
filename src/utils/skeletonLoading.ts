@@ -4,6 +4,7 @@ type SkeletonLoadingProps =
 {
 	height?: number | string;
 	width?: number | string;
+	opacity?: number | string;
 }
 
 export const SkeletonLoading = styled.div<SkeletonLoadingProps>`
@@ -14,6 +15,7 @@ export const SkeletonLoading = styled.div<SkeletonLoadingProps>`
 	height: ${p => p.height ? p.height : '100%'};
 	width: ${p => p.width ? p.width : '100%'};
 	border-radius: 0.5rem;
+	opacity: ${p => p.opacity ? p.opacity : 1};
 	
 	::before
 	{

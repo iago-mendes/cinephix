@@ -19,6 +19,15 @@ export const defaultUserTvshowListed: UserTvshowListed =
 	ratings: defaultTvshowRatings
 }
 
+export const loadingUserTvshowListed: UserTvshowListed =
+{
+	id: -1,
+	image: '',
+	title: '',
+	venue: '',
+	ratings: defaultTvshowRatings
+}
+
 export const statusInfo: {[statusKey: string]: string} =
 {
 	watchList: 'This status is dedicated to TV shows you want to watch but haven\'t done it yet.',

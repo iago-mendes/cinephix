@@ -13,25 +13,28 @@ import SelectTvshow from '../../../components/modals/SelectTvshow'
 import getTotalRating from '../../../utils/getTotalRating'
 import SEOHead from '../../../components/SEOHead'
 import truncateText from '../../../utils/truncateText'
-import {defaultUserTvshowListed, statusInfo, UserTvshowListed} from '../../../models/userTvshow'
+import {defaultUserTvshowListed, loadingUserTvshowListed, statusInfo, UserTvshowListed} from '../../../models/userTvshow'
 import infoAlert from '../../../utils/alerts/info'
 import SortTvshowsModal from '../../../components/modals/SortTvshows'
 import LoadingModal from '../../../components/modals/Loading'
 import HorizontalAd from '../../../components/ads/Horizontal'
+import { SkeletonLoading } from '../../../utils/skeletonLoading'
 
 export interface TvshowList
 {
 	[status: string]: UserTvshowListed[]
 }
 
+const loadingTvshows: UserTvshowListed[] = Array(3).fill(loadingUserTvshowListed)
+
 const defaultTvshowList: TvshowList =
 {
-	watchList: [],
-	watching: [],
-	waiting: [],
-	completed: [],
-	stopped: [],
-	paused: []
+	watchList: loadingTvshows,
+	watching: loadingTvshows,
+	waiting: loadingTvshows,
+	completed: loadingTvshows,
+	stopped: loadingTvshows,
+	paused: loadingTvshows
 }
 
 const validStatus: {[statusKey: string]: string} = 
@@ -180,7 +183,27 @@ const UserTvshows: React.FC = () =>
 											<div {...provided.droppableProps} ref={provided.innerRef} className='droppableArea' >
 												{tvshows.map((tvshow, index) =>
 												{
-													if (tvshow)
+													if (tvshow.id < 0)
+														return (
+															<div
+																className='tvshow'
+															>
+																<div className='img'>
+																	<SkeletonLoading opacity={0.75} />
+																</div>
+																<div className='info'>
+																	<h2>
+																		<SkeletonLoading height='3rem' opacity={0.75} />
+																	</h2>
+																	<div className='details'>
+																		<span className='venue'>
+																			<SkeletonLoading height='1.5rem' width='50%' opacity={0.75} />
+																		</span>
+																	</div>
+																</div>
+															</div>
+														)
+													else if (tvshow)
 														return (
 															<Draggable
 																draggableId={String(tvshow.id)}

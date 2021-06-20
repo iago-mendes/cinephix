@@ -170,6 +170,7 @@ const Container = styled.div`
 						.img
 						{
 							width: 40%;
+							height: 100%;
 							
 							img
 							{
