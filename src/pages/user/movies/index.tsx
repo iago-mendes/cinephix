@@ -42,7 +42,7 @@ const UserMovies: React.FC = () =>
 
 	useEffect(() =>
 	{
-		// getMovieList()
+		getMovieList()
 	}, [user])
 
 	useEffect(() =>
