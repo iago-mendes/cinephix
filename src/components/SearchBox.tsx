@@ -13,7 +13,7 @@ interface SearchBoxProps
 
 const SearchBox: React.FC<SearchBoxProps> = ({search, setSearch, display}) =>
 {
-	const {toggleTypingStatus} = useUserStatus()
+	const {typingControllerProps} = useUserStatus()
 
 	return (
 		<Container>
@@ -24,8 +24,7 @@ const SearchBox: React.FC<SearchBoxProps> = ({search, setSearch, display}) =>
 				value={search}
 				onChange={e => setSearch(e.target.value)}
 				maxLength={100}
-				onFocus={toggleTypingStatus}
-				onBlur={toggleTypingStatus}
+				{...typingControllerProps}
 			/>
 		</Container>
 	)

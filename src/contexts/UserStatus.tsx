@@ -4,6 +4,7 @@ type UserStatusContextData =
 {
 	isTyping: boolean
 	toggleTypingStatus: () => void
+	typingControllerProps: any
 }
 
 const UserStatusContext = createContext({} as UserStatusContextData)
@@ -11,6 +12,11 @@ const UserStatusContext = createContext({} as UserStatusContextData)
 export const UserStatusProvider: React.FC = ({children}:{children: ReactNode}) =>
 {
 	const [isTyping, setIsTyping] = useState(false)
+	const typingControllerProps =
+	{
+		onFocus: toggleTypingStatus,
+		onBlur: toggleTypingStatus
+	}
 
 	function toggleTypingStatus()
 	{
@@ -22,7 +28,8 @@ export const UserStatusProvider: React.FC = ({children}:{children: ReactNode}) =
 			value=
 				{{
 					isTyping,
-					toggleTypingStatus
+					toggleTypingStatus,
+					typingControllerProps
 				}}
 		>
 			{children}

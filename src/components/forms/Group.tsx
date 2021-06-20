@@ -17,6 +17,7 @@ import errorAlert from '../../utils/alerts/error'
 import useUser from '../../hooks/useUser'
 import SelectBannerModal from '../modals/SelectBanner'
 import slugify from '../../utils/slugify'
+import { useUserStatus } from '../../contexts/UserStatus'
 
 interface GroupFormProps
 {
@@ -28,6 +29,7 @@ const GroupForm: React.FC<GroupFormProps> = ({method, group}) =>
 {
 	const {user} = useUser()
 	const {query, back, push} = useRouter()
+	const {typingControllerProps} = useUserStatus()
 
 	const [banner, setBanner] = useState(banners[0].path)
 	const [nickname, setNickname] = useState('')
@@ -204,6 +206,7 @@ const GroupForm: React.FC<GroupFormProps> = ({method, group}) =>
 					value={nickname}
 					onChange={e => setNickname(e.target.value)}
 					placeholder='E.g.: Avengers'
+					{...typingControllerProps}
 				/>
 			</div>
 			{/* urlId */}
@@ -217,6 +220,7 @@ const GroupForm: React.FC<GroupFormProps> = ({method, group}) =>
 					onChange={e => setUrlId(e.target.value)}
 					placeholder='E.g.: avengers'
 					disabled={method === 'put'}
+					{...typingControllerProps}
 				/>
 			</div>
 			{/* description */}
@@ -228,6 +232,7 @@ const GroupForm: React.FC<GroupFormProps> = ({method, group}) =>
 					value={description}
 					onChange={e => setDescription(e.target.value)}
 					placeholder="E.g.: Earth's mightiest heroes"
+					{...typingControllerProps}
 				/>
 			</div>
 			{/* event */}
@@ -266,6 +271,7 @@ const GroupForm: React.FC<GroupFormProps> = ({method, group}) =>
 								id={`participantEmail-${index}`}
 								value={email}
 								onChange={e => handleChangeParticipant(e.target.value, index)}
+								{...typingControllerProps}
 							/>
 							<button className='remove' onClick={() => handleRemoveParticipant(index)} >
 								<FiMinus size={20} />
