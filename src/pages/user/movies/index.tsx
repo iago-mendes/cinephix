@@ -9,19 +9,21 @@ import Container, {Dropdown} from '../../../styles/pages/user/movies/index'
 import api from '../../../services/api'
 import useUser from '../../../hooks/useUser'
 import getTotalRating from '../../../utils/getTotalRating'
-import {defaultUserMovieListed, UserMovieListed} from '../../../models/userMovie'
+import {defaultUserMovieListed, loadingUserMovieListed, UserMovieListed} from '../../../models/userMovie'
 import {selectStyles} from '../../../styles/global'
 import SelectMovie from '../../../components/modals/SelectMovie'
 import UserMovieModal from '../../../components/modals/UserMovie'
 import SEOHead from '../../../components/SEOHead'
 import truncateText from '../../../utils/truncateText'
 import HorizontalAd from '../../../components/ads/Horizontal'
+import { SkeletonLoading } from '../../../utils/skeletonLoading'
 
 const UserMovies: React.FC = () =>
 {
 	const {user} = useUser()
 
-	const [movieList, setMovieList] = useState<UserMovieListed[]>([])
+	const defaultMovieList: UserMovieListed[] = Array(7).fill(loadingUserMovieListed)
+	const [movieList, setMovieList] = useState<UserMovieListed[]>(defaultMovieList)
 	const [showWatchList, setShowWatchList] = useState(false)
 
 	const sortOptions =
@@ -40,7 +42,7 @@ const UserMovies: React.FC = () =>
 
 	useEffect(() =>
 	{
-		getMovieList()
+		// getMovieList()
 	}, [user])
 
 	useEffect(() =>
@@ -182,30 +184,55 @@ const UserMovies: React.FC = () =>
 						<button className='add' title='Add a movie' onClick={() => handleAddClick(true)} >
 							<FiPlus size={30} />
 						</button>
-						{movieList.filter(({watched}) => watched).map((movie) => (
-							<div
-								key={movie.data.id}
-								className='movie'
-								onClick={() => handleCardClick(movie)}
-							>
-								<div className='img'>
-									<Image src={movie.data.image} width={780} height={1170} layout='responsive'/>
-								</div>
-								<div className='info'>
-									<h2>{truncateText(movie.data.title, 30)}</h2>
-									<div className='details'>
-										{
-											Object.values(movie.ratings).length !== 0 && (
-												<div className='ratings'>
-													{getTotalRating(movie.ratings, true)}
-												</div>
-											)
-										}
-										<span className='venue'>{movie.venue}</span>
+						{movieList.filter(({watched}) => watched).map((movie, index) =>
+						{
+							if (movie.data.id < 0)
+								return (
+									<div
+										key={index}
+										className='movie'
+									>
+										<div className='img'>
+											<SkeletonLoading opacity={0.75} />
+										</div>
+										<div className='info'>
+											<h2>
+												<SkeletonLoading height='3rem' opacity={0.75} />
+											</h2>
+											<div className='details'>
+												<span className='venue'>
+													<SkeletonLoading height='1.5rem' width='50%' opacity={0.75} />
+												</span>
+											</div>
+										</div>
 									</div>
-								</div>
-							</div>
-						))}
+								)
+							else
+								return (
+									<div
+										key={index}
+										className='movie'
+										onClick={() => handleCardClick(movie)}
+									>
+										<div className='img'>
+											<Image src={movie.data.image} width={780} height={1170} layout='responsive'/>
+										</div>
+										<div className='info'>
+											<h2>{truncateText(movie.data.title, 30)}</h2>
+											<div className='details'>
+												{
+													Object.values(movie.ratings).length !== 0 && (
+														<div className='ratings'>
+															{getTotalRating(movie.ratings, true)}
+														</div>
+													)
+												}
+												<span className='venue'>{movie.venue}</span>
+											</div>
+										</div>
+									</div>
+								)
+						})}
 					</div>
 				</div>
 			</main>

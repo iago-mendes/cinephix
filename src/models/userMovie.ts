@@ -45,4 +45,18 @@ export const defaultUserMovieListed: UserMovieListed =
 	ratings: defaultMovieRatings
 }
 
+export const loadingUserMovieListed: UserMovieListed =
+{
+	data:
+	{
+		id: -1,
+		image: '',
+		title: '',
+		overview: '',
+		date: ''
+	},
+	watched: true,
+	ratings: defaultMovieRatings
+}
+
 export default UserMovie
