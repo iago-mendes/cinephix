@@ -7,17 +7,59 @@
   "background_color": "#161C50",
   "start_url": "/",
   "icons": [
-    {
-      "src": "/icon_192px.png",
-      "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "any maskable"
-    },
 		{
-      "src": "/icon_512px.png",
-      "sizes": "512x512",
-      "type": "image/png",
+			"src": "/icons/192px_background.png",
+			"sizes": "192x192",
+			"type": "image/png",
 			"purpose": "any maskable"
-    }
-  ]
+		},
+		{
+			"src": "/icons/512px_background.png",
+			"sizes": "512x512",
+			"type": "image/png",
+			"purpose": "any maskable"
+		}
+	],
+	"screenshots": [
+		{
+			"src": "/screenshots/1_home_search.png",
+			"sizes": "1280x720",
+			"type": "image/png"
+		},
+		{
+			"src": "/screenshots/2_details.png",
+			"sizes": "1280x720",
+			"type": "image/png"
+		},
+		{
+			"src": "/screenshots/3_cast_crew.png",
+			"sizes": "1280x720",
+			"type": "image/png"
+		},
+		{
+			"src": "/screenshots/4_edit.png",
+			"sizes": "1280x720",
+			"type": "image/png"
+		},
+		{
+			"src": "/screenshots/5_user_movies.png",
+			"sizes": "1280x720",
+			"type": "image/png"
+		},
+		{
+			"src": "/screenshots/6_user_tvshows.png",
+			"sizes": "1280x720",
+			"type": "image/png"
+		},
+		{
+			"src": "/screenshots/7_groups.png",
+			"sizes": "1280x720",
+			"type": "image/png"
+		}
+	],
+	"categories": [
+		"entertainment",
+		"social",
+		"utilities"
+	]
 }
