@@ -1,12 +1,16 @@
 import {ChangeEvent} from 'react'
-import {BsChevronBarLeft, BsChevronLeft, BsChevronRight, BsChevronBarRight} from 'react-icons/bs'
+import {
+	BsChevronBarLeft,
+	BsChevronLeft,
+	BsChevronRight,
+	BsChevronBarRight
+} from 'react-icons/bs'
 import {CSSProperties} from 'styled-components'
 
 import Container from '../styles/components/GridPaginate'
 import Loading from './Loading'
 
-interface GridPaginateProps
-{
+interface GridPaginateProps {
 	page: number
 	setPage: (p: number) => void
 
@@ -21,8 +25,7 @@ interface GridPaginateProps
 	noResultsMessage?: string
 }
 
-const GridPaginate: React.FC<GridPaginateProps> =
-({
+const GridPaginate: React.FC<GridPaginateProps> = ({
 	page,
 	setPage,
 	totalPages,
@@ -32,49 +35,36 @@ const GridPaginate: React.FC<GridPaginateProps> =
 	children,
 	hidePaginate = false,
 	noResultsMessage = 'No results found!'
-}) =>
-{
-	function goBack()
-	{
-		if (page > 1)
-			setPage(page - 1)
+}) => {
+	function goBack() {
+		if (page > 1) setPage(page - 1)
 	}
 
-	function goNext()
-	{
-		if (page < totalPages)
-			setPage(page + 1)
+	function goNext() {
+		if (page < totalPages) setPage(page + 1)
 	}
 
-	function handlePageChange(e: ChangeEvent<HTMLInputElement>)
-	{
+	function handlePageChange(e: ChangeEvent<HTMLInputElement>) {
 		const tmpPage = Number(e.target.value)
 
-		if (tmpPage >= 1 && tmpPage <= totalPages)
-			setPage(tmpPage)
+		if (tmpPage >= 1 && tmpPage <= totalPages) setPage(tmpPage)
 	}
 
 	return (
-		<Container style={style} >
-			{
-				loading
-					? <Loading style={{marginTop: '10rem'}} />
-					: noResults
-						? (
-							<div className='noResults'>
-								<h1>{noResultsMessage}</h1>
-							</div>
-						)
-						: (
-							<main>
-								{children}
-							</main>
-						)
-			}
+		<Container style={style}>
+			{loading ? (
+				<Loading style={{marginTop: '10rem'}} />
+			) : noResults ? (
+				<div className="noResults">
+					<h1>{noResultsMessage}</h1>
+				</div>
+			) : (
+				<main>{children}</main>
+			)}
 
 			{!hidePaginate && (
-				<div className='paginate'>
-					<div className='buttons'>
+				<div className="paginate">
+					<div className="buttons">
 						<button onClick={() => setPage(1)}>
 							<BsChevronBarLeft size={30} />
 						</button>
@@ -82,9 +72,9 @@ const GridPaginate: React.FC<GridPaginateProps> =
 							<BsChevronLeft size={30} />
 						</button>
 					</div>
-					<div className='controller'>
+					<div className="controller">
 						<input
-							type='number'
+							type="number"
 							value={page}
 							onChange={handlePageChange}
 							min={1}
@@ -92,12 +82,15 @@ const GridPaginate: React.FC<GridPaginateProps> =
 						/>
 						<span> / {totalPages}</span>
 					</div>
-					<div className='buttons'>
+					<div className="buttons">
 						<button onClick={goNext}>
 							<BsChevronRight size={30} />
 						</button>
 						<button>
-							<BsChevronBarRight size={30} onClick={() => setPage(totalPages)}/>
+							<BsChevronBarRight
+								size={30}
+								onClick={() => setPage(totalPages)}
+							/>
 						</button>
 					</div>
 				</div>

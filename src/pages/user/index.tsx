@@ -17,98 +17,99 @@ import SEOHead from '../../components/SEOHead'
 
 const MySwal = withReactContent(Swal)
 
-const User: React.FC = () =>
-{
+const User: React.FC = () => {
 	const {user} = useUser()
 
 	const [userInfo, setUserInfo] = useState<UserInfo>(defaultUser)
 	const [groupsNumber, setGroupsNumber] = useState(0)
 
-	useEffect(() =>
-	{
-		if (user)
-		{
-			api.get(`users/${user.email}`)
-				.then(({data}:{data: UserInfo}) =>
-				{
+	useEffect(() => {
+		if (user) {
+			api
+				.get(`users/${user.email}`)
+				.then(({data}: {data: UserInfo}) => {
 					setUserInfo(data)
 				})
-				.catch(err =>
-				{
+				.catch(err => {
 					errorAlert(err.response.data.message)
 				})
-			
-			api.get(`groups/participants/${user.email}`)
-				.then(({data}:{data: any[]}) =>
-				{
+
+			api
+				.get(`groups/participants/${user.email}`)
+				.then(({data}: {data: any[]}) => {
 					setGroupsNumber(data.length)
 				})
 		}
 	}, [user])
 
-	function formatDate(unformatedDate: string)
-	{
-		const months =
-		[
-			'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'
+	function formatDate(unformatedDate: string) {
+		const months = [
+			'January',
+			'February',
+			'March',
+			'April',
+			'May',
+			'June',
+			'July',
+			'August',
+			'September',
+			'October',
+			'November',
+			'December'
 		]
 
-		const [year, month, day] = unformatedDate.split('T')[0].split('-').map(s => Number(s))
-		return `${months[month-1]} ${day}, ${year}`
+		const [year, month, day] = unformatedDate
+			.split('T')[0]
+			.split('-')
+			.map(s => Number(s))
+		return `${months[month - 1]} ${day}, ${year}`
 	}
 
-	function handleDelete()
-	{
-		MySwal.fire(
-			{
-				icon: 'question',
-				title: 'Are you sure?',
-				text: 'If you continue, your account and all your information (TV shows and movies) will be deleted!',
-				showCancelButton: true,
-				confirmButtonText: 'Continue'
-			})
-			.then(res =>
-			{
-				if (res.isConfirmed)
-				{
-					api.delete(`users/${userInfo.email}`)
-						.then(() =>
-						{
-							successAlert('Your account was successfully deleted!')
-							signOut()
-						})
-						.catch(err =>
-						{
-							errorAlert(err.response.data.message)
-						})
-				}
-			})
+	function handleDelete() {
+		MySwal.fire({
+			icon: 'question',
+			title: 'Are you sure?',
+			text: 'If you continue, your account and all your information (TV shows and movies) will be deleted!',
+			showCancelButton: true,
+			confirmButtonText: 'Continue'
+		}).then(res => {
+			if (res.isConfirmed) {
+				api
+					.delete(`users/${userInfo.email}`)
+					.then(() => {
+						successAlert('Your account was successfully deleted!')
+						signOut()
+					})
+					.catch(err => {
+						errorAlert(err.response.data.message)
+					})
+			}
+		})
 	}
 
-	if (!user)
-		return <Loading style={{marginTop: 'calc(50vh - 5rem)'}} />
+	if (!user) return <Loading style={{marginTop: 'calc(50vh - 5rem)'}} />
 
 	return (
-		<Container className='page' >
-			<SEOHead
-				title='My profile | Cinephix'
-			/>
+		<Container className="page">
+			<SEOHead title="My profile | Cinephix" />
 
 			<main>
 				<img src={user.image} alt={user.name} />
-				<div className='group'>
+				<div className="group">
 					<h1>{user.name}</h1>
 					<h2>{user.email}</h2>
-					<p>Member since <strong>{formatDate(userInfo.joinedAt)}</strong></p>
+					<p>
+						Member since <strong>{formatDate(userInfo.joinedAt)}</strong>
+					</p>
 				</div>
-				<button className='delete' onClick={handleDelete} >
+				<button className="delete" onClick={handleDelete}>
 					<HiOutlineUserRemove size={25} />
 					<span>Delete account</span>
 				</button>
 			</main>
 
-			<div className='links'>
-				<Link href='/groups'>
+			<div className="links">
+				<Link href="/groups">
 					<a>
 						<span>
 							My groups ({groupsNumber})
@@ -116,7 +117,7 @@ const User: React.FC = () =>
 						</span>
 					</a>
 				</Link>
-				<Link href='/user/tvshows'>
+				<Link href="/user/tvshows">
 					<a>
 						<span>
 							My TV shows ({userInfo.tvshows.length})
@@ -124,7 +125,7 @@ const User: React.FC = () =>
 						</span>
 					</a>
 				</Link>
-				<Link href='/user/movies'>
+				<Link href="/user/movies">
 					<a>
 						<span>
 							My movies ({userInfo.movies.length})

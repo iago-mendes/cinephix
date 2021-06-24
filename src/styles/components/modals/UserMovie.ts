@@ -4,25 +4,22 @@ const Container = styled.div`
 	display: flex;
 	align-items: center;
 	justify-content: space-around;
-	
+
 	padding: 1rem;
 
 	position: relative;
 	height: 100%;
 
-	.img
-	{
+	.img {
 		width: calc((75vh - 4.5rem - 2rem) / 1.5);
 		max-width: (50vw - 2rem) / 2;
 
-		img
-		{
+		img {
 			border-radius: 0.5rem;
 		}
 	}
 
-	.info
-	{
+	.info {
 		margin-right: 3rem;
 		width: calc((50vw - 2rem) / 2 - 3rem - 3rem);
 		height: calc(75vh - 4.5rem - 2rem);
@@ -36,23 +33,20 @@ const Container = styled.div`
 		justify-content: center;
 		gap: 2rem;
 
-		h1
-		{
+		h1 {
 			font-family: Ubuntu;
 			font-size: 3rem;
 			width: 100%;
 		}
 
-		.group
-		{
+		.group {
 			width: 100%;
 
 			display: flex;
 			flex-direction: column;
 			gap: 0.5rem;
 
-			label
-			{
+			label {
 				font-size: 2rem;
 				font-weight: 700;
 				color: ${p => p.theme.primary};
@@ -60,8 +54,7 @@ const Container = styled.div`
 				border-left: ${p => p.theme.primary} 5px solid;
 			}
 
-			span
-			{
+			span {
 				margin-left: 2rem;
 				font-size: 1.75rem;
 
@@ -69,19 +62,16 @@ const Container = styled.div`
 				align-items: center;
 			}
 
-			.stars svg
-			{
+			.stars svg {
 				font-size: 1.5rem;
 			}
 
-			.rating
-			{
+			.rating {
 				display: flex;
 				align-items: center;
 				gap: 1rem;
 
-				label
-				{
+				label {
 					border: none;
 					padding: 0;
 					margin-left: 2rem;
@@ -90,15 +80,13 @@ const Container = styled.div`
 					font-weight: 400;
 				}
 
-				span
-				{
+				span {
 					margin: 0;
 				}
 			}
 		}
 
-		.move
-		{
+		.move {
 			display: flex;
 			align-items: center;
 			gap: 1rem;
@@ -114,16 +102,14 @@ const Container = styled.div`
 			cursor: pointer;
 			transition: 0.25s;
 
-			:hover
-			{
+			:hover {
 				color: ${p => p.theme.background};
 				background-color: ${p => p.theme.primary};
 
 				transform: scale(1.1);
 			}
 
-			span
-			{
+			span {
 				font-family: Ubuntu;
 				font-weight: 700;
 				font-size: 2rem;
@@ -131,8 +117,7 @@ const Container = styled.div`
 		}
 	}
 
-	.edit
-	{
+	.edit {
 		position: absolute;
 		bottom: 1rem;
 		right: 1rem;
@@ -152,8 +137,7 @@ const Container = styled.div`
 		cursor: pointer;
 		transition: 0.25s;
 
-		:hover
-		{
+		:hover {
 			background-color: ${p => p.theme.primary};
 			color: ${p => p.theme.background};
 
@@ -161,21 +145,18 @@ const Container = styled.div`
 		}
 	}
 
-	@media(max-width: 1000px)
-	{
+	@media (max-width: 1000px) {
 		flex-direction: column;
 		gap: 1rem;
-		
+
 		height: fit-content;
 
-		.img
-		{
+		.img {
 			width: 75vw;
 			max-width: 30rem;
 		}
 
-		.info
-		{
+		.info {
 			margin: 0;
 			width: 100%;
 			height: fit-content;

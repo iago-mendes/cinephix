@@ -11,14 +11,12 @@ const Container = styled.div`
 
 	display: unset;
 
-	.close
-	{
+	.close {
 		width: fit-content;
 		margin-left: auto;
 		margin-right: 1rem;
 
-		button
-		{
+		button {
 			width: 30px;
 			height: 30px;
 			border-radius: 15px;
@@ -35,16 +33,14 @@ const Container = styled.div`
 
 			transition: background-color 0.25s, color 0.25s;
 
-			:hover
-			{
+			:hover {
 				background-color: ${p => p.theme.primary};
 				color: ${p => p.theme.background};
 			}
 		}
 	}
 
-	main
-	{
+	main {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
@@ -63,8 +59,7 @@ const Container = styled.div`
 
 		position: relative;
 
-		span
-		{
+		span {
 			position: absolute;
 			top: -5px;
 
@@ -76,39 +71,32 @@ const Container = styled.div`
 			font-size: 1rem;
 		}
 
-		ins
-		{
+		ins {
 			background-color: ${p => p.theme.black}40;
 		}
 	}
 
-	@media (min-width: 1001px)
-	{
+	@media (min-width: 1001px) {
 		width: 50vw;
 		height: 90vh;
 
-		::-webkit-scrollbar
-		{
+		::-webkit-scrollbar {
 			width: 1rem;
 		}
 
-		::-webkit-scrollbar-track
-		{
+		::-webkit-scrollbar-track {
 			background-color: ${p => p.theme.primary}26;
 		}
-		
-		::-webkit-scrollbar-thumb
-		{
+
+		::-webkit-scrollbar-thumb {
 			background-color: ${p => p.theme.primary};
 
-			:hover
-			{
+			:hover {
 				background-color: ${p => p.theme.primary}bf;
 			}
 		}
 
-		.close
-		{
+		.close {
 		}
 	}
 `

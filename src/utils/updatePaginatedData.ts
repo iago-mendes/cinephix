@@ -1,7 +1,6 @@
 import api from '../services/api'
 
-type UpdatePaginatedDataProps =
-{
+type UpdatePaginatedDataProps = {
 	route: string
 
 	setData: (data: any) => void
@@ -17,8 +16,7 @@ type UpdatePaginatedDataProps =
 	language?: string
 }
 
-export async function updatePaginatedData
-({
+export async function updatePaginatedData({
 	route,
 	setData,
 	setLoading,
@@ -28,30 +26,23 @@ export async function updatePaginatedData
 	setTotalPages,
 	defaultData = [],
 	language
-}:UpdatePaginatedDataProps)
-{
-	if (!(search === '' && page === 1))
-		setLoading(true)
+}: UpdatePaginatedDataProps) {
+	if (!(search === '' && page === 1)) setLoading(true)
 
-	await api.get(route, {params: {search, page, language}})
-		.then(({data, headers}) =>
-		{
+	await api
+		.get(route, {params: {search, page, language}})
+		.then(({data, headers}) => {
 			setData(data)
 
 			const tmpPage = Number(headers.page)
-			if (Number.isNaN(tmpPage))
-				setPage(1)
-			else
-				setPage(tmpPage)
-				
+			if (Number.isNaN(tmpPage)) setPage(1)
+			else setPage(tmpPage)
+
 			const tmpTotalPages = Number(headers.totalpages)
-			if (Number.isNaN(tmpTotalPages))
-				setTotalPages(1)
-			else
-				setTotalPages(tmpTotalPages)
+			if (Number.isNaN(tmpTotalPages)) setTotalPages(1)
+			else setTotalPages(tmpTotalPages)
 		})
-		.catch(error =>
-		{
+		.catch(error => {
 			setData(defaultData)
 			console.log('<< error >>', error)
 

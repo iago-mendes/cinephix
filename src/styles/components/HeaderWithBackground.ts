@@ -8,10 +8,9 @@ const Container = styled.header`
 	align-items: center;
 	justify-content: center;
 
-	box-shadow: 0px 5px 5px rgba(0,0,0,0.5);
+	box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.5);
 
-	.background
-	{
+	.background {
 		position: absolute;
 		z-index: -1;
 
@@ -19,14 +18,12 @@ const Container = styled.header`
 		width: 100%;
 		overflow: hidden;
 
-		img
-		{
+		img {
 			filter: blur(5px);
 		}
 	}
 
-	h1
-	{
+	h1 {
 		padding: 2rem;
 		padding-left: 5rem;
 		padding-right: 5rem;
@@ -37,15 +34,13 @@ const Container = styled.header`
 		font-weight: 700;
 		font-size: 5rem;
 
-		background-color: rgba(0,0,0,0.5);
+		background-color: rgba(0, 0, 0, 0.5);
 	}
 
-	@media(max-width: 600px)
-	{
+	@media (max-width: 600px) {
 		height: 20rem;
 
-		h1
-		{
+		h1 {
 			font-size: 4rem;
 
 			padding: 1rem;

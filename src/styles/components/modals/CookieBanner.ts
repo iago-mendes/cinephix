@@ -15,34 +15,29 @@ const Container = styled.div`
 	justify-content: space-between;
 	gap: 1rem;
 
-	.message
-	{
+	.message {
 		color: ${p => p.theme.primary};
 
 		width: 75%;
 
-		h2
-		{
+		h2 {
 			font-family: Ubuntu;
 			font-size: 2rem;
 		}
 
-		p
-		{
+		p {
 			font-family: Roboto;
 			font-size: 1.75rem;
 		}
 	}
 
-	.buttons
-	{
+	.buttons {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
 		gap: 1rem;
 
-		button
-		{
+		button {
 			font-family: Ubuntu;
 			font-size: 1.75rem;
 
@@ -56,14 +51,12 @@ const Container = styled.div`
 			cursor: pointer;
 			transition: 0.25s;
 
-			:hover
-			{
+			:hover {
 				transform: scale(1.05);
 			}
 		}
 
-		.accept
-		{
+		.accept {
 			background-color: ${p => p.theme.primary};
 			padding-left: 2rem;
 			padding-right: 2rem;
@@ -72,8 +65,7 @@ const Container = styled.div`
 		}
 	}
 
-	#close
-	{
+	#close {
 		position: absolute;
 		right: 0.5rem;
 		top: 0.5rem;
@@ -85,26 +77,21 @@ const Container = styled.div`
 		cursor: pointer;
 	}
 
-	@media(max-width: 1000px)
-	{
+	@media (max-width: 1000px) {
 		margin-left: 1rem;
 		width: calc(100vw - 3rem);
 
-		.message
-		{
-			h2
-			{
+		.message {
+			h2 {
 				font-size: 1.5rem;
 			}
 
-			p
-			{
+			p {
 				font-size: 1.25rem;
 			}
 		}
 
-		.buttons button
-		{
+		.buttons button {
 			font-size: 1.5rem;
 		}
 	}

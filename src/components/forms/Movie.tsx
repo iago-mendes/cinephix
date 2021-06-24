@@ -8,7 +8,7 @@ import Switch from 'react-switch'
 
 import Container, {RangeInput} from '../../styles/components/forms/global'
 import api from '../../services/api'
-import MovieDetails, { loadingMovie } from '../../models/movie'
+import MovieDetails, {loadingMovie} from '../../models/movie'
 import {selectStyles} from '../../styles/global'
 import useUser from '../../hooks/useUser'
 import successAlert from '../../utils/alerts/success'
@@ -19,15 +19,13 @@ import UserMovie from '../../models/userMovie'
 import {SelectOption} from '../../models'
 import getRatingLabel from '../../utils/getRatingLabel'
 import venues from '../../../db/venues.json'
-import { SkeletonLoading } from '../../utils/skeletonLoading'
+import {SkeletonLoading} from '../../utils/skeletonLoading'
 
-interface MovieFormProps
-{
+interface MovieFormProps {
 	method: string
 }
 
-const MovieForm: React.FC<MovieFormProps> = ({method}) =>
-{
+const MovieForm: React.FC<MovieFormProps> = ({method}) => {
 	const {query, back, push, locale: language} = useRouter()
 	const {user} = useUser()
 
@@ -40,104 +38,94 @@ const MovieForm: React.FC<MovieFormProps> = ({method}) =>
 
 	const [movie, setMovie] = useState(loadingMovie)
 
-	const venueOptions: SelectOption[] = venues.map(({name}) => (
-		{
-			label: name,
-			value: name
-		}))
+	const venueOptions: SelectOption[] = venues.map(({name}) => ({
+		label: name,
+		value: name
+	}))
 
-	useEffect(() =>
-	{
+	useEffect(() => {
 		if (!Number.isNaN(movieId))
-			api.get(`movies/${movieId}`, {params: {language}})
-				.then(({data}:{data: MovieDetails}) => setMovie(data))
+			api
+				.get(`movies/${movieId}`, {params: {language}})
+				.then(({data}: {data: MovieDetails}) => setMovie(data))
 	}, [movieId])
 
-	useEffect(() =>
-	{
+	useEffect(() => {
 		if (method === 'put' && user && !Number.isNaN(movieId))
-			api.get(`users/${user.email}/movies/${movieId}`, {params: {language}})
-				.then(({data}:{data: UserMovie}) =>
-				{
+			api
+				.get(`users/${user.email}/movies/${movieId}`, {params: {language}})
+				.then(({data}: {data: UserMovie}) => {
 					setWatched(data.watched)
 					setVenue(data.venue)
 
-					let tmpRatings = {...ratings}
-					Object.entries(data.ratings).map(([ratingKey, value]) =>
-					{
-						if (value >= 0 && value <= 10)
-							tmpRatings[ratingKey] = value
+					const tmpRatings = {...ratings}
+					Object.entries(data.ratings).map(([ratingKey, value]) => {
+						if (value >= 0 && value <= 10) tmpRatings[ratingKey] = value
 					})
 					setRatings(tmpRatings)
 				})
 	}, [user, movieId])
 
-	useEffect(() =>
-	{
-		if (watchedFromRoute != undefined)
-			setWatched(watchedFromRoute)
+	useEffect(() => {
+		if (watchedFromRoute != undefined) setWatched(watchedFromRoute)
 	}, [watchedFromRoute])
 
-	function handleChangeRating(ratingKey: string, e: ChangeEvent<HTMLInputElement>)
-	{
+	function handleChangeRating(
+		ratingKey: string,
+		e: ChangeEvent<HTMLInputElement>
+	) {
 		const tmpRatings = {...ratings}
 
 		const rating = Number(e.target.value)
-		if (rating >= 0 && rating <= 10)
-			tmpRatings[ratingKey] = rating
+		if (rating >= 0 && rating <= 10) tmpRatings[ratingKey] = rating
 
 		setRatings(tmpRatings)
 	}
 
-	function handleClearRating(ratingKey: string)
-	{
+	function handleClearRating(ratingKey: string) {
 		const tmpRatings = {...ratings}
 		tmpRatings[ratingKey] = -1
 		setRatings(tmpRatings)
 	}
 
-	function handleSubmit(e: FormEvent)
-	{
+	function handleSubmit(e: FormEvent) {
 		e.preventDefault()
 
-		const data =
-		{
+		const data = {
 			id: movie.id,
 			watched,
 			venue: venue !== '' ? venue : undefined,
-			ratings:
-			{
+			ratings: {
 				screenplay: ratings.screenplay >= 0 ? ratings.screenplay : undefined,
 				pacing: ratings.pacing >= 0 ? ratings.pacing : undefined,
 				acting: ratings.acting >= 0 ? ratings.acting : undefined,
-				cinematography: ratings.cinematography >= 0 ? ratings.cinematography : undefined,
-				musicAndSound: ratings.musicAndSound >= 0 ? ratings.musicAndSound : undefined
+				cinematography:
+					ratings.cinematography >= 0 ? ratings.cinematography : undefined,
+				musicAndSound:
+					ratings.musicAndSound >= 0 ? ratings.musicAndSound : undefined
 			}
 		}
-		
-		if (method === 'post')
-		{
-			api.post(`users/${user.email}/movies`, data)
-				.then(() =>
-				{
-					successAlert(`'${movie.title}' was successfully added to your movies!`)
+
+		if (method === 'post') {
+			api
+				.post(`users/${user.email}/movies`, data)
+				.then(() => {
+					successAlert(
+						`'${movie.title}' was successfully added to your movies!`
+					)
 					push('/user/movies')
 				})
-				.catch(err =>
-				{
+				.catch(err => {
 					errorAlert(err.response.data.message)
 				})
-		}
-		else if (method === 'put')
-		{
-			api.put(`users/${user.email}/movies/${movieId}`, data)
-				.then(() =>
-				{
+		} else if (method === 'put') {
+			api
+				.put(`users/${user.email}/movies/${movieId}`, data)
+				.then(() => {
 					successAlert(`'${movie.title}' was successfully edited!`)
 					back()
 				})
-				.catch(err =>
-				{
+				.catch(err => {
 					errorAlert(err.response.data.message)
 				})
 		}
@@ -145,73 +133,74 @@ const MovieForm: React.FC<MovieFormProps> = ({method}) =>
 
 	return (
 		<Container>
-			<div className='img'>
-				{
-					movie.title === '_loading'
-						? <SkeletonLoading />
-						: <Image src={movie.image} width={780} height={1170} layout='responsive'/>
-				}
+			<div className="img">
+				{movie.title === '_loading' ? (
+					<SkeletonLoading />
+				) : (
+					<Image
+						src={movie.image}
+						width={780}
+						height={1170}
+						layout="responsive"
+					/>
+				)}
 			</div>
 
-			<div className='info'>
-				{
-					movie.title === '_loading'
-						? <SkeletonLoading height='2.5rem' width='20rem' />
-						: <h1>{movie.title}</h1>
-				}
-				<form onSubmit={handleSubmit} >
-					<div className='field'>
-						<label htmlFor='watched'>Watched</label>
+			<div className="info">
+				{movie.title === '_loading' ? (
+					<SkeletonLoading height="2.5rem" width="20rem" />
+				) : (
+					<h1>{movie.title}</h1>
+				)}
+				<form onSubmit={handleSubmit}>
+					<div className="field">
+						<label htmlFor="watched">Watched</label>
 						<Switch
-							name='watched'
-							id='watched'
+							name="watched"
+							id="watched"
 							checked={watched}
 							onChange={setWatched}
-							onHandleColor='#d8d8d8'
-							offHandleColor='#d8d8d8'
-							className='switch'
+							onHandleColor="#d8d8d8"
+							offHandleColor="#d8d8d8"
+							className="switch"
 						/>
 					</div>
-					<div className='field'>
-						<label htmlFor='venue'>Venue</label>
+					<div className="field">
+						<label htmlFor="venue">Venue</label>
 						<Select
-							id='venue'
-							name='venue'
+							id="venue"
+							name="venue"
 							value={venueOptions.find(({value}) => value === venue)}
 							options={venueOptions}
 							onChange={e => setVenue(e.value)}
 							styles={selectStyles}
-							placeholder='Select a venue'
-							className='select'
+							placeholder="Select a venue"
+							className="select"
 							isSearchable={false}
 						/>
 					</div>
-					<div className='rangeFields'>
+					<div className="rangeFields">
 						<label>Ratings</label>
-						<div className='rating'>
+						<div className="rating">
 							<label>Total:</label>
 							<span>{calcTotalRating(ratings) || 'not rated'}</span>
 						</div>
 						{Object.entries(ratings).map(([ratingKey, value]) => (
-							<div className='rating' key={ratingKey}>
+							<div className="rating" key={ratingKey}>
 								<label>{getRatingLabel('movie', ratingKey)}:</label>
-								<div className='group'>
-									{
-										value >= 0
-											? (
-												<input
-													type='number'
-													value={value}
-													onChange={e => handleChangeRating(ratingKey, e)}
-												/>
-											)
-											: (
-												<span>not rated</span>
-											)
-									}
-									<div className='group2'>
+								<div className="group">
+									{value >= 0 ? (
+										<input
+											type="number"
+											value={value}
+											onChange={e => handleChangeRating(ratingKey, e)}
+										/>
+									) : (
+										<span>not rated</span>
+									)}
+									<div className="group2">
 										<RangeInput
-											type='range'
+											type="range"
 											min={0}
 											max={10}
 											value={value >= 0 ? value : 5}
@@ -220,10 +209,10 @@ const MovieForm: React.FC<MovieFormProps> = ({method}) =>
 										/>
 
 										<button
-											className='clear'
-											title='Clear rating'
+											className="clear"
+											title="Clear rating"
 											onClick={() => handleClearRating(ratingKey)}
-											type='button'
+											type="button"
 										>
 											<MdClear size={15} />
 										</button>
@@ -232,11 +221,16 @@ const MovieForm: React.FC<MovieFormProps> = ({method}) =>
 							</div>
 						))}
 					</div>
-					<div className='buttons'>
-						<button className='cancel' title='Cancel' onClick={back} type='button' >
+					<div className="buttons">
+						<button
+							className="cancel"
+							title="Cancel"
+							onClick={back}
+							type="button"
+						>
 							<FiX size={25} />
 						</button>
-						<button className='confirm' title='Confirm' type='submit' >
+						<button className="confirm" title="Confirm" type="submit">
 							<FiCheck size={25} />
 						</button>
 					</div>

@@ -1,13 +1,11 @@
 import styled from 'styled-components'
 
-interface ContainerProps
-{
+interface ContainerProps {
 	biographyLength: number
 }
 
 const Container = styled.div<ContainerProps>`
-	main
-	{
+	main {
 		height: calc(100vh - 5rem);
 		padding: 2rem;
 
@@ -16,19 +14,16 @@ const Container = styled.div<ContainerProps>`
 		align-items: center;
 		gap: 2rem;
 
-		.img
-		{
+		.img {
 			width: calc((100vh - 5rem - 4rem) / 1.5);
 			max-width: calc(50% - 5rem);
 
-			img
-			{
+			img {
 				border-radius: 1rem;
 			}
 		}
 
-		.info
-		{
+		.info {
 			height: 100%;
 			width: 50%;
 			margin-right: 5rem;
@@ -40,35 +35,30 @@ const Container = styled.div<ContainerProps>`
 
 			color: ${p => p.theme.primary};
 
-			h1
-			{
+			h1 {
 				font-family: Ubuntu;
 				font-weight: 700;
 				font-size: 4rem;
 			}
 
-			.details
-			{
+			.details {
 				display: flex;
 				flex-direction: column;
 				align-items: center;
 				gap: 2rem;
 
-				.detail
-				{
+				.detail {
 					display: flex;
 					align-items: center;
 					gap: 1rem;
 
-					strong
-					{
+					strong {
 						font-family: Ubuntu;
 						font-weight: 700;
 						font-size: 2rem;
 					}
 
-					span
-					{
+					span {
 						font-family: Ubuntu;
 						font-weight: 400;
 						font-size: 2rem;
@@ -76,16 +66,15 @@ const Container = styled.div<ContainerProps>`
 				}
 			}
 
-			p
-			{
+			p {
 				font-family: Roboto;
-				font-size: ${p => p.biographyLength < 1500 ? '1.5rem' : '1.25rem'};
+				font-size: ${p => (p.biographyLength < 1500 ? '1.5rem' : '1.25rem')};
 			}
 		}
 	}
 
-	.cast, .crew
-	{
+	.cast,
+	.crew {
 		display: flex;
 		flex-direction: column;
 		gap: 3rem;
@@ -94,8 +83,7 @@ const Container = styled.div<ContainerProps>`
 		padding-top: 3rem;
 		padding-bottom: 3rem;
 
-		span
-		{
+		span {
 			font-family: Roboto;
 			font-weight: 700;
 			font-size: 3rem;
@@ -107,39 +95,32 @@ const Container = styled.div<ContainerProps>`
 		}
 	}
 
-	.cast
-	{
-		background-color: rgba(0,0,0,0.5);
+	.cast {
+		background-color: rgba(0, 0, 0, 0.5);
 	}
 
-	@media(max-width: 1024px)
-	{
-		main
-		{
+	@media (max-width: 1024px) {
+		main {
 			height: fit-content;
 
 			flex-direction: column;
 			align-items: center;
 
-			.img
-			{
+			.img {
 				width: 75vw;
 				max-width: 40rem;
 			}
 
-			.info
-			{
+			.info {
 				width: 100%;
 				margin: 0;
 				margin-top: 2rem;
 
-				h1
-				{
+				h1 {
 					font-size: 3rem;
 				}
 
-				.details
-				{
+				.details {
 					flex-direction: column;
 					align-items: flex-start;
 					gap: 1rem;

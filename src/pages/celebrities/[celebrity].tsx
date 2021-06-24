@@ -15,54 +15,48 @@ import formatDate from '../../utils/formatDate'
 import React from 'react'
 import SEOHead from '../../components/SEOHead'
 
-interface CelebrityDetails
-{
+interface CelebrityDetails {
 	id: number
-  image: string
-  name: string
-  knownForDepartment: string
-  birthday: string
-  placeOfBirth: string
-  biography: string
-	credits:
-	{
-		cast: Array<
-		{
-			'id': number
-			'title': string
-			'image': string
-			'character': string
-			'overview': string
-			'date': string
-			'type': string
+	image: string
+	name: string
+	knownForDepartment: string
+	birthday: string
+	placeOfBirth: string
+	biography: string
+	credits: {
+		cast: Array<{
+			id: number
+			title: string
+			image: string
+			character: string
+			overview: string
+			date: string
+			type: string
 		}>
-		crew: Array<
-		{
-			'id': number
-			'title': string
-			'image': string
-			'overview': string
-			'date': string
-			'department': string
-			'type': string
+		crew: Array<{
+			id: number
+			title: string
+			image: string
+			overview: string
+			date: string
+			department: string
+			type: string
 		}>
 	}
 }
 
-interface CelebrityProps
-{
+interface CelebrityProps {
 	celebrity: CelebrityDetails
 }
 
-const Celebrity: React.FC<CelebrityProps> = ({celebrity}) =>
-{
+const Celebrity: React.FC<CelebrityProps> = ({celebrity}) => {
 	const Router = useRouter()
 
 	if (Router.isFallback)
 		return <Loading style={{marginTop: 'calc(50vh - 5rem)'}} />
 
 	return (
-		<Container biographyLength={celebrity.biography.length} className='page' >
+		<Container biographyLength={celebrity.biography.length} className="page">
 			<SEOHead
 				title={`${celebrity.name} | Cinephix`}
 				description={celebrity.biography}
@@ -70,21 +64,26 @@ const Celebrity: React.FC<CelebrityProps> = ({celebrity}) =>
 			/>
 
 			<main>
-				<div className='img'>
-					<Image src={celebrity.image} width={780} height={1170} layout='responsive'/>
+				<div className="img">
+					<Image
+						src={celebrity.image}
+						width={780}
+						height={1170}
+						layout="responsive"
+					/>
 				</div>
-				<div className='info'>
+				<div className="info">
 					<h1>{celebrity.name}</h1>
-					<div className='details'>
-						<div className='detail'>
+					<div className="details">
+						<div className="detail">
 							<FiUser size={30} />
 							<span>{celebrity.knownForDepartment}</span>
 						</div>
-						<div className='detail'>
+						<div className="detail">
 							<FaBirthdayCake size={30} />
 							<span>{formatDate(celebrity.birthday)}</span>
 						</div>
-						<div className='detail'>
+						<div className="detail">
 							<FaCity size={30} />
 							<span>{celebrity.placeOfBirth}</span>
 						</div>
@@ -93,32 +92,40 @@ const Celebrity: React.FC<CelebrityProps> = ({celebrity}) =>
 				</div>
 			</main>
 
-			<div className='cast'>
+			<div className="cast">
 				<span>Cast ({celebrity.credits.cast.length})</span>
 				<Carousel>
 					{celebrity.credits.cast.map((media, index) => (
-						<SwiperSlide key={index} >
+						<SwiperSlide key={index}>
 							<CarouselCard
 								image={media.image}
 								primaryDisplay={media.title}
 								secondaryDisplay={media.character}
-								link={media.type === 'movie' ? `/movies/${media.id}` : `/tvshows/${media.id}`}
+								link={
+									media.type === 'movie'
+										? `/movies/${media.id}`
+										: `/tvshows/${media.id}`
+								}
 							/>
 						</SwiperSlide>
 					))}
 				</Carousel>
 			</div>
 
-			<div className='crew'>
+			<div className="crew">
 				<span>Crew ({celebrity.credits.crew.length})</span>
 				<Carousel>
 					{celebrity.credits.crew.map((media, index) => (
-						<SwiperSlide key={index} >
+						<SwiperSlide key={index}>
 							<CarouselCard
 								image={media.image}
 								primaryDisplay={media.title}
 								secondaryDisplay={media.department}
-								link={media.type === 'movie' ? `/movies/${media.id}` : `/tvshows/${media.id}`}
+								link={
+									media.type === 'movie'
+										? `/movies/${media.id}`
+										: `/tvshows/${media.id}`
+								}
 							/>
 						</SwiperSlide>
 					))}
@@ -128,14 +135,14 @@ const Celebrity: React.FC<CelebrityProps> = ({celebrity}) =>
 	)
 }
 
-export const getStaticPaths: GetStaticPaths = async () =>
-{
-	const {data: celebrities}:{data: CelebrityList[]} = await api.get('celebrities')
+export const getStaticPaths: GetStaticPaths = async () => {
+	const {data: celebrities}: {data: CelebrityList[]} = await api.get(
+		'celebrities'
+	)
 
-	const paths = celebrities.map(celebrity => (
-		{
-			params: {celebrity: String(celebrity.id)}
-		}))
+	const paths = celebrities.map(celebrity => ({
+		params: {celebrity: String(celebrity.id)}
+	}))
 
 	return {
 		paths,
@@ -143,12 +150,14 @@ export const getStaticPaths: GetStaticPaths = async () =>
 	}
 }
 
-export const getStaticProps: GetStaticProps = async ctx =>
-{
+export const getStaticProps: GetStaticProps = async ctx => {
 	const {celebrity: id} = ctx.params
 	const language = ctx.locale
 
-	const {data: celebrity}:{data: CelebrityDetails} = await api.get(`celebrities/${id}`, {params: {language}})
+	const {data: celebrity}: {data: CelebrityDetails} = await api.get(
+		`celebrities/${id}`,
+		{params: {language}}
+	)
 
 	return {
 		props: {celebrity},

@@ -1,6 +1,7 @@
-function slugify(text: string)
-{
-	const slug = text.toString().toLowerCase()
+function slugify(text: string) {
+	const slug = text
+		.toString()
+		.toLowerCase()
 		.replace(/\s+/g, '-')
 		.replace(/[^\w-]+/g, '')
 		.replace(/--+/g, '-')

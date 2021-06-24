@@ -3,9 +3,8 @@ import styled from 'styled-components'
 const Container = styled.div`
 	background-color: ${p => p.theme.green};
 	padding: 2rem;
-	
-	main
-	{
+
+	main {
 		color: ${p => p.theme.textBlack};
 		font-family: Roboto;
 		font-size: 1.5rem;
@@ -14,54 +13,45 @@ const Container = styled.div`
 		flex-direction: column;
 		gap: 0.5rem;
 
-		img
-		{
+		img {
 			margin-left: 2rem;
 			margin-top: 2rem;
 			margin-bottom: 2rem;
 		}
 
-		h1, h2
-		{
+		h1,
+		h2 {
 			margin-top: 1rem;
 			margin-bottom: 0.5rem;
 		}
 
-		p
-		{
+		p {
 			text-indent: 2rem;
 		}
 
-		ul li
-		{
+		ul li {
 			margin-left: 5rem;
 			list-style-type: disc;
 		}
 
-		a
-		{
+		a {
 			text-decoration: none;
 			color: ${p => p.theme.textBlack};
 			font-weight: 700;
 
-			:hover
-			{
+			:hover {
 				text-decoration: underline;
 			}
 		}
 	}
 
-	@media(max-width: 700px)
-	{
-		main
-		{
-			img
-			{
+	@media (max-width: 700px) {
+		main {
+			img {
 				margin-left: 0;
 			}
 
-			a
-			{
+			a {
 				word-break: break-all;
 			}
 		}

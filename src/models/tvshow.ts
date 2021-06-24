@@ -1,32 +1,27 @@
-type TvshowDetails =
-{
+type TvshowDetails = {
 	id: number
-  image: string
-  title: string
-  startDate: string
-  endDate: string
-  status: string
-  inProduction: boolean
-  rating: number
-  seasonsNumber: number
-  episodesNumber: number
-  overview: string
-  genres: Array<
-	{
+	image: string
+	title: string
+	startDate: string
+	endDate: string
+	status: string
+	inProduction: boolean
+	rating: number
+	seasonsNumber: number
+	episodesNumber: number
+	overview: string
+	genres: Array<{
 		id: number
 		name: string
 	}>
-	credits:
-	{
-		cast: Array<
-		{
+	credits: {
+		cast: Array<{
 			id: number
 			name: string
 			image: string
 			character: string
 		}>
-		crew: Array<
-		{
+		crew: Array<{
 			id: number
 			name: string
 			image: string
@@ -36,8 +31,7 @@ type TvshowDetails =
 }
 export default TvshowDetails
 
-export const defaultTvshow: TvshowDetails =
-{
+export const defaultTvshow: TvshowDetails = {
 	id: 0,
 	image: '',
 	title: '',
@@ -50,15 +44,13 @@ export const defaultTvshow: TvshowDetails =
 	episodesNumber: 0,
 	overview: '',
 	genres: [],
-	credits:
-	{
+	credits: {
 		cast: [],
 		crew: []
 	}
 }
 
-export const loadingTvshow: TvshowDetails =
-{
+export const loadingTvshow: TvshowDetails = {
 	id: 0,
 	image: '',
 	title: '_loading',
@@ -71,8 +63,7 @@ export const loadingTvshow: TvshowDetails =
 	episodesNumber: 0,
 	overview: '',
 	genres: [],
-	credits:
-	{
+	credits: {
 		cast: [],
 		crew: []
 	}

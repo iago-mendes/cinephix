@@ -7,9 +7,9 @@ const Container = styled.div`
 	position: fixed;
 	bottom: 0;
 	left: 0;
-	
+
 	z-index: 2;
-	
+
 	background-color: ${p => p.theme.background};
 	box-shadow: 0px -5px 5px #000;
 
@@ -17,16 +17,14 @@ const Container = styled.div`
 	flex-direction: column;
 	align-items: center;
 
-	.closeContainer
-	{
+	.closeContainer {
 		width: 100%;
 		padding: 5px;
 
 		display: flex;
 		justify-content: flex-end;
 
-		button
-		{
+		button {
 			width: 30px;
 			height: 30px;
 			border-radius: 15px;
@@ -43,8 +41,7 @@ const Container = styled.div`
 
 			transition: background-color 0.25s, color 0.25s;
 
-			:hover
-			{
+			:hover {
 				background-color: ${p => p.theme.primary};
 				color: ${p => p.theme.background};
 			}

@@ -1,17 +1,12 @@
 import SEOHead from '../../components/SEOHead'
 import GroupForm from '../../components/forms/Group'
 
-const CreateGroup: React.FC = () =>
-{
+const CreateGroup: React.FC = () => {
 	return (
-		<div className='page' >
-			<SEOHead
-				title='Create group | Cinephix'
-			/>
+		<div className="page">
+			<SEOHead title="Create group | Cinephix" />
 
-			<GroupForm
-				method='post'
-			/>
+			<GroupForm method="post" />
 		</div>
 	)
 }

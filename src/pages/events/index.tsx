@@ -8,20 +8,16 @@ import SEOHead from '../../components/SEOHead'
 import {EventListed} from '../../models/event'
 import EventCard from '../../components/cards/Event'
 
-interface EventsProps
-{
+interface EventsProps {
 	events: EventListed[]
 }
 
-const Events: React.FC<EventsProps> = ({events}) =>
-{
+const Events: React.FC<EventsProps> = ({events}) => {
 	return (
-		<div className='page' >
-			<SEOHead
-				title='Events | Cinephix'
-			/>
+		<div className="page">
+			<SEOHead title="Events | Cinephix" />
 
-			<HeaderWithBackground background={oscars} display='Events' />
+			<HeaderWithBackground background={oscars} display="Events" />
 
 			<GridPaginate
 				page={1}
@@ -29,26 +25,23 @@ const Events: React.FC<EventsProps> = ({events}) =>
 				totalPages={1}
 				loading={false}
 				noResults={events.length === 0}
-
 				hidePaginate
-				noResultsMessage='No events open at the moment!'
+				noResultsMessage="No events open at the moment!"
 			>
 				{events.map((event, index) => (
-					<EventCard
-						key={index}
-						event={event}
-					/>
+					<EventCard key={index} event={event} />
 				))}
 			</GridPaginate>
 		</div>
 	)
 }
 
-export const getStaticProps: GetStaticProps = async ctx =>
-{
+export const getStaticProps: GetStaticProps = async ctx => {
 	const language = ctx.locale
 
-	const {data}:{data: EventListed[]} = await api.get('/events', {params: {language}})
+	const {data}: {data: EventListed[]} = await api.get('/events', {
+		params: {language}
+	})
 
 	return {
 		props: {events: data},

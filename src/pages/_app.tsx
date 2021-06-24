@@ -17,26 +17,22 @@ import BannerAd from '../components/ads/Banner'
 import ModalAd from '../components/ads/Modal'
 import {UserStatusProvider} from '../contexts/UserStatus'
 
-const MyApp: React.FC<AppProps> = ({Component, pageProps}) =>
-{
+const MyApp: React.FC<AppProps> = ({Component, pageProps}) => {
 	SwiperCore.use([Navigation])
 
 	const {pathname, events} = useRouter()
 
-	useEffect(() =>
-	{
-		const handleRouteChange = (url: URL) =>
-		{
+	useEffect(() => {
+		const handleRouteChange = (url: URL) => {
 			gtag.pageview(url)
 		}
-		
+
 		events.on('routeChangeComplete', handleRouteChange)
 		return () => events.off('routeChangeComplete', handleRouteChange)
 	}, [events])
 
-	useEffect(() =>
-	{
-		window.scrollTo(0,0)
+	useEffect(() => {
+		window.scrollTo(0, 0)
 	}, [pathname])
 
 	return (
@@ -44,7 +40,7 @@ const MyApp: React.FC<AppProps> = ({Component, pageProps}) =>
 			<CookieBanner />
 			<BannerAd />
 			<ModalAd />
-			<SessionProvider session={pageProps.session} >
+			<SessionProvider session={pageProps.session}>
 				<UserStatusProvider>
 					<Menu />
 					<SessionHandler>

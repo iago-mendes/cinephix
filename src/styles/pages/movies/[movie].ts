@@ -1,8 +1,7 @@
 import styled from 'styled-components'
 
 const Container = styled.div`
-	main
-	{
+	main {
 		height: calc(100vh - 5rem);
 		padding: 2rem;
 
@@ -11,19 +10,16 @@ const Container = styled.div`
 		align-items: center;
 		gap: 2rem;
 
-		.img
-		{
+		.img {
 			width: calc((100vh - 5rem - 4rem) / 1.5);
 			max-width: calc(50% - 5rem);
 
-			img
-			{
+			img {
 				border-radius: 1rem;
 			}
 		}
 
-		.info
-		{
+		.info {
 			height: 100%;
 			width: 50%;
 			margin-right: 5rem;
@@ -35,27 +31,23 @@ const Container = styled.div`
 
 			color: ${p => p.theme.primary};
 
-			h1
-			{
+			h1 {
 				font-family: Ubuntu;
 				font-weight: 700;
 				font-size: 4rem;
 			}
 
-			.details
-			{
+			.details {
 				display: flex;
 				align-items: center;
 				justify-content: space-around;
 
-				.detail
-				{
+				.detail {
 					display: flex;
 					align-items: center;
 					gap: 1rem;
 
-					span
-					{
+					span {
 						font-family: Ubuntu;
 						font-weight: 400;
 						font-size: 2rem;
@@ -63,14 +55,12 @@ const Container = styled.div`
 				}
 			}
 
-			p
-			{
+			p {
 				font-family: Roboto;
 				font-size: 2rem;
 			}
 
-			ul
-			{
+			ul {
 				width: 100%;
 
 				display: grid;
@@ -80,8 +70,7 @@ const Container = styled.div`
 				align-items: center;
 				justify-items: center;
 
-				li
-				{
+				li {
 					display: flex;
 					align-items: center;
 					justify-content: center;
@@ -103,15 +92,14 @@ const Container = styled.div`
 		}
 	}
 
-	.collection
-	{
+	.collection {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
 		justify-content: space-around;
 
-		::before, ::after
-		{
+		::before,
+		::after {
 			content: '';
 			width: 50%;
 			height: 0.5rem;
@@ -122,16 +110,14 @@ const Container = styled.div`
 			margin: 1rem;
 		}
 
-		.main
-		{
+		.main {
 			display: flex;
 			align-items: center;
 			justify-content: space-around;
 
 			width: 50%;
 
-			h1
-			{
+			h1 {
 				font-family: Ubuntu;
 				font-weight: 700;
 				font-size: 2rem;
@@ -140,40 +126,34 @@ const Container = styled.div`
 				width: 50%;
 			}
 
-			.img
-			{
+			.img {
 				width: 15rem;
 
-				img
-				{
+				img {
 					border-radius: 1rem;
 				}
 			}
 		}
 	}
 
-	.row
-	{
+	.row {
 		display: flex;
 
 		padding: 1rem;
 		padding-top: 3rem;
 		padding-bottom: 3rem;
 
-		:nth-child(even)
-		{
-			background-color: rgba(0,0,0,0.5);
+		:nth-child(even) {
+			background-color: rgba(0, 0, 0, 0.5);
 		}
 	}
 
-	.userMovie
-	{
+	.userMovie {
 		align-items: center;
 		justify-content: center;
 		gap: 15rem;
 
-		.add
-		{
+		.add {
 			display: flex;
 			align-items: center;
 			gap: 1rem;
@@ -187,31 +167,27 @@ const Container = styled.div`
 			cursor: pointer;
 			transition: 0.25s;
 
-			:hover
-			{
+			:hover {
 				background-color: ${p => p.theme.primary};
 				color: ${p => p.theme.background};
 
 				transform: scale(1.05);
 			}
 
-			span
-			{
+			span {
 				font-family: Ubuntu;
 				font-weight: 700;
 				font-size: 2rem;
 			}
 		}
 
-		.group
-		{
+		.group {
 			display: flex;
 			flex-direction: column;
 
 			color: ${p => p.theme.primary};
 
-			label
-			{
+			label {
 				font-family: Roboto;
 				font-weight: 700;
 				font-size: 3rem;
@@ -220,8 +196,7 @@ const Container = styled.div`
 				border-left: ${p => p.theme.primary} 5px solid;
 			}
 
-			span
-			{
+			span {
 				font-family: Roboto;
 				font-size: 2rem;
 
@@ -229,12 +204,10 @@ const Container = styled.div`
 
 				display: flex;
 				align-items: center;
-				
 			}
 		}
 
-		.edit
-		{
+		.edit {
 			background: none;
 			border: none;
 			color: ${p => p.theme.primary};
@@ -250,8 +223,7 @@ const Container = styled.div`
 			cursor: pointer;
 			transition: 0.25s;
 
-			:hover
-			{
+			:hover {
 				background-color: ${p => p.theme.primary};
 				color: ${p => p.theme.background};
 
@@ -260,13 +232,11 @@ const Container = styled.div`
 		}
 	}
 
-	.carousel
-	{
+	.carousel {
 		flex-direction: column;
 		gap: 3rem;
 
-		span
-		{
+		span {
 			font-family: Roboto;
 			font-weight: 700;
 			font-size: 3rem;
@@ -278,41 +248,34 @@ const Container = styled.div`
 		}
 	}
 
-	@media(max-width: 1024px)
-	{
-		main
-		{
+	@media (max-width: 1024px) {
+		main {
 			height: fit-content;
 
 			flex-direction: column;
 			align-items: center;
 
-			.img
-			{
+			.img {
 				width: 75vw;
 				max-width: 40rem;
 			}
 
-			.info
-			{
+			.info {
 				width: 100%;
 				margin: 0;
 				margin-top: 2rem;
 
-				h1
-				{
+				h1 {
 					font-size: 3rem;
 				}
 
-				.details
-				{
+				.details {
 					flex-direction: column;
 					align-items: flex-start;
 					gap: 1rem;
 				}
 
-				ul li
-				{
+				ul li {
 					padding-left: 1rem;
 					padding-right: 1rem;
 
@@ -321,10 +284,9 @@ const Container = styled.div`
 			}
 		}
 
-		.collection
-		{
-			::before, ::after
-			{
+		.collection {
+			::before,
+			::after {
 				content: '';
 				width: 90%;
 				height: 0.5rem;
@@ -335,8 +297,7 @@ const Container = styled.div`
 				margin: 1rem;
 			}
 
-			.main
-			{
+			.main {
 				display: flex;
 				align-items: center;
 				justify-content: space-around;
@@ -345,13 +306,11 @@ const Container = styled.div`
 			}
 		}
 
-		.userMovie
-		{
+		.userMovie {
 			flex-direction: column;
 			gap: 2rem;
 
-			.group
-			{
+			.group {
 				width: 100%;
 			}
 		}

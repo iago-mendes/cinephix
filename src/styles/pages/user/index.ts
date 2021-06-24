@@ -1,8 +1,7 @@
 import styled from 'styled-components'
 
 const Container = styled.div`
-	main
-	{
+	main {
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
@@ -11,14 +10,12 @@ const Container = styled.div`
 
 		border-bottom: ${p => p.theme.primary} 2px solid;
 
-		img
-		{
+		img {
 			width: 15rem;
 			border-radius: 1rem;
 		}
 
-		.group
-		{
+		.group {
 			display: flex;
 			flex-direction: column;
 			gap: 1rem;
@@ -26,24 +23,20 @@ const Container = styled.div`
 			color: ${p => p.theme.primary};
 			font-family: Roboto;
 
-			h1
-			{
+			h1 {
 				font-size: 4rem;
 			}
 
-			h2
-			{
+			h2 {
 				font-size: 3rem;
 			}
 
-			p
-			{
+			p {
 				font-size: 2rem;
 			}
 		}
 
-		.delete
-		{
+		.delete {
 			background: none;
 			border: ${p => p.theme.delete} 2px solid;
 			border-radius: 1rem;
@@ -58,33 +51,29 @@ const Container = styled.div`
 			cursor: pointer;
 			transition: 0.25s;
 
-			:hover
-			{
+			:hover {
 				background-color: ${p => p.theme.delete};
 				color: ${p => p.theme.background};
 
 				transform: scale(1.1);
 			}
 
-			span
-			{
+			span {
 				font-family: Ubuntu;
 				font-weight: 700;
 				font-size: 2rem;
 			}
 		}
 	}
-	
-	.links
-	{
+
+	.links {
 		display: flex;
 		align-items: center;
 		justify-content: space-around;
 
 		padding: 5rem;
 
-		a
-		{
+		a {
 			text-decoration: none;
 			font-family: Ubuntu;
 			font-weight: 700;
@@ -93,8 +82,7 @@ const Container = styled.div`
 			color: ${p => p.theme.primary};
 			display: inline-block;
 
-			::after
-			{
+			::after {
 				content: '';
 				width: 0px;
 				height: 5px;
@@ -103,13 +91,11 @@ const Container = styled.div`
 				transition: 0.25s;
 			}
 
-			:hover::after
-			{
+			:hover::after {
 				width: 100%;
 			}
 
-			span
-			{
+			span {
 				display: flex;
 				align-items: center;
 				justify-content: center;
@@ -118,44 +104,35 @@ const Container = styled.div`
 		}
 	}
 
-	@media(max-width: 1000px)
-	{
-		main
-		{
+	@media (max-width: 1000px) {
+		main {
 			flex-direction: column;
 			gap: 4rem;
 
-			.group
-			{
-				h1
-				{
+			.group {
+				h1 {
 					font-size: 2.5rem;
 				}
 
-				h2
-				{
+				h2 {
 					font-size: 2rem;
 				}
 			}
 		}
 
-		.links
-		{
+		.links {
 			flex-direction: column;
 			align-items: flex-start;
 			gap: 2rem;
 
-			a
-			{
+			a {
 				font-size: 2.25rem;
 			}
 		}
 	}
 
-	@media(min-width: 1000px)
-	{
-		main
-		{
+	@media (min-width: 1000px) {
+		main {
 			padding: 10rem 2rem;
 		}
 	}

@@ -4,18 +4,16 @@ import Container from '../../styles/components/modals/UserTvshow'
 import React from 'react'
 import Image from 'next/image'
 import getTotalRating from '../../utils/getTotalRating'
-import { useRouter } from 'next/router'
+import {useRouter} from 'next/router'
 import ModalContainer from './Container'
 import {UserTvshowListed as UserTvshow} from '../../models/userTvshow'
 
-export interface Tvshow
-{
+export interface Tvshow {
 	id: number
 	image: string
 	title: string
 	venue: string
-	ratings:
-	{
+	ratings: {
 		engagement?: number
 		consistency?: number
 		screenplay?: number
@@ -25,14 +23,12 @@ export interface Tvshow
 	}
 }
 
-export const defaultTvshow =
-{
+export const defaultTvshow = {
 	id: 0,
 	image: '',
 	title: '',
 	venue: '',
-	ratings:
-	{
+	ratings: {
 		engagement: 0,
 		consistency: 0,
 		screenplay: 0,
@@ -42,8 +38,7 @@ export const defaultTvshow =
 	}
 }
 
-const ratingsLabels: {[ratingKey: string]: string} =
-{
+const ratingsLabels: {[ratingKey: string]: string} = {
 	engagement: 'Engagement',
 	consistency: 'Consistency',
 	screenplay: 'Screenplay',
@@ -52,36 +47,30 @@ const ratingsLabels: {[ratingKey: string]: string} =
 	musicAndSound: 'Music and sound'
 }
 
-interface UserTvshowModalProps
-{
+interface UserTvshowModalProps {
 	isOpen: boolean
 	setIsOpen: (p: boolean) => void
 
 	tvshow: UserTvshow
 }
 
-const UserTvshowModal: React.FC<UserTvshowModalProps> = ({isOpen, setIsOpen, tvshow}) =>
-{
+const UserTvshowModal: React.FC<UserTvshowModalProps> = ({
+	isOpen,
+	setIsOpen,
+	tvshow
+}) => {
 	const {push} = useRouter()
 
-	function getVenueColor(venue: string)
-	{
-		if (venue === 'Netflix')
-			return '#ce0e0e'
-		if (venue === 'Prime Video')
-			return '#1ebbff'
-		if (venue === 'Disney+')
-			return '#2a22c4'
-		if (venue === 'HBO Max')
-			return '#861398'
-		if (venue === 'Movie Theater')
-			return '#803710'
-		if (venue === 'Other')
-			return '#656565'
+	function getVenueColor(venue: string) {
+		if (venue === 'Netflix') return '#ce0e0e'
+		if (venue === 'Prime Video') return '#1ebbff'
+		if (venue === 'Disney+') return '#2a22c4'
+		if (venue === 'HBO Max') return '#861398'
+		if (venue === 'Movie Theater') return '#803710'
+		if (venue === 'Other') return '#656565'
 	}
 
-	function handleEdit()
-	{
+	function handleEdit() {
 		setIsOpen(false)
 		push(`/user/tvshows/${tvshow.id}/edit`)
 	}
@@ -90,49 +79,56 @@ const UserTvshowModal: React.FC<UserTvshowModalProps> = ({isOpen, setIsOpen, tvs
 		<ModalContainer
 			isOpen={isOpen}
 			handleClose={() => setIsOpen(false)}
-
 			expandLink={`/tvshows/${tvshow.id}`}
 		>
 			<Container>
-				<div className='img'>
-					<Image src={tvshow.image} width={780} height={1170} layout='responsive' />
+				<div className="img">
+					<Image
+						src={tvshow.image}
+						width={780}
+						height={1170}
+						layout="responsive"
+					/>
 				</div>
-				<div className='info'>
+				<div className="info">
 					<h1>{tvshow.title}</h1>
-					<div className='group'>
+					<div className="group">
 						<label>Venue</label>
 						<span>
-							{
-								tvshow.venue && (
-									<svg width={15} height={15} >
-										<circle cx={7.5} cy={7.5} r={7.5} fill={getVenueColor(tvshow.venue)} />
-									</svg>
-								)
-							}
-							<span style={{marginLeft: 5}} >{tvshow.venue || 'not informed'}</span>
+							{tvshow.venue && (
+								<svg width={15} height={15}>
+									<circle
+										cx={7.5}
+										cy={7.5}
+										r={7.5}
+										fill={getVenueColor(tvshow.venue)}
+									/>
+								</svg>
+							)}
+							<span style={{marginLeft: 5}}>
+								{tvshow.venue || 'not informed'}
+							</span>
 						</span>
 					</div>
-					<div className='group'>
+					<div className="group">
 						<label>Ratings</label>
-						<div className='rating'>
+						<div className="rating">
 							<label>Total:</label>
-							{
-								Object.values(tvshow.ratings).length !== 0
-									? getTotalRating(tvshow.ratings, true)
-									: (
-										<span>not rated</span>
-									)
-							}
+							{Object.values(tvshow.ratings).length !== 0 ? (
+								getTotalRating(tvshow.ratings, true)
+							) : (
+								<span>not rated</span>
+							)}
 						</div>
 						{Object.entries(tvshow.ratings).map(([ratingKey, value]) => (
-							<div className='rating' key={ratingKey}>
+							<div className="rating" key={ratingKey}>
 								<label>{ratingsLabels[ratingKey]}:</label>
 								<span>{value}</span>
 							</div>
 						))}
 					</div>
 				</div>
-				<button className='edit' title='Edit' onClick={handleEdit} >
+				<button className="edit" title="Edit" onClick={handleEdit}>
 					<FiEdit3 size={30} />
 				</button>
 			</Container>

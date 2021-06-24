@@ -14,8 +14,7 @@ import successAlert from '../../utils/alerts/success'
 import errorAlert from '../../utils/alerts/error'
 import ModalContainer from './Container'
 
-interface UserMovieModalProps
-{
+interface UserMovieModalProps {
 	isOpen: boolean
 	setIsOpen: (p: boolean) => void
 
@@ -23,33 +22,35 @@ interface UserMovieModalProps
 	revalidate: () => void
 }
 
-const UserMovieModal: React.FC<UserMovieModalProps> = ({isOpen, setIsOpen, movie, revalidate}) =>
-{
+const UserMovieModal: React.FC<UserMovieModalProps> = ({
+	isOpen,
+	setIsOpen,
+	movie,
+	revalidate
+}) => {
 	const {user} = useUser()
 	const {push} = useRouter()
 
-	function handleEdit()
-	{
+	function handleEdit() {
 		setIsOpen(false)
 		push(`/user/movies/${movie.data.id}/edit`)
 	}
 
-	function handleMoveToWatched()
-	{
-		const data =
-		{
+	function handleMoveToWatched() {
+		const data = {
 			watched: true
 		}
 
-		api.put(`users/${user.email}/movies/${movie.data.id}`, data)
-			.then(() =>
-			{
+		api
+			.put(`users/${user.email}/movies/${movie.data.id}`, data)
+			.then(() => {
 				revalidate()
-				successAlert(`'${movie.data.title}' was successfully marked as watched!`)
+				successAlert(
+					`'${movie.data.title}' was successfully marked as watched!`
+				)
 				setIsOpen(false)
 			})
-			.catch(err =>
-			{
+			.catch(err => {
 				errorAlert(err.response.data.message)
 			})
 	}
@@ -58,56 +59,52 @@ const UserMovieModal: React.FC<UserMovieModalProps> = ({isOpen, setIsOpen, movie
 		<ModalContainer
 			isOpen={isOpen}
 			handleClose={() => setIsOpen(false)}
-
 			expandLink={`/movies/${movie.data.id}`}
 		>
 			<Container>
-				<div className='img'>
-					<Image src={movie.data.image} width={780} height={1170} layout='responsive' />
+				<div className="img">
+					<Image
+						src={movie.data.image}
+						width={780}
+						height={1170}
+						layout="responsive"
+					/>
 				</div>
-				<div className='info'>
+				<div className="info">
 					<h1>{movie.data.title}</h1>
-					{
-						movie.venue && (
-							<div className='group'>
-								<label>Venue</label>
-								<span>{getVenue(movie.venue)}</span>
+					{movie.venue && (
+						<div className="group">
+							<label>Venue</label>
+							<span>{getVenue(movie.venue)}</span>
+						</div>
+					)}
+					{movie.watched && (
+						<div className="group">
+							<label>Ratings</label>
+							<div className="rating">
+								<label>Total:</label>
+								{Object.values(movie.ratings).length !== 0 ? (
+									getTotalRating(movie.ratings, true)
+								) : (
+									<span>not rated</span>
+								)}
 							</div>
-						)
-					}
-					{
-						movie.watched && (
-							<div className='group'>
-								<label>Ratings</label>
-								<div className='rating'>
-									<label>Total:</label>
-									{
-										Object.values(movie.ratings).length !== 0
-											? getTotalRating(movie.ratings, true)
-											: (
-												<span>not rated</span>
-											)
-									}
+							{Object.entries(movie.ratings).map(([ratingKey, value]) => (
+								<div className="rating" key={ratingKey}>
+									<label>{getRatingLabel('movie', ratingKey)}:</label>
+									<span>{value}</span>
 								</div>
-								{Object.entries(movie.ratings).map(([ratingKey, value]) => (
-									<div className='rating' key={ratingKey}>
-										<label>{getRatingLabel('movie', ratingKey)}:</label>
-										<span>{value}</span>
-									</div>
-								))}
-							</div>
-						)
-					}
-					{
-						!movie.watched && (
-							<button className='move' onClick={handleMoveToWatched} >
-								<FiEye size={25} />
-								<span>Mark as watched</span>
-							</button>
-						)
-					}
+							))}
+						</div>
+					)}
+					{!movie.watched && (
+						<button className="move" onClick={handleMoveToWatched}>
+							<FiEye size={25} />
+							<span>Mark as watched</span>
+						</button>
+					)}
 				</div>
-				<button className='edit' title='Edit' onClick={handleEdit} >
+				<button className="edit" title="Edit" onClick={handleEdit}>
 					<FiEdit3 size={30} />
 				</button>
 			</Container>

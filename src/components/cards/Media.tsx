@@ -7,8 +7,7 @@ import Container from '../../styles/components/cards/Media'
 import formatDate from '../../utils/formatDate'
 import truncateText from '../../utils/truncateText'
 
-export interface Media
-{
+export interface Media {
 	id: number
 	image: string
 	title: string
@@ -17,32 +16,35 @@ export interface Media
 	type?: string
 }
 
-interface MediaCardProps
-{
+interface MediaCardProps {
 	media: Media
 	showOverview?: boolean
 
 	link: string
-	
+
 	style?: CSSProperties
 	onClick?: (p: any) => void
 }
 
-const MediaCard: React.FC<MediaCardProps> =
-({media, showOverview = false, link, style = {}, onClick = () => {}}) =>
-{
+const MediaCard: React.FC<MediaCardProps> = ({
+	media,
+	showOverview = false,
+	link,
+	style = {},
+	onClick = () => {}
+}) => {
 	return (
-		<Link href={link} >
-			<Container
-				style={style}
-				as='a'
-				href={link}
-				onClick={onClick}
-			>
-				<div className='img'>
-					<Image src={media.image} width={780} height={1170} layout='responsive' />
+		<Link href={link}>
+			<Container style={style} as="a" href={link} onClick={onClick}>
+				<div className="img">
+					<Image
+						src={media.image}
+						width={780}
+						height={1170}
+						layout="responsive"
+					/>
 				</div>
-				<div className='info'>
+				<div className="info">
 					<h1>{truncateText(media.title, 35)}</h1>
 					<h3>
 						<FiCalendar size={15} />

@@ -1,12 +1,12 @@
 {
-  "short_name": "Cinephix",
-  "name": "Cinephix | App for cinephiles",
-  "display": "standalone",
-  "orientation": "portrait",
-  "theme_color": "#161C50",
-  "background_color": "#161C50",
-  "start_url": "/",
-  "icons": [
+	"short_name": "Cinephix",
+	"name": "Cinephix | App for cinephiles",
+	"display": "standalone",
+	"orientation": "portrait",
+	"theme_color": "#161C50",
+	"background_color": "#161C50",
+	"start_url": "/",
+	"icons": [
 		{
 			"src": "/icons/192px_background.png",
 			"sizes": "192x192",
@@ -57,9 +57,5 @@
 			"type": "image/png"
 		}
 	],
-	"categories": [
-		"entertainment",
-		"social",
-		"utilities"
-	]
+	"categories": ["entertainment", "social", "utilities"]
 }

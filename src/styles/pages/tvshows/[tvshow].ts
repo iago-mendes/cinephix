@@ -1,13 +1,11 @@
 import styled from 'styled-components'
 
-interface ContainerProps
-{
+interface ContainerProps {
 	overviewLength: number
 }
 
 const Container = styled.div<ContainerProps>`
-	main
-	{
+	main {
 		height: calc(100vh - 5rem);
 		padding: 2rem;
 
@@ -16,19 +14,16 @@ const Container = styled.div<ContainerProps>`
 		align-items: center;
 		gap: 2rem;
 
-		.img
-		{
+		.img {
 			width: calc((100vh - 5rem - 4rem) / 1.5);
 			max-width: calc(50% - 5rem);
 
-			img
-			{
+			img {
 				border-radius: 1rem;
 			}
 		}
 
-		.info
-		{
+		.info {
 			height: 100%;
 			width: 50%;
 			margin-right: 5rem;
@@ -40,15 +35,13 @@ const Container = styled.div<ContainerProps>`
 
 			color: ${p => p.theme.primary};
 
-			h1
-			{
+			h1 {
 				font-family: Ubuntu;
 				font-weight: 700;
 				font-size: 4rem;
 			}
 
-			.details
-			{
+			.details {
 				display: flex;
 				flex-direction: column;
 				gap: 2rem;
@@ -56,29 +49,25 @@ const Container = styled.div<ContainerProps>`
 				padding-left: 5rem;
 				padding-right: 5rem;
 
-				.detail
-				{
+				.detail {
 					display: flex;
 					align-items: center;
 					gap: 1rem;
 
-					strong
-					{
+					strong {
 						font-family: Ubuntu;
 						font-weight: 700;
 						font-size: 2rem;
 					}
 
-					span
-					{
+					span {
 						font-family: Ubuntu;
 						font-weight: 400;
 						font-size: 2rem;
 					}
 				}
 
-				.group
-				{
+				.group {
 					display: flex;
 					align-items: center;
 					justify-content: space-between;
@@ -87,14 +76,12 @@ const Container = styled.div<ContainerProps>`
 				}
 			}
 
-			p
-			{
+			p {
 				font-family: Roboto;
-				font-size: ${p => p.overviewLength < 500 ? '2rem' : '1.5rem'};
+				font-size: ${p => (p.overviewLength < 500 ? '2rem' : '1.5rem')};
 			}
 
-			ul
-			{
+			ul {
 				width: 100%;
 
 				display: grid;
@@ -104,8 +91,7 @@ const Container = styled.div<ContainerProps>`
 				align-items: center;
 				justify-items: center;
 
-				li
-				{
+				li {
 					display: flex;
 					align-items: center;
 					justify-content: center;
@@ -128,28 +114,24 @@ const Container = styled.div<ContainerProps>`
 		}
 	}
 
-	.row
-	{
+	.row {
 		display: flex;
 
 		padding: 1rem;
 		padding-top: 3rem;
 		padding-bottom: 3rem;
 
-		:nth-child(even)
-		{
-			background-color: rgba(0,0,0,0.5);
+		:nth-child(even) {
+			background-color: rgba(0, 0, 0, 0.5);
 		}
 	}
 
-	.userTvshow
-	{
+	.userTvshow {
 		align-items: center;
 		justify-content: center;
 		gap: 15rem;
 
-		.add
-		{
+		.add {
 			display: flex;
 			align-items: center;
 			gap: 1rem;
@@ -163,31 +145,27 @@ const Container = styled.div<ContainerProps>`
 			cursor: pointer;
 			transition: 0.25s;
 
-			:hover
-			{
+			:hover {
 				background-color: ${p => p.theme.primary};
 				color: ${p => p.theme.background};
 
 				transform: scale(1.05);
 			}
 
-			span
-			{
+			span {
 				font-family: Ubuntu;
 				font-weight: 700;
 				font-size: 2rem;
 			}
 		}
 
-		.group
-		{
+		.group {
 			display: flex;
 			flex-direction: column;
 
 			color: ${p => p.theme.primary};
 
-			label
-			{
+			label {
 				font-family: Roboto;
 				font-weight: 700;
 				font-size: 3rem;
@@ -196,8 +174,7 @@ const Container = styled.div<ContainerProps>`
 				border-left: ${p => p.theme.primary} 5px solid;
 			}
 
-			span
-			{
+			span {
 				font-family: Roboto;
 				font-size: 2rem;
 
@@ -205,12 +182,10 @@ const Container = styled.div<ContainerProps>`
 
 				display: flex;
 				align-items: center;
-				
 			}
 		}
 
-		.edit
-		{
+		.edit {
 			background: none;
 			border: none;
 			color: ${p => p.theme.primary};
@@ -226,8 +201,7 @@ const Container = styled.div<ContainerProps>`
 			cursor: pointer;
 			transition: 0.25s;
 
-			:hover
-			{
+			:hover {
 				background-color: ${p => p.theme.primary};
 				color: ${p => p.theme.background};
 
@@ -236,13 +210,11 @@ const Container = styled.div<ContainerProps>`
 		}
 	}
 
-	.carousel
-	{
+	.carousel {
 		flex-direction: column;
 		gap: 3rem;
 
-		span
-		{
+		span {
 			font-family: Roboto;
 			font-weight: 700;
 			font-size: 3rem;
@@ -254,49 +226,41 @@ const Container = styled.div<ContainerProps>`
 		}
 	}
 
-	@media(max-width: 1024px)
-	{
-		main
-		{
+	@media (max-width: 1024px) {
+		main {
 			height: fit-content;
 
 			flex-direction: column;
 			align-items: center;
 
-			.img
-			{
+			.img {
 				width: 75vw;
 				max-width: 40rem;
 			}
 
-			.info
-			{
+			.info {
 				width: 100%;
 				margin: 0;
 				margin-top: 2rem;
 
-				h1
-				{
+				h1 {
 					font-size: 3rem;
 				}
 
-				.details
-				{
+				.details {
 					padding: 0;
 
-					.detail span, .detail strong
-					{
+					.detail span,
+					.detail strong {
 						font-size: 1.5rem;
 					}
 
-					.dates span
-					{
+					.dates span {
 						font-size: 1.4rem;
 					}
 				}
 
-				ul li
-				{
+				ul li {
 					padding-left: 1rem;
 					padding-right: 1rem;
 
@@ -305,13 +269,11 @@ const Container = styled.div<ContainerProps>`
 			}
 		}
 
-		.userTvshow
-		{
+		.userTvshow {
 			flex-direction: column;
 			gap: 2rem;
 
-			.group
-			{
+			.group {
 				width: 100%;
 			}
 		}

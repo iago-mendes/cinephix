@@ -11,37 +11,32 @@ const Container = styled.div`
 	padding: 1rem;
 
 	border-radius: 1rem;
-	box-shadow: 5px 5px 5px rgba(0,0,0,0.5);
-	
+	box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+
 	text-decoration: none;
 
 	cursor: pointer;
 	transition: 0.25s;
 
-	:hover
-	{
+	:hover {
 		border-radius: 0;
 		background-color: ${p => p.theme.primary}bf;
 
-		.img img
-		{
+		.img img {
 			border-radius: 0;
 		}
 	}
 
-	.img
-	{
+	.img {
 		width: 30%;
 
-		img
-		{
+		img {
 			border-radius: 1rem;
 			transition: 0.25s;
 		}
 	}
 
-	.info
-	{
+	.info {
 		width: 65%;
 		height: 100%;
 
@@ -52,19 +47,17 @@ const Container = styled.div`
 
 		color: ${p => p.theme.background};
 
-		h1
-		{
+		h1 {
 			font-family: Ubuntu;
 			font-weight: 700;
 
 			font-size: 2.5rem;
 			height: 35%;
-			
+
 			overflow: hidden;
 		}
 
-		h3
-		{
+		h3 {
 			font-family: Ubuntu;
 			font-weight: 400;
 
@@ -76,8 +69,7 @@ const Container = styled.div`
 			gap: 0.5rem;
 		}
 
-		p
-		{
+		p {
 			font-family: Roboto;
 			font-weight: 400;
 
@@ -86,25 +78,20 @@ const Container = styled.div`
 
 			overflow: hidden;
 		}
-
 	}
 
-	@media(max-width: 600px)
-	{
+	@media (max-width: 600px) {
 		width: 30rem;
 		height: calc((30rem - 2rem) * 0.3 * 1.5 + 2rem);
 
 		font-size: 5px;
 
-		.info
-		{
-			h1
-			{
+		.info {
+			h1 {
 				font-size: 1.75rem;
 			}
 
-			p
-			{
+			p {
 				font-size: 1.2rem;
 			}
 		}

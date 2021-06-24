@@ -7,34 +7,29 @@ const Container = styled.div`
 	flex-direction: column;
 	gap: 5rem;
 
-	header
-	{
+	header {
 		display: flex;
 		align-items: center;
 		justify-content: space-around;
 
 		padding: 1rem;
 
-		.icon
-		{
+		.icon {
 			width: 20%;
 		}
 
-		.name
-		{
+		.name {
 			width: 50%;
 		}
 	}
 
-	main
-	{
+	main {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
 		gap: 1rem;
 
-		.question
-		{
+		.question {
 			width: 100%;
 			padding-left: 5rem;
 			padding-right: 5rem;
@@ -43,8 +38,7 @@ const Container = styled.div`
 			flex-direction: column;
 			gap: 0.5rem;
 
-			h1
-			{
+			h1 {
 				font-size: 3rem;
 				font-family: Ubuntu;
 				color: ${p => p.theme.textBlack};
@@ -53,8 +47,7 @@ const Container = styled.div`
 				padding-left: 1rem;
 			}
 
-			p
-			{
+			p {
 				margin-left: 2rem;
 
 				font-size: 2rem;
@@ -64,8 +57,7 @@ const Container = styled.div`
 		}
 	}
 
-	.links
-	{
+	.links {
 		width: 100%;
 		padding: 2rem;
 		margin-bottom: 5rem;
@@ -77,8 +69,7 @@ const Container = styled.div`
 		align-items: center;
 		justify-items: center;
 
-		a
-		{
+		a {
 			font-size: 2.5rem;
 			font-family: Ubuntu;
 			color: ${p => p.theme.textBlack};
@@ -86,8 +77,7 @@ const Container = styled.div`
 			text-decoration: none;
 			cursor: pointer;
 
-			::after
-			{
+			::after {
 				content: '';
 				width: 0px;
 				height: 3px;
@@ -97,35 +87,29 @@ const Container = styled.div`
 				transition: 0.25s;
 			}
 
-			:hover::after
-			{
+			:hover::after {
 				width: 100%;
 			}
 		}
 	}
 
-	@media(max-width: 700px)
-	{
+	@media (max-width: 700px) {
 		gap: 2rem;
 
-		header
-		{
+		header {
 			flex-direction: column;
 			gap: 1rem;
 
-			.icon
-			{
+			.icon {
 				width: 50%;
 			}
 
-			.name
-			{
+			.name {
 				width: 75%;
 			}
 		}
 
-		main .question
-		{
+		main .question {
 			padding-left: 1rem;
 			padding-right: 1rem;
 		}

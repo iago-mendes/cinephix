@@ -12,14 +12,12 @@ const Container = styled.div`
 	min-height: 100%;
 	padding: 2rem 1rem;
 
-	h1
-	{
+	h1 {
 		font-family: Ubuntu;
 		font-size: 2.5rem;
 	}
 
-	.category
-	{
+	.category {
 		display: flex;
 		flex-direction: column;
 		gap: 1rem;
@@ -27,8 +25,7 @@ const Container = styled.div`
 		width: 90%;
 		padding-left: 1.5rem;
 
-		label
-		{
+		label {
 			color: ${p => p.theme.primary};
 			font-weight: 700;
 			font-size: 2rem;
@@ -39,8 +36,7 @@ const Container = styled.div`
 		}
 	}
 
-	.buttons
-	{
+	.buttons {
 		display: flex;
 		align-items: center;
 		justify-content: space-around;
@@ -49,8 +45,7 @@ const Container = styled.div`
 		margin-top: 10rem;
 		margin-bottom: 7.5rem;
 
-		button
-		{
+		button {
 			display: flex;
 			align-items: center;
 			justify-content: center;
@@ -65,31 +60,26 @@ const Container = styled.div`
 			cursor: pointer;
 			transition: 0.25s;
 
-			:hover
-			{
+			:hover {
 				color: ${p => p.theme.background};
 			}
 		}
 
-		.cancel
-		{
+		.cancel {
 			color: ${p => p.theme.delete};
 			border: ${p => p.theme.delete} 2px solid;
 
-			:hover
-			{
-				background-color: ${p => p.theme.delete}
+			:hover {
+				background-color: ${p => p.theme.delete};
 			}
 		}
 
-		.confirm
-		{
+		.confirm {
 			color: ${p => p.theme.confirm};
 			border: ${p => p.theme.confirm} 2px solid;
 
-			:hover
-			{
-				background-color: ${p => p.theme.confirm}
+			:hover {
+				background-color: ${p => p.theme.confirm};
 			}
 		}
 	}

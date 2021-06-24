@@ -4,8 +4,7 @@ const Container = styled.div`
 	width: 20rem;
 	direction: ltr;
 
-	.detail
-	{
+	.detail {
 		display: flex;
 		justify-content: flex-end;
 		padding-right: 2.25rem;
@@ -13,16 +12,14 @@ const Container = styled.div`
 		color: ${p => p.theme.primary};
 	}
 
-	main
-	{
+	main {
 		margin-top: -3px;
 		background-color: ${p => p.theme.primary};
 		border-radius: 0.5rem;
 
-		box-shadow: 0px 0px 10px rgba(0,0,0);
+		box-shadow: 0px 0px 10px rgba(0, 0, 0);
 
-		.session
-		{
+		.session {
 			display: flex;
 			flex-direction: column;
 			align-items: center;
@@ -31,16 +28,14 @@ const Container = styled.div`
 			padding: 1rem;
 			border-bottom: ${p => p.theme.background} 1px solid;
 
-			p
-			{
+			p {
 				font-family: Roboto;
 				font-size: 1.5rem;
 				color: ${p => p.theme.background};
 				word-break: break-all;
 			}
 
-			button
-			{
+			button {
 				display: flex;
 				align-items: center;
 				justify-content: center;
@@ -55,14 +50,12 @@ const Container = styled.div`
 				cursor: pointer;
 				transition: 0.25s;
 
-				:hover
-				{
+				:hover {
 					color: ${p => p.theme.primary};
 					background-color: ${p => p.theme.background};
 				}
 
-				span
-				{
+				span {
 					font-family: Ubuntu;
 					font-weight: 700;
 					font-size: 1.5rem;
@@ -70,8 +63,7 @@ const Container = styled.div`
 			}
 		}
 
-		.userLinks
-		{
+		.userLinks {
 			display: flex;
 			flex-direction: column;
 			gap: 1.5rem;
@@ -79,8 +71,7 @@ const Container = styled.div`
 			padding: 1.5rem;
 			padding-left: 2.5rem;
 
-			a
-			{
+			a {
 				font-family: Ubuntu;
 				font-size: 1.75rem;
 				font-weight: 700;
@@ -91,8 +82,7 @@ const Container = styled.div`
 				width: fit-content;
 				display: inline-block;
 
-				::after
-				{
+				::after {
 					content: '';
 					width: 0px;
 					height: 2px;
@@ -101,23 +91,19 @@ const Container = styled.div`
 					transition: 0.25s;
 				}
 
-				:hover::after
-				{
+				:hover::after {
 					width: 100%;
 				}
 			}
 		}
 	}
 
-	@media (max-width: 1000px)
-	{
-		.detail svg
-		{
+	@media (max-width: 1000px) {
+		.detail svg {
 			transform: rotate(180deg);
 		}
 
-		main
-		{
+		main {
 			margin-top: 0;
 			margin-bottom: -3px;
 		}

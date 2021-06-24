@@ -8,8 +8,7 @@ const Container = styled.footer`
 	align-items: center;
 	justify-content: space-between;
 
-	.logos
-	{
+	.logos {
 		width: 25%;
 
 		display: flex;
@@ -20,38 +19,32 @@ const Container = styled.footer`
 		cursor: pointer;
 		transition: 0.25s;
 
-		:hover
-		{
+		:hover {
 			transform: scale(1.05);
 		}
 
-		.icon
-		{
+		.icon {
 			width: 25%;
 		}
 
-		.name
-		{
+		.name {
 			width: 100%;
 		}
 	}
 
-	.attribution
-	{
+	.attribution {
 		font-family: Roboto;
 		font-size: 1.25rem;
-		
+
 		color: ${p => p.theme.gray};
 
-		a
-		{
+		a {
 			color: ${p => p.theme.gray};
 			text-decoration: underline;
 		}
 	}
 
-	.info
-	{
+	.info {
 		width: 70%;
 		height: 100%;
 
@@ -60,8 +53,7 @@ const Container = styled.footer`
 		align-items: flex-end;
 		gap: 2rem;
 
-		.links
-		{
+		.links {
 			width: 100%;
 
 			display: grid;
@@ -71,8 +63,7 @@ const Container = styled.footer`
 			align-items: center;
 			justify-items: center;
 
-			a
-			{
+			a {
 				font-family: Ubuntu;
 				font-weight: 700;
 				font-size: 2rem;
@@ -82,8 +73,7 @@ const Container = styled.footer`
 
 				display: inline-block;
 
-				::after
-				{
+				::after {
 					content: '';
 					width: 0px;
 					height: 2px;
@@ -92,16 +82,14 @@ const Container = styled.footer`
 					transition: 0.25s;
 				}
 
-				:hover::after
-				{
+				:hover::after {
 					width: 100%;
 				}
 			}
 		}
 	}
 
-	@media(max-width: 1000px)
-	{
+	@media (max-width: 1000px) {
 		justify-content: center;
 		padding: 1rem;
 		padding-bottom: 7.5rem;

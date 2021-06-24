@@ -1,11 +1,9 @@
-interface Event
-{
+interface Event {
 	id: string
-  name: string
-  color: string
-  description: string
-	categories: Array<
-	{
+	name: string
+	color: string
+	description: string
+	categories: Array<{
 		id: string
 		name: string
 		description: string
@@ -15,8 +13,7 @@ interface Event
 	}>
 }
 
-export interface EventMedia
-{
+export interface EventMedia {
 	id: number
 	image: string
 	title: string
@@ -25,10 +22,8 @@ export interface EventMedia
 	type: string
 }
 
-export interface EventCelebrity
-{
-	celebrity:
-	{
+export interface EventCelebrity {
+	celebrity: {
 		id: number
 		image: string
 		name: string
@@ -36,8 +31,7 @@ export interface EventCelebrity
 	media: EventMedia
 }
 
-export interface EventListed
-{
+export interface EventListed {
 	id: string
 	name: string
 	color: string

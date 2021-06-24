@@ -1,34 +1,28 @@
-interface MovieDetails
-{
+interface MovieDetails {
 	id: number
-  image: string
-  title: string
-  date: string
-  status: string
-  rating: number
-  overview: string
-	collection?:
-	{
-    id: number
-    name: string
-    image: string
-  }
-  genres: Array<
-	{
+	image: string
+	title: string
+	date: string
+	status: string
+	rating: number
+	overview: string
+	collection?: {
+		id: number
+		name: string
+		image: string
+	}
+	genres: Array<{
 		id: number
 		name: string
 	}>
-	credits:
-	{
-		cast: Array<
-		{
+	credits: {
+		cast: Array<{
 			id: number
 			name: string
 			image: string
 			character: string
 		}>
-		crew: Array<
-		{
+		crew: Array<{
 			id: number
 			name: string
 			image: string
@@ -37,8 +31,7 @@ interface MovieDetails
 	}
 }
 
-export const defaultMovieDetails: MovieDetails =
-{
+export const defaultMovieDetails: MovieDetails = {
 	id: 0,
 	image: '',
 	title: '',
@@ -47,15 +40,13 @@ export const defaultMovieDetails: MovieDetails =
 	rating: 0,
 	overview: '',
 	genres: [],
-	credits:
-	{
+	credits: {
 		cast: [],
 		crew: []
 	}
 }
 
-export const loadingMovie: MovieDetails =
-{
+export const loadingMovie: MovieDetails = {
 	id: 0,
 	image: '',
 	title: '_loading',
@@ -64,8 +55,7 @@ export const loadingMovie: MovieDetails =
 	rating: 0,
 	overview: '',
 	genres: [],
-	credits:
-	{
+	credits: {
 		cast: [],
 		crew: []
 	}

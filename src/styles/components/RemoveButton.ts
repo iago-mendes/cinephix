@@ -21,16 +21,14 @@ const Container = styled.button`
 	cursor: pointer;
 	transition: 0.25s;
 
-	:hover
-	{
+	:hover {
 		background-color: ${p => p.theme.delete};
 		color: ${p => p.theme.background};
 
 		transform: scale(1.2);
 	}
 
-	@media(max-width: 600px)
-	{
+	@media (max-width: 600px) {
 		top: 0.5rem;
 		right: 0.5rem;
 	}

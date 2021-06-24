@@ -1,5 +1,4 @@
-const theme =
-{
+const theme = {
 	blue: '#161C50',
 	red: '#420C14',
 	redDark: '#26070B',

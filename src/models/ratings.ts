@@ -1,10 +1,8 @@
-interface Ratings
-{
+interface Ratings {
 	[ratingKey: string]: number
 }
 
-export const defaultTvshowRatings: Ratings =
-{
+export const defaultTvshowRatings: Ratings = {
 	engagement: -1,
 	consistency: -1,
 	screenplay: -1,
@@ -13,8 +11,7 @@ export const defaultTvshowRatings: Ratings =
 	musicAndSound: -1
 }
 
-export const defaultMovieRatings: Ratings =
-{
+export const defaultMovieRatings: Ratings = {
 	screenplay: -1,
 	pacing: -1,
 	acting: -1,

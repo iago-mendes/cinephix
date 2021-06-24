@@ -1,25 +1,21 @@
-import MovieDetails, { defaultMovieDetails } from './movie'
+import MovieDetails, {defaultMovieDetails} from './movie'
 import Ratings, {defaultMovieRatings} from './ratings'
 
-interface UserMovie
-{
+interface UserMovie {
 	data: MovieDetails
 	watched: boolean
 	venue?: string
 	ratings: Ratings
 }
 
-export const defaultUserMovie: UserMovie =
-{
+export const defaultUserMovie: UserMovie = {
 	data: defaultMovieDetails,
 	watched: false,
 	ratings: defaultMovieRatings
 }
 
-export interface UserMovieListed
-{
-	data:
-	{
+export interface UserMovieListed {
+	data: {
 		id: number
 		image: string
 		title: string
@@ -31,10 +27,8 @@ export interface UserMovieListed
 	ratings: Ratings
 }
 
-export const defaultUserMovieListed: UserMovieListed =
-{
-	data:
-	{
+export const defaultUserMovieListed: UserMovieListed = {
+	data: {
 		id: 0,
 		image: '',
 		title: '',
@@ -45,10 +39,8 @@ export const defaultUserMovieListed: UserMovieListed =
 	ratings: defaultMovieRatings
 }
 
-export const loadingUserMovieListed: UserMovieListed =
-{
-	data:
-	{
+export const loadingUserMovieListed: UserMovieListed = {
+	data: {
 		id: -1,
 		image: '',
 		title: '',

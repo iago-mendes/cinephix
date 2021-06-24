@@ -10,8 +10,7 @@ import api from '../services/api'
 
 const MySwal = withReactContent(Swal)
 
-interface RemoveButtonProps
-{
+interface RemoveButtonProps {
 	title?: string
 	collection: string
 
@@ -19,50 +18,47 @@ interface RemoveButtonProps
 	redirectRoute?: string
 }
 
-const RemoveButton: React.FC<RemoveButtonProps> = ({title, collection, apiRoute, redirectRoute}) =>
-{
+const RemoveButton: React.FC<RemoveButtonProps> = ({
+	title,
+	collection,
+	apiRoute,
+	redirectRoute
+}) => {
 	const {back, push} = useRouter()
 
-	function handleClick()
-	{
+	function handleClick() {
 		const text = title
 			? `If you continue, '${title}' will be removed from your ${collection}!`
 			: `If you continue, it will be removed from your ${collection}!`
 
-		MySwal.fire(
-			{
-				icon: 'question',
-				title: 'Are you sure?',
-				text,
-				showCancelButton: true,
-				confirmButtonText: 'Continue'
-			})
-			.then(res =>
-			{
-				if (res.isConfirmed)
-					handleRemove()
-			})
+		MySwal.fire({
+			icon: 'question',
+			title: 'Are you sure?',
+			text,
+			showCancelButton: true,
+			confirmButtonText: 'Continue'
+		}).then(res => {
+			if (res.isConfirmed) handleRemove()
+		})
 	}
 
-	function handleRemove()
-	{
-		api.delete(apiRoute)
-			.then(() =>
-			{
-				successAlert(`'${title}' was successfully removed from your ${collection}!`)
-				if (redirectRoute)
-					push(redirectRoute)
-				else
-					back()
+	function handleRemove() {
+		api
+			.delete(apiRoute)
+			.then(() => {
+				successAlert(
+					`'${title}' was successfully removed from your ${collection}!`
+				)
+				if (redirectRoute) push(redirectRoute)
+				else back()
 			})
-			.catch(err =>
-			{
+			.catch(err => {
 				errorAlert(err.response.data.message)
 			})
 	}
 
 	return (
-		<Container onClick={handleClick} title='Remove' >
+		<Container onClick={handleClick} title="Remove">
 			<FiTrash size={30} />
 		</Container>
 	)

@@ -6,21 +6,18 @@ const Container = styled.div`
 	align-items: center;
 	gap: 1rem;
 
-	header
-	{
+	header {
 		width: 100%;
 		padding: 1rem 2rem;
 
-		h1
-		{
+		h1 {
 			color: ${p => p.theme.primary};
 			font-family: Ubuntu;
 			font-size: 3rem;
 		}
 	}
 
-	main
-	{
+	main {
 		width: 100%;
 
 		display: grid;
@@ -29,11 +26,10 @@ const Container = styled.div`
 		grid-gap: 5rem;
 		align-items: center;
 		justify-items: center;
-		
+
 		padding: 1rem;
 
-		.add
-		{
+		.add {
 			display: flex;
 			align-items: center;
 			justify-content: center;
@@ -50,8 +46,7 @@ const Container = styled.div`
 			cursor: pointer;
 			transition: 0.25s;
 
-			:hover
-			{
+			:hover {
 				color: ${p => p.theme.background};
 				background-color: ${p => p.theme.primary};
 
@@ -59,12 +54,11 @@ const Container = styled.div`
 			}
 		}
 
-		.group
-		{
+		.group {
 			width: 20rem;
 			height: 20rem;
 			background-color: ${p => p.theme.primary};
-			box-shadow: 5px 5px 5px rgba(0,0,0,0.5);
+			box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
 
 			border-radius: 0.5rem;
 			padding: 1rem;
@@ -76,31 +70,26 @@ const Container = styled.div`
 
 			transition: 0.25s;
 
-			:hover
-			{
+			:hover {
 				border-radius: 0;
 				background-color: ${p => p.theme.primary}bf;
 
-				.event svg
-				{
+				.event svg {
 					border-radius: 0;
 				}
 			}
 
-			.nickname
-			{
+			.nickname {
 				font-family: Ubuntu;
 				font-size: 2.25rem;
 				font-weight: 700;
 			}
 
-			.description
-			{
+			.description {
 				font-size: 1.75rem;
 			}
 
-			.event
-			{
+			.event {
 				display: flex;
 				align-items: center;
 				gap: 0.5rem;
@@ -108,33 +97,28 @@ const Container = styled.div`
 				padding: 2rem 0;
 				border-top: ${p => p.theme.background} 2px solid;
 
-				svg
-				{
+				svg {
 					border-radius: 1.5rem;
 					border: ${p => p.theme.background} 3px solid;
 
 					transition: 0.25s;
 				}
 
-				.name
-				{
+				.name {
 					font-family: Ubuntu;
 					font-size: 2rem;
 					font-weight: 700;
 				}
 			}
 
-			.info
-			{
+			.info {
 				width: 75%;
 
 				display: flex;
 				flex-direction: column;
 				gap: 1.5rem;
 
-
-				.description
-				{
+				.description {
 					font-size: 1.5rem;
 				}
 			}

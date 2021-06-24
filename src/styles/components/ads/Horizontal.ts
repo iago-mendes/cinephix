@@ -16,8 +16,7 @@ const Container = styled.div`
 
 	position: relative;
 
-	span
-	{
+	span {
 		position: absolute;
 		top: -5px;
 
@@ -29,8 +28,7 @@ const Container = styled.div`
 		font-size: 1rem;
 	}
 
-	ins
-	{
+	ins {
 		background-color: ${p => p.theme.black}40;
 	}
 `

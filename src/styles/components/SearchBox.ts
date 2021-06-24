@@ -17,18 +17,16 @@ const Container = styled.div`
 	padding-right: 2rem;
 
 	color: ${p => p.theme.secondary};
-	box-shadow: 0px 5px 5px rgba(0,0,0,0.5);
+	box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.5);
 
 	border-radius: 2rem;
 	transition: border-radius 0.25s;
 
-	:hover
-	{
+	:hover {
 		border-radius: 0;
 	}
 
-	input
-	{
+	input {
 		width: 100%;
 		height: 90%;
 
@@ -41,13 +39,11 @@ const Container = styled.div`
 		border: none;
 	}
 
-	@media(max-width: 1000px)
-	{
+	@media (max-width: 1000px) {
 		width: 75vw;
 		max-width: 50rem;
 
-		input
-		{
+		input {
 			font-size: 1.5rem;
 		}
 	}

@@ -9,20 +9,17 @@ const Container = styled.div`
 	justify-content: space-between;
 	gap: 2rem;
 
-	.img
-	{
+	.img {
 		height: calc(100vh - 5rem - 4rem);
 		width: calc((100vh - 5rem - 4rem) / 1.5);
 		max-width: calc(50% - 5rem);
 
-		img
-		{
+		img {
 			border-radius: 1rem;
 		}
 	}
 
-	.info
-	{
+	.info {
 		height: 100%;
 		width: 50%;
 		margin-right: 5rem;
@@ -34,15 +31,13 @@ const Container = styled.div`
 
 		color: ${p => p.theme.primary};
 
-		h1
-		{
+		h1 {
 			font-family: Ubuntu;
 			font-weight: 700;
 			font-size: 4rem;
 		}
 
-		form
-		{
+		form {
 			width: 100%;
 			height: calc(100% - 5rem);
 
@@ -50,8 +45,7 @@ const Container = styled.div`
 			flex-direction: column;
 			justify-content: space-between;
 
-			label
-			{
+			label {
 				font-family: Roboto;
 				font-weight: 700;
 				font-size: 2rem;
@@ -60,36 +54,32 @@ const Container = styled.div`
 				padding-left: 1rem;
 			}
 
-			.field
-			{
+			.field {
 				width: 75%;
 
 				display: flex;
 				flex-direction: column;
 				gap: 0.5rem;
 
-				.select, .switch
-				{
+				.select,
+				.switch {
 					margin-left: 2rem;
 				}
 			}
 
-			.rangeFields
-			{
+			.rangeFields {
 				display: flex;
 				flex-direction: column;
 				gap: 0.5rem;
 
-				.rating
-				{
+				.rating {
 					height: 2.6rem;
 
 					display: flex;
 					align-items: center;
 					gap: 1rem;
 
-					label
-					{
+					label {
 						font-size: 1.75rem;
 						border: 0;
 						padding: 0;
@@ -104,14 +94,12 @@ const Container = styled.div`
 						justify-content: center;
 					}
 
-					span
-					{
+					span {
 						font-family: Ubuntu;
 						font-size: 1.75rem;
 					}
 
-					.group
-					{
+					.group {
 						display: flex;
 						align-items: center;
 						justify-content: space-between;
@@ -119,8 +107,7 @@ const Container = styled.div`
 						height: 100%;
 						width: 100%;
 
-						input[type=number]
-						{
+						input[type='number'] {
 							font-family: Ubuntu;
 							font-size: 1.75rem;
 							color: ${p => p.theme.primary};
@@ -136,21 +123,19 @@ const Container = styled.div`
 
 							-moz-appearance: textfield;
 
-							::-webkit-outer-spin-button, ::-webkit-inner-spin-button
-							{
+							::-webkit-outer-spin-button,
+							::-webkit-inner-spin-button {
 								-webkit-appearance: none;
 								margin: 0;
 							}
 						}
 
-						.group2
-						{
+						.group2 {
 							display: flex;
 							align-items: center;
 							gap: 1rem;
 
-							.clear
-							{
+							.clear {
 								background: none;
 								border: none;
 								color: ${p => p.theme.primary};
@@ -166,8 +151,7 @@ const Container = styled.div`
 								cursor: pointer;
 								transition: 0.25s;
 
-								:hover
-								{
+								:hover {
 									background-color: ${p => p.theme.primary};
 									color: ${p => p.theme.background};
 								}
@@ -177,14 +161,12 @@ const Container = styled.div`
 				}
 			}
 
-			.buttons
-			{
+			.buttons {
 				display: flex;
 				align-items: center;
 				justify-content: space-around;
 
-				button
-				{
+				button {
 					display: flex;
 					align-items: center;
 					justify-content: center;
@@ -199,103 +181,85 @@ const Container = styled.div`
 					cursor: pointer;
 					transition: 0.25s;
 
-					:hover
-					{
+					:hover {
 						color: ${p => p.theme.background};
 					}
 				}
 
-				.cancel
-				{
+				.cancel {
 					color: ${p => p.theme.delete};
 					border: ${p => p.theme.delete} 1px solid;
 
-					:hover
-					{
-						background-color: ${p => p.theme.delete}
+					:hover {
+						background-color: ${p => p.theme.delete};
 					}
 				}
 
-				.confirm
-				{
+				.confirm {
 					color: ${p => p.theme.confirm};
 					border: ${p => p.theme.confirm} 1px solid;
 
-					:hover
-					{
-						background-color: ${p => p.theme.confirm}
+					:hover {
+						background-color: ${p => p.theme.confirm};
 					}
 				}
 			}
 		}
 	}
 
-	@media(max-width: 1024px)
-	{
+	@media (max-width: 1024px) {
 		flex-direction: column;
 		align-items: center;
 		gap: 1.5rem;
 
 		height: fit-content;
 
-		.img
-		{
+		.img {
 			height: calc(75vw * 1.5);
 			width: 75vw;
 			max-width: 40rem;
 		}
 
-		.info
-		{
+		.info {
 			width: 100%;
 			margin: 0;
 
-			h1
-			{
+			h1 {
 				font-size: 2.5rem;
 			}
 
-			form
-			{
+			form {
 				height: fit-content;
 				gap: 3rem;
 
-				label
-				{
+				label {
 					font-size: 1.75rem;
 				}
 
-				.field
-				{
+				.field {
 					width: 100%;
 				}
 
-				.rangeFields .rating
-				{
-
+				.rangeFields .rating {
 					flex-direction: column;
 					align-items: flex-start;
 
 					height: fit-content;
 					padding-left: 2rem;
 
-					label
-					{
+					label {
 						margin: 0;
 						font-size: 1.5rem;
 					}
 
-					span
-					{
+					span {
 						font-size: 1.25rem;
 					}
 
-					.group
-					{
+					.group {
 						height: 2.5rem;
 
-						input[type=number]
-						{
+						input[type='number'] {
 							font-size: 1.25rem;
 						}
 					}
@@ -304,10 +268,8 @@ const Container = styled.div`
 		}
 	}
 
-	@media(max-width: 350px)
-	{
-		.info form .rangeFields .rating .group
-		{
+	@media (max-width: 350px) {
+		.info form .rangeFields .rating .group {
 			height: fit-content;
 
 			flex-direction: column;
@@ -317,48 +279,45 @@ const Container = styled.div`
 	}
 `
 
-interface RangeInputProps
-{
+interface RangeInputProps {
 	isUndefined: boolean
 }
 
 export const RangeInput = styled.input<RangeInputProps>`
-	-webkit-appearance: none; 
+	-webkit-appearance: none;
 	appearance: none;
 	outline: none;
 
-	background: ${p => p.isUndefined ? p.theme.black : p.theme.primary + 80};
+	background: ${p => (p.isUndefined ? p.theme.black : p.theme.primary + 80)};
 	width: 20rem;
 	height: 0.5rem;
 	border-radius: 100rem;
 
 	opacity: 0.7;
-	-webkit-transition: .2s;
-	transition: opacity .2s;
+	-webkit-transition: 0.2s;
+	transition: opacity 0.2s;
 
-	:hover
-	{
+	:hover {
 		opacity: 1;
 	}
 
-	::-webkit-slider-thumb
-	{
+	::-webkit-slider-thumb {
 		-webkit-appearance: none;
 		appearance: none;
 
 		width: 2rem;
 		height: 2rem;
 		border-radius: 100rem;
-		background: ${p => p.isUndefined ? p.theme.gray : p.theme.primary};
+		background: ${p => (p.isUndefined ? p.theme.gray : p.theme.primary)};
 		cursor: pointer;
 	}
 
-	::-webkit-slider-thumb, ::-moz-range-thumb
-	{
+	::-webkit-slider-thumb,
+	::-moz-range-thumb {
 		width: 2rem;
 		height: 2rem;
 		border-radius: 100rem;
-		background: ${p => p.isUndefined ? p.theme.gray : p.theme.primary};
+		background: ${p => (p.isUndefined ? p.theme.gray : p.theme.primary)};
 		cursor: pointer;
 	}
 `

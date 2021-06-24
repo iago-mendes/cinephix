@@ -12,14 +12,12 @@ const Container = styled.div`
 	min-height: 100%;
 	padding: 2rem 1rem;
 
-	h1
-	{
+	h1 {
 		font-family: Ubuntu;
 		font-size: 2.5rem;
 	}
 
-	.grid
-	{
+	.grid {
 		width: 100%;
 
 		display: grid;
@@ -28,21 +26,18 @@ const Container = styled.div`
 		align-items: center;
 		justify-items: center;
 
-		.banner
-		{
+		.banner {
 			width: 25rem;
 			position: relative;
 
 			cursor: pointer;
 			transition: 0.25s;
 
-			:hover
-			{
+			:hover {
 				transform: scale(1.1);
 			}
 
-			span
-			{
+			span {
 				position: absolute;
 				right: 0;
 				bottom: 0;
@@ -50,15 +45,13 @@ const Container = styled.div`
 				background-color: ${p => p.theme.background}bf;
 				padding: 1rem 2rem;
 
-
 				font-family: Ubuntu;
 				font-weight: 700;
 				font-size: 2rem;
 			}
 		}
 
-		.selected
-		{
+		.selected {
 			border: ${p => p.theme.primary} 5px solid;
 		}
 	}

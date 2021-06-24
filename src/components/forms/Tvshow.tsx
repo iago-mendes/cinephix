@@ -16,16 +16,14 @@ import calcTotalRating from '../../utils/getTotalRating'
 import Ratings, {defaultTvshowRatings} from '../../models/ratings'
 import {UserTvshowDetails} from '../../models/userTvshow'
 import venues from '../../../db/venues.json'
-import { SkeletonLoading } from '../../utils/skeletonLoading'
+import {SkeletonLoading} from '../../utils/skeletonLoading'
 
-interface SelectOption
-{
+interface SelectOption {
 	label: string
 	value: string
 }
 
-const ratingsLabels: {[ratingKey: string]: string} =
-{
+const ratingsLabels: {[ratingKey: string]: string} = {
 	engagement: 'Engagement',
 	consistency: 'Consistency',
 	screenplay: 'Screenplay',
@@ -34,15 +32,13 @@ const ratingsLabels: {[ratingKey: string]: string} =
 	musicAndSound: 'Music and sound'
 }
 
-interface TvshowFormProps
-{
+interface TvshowFormProps {
 	method: string
 
 	userTvshow?: UserTvshowDetails
 }
 
-const TvshowForm: React.FC<TvshowFormProps> = ({method}) =>
-{
+const TvshowForm: React.FC<TvshowFormProps> = ({method}) => {
 	const {query, back, push, locale: language} = useRouter()
 	const {user} = useUser()
 
@@ -55,8 +51,7 @@ const TvshowForm: React.FC<TvshowFormProps> = ({method}) =>
 
 	const [tvshow, setTvshow] = useState(loadingTvshow)
 
-	const statusOptions: SelectOption[] = 
-	[
+	const statusOptions: SelectOption[] = [
 		{label: 'Watch list', value: 'watchList'},
 		{label: 'Watching', value: 'watching'},
 		{label: 'Waiting', value: 'waiting'},
@@ -65,105 +60,95 @@ const TvshowForm: React.FC<TvshowFormProps> = ({method}) =>
 		{label: 'Paused', value: 'paused'}
 	]
 
-	const venueOptions: SelectOption[] = venues.map(({name}) => (
-		{
-			label: name,
-			value: name
-		}))
+	const venueOptions: SelectOption[] = venues.map(({name}) => ({
+		label: name,
+		value: name
+	}))
 
-	useEffect(() =>
-	{
+	useEffect(() => {
 		if (tvshowId)
-			api.get(`tvshows/${tvshowId}`, {params: {language}})
-				.then(({data}:{data: TvshowDetails}) => setTvshow(data))
+			api
+				.get(`tvshows/${tvshowId}`, {params: {language}})
+				.then(({data}: {data: TvshowDetails}) => setTvshow(data))
 	}, [tvshowId])
 
-	useEffect(() =>
-	{
+	useEffect(() => {
 		if (method === 'put' && user && tvshowId)
-			api.get(`users/${user.email}/tvshows/${tvshowId}`, {params: {language}})
-				.then(({data}:{data: UserTvshowDetails}) =>
-				{
+			api
+				.get(`users/${user.email}/tvshows/${tvshowId}`, {params: {language}})
+				.then(({data}: {data: UserTvshowDetails}) => {
 					setStatus(data.status)
 					setVenue(data.venue)
 
-					let tmpRatings = {...ratings}
-					Object.entries(data.ratings).map(([ratingKey, value]) =>
-					{
-						if (value >= 0 && value <= 10)
-							tmpRatings[ratingKey] = value
+					const tmpRatings = {...ratings}
+					Object.entries(data.ratings).map(([ratingKey, value]) => {
+						if (value >= 0 && value <= 10) tmpRatings[ratingKey] = value
 					})
 					setRatings(tmpRatings)
 				})
 	}, [user, tvshowId])
 
-	useEffect(() =>
-	{
-		if (statusKey)
-			setStatus(statusKey)
+	useEffect(() => {
+		if (statusKey) setStatus(statusKey)
 	}, [statusKey])
 
-	function handleChangeRating(ratingKey: string, e?: ChangeEvent<HTMLInputElement>)
-	{
+	function handleChangeRating(
+		ratingKey: string,
+		e?: ChangeEvent<HTMLInputElement>
+	) {
 		const tmpRatings = {...ratings}
 
 		const rating = Number(e.target.value)
-		if (rating >= 0 && rating <= 10)
-			tmpRatings[ratingKey] = rating
-			
+		if (rating >= 0 && rating <= 10) tmpRatings[ratingKey] = rating
+
 		setRatings(tmpRatings)
 	}
 
-	function handleClearRating(ratingKey: string)
-	{
+	function handleClearRating(ratingKey: string) {
 		const tmpRatings = {...ratings}
 		tmpRatings[ratingKey] = -1
 		setRatings(tmpRatings)
 	}
 
-	function handleSubmit(e: FormEvent)
-	{
+	function handleSubmit(e: FormEvent) {
 		e.preventDefault()
 
-		const data =
-		{
+		const data = {
 			id: tvshow.id,
 			status: status,
 			venue: venue !== '' ? venue : undefined,
-			ratings:
-			{
+			ratings: {
 				engagement: ratings.engagement >= 0 ? ratings.engagement : undefined,
 				consistency: ratings.consistency >= 0 ? ratings.consistency : undefined,
 				screenplay: ratings.screenplay >= 0 ? ratings.screenplay : undefined,
 				acting: ratings.acting >= 0 ? ratings.acting : undefined,
-				cinematography: ratings.cinematography >= 0 ? ratings.cinematography : undefined,
-				musicAndSound: ratings.musicAndSound >= 0 ? ratings.musicAndSound : undefined
+				cinematography:
+					ratings.cinematography >= 0 ? ratings.cinematography : undefined,
+				musicAndSound:
+					ratings.musicAndSound >= 0 ? ratings.musicAndSound : undefined
 			}
 		}
-		
-		if (method === 'post')
-		{
-			api.post(`users/${user.email}/tvshows`, data)
-				.then(() =>
-				{
-					successAlert(`'${tvshow.title}' was successfully added to your TV shows!`)
+
+		if (method === 'post') {
+			api
+				.post(`users/${user.email}/tvshows`, data)
+				.then(() => {
+					successAlert(
+						`'${tvshow.title}' was successfully added to your TV shows!`
+					)
 					push('/user/tvshows')
 				})
-				.catch(err =>
-				{
+				.catch(err => {
 					errorAlert(err.response.data.message)
 				})
-		}
-		else if (method === 'put')
-		{
-			api.put(`users/${user.email}/tvshows/${tvshowId}`, data)
-				.then(() =>
-				{
+		} else if (method === 'put') {
+			api
+				.put(`users/${user.email}/tvshows/${tvshowId}`, data)
+				.then(() => {
 					successAlert(`'${tvshow.title}' was successfully edited!`)
 					back()
 				})
-				.catch(err =>
-				{
+				.catch(err => {
 					errorAlert(err.response.data.message)
 				})
 		}
@@ -171,75 +156,76 @@ const TvshowForm: React.FC<TvshowFormProps> = ({method}) =>
 
 	return (
 		<Container>
-			<div className='img'>
-				{
-					tvshow.title === '_loading'
-						? <SkeletonLoading />
-						: <Image src={tvshow.image} width={780} height={1170} layout='responsive'/>
-				}
+			<div className="img">
+				{tvshow.title === '_loading' ? (
+					<SkeletonLoading />
+				) : (
+					<Image
+						src={tvshow.image}
+						width={780}
+						height={1170}
+						layout="responsive"
+					/>
+				)}
 			</div>
 
-			<div className='info'>
-				{
-					tvshow.title === '_loading'
-						? <SkeletonLoading height='2.5rem' width='20rem' />
-						: <h1>{tvshow.title}</h1>
-				}
-				<form onSubmit={handleSubmit} >
-					<div className='field'>
-						<label htmlFor='status'>Status</label>
+			<div className="info">
+				{tvshow.title === '_loading' ? (
+					<SkeletonLoading height="2.5rem" width="20rem" />
+				) : (
+					<h1>{tvshow.title}</h1>
+				)}
+				<form onSubmit={handleSubmit}>
+					<div className="field">
+						<label htmlFor="status">Status</label>
 						<Select
-							id='status'
-							name='status'
+							id="status"
+							name="status"
 							value={statusOptions.find(({value}) => value === status)}
 							options={statusOptions}
 							onChange={e => setStatus(e.value)}
 							styles={selectStyles}
-							placeholder='Select a status'
-							className='select'
+							placeholder="Select a status"
+							className="select"
 							isSearchable={false}
 						/>
 					</div>
-					<div className='field'>
-						<label htmlFor='venue'>Venue</label>
+					<div className="field">
+						<label htmlFor="venue">Venue</label>
 						<Select
-							id='venue'
-							name='venue'
+							id="venue"
+							name="venue"
 							value={venueOptions.find(({value}) => value === venue)}
 							options={venueOptions}
 							onChange={e => setVenue(e.value)}
 							styles={selectStyles}
-							placeholder='Select a venue'
-							className='select'
+							placeholder="Select a venue"
+							className="select"
 							isSearchable={false}
 						/>
 					</div>
-					<div className='rangeFields'>
+					<div className="rangeFields">
 						<label>Ratings</label>
-						<div className='rating'>
+						<div className="rating">
 							<label>Total:</label>
 							<span>{calcTotalRating(ratings) || 'not rated'}</span>
 						</div>
 						{Object.entries(ratings).map(([ratingKey, value]) => (
-							<div className='rating' key={ratingKey}>
+							<div className="rating" key={ratingKey}>
 								<label>{ratingsLabels[ratingKey]}:</label>
-								<div className='group'>
-									{
-										value >= 0
-											? (
-												<input
-													type='number'
-													value={value}
-													onChange={e => handleChangeRating(ratingKey, e)}
-												/>
-											)
-											: (
-												<span>not rated</span>
-											)
-									}
-									<div className='group2'>
+								<div className="group">
+									{value >= 0 ? (
+										<input
+											type="number"
+											value={value}
+											onChange={e => handleChangeRating(ratingKey, e)}
+										/>
+									) : (
+										<span>not rated</span>
+									)}
+									<div className="group2">
 										<RangeInput
-											type='range'
+											type="range"
 											min={0}
 											max={10}
 											value={value >= 0 ? value : 5}
@@ -248,10 +234,10 @@ const TvshowForm: React.FC<TvshowFormProps> = ({method}) =>
 										/>
 
 										<button
-											className='clear'
-											title='Clear rating'
+											className="clear"
+											title="Clear rating"
 											onClick={() => handleClearRating(ratingKey)}
-											type='button'
+											type="button"
 										>
 											<MdClear size={15} />
 										</button>
@@ -260,11 +246,16 @@ const TvshowForm: React.FC<TvshowFormProps> = ({method}) =>
 							</div>
 						))}
 					</div>
-					<div className='buttons'>
-						<button className='cancel' title='Cancel' onClick={back} type='button' >
+					<div className="buttons">
+						<button
+							className="cancel"
+							title="Cancel"
+							onClick={back}
+							type="button"
+						>
 							<FiX size={25} />
 						</button>
-						<button className='confirm' title='Confirm' type='submit' >
+						<button className="confirm" title="Confirm" type="submit">
 							<FiCheck size={25} />
 						</button>
 					</div>

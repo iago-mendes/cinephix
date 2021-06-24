@@ -5,8 +5,7 @@ const Container = styled.div`
 	align-items: center;
 	gap: 0.5rem;
 
-	.stars
-	{
+	.stars {
 		display: flex;
 		align-items: center;
 		gap: 0.25rem;

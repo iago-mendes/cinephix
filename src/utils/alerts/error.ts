@@ -3,8 +3,7 @@ import withReactContent from 'sweetalert2-react-content'
 
 const MySwal = withReactContent(Swal)
 
-function errorAlert(message: string)
-{
+function errorAlert(message: string) {
 	MySwal.fire({
 		icon: 'error',
 		title: 'Something went wrong',

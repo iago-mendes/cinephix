@@ -19,23 +19,21 @@ import getVenue from '../../utils/getVenue'
 import getTotalRating from '../../utils/getTotalRating'
 import SEOHead from '../../components/SEOHead'
 
-interface MovieProps
-{
+interface MovieProps {
 	movie: MovieDetails
 }
 
-const Movie: React.FC<MovieProps> = ({movie}) =>
-{
+const Movie: React.FC<MovieProps> = ({movie}) => {
 	const router = useRouter()
 	const {user} = useUser()
 
 	const [userMovie, setUserMovie] = useState<UserMovie>(defaultUserMovie)
 
-	useEffect(() =>
-	{
+	useEffect(() => {
 		if (user && user.email && movie)
-			api.get(`users/${user.email}/movies/${movie.id}`)
-				.then(({data}:{data: UserMovie}) => setUserMovie(data))
+			api
+				.get(`users/${user.email}/movies/${movie.id}`)
+				.then(({data}: {data: UserMovie}) => setUserMovie(data))
 				.catch(() => setUserMovie(defaultUserMovie))
 	}, [user, movie])
 
@@ -43,7 +41,7 @@ const Movie: React.FC<MovieProps> = ({movie}) =>
 		return <Loading style={{height: 'calc(100vh - 5rem)'}} />
 
 	return (
-		<Container className='page' >
+		<Container className="page">
 			<SEOHead
 				title={`${movie.title} | Cinephix`}
 				description={movie.overview}
@@ -51,21 +49,26 @@ const Movie: React.FC<MovieProps> = ({movie}) =>
 			/>
 
 			<main>
-				<div className='img'>
-					<Image src={movie.image} width={780} height={1170} layout='responsive'/>
+				<div className="img">
+					<Image
+						src={movie.image}
+						width={780}
+						height={1170}
+						layout="responsive"
+					/>
 				</div>
-				<div className='info'>
+				<div className="info">
 					<h1>{movie.title}</h1>
-					<div className='details'>
-						<div className='detail'>
+					<div className="details">
+						<div className="detail">
 							<FiCalendar size={30} />
 							<span>{formatDate(movie.date)}</span>
 						</div>
-						<div className='detail'>
+						<div className="detail">
 							<FiInfo size={30} />
 							<span>{movie.status}</span>
 						</div>
-						<div className='detail'>
+						<div className="detail">
 							<FiStar size={30} />
 							<span>{movie.rating}</span>
 						</div>
@@ -73,69 +76,71 @@ const Movie: React.FC<MovieProps> = ({movie}) =>
 					<p>{movie.overview}</p>
 					<ul>
 						{movie.genres.map(genre => (
-							<li key={genre.id} >
-								{genre.name}
-							</li>
+							<li key={genre.id}>{genre.name}</li>
 						))}
 					</ul>
 				</div>
 			</main>
 
 			{movie.collection && (
-				<div className='collection'>
-					<div className='main'>
+				<div className="collection">
+					<div className="main">
 						<h1>{movie.collection.name}</h1>
-						<div className='img'>
-							<Image src={movie.collection.image} width={780} height={1170} layout='responsive' />
+						<div className="img">
+							<Image
+								src={movie.collection.image}
+								width={780}
+								height={1170}
+								layout="responsive"
+							/>
 						</div>
 					</div>
 				</div>
 			)}
 
-			<div className='row userMovie'>
-				{
-					(user && userMovie !== defaultUserMovie)
-						? (
-							<>
-								<div className='group'>
-									<label>My status</label>
-									<span>{userMovie.watched ? 'Watched' : 'Watch list'}</span>
-								</div>
-								{
-									userMovie.venue && (
-										<div className='group'>
-											<label>My venue</label>
-											<span>{getVenue(userMovie.venue)}</span>
-										</div>
-									)
-								}
-								{
-									Object.values(userMovie.ratings).length !== 0 && (
-										<div className='group'>
-											<label>My rating</label>
-											<span>{getTotalRating(userMovie.ratings, true)}</span>
-										</div>
-									)
-								}
-								<button className='edit' title='Edit' onClick={() => router.push(`/user/movies/${movie.id}/edit`)} >
-									<FiEdit3 size={30} />
-								</button>
-							</>
-						)
-						: (
-							<button className='add' onClick={() => router.push(`/user/movies/${movie.id}/add`)} >
-								<FiPlus size={30} />
-								<span>Add to your movies</span>
-							</button>
-						)
-				}
+			<div className="row userMovie">
+				{user && userMovie !== defaultUserMovie ? (
+					<>
+						<div className="group">
+							<label>My status</label>
+							<span>{userMovie.watched ? 'Watched' : 'Watch list'}</span>
+						</div>
+						{userMovie.venue && (
+							<div className="group">
+								<label>My venue</label>
+								<span>{getVenue(userMovie.venue)}</span>
+							</div>
+						)}
+						{Object.values(userMovie.ratings).length !== 0 && (
+							<div className="group">
+								<label>My rating</label>
+								<span>{getTotalRating(userMovie.ratings, true)}</span>
+							</div>
+						)}
+						<button
+							className="edit"
+							title="Edit"
+							onClick={() => router.push(`/user/movies/${movie.id}/edit`)}
+						>
+							<FiEdit3 size={30} />
+						</button>
+					</>
+				) : (
+					<button
+						className="add"
+						onClick={() => router.push(`/user/movies/${movie.id}/add`)}
+					>
+						<FiPlus size={30} />
+						<span>Add to your movies</span>
+					</button>
+				)}
 			</div>
 
-			<div className='row carousel'>
+			<div className="row carousel">
 				<span>Cast ({movie.credits.cast.length})</span>
 				<Carousel>
 					{movie.credits.cast.map((celebrity, index) => (
-						<SwiperSlide key={index} >
+						<SwiperSlide key={index}>
 							<CarouselCard
 								image={celebrity.image}
 								primaryDisplay={celebrity.name}
@@ -147,11 +152,11 @@ const Movie: React.FC<MovieProps> = ({movie}) =>
 				</Carousel>
 			</div>
 
-			<div className='row carousel'>
+			<div className="row carousel">
 				<span>Crew ({movie.credits.crew.length})</span>
 				<Carousel>
 					{movie.credits.crew.map((celebrity, index) => (
-						<SwiperSlide key={index} >
+						<SwiperSlide key={index}>
 							<CarouselCard
 								image={celebrity.image}
 								primaryDisplay={celebrity.name}
@@ -166,14 +171,12 @@ const Movie: React.FC<MovieProps> = ({movie}) =>
 	)
 }
 
-export const getStaticPaths: GetStaticPaths = async () =>
-{
-	const {data: movies}:{data: Media[]} = await api.get('movies')
+export const getStaticPaths: GetStaticPaths = async () => {
+	const {data: movies}: {data: Media[]} = await api.get('movies')
 
-	const paths = movies.map(movie => (
-		{
-			params: {movie: String(movie.id)}
-		}))
+	const paths = movies.map(movie => ({
+		params: {movie: String(movie.id)}
+	}))
 
 	return {
 		paths,
@@ -181,12 +184,13 @@ export const getStaticPaths: GetStaticPaths = async () =>
 	}
 }
 
-export const getStaticProps: GetStaticProps = async ctx =>
-{
+export const getStaticProps: GetStaticProps = async ctx => {
 	const {movie: id} = ctx.params
 	const language = ctx.locale
 
-	const {data: movie}:{data: MovieDetails} = await api.get(`movies/${id}`, {params: {language}})
+	const {data: movie}: {data: MovieDetails} = await api.get(`movies/${id}`, {
+		params: {language}
+	})
 
 	return {
 		props: {movie},

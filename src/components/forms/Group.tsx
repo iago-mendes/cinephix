@@ -17,16 +17,14 @@ import errorAlert from '../../utils/alerts/error'
 import useUser from '../../hooks/useUser'
 import SelectBannerModal from '../modals/SelectBanner'
 import slugify from '../../utils/slugify'
-import { useUserStatus } from '../../contexts/UserStatus'
+import {useUserStatus} from '../../contexts/UserStatus'
 
-interface GroupFormProps
-{
+interface GroupFormProps {
 	method: string
 	group?: GroupRaw
 }
 
-const GroupForm: React.FC<GroupFormProps> = ({method, group}) =>
-{
+const GroupForm: React.FC<GroupFormProps> = ({method, group}) => {
 	const {user} = useUser()
 	const {query, back, push} = useRouter()
 	const {typingControllerProps} = useUserStatus()
@@ -42,95 +40,83 @@ const GroupForm: React.FC<GroupFormProps> = ({method, group}) =>
 
 	const [isSelectBannerOpen, setIsSelectBannerOpen] = useState(false)
 
-	useEffect(() =>
-	{
-		if (method === 'post')
-		{
+	useEffect(() => {
+		if (method === 'post') {
 			const randomBanner = chooseRandomBanner()
 			setBanner(randomBanner)
 		}
 
-		api.get('events').then(({data}:{data: EventListed[]}) =>
-		{
-			const tmpEventOptions: SelectOption[] = data.map(event => (
-				{
-					label: event.name,
-					value: event.id
-				}))
-			
+		api.get('events').then(({data}: {data: EventListed[]}) => {
+			const tmpEventOptions: SelectOption[] = data.map(event => ({
+				label: event.name,
+				value: event.id
+			}))
+
 			setEventOptions(tmpEventOptions)
 		})
 	}, [])
 
-	useEffect(() =>
-	{
+	useEffect(() => {
 		const {event: routeEvent} = query
-		if (routeEvent)
-		{
-			const tmpEvent = eventOptions.find(event => event.value === String(routeEvent))
+		if (routeEvent) {
+			const tmpEvent = eventOptions.find(
+				event => event.value === String(routeEvent)
+			)
 
-			if (tmpEvent)
-				setEvent(tmpEvent.value)
+			if (tmpEvent) setEvent(tmpEvent.value)
 		}
 	}, [query, eventOptions])
 
-	useEffect(() =>
-	{
-		if (method === 'put')
-		{
+	useEffect(() => {
+		if (method === 'put') {
 			setBanner(group.banner)
 			setNickname(group.nickname)
 			setUrlId(group.urlId)
 			setEvent(group.event)
 			setDescription(group.description)
 
-			const tmpParticipantEmails = group.participants.map(participant => participant.email)
+			const tmpParticipantEmails = group.participants
+				.map(participant => participant.email)
 				.filter(email => email != user.email)
 			setParticipantEmails(tmpParticipantEmails)
 		}
 	}, [group])
 
-	useEffect(() =>
-	{
-		if (method === 'post')
-		{
+	useEffect(() => {
+		if (method === 'post') {
 			const tmpUrlId = slugify(nickname)
 			setUrlId(tmpUrlId)
 		}
 	}, [nickname])
 
-	function handleAddParticipant()
-	{
-		let tmpParticipantEmails = [...participantEmails]
+	function handleAddParticipant() {
+		const tmpParticipantEmails = [...participantEmails]
 		tmpParticipantEmails.push('')
 		setParticipantEmails(tmpParticipantEmails)
 	}
 
-	function handleRemoveParticipant(index: number)
-	{
-		let tmpParticipantEmails = [...participantEmails]
+	function handleRemoveParticipant(index: number) {
+		const tmpParticipantEmails = [...participantEmails]
 		tmpParticipantEmails.splice(index, 1)
 		setParticipantEmails(tmpParticipantEmails)
 	}
 
-	function handleChangeParticipant(email: string, index: number)
-	{
-		let tmpParticipantEmails = [...participantEmails]
+	function handleChangeParticipant(email: string, index: number) {
+		const tmpParticipantEmails = [...participantEmails]
 		tmpParticipantEmails[index] = email
 		setParticipantEmails(tmpParticipantEmails)
 	}
 
-	function handleSubmit()
-	{
-		const participants =
-		[
+	function handleSubmit() {
+		const participants = [
 			{
 				email: user.email,
 				isOwner: true,
 				predictions: []
 			},
-			...participantEmails.filter(email => email !== '').map(email => (
-				{
+			...participantEmails
+				.filter(email => email !== '')
+				.map(email => ({
 					email,
 					isOwner: false,
 					predictions: []
@@ -139,8 +125,7 @@ const GroupForm: React.FC<GroupFormProps> = ({method, group}) =>
 
 		console.log('[participants]', participants)
 
-		const data =
-		{
+		const data = {
 			nickname,
 			urlId,
 			banner,
@@ -149,86 +134,88 @@ const GroupForm: React.FC<GroupFormProps> = ({method, group}) =>
 			participants
 		}
 
-		if (method === 'post')
-		{
-			api.post('groups', data)
-				.then(() =>
-				{
+		if (method === 'post') {
+			api
+				.post('groups', data)
+				.then(() => {
 					successAlert(`'${nickname}' was successfully created!`)
 					push(`/groups/${urlId}`)
 				})
-				.catch(err =>
-				{
+				.catch(err => {
 					errorAlert(err.response.data.message)
 				})
-		}
-		else if (method === 'put')
-		{
-			api.put(`groups/${group.urlId}`, data)
-				.then(() =>
-				{
+		} else if (method === 'put') {
+			api
+				.put(`groups/${group.urlId}`, data)
+				.then(() => {
 					successAlert(`'${nickname}' was successfully edited!`)
 					push(`/groups/${group.urlId}`)
 				})
-				.catch(err =>
-				{
+				.catch(err => {
 					errorAlert(err.response.data.message)
 				})
 		}
 	}
 
 	return (
-		<Container onSubmit={e => e.preventDefault()} >
+		<Container onSubmit={e => e.preventDefault()}>
 			<SelectBannerModal
 				isOpen={isSelectBannerOpen}
 				setIsOpen={setIsSelectBannerOpen}
-
 				banner={banner}
 				setBanner={setBanner}
 			/>
 
 			<header>
-				<div className='img' >
-					<Image src={getBanner(banner)} width={1500} height={750} layout='responsive' />
+				<div className="img">
+					<Image
+						src={getBanner(banner)}
+						width={1500}
+						height={750}
+						layout="responsive"
+					/>
 				</div>
-				<button title='Change banner' onClick={() => setIsSelectBannerOpen(true)} >
+				<button
+					title="Change banner"
+					onClick={() => setIsSelectBannerOpen(true)}
+				>
 					Change banner
 				</button>
 			</header>
 
 			{/* nickname */}
-			<div className='text field'>
-				<label htmlFor='nickname'>Nickname</label>
+			<div className="text field">
+				<label htmlFor="nickname">Nickname</label>
 				<input
-					name='nickname'
-					id='nickname'
-					type='text'
+					name="nickname"
+					id="nickname"
+					type="text"
 					value={nickname}
 					onChange={e => setNickname(e.target.value)}
-					placeholder='E.g.: Avengers'
+					placeholder="E.g.: Avengers"
 					{...typingControllerProps}
 				/>
 			</div>
 			{/* urlId */}
-			<div className='text field'>
-				<label htmlFor='urlId'>Group ID</label>
+			<div className="text field">
+				<label htmlFor="urlId">Group ID</label>
 				<input
-					name='urlId'
-					id='urlId'
-					type='text'
+					name="urlId"
+					id="urlId"
+					type="text"
 					value={urlId}
 					onChange={e => setUrlId(e.target.value)}
-					placeholder='E.g.: avengers'
+					placeholder="E.g.: avengers"
 					disabled={method === 'put'}
 					{...typingControllerProps}
 				/>
 			</div>
 			{/* description */}
-			<div className='text field'>
-				<label htmlFor='description'>Description</label>
+			<div className="text field">
+				<label htmlFor="description">Description</label>
 				<textarea
-					name='description'
-					id='description'
+					name="description"
+					id="description"
 					value={description}
 					onChange={e => setDescription(e.target.value)}
 					placeholder="E.g.: Earth's mightiest heroes"
@@ -236,59 +223,67 @@ const GroupForm: React.FC<GroupFormProps> = ({method, group}) =>
 				/>
 			</div>
 			{/* event */}
-			<div className='select field'>
-				<label htmlFor='event'>Event</label>
+			<div className="select field">
+				<label htmlFor="event">Event</label>
 				<Select
-					id='event'
-					name='event'
+					id="event"
+					name="event"
 					value={eventOptions.find(({value}) => value === event)}
 					options={eventOptions}
 					onChange={e => setEvent(e.value)}
 					styles={selectStyles}
-					placeholder='Select a event'
-					className='select'
+					placeholder="Select a event"
+					className="select"
 					isSearchable={false}
 				/>
 			</div>
 			{/* participantEmails */}
-			<div className='field'>
-				<label htmlFor='participantEmail'>Participants</label>
-				<ul className='list' >
-					<li className='text' >
+			<div className="field">
+				<label htmlFor="participantEmail">Participants</label>
+				<ul className="list">
+					<li className="text">
 						<input
-							type='email'
-							name='participantEmail'
+							type="email"
+							name="participantEmail"
 							id={'participantEmail-owner'}
 							value={user ? user.email : ''}
 							readOnly
 						/>
 					</li>
 					{participantEmails.map((email, index) => (
-						<li key={index} className='text' >
+						<li key={index} className="text">
 							<input
-								type='email'
-								name='participantEmail'
+								type="email"
+								name="participantEmail"
 								id={`participantEmail-${index}`}
 								value={email}
 								onChange={e => handleChangeParticipant(e.target.value, index)}
 								{...typingControllerProps}
 							/>
-							<button className='remove' onClick={() => handleRemoveParticipant(index)} >
+							<button
+								className="remove"
+								onClick={() => handleRemoveParticipant(index)}
+							>
 								<FiMinus size={20} />
 							</button>
 						</li>
 					))}
-					<button className='add' onClick={handleAddParticipant} >
+					<button className="add" onClick={handleAddParticipant}>
 						<FiPlus size={25} />
 					</button>
 				</ul>
 			</div>
 
-			<div className='buttons'>
-				<button className='cancel' title='Cancel' onClick={back} type='button' >
+			<div className="buttons">
+				<button className="cancel" title="Cancel" onClick={back} type="button">
 					<FiX size={25} />
 				</button>
-				<button className='confirm' title='Confirm' type='submit' onClick={handleSubmit} >
+				<button
+					className="confirm"
+					title="Confirm"
+					type="submit"
+					onClick={handleSubmit}
+				>
 					<FiCheck size={25} />
 				</button>
 			</div>

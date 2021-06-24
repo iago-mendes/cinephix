@@ -1,29 +1,25 @@
 import {EventCelebrity, EventListed, EventMedia} from './event'
 
-export interface GroupRawPrediction
-{
+export interface GroupRawPrediction {
 	category: string
 	guess: number
 }
 
-export interface GroupRaw
-{
+export interface GroupRaw {
 	_id: string
 	nickname: string
 	urlId: string
 	banner: string
 	event: string
 	description: string
-	participants: Array<
-	{
+	participants: Array<{
 		email: string
 		isOwner: boolean
 		predictions: GroupRawPrediction[]
 	}>
 }
 
-export const defaultGroupRaw: GroupRaw =
-{
+export const defaultGroupRaw: GroupRaw = {
 	_id: '',
 	nickname: '',
 	urlId: '',
@@ -33,8 +29,7 @@ export const defaultGroupRaw: GroupRaw =
 	participants: []
 }
 
-export interface GroupListed
-{
+export interface GroupListed {
 	nickname: string
 	urlId: string
 	banner: string
@@ -42,25 +37,21 @@ export interface GroupListed
 	description: string
 }
 
-export interface GroupEvent
-{
+export interface GroupEvent {
 	id: string
 	name: string
 	color: string
 	description: string
-	status:
-	{
+	status: {
 		isOpen: boolean
 		hasResults: boolean
 	}
-	categories: Array<
-	{
+	categories: Array<{
 		id: string
 		name: string
 		description: string
 		type: string
-		media: Array<
-		{
+		media: Array<{
 			id: number
 			image: string
 			title: string
@@ -70,16 +61,13 @@ export interface GroupEvent
 			predictionsQuantity: number
 			isResult?: boolean
 		}>
-		celebrities: Array<
-		{
-			celebrity:
-			{
+		celebrities: Array<{
+			celebrity: {
 				id: number
 				image: string
 				name: string
 			}
-			media:
-			{
+			media: {
 				id: number
 				image: string
 				title: string
@@ -93,23 +81,19 @@ export interface GroupEvent
 	}>
 }
 
-export interface GroupParticipant
-{
+export interface GroupParticipant {
 	image: string
 	name: string
 	email: string
 	isOwner: boolean
-	predictions: Array<
-	{
-		category:
-		{
+	predictions: Array<{
+		category: {
 			id: string
 			name: string
 			description: string
 			type: string
 		}
-		guess: (EventMedia | EventCelebrity) &
-		{
+		guess: (EventMedia | EventCelebrity) & {
 			isResult?: boolean
 		}
 	}>
@@ -117,8 +101,7 @@ export interface GroupParticipant
 	isWinner?: boolean
 }
 
-interface Group
-{
+interface Group {
 	urlId: string
 	banner: string
 	nickname: string

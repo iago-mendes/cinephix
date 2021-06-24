@@ -9,14 +9,12 @@ const Container = styled.div`
 	justify-content: center;
 	gap: 2rem;
 
-	img
-	{
+	img {
 		width: 75vw;
 		max-width: 60rem;
 	}
-	
-	main
-	{
+
+	main {
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
@@ -26,25 +24,21 @@ const Container = styled.div`
 		width: 75vw;
 		max-width: 60rem;
 
-		.message
-		{
+		.message {
 			font-family: Roboto;
 			width: 75%;
 
-			span
-			{
+			span {
 				font-weight: 700;
 				font-size: 3rem;
 			}
 
-			p
-			{
+			p {
 				font-size: 2rem;
 			}
 		}
 
-		button
-		{
+		button {
 			display: flex;
 			align-items: center;
 			gap: 1rem;
@@ -58,16 +52,14 @@ const Container = styled.div`
 			cursor: pointer;
 			transition: 0.25s;
 
-			:hover
-			{
+			:hover {
 				background-color: ${p => p.theme.primary};
 				color: ${p => p.theme.background};
 
 				transform: scale(1.1);
 			}
 
-			span
-			{
+			span {
 				font-family: Ubuntu;
 				font-weight: 700;
 				font-size: 2rem;
@@ -75,22 +67,18 @@ const Container = styled.div`
 		}
 	}
 
-	@media(max-width: 700px)
-	{
-		img
-		{
+	@media (max-width: 700px) {
+		img {
 			width: 90vw;
 		}
 
-		main
-		{
+		main {
 			flex-direction: column-reverse;
 			gap: 2rem;
 
 			width: 90vw;
 
-			.message
-			{
+			.message {
 				width: 100%;
 			}
 		}

@@ -7,43 +7,30 @@ import {GroupRaw, defaultGroupRaw} from '../../../models/group'
 import api from '../../../services/api'
 import RemoveButton from '../../../components/RemoveButton'
 
-const EditGroup: React.FC = () =>
-{
+const EditGroup: React.FC = () => {
 	const {query} = useRouter()
 	const {group: urlId} = query
 
 	const [group, setGroup] = useState<GroupRaw>(defaultGroupRaw)
 
-	useEffect(() =>
-	{
-		api.get(`groups/${urlId}/raw`)
-			.then(({data}:{data: GroupRaw}) =>
-			{
-				setGroup(data)
-			})
+	useEffect(() => {
+		api.get(`groups/${urlId}/raw`).then(({data}: {data: GroupRaw}) => {
+			setGroup(data)
+		})
 	}, [])
 
 	return (
-		<div
-			className='page'
-			style={{position: 'relative'}}
-		>
-			<SEOHead
-				title='Edit group | Cinephix'
-			/>
+		<div className="page" style={{position: 'relative'}}>
+			<SEOHead title="Edit group | Cinephix" />
 
 			<RemoveButton
 				title={group.nickname}
-				collection='groups'
-
+				collection="groups"
 				apiRoute={`groups/${urlId}`}
-				redirectRoute='/groups'
+				redirectRoute="/groups"
 			/>
 
-			<GroupForm
-				method='put'
-				group={group}
-			/>
+			<GroupForm method="put" group={group} />
 		</div>
 	)
 }

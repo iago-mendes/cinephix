@@ -11,8 +11,7 @@ const Container = styled.div`
 
 	z-index: 1;
 
-	svg
-	{
+	svg {
 		stroke: ${p => p.theme.background};
 		stroke-width: 1rem;
 	}

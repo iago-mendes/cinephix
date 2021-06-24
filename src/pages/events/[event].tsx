@@ -12,89 +12,72 @@ import Carousel from '../../components/Carousel'
 import EventMediaCard from '../../components/cards/EventMedia'
 import EventCelebrityCard from '../../components/cards/EventCelebrity'
 
-interface EventProps
-{
+interface EventProps {
 	event: EventDetails
 }
 
-const Event: React.FC<EventProps> = ({event}) =>
-{
+const Event: React.FC<EventProps> = ({event}) => {
 	const {isFallback, push} = useRouter()
 
-	if (isFallback)
-		return <Loading style={{height: 'calc(100vh - 5rem)'}} />
+	if (isFallback) return <Loading style={{height: 'calc(100vh - 5rem)'}} />
 
 	return (
-		<Container color={event.color} className='page' >
+		<Container color={event.color} className="page">
 			<SEOHead
 				title={`${event.name} | Cinephix`}
 				description={event.description}
 			/>
 
 			<header>
-				<h1 className='name'>
-					{event.name}
-				</h1>
-				<p className='description'>
-					{event.description}
-				</p>
+				<h1 className="name">{event.name}</h1>
+				<p className="description">{event.description}</p>
 			</header>
 
-			<div className='actions'>
-				<button
-					onClick={() => push(`/groups/create?event=${event.id}`)}
-				>
+			<div className="actions">
+				<button onClick={() => push(`/groups/create?event=${event.id}`)}>
 					<FiPlus size={30} />
-					<span>
-						Create group
-					</span>
+					<span>Create group</span>
 				</button>
 			</div>
 
 			{event.categories.map((category, index) => (
-				<div className='category' key={index} >
-					<div className='header'>
-						<h2 className='name' >
-							{category.name}
-						</h2>
-						<p className='description'>
-							{category.description}
-						</p>
+				<div className="category" key={index}>
+					<div className="header">
+						<h2 className="name">{category.name}</h2>
+						<p className="description">{category.description}</p>
 					</div>
-					<Carousel className='carousel' >
-						{['movies', 'tvshows'].includes(category.type) && category.media.map((media, index) => (
-							<SwiperSlide key={index} >
-								<EventMediaCard
-									media={media}
-									link={`/${category.type}/${media.id}`}
-								/>
-							</SwiperSlide>
-						))}
-						{category.type === 'celebrities' && category.celebrities.map((eventCelebrity, index) => (
-							<SwiperSlide key={index} >
-								<EventCelebrityCard
-									eventCelebrity={eventCelebrity}
-									link={`/celebrities/${eventCelebrity.celebrity.id}`}
-								/>
-							</SwiperSlide>
-						))}
+					<Carousel className="carousel">
+						{['movies', 'tvshows'].includes(category.type) &&
+							category.media.map((media, index) => (
+								<SwiperSlide key={index}>
+									<EventMediaCard
+										media={media}
+										link={`/${category.type}/${media.id}`}
+									/>
+								</SwiperSlide>
+							))}
+						{category.type === 'celebrities' &&
+							category.celebrities.map((eventCelebrity, index) => (
+								<SwiperSlide key={index}>
+									<EventCelebrityCard
+										eventCelebrity={eventCelebrity}
+										link={`/celebrities/${eventCelebrity.celebrity.id}`}
+									/>
+								</SwiperSlide>
+							))}
 					</Carousel>
-					
 				</div>
 			))}
-
 		</Container>
 	)
 }
 
-export const getStaticPaths: GetStaticPaths = async () =>
-{
-	const {data: events}:{data: EventDetails[]} = await api.get('events')
+export const getStaticPaths: GetStaticPaths = async () => {
+	const {data: events}: {data: EventDetails[]} = await api.get('events')
 
-	const paths = events.map(event => (
-		{
-			params: {event: event.id}
-		}))
+	const paths = events.map(event => ({
+		params: {event: event.id}
+	}))
 
 	return {
 		paths,
@@ -102,12 +85,13 @@ export const getStaticPaths: GetStaticPaths = async () =>
 	}
 }
 
-export const getStaticProps: GetStaticProps = async ctx =>
-{
+export const getStaticProps: GetStaticProps = async ctx => {
 	const {event: id} = ctx.params
 	const language = ctx.locale
 
-	const {data: event}:{data: EventDetails} = await api.get(`events/${id}`, {params: {language}})
+	const {data: event}: {data: EventDetails} = await api.get(`events/${id}`, {
+		params: {language}
+	})
 
 	return {
 		props: {event},

@@ -108,16 +108,13 @@ export default createGlobalStyle`
 	}
 `
 
-export const modalStyle: Modal.Styles =
-{
-	overlay:
-	{
+export const modalStyle: Modal.Styles = {
+	overlay: {
 		backgroundColor: 'rgba(0, 0, 0, 0.6)',
 		zIndex: 2
 	},
 
-	content:
-	{
+	content: {
 		display: 'flex',
 		alignItems: 'center',
 		justifyContent: 'center',
@@ -131,10 +128,9 @@ export const modalStyle: Modal.Styles =
 	}
 }
 
-export const selectStyles: StylesConfig<{label: string, value: string}, false> =
-{
-	option: (provided, state) => (
-		{
+export const selectStyles: StylesConfig<{label: string; value: string}, false> =
+	{
+		option: (provided, state) => ({
 			cursor: 'pointer',
 
 			fontFamily: 'Roboto',
@@ -142,21 +138,23 @@ export const selectStyles: StylesConfig<{label: string, value: string}, false> =
 			padding: '1rem',
 
 			transition: '0.1s',
-			color: state.isSelected ? '#23232A' : state.isFocused ? '#FF8A00' : '#7B7B7B',
+			color: state.isSelected
+				? '#23232A'
+				: state.isFocused
+				? '#FF8A00'
+				: '#7B7B7B',
 			backgroundColor: state.isSelected ? '#FF8A00' : '#23232A'
 		}),
 
-	menu: (provided) => (
-		{
+		menu: provided => ({
 			...provided,
 			fontFamily: 'Roboto',
 			backgroundColor: '#23232A'
 		}),
 
-	control: (provided, state) => (
-		{
+		control: (provided, state) => ({
 			cursor: 'pointer',
-		
+
 			transition: '0.25s',
 
 			fontFamily: 'Roboto',
@@ -165,33 +163,34 @@ export const selectStyles: StylesConfig<{label: string, value: string}, false> =
 			width: '100%',
 			backgroundColor: '#23232A',
 
-			borderColor: state.menuIsOpen ? '#FF8A00' : state.isFocused ? '#FF8A0080' : '#7B7B7B',
+			borderColor: state.menuIsOpen
+				? '#FF8A00'
+				: state.isFocused
+				? '#FF8A0080'
+				: '#7B7B7B',
 			borderWidth: 2,
 			borderStyle: 'solid',
 			borderRadius: 5,
 
 			display: 'flex',
-			alignItems: 'center',
+			alignItems: 'center'
 		}),
 
-	singleValue: (provided) => (
-		{
+		singleValue: provided => ({
 			...provided,
 
 			color: '#FF8A00'
 		}),
 
-	indicatorSeparator: (provided, state) => (
-		{
+		indicatorSeparator: (provided, state) => ({
 			...provided,
 
 			backgroundColor: state.isFocused ? '#FF8A00' : '#7B7B7B'
 		}),
 
-	dropdownIndicator: (provided, state) => (
-		{
+		dropdownIndicator: (provided, state) => ({
 			...provided,
 
 			color: state.isFocused ? '#FF8A00' : '#7B7B7B'
 		})
-}
+	}

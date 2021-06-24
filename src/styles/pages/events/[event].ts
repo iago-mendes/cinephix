@@ -1,13 +1,11 @@
 import styled from 'styled-components'
 
-interface ContainerProps
-{
+interface ContainerProps {
 	color: string
 }
 
 const Container = styled.div<ContainerProps>`
-	header
-	{
+	header {
 		width: 100%;
 		padding: 2rem;
 
@@ -18,25 +16,22 @@ const Container = styled.div<ContainerProps>`
 
 		color: ${p => p.color};
 		border-bottom: ${p => p.color} 2px solid;
-		background-color: rgba(0,0,0,0.5);
-		box-shadow: 0px 5px 5px rgba(0,0,0,0.5);
+		background-color: rgba(0, 0, 0, 0.5);
+		box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.5);
 
-		.name
-		{
+		.name {
 			font-family: Ubuntu;
 			font-size: 3rem;
 			font-weight: 700;
 		}
 
-		.description
-		{
+		.description {
 			font-size: 2rem;
 			text-align: justify;
 		}
 	}
 
-	.actions
-	{
+	.actions {
 		width: 100%;
 		padding: 5rem;
 
@@ -45,8 +40,7 @@ const Container = styled.div<ContainerProps>`
 		align-items: center;
 		gap: 1rem;
 
-		button
-		{
+		button {
 			background: none;
 			color: ${p => p.theme.primary};
 			border: ${p => p.theme.primary} 2px solid;
@@ -59,16 +53,14 @@ const Container = styled.div<ContainerProps>`
 			padding: 0.5rem 1rem;
 			transition: 0.25s;
 
-			:hover
-			{
+			:hover {
 				background-color: ${p => p.theme.primary};
 				color: ${p => p.theme.background};
 
 				transform: scale(1.1);
 			}
 
-			span
-			{
+			span {
 				font-family: Ubuntu;
 				font-weight: 700;
 				font-size: 2rem;
@@ -76,39 +68,34 @@ const Container = styled.div<ContainerProps>`
 		}
 	}
 
-	.category
-	{
+	.category {
 		display: flex;
 		flex-direction: column;
 		gap: 3rem;
 
 		padding: 3rem 0;
 
-		:nth-child(odd)
-		{
-			background-color: rgba(0,0,0,0.5);
+		:nth-child(odd) {
+			background-color: rgba(0, 0, 0, 0.5);
 		}
 
-		.header
-		{
+		.header {
 			display: flex;
 			flex-direction: column;
 			gap: 1rem;
 
 			padding: 0 2rem;
 
-			.name
-			{
+			.name {
 				font-size: 2.5rem;
 				font-weight: 700;
 				color: ${p => p.theme.primary};
-				
+
 				padding-left: 1rem;
 				border-left: ${p => p.theme.primary} 5px solid;
 			}
 
-			.description
-			{
+			.description {
 				font-size: 1.75rem;
 				color: ${p => p.theme.primary};
 

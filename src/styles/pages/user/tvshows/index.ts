@@ -5,42 +5,35 @@ const Container = styled.div`
 	flex-direction: column;
 	align-items: center;
 
-	*
-	{
-		::-webkit-scrollbar
-		{
+	* {
+		::-webkit-scrollbar {
 			height: 1rem;
 			width: 1rem;
 		}
 
-		::-webkit-scrollbar-track
-		{
+		::-webkit-scrollbar-track {
 			background-color: #242329;
 			border-radius: 1rem;
 		}
-		
-		::-webkit-scrollbar-thumb
-		{
+
+		::-webkit-scrollbar-thumb {
 			background-color: #4d4d5a;
 			border-radius: 1rem;
 
-			:hover
-			{
+			:hover {
 				background-color: #3b3b45;
 			}
 		}
 	}
 
-	main
-	{
+	main {
 		height: fit-content;
 		min-height: calc(100vh - 5rem);
 
 		width: 100%;
 		overflow-x: auto;
 
-		.dragDropArea
-		{
+		.dragDropArea {
 			display: flex;
 			gap: 2rem;
 			padding: 2rem;
@@ -48,8 +41,7 @@ const Container = styled.div`
 
 			width: fit-content;
 
-			.statusColumn
-			{
+			.statusColumn {
 				background-color: ${p => p.theme.black};
 				height: fit-content;
 
@@ -60,12 +52,10 @@ const Container = styled.div`
 				display: flex;
 				flex-direction: column;
 
-				header
-				{
+				header {
 					width: 100%;
 
-					::after
-					{
+					::after {
 						content: '';
 						width: 100%;
 						height: 1px;
@@ -76,8 +66,7 @@ const Container = styled.div`
 						background: ${p => p.theme.primary}40;
 					}
 
-					.group
-					{
+					.group {
 						display: flex;
 						align-items: center;
 						justify-content: space-between;
@@ -85,8 +74,7 @@ const Container = styled.div`
 						padding-left: 1rem;
 						padding-right: 1rem;
 
-						h1
-						{
+						h1 {
 							font-family: Roboto;
 							font-weight: 700;
 							font-size: 2.25rem;
@@ -94,13 +82,11 @@ const Container = styled.div`
 							color: ${p => p.theme.primary};
 						}
 
-						.buttons
-						{
+						.buttons {
 							display: flex;
 							gap: 1rem;
 
-							button
-							{
+							button {
 								background: none;
 								border: none;
 								border-radius: 100rem;
@@ -116,8 +102,7 @@ const Container = styled.div`
 								cursor: pointer;
 								transition: 0.25s;
 
-								:hover
-								{
+								:hover {
 									color: ${p => p.theme.primary};
 									background-color: ${p => p.theme.gray}40;
 								}
@@ -126,8 +111,7 @@ const Container = styled.div`
 					}
 				}
 
-				.droppableArea
-				{
+				.droppableArea {
 					height: fit-content;
 					min-height: 10rem;
 					background-color: ${p => p.theme.background}40;
@@ -138,8 +122,7 @@ const Container = styled.div`
 					padding: 1rem;
 					width: 32rem;
 
-					.tvshow
-					{
+					.tvshow {
 						width: 30rem;
 						padding: 0.5rem;
 						height: calc((30rem - 1rem) * 0.4 * 1.5 + 1rem);
@@ -156,31 +139,27 @@ const Container = styled.div`
 						cursor: pointer;
 						transition: border-radius 0.25s, background-color 0.25s;
 
-						:hover, :active
-						{
+						:hover,
+						:active {
 							border-radius: 0;
 							background-color: ${p => p.theme.primary}bf;
 
-							.img img
-							{
+							.img img {
 								border-radius: 0;
 							}
 						}
 
-						.img
-						{
+						.img {
 							width: 40%;
 							height: 100%;
-							
-							img
-							{
+
+							img {
 								border-radius: 0.5rem;
 								transition: border-radius 0.25s;
 							}
 						}
 
-						.info
-						{
+						.info {
 							display: flex;
 							flex-direction: column;
 							justify-content: space-between;
@@ -191,8 +170,7 @@ const Container = styled.div`
 							width: 50%;
 							height: 100%;
 
-							h2
-							{
+							h2 {
 								font-family: Ubuntu;
 								font-weight: 700;
 								font-size: 2rem;
@@ -202,8 +180,7 @@ const Container = styled.div`
 								word-wrap: break-word;
 							}
 
-							.details
-							{
+							.details {
 								display: flex;
 								flex-direction: column;
 								gap: 1rem;
@@ -218,8 +195,7 @@ const Container = styled.div`
 					}
 				}
 
-				.add
-				{
+				.add {
 					width: 100%;
 					padding: 1rem;
 					background-color: ${p => p.theme.background}40;
@@ -235,14 +211,12 @@ const Container = styled.div`
 					cursor: pointer;
 					transition: 0.25s;
 
-					:hover
-					{
+					:hover {
 						background: none;
 						color: ${p => p.theme.primary}80;
 					}
 
-					span
-					{
+					span {
 						font-family: Ubuntu;
 						font-weight: 700;
 						font-size: 1.5rem;
@@ -252,47 +226,36 @@ const Container = styled.div`
 		}
 	}
 
-	@media(max-width: 600px)
-	{
-		main .dragDropArea .statusColumn
-		{
-			header .group
-			{
-				h1
-				{
+	@media (max-width: 600px) {
+		main .dragDropArea .statusColumn {
+			header .group {
+				h1 {
 					font-size: 1.75rem;
 				}
 
-				.buttons
-				{
+				.buttons {
 					gap: 0;
 
-					button
-					{
+					button {
 						width: 2.25rem;
 						height: 2.25rem;
 					}
 				}
 			}
 
-			.droppableArea
-			{
+			.droppableArea {
 				width: 22rem;
 
-				.tvshow
-				{
+				.tvshow {
 					width: 20rem;
 					height: calc((20rem - 1rem) * 0.4 * 1.5 + 1rem);
 
-					.info
-					{
-						h2
-						{
+					.info {
+						h2 {
 							font-size: 1.5rem;
 						}
 
-						.details
-						{
+						.details {
 							font-size: 1rem;
 						}
 					}

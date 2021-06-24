@@ -11,38 +11,33 @@ const Container = styled.div`
 	height: calc((25rem - 1rem) * 0.3 * 1.5 + 1rem);
 
 	border-radius: 0.5rem;
-	box-shadow: 5px 5px 5px rgba(0,0,0,0.5);
-	
+	box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+
 	text-decoration: none;
 	position: relative;
 
 	cursor: pointer;
 	transition: 0.25s;
 
-	:hover
-	{
+	:hover {
 		border-radius: 0;
 		background-color: ${p => p.theme.primary}bf;
 
-		.img img
-		{
+		.img img {
 			border-radius: 0;
 		}
 	}
 
-	.img
-	{
+	.img {
 		width: 30%;
 
-		img
-		{
+		img {
 			border-radius: 0.5rem;
 			transition: 0.25s;
 		}
 	}
 
-	.info
-	{
+	.info {
 		width: 65%;
 		height: 100%;
 
@@ -54,16 +49,14 @@ const Container = styled.div`
 		color: ${p => p.theme.background};
 		overflow: hidden;
 
-		.name
-		{
+		.name {
 			font-family: Ubuntu;
 			font-weight: 700;
 
 			font-size: 1.5rem;
 		}
 
-		.media
-		{
+		.media {
 			display: flex;
 			align-items: center;
 			justify-content: space-between;
@@ -71,22 +64,19 @@ const Container = styled.div`
 			width: 15rem;
 			padding: 0.25rem;
 			height: calc((10rem - 1rem) * 0.3 * 1.5 + 1rem);
-			background-color: rgba(0,0,0,0.25);
+			background-color: rgba(0, 0, 0, 0.25);
 
 			border-radius: 0.25rem;
 
-			.mediaImg
-			{
+			.mediaImg {
 				width: 20%;
 
-				img
-				{
+				img {
 					border-radius: 0.25rem;
 				}
 			}
 
-			.mediaInfo
-			{
+			.mediaInfo {
 				width: 75%;
 				height: 100%;
 
@@ -98,16 +88,14 @@ const Container = styled.div`
 				color: ${p => p.theme.background};
 				overflow: hidden;
 
-				.title
-				{
+				.title {
 					font-family: Ubuntu;
 					font-weight: 700;
 
 					font-size: 1.25rem;
 				}
 
-				.date
-				{
+				.date {
 					font-family: Ubuntu;
 					font-size: 1.25rem;
 
@@ -120,34 +108,27 @@ const Container = styled.div`
 		}
 	}
 
-	@media(min-width: 600px)
-	{
+	@media (min-width: 600px) {
 		padding: 1rem;
 		width: 35rem;
 		height: calc((35rem - 2rem) * 0.3 * 1.5 + 2rem);
 
-		.info
-		{
-			.name
-			{
+		.info {
+			.name {
 				font-size: 2rem;
 			}
 
-			.media
-			{
+			.media {
 				width: 20rem;
 				padding: 0.5rem;
 				height: calc((15rem - 1rem) * 0.3 * 1.5 + 1rem);
 
-				.mediaInfo
-				{
-					.title
-					{
+				.mediaInfo {
+					.title {
 						font-size: 1.75rem;
 					}
 
-					.date
-					{
+					.date {
 						font-size: 1.5rem;
 					}
 				}

@@ -1,16 +1,13 @@
-[{
-	"relation":
-	[
-		"delegate_permission/common.handle_all_urls"
-	],
-	"target" :
+[
 	{
-		"namespace": "android_app",
-		"package_name": "com.cinephix.twa",
-		"sha256_cert_fingerprints":
-		[
-			"37:91:4D:D6:4E:66:99:37:EF:42:FD:C7:47:5E:D3:CC:DE:6B:A2:2F:9B:35:03:63:4B:09:EA:88:A2:93:F3:7A",
-			"13:50:79:C5:79:AB:FB:06:19:97:1E:C9:CA:D0:E5:19:A2:51:17:6A:6F:92:66:BE:35:11:94:E4:FA:82:3E:AE"
-		]
+		"relation": ["delegate_permission/common.handle_all_urls"],
+		"target": {
+			"namespace": "android_app",
+			"package_name": "com.cinephix.twa",
+			"sha256_cert_fingerprints": [
+				"37:91:4D:D6:4E:66:99:37:EF:42:FD:C7:47:5E:D3:CC:DE:6B:A2:2F:9B:35:03:63:4B:09:EA:88:A2:93:F3:7A",
+				"13:50:79:C5:79:AB:FB:06:19:97:1E:C9:CA:D0:E5:19:A2:51:17:6A:6F:92:66:BE:35:11:94:E4:FA:82:3E:AE"
+			]
+		}
 	}
-}]
+]

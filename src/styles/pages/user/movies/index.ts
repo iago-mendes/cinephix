@@ -5,8 +5,7 @@ const Container = styled.div`
 	flex-direction: column;
 	align-items: center;
 
-	main
-	{
+	main {
 		width: 100%;
 
 		height: fit-content;
@@ -17,38 +16,33 @@ const Container = styled.div`
 		gap: 2rem;
 		padding: 2rem;
 
-		.options
-		{
+		.options {
 			display: flex;
 			align-items: center;
 			justify-content: flex-end;
 
-			.sort
-			{
+			.sort {
 				display: flex;
 				align-items: center;
 				gap: 0.5rem;
 
-				span
-				{
+				span {
 					font-family: Roboto;
 					font-size: 2rem;
 					color: ${p => p.theme.primary};
 				}
 
-				.select
-				{
+				.select {
 					width: 20rem;
 				}
 			}
 		}
 
-		.watchList, .watched
-		{
+		.watchList,
+		.watched {
 			width: 100%;
 
-			.grid
-			{
+			.grid {
 				width: 100%;
 
 				display: grid;
@@ -58,8 +52,7 @@ const Container = styled.div`
 				align-items: center;
 				justify-items: center;
 
-				.movie
-				{
+				.movie {
 					width: 30rem;
 					padding: 0.5rem;
 					height: calc((30rem - 1rem) * 0.4 * 1.5 + 1rem);
@@ -74,30 +67,26 @@ const Container = styled.div`
 					cursor: pointer;
 					transition: 0.25s;
 
-					:hover, :active
-					{
+					:hover,
+					:active {
 						border-radius: 0;
 						background-color: ${p => p.theme.primary}bf;
 
-						.img img
-						{
+						.img img {
 							border-radius: 0;
 						}
 					}
 
-					.img
-					{
+					.img {
 						width: 40%;
 						height: 100%;
-						
-						img
-						{
+
+						img {
 							border-radius: 0.5rem;
 						}
 					}
 
-					.info
-					{
+					.info {
 						display: flex;
 						flex-direction: column;
 						justify-content: space-between;
@@ -108,8 +97,7 @@ const Container = styled.div`
 						width: 50%;
 						height: 100%;
 
-						h2
-						{
+						h2 {
 							font-family: Ubuntu;
 							font-weight: 700;
 							font-size: 2rem;
@@ -119,8 +107,7 @@ const Container = styled.div`
 							word-wrap: break-word;
 						}
 
-						.details
-						{
+						.details {
 							display: flex;
 							flex-direction: column;
 							gap: 1rem;
@@ -134,8 +121,7 @@ const Container = styled.div`
 					}
 				}
 
-				.add
-				{
+				.add {
 					display: flex;
 					align-items: center;
 					justify-content: center;
@@ -152,8 +138,7 @@ const Container = styled.div`
 					cursor: pointer;
 					transition: 0.25s;
 
-					:hover
-					{
+					:hover {
 						color: ${p => p.theme.background};
 						background-color: ${p => p.theme.primary};
 
@@ -163,8 +148,7 @@ const Container = styled.div`
 			}
 		}
 
-		.watchList
-		{
+		.watchList {
 			background-color: ${p => p.theme.black}40;
 			padding: 1rem;
 			border-radius: 1rem;
@@ -176,8 +160,7 @@ const Container = styled.div`
 	}
 `
 
-interface DropdownProps
-{
+interface DropdownProps {
 	showWatchList: boolean
 }
 
@@ -193,22 +176,19 @@ export const Dropdown = styled.div<DropdownProps>`
 	cursor: pointer;
 	transition: 0.25s;
 
-	:hover
-	{
+	:hover {
 		transform: scale(1.05);
 	}
 
-	span
-	{
+	span {
 		font-family: Roboto;
 		font-weight: 700;
 		font-size: 2.5rem;
 	}
 
-	svg
-	{
+	svg {
 		transition: 0.25s;
-		transform: ${p => p.showWatchList ? 'rotate(180deg)' : 'rotate(90deg)'};
+		transform: ${p => (p.showWatchList ? 'rotate(180deg)' : 'rotate(90deg)')};
 	}
 `
 

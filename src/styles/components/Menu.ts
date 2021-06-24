@@ -1,7 +1,6 @@
 import styled from 'styled-components'
 
-type ContainerProps =
-{
+type ContainerProps = {
 	isUserMenuOpen: boolean
 }
 
@@ -17,8 +16,7 @@ const Container = styled.nav<ContainerProps>`
 	height: 5rem;
 	background-color: ${p => p.theme.secondary};
 
-	.logos
-	{
+	.logos {
 		height: 75%;
 		width: 20rem;
 
@@ -29,30 +27,25 @@ const Container = styled.nav<ContainerProps>`
 		cursor: pointer;
 		transition: 0.25s;
 
-		:hover
-		{
+		:hover {
 			transform: scale(1.05);
 		}
 
-		.icon
-		{
+		.icon {
 			width: 20%;
 		}
 
-		.name
-		{
+		.name {
 			width: 75%;
 		}
 	}
 
-	.links
-	{
+	.links {
 		display: flex;
 		align-items: center;
 		gap: 2rem;
 
-		a
-		{
+		a {
 			text-decoration: none;
 			font-family: Ubuntu;
 			font-weight: 700;
@@ -61,8 +54,7 @@ const Container = styled.nav<ContainerProps>`
 			color: ${p => p.theme.primary};
 			display: inline-block;
 
-			::after
-			{
+			::after {
 				content: '';
 				width: 0px;
 				height: 2px;
@@ -71,26 +63,21 @@ const Container = styled.nav<ContainerProps>`
 				transition: 0.25s;
 			}
 
-			:hover::after
-			{
+			:hover::after {
 				width: 100%;
 			}
 		}
 	}
 
-	.container
-	{
+	.container {
 		display: flex;
 		align-items: center;
 		gap: 5rem;
 
-
-		.user
-		{
+		.user {
 			position: relative;
 
-			span.signIn
-			{
+			span.signIn {
 				font-family: Ubuntu;
 				font-weight: 700;
 				font-size: 1.75rem;
@@ -105,15 +92,13 @@ const Container = styled.nav<ContainerProps>`
 				cursor: pointer;
 				transition: 0.25s;
 
-				:hover
-				{
+				:hover {
 					background-color: ${p => p.theme.primary};
 					color: ${p => p.theme.secondary};
 				}
 			}
 
-			button.dropdown
-			{
+			button.dropdown {
 				display: flex;
 				align-items: center;
 				gap: 1rem;
@@ -128,31 +113,27 @@ const Container = styled.nav<ContainerProps>`
 				cursor: pointer;
 				transition: 0.25s;
 
-				:hover
-				{
+				:hover {
 					transform: scale(1.07);
 				}
 
-				.img
-				{
+				.img {
 					max-width: 100%;
 					max-height: 100%;
 					border-radius: 100rem;
 				}
 
-				.indicator
-				{
+				.indicator {
 					transition: 0.25s;
 
-
-					transform: ${p => p.isUserMenuOpen ? 'rotate(-180deg)' : 'rotate(-90deg)'};
+					transform: ${p =>
+						p.isUserMenuOpen ? 'rotate(-180deg)' : 'rotate(-90deg)'};
 				}
 			}
 		}
 	}
 
-	button.controller
-	{
+	button.controller {
 		font-size: 3rem;
 		color: ${p => p.theme.primary};
 
@@ -168,33 +149,28 @@ const Container = styled.nav<ContainerProps>`
 
 		transition: background-color 0.25s, color 0.25s;
 
-		:hover
-		{
+		:hover {
 			background-color: ${p => p.theme.primary};
 			color: ${p => p.theme.secondary};
 		}
 	}
 
-	@media(max-width: 1000px)
-	{
+	@media (max-width: 1000px) {
 		position: fixed;
 		z-index: 2;
 		bottom: 0;
 		width: 100%;
 
-		.burger
-		{
+		.burger {
 			width: 10rem;
 		}
 
-		.logos
-		{
+		.logos {
 			width: 6rem;
 			position: relative;
 			justify-content: center;
 
-			.icon
-			{
+			.icon {
 				width: 6rem;
 				height: 6rem;
 
@@ -203,57 +179,51 @@ const Container = styled.nav<ContainerProps>`
 			}
 		}
 
-		.container
-		{
+		.container {
 			width: 10rem;
 
-			.user
-			{
+			.user {
 				margin-left: auto;
 
-				button.dropdown .indicator
-				{
-					transform: ${p => p.isUserMenuOpen ? 'rotate(0deg)' : 'rotate(-90deg)'};
+				button.dropdown .indicator {
+					transform: ${p =>
+						p.isUserMenuOpen ? 'rotate(0deg)' : 'rotate(-90deg)'};
 				}
 			}
 		}
 	}
 `
 
-type BurgerMenuProps =
-{
+type BurgerMenuProps = {
 	isOpen: boolean
 }
 
 export const BurgerMenu = styled.div<BurgerMenuProps>`
 	position: fixed;
-	left: ${p => p.isOpen ? 0 : '-100vw'};
+	left: ${p => (p.isOpen ? 0 : '-100vw')};
 	top: 0;
 	z-index: 2;
 
 	width: 75vw;
 	height: 100vh;
 	background-color: ${p => p.theme.secondary};
-	box-shadow: 5px 0px 5px rgba(0,0, 0, 0.5);
+	box-shadow: 5px 0px 5px rgba(0, 0, 0, 0.5);
 
 	overflow-y: auto;
 	padding: 1rem;
 
 	transition: left 0.25s;
 
-	button.controller
-	{
+	button.controller {
 		margin-left: auto;
 		margin-bottom: 5rem;
 	}
 
-	.links
-	{
+	.links {
 		flex-direction: column;
 		gap: 3rem;
 
-		a
-		{
+		a {
 			font-size: 2rem;
 		}
 	}

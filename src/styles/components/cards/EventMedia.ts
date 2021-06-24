@@ -11,38 +11,33 @@ const Container = styled.div`
 	height: calc((25rem - 1rem) * 0.3 * 1.5 + 1rem);
 
 	border-radius: 0.5rem;
-	box-shadow: 5px 5px 5px rgba(0,0,0,0.5);
-	
+	box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+
 	text-decoration: none;
 	position: relative;
 
 	cursor: pointer;
 	transition: 0.25s;
 
-	:hover
-	{
+	:hover {
 		border-radius: 0;
 		background-color: ${p => p.theme.primary}bf;
 
-		.img img
-		{
+		.img img {
 			border-radius: 0;
 		}
 	}
 
-	.img
-	{
+	.img {
 		width: 30%;
 
-		img
-		{
+		img {
 			border-radius: 0.5rem;
 			transition: 0.25s;
 		}
 	}
 
-	.info
-	{
+	.info {
 		width: 65%;
 		height: 100%;
 
@@ -54,16 +49,14 @@ const Container = styled.div`
 		color: ${p => p.theme.background};
 		overflow: hidden;
 
-		.title
-		{
+		.title {
 			font-family: Ubuntu;
 			font-weight: 700;
 
 			font-size: 1.75rem;
 		}
 
-		.date
-		{
+		.date {
 			font-family: Ubuntu;
 			font-size: 1.25rem;
 
@@ -73,36 +66,29 @@ const Container = styled.div`
 			gap: 0.5rem;
 		}
 
-		.overview
-		{
+		.overview {
 			font-family: Roboto;
 			font-weight: 400;
 
 			font-size: 1rem;
 		}
-
 	}
 
-	@media(min-width: 600px)
-	{
+	@media (min-width: 600px) {
 		padding: 1rem;
 		width: 35rem;
 		height: calc((35rem - 2rem) * 0.3 * 1.5 + 2rem);
 
-		.info
-		{
-			.title
-			{
+		.info {
+			.title {
 				font-size: 2.25rem;
 			}
 
-			.date
-			{
+			.date {
 				font-size: 1.75rem;
 			}
 
-			.overview
-			{
+			.overview {
 				font-size: 1.5rem;
 			}
 		}

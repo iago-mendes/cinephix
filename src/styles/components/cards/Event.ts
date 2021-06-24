@@ -15,42 +15,36 @@ const Container = styled.div`
 	cursor: pointer;
 	transition: 0.25s;
 
-	:hover
-	{
+	:hover {
 		border-radius: 0;
 		background-color: ${p => p.theme.primary}bf;
 
-		svg
-		{
+		svg {
 			border-radius: 0;
 		}
 	}
 
-	svg
-	{
+	svg {
 		border-radius: 2.5rem;
 		border: ${p => p.theme.background} 3px solid;
 
 		transition: 0.25s;
 	}
 
-	.info
-	{
+	.info {
 		width: 75%;
 
 		display: flex;
 		flex-direction: column;
 		gap: 1.5rem;
 
-		.name
-		{
+		.name {
 			font-family: Ubuntu;
 			font-size: 2.5rem;
 			font-weight: 700;
 		}
 
-		.description
-		{
+		.description {
 			font-size: 1.5rem;
 		}
 	}

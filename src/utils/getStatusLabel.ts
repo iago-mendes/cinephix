@@ -1,5 +1,4 @@
-const validStatus: {[statusKey: string]: string} = 
-{
+const validStatus: {[statusKey: string]: string} = {
 	watchList: 'Watch list',
 	watching: 'Watching',
 	waiting: 'Waiting',
@@ -8,8 +7,7 @@ const validStatus: {[statusKey: string]: string} =
 	paused: 'Paused'
 }
 
-function getStatusLabel(statusKey: string)
-{
+function getStatusLabel(statusKey: string) {
 	return validStatus[statusKey]
 }
 

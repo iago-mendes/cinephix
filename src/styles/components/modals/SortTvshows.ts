@@ -3,8 +3,7 @@ import styled from 'styled-components'
 const Container = styled.div`
 	position: relative;
 
-	.options
-	{
+	.options {
 		background-color: ${p => p.theme.black};
 		border: ${p => p.theme.primary}40 1px solid;
 
@@ -12,20 +11,16 @@ const Container = styled.div`
 		border-radius: 0.5rem;
 
 		direction: ltr;
-		
-		header
-		{
-			::after
-			{
+
+		header {
+			::after {
 				margin-top: 0.5rem !important;
 			}
 
-			.group
-			{
+			.group {
 				margin-top: 0.5rem;
 
-				h3
-				{
+				h3 {
 					font-family: Ubuntu;
 					font-size: 1.75rem;
 					color: ${p => p.theme.primary};
@@ -33,13 +28,11 @@ const Container = styled.div`
 			}
 		}
 
-		ul
-		{
+		ul {
 			padding: 1rem;
 			list-style: none;
 
-			li
-			{
+			li {
 				font-family: Roboto;
 				font-size: 1.5rem;
 				color: ${p => p.theme.primary};
@@ -53,8 +46,7 @@ const Container = styled.div`
 				cursor: pointer;
 				transition: 0.25s;
 
-				:hover
-				{
+				:hover {
 					background-color: ${p => p.theme.gray}40;
 				}
 			}

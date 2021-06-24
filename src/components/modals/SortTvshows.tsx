@@ -11,8 +11,7 @@ import getTotalRating from '../../utils/getTotalRating'
 import api from '../../services/api'
 import useUser from '../../hooks/useUser'
 
-interface SortTvshowsModalProps
-{
+interface SortTvshowsModalProps {
 	statusKey: string
 	statusTvshows: UserTvshow[]
 
@@ -23,36 +22,42 @@ interface SortTvshowsModalProps
 	setLoading: (p: boolean) => void
 }
 
-const SortTvshowsModal: React.FC<SortTvshowsModalProps> =
-({statusKey, statusTvshows, tvshowList, setTvshowList, revalidate, setLoading}) =>
-{
+const SortTvshowsModal: React.FC<SortTvshowsModalProps> = ({
+	statusKey,
+	statusTvshows,
+	tvshowList,
+	setTvshowList,
+	revalidate,
+	setLoading
+}) => {
 	const {user} = useUser()
 
 	const [showOptions, setShowOptions] = useState(false)
 	const ref = useClickOutside(() => setShowOptions(false))
 
-	async function handleSort(option: string)
-	{
+	async function handleSort(option: string) {
 		setShowOptions(false)
 		setLoading(true)
 
-		let tvshows = statusTvshows
+		const tvshows = statusTvshows
 
-		if (option === 'title')
-			tvshows.sort((a, b) => a.title < b.title ? -1 : 1)
+		if (option === 'title') tvshows.sort((a, b) => (a.title < b.title ? -1 : 1))
 		if (option === 'rating')
-			tvshows.sort((a, b) => getTotalRating(a.ratings) > getTotalRating(b.ratings) ? -1 : 1)
+			tvshows.sort((a, b) =>
+				getTotalRating(a.ratings) > getTotalRating(b.ratings) ? -1 : 1
+			)
 		if (option === 'rating-')
-			tvshows.sort((a, b) => getTotalRating(a.ratings) < getTotalRating(b.ratings) ? -1 : 1)
+			tvshows.sort((a, b) =>
+				getTotalRating(a.ratings) < getTotalRating(b.ratings) ? -1 : 1
+			)
 
-		const data =
-		{
+		const data = {
 			tvshows: tvshows.map(tvshow => tvshow.id)
 		}
 
 		await api.put(`users/${user.email}/tvshows/status/${statusKey}`, data)
 
-		let tmpTvshowList = tvshowList
+		const tmpTvshowList = tvshowList
 		tmpTvshowList[statusKey] = tvshows
 		setTvshowList(tmpTvshowList)
 
@@ -61,11 +66,8 @@ const SortTvshowsModal: React.FC<SortTvshowsModalProps> =
 	}
 
 	return (
-		<Container ref={ref} >
-			<button
-				title='Sort TV shows'
-				onClick={() => setShowOptions(true)}
-			>
+		<Container ref={ref}>
+			<button title="Sort TV shows" onClick={() => setShowOptions(true)}>
 				<BiSort size={20} />
 			</button>
 
@@ -73,55 +75,49 @@ const SortTvshowsModal: React.FC<SortTvshowsModalProps> =
 				initial={false}
 				transition={{duration: 0.25}}
 				animate={showOptions ? 'open' : 'closed'}
-				variants=
-					{{
-						open:
-						{
-							height: 'fit-content',
-							width: 'fit-content',
-							opacity: 1,
-						},
-						closed:
-						{
-							height: 0,
-							width: 0,
-							opacity: 0,
-						}
-					}}
-				style=
-					{{
-						position: 'absolute',
-						right: 0,
-						top: '3rem',
-						zIndex: 100,
+				variants={{
+					open: {
+						height: 'fit-content',
+						width: 'fit-content',
+						opacity: 1
+					},
+					closed: {
+						height: 0,
+						width: 0,
+						opacity: 0
+					}
+				}}
+				style={{
+					position: 'absolute',
+					right: 0,
+					top: '3rem',
+					zIndex: 100,
 
-						overflow: 'hidden',
-						direction: 'rtl',
-					}}
+					overflow: 'hidden',
+					direction: 'rtl'
+				}}
 			>
-				<div className='options' >
+				<div className="options">
 					<header>
-						<div className='group'>
+						<div className="group">
 							<h3>Sort by...</h3>
-							<button className='close' onClick={() => setShowOptions(false)} >
+							<button className="close" onClick={() => setShowOptions(false)}>
 								<FiX size={20} />
 							</button>
 						</div>
 					</header>
 					<ul>
-						<li onClick={() => handleSort('title')} >
-							Title (alphabetically)
-						</li>
+						<li onClick={() => handleSort('title')}>Title (alphabetically)</li>
 						{/* <li onClick={() => handleSort('date')} >
 							Release date (newest first)
 						</li>
 						<li onClick={() => handleSort('date-')} >
 							Release date (oldest first)
 						</li> */}
-						<li onClick={() => handleSort('rating')} >
+						<li onClick={() => handleSort('rating')}>
 							My rating (highest first)
 						</li>
-						<li onClick={() => handleSort('rating-')} >
+						<li onClick={() => handleSort('rating-')}>
 							My rating (lowest first)
 						</li>
 					</ul>

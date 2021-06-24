@@ -10,9 +10,9 @@ This is the main front-end application of it, which is available at [cinephix.co
 
 - Search and discover movies, TV shows, and celebrities
 - Save and organize movies and TV shows
-	- Status
-	- Venue
-	- Ratings
+  - Status
+  - Venue
+  - Ratings
 - Create predictions groups
 
 ## Technologies
@@ -23,19 +23,19 @@ This is the main front-end application of it, which is available at [cinephix.co
 - [Next.js](https://nextjs.org)
 - [Styled Components](https://styled-components.com)
 - [SweetAlert2](https://sweetalert2.github.io)
-	> Popup boxes
+  > Popup boxes
 - [SWR](https://swr.vercel.app)
-	> React Hooks library for data fetching
+  > React Hooks library for data fetching
 - [Framer Motion](https://www.framer.com/motion/)
-	> Motion library for React
+  > Motion library for React
 - [RBD](https://react-beautiful-dnd.netlify.app/)
-	> Drag and drop library
+  > Drag and drop library
 - [Swiper](https://swiperjs.com)
-	> Touch slider
+  > Touch slider
 
 ## Associated repositories
 
 - [cinephix-server](https://github.com/iago-mendes/cinephix-server)
-	> API
+  > API
 - [cinephix-links](https://github.com/iago-mendes/cinephix-links)
-	> Redirect setup for links
+  > Redirect setup for links

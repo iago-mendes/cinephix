@@ -12,8 +12,7 @@ const Container = styled.div`
 	align-items: center;
 	justify-content: space-between;
 
-	header
-	{
+	header {
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
@@ -27,14 +26,12 @@ const Container = styled.div`
 		border-top-right-radius: 0.5rem;
 		background-color: ${p => p.theme.secondary};
 
-		h1
-		{
+		h1 {
 			color: ${p => p.theme.primary};
 			font-family: Ubuntu;
 		}
 
-		button
-		{
+		button {
 			width: 3.5rem;
 			height: 3.5rem;
 			border-radius: 100rem;
@@ -50,16 +47,14 @@ const Container = styled.div`
 			cursor: pointer;
 			transition: 0.25s;
 
-			:hover
-			{
+			:hover {
 				background-color: ${p => p.theme.primary};
 				color: ${p => p.theme.secondary};
 			}
 		}
 	}
 
-	.search
-	{
+	.search {
 		background-color: ${p => p.theme.white};
 		height: 4rem;
 		width: 75%;
@@ -72,18 +67,16 @@ const Container = styled.div`
 		padding-right: 2rem;
 
 		color: ${p => p.theme.secondary};
-		box-shadow: 0px 5px 5px rgba(0,0,0,0.5);
+		box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.5);
 
 		border-radius: 100rem;
 		transition: 0.25s;
 
-		:hover
-		{
+		:hover {
 			transform: scale(1.03);
 		}
 
-		input
-		{
+		input {
 			width: 100%;
 			height: 90%;
 
@@ -97,44 +90,36 @@ const Container = styled.div`
 		}
 	}
 
-	.scroll
-	{
+	.scroll {
 		width: 100%;
 		height: calc(85vh - 12rem);
 		overflow-y: auto;
 
-		::-webkit-scrollbar
-		{
+		::-webkit-scrollbar {
 			height: 1rem;
 			width: 1rem;
 		}
 
-		::-webkit-scrollbar-track
-		{
+		::-webkit-scrollbar-track {
 			background-color: #242329;
 			border-radius: 1rem;
 		}
-		
-		::-webkit-scrollbar-thumb
-		{
+
+		::-webkit-scrollbar-thumb {
 			background-color: #4d4d5a;
 			border-radius: 1rem;
 
-			:hover
-			{
+			:hover {
 				background-color: #3b3b45;
 			}
 		}
 	}
 
-	@media(max-width: 600px)
-	{
+	@media (max-width: 600px) {
 		width: 95vw;
 
-		.search
-		{
-			input
-			{
+		.search {
+			input {
 				font-size: 1.75rem;
 			}
 		}
