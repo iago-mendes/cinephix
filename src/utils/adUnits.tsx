@@ -1,4 +1,3 @@
-import getConfig from 'next/config'
 import { useEffect } from 'react'
 
 declare global
@@ -9,11 +8,9 @@ declare global
 	}
 }
 
-const {publicRuntimeConfig: env} = getConfig()
-
 function adScript()
 {
-	if (env.env === 'development')
+	if (process.env.NEXT_PUBLIC_NODE_ENV === 'development')
 		return
 
 	window.adsbygoogle = window.adsbygoogle || []

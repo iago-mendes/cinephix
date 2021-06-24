@@ -1,7 +1,4 @@
 import Head from 'next/head'
-import getConfig from 'next/config'
-
-const {publicRuntimeConfig: env} = getConfig()
 
 interface SEOHeadProps
 {
@@ -16,7 +13,7 @@ const SEOHead: React.FC<SEOHeadProps> = ({title, description, image}) =>
 	{
 		title: title ? title : 'Cinephix | The application made for cinephiles',
 		description: description ? description : 'The Cinephix application is a place where people passionate about movies and TV shows can pursue their interest. Here, you can search and discover new content, as well as organize your entertainment media. For example, you can separate your TV shows by status, add movies to your watch list, rate all your media, and more.',
-		image: image ? image : `${env.apiUrl}/assets/thumbnail.png`,
+		image: image ? image : `${process.env.NEXT_PUBLIC_API_URL}/assets/thumbnail.png`,
 		url: 'https://cinephix.com'
 	}
 

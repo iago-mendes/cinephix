@@ -5,22 +5,9 @@ module.exports = withPWA(withImages({
 	esModule: true,
 	images:
 	{
-		domains: [process.env.API_HOSTNAME, process.env.TMDB_IMG_HOSTNAME],
+		domains: [process.env.NEXT_PUBLIC_API_HOSTNAME, process.env.NEXT_PUBLIC_TMDB_IMG_HOSTNAME],
 		loader: 'imgix',
 		path: ''
-	},
-	publicRuntimeConfig:
-	{
-		apiUrl: process.env.API_URL,
-		apiKey: process.env.API_KEY,
-		analyticsId: process.env.GA_TRACKING_ID,
-		env: process.env.ENV
-	},
-	serverRuntimeConfig:
-	{
-		authSecret: process.env.AUTH_SECRET,
-		googleClientId: process.env.GOOGLE_CLIENT_ID,
-		googleClientSecret: process.env.GOOGLE_CLIENT_SECRET
 	},
 	pwa:
 	{

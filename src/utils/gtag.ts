@@ -1,8 +1,4 @@
-import getConfig from 'next/config'
-
-const {publicRuntimeConfig: env} = getConfig()
-
-export const analyticsId = String(env.analyticsId)
+export const analyticsId = String(process.env.NEXT_PUBLIC_GA_TRACKING_ID)
 
 export const pageview = (url: URL) =>
 {

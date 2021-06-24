@@ -1,26 +1,23 @@
 import {NextApiHandler} from 'next'
 import NextAuth, {InitOptions} from 'next-auth'
 import Providers from 'next-auth/providers'
-import getConfig from 'next/config'
 
 import api from '../../../services/api'
 
-const {serverRuntimeConfig: env} = getConfig()
-
 const config: InitOptions =
 {
-	secret: env.authSecret,
+	secret: process.env.AUTH_SECRET,
 	providers:
 	[
 		Providers.Google(
 			{
-				clientId: env.googleClientId,
-				clientSecret: env.googleClientSecret
+				clientId: process.env.GOOGLE_CLIENT_ID,
+				clientSecret: process.env.GOOGLE_CLIENT_SECRET
 			})
 	],
 	jwt:
 	{
-		secret: env.authSecret
+		secret: process.env.AUTH_SECRET
 	},
 	events:
 	{
