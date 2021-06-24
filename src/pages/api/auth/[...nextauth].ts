@@ -1,10 +1,10 @@
 import {NextApiHandler} from 'next'
-import NextAuth, {InitOptions} from 'next-auth'
+import NextAuth, {NextAuthOptions} from 'next-auth'
 import Providers from 'next-auth/providers'
 
 import api from '../../../services/api'
 
-const config: InitOptions = {
+const config: NextAuthOptions = {
 	secret: process.env.AUTH_SECRET,
 	providers: [
 		Providers.Google({

@@ -3,7 +3,7 @@ import Image from 'next/image'
 import Container from '../styles/components/HeaderWithBackground'
 
 interface HeaderWithBackgroundProps {
-	background: string
+	background: string | StaticImageData
 	display: string
 }
 
@@ -16,7 +16,7 @@ const HeaderWithBackground: React.FC<HeaderWithBackgroundProps> = ({
 		<Container>
 			<div className="background">
 				<Image
-					src={background}
+					src={background as StaticImageData}
 					width={1500}
 					height={1000}
 					layout="responsive"
