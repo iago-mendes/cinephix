@@ -1,8 +1,36 @@
 msgid ""
 msgstr ""
-"POT-Creation-Date: 2021-07-02 19:40-0300\n"
+"POT-Creation-Date: 2021-07-02 20:35-0300\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: @lingui/cli\n"
 "Language: pt-BR\n"
+
+#: src/components/Menu.tsx:114
+msgid "<0>About</0>"
+msgstr "<0>Sobre</0>"
+
+#: src/components/Menu.tsx:107
+msgid "<0>Celebrities</0>"
+msgstr "<0>Celebridades</0>"
+
+#: src/components/Menu.tsx:110
+msgid "<0>Events</0>"
+msgstr "<0>Eventos</0>"
+
+#: src/components/Menu.tsx:98
+msgid "<0>Home</0>"
+msgstr "<0>Início</0>"
+
+#: src/components/Menu.tsx:101
+msgid "<0>Movies</0>"
+msgstr "<0>Filmes</0>"
+
+#: src/components/Menu.tsx:104
+msgid "<0>TV shows</0>"
+msgstr "<0>Séries</0>"
+
+#: src/components/Menu.tsx:85
+msgid "Sign in"
+msgstr "Entrar"

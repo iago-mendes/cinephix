@@ -1,5 +1,6 @@
 {
 	"locales": ["en-US", "pt-BR"],
+	"sourceLocale": "en-US",
 	"catalogs": [{
 		"path": "src/locales/{locale}/messages",
 		"include": ["src"]

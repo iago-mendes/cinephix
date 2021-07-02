@@ -5,6 +5,7 @@ import {signIn} from 'next-auth/client'
 import {useEffect, useState} from 'react'
 import {FiMenu, FiX} from 'react-icons/fi'
 import {useRouter} from 'next/router'
+import {Trans} from '@lingui/macro'
 
 import Container, {BurgerMenu} from '../styles/components/Menu'
 import logoName from '../assets/images/logo/name.svg'
@@ -81,7 +82,7 @@ const Menu: React.FC = () => {
 						</button>
 					) : (
 						<span className="signIn" onClick={() => signIn('google')}>
-							Sign in
+							<Trans>Sign in</Trans>
 						</span>
 					)}
 					<UserMenu isOpen={isUserMenuOpen} setIsOpen={setIsUserMenuOpen} />
@@ -94,12 +95,26 @@ const Menu: React.FC = () => {
 const RouteOptions: React.FC<{showAbout?: boolean}> = ({showAbout = false}) => {
 	return (
 		<div className="links">
-			<Link href="/">Home</Link>
-			<Link href="/movies">Movies</Link>
-			<Link href="/tvshows">TV shows</Link>
-			<Link href="/celebrities">Celebrities</Link>
-			<Link href="/events">Events</Link>
-			{showAbout && <Link href="/about">About</Link>}
+			<Trans>
+				<Link href="/">Home</Link>
+			</Trans>
+			<Trans>
+				<Link href="/movies">Movies</Link>
+			</Trans>
+			<Trans>
+				<Link href="/tvshows">TV shows</Link>
+			</Trans>
+			<Trans>
+				<Link href="/celebrities">Celebrities</Link>
+			</Trans>
+			<Trans>
+				<Link href="/events">Events</Link>
+			</Trans>
+			{showAbout && (
+				<Trans>
+					<Link href="/about">About</Link>
+				</Trans>
+			)}
 		</div>
 	)
 }

@@ -3,11 +3,11 @@ import {i18n} from '@lingui/core'
 import {I18nProvider as LinguiProvider} from '@lingui/react'
 import {useRouter} from 'next/router'
 
-import {messages as enMessages} from '../locales/en-US/messages'
-import {messages as ptMessages} from '../locales/pt-BR/messages'
+import {messages as enUSMessages} from '../locales/en-US/messages'
+import {messages as ptBRMessages} from '../locales/pt-BR/messages'
 
-i18n.load('en-US', enMessages)
-i18n.load('pt-BR', ptMessages)
+i18n.load('en-US', enUSMessages)
+i18n.load('pt-BR', ptBRMessages)
 
 const validLocales = ['en-US', 'pt-BR']
 

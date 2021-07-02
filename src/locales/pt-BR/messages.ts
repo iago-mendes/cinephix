@@ -1,1 +1,1 @@
-/*eslint-disable*/export const messages={};
+/*eslint-disable*/export const messages={"<0>About</0>":"<0>Sobre</0>","<0>Celebrities</0>":"<0>Celebridades</0>","<0>Events</0>":"<0>Eventos</0>","<0>Home</0>":"<0>Início</0>","<0>Movies</0>":"<0>Filmes</0>","<0>TV shows</0>":"<0>Séries</0>","Sign in":"Entrar"};
