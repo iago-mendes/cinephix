@@ -1,8 +1,9 @@
 {
 	"locales": ["en-US", "pt-BR"],
 	"catalogs": [{
-		"path": "locales/{locale}/messages",
+		"path": "src/locales/{locale}/messages",
 		"include": ["src"]
 	}],
-	"format": "minimal"
+	"format": "po",
+	"compileNamespace": "ts"
 }
