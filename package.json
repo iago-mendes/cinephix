@@ -6,9 +6,12 @@
 		"dev": "next dev",
 		"build": "next build",
 		"start": "next start",
-		"lint": "prettier --write . && eslint --fix ."
+		"lint": "prettier --write . && eslint --fix .",
+		"i18n:extract": "lingui extract",
+		"i18n:compile": "lingui compile"
 	},
 	"dependencies": {
+		"@lingui/react": "^3.10.2",
 		"@types/react-beautiful-dnd": "^13.0.0",
 		"axios": "^0.21.1",
 		"framer-motion": "^3.3.0",
@@ -29,6 +32,9 @@
 		"swiper": "^6.4.5"
 	},
 	"devDependencies": {
+		"@babel/core": "^7.14.6",
+		"@lingui/cli": "^3.10.2",
+		"@lingui/macro": "^3.10.2",
 		"@types/gtag.js": "^0.0.4",
 		"@types/next-auth": "^3.1.20",
 		"@types/node": "^14.14.16",
@@ -38,6 +44,7 @@
 		"@types/styled-components": "^5.1.7",
 		"@typescript-eslint/eslint-plugin": "^4.14.1",
 		"@typescript-eslint/parser": "^4.14.1",
+		"babel-plugin-macros": "^3.1.0",
 		"eslint": "^7.18.0",
 		"eslint-config-next": "^11.0.1",
 		"eslint-config-prettier": "^8.3.0",
