@@ -1,4 +1,4 @@
-import venues from '../../db/venues.json'
+import {venues} from '../assets/db/venues'
 
 function getVenue(venue: string) {
 	function getColor() {

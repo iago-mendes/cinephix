@@ -1,6 +1,6 @@
 import Image from 'next/image'
 
-import banners from '../../../db/banners.json'
+import {banners} from '../../assets/db/banners'
 import Container from '../../styles/components/modals/SelectBanner'
 import getBanner from '../../utils/getBanner'
 import ModalContainer from './Container'

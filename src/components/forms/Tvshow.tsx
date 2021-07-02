@@ -15,7 +15,7 @@ import errorAlert from '../../utils/alerts/error'
 import calcTotalRating from '../../utils/getTotalRating'
 import Ratings, {defaultTvshowRatings} from '../../models/ratings'
 import {UserTvshowDetails} from '../../models/userTvshow'
-import venues from '../../../db/venues.json'
+import {venues} from '../../assets/db/venues'
 import {SkeletonLoading} from '../../utils/skeletonLoading'
 
 interface SelectOption {

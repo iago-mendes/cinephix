@@ -6,7 +6,7 @@ import {signIn} from 'next-auth/client'
 import Container from '../styles/components/SessionHandler'
 import Loading from './Loading'
 import useUser from '../hooks/useUser'
-import logo from '../assets/logo/name.svg'
+import logo from '../assets/images/logo/name.svg'
 
 const SessionHandler: React.FC = ({children}) => {
 	const {user, loading} = useUser()

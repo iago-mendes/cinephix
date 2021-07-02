@@ -18,7 +18,7 @@ import Ratings, {defaultMovieRatings} from '../../models/ratings'
 import UserMovie from '../../models/userMovie'
 import {SelectOption} from '../../models'
 import getRatingLabel from '../../utils/getRatingLabel'
-import venues from '../../../db/venues.json'
+import {venues} from '../../assets/db/venues'
 import {SkeletonLoading} from '../../utils/skeletonLoading'
 
 interface MovieFormProps {

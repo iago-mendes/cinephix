@@ -4,7 +4,7 @@ import {useRouter} from 'next/router'
 import Image from 'next/image'
 import {FiCheck, FiMinus, FiPlus, FiX} from 'react-icons/fi'
 
-import banners from '../../../db/banners.json'
+import {banners} from '../../assets/db/banners'
 import Container from '../../styles/components/forms/Group'
 import {GroupRaw} from '../../models/group'
 import getBanner, {chooseRandomBanner} from '../../utils/getBanner'

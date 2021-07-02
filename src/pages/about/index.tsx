@@ -2,8 +2,8 @@ import Image from 'next/image'
 
 import Container from '../../styles/pages/about/index'
 import SEOHead from '../../components/SEOHead'
-import logoName from '../../assets/logo/name.svg'
-import logoIcon from '../../assets/logo/icon.svg'
+import logoName from '../../assets/images/logo/name.svg'
+import logoIcon from '../../assets/images/logo/icon.svg'
 import Link from 'next/link'
 
 const About: React.FC = () => {

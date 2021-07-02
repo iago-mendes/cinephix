@@ -1,4 +1,4 @@
-import banners from '../../db/banners.json'
+import {banners} from '../assets/db/banners'
 
 function getBanner(path: string) {
 	const apiUrl = process.env.NEXT_PUBLIC_API_URL

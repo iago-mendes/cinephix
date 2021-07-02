@@ -1,6 +1,6 @@
 import Container from '../../styles/pages/about/global'
 import SEOHead from '../../components/SEOHead'
-import tmdbLogo from '../../assets/tmdb.svg'
+import tmdbLogo from '../../assets/images/tmdb.svg'
 
 const PrivacyPolicy: React.FC = () => {
 	return (

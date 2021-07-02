@@ -2,7 +2,7 @@ import {GetStaticProps} from 'next'
 
 import api from '../../services/api'
 import GridPaginate from '../../components/GridPaginate'
-import oscars from '../../assets/backgrounds/oscars.jpg'
+import oscars from '../../assets/images/backgrounds/oscars.jpg'
 import HeaderWithBackground from '../../components/HeaderWithBackground'
 import SEOHead from '../../components/SEOHead'
 import {EventListed} from '../../models/event'

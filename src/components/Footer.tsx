@@ -1,8 +1,8 @@
 import Link from 'next/link'
 import Container from '../styles/components/Footer'
 
-import logoName from '../assets/logo/name.svg'
-import logoIcon from '../assets/logo/icon.svg'
+import logoName from '../assets/images/logo/name.svg'
+import logoIcon from '../assets/images/logo/icon.svg'
 import useDimensions from '../hooks/useDimensions'
 
 const Footer: React.FC = () => {
