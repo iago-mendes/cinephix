@@ -16,6 +16,7 @@ import CookieBanner from '../components/modals/CookieBanner'
 import BannerAd from '../components/ads/Banner'
 import ModalAd from '../components/ads/Modal'
 import {UserStatusProvider} from '../contexts/UserStatus'
+import {I18nHandler} from '../components/I18nHandler'
 
 const MyApp: React.FC<AppProps> = ({Component, pageProps}) => {
 	SwiperCore.use([Navigation])
@@ -37,19 +38,21 @@ const MyApp: React.FC<AppProps> = ({Component, pageProps}) => {
 
 	return (
 		<ThemeProvider theme={theme}>
-			<CookieBanner />
-			<BannerAd />
-			<ModalAd />
-			<SessionProvider session={pageProps.session}>
-				<UserStatusProvider>
-					<Menu />
-					<SessionHandler>
-						<Component {...pageProps} />
-					</SessionHandler>
-					<Footer />
-					<GlobalStyle />
-				</UserStatusProvider>
-			</SessionProvider>
+			<I18nHandler>
+				<CookieBanner />
+				<BannerAd />
+				<ModalAd />
+				<SessionProvider session={pageProps.session}>
+					<UserStatusProvider>
+						<Menu />
+						<SessionHandler>
+							<Component {...pageProps} />
+						</SessionHandler>
+						<Footer />
+						<GlobalStyle />
+					</UserStatusProvider>
+				</SessionProvider>
+			</I18nHandler>
 		</ThemeProvider>
 	)
 }
