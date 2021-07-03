@@ -19,7 +19,7 @@ import Carousel from '../../components/Carousel'
 import CarouselCard from '../../components/cards/Carousel'
 import formatDate from '../../utils/formatDate'
 import React, {useEffect, useState} from 'react'
-import useUser from '../../hooks/useUser'
+import {useAuth} from '../../hooks/useAuth'
 import {
 	UserTvshowDetails,
 	defaultUserTvshowDetails
@@ -67,7 +67,7 @@ interface TvshowProps {
 
 const Tvshow: React.FC<TvshowProps> = ({tvshow}) => {
 	const router = useRouter()
-	const {user} = useUser()
+	const {user} = useAuth()
 
 	const [userTvshow, setUserTvshow] = useState<UserTvshowDetails>(
 		defaultUserTvshowDetails

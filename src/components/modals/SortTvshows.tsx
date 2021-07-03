@@ -9,7 +9,7 @@ import {UserTvshowListed as UserTvshow} from '../../models/userTvshow'
 import {TvshowList} from '../../pages/user/tvshows/index'
 import getTotalRating from '../../utils/getTotalRating'
 import api from '../../services/api'
-import useUser from '../../hooks/useUser'
+import {useAuth} from '../../hooks/useAuth'
 
 interface SortTvshowsModalProps {
 	statusKey: string
@@ -30,7 +30,7 @@ const SortTvshowsModal: React.FC<SortTvshowsModalProps> = ({
 	revalidate,
 	setLoading
 }) => {
-	const {user} = useUser()
+	const {user} = useAuth()
 
 	const [showOptions, setShowOptions] = useState(false)
 	const ref = useClickOutside(() => setShowOptions(false))

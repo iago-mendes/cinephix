@@ -9,7 +9,7 @@ import Container, {RangeInput} from '../../styles/components/forms/global'
 import api from '../../services/api'
 import TvshowDetails, {loadingTvshow} from '../../models/tvshow'
 import {selectStyles} from '../../styles/global'
-import useUser from '../../hooks/useUser'
+import {useAuth} from '../../hooks/useAuth'
 import successAlert from '../../utils/alerts/success'
 import errorAlert from '../../utils/alerts/error'
 import calcTotalRating from '../../utils/getTotalRating'
@@ -40,7 +40,7 @@ interface TvshowFormProps {
 
 const TvshowForm: React.FC<TvshowFormProps> = ({method}) => {
 	const {query, back, push, locale: language} = useRouter()
-	const {user} = useUser()
+	const {user} = useAuth()
 
 	const tvshowId = Number(query.tvshow)
 	const statusKey = String(query.status)

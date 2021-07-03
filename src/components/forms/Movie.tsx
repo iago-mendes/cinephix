@@ -10,7 +10,7 @@ import Container, {RangeInput} from '../../styles/components/forms/global'
 import api from '../../services/api'
 import MovieDetails, {loadingMovie} from '../../models/movie'
 import {selectStyles} from '../../styles/global'
-import useUser from '../../hooks/useUser'
+import {useAuth} from '../../hooks/useAuth'
 import successAlert from '../../utils/alerts/success'
 import errorAlert from '../../utils/alerts/error'
 import calcTotalRating from '../../utils/getTotalRating'
@@ -27,7 +27,7 @@ interface MovieFormProps {
 
 const MovieForm: React.FC<MovieFormProps> = ({method}) => {
 	const {query, back, push, locale: language} = useRouter()
-	const {user} = useUser()
+	const {user} = useAuth()
 
 	const movieId = Number(query.movie)
 	const watchedFromRoute = Boolean(query.watched)

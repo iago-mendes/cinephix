@@ -5,10 +5,10 @@ import MovieForm from '../../../../components/forms/Movie'
 import RemoveButton from '../../../../components/RemoveButton'
 import SEOHead from '../../../../components/SEOHead'
 import {useRouter} from 'next/router'
-import useUser from '../../../../hooks/useUser'
+import {useAuth} from '../../../../hooks/useAuth'
 
 const EditMovie: React.FC = () => {
-	const {user} = useUser()
+	const {user} = useAuth()
 	const {query} = useRouter()
 
 	const {movie} = query

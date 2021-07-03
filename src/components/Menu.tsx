@@ -9,14 +9,14 @@ import {Trans} from '@lingui/macro'
 import Container, {BurgerMenu} from '../styles/components/Menu'
 import logoName from '../assets/images/logo/name.svg'
 import logoIcon from '../assets/images/logo/icon.svg'
-import useUser from '../hooks/useUser'
+import {useAuth} from '../hooks/useAuth'
 import UserMenu from './modals/UserMenu'
 import useDimensions from '../hooks/useDimensions'
 import useClickOutside from '../hooks/useClickOutside'
 import {useUserStatus} from '../contexts/UserStatus'
 
 const Menu: React.FC = () => {
-	const {user, signIn} = useUser()
+	const {user, signIn} = useAuth()
 	const {inMobile, inDesktop} = useDimensions()
 	const {pathname} = useRouter()
 	const {isTyping} = useUserStatus()

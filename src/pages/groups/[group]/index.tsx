@@ -17,7 +17,7 @@ import truncateText from '../../../utils/truncateText'
 import Loading from '../../../components/Loading'
 import EventMediaCard from '../../../components/cards/EventMedia'
 import EventCelebrityCard from '../../../components/cards/EventCelebrity'
-import useUser from '../../../hooks/useUser'
+import {useAuth} from '../../../hooks/useAuth'
 import Link from 'next/link'
 import MakePredictionsModal from '../../../components/modals/MakePredictions'
 import ParticipantPredictionsModal from '../../../components/modals/ParticipantPredictions'
@@ -28,7 +28,7 @@ interface GroupProps {
 }
 
 const Group: React.FC<GroupProps> = ({group: staticGroup}) => {
-	const {user} = useUser()
+	const {user} = useAuth()
 	const {isFallback, push, pathname} = useRouter()
 
 	const [group, setGroup] = useState<GroupInterface>(staticGroup)

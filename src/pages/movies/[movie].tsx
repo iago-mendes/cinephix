@@ -13,7 +13,7 @@ import Carousel from '../../components/Carousel'
 import CarouselCard from '../../components/cards/Carousel'
 import formatDate from '../../utils/formatDate'
 import MovieDetails from '../../models/movie'
-import useUser from '../../hooks/useUser'
+import {useAuth} from '../../hooks/useAuth'
 import UserMovie, {defaultUserMovie} from '../../models/userMovie'
 import getVenue from '../../utils/getVenue'
 import getTotalRating from '../../utils/getTotalRating'
@@ -25,7 +25,7 @@ interface MovieProps {
 
 const Movie: React.FC<MovieProps> = ({movie}) => {
 	const router = useRouter()
-	const {user} = useUser()
+	const {user} = useAuth()
 
 	const [userMovie, setUserMovie] = useState<UserMovie>(defaultUserMovie)
 

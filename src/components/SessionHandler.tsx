@@ -4,11 +4,11 @@ import {FiLogIn} from 'react-icons/fi'
 
 import Container from '../styles/components/SessionHandler'
 import Loading from './Loading'
-import useUser from '../hooks/useUser'
+import {useAuth} from '../hooks/useAuth'
 import logo from '../assets/images/logo/name.svg'
 
 const SessionHandler: React.FC = ({children}) => {
-	const {user, loading, signIn} = useUser()
+	const {user, loading, signIn} = useAuth()
 	const {pathname} = useRouter()
 	const [route, setRoute] = useState('')
 

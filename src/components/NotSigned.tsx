@@ -1,7 +1,7 @@
-import useUser from '../hooks/useUser'
+import {useAuth} from '../hooks/useAuth'
 
 const NotSigned: React.FC = () => {
-	const {signIn} = useUser()
+	const {signIn} = useAuth()
 
 	return (
 		<div>

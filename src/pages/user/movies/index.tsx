@@ -8,7 +8,7 @@ import {useRouter} from 'next/router'
 
 import Container, {Dropdown} from '../../../styles/pages/user/movies/index'
 import api from '../../../services/api'
-import useUser from '../../../hooks/useUser'
+import {useAuth} from '../../../hooks/useAuth'
 import getTotalRating from '../../../utils/getTotalRating'
 import {
 	defaultUserMovieListed,
@@ -24,7 +24,7 @@ import HorizontalAd from '../../../components/ads/Horizontal'
 import {SkeletonLoading} from '../../../utils/skeletonLoading'
 
 const UserMovies: React.FC = () => {
-	const {user} = useUser()
+	const {user} = useAuth()
 	const {locale: language} = useRouter()
 
 	const defaultMovieList: UserMovieListed[] = Array(7).fill(

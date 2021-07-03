@@ -5,14 +5,14 @@ import {useRouter} from 'next/router'
 
 import Container from '../../styles/pages/groups/index'
 import {GroupListed} from '../../models/group'
-import useUser from '../../hooks/useUser'
+import {useAuth} from '../../hooks/useAuth'
 import api from '../../services/api'
 import truncateText from '../../utils/truncateText'
 import Link from 'next/link'
 import HorizontalAd from '../../components/ads/Horizontal'
 
 const Groups: React.FC = () => {
-	const {user} = useUser()
+	const {user} = useAuth()
 	const {push, locale: language} = useRouter()
 
 	const [groups, setGroups] = useState<GroupListed[]>([])

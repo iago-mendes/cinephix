@@ -13,7 +13,7 @@ import {useRouter} from 'next/router'
 
 import Container from '../../../styles/pages/user/tvshows/index'
 import api from '../../../services/api'
-import useUser from '../../../hooks/useUser'
+import {useAuth} from '../../../hooks/useAuth'
 import UserTvshowModal from '../../../components/modals/UserTvshow'
 import {FiPlus} from 'react-icons/fi'
 import SelectTvshow from '../../../components/modals/SelectTvshow'
@@ -59,7 +59,7 @@ const validStatus: {[statusKey: string]: string} = {
 }
 
 const UserTvshows: React.FC = () => {
-	const {user} = useUser()
+	const {user} = useAuth()
 	const {locale: language} = useRouter()
 
 	const [tvshowList, setTvshowList] = useState<TvshowList>(defaultTvshowList)

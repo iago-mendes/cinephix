@@ -14,7 +14,7 @@ import api from '../../services/api'
 import {EventListed} from '../../models/event'
 import successAlert from '../../utils/alerts/success'
 import errorAlert from '../../utils/alerts/error'
-import useUser from '../../hooks/useUser'
+import {useAuth} from '../../hooks/useAuth'
 import SelectBannerModal from '../modals/SelectBanner'
 import slugify from '../../utils/slugify'
 import {useUserStatus} from '../../contexts/UserStatus'
@@ -25,7 +25,7 @@ interface GroupFormProps {
 }
 
 const GroupForm: React.FC<GroupFormProps> = ({method, group}) => {
-	const {user} = useUser()
+	const {user} = useAuth()
 	const {query, back, push} = useRouter()
 	const {typingControllerProps} = useUserStatus()
 

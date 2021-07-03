@@ -4,7 +4,7 @@ import {FiCheck, FiX} from 'react-icons/fi'
 
 import Container from '../../styles/components/modals/MakePredictions'
 import ModalContainer from './Container'
-import useUser from '../../hooks/useUser'
+import {useAuth} from '../../hooks/useAuth'
 import {selectStyles} from '../../styles/global'
 import {SelectOption} from '../../models'
 import Group, {GroupRawPrediction} from '../../models/group'
@@ -27,7 +27,7 @@ const MakePredictionsModal: React.FC<MakePredictionsModalProps> = ({
 	group,
 	updateGroup
 }) => {
-	const {user} = useUser()
+	const {user} = useAuth()
 
 	const [predictions, setPredictions] = useState<GroupRawPrediction[]>([])
 

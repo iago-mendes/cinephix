@@ -2,13 +2,13 @@ import {useEffect, useState} from 'react'
 
 import Loading from '../../../../components/Loading'
 import TvshowForm from '../../../../components/forms/Tvshow'
-import useUser from '../../../../hooks/useUser'
+import {useAuth} from '../../../../hooks/useAuth'
 import RemoveButton from '../../../../components/RemoveButton'
 import SEOHead from '../../../../components/SEOHead'
 import {useRouter} from 'next/router'
 
 const EditTvshow: React.FC = () => {
-	const {user} = useUser()
+	const {user} = useAuth()
 	const {query} = useRouter()
 
 	const {tvshow} = query

@@ -7,7 +7,7 @@ import Link from 'next/link'
 import {Trans} from '@lingui/macro'
 
 import Container from '../../styles/components/modals/UserMenu'
-import useUser from '../../hooks/useUser'
+import {useAuth} from '../../hooks/useAuth'
 import useDimensions from '../../hooks/useDimensions'
 
 interface UserMenuProps {
@@ -16,7 +16,7 @@ interface UserMenuProps {
 }
 
 const UserMenu: React.FC<UserMenuProps> = ({isOpen, setIsOpen}) => {
-	const {user, signOut} = useUser()
+	const {user, signOut} = useAuth()
 	const {pathname} = useRouter()
 	const {inMobile, inDesktop} = useDimensions()
 

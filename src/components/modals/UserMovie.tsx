@@ -9,7 +9,7 @@ import {UserMovieListed} from '../../models/userMovie'
 import getVenue from '../../utils/getVenue'
 import getRatingLabel from '../../utils/getRatingLabel'
 import api from '../../services/api'
-import useUser from '../../hooks/useUser'
+import {useAuth} from '../../hooks/useAuth'
 import successAlert from '../../utils/alerts/success'
 import errorAlert from '../../utils/alerts/error'
 import ModalContainer from './Container'
@@ -28,7 +28,7 @@ const UserMovieModal: React.FC<UserMovieModalProps> = ({
 	movie,
 	revalidate
 }) => {
-	const {user} = useUser()
+	const {user} = useAuth()
 	const {push} = useRouter()
 
 	function handleEdit() {

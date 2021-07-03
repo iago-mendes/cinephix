@@ -7,7 +7,7 @@ import withReactContent from 'sweetalert2-react-content'
 
 import Container from '../../styles/pages/user/index'
 import Loading from '../../components/Loading'
-import useUser from '../../hooks/useUser'
+import {useAuth} from '../../hooks/useAuth'
 import UserInfo, {defaultUser} from '../../models/user'
 import api from '../../services/api'
 import errorAlert from '../../utils/alerts/error'
@@ -17,7 +17,7 @@ import SEOHead from '../../components/SEOHead'
 const MySwal = withReactContent(Swal)
 
 const User: React.FC = () => {
-	const {user, signOut} = useUser()
+	const {user, signOut} = useAuth()
 
 	const [userInfo, setUserInfo] = useState<UserInfo>(defaultUser)
 	const [groupsNumber, setGroupsNumber] = useState(0)
