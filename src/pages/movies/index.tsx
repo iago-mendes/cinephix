@@ -1,5 +1,7 @@
 import {GetStaticProps} from 'next'
 import {useEffect, useState} from 'react'
+import {useRouter} from 'next/router'
+import {t} from '@lingui/macro'
 
 import api from '../../services/api'
 import MediaCard, {Media} from '../../components/cards/Media'
@@ -10,7 +12,6 @@ import HeaderWithBackground from '../../components/HeaderWithBackground'
 import SEOHead from '../../components/SEOHead'
 import CardAd from '../../components/ads/Card'
 import {updatePaginatedData} from '../../utils/updatePaginatedData'
-import {useRouter} from 'next/router'
 
 interface MoviesProps {
 	staticMovies: Media[]
@@ -47,13 +48,13 @@ const Movies: React.FC<MoviesProps> = ({staticMovies}) => {
 
 	return (
 		<div className="page">
-			<SEOHead title="Movies | Cinephix" />
+			<SEOHead title={t`Movies` + ' | Cinephix'} />
 
-			<HeaderWithBackground background={cinema} display="Movies">
+			<HeaderWithBackground background={cinema} display={t`Movies`}>
 				<SearchBox
 					search={search}
 					setSearch={setSearch}
-					display="Search for a movie"
+					display={t`Search for a movie`}
 				/>
 			</HeaderWithBackground>
 

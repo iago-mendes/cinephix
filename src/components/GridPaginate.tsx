@@ -6,6 +6,7 @@ import {
 	BsChevronBarRight
 } from 'react-icons/bs'
 import {CSSProperties} from 'styled-components'
+import {t} from '@lingui/macro'
 
 import Container from '../styles/components/GridPaginate'
 import Loading from './Loading'
@@ -34,7 +35,7 @@ const GridPaginate: React.FC<GridPaginateProps> = ({
 	noResults,
 	children,
 	hidePaginate = false,
-	noResultsMessage = 'No results found!'
+	noResultsMessage = t`No results found!`
 }) => {
 	function goBack() {
 		if (page > 1) setPage(page - 1)

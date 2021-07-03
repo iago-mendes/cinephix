@@ -1,4 +1,5 @@
 import {GetStaticProps} from 'next'
+import {t} from '@lingui/macro'
 
 import api from '../../services/api'
 import GridPaginate from '../../components/GridPaginate'
@@ -15,9 +16,9 @@ interface EventsProps {
 const Events: React.FC<EventsProps> = ({events}) => {
 	return (
 		<div className="page">
-			<SEOHead title="Events | Cinephix" />
+			<SEOHead title={t`Events` + ' | Cinephix'} />
 
-			<HeaderWithBackground background={oscars} display="Events" />
+			<HeaderWithBackground background={oscars} display={t`Events`} />
 
 			<GridPaginate
 				page={1}
@@ -26,7 +27,7 @@ const Events: React.FC<EventsProps> = ({events}) => {
 				loading={false}
 				noResults={events.length === 0}
 				hidePaginate
-				noResultsMessage="No events open at the moment!"
+				noResultsMessage={t`No events open at the moment!`}
 			>
 				{events.map((event, index) => (
 					<EventCard key={index} event={event} />

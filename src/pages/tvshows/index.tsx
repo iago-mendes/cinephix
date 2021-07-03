@@ -1,5 +1,6 @@
 import {GetStaticProps} from 'next'
 import {useEffect, useState} from 'react'
+import {t} from '@lingui/macro'
 
 import api from '../../services/api'
 import MediaCard, {Media} from '../../components/cards/Media'
@@ -47,13 +48,13 @@ const Tvshows: React.FC<TvshowsProps> = ({staticTvshows}) => {
 
 	return (
 		<div className="page">
-			<SEOHead title="TV Shows | Cinephix" />
+			<SEOHead title={t`TV Shows` + ' | Cinephix'} />
 
-			<HeaderWithBackground background={tv} display="TV Shows">
+			<HeaderWithBackground background={tv} display={t`TV Shows`}>
 				<SearchBox
 					search={search}
 					setSearch={setSearch}
-					display="Search for a TV show"
+					display={t`Search for a TV show`}
 				/>
 			</HeaderWithBackground>
 
