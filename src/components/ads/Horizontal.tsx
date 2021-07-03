@@ -1,3 +1,5 @@
+import {Trans} from '@lingui/macro'
+
 import Container from '../../styles/components/ads/Horizontal'
 import useDimensions from '../../hooks/useDimensions'
 import {LeaderboardAd, LargeMobileBannerAd} from '../../utils/adUnits'
@@ -9,7 +11,9 @@ const HorizontalAd: React.FC = () => {
 
 	return (
 		<Container>
-			<span>Advertisement</span>
+			<span>
+				<Trans>Advertisement</Trans>
+			</span>
 
 			{width >= 800 && <LeaderboardAd />}
 

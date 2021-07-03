@@ -1,13 +1,7 @@
 import {GetStaticProps} from 'next'
 import {useEffect, useState} from 'react'
 import Image from 'next/image'
-
-import Container from '../styles/pages/index'
-import api from '../services/api'
-import MediaCard, {Media} from '../components/cards/Media'
-import CelebrityCard, {Celebrity} from '../components/cards/Celebrity'
-import SearchBox from '../components/SearchBox'
-import GridPaginate from '../components/GridPaginate'
+import {t} from '@lingui/macro'
 
 import logoName from '../assets/images/logo/name.svg'
 import logoIcon from '../assets/images/logo/icon.svg'
@@ -17,6 +11,13 @@ import film from '../assets/images/vector-icons/film.svg'
 import marker from '../assets/images/vector-icons/marker.svg'
 import microfone from '../assets/images/vector-icons/microfone.svg'
 import popcorn from '../assets/images/vector-icons/popcorn.svg'
+
+import Container from '../styles/pages/index'
+import api from '../services/api'
+import MediaCard, {Media} from '../components/cards/Media'
+import CelebrityCard, {Celebrity} from '../components/cards/Celebrity'
+import SearchBox from '../components/SearchBox'
+import GridPaginate from '../components/GridPaginate'
 import SEOHead from '../components/SEOHead'
 import CardAd from '../components/ads/Card'
 import {updatePaginatedData} from '../utils/updatePaginatedData'
@@ -99,7 +100,7 @@ const Home: React.FC<HomeProps> = ({staticHome}) => {
 				<SearchBox
 					search={search}
 					setSearch={setSearch}
-					display="Search for a movie, TV show, or celebrity"
+					display={t`Search for a movie, TV show, or celebrity`}
 				/>
 			</header>
 

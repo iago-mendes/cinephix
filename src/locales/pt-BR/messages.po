@@ -6,11 +6,19 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: @lingui/cli\n"
 "Language: pt-BR\n"
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Plural-Forms: \n"
 
+#: src/components/Footer.tsx:39
 #: src/components/Menu.tsx:114
 msgid "<0>About</0>"
 msgstr "<0>Sobre</0>"
 
+#: src/components/Footer.tsx:36
 #: src/components/Menu.tsx:107
 msgid "<0>Celebrities</0>"
 msgstr "<0>Celebridades</0>"
@@ -19,18 +27,74 @@ msgstr "<0>Celebridades</0>"
 msgid "<0>Events</0>"
 msgstr "<0>Eventos</0>"
 
+#: src/components/Footer.tsx:27
 #: src/components/Menu.tsx:98
 msgid "<0>Home</0>"
 msgstr "<0>Início</0>"
 
+#: src/components/Footer.tsx:56
+msgid "<0>Media data</0> from <1>TMDb</1>."
+msgstr "<0>Dados da mídia</0> de <1>TMDb</1>."
+
+#: src/components/Footer.tsx:30
 #: src/components/Menu.tsx:101
 msgid "<0>Movies</0>"
 msgstr "<0>Filmes</0>"
 
+#: src/components/modals/UserMenu.tsx:92
+msgid "<0>My TV shows</0>"
+msgstr "<0>Minhas séries</0>"
+
+#: src/components/modals/UserMenu.tsx:89
+msgid "<0>My groups</0>"
+msgstr "<0>Meus grupos</0>"
+
+#: src/components/modals/UserMenu.tsx:95
+msgid "<0>My movies</0>"
+msgstr "<0>Meus filmes</0>"
+
+#: src/components/modals/UserMenu.tsx:86
+msgid "<0>My profile</0>"
+msgstr "<0>Meu perfil</0>"
+
+#: src/components/Footer.tsx:42
+msgid "<0>Privacy Policy</0>"
+msgstr "<0>Política de Privacidade</0>"
+
+#: src/components/Footer.tsx:33
 #: src/components/Menu.tsx:104
 msgid "<0>TV shows</0>"
 msgstr "<0>Séries</0>"
 
+#: src/components/ads/Horizontal.tsx:15
+#: src/components/ads/Modal.tsx:49
+msgid "Advertisement"
+msgstr "Anúncio"
+
+#: src/components/modals/CookieBanner.tsx:57
+msgid "Ok"
+msgstr "Ok"
+
+#: src/pages/index.tsx:103
+msgid "Search for a movie, TV show, or celebrity"
+msgstr "Pesquise por filmes, séries, ou celebridades"
+
+#: src/components/modals/CookieBanner.tsx:60
+msgid "See Privacy Policy"
+msgstr "Ver Política de Privacidade"
+
 #: src/components/Menu.tsx:85
 msgid "Sign in"
 msgstr "Entrar"
+
+#: src/components/modals/UserMenu.tsx:81
+msgid "Sign out"
+msgstr "Sair"
+
+#: src/components/modals/UserMenu.tsx:76
+msgid "Signed in as"
+msgstr "Conectado como"
+
+#: src/components/modals/CookieBanner.tsx:49
+msgid "This application uses cookies to provide you a great user experience. By using Cinephix, you accept our policies."
+msgstr "Este app utiliza cookies para lhe prover uma ótima experiência de usuário. Ao usar o Cinephix, você aceita nossas políticas."

@@ -2,6 +2,7 @@ import {useEffect, useState} from 'react'
 import {useRouter} from 'next/router'
 import {FiX} from 'react-icons/fi'
 import {motion} from 'framer-motion'
+import {Trans} from '@lingui/macro'
 
 import Container from '../../styles/components/modals/CookieBanner'
 
@@ -45,15 +46,19 @@ const CookieBanner: React.FC = () => {
 				<div className="message">
 					<h2>Cookies</h2>
 					<p>
-						This site uses cookies to provide you a great user experience. By
-						using Cinephix, you accept our policies.
+						<Trans>
+							This application uses cookies to provide you a great user
+							experience. By using Cinephix, you accept our policies.
+						</Trans>
 					</p>
 				</div>
 				<div className="buttons">
 					<button className="accept" onClick={acceptCookies}>
-						Ok
+						<Trans>Ok</Trans>
 					</button>
-					<button onClick={seePrivacyPolicy}>See Privacy Policy</button>
+					<button onClick={seePrivacyPolicy}>
+						<Trans>See Privacy Policy</Trans>
+					</button>
 				</div>
 			</Container>
 		</motion.div>

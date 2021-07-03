@@ -2,6 +2,7 @@ import {useRouter} from 'next/router'
 import {useEffect, useState} from 'react'
 import {FiX} from 'react-icons/fi'
 import Modal from 'react-modal'
+import {Trans} from '@lingui/macro'
 
 import Container from '../../styles/components/ads/Modal'
 import {modalStyle} from '../../styles/global'
@@ -44,7 +45,9 @@ const ModalAd: React.FC = () => {
 				</div>
 
 				<main>
-					<span>Advertisement</span>
+					<span>
+						<Trans>Advertisement</Trans>
+					</span>
 
 					<LargeSkyscraperAd />
 				</main>

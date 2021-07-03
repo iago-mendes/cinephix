@@ -5,6 +5,7 @@ import {motion} from 'framer-motion'
 import {useRouter} from 'next/router'
 import {useEffect} from 'react'
 import Link from 'next/link'
+import {Trans} from '@lingui/macro'
 
 import Container from '../../styles/components/modals/UserMenu'
 import useUser from '../../hooks/useUser'
@@ -72,18 +73,28 @@ const UserMenu: React.FC<UserMenuProps> = ({isOpen, setIsOpen}) => {
 				<main>
 					<div className="session">
 						<p>
-							Signed in as <strong>{user.email}</strong>
+							<Trans>Signed in as</Trans> <strong>{user.email}</strong>
 						</p>
 						<button onClick={handleSignOut}>
 							<FiLogOut size={20} />
-							<span>Sign out</span>
+							<span>
+								<Trans>Sign out</Trans>
+							</span>
 						</button>
 					</div>
 					<div className="userLinks">
-						<Link href="/user">My profile</Link>
-						<Link href="/groups">My groups</Link>
-						<Link href="/user/tvshows">My TV shows</Link>
-						<Link href="/user/movies">My movies</Link>
+						<Trans>
+							<Link href="/user">My profile</Link>
+						</Trans>
+						<Trans>
+							<Link href="/groups">My groups</Link>
+						</Trans>
+						<Trans>
+							<Link href="/user/tvshows">My TV shows</Link>
+						</Trans>
+						<Trans>
+							<Link href="/user/movies">My movies</Link>
+						</Trans>
 					</div>
 				</main>
 
