@@ -18,9 +18,7 @@ const Container = styled.header`
 		width: 100%;
 		overflow: hidden;
 
-		img {
-			filter: blur(5px);
-		}
+		filter: blur(2px);
 	}
 
 	h1 {
