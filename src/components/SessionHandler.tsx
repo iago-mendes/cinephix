@@ -1,7 +1,6 @@
 import {useRouter} from 'next/router'
 import {useEffect, useState} from 'react'
 import {FiLogIn} from 'react-icons/fi'
-import {signIn} from 'next-auth/client'
 
 import Container from '../styles/components/SessionHandler'
 import Loading from './Loading'
@@ -9,7 +8,7 @@ import useUser from '../hooks/useUser'
 import logo from '../assets/images/logo/name.svg'
 
 const SessionHandler: React.FC = ({children}) => {
-	const {user, loading} = useUser()
+	const {user, loading, signIn} = useUser()
 	const {pathname} = useRouter()
 	const [route, setRoute] = useState('')
 
@@ -39,7 +38,7 @@ const SessionHandler: React.FC = ({children}) => {
 						</div>
 						<button>
 							<FiLogIn size={30} />
-							<span onClick={() => signIn('google')}>Sign in</span>
+							<span onClick={signIn}>Sign in</span>
 						</button>
 					</main>
 				</Container>

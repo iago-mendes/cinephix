@@ -13,7 +13,7 @@ const firebaseConfig = {
 	measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID
 }
 
-firebase.initializeApp(firebaseConfig)
+if (firebase.apps.length === 0) firebase.initializeApp(firebaseConfig)
 
 const auth = firebase.auth()
 const database = firebase.database()

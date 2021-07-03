@@ -4,7 +4,6 @@ import {useEffect} from 'react'
 import {ThemeProvider} from 'styled-components'
 import SwiperCore, {Navigation} from 'swiper'
 import 'swiper/swiper-bundle.css'
-import {Provider as SessionProvider} from 'next-auth/client'
 
 import Menu from '../components/Menu'
 import GlobalStyle from '../styles/global'
@@ -17,6 +16,7 @@ import BannerAd from '../components/ads/Banner'
 import ModalAd from '../components/ads/Modal'
 import {UserStatusProvider} from '../contexts/UserStatus'
 import {I18nHandler} from '../components/I18nHandler'
+import {AuthProvider} from '../contexts/Auth'
 
 const MyApp: React.FC<AppProps> = ({Component, pageProps}) => {
 	SwiperCore.use([Navigation])
@@ -42,7 +42,7 @@ const MyApp: React.FC<AppProps> = ({Component, pageProps}) => {
 				<CookieBanner />
 				<BannerAd />
 				<ModalAd />
-				<SessionProvider session={pageProps.session}>
+				<AuthProvider>
 					<UserStatusProvider>
 						<Menu />
 						<SessionHandler>
@@ -51,7 +51,7 @@ const MyApp: React.FC<AppProps> = ({Component, pageProps}) => {
 						<Footer />
 						<GlobalStyle />
 					</UserStatusProvider>
-				</SessionProvider>
+				</AuthProvider>
 			</I18nHandler>
 		</ThemeProvider>
 	)

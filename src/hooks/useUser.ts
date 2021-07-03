@@ -1,20 +1,11 @@
-import {useEffect, useState} from 'react'
+import {useContext} from 'react'
 
-interface User {
-	email: string
-	image?: string
-	name?: string
-}
+import {AuthContext} from '../contexts/Auth'
 
 function useUser() {
-	const [loading, setLoading] = useState(true)
-	const [user, setUser] = useState<User | undefined>(undefined)
+	const auth = useContext(AuthContext)
 
-	function signIn() {}
-
-	function signOut() {}
-
-	return {user, loading, signIn, signOut}
+	return auth
 }
 
 export default useUser

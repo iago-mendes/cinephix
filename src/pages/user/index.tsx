@@ -4,7 +4,6 @@ import {FiArrowRight} from 'react-icons/fi'
 import Link from 'next/link'
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
-import {signOut} from 'next-auth/client'
 
 import Container from '../../styles/pages/user/index'
 import Loading from '../../components/Loading'
@@ -18,7 +17,7 @@ import SEOHead from '../../components/SEOHead'
 const MySwal = withReactContent(Swal)
 
 const User: React.FC = () => {
-	const {user} = useUser()
+	const {user, signOut} = useUser()
 
 	const [userInfo, setUserInfo] = useState<UserInfo>(defaultUser)
 	const [groupsNumber, setGroupsNumber] = useState(0)
