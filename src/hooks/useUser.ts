@@ -1,5 +1,9 @@
 import {useSession} from 'next-auth/client'
 import {useEffect, useState} from 'react'
+import {
+	signIn as nextAuthSignIn,
+	signOut as nextAuthSignOut
+} from 'next-auth/client'
 
 interface User {
 	email: string
@@ -24,7 +28,17 @@ function useUser() {
 		}
 	}, [session])
 
-	return {user, loading}
+	function signIn() {
+		const callbackUrl =
+			process.env.NEXT_PUBLIC_NEXTAUTH_URL + '/api/auth/callback/google'
+		nextAuthSignIn('google', {callbackUrl})
+	}
+
+	function signOut() {
+		nextAuthSignOut()
+	}
+
+	return {user, loading, signIn, signOut}
 }
 
 export default useUser

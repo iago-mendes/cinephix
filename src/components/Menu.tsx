@@ -1,7 +1,6 @@
 import Link from 'next/link'
 import {BiUserCircle} from 'react-icons/bi'
 import {BsFillTriangleFill} from 'react-icons/bs'
-import {signIn} from 'next-auth/client'
 import {useEffect, useState} from 'react'
 import {FiMenu, FiX} from 'react-icons/fi'
 import {useRouter} from 'next/router'
@@ -17,7 +16,7 @@ import useClickOutside from '../hooks/useClickOutside'
 import {useUserStatus} from '../contexts/UserStatus'
 
 const Menu: React.FC = () => {
-	const {user} = useUser()
+	const {user, signIn} = useUser()
 	const {inMobile, inDesktop} = useDimensions()
 	const {pathname} = useRouter()
 	const {isTyping} = useUserStatus()
@@ -81,7 +80,7 @@ const Menu: React.FC = () => {
 							<BsFillTriangleFill size={10} className="indicator" />
 						</button>
 					) : (
-						<span className="signIn" onClick={() => signIn('google')}>
+						<span className="signIn" onClick={signIn}>
 							<Trans>Sign in</Trans>
 						</span>
 					)}

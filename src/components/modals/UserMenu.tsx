@@ -1,6 +1,5 @@
 import {BsFillTriangleFill} from 'react-icons/bs'
 import {FiLogOut} from 'react-icons/fi'
-import {signOut} from 'next-auth/client'
 import {motion} from 'framer-motion'
 import {useRouter} from 'next/router'
 import {useEffect} from 'react'
@@ -17,7 +16,7 @@ interface UserMenuProps {
 }
 
 const UserMenu: React.FC<UserMenuProps> = ({isOpen, setIsOpen}) => {
-	const {user} = useUser()
+	const {user, signOut} = useUser()
 	const {pathname} = useRouter()
 	const {inMobile, inDesktop} = useDimensions()
 
