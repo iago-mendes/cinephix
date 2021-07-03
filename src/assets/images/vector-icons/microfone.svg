@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <svg
-   xmlns:dc="http://purl.org/dc/elements/1.1/"
-   xmlns:cc="http://creativecommons.org/ns#"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-   xmlns:svg="http://www.w3.org/2000/svg"
-   xmlns="http://www.w3.org/2000/svg"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="26.623659mm"
-   height="40.251785mm"
-   viewBox="0 0 26.623659 40.251785"
+   width="1000"
+   height="1000"
+   viewBox="0 0 264.58331 264.58332"
    version="1.1"
    id="svg3103"
-   inkscape:version="1.0.1 (0767f8302a, 2020-10-17)"
-   sodipodi:docname="microfone.svg">
+   inkscape:version="1.1 (ce6663b3b7, 2021-05-25)"
+   sodipodi:docname="microfone.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/">
   <defs
      id="defs3097">
     <filter
@@ -60,18 +60,21 @@
      borderopacity="1.0"
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.7742535"
-     inkscape:cx="-4.0810248"
-     inkscape:cy="102.52362"
+     inkscape:zoom="0.88712675"
+     inkscape:cx="501.0558"
+     inkscape:cy="127.37751"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      inkscape:document-rotation="0"
      showgrid="false"
      inkscape:window-width="1366"
-     inkscape:window-height="731"
+     inkscape:window-height="704"
      inkscape:window-x="0"
      inkscape:window-y="0"
-     inkscape:window-maximized="1" />
+     inkscape:window-maximized="1"
+     inkscape:pagecheckerboard="0"
+     units="px"
+     width="1000px" />
   <metadata
      id="metadata3100">
     <rdf:RDF>
@@ -80,7 +83,6 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -90,7 +92,8 @@
      id="layer1"
      transform="translate(-80.426265,-97.046731)">
     <g
-       id="g28">
+       id="g28"
+       transform="matrix(6.5732076,0,0,6.5732076,-403.44203,-540.86158)">
       <path
          d="m 106.1751,117.929 c 0,6.86011 -5.57671,12.45517 -12.437181,12.45517 -6.850239,0 -12.436829,-5.59506 -12.436829,-12.45517"
          style="fill:none;stroke:#23232a;stroke-width:1.74965;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"

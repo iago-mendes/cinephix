@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <svg
-   xmlns:dc="http://purl.org/dc/elements/1.1/"
-   xmlns:cc="http://creativecommons.org/ns#"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-   xmlns:svg="http://www.w3.org/2000/svg"
-   xmlns="http://www.w3.org/2000/svg"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="35.270351mm"
-   height="35.31921mm"
-   viewBox="0 0 35.270351 35.31921"
+   width="1000"
+   height="1000"
+   viewBox="0 0 264.58333 264.58333"
    version="1.1"
    id="svg1016"
-   inkscape:version="1.0.1 (0767f8302a, 2020-10-17)"
-   sodipodi:docname="film.svg">
+   inkscape:version="1.1 (ce6663b3b7, 2021-05-25)"
+   sodipodi:docname="film.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/">
   <defs
      id="defs1010">
     <filter
@@ -58,18 +58,20 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.7605903"
-     inkscape:cx="147.1485"
-     inkscape:cy="66.744244"
-     inkscape:document-units="mm"
+     inkscape:zoom="0.44014758"
+     inkscape:cx="425.99349"
+     inkscape:cy="436.21733"
+     inkscape:document-units="px"
      inkscape:current-layer="layer1"
      inkscape:document-rotation="0"
      showgrid="false"
      inkscape:window-width="1366"
-     inkscape:window-height="731"
+     inkscape:window-height="704"
      inkscape:window-x="0"
      inkscape:window-y="0"
-     inkscape:window-maximized="1" />
+     inkscape:window-maximized="1"
+     inkscape:pagecheckerboard="0"
+     units="px" />
   <metadata
      id="metadata1013">
     <rdf:RDF>
@@ -78,7 +80,6 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -88,7 +89,8 @@
      id="layer1"
      transform="translate(-33.769587,-140.33444)">
     <g
-       id="g215">
+       id="g215"
+       transform="matrix(7.4912018,0,0,7.4912018,-219.2052,-910.9392)">
       <rect
          style="fill:#d4d4f7;fill-opacity:1;stroke:none;stroke-width:0.79375"
          id="rect1102"

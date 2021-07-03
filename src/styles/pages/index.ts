@@ -21,31 +21,31 @@ const Container = styled.div`
 
 			height: 100%;
 
-			img {
-				max-width: 7rem;
-				max-height: 7rem;
+			.img {
+				width: 7rem;
+				height: 7rem;
 			}
 		}
 
 		.left {
-			img:nth-child(even) {
+			.img:nth-child(even) {
 				margin-left: 10rem;
 				transform: rotate(25deg);
 			}
 
-			img:nth-child(odd) {
+			.img:nth-child(odd) {
 				margin-right: 10rem;
 				transform: rotate(-25deg);
 			}
 		}
 
 		.right {
-			img:nth-child(odd) {
+			.img:nth-child(odd) {
 				margin-left: 10rem;
 				transform: rotate(25deg);
 			}
 
-			img:nth-child(even) {
+			.img:nth-child(even) {
 				margin-right: 10rem;
 				transform: rotate(-25deg);
 			}
@@ -82,20 +82,20 @@ const Container = styled.div`
 
 				width: 100%;
 
-				img {
+				.img {
 					max-width: 3rem;
 					max-height: 3rem;
 				}
 			}
 
 			.left {
-				img:nth-child(odd) {
+				.img:nth-child(odd) {
 					margin: 0;
 					margin-top: 1rem;
 					transform: rotate(25deg);
 				}
 
-				img:nth-child(even) {
+				.img:nth-child(even) {
 					margin: 0;
 					margin-bottom: 1rem;
 					transform: rotate(-25deg);
@@ -103,13 +103,13 @@ const Container = styled.div`
 			}
 
 			.right {
-				img:nth-child(odd) {
+				.img:nth-child(odd) {
 					margin: 0;
 					margin-top: 1rem;
 					transform: rotate(25deg);
 				}
 
-				img:nth-child(even) {
+				.img:nth-child(even) {
 					margin: 0;
 					margin-bottom: 1rem;
 					transform: rotate(-25deg);

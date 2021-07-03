@@ -5,6 +5,7 @@ import {useEffect, useState} from 'react'
 import {FiMenu, FiX} from 'react-icons/fi'
 import {useRouter} from 'next/router'
 import {Trans} from '@lingui/macro'
+import Image from 'next/image'
 
 import Container, {BurgerMenu} from '../styles/components/Menu'
 import logoName from '../assets/images/logo/name.svg'
@@ -59,8 +60,14 @@ const Menu: React.FC = () => {
 
 			<Link href="/">
 				<div className="logos">
-					<img src={logoIcon} className="icon" />
-					{inDesktop && <img src={logoName} className="name" />}
+					<div className="icon">
+						<Image src={logoIcon} alt="Cinephix" />
+					</div>
+					{inDesktop && (
+						<div className="name">
+							<Image src={logoName} alt="Cinephix" />
+						</div>
+					)}
 				</div>
 			</Link>
 

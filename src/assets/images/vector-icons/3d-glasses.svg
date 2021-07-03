@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <svg
-   xmlns:dc="http://purl.org/dc/elements/1.1/"
-   xmlns:cc="http://creativecommons.org/ns#"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-   xmlns:svg="http://www.w3.org/2000/svg"
-   xmlns="http://www.w3.org/2000/svg"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="112.64291mm"
-   height="63.746826mm"
-   viewBox="0 0 112.64291 63.746826"
+   width="1000"
+   height="1000"
+   viewBox="0 0 264.58334 264.58333"
    version="1.1"
    id="svg198"
-   inkscape:version="1.0.1 (0767f8302a, 2020-10-17)"
-   sodipodi:docname="3d-glasses.svg">
+   inkscape:version="1.1 (ce6663b3b7, 2021-05-25)"
+   sodipodi:docname="3d-glasses.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/">
   <defs
      id="defs192">
     <filter
@@ -88,18 +88,21 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.1783307"
-     inkscape:cx="220.62263"
-     inkscape:cy="108.72112"
-     inkscape:document-units="mm"
+     inkscape:zoom="0.41660281"
+     inkscape:cx="502.87706"
+     inkscape:cy="436.86695"
+     inkscape:document-units="px"
      inkscape:current-layer="layer1"
      inkscape:document-rotation="0"
      showgrid="false"
      inkscape:window-width="1366"
-     inkscape:window-height="731"
+     inkscape:window-height="704"
      inkscape:window-x="0"
      inkscape:window-y="0"
-     inkscape:window-maximized="1" />
+     inkscape:window-maximized="1"
+     inkscape:pagecheckerboard="0"
+     units="px"
+     width="1000px" />
   <metadata
      id="metadata195">
     <rdf:RDF>
@@ -108,7 +111,6 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -119,7 +121,7 @@
      transform="translate(-18.494445,-103.57488)">
     <g
        id="g248"
-       transform="rotate(0.75684082,74.894976,135.65144)">
+       transform="matrix(2.3486632,0.03102615,-0.03102615,2.3486632,-20.722478,-84.57953)">
       <path
          sodipodi:nodetypes="sssscccsssscsccccccccccccccsssss"
          id="path1156-5"

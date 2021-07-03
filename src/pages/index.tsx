@@ -69,10 +69,16 @@ const Home: React.FC<HomeProps> = ({staticHome}) => {
 			<SEOHead />
 
 			<header>
-				<div className="icons left">
-					<img src={camera} alt="Camera" />
-					<img src={glasses} alt="Glasses" />
-					<img src={film} alt="Film" />
+				<div className="left icons">
+					<div className="img">
+						<Image src={camera} alt="Camera" layout="responsive" />
+					</div>
+					<div className="img">
+						<Image src={glasses} alt="Glasses" layout="responsive" />
+					</div>
+					<div className="img">
+						<Image src={film} alt="Film" layout="responsive" />
+					</div>
 				</div>
 				<div className="logos">
 					<div className="icon">
@@ -92,10 +98,16 @@ const Home: React.FC<HomeProps> = ({staticHome}) => {
 						/>
 					</div>
 				</div>
-				<div className="icons right">
-					<img src={marker} alt="Marker" />
-					<img src={popcorn} alt="Popcorn" />
-					<img src={microfone} alt="Microfone" />
+				<div className="right icons">
+					<div className="img">
+						<Image src={marker} alt="Marker" layout="responsive" />
+					</div>
+					<div className="img">
+						<Image src={popcorn} alt="Popcorn" layout="responsive" />
+					</div>
+					<div className="img">
+						<Image src={microfone} alt="Microfone" layout="responsive" />
+					</div>
 				</div>
 				<SearchBox
 					search={search}

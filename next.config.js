@@ -1,7 +1,6 @@
-const withImages = require('next-images')
 const withPWA = require('next-pwa')
 
-module.exports = withPWA(withImages({
+module.exports = withPWA({
 	esModule: true,
 	images:
 	{
@@ -19,4 +18,4 @@ module.exports = withPWA(withImages({
     locales: ['en-US', 'pt-BR'],
     defaultLocale: 'en-US',
   }
-}))
+})
