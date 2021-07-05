@@ -40,15 +40,15 @@ const Menu: React.FC = () => {
 	return (
 		<Container isUserMenuOpen={isUserMenuOpen}>
 			{inMobile && (
-				<div className="burger">
+				<div className="burger" ref={burgerRef}>
 					<button
 						className="controller"
-						onClick={() => setIsBurgerMenuOpen(true)}
+						onClick={() => setIsBurgerMenuOpen(!isBurgerMenuOpen)}
 					>
 						<FiMenu />
 					</button>
 
-					<BurgerMenu isOpen={isBurgerMenuOpen} ref={burgerRef}>
+					<BurgerMenu isOpen={isBurgerMenuOpen}>
 						<button
 							className="controller"
 							onClick={() => setIsBurgerMenuOpen(false)}

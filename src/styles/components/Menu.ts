@@ -205,9 +205,9 @@ export const BurgerMenu = styled.div<BurgerMenuProps>`
 	z-index: 2;
 
 	width: 75vw;
-	height: 100vh;
+	height: calc(100vh - 5rem);
 	background-color: ${p => p.theme.secondary};
-	box-shadow: 5px 0px 5px rgba(0, 0, 0, 0.5);
+	box-shadow: 5px -5px 5px rgba(0, 0, 0, 0.5);
 
 	overflow-y: auto;
 	padding: 1rem;
