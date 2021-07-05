@@ -1,14 +1,11 @@
 import {useRouter} from 'next/router'
 import {useEffect, useState} from 'react'
 import {FiX} from 'react-icons/fi'
-import Modal from 'react-modal'
 import {Trans} from '@lingui/macro'
 
 import Container from '../../styles/components/ads/Modal'
-import {modalStyle} from '../../styles/global'
 import {LargeSkyscraperAd} from '../../utils/adUnits'
-
-Modal.setAppElement('#__next')
+import ModalContainer from '../modals/Container'
 
 const ModalAd: React.FC = () => {
 	const {pathname} = useRouter()
@@ -36,7 +33,11 @@ const ModalAd: React.FC = () => {
 	}, [navigationCount])
 
 	return (
-		<Modal isOpen={isOpen} style={modalStyle}>
+		<ModalContainer
+			isOpen={isOpen}
+			handleClose={() => setIsOpen(false)}
+			showCompleteContainer={false}
+		>
 			<Container>
 				<div className="close">
 					<button onClick={() => setIsOpen(false)}>
@@ -52,7 +53,7 @@ const ModalAd: React.FC = () => {
 					<LargeSkyscraperAd />
 				</main>
 			</Container>
-		</Modal>
+		</ModalContainer>
 	)
 }
 

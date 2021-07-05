@@ -11,6 +11,8 @@ type Props = {
 
 	expandLink?: string
 	display?: string
+
+	showCompleteContainer?: boolean
 }
 
 const ModalContainer: React.FC<Props> = ({
@@ -18,11 +20,14 @@ const ModalContainer: React.FC<Props> = ({
 	handleClose,
 	expandLink,
 	display,
+	showCompleteContainer = true,
 	children
 }) => {
 	useAvoidScroll(isOpen)
 
 	if (!isOpen) return null
+
+	if (!showCompleteContainer) return <Container>{children}</Container>
 
 	return (
 		<Container>

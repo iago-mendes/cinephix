@@ -3,7 +3,6 @@ import styled from 'styled-components'
 const Container = styled.div`
 	position: absolute;
 	bottom: -2rem;
-	z-index: 1;
 
 	background-color: ${p => p.theme.white};
 	width: 50rem;
