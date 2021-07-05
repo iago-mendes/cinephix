@@ -44,6 +44,12 @@ export default createGlobalStyle`
 		}
 	}
 
+	body.avoid-scroll {
+		height: 100vh;
+		overflow-y: hidden;
+		padding-right: 10px;
+	}
+
 	body, input, textarea, button
 	{
 		font-family: Roboto;

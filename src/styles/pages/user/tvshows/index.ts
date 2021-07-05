@@ -5,27 +5,6 @@ const Container = styled.div`
 	flex-direction: column;
 	align-items: center;
 
-	* {
-		::-webkit-scrollbar {
-			height: 1rem;
-			width: 1rem;
-		}
-
-		::-webkit-scrollbar-track {
-			background-color: #242329;
-			border-radius: 1rem;
-		}
-
-		::-webkit-scrollbar-thumb {
-			background-color: #4d4d5a;
-			border-radius: 1rem;
-
-			:hover {
-				background-color: #3b3b45;
-			}
-		}
-	}
-
 	main {
 		height: fit-content;
 		min-height: calc(100vh - 5rem);
@@ -259,6 +238,27 @@ const Container = styled.div`
 							font-size: 1rem;
 						}
 					}
+				}
+			}
+		}
+	}
+
+	@media (min-width: 1001px) {
+		* {
+			::-webkit-scrollbar {
+				height: 1rem;
+				width: 1rem;
+			}
+
+			::-webkit-scrollbar-track {
+				background-color: #242329;
+			}
+
+			::-webkit-scrollbar-thumb {
+				background-color: #4d4d5a;
+
+				:hover {
+					background-color: #3b3b45;
 				}
 			}
 		}

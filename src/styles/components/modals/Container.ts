@@ -1,78 +1,102 @@
 import styled from 'styled-components'
 
 const Container = styled.div`
-	width: 75vw;
-	height: 75vh;
+	position: fixed;
+	z-index: 1;
 
-	header {
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
 
-		height: 5rem;
-		padding: 0.5rem;
-		padding-left: 2rem;
-		padding-right: 2rem;
+	width: 100vw;
+	height: 100vh;
+	overflow: hidden;
 
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	background-color: rgba(0, 0, 0, 0.1);
+	backdrop-filter: blur(3px);
+
+	.modal-content {
+		width: 95vw;
+		height: 80vh;
+		margin-bottom: 5rem;
+
+		overflow: hidden;
+		background-color: ${p => p.theme.background};
 		border-top-left-radius: 0.5rem;
 		border-top-right-radius: 0.5rem;
-		background-color: ${p => p.theme.secondary};
 
-		button,
-		a {
-			width: 3.5rem;
-			height: 3.5rem;
-			border-radius: 100rem;
-
-			background: none;
-			border: none;
-			color: ${p => p.theme.primary};
-
+		header {
 			display: flex;
 			align-items: center;
-			justify-content: center;
+			justify-content: space-between;
 
-			cursor: pointer;
-			transition: 0.25s;
+			height: 5rem;
+			padding: 0.5rem;
+			padding-left: 2rem;
+			padding-right: 2rem;
 
-			:hover {
-				background-color: ${p => p.theme.primary};
-				color: ${p => p.theme.secondary};
+			background-color: ${p => p.theme.secondary};
+
+			button,
+			a {
+				width: 3.5rem;
+				height: 3.5rem;
+				border-radius: 100rem;
+
+				background: none;
+				border: none;
+				color: ${p => p.theme.primary};
+
+				display: flex;
+				align-items: center;
+				justify-content: center;
+
+				cursor: pointer;
+				transition: 0.25s;
+
+				:hover {
+					background-color: ${p => p.theme.primary};
+					color: ${p => p.theme.secondary};
+				}
 			}
 		}
-	}
 
-	main {
-		background-color: ${p => p.theme.background};
-		width: 100%;
-		height: calc(75vh - 5rem);
+		.modal-scrollable-content {
+			width: 100%;
+			height: calc(80vh - 5rem);
 
-		overflow-y: auto;
-		overflow-x: hidden;
-
-		::-webkit-scrollbar {
-			width: 1rem;
+			overflow-y: auto;
 		}
 
-		::-webkit-scrollbar-track {
-			background-color: ${p => p.theme.primary}26;
-		}
+		@media (min-width: 1001px) {
+			width: 75vw;
+			height: 75vh;
+			margin-bottom: 0;
 
-		::-webkit-scrollbar-thumb {
-			background-color: ${p => p.theme.primary};
+			.modal-scrollable-content {
+				height: calc(75vh - 5rem);
 
-			:hover {
-				background-color: ${p => p.theme.primary}bf;
+				::-webkit-scrollbar {
+					width: 1rem;
+				}
+
+				::-webkit-scrollbar-track {
+					background-color: ${p => p.theme.primary}26;
+				}
+
+				::-webkit-scrollbar-thumb {
+					background-color: ${p => p.theme.primary};
+
+					:hover {
+						background-color: ${p => p.theme.primary}bf;
+					}
+				}
 			}
-		}
-	}
-
-	@media (max-width: 1000px) {
-		width: 95vw;
-		height: 85vh;
-
-		main {
-			height: calc(85vh - 5rem);
 		}
 	}
 `

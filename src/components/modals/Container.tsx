@@ -1,29 +1,30 @@
-import Modal from 'react-modal'
 import {FiX} from 'react-icons/fi'
 import {BiExpand} from 'react-icons/bi'
 import Link from 'next/link'
 
 import Container from '../../styles/components/modals/Container'
-import {modalStyle} from '../../styles/global'
+import {useAvoidScroll} from '../../hooks/useAvoidScroll'
 
-Modal.setAppElement('#__next')
-
-interface ModalContainerProps {
+type Props = {
 	isOpen: boolean
 	handleClose: () => void
 
 	expandLink?: string
 }
 
-const ModalContainer: React.FC<ModalContainerProps> = ({
+const ModalContainer: React.FC<Props> = ({
 	isOpen,
 	handleClose,
 	expandLink,
 	children
 }) => {
+	useAvoidScroll(isOpen)
+
+	if (!isOpen) return null
+
 	return (
-		<Modal isOpen={isOpen} style={modalStyle}>
-			<Container>
+		<Container>
+			<div className="modal-content">
 				<header>
 					{expandLink && (
 						<Link href={expandLink}>
@@ -37,9 +38,9 @@ const ModalContainer: React.FC<ModalContainerProps> = ({
 					</button>
 				</header>
 
-				<main>{children}</main>
-			</Container>
-		</Modal>
+				<div className="modal-scrollable-content">{children}</div>
+			</div>
+		</Container>
 	)
 }
 
