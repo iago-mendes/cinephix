@@ -15,6 +15,7 @@ import UserMenu from './modals/UserMenu'
 import useDimensions from '../hooks/useDimensions'
 import useClickOutside from '../hooks/useClickOutside'
 import {useUserStatus} from '../contexts/UserStatus'
+import {useAvoidScroll} from '../hooks/useAvoidScroll'
 
 const Menu: React.FC = () => {
 	const {user, signIn} = useAuth()
@@ -27,6 +28,8 @@ const Menu: React.FC = () => {
 
 	const [isBurgerMenuOpen, setIsBurgerMenuOpen] = useState(false)
 	const burgerRef = useClickOutside(() => setIsBurgerMenuOpen(false))
+
+	useAvoidScroll(isBurgerMenuOpen)
 
 	useEffect(() => {
 		setIsBurgerMenuOpen(false)

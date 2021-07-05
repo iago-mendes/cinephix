@@ -1,15 +1,12 @@
 import {useEffect, useState} from 'react'
 import {FaSearch} from 'react-icons/fa'
-import {FiX} from 'react-icons/fi'
-import Modal from 'react-modal'
 
 import Container from '../../styles/components/modals/Select'
-import {modalStyle} from '../../styles/global'
+
 import MediaCard, {Media} from '../cards/Media'
 import GridPaginate from '../../components/GridPaginate'
 import {updatePaginatedData} from '../../utils/updatePaginatedData'
-
-Modal.setAppElement('#__next')
+import ModalContainer from './Container'
 
 interface SelectTvshowProps {
 	isOpen: boolean
@@ -43,14 +40,12 @@ const SelectTvshow: React.FC<SelectTvshowProps> = ({
 	}, [search, page])
 
 	return (
-		<Modal isOpen={isOpen} style={modalStyle}>
+		<ModalContainer
+			isOpen={isOpen}
+			handleClose={() => setIsOpen(false)}
+			display="Select a TV show"
+		>
 			<Container>
-				<header>
-					<h1>Select a TV show</h1>
-					<button onClick={() => setIsOpen(false)}>
-						<FiX size={25} />
-					</button>
-				</header>
 				<div className="search">
 					<FaSearch size={25} />
 					<input
@@ -83,7 +78,7 @@ const SelectTvshow: React.FC<SelectTvshowProps> = ({
 					</GridPaginate>
 				</div>
 			</Container>
-		</Modal>
+		</ModalContainer>
 	)
 }
 

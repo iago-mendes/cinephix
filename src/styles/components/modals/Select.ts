@@ -1,58 +1,13 @@
 import styled from 'styled-components'
 
 const Container = styled.div`
-	width: 75vw;
-	height: 85vh;
-
-	background-color: ${p => p.theme.background};
-	border-radius: 0.5rem;
+	width: 100%;
+	height: 100%;
 
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	justify-content: space-between;
-
-	header {
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-
-		width: 100%;
-		padding: 0.5rem;
-		padding-left: 2rem;
-		padding-right: 2rem;
-
-		border-top-left-radius: 0.5rem;
-		border-top-right-radius: 0.5rem;
-		background-color: ${p => p.theme.secondary};
-
-		h1 {
-			color: ${p => p.theme.primary};
-			font-family: Ubuntu;
-		}
-
-		button {
-			width: 3.5rem;
-			height: 3.5rem;
-			border-radius: 100rem;
-
-			background: none;
-			border: none;
-			color: ${p => p.theme.primary};
-
-			display: flex;
-			align-items: center;
-			justify-content: center;
-
-			cursor: pointer;
-			transition: 0.25s;
-
-			:hover {
-				background-color: ${p => p.theme.primary};
-				color: ${p => p.theme.secondary};
-			}
-		}
-	}
 
 	.search {
 		background-color: ${p => p.theme.white};
@@ -65,6 +20,7 @@ const Container = styled.div`
 
 		padding-left: 1rem;
 		padding-right: 2rem;
+		margin: 1rem 0;
 
 		color: ${p => p.theme.secondary};
 		box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.5);

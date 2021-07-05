@@ -47,7 +47,6 @@ export default createGlobalStyle`
 	body.avoid-scroll {
 		height: 100vh;
 		overflow-y: hidden;
-		padding-right: 10px;
 	}
 
 	body, input, textarea, button
@@ -110,6 +109,13 @@ export default createGlobalStyle`
 			-moz-user-select: -moz-none;
 			-ms-user-select: none;
 			user-select: none;
+		}
+	}
+
+	@media (min-width: 1001px)
+	{
+		body.avoid-scroll {
+			padding-right: 10px;
 		}
 	}
 `

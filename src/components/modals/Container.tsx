@@ -10,12 +10,14 @@ type Props = {
 	handleClose: () => void
 
 	expandLink?: string
+	display?: string
 }
 
 const ModalContainer: React.FC<Props> = ({
 	isOpen,
 	handleClose,
 	expandLink,
+	display,
 	children
 }) => {
 	useAvoidScroll(isOpen)
@@ -33,6 +35,9 @@ const ModalContainer: React.FC<Props> = ({
 							</a>
 						</Link>
 					)}
+
+					{display && <span>{display}</span>}
+
 					<button className="close" title="Close" onClick={handleClose}>
 						<FiX size={25} />
 					</button>

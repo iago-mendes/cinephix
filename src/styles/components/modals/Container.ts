@@ -64,6 +64,13 @@ const Container = styled.div`
 					color: ${p => p.theme.secondary};
 				}
 			}
+
+			span {
+				font-size: 1.75rem;
+				color: ${p => p.theme.primary};
+				font-family: Ubuntu;
+				font-weight: 700;
+			}
 		}
 
 		.modal-scrollable-content {
