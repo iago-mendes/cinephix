@@ -4,6 +4,7 @@ import {FiArrowRight} from 'react-icons/fi'
 import Link from 'next/link'
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
+import {Trans, t} from '@lingui/macro'
 
 import Container from '../../styles/pages/user/index'
 import Loading from '../../components/Loading'
@@ -13,6 +14,7 @@ import api from '../../services/api'
 import errorAlert from '../../utils/alerts/error'
 import successAlert from '../../utils/alerts/success'
 import SEOHead from '../../components/SEOHead'
+import {formatDate} from '../../utils/formatDate'
 
 const MySwal = withReactContent(Swal)
 
@@ -41,42 +43,20 @@ const User: React.FC = () => {
 		}
 	}, [user])
 
-	function formatDate(unformatedDate: string) {
-		const months = [
-			'January',
-			'February',
-			'March',
-			'April',
-			'May',
-			'June',
-			'July',
-			'August',
-			'September',
-			'October',
-			'November',
-			'December'
-		]
-
-		const [year, month, day] = unformatedDate
-			.split('T')[0]
-			.split('-')
-			.map(s => Number(s))
-		return `${months[month - 1]} ${day}, ${year}`
-	}
-
 	function handleDelete() {
 		MySwal.fire({
 			icon: 'question',
-			title: 'Are you sure?',
-			text: 'If you continue, your account and all your information (TV shows and movies) will be deleted!',
+			title: t`Are you sure?`,
+			text: t`If you continue, your account and all your information (TV shows and movies) will be deleted!`,
 			showCancelButton: true,
-			confirmButtonText: 'Continue'
+			confirmButtonText: t`Continue`,
+			cancelButtonText: t`Cancel`
 		}).then(res => {
 			if (res.isConfirmed) {
 				api
 					.delete(`users/${userInfo.email}`)
 					.then(() => {
-						successAlert('Your account was successfully deleted!')
+						successAlert(t`Your account was successfully deleted!`)
 						signOut()
 					})
 					.catch(err => {
@@ -98,12 +78,15 @@ const User: React.FC = () => {
 					<h1>{user.name}</h1>
 					<h2>{user.email}</h2>
 					<p>
-						Member since <strong>{formatDate(userInfo.joinedAt)}</strong>
+						<Trans>Member since</Trans>{' '}
+						<strong>{formatDate(userInfo.joinedAt)}</strong>
 					</p>
 				</div>
 				<button className="delete" onClick={handleDelete}>
 					<HiOutlineUserRemove size={25} />
-					<span>Delete account</span>
+					<span>
+						<Trans>Delete account</Trans>
+					</span>
 				</button>
 			</main>
 
@@ -111,7 +94,7 @@ const User: React.FC = () => {
 				<Link href="/groups">
 					<a>
 						<span>
-							My groups ({groupsNumber})
+							<Trans>My groups</Trans> ({groupsNumber})
 							<FiArrowRight size={40} />
 						</span>
 					</a>
@@ -119,7 +102,7 @@ const User: React.FC = () => {
 				<Link href="/user/tvshows">
 					<a>
 						<span>
-							My TV shows ({userInfo.tvshows.length})
+							<Trans>My TV shows</Trans> ({userInfo.tvshows.length})
 							<FiArrowRight size={40} />
 						</span>
 					</a>
@@ -127,7 +110,7 @@ const User: React.FC = () => {
 				<Link href="/user/movies">
 					<a>
 						<span>
-							My movies ({userInfo.movies.length})
+							<Trans>My movies</Trans> ({userInfo.movies.length})
 							<FiArrowRight size={40} />
 						</span>
 					</a>

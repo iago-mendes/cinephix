@@ -14,21 +14,21 @@ msgstr ""
 "Plural-Forms: \n"
 
 #: src/components/Footer.tsx:44
-#: src/components/Menu.tsx:120
+#: src/components/Menu.tsx:123
 msgid "<0>About</0>"
 msgstr "<0>Sobre</0>"
 
 #: src/components/Footer.tsx:41
-#: src/components/Menu.tsx:113
+#: src/components/Menu.tsx:116
 msgid "<0>Celebrities</0>"
 msgstr "<0>Celebridades</0>"
 
-#: src/components/Menu.tsx:116
+#: src/components/Menu.tsx:119
 msgid "<0>Events</0>"
 msgstr "<0>Eventos</0>"
 
 #: src/components/Footer.tsx:32
-#: src/components/Menu.tsx:104
+#: src/components/Menu.tsx:107
 msgid "<0>Home</0>"
 msgstr "<0>Início</0>"
 
@@ -37,7 +37,7 @@ msgid "<0>Media data</0> from <1>TMDb</1>."
 msgstr "<0>Dados da mídia</0> de <1>TMDb</1>."
 
 #: src/components/Footer.tsx:35
-#: src/components/Menu.tsx:107
+#: src/components/Menu.tsx:110
 msgid "<0>Movies</0>"
 msgstr "<0>Filmes</0>"
 
@@ -62,29 +62,141 @@ msgid "<0>Privacy Policy</0>"
 msgstr "<0>Política de Privacidade</0>"
 
 #: src/components/Footer.tsx:38
-#: src/components/Menu.tsx:110
+#: src/components/Menu.tsx:113
 msgid "<0>TV shows</0>"
 msgstr "<0>Séries</0>"
 
+#: src/pages/user/tvshows/[tvshow]/add.tsx:8
+msgid "Add TV show"
+msgstr "Adicionar série"
+
+#: src/pages/user/movies/index.tsx:165
+#: src/pages/user/movies/index.tsx:201
+msgid "Add a movie"
+msgstr "Adicionar um filme"
+
+#: src/pages/user/movies/[movie]/add.tsx:8
+msgid "Add movie"
+msgstr "Adicionar filme"
+
+#: src/pages/tvshows/[tvshow].tsx:188
+msgid "Add to your TV shows"
+msgstr "Adicionar a suas séries"
+
+#: src/pages/movies/[movie].tsx:142
+msgid "Add to your movies"
+msgstr "Adicionar a seus filmes"
+
 #: src/components/ads/Horizontal.tsx:15
-#: src/components/ads/Modal.tsx:49
+#: src/components/ads/Modal.tsx:50
 msgid "Advertisement"
 msgstr "Anúncio"
+
+#: src/pages/user/index.tsx:49
+msgid "Are you sure?"
+msgstr "Você tem certeza?"
+
+#: src/components/forms/Movie.tsx:236
+#: src/components/forms/Tvshow.tsx:261
+#: src/pages/user/index.tsx:53
+msgid "Cancel"
+msgstr "Cancelar"
+
+#: src/pages/movies/[movie].tsx:150
+#: src/pages/tvshows/[tvshow].tsx:196
+msgid "Cast"
+msgstr "Elenco"
 
 #: src/pages/celebrities/index.tsx:55
 #: src/pages/celebrities/index.tsx:57
 msgid "Celebrities"
 msgstr "Celebridades"
 
+#: src/components/forms/Movie.tsx:222
+#: src/components/forms/Tvshow.tsx:247
+msgid "Clear rating"
+msgstr "Limpar avaliação"
+
+#: src/components/forms/Movie.tsx:242
+#: src/components/forms/Tvshow.tsx:267
+msgid "Confirm"
+msgstr "Confirmar"
+
+#: src/pages/user/index.tsx:52
+msgid "Continue"
+msgstr "Continuar"
+
+#: src/pages/movies/[movie].tsx:168
+#: src/pages/tvshows/[tvshow].tsx:214
+msgid "Crew"
+msgstr "Equipe técnica"
+
+#: src/pages/user/index.tsx:88
+msgid "Delete account"
+msgstr "Deletar conta"
+
+#: src/pages/movies/[movie].tsx:129
+#: src/pages/tvshows/[tvshow].tsx:175
+msgid "Edit"
+msgstr "Editar"
+
+#: src/pages/user/tvshows/[tvshow]/edit.tsx:28
+msgid "Edit TV show"
+msgstr "Editar série"
+
+#: src/pages/user/movies/[movie]/edit.tsx:28
+msgid "Edit movie"
+msgstr "Editar filme"
+
 #: src/pages/events/index.tsx:19
 #: src/pages/events/index.tsx:21
 msgid "Events"
 msgstr "Eventos"
 
+#: src/pages/user/index.tsx:50
+msgid "If you continue, your account and all your information (TV shows and movies) will be deleted!"
+msgstr "Se você continuar, sua conta e todas suas informações (séries e filmes) serão deletados!"
+
+#: src/pages/user/index.tsx:81
+msgid "Member since"
+msgstr "Membro desde"
+
 #: src/pages/movies/index.tsx:51
 #: src/pages/movies/index.tsx:53
 msgid "Movies"
 msgstr "Filmes"
+
+#: src/pages/user/index.tsx:105
+msgid "My TV shows"
+msgstr "Minhas séries"
+
+#: src/pages/user/index.tsx:97
+msgid "My groups"
+msgstr "Meus grupos"
+
+#: src/pages/user/index.tsx:113
+#: src/pages/user/movies/index.tsx:99
+msgid "My movies"
+msgstr "Meus filmes"
+
+#: src/pages/movies/[movie].tsx:122
+#: src/pages/tvshows/[tvshow].tsx:168
+msgid "My rating"
+msgstr "Minha avaliação"
+
+#: src/pages/user/movies/index.tsx:41
+msgid "My ratings"
+msgstr "Minhas avaliações"
+
+#: src/pages/movies/[movie].tsx:107
+#: src/pages/tvshows/[tvshow].tsx:153
+msgid "My status"
+msgstr "Meu status"
+
+#: src/pages/movies/[movie].tsx:114
+#: src/pages/tvshows/[tvshow].tsx:160
+msgid "My venue"
+msgstr "Meu meio"
 
 #: src/pages/events/index.tsx:30
 msgid "No events open at the moment!"
@@ -94,9 +206,26 @@ msgstr "Nenhum evento aberto atualmente!"
 msgid "No results found!"
 msgstr "Nenhum resultado encontrado!"
 
+#: src/pages/tvshows/[tvshow].tsx:133
+msgid "Nº of episodes:"
+msgstr "Nº de episódios:"
+
+#: src/pages/tvshows/[tvshow].tsx:127
+msgid "Nº of seasons:"
+msgstr "Nº de temporadas:"
+
 #: src/components/modals/CookieBanner.tsx:57
 msgid "Ok"
 msgstr "Ok"
+
+#: src/components/forms/Movie.tsx:189
+#: src/components/forms/Tvshow.tsx:214
+msgid "Ratings"
+msgstr "Avaliações"
+
+#: src/pages/user/movies/index.tsx:39
+msgid "Release date"
+msgstr "Data de lançamento"
 
 #: src/pages/tvshows/index.tsx:57
 msgid "Search for a TV show"
@@ -118,7 +247,16 @@ msgstr "Pesquise por filmes, séries, ou celebridades"
 msgid "See Privacy Policy"
 msgstr "Ver Política de Privacidade"
 
-#: src/components/Menu.tsx:91
+#: src/components/forms/Tvshow.tsx:191
+msgid "Select a status"
+msgstr "Selecione um status"
+
+#: src/components/forms/Movie.tsx:182
+#: src/components/forms/Tvshow.tsx:207
+msgid "Select a venue"
+msgstr "Selecione um meio"
+
+#: src/components/Menu.tsx:94
 msgid "Sign in"
 msgstr "Entrar"
 
@@ -130,6 +268,14 @@ msgstr "Sair"
 msgid "Signed in as"
 msgstr "Conectado como"
 
+#: src/pages/user/movies/index.tsx:120
+msgid "Sort by"
+msgstr "Ordenar por"
+
+#: src/components/forms/Tvshow.tsx:182
+msgid "Status"
+msgstr "Status"
+
 #: src/pages/tvshows/index.tsx:51
 #: src/pages/tvshows/index.tsx:53
 msgid "TV Shows"
@@ -138,3 +284,31 @@ msgstr "Séries"
 #: src/components/modals/CookieBanner.tsx:49
 msgid "This application uses cookies to provide you a great user experience. By using Cinephix, you accept our policies."
 msgstr "Este app utiliza cookies para lhe prover uma ótima experiência de usuário. Ao usar o Cinephix, você aceita nossas políticas."
+
+#: src/pages/user/movies/index.tsx:40
+msgid "Title"
+msgstr "Título"
+
+#: src/components/forms/Movie.tsx:193
+#: src/components/forms/Tvshow.tsx:218
+msgid "Total:"
+msgstr "Total:"
+
+#: src/components/forms/Movie.tsx:173
+#: src/components/forms/Tvshow.tsx:198
+msgid "Venue"
+msgstr "Meio"
+
+#: src/pages/movies/[movie].tsx:109
+#: src/pages/user/movies/index.tsx:141
+msgid "Watch list"
+msgstr "Lista para assistir"
+
+#: src/components/forms/Movie.tsx:159
+#: src/pages/movies/[movie].tsx:109
+msgid "Watched"
+msgstr "Assistido"
+
+#: src/pages/user/index.tsx:59
+msgid "Your account was successfully deleted!"
+msgstr "Sua conta foi deletada com sucesso!"

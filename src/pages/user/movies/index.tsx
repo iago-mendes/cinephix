@@ -5,6 +5,7 @@ import Select from 'react-select'
 import {FiPlus} from 'react-icons/fi'
 import {motion} from 'framer-motion'
 import {useRouter} from 'next/router'
+import {Trans, t} from '@lingui/macro'
 
 import Container, {Dropdown} from '../../../styles/pages/user/movies/index'
 import api from '../../../services/api'
@@ -35,9 +36,9 @@ const UserMovies: React.FC = () => {
 	const [showWatchList, setShowWatchList] = useState(false)
 
 	const sortOptions = [
-		{label: 'Release date', value: 'releaseDate'},
-		{label: 'Title', value: 'title'},
-		{label: 'My ratings', value: 'ratings'}
+		{label: t`Release date`, value: 'releaseDate'},
+		{label: t`Title`, value: 'title'},
+		{label: t`My ratings`, value: 'ratings'}
 	]
 	const [sortOption, setSortOption] = useState(sortOptions[0])
 
@@ -95,7 +96,7 @@ const UserMovies: React.FC = () => {
 
 	return (
 		<Container className="page">
-			<SEOHead title="My movies | Cinephix" />
+			<SEOHead title={t`My movies` + ' | Cinephix'} />
 
 			<SelectMovie
 				isOpen={isSelectMovieOpen}
@@ -115,7 +116,9 @@ const UserMovies: React.FC = () => {
 			<main>
 				<div className="options">
 					<div className="sort">
-						<span>Sort by</span>
+						<span>
+							<Trans>Sort by</Trans>
+						</span>
 						<Select
 							value={sortOption}
 							options={sortOptions}
@@ -134,7 +137,9 @@ const UserMovies: React.FC = () => {
 						onClick={() => setShowWatchList(!showWatchList)}
 					>
 						<BsFillTriangleFill size={25} />
-						<span>Watch list</span>
+						<span>
+							<Trans>Watch list</Trans>
+						</span>
 					</Dropdown>
 					<motion.div
 						className="grid"
@@ -157,7 +162,7 @@ const UserMovies: React.FC = () => {
 					>
 						<button
 							className="add"
-							title="Add a movie"
+							title={t`Add a movie`}
 							onClick={() => handleAddClick(false)}
 						>
 							<FiPlus size={30} />
@@ -193,7 +198,7 @@ const UserMovies: React.FC = () => {
 					<div className="grid">
 						<button
 							className="add"
-							title="Add a movie"
+							title={t`Add a movie`}
 							onClick={() => handleAddClick(true)}
 						>
 							<FiPlus size={30} />

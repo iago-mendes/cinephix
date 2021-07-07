@@ -4,6 +4,7 @@ import Image from 'next/image'
 import {useRouter} from 'next/router'
 import {FiCheck, FiX} from 'react-icons/fi'
 import {MdClear} from 'react-icons/md'
+import {Trans, t} from '@lingui/macro'
 
 import Container, {RangeInput} from '../../styles/components/forms/global'
 import api from '../../services/api'
@@ -177,7 +178,9 @@ const TvshowForm: React.FC<TvshowFormProps> = ({method}) => {
 				)}
 				<form onSubmit={handleSubmit}>
 					<div className="field">
-						<label htmlFor="status">Status</label>
+						<label htmlFor="status">
+							<Trans>Status</Trans>
+						</label>
 						<Select
 							id="status"
 							name="status"
@@ -185,13 +188,15 @@ const TvshowForm: React.FC<TvshowFormProps> = ({method}) => {
 							options={statusOptions}
 							onChange={e => setStatus(e.value)}
 							styles={selectStyles}
-							placeholder="Select a status"
+							placeholder={t`Select a status`}
 							className="select"
 							isSearchable={false}
 						/>
 					</div>
 					<div className="field">
-						<label htmlFor="venue">Venue</label>
+						<label htmlFor="venue">
+							<Trans>Venue</Trans>
+						</label>
 						<Select
 							id="venue"
 							name="venue"
@@ -199,15 +204,19 @@ const TvshowForm: React.FC<TvshowFormProps> = ({method}) => {
 							options={venueOptions}
 							onChange={e => setVenue(e.value)}
 							styles={selectStyles}
-							placeholder="Select a venue"
+							placeholder={t`Select a venue`}
 							className="select"
 							isSearchable={false}
 						/>
 					</div>
 					<div className="rangeFields">
-						<label>Ratings</label>
+						<label>
+							<Trans>Ratings</Trans>
+						</label>
 						<div className="rating">
-							<label>Total:</label>
+							<label>
+								<Trans>Total:</Trans>
+							</label>
 							<span>{calcTotalRating(ratings) || 'not rated'}</span>
 						</div>
 						{Object.entries(ratings).map(([ratingKey, value]) => (
@@ -235,7 +244,7 @@ const TvshowForm: React.FC<TvshowFormProps> = ({method}) => {
 
 										<button
 											className="clear"
-											title="Clear rating"
+											title={t`Clear rating`}
 											onClick={() => handleClearRating(ratingKey)}
 											type="button"
 										>
@@ -249,13 +258,13 @@ const TvshowForm: React.FC<TvshowFormProps> = ({method}) => {
 					<div className="buttons">
 						<button
 							className="cancel"
-							title="Cancel"
+							title={t`Cancel`}
 							onClick={back}
 							type="button"
 						>
 							<FiX size={25} />
 						</button>
-						<button className="confirm" title="Confirm" type="submit">
+						<button className="confirm" title={t`Confirm`} type="submit">
 							<FiCheck size={25} />
 						</button>
 					</div>

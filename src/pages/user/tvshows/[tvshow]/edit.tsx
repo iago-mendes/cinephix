@@ -1,4 +1,5 @@
 import {useEffect, useState} from 'react'
+import {t} from '@lingui/macro'
 
 import Loading from '../../../../components/Loading'
 import TvshowForm from '../../../../components/forms/Tvshow'
@@ -24,7 +25,7 @@ const EditTvshow: React.FC = () => {
 
 	return (
 		<div style={{position: 'relative'}} className="page">
-			<SEOHead title="Edit TV show | Cinephix" />
+			<SEOHead title={t`Edit TV show` + ' | Cinephix'} />
 
 			<RemoveButton collection="TV shows" apiRoute={removeRoute} />
 

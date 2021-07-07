@@ -1,10 +1,11 @@
 import TvshowForm from '../../../../components/forms/Tvshow'
 import SEOHead from '../../../../components/SEOHead'
+import {t} from '@lingui/macro'
 
 const AddTvshow: React.FC = () => {
 	return (
 		<div className="page">
-			<SEOHead title="Add TV show | Cinephix" />
+			<SEOHead title={t`Add TV show` + ' | Cinephix'} />
 
 			<TvshowForm method="post" />
 		</div>

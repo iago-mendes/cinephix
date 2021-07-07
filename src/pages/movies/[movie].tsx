@@ -4,6 +4,7 @@ import {FiCalendar, FiEdit3, FiInfo, FiPlus, FiStar} from 'react-icons/fi'
 import {SwiperSlide} from 'swiper/react'
 import Image from 'next/image'
 import {useEffect, useState} from 'react'
+import {Trans, t} from '@lingui/macro'
 
 import Container from '../../styles/pages/movies/[movie]'
 import api from '../../services/api'
@@ -102,24 +103,30 @@ const Movie: React.FC<MovieProps> = ({movie}) => {
 				{user && userMovie !== defaultUserMovie ? (
 					<>
 						<div className="group">
-							<label>My status</label>
-							<span>{userMovie.watched ? 'Watched' : 'Watch list'}</span>
+							<label>
+								<Trans>My status</Trans>
+							</label>
+							<span>{userMovie.watched ? t`Watched` : t`Watch list`}</span>
 						</div>
 						{userMovie.venue && (
 							<div className="group">
-								<label>My venue</label>
+								<label>
+									<Trans>My venue</Trans>
+								</label>
 								<span>{getVenue(userMovie.venue)}</span>
 							</div>
 						)}
 						{Object.values(userMovie.ratings).length !== 0 && (
 							<div className="group">
-								<label>My rating</label>
+								<label>
+									<Trans>My rating</Trans>
+								</label>
 								<span>{getTotalRating(userMovie.ratings, true)}</span>
 							</div>
 						)}
 						<button
 							className="edit"
-							title="Edit"
+							title={t`Edit`}
 							onClick={() => router.push(`/user/movies/${movie.id}/edit`)}
 						>
 							<FiEdit3 size={30} />
@@ -131,13 +138,17 @@ const Movie: React.FC<MovieProps> = ({movie}) => {
 						onClick={() => router.push(`/user/movies/${movie.id}/add`)}
 					>
 						<FiPlus size={30} />
-						<span>Add to your movies</span>
+						<span>
+							<Trans>Add to your movies</Trans>
+						</span>
 					</button>
 				)}
 			</div>
 
 			<div className="row carousel">
-				<span>Cast ({movie.credits.cast.length})</span>
+				<span>
+					<Trans>Cast</Trans> ({movie.credits.cast.length})
+				</span>
 				<Carousel>
 					{movie.credits.cast.map((celebrity, index) => (
 						<SwiperSlide key={index}>
@@ -153,7 +164,9 @@ const Movie: React.FC<MovieProps> = ({movie}) => {
 			</div>
 
 			<div className="row carousel">
-				<span>Crew ({movie.credits.crew.length})</span>
+				<span>
+					<Trans>Crew</Trans> ({movie.credits.crew.length})
+				</span>
 				<Carousel>
 					{movie.credits.crew.map((celebrity, index) => (
 						<SwiperSlide key={index}>

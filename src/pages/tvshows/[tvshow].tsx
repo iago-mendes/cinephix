@@ -10,6 +10,7 @@ import {
 } from 'react-icons/fi'
 import {SwiperSlide} from 'swiper/react'
 import Image from 'next/image'
+import {Trans, t} from '@lingui/macro'
 
 import Container from '../../styles/pages/tvshows/[tvshow]'
 import api from '../../services/api'
@@ -122,11 +123,15 @@ const Tvshow: React.FC<TvshowProps> = ({tvshow}) => {
 						</div>
 						<div className="group">
 							<div className="detail">
-								<strong>Nº of seasons:</strong>
+								<strong>
+									<Trans>Nº of seasons:</Trans>
+								</strong>
 								<span>{tvshow.seasonsNumber}</span>
 							</div>
 							<div className="detail">
-								<strong>Nº of episodes:</strong>
+								<strong>
+									<Trans>Nº of episodes:</Trans>
+								</strong>
 								<span>{tvshow.episodesNumber}</span>
 							</div>
 						</div>
@@ -144,24 +149,30 @@ const Tvshow: React.FC<TvshowProps> = ({tvshow}) => {
 				{user && userTvshow !== defaultUserTvshowDetails ? (
 					<>
 						<div className="group">
-							<label>My status</label>
+							<label>
+								<Trans>My status</Trans>
+							</label>
 							<span>{getStatusLabel(userTvshow.status)}</span>
 						</div>
 						{userTvshow.venue && (
 							<div className="group">
-								<label>My venue</label>
+								<label>
+									<Trans>My venue</Trans>
+								</label>
 								<span>{getVenue(userTvshow.venue)}</span>
 							</div>
 						)}
 						{Object.values(userTvshow.ratings).length !== 0 && (
 							<div className="group">
-								<label>My rating</label>
+								<label>
+									<Trans>My rating</Trans>
+								</label>
 								<span>{getTotalRating(userTvshow.ratings, true)}</span>
 							</div>
 						)}
 						<button
 							className="edit"
-							title="Edit"
+							title={t`Edit`}
 							onClick={() => router.push(`/user/tvshows/${tvshow.id}/edit`)}
 						>
 							<FiEdit3 size={30} />
@@ -173,13 +184,17 @@ const Tvshow: React.FC<TvshowProps> = ({tvshow}) => {
 						onClick={() => router.push(`/user/tvshows/${tvshow.id}/add`)}
 					>
 						<FiPlus size={30} />
-						<span>Add to your TV shows</span>
+						<span>
+							<Trans>Add to your TV shows</Trans>
+						</span>
 					</button>
 				)}
 			</div>
 
 			<div className="row carousel">
-				<span>Cast ({tvshow.credits.cast.length})</span>
+				<span>
+					<Trans>Cast</Trans> ({tvshow.credits.cast.length})
+				</span>
 				<Carousel>
 					{tvshow.credits.cast.map((celebrity, index) => (
 						<SwiperSlide key={index}>
@@ -195,7 +210,9 @@ const Tvshow: React.FC<TvshowProps> = ({tvshow}) => {
 			</div>
 
 			<div className="row carousel">
-				<span>Crew ({tvshow.credits.crew.length})</span>
+				<span>
+					<Trans>Crew</Trans> ({tvshow.credits.crew.length})
+				</span>
 				<Carousel>
 					{tvshow.credits.crew.map((celebrity, index) => (
 						<SwiperSlide key={index}>
