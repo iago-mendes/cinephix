@@ -187,9 +187,10 @@ const UserTvshows: React.FC = () => {
 												className="droppableArea"
 											>
 												{tvshows.map((tvshow, index) => {
+													// loading
 													if (tvshow.id < 0)
 														return (
-															<div className="tvshow">
+															<div className="tvshow" key={index}>
 																<div className="img">
 																	<SkeletonLoading opacity={0.75} />
 																</div>
