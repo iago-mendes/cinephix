@@ -2,6 +2,7 @@ import {useState} from 'react'
 import {BiSort} from 'react-icons/bi'
 import {motion} from 'framer-motion'
 import {FiX} from 'react-icons/fi'
+import {Trans, t} from '@lingui/macro'
 
 import Container from '../../styles/components/modals/SortTvshows'
 import useClickOutside from '../../hooks/useClickOutside'
@@ -67,7 +68,7 @@ const SortTvshowsModal: React.FC<SortTvshowsModalProps> = ({
 
 	return (
 		<Container ref={ref}>
-			<button title="Sort TV shows" onClick={() => setShowOptions(true)}>
+			<button title={t`Sort TV shows`} onClick={() => setShowOptions(true)}>
 				<BiSort size={20} />
 			</button>
 
@@ -100,25 +101,23 @@ const SortTvshowsModal: React.FC<SortTvshowsModalProps> = ({
 				<div className="options">
 					<header>
 						<div className="group">
-							<h3>Sort by...</h3>
+							<h3>
+								<Trans>Sort by</Trans>...
+							</h3>
 							<button className="close" onClick={() => setShowOptions(false)}>
 								<FiX size={20} />
 							</button>
 						</div>
 					</header>
 					<ul>
-						<li onClick={() => handleSort('title')}>Title (alphabetically)</li>
-						{/* <li onClick={() => handleSort('date')} >
-							Release date (newest first)
+						<li onClick={() => handleSort('title')}>
+							<Trans>Title (alphabetically)</Trans>
 						</li>
-						<li onClick={() => handleSort('date-')} >
-							Release date (oldest first)
-						</li> */}
 						<li onClick={() => handleSort('rating')}>
-							My rating (highest first)
+							<Trans>My rating (highest first)</Trans>
 						</li>
 						<li onClick={() => handleSort('rating-')}>
-							My rating (lowest first)
+							<Trans>My rating (lowest first)</Trans>
 						</li>
 					</ul>
 				</div>

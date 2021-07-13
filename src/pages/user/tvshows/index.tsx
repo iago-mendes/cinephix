@@ -10,6 +10,7 @@ import Image from 'next/image'
 import {GetServerSideProps} from 'next'
 import {BiQuestionMark} from 'react-icons/bi'
 import {useRouter} from 'next/router'
+import {Trans, t} from '@lingui/macro'
 
 import Container from '../../../styles/pages/user/tvshows/index'
 import api from '../../../services/api'
@@ -23,7 +24,6 @@ import truncateText from '../../../utils/truncateText'
 import {
 	defaultUserTvshowListed,
 	loadingUserTvshowListed,
-	statusInfo,
 	UserTvshowListed
 } from '../../../models/userTvshow'
 import infoAlert from '../../../utils/alerts/info'
@@ -31,6 +31,8 @@ import SortTvshowsModal from '../../../components/modals/SortTvshows'
 import LoadingModal from '../../../components/modals/Loading'
 import HorizontalAd from '../../../components/ads/Horizontal'
 import {SkeletonLoading} from '../../../utils/skeletonLoading'
+import {getStatusOptions} from '../../../assets/db/statusOptions'
+import {getStatusInfo} from '../../../assets/db/statusInfo'
 
 export interface TvshowList {
 	[status: string]: UserTvshowListed[]
@@ -49,18 +51,11 @@ const defaultTvshowList: TvshowList = {
 	paused: loadingTvshows
 }
 
-const validStatus: {[statusKey: string]: string} = {
-	watchList: 'Watch list',
-	watching: 'Watching',
-	waiting: 'Waiting',
-	completed: 'Completed',
-	stopped: 'Stopped',
-	paused: 'Paused'
-}
-
 const UserTvshows: React.FC = () => {
 	const {user} = useAuth()
 	const {locale: language} = useRouter()
+	const statusOptions = getStatusOptions()
+	const statusInfo = getStatusInfo()
 
 	const [tvshowList, setTvshowList] = useState<TvshowList>(defaultTvshowList)
 	const [loading, setLoading] = useState(false)
@@ -124,12 +119,12 @@ const UserTvshows: React.FC = () => {
 	}
 
 	function handleShowStatusInfo(statusKey: string) {
-		infoAlert(`Status: ${validStatus[statusKey]}`, statusInfo[statusKey])
+		infoAlert(`Status: ${statusOptions[statusKey]}`, statusInfo[statusKey])
 	}
 
 	return (
 		<Container className="page">
-			<SEOHead title="My TV shows | Cinephix" />
+			<SEOHead title={t`My TV shows` + ' | Cinephix'} />
 
 			<UserTvshowModal
 				isOpen={isTvshowModalOpen}
@@ -150,7 +145,7 @@ const UserTvshows: React.FC = () => {
 			<main>
 				<DragDropContext onDragEnd={handleDragDrop}>
 					<div className="dragDropArea">
-						{Object.entries(validStatus).map(([statusKey, statusTitle]) => {
+						{Object.entries(statusOptions).map(([statusKey, statusTitle]) => {
 							const tvshows = tvshowList[statusKey]
 
 							return (
@@ -162,7 +157,7 @@ const UserTvshows: React.FC = () => {
 											</h1>
 											<div className="buttons">
 												<button
-													title="Status information"
+													title={t`Status information`}
 													onClick={() => handleShowStatusInfo(statusKey)}
 												>
 													<BiQuestionMark size={20} />
@@ -176,7 +171,7 @@ const UserTvshows: React.FC = () => {
 													setLoading={setLoading}
 												/>
 												<button
-													title="Add a TV show"
+													title={t`Add a TV show`}
 													onClick={() => handleAddClick(statusKey)}
 												>
 													<FiPlus size={20} />
@@ -265,7 +260,9 @@ const UserTvshows: React.FC = () => {
 										onClick={() => handleAddClick(statusKey)}
 									>
 										<FiPlus size={25} />
-										<span>Add a TV show</span>
+										<span>
+											<Trans>Add a TV show</Trans>
+										</span>
 									</button>
 								</div>
 							)

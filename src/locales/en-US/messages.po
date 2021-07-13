@@ -70,6 +70,11 @@ msgstr "<0>TV shows</0>"
 msgid "Add TV show"
 msgstr "Add TV show"
 
+#: src/pages/user/tvshows/index.tsx:174
+#: src/pages/user/tvshows/index.tsx:264
+msgid "Add a TV show"
+msgstr "Add a TV show"
+
 #: src/pages/user/movies/index.tsx:165
 #: src/pages/user/movies/index.tsx:201
 msgid "Add a movie"
@@ -116,6 +121,10 @@ msgstr "Celebrities"
 #: src/components/forms/Tvshow.tsx:247
 msgid "Clear rating"
 msgstr "Clear rating"
+
+#: src/assets/db/statusOptions.ts:8
+msgid "Completed"
+msgstr "Completed"
 
 #: src/components/forms/Movie.tsx:242
 #: src/components/forms/Tvshow.tsx:267
@@ -167,6 +176,7 @@ msgid "Movies"
 msgstr "Movies"
 
 #: src/pages/user/index.tsx:105
+#: src/pages/user/tvshows/index.tsx:127
 msgid "My TV shows"
 msgstr "My TV shows"
 
@@ -183,6 +193,14 @@ msgstr "My movies"
 #: src/pages/tvshows/[tvshow].tsx:168
 msgid "My rating"
 msgstr "My rating"
+
+#: src/components/modals/SortTvshows.tsx:117
+msgid "My rating (highest first)"
+msgstr "My rating (highest first)"
+
+#: src/components/modals/SortTvshows.tsx:120
+msgid "My rating (lowest first)"
+msgstr "My rating (lowest first)"
 
 #: src/pages/user/movies/index.tsx:41
 msgid "My ratings"
@@ -217,6 +235,10 @@ msgstr "Nº of seasons:"
 #: src/components/modals/CookieBanner.tsx:57
 msgid "Ok"
 msgstr "Ok"
+
+#: src/assets/db/statusOptions.ts:10
+msgid "Paused"
+msgstr "Paused"
 
 #: src/components/forms/Movie.tsx:189
 #: src/components/forms/Tvshow.tsx:214
@@ -268,6 +290,11 @@ msgstr "Sign out"
 msgid "Signed in as"
 msgstr "Signed in as"
 
+#: src/components/modals/SortTvshows.tsx:71
+msgid "Sort TV shows"
+msgstr "Sort TV shows"
+
+#: src/components/modals/SortTvshows.tsx:105
 #: src/pages/user/movies/index.tsx:120
 msgid "Sort by"
 msgstr "Sort by"
@@ -275,6 +302,14 @@ msgstr "Sort by"
 #: src/components/forms/Tvshow.tsx:182
 msgid "Status"
 msgstr "Status"
+
+#: src/pages/user/tvshows/index.tsx:160
+msgid "Status information"
+msgstr "Status information"
+
+#: src/assets/db/statusOptions.ts:9
+msgid "Stopped"
+msgstr "Stopped"
 
 #: src/pages/tvshows/index.tsx:51
 #: src/pages/tvshows/index.tsx:53
@@ -285,9 +320,37 @@ msgstr "TV Shows"
 msgid "This application uses cookies to provide you a great user experience. By using Cinephix, you accept our policies."
 msgstr "This application uses cookies to provide you a great user experience. By using Cinephix, you accept our policies."
 
+#: src/assets/db/statusInfo.ts:6
+msgid "This status is dedicated to TV shows you are currently watching."
+msgstr "This status is dedicated to TV shows you are currently watching."
+
+#: src/assets/db/statusInfo.ts:8
+msgid "This status is dedicated to TV shows you have already finished watching and there are no more seasons in production (this applies to cancelled shows as well)."
+msgstr "This status is dedicated to TV shows you have already finished watching and there are no more seasons in production (this applies to cancelled shows as well)."
+
+#: src/assets/db/statusInfo.ts:7
+msgid "This status is dedicated to TV shows you have already started watching but haven't finished. For example, if you are waiting for more seasons of a show, this is the right place to put it."
+msgstr "This status is dedicated to TV shows you have already started watching but haven't finished. For example, if you are waiting for more seasons of a show, this is the right place to put it."
+
+#: src/assets/db/statusInfo.ts:9
+msgid "This status is dedicated to TV shows you have already started watching but stopped before the end of it. This could be because you got bored, the series quality decreased, etc.."
+msgstr "This status is dedicated to TV shows you have already started watching but stopped before the end of it. This could be because you got bored, the series quality decreased, etc.."
+
+#: src/assets/db/statusInfo.ts:10
+msgid "This status is dedicated to TV shows you have already started watching, stopped before its end, AND you plan on finishing it some day."
+msgstr "This status is dedicated to TV shows you have already started watching, stopped before its end, AND you plan on finishing it some day."
+
+#: src/assets/db/statusInfo.ts:5
+msgid "This status is dedicated to TV shows you want to watch but haven't done it yet."
+msgstr "This status is dedicated to TV shows you want to watch but haven't done it yet."
+
 #: src/pages/user/movies/index.tsx:40
 msgid "Title"
 msgstr "Title"
+
+#: src/components/modals/SortTvshows.tsx:114
+msgid "Title (alphabetically)"
+msgstr "Title (alphabetically)"
 
 #: src/components/forms/Movie.tsx:193
 #: src/components/forms/Tvshow.tsx:218
@@ -299,6 +362,11 @@ msgstr "Total:"
 msgid "Venue"
 msgstr "Venue"
 
+#: src/assets/db/statusOptions.ts:7
+msgid "Waiting"
+msgstr "Waiting"
+
+#: src/assets/db/statusOptions.ts:5
 #: src/pages/movies/[movie].tsx:109
 #: src/pages/user/movies/index.tsx:141
 msgid "Watch list"
@@ -308,6 +376,10 @@ msgstr "Watch list"
 #: src/pages/movies/[movie].tsx:109
 msgid "Watched"
 msgstr "Watched"
+
+#: src/assets/db/statusOptions.ts:6
+msgid "Watching"
+msgstr "Watching"
 
 #: src/pages/user/index.tsx:59
 msgid "Your account was successfully deleted!"
