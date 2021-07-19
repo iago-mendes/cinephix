@@ -17,7 +17,7 @@ import {
 	UserMovieListed
 } from '../../../models/userMovie'
 import {selectStyles} from '../../../styles/global'
-import SelectMovie from '../../../components/_modals/SelectMovie'
+import SelectMovie from '../../../components/_modals/_select/SelectMovie'
 import UserMovieModal from '../../../components/_modals/UserMovie'
 import SEOHead from '../../../components/SEOHead'
 import truncateText from '../../../utils/truncateText'

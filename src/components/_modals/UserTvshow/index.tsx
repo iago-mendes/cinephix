@@ -1,12 +1,12 @@
-import {FiEdit3} from 'react-icons/fi'
-
-import Container from '../../styles/components/modals/UserTvshow'
 import React from 'react'
 import Image from 'next/image'
-import getTotalRating from '../../utils/getTotalRating'
 import {useRouter} from 'next/router'
-import ModalContainer from './Container'
-import {UserTvshowListed as UserTvshow} from '../../models/userTvshow'
+import {FiEdit3} from 'react-icons/fi'
+
+import Container from './styles'
+import getTotalRating from '../../../utils/getTotalRating'
+import ModalContainer from '../Container'
+import {UserTvshowListed as UserTvshow} from '../../../models/userTvshow'
 
 export interface Tvshow {
 	id: number

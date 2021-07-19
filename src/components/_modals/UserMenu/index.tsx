@@ -6,9 +6,9 @@ import {useEffect} from 'react'
 import Link from 'next/link'
 import {Trans} from '@lingui/macro'
 
-import Container from '../../styles/components/modals/UserMenu'
-import {useAuth} from '../../hooks/useAuth'
-import useDimensions from '../../hooks/useDimensions'
+import Container from './styles'
+import {useAuth} from '../../../hooks/useAuth'
+import useDimensions from '../../../hooks/useDimensions'
 
 interface UserMenuProps {
 	isOpen: boolean

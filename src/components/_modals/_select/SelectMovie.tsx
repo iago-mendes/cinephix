@@ -1,25 +1,24 @@
 import {useEffect, useState} from 'react'
 import {FaSearch} from 'react-icons/fa'
 
-import Container from '../../styles/components/modals/Select'
+import Container from './styles'
+import MediaCard, {Media} from '../../_cards/Media'
+import GridPaginate from '../../GridPaginate'
+import {updatePaginatedData} from '../../../utils/updatePaginatedData'
+import ModalContainer from '../Container'
+import {useUserStatus} from '../../../contexts/UserStatus'
 
-import MediaCard, {Media} from '../_cards/Media'
-import GridPaginate from '../GridPaginate'
-import {updatePaginatedData} from '../../utils/updatePaginatedData'
-import ModalContainer from './Container'
-import {useUserStatus} from '../../contexts/UserStatus'
-
-interface SelectTvshowProps {
+interface SelectMovieProps {
 	isOpen: boolean
 	setIsOpen: (p: boolean) => void
 
-	statusKey: string
+	watched: boolean
 }
 
-const SelectTvshow: React.FC<SelectTvshowProps> = ({
+const SelectMovie: React.FC<SelectMovieProps> = ({
 	isOpen,
 	setIsOpen,
-	statusKey
+	watched
 }) => {
 	const {typingControllerProps} = useUserStatus()
 
@@ -28,12 +27,12 @@ const SelectTvshow: React.FC<SelectTvshowProps> = ({
 	const [totalPages, setTotalPages] = useState(1)
 	const [loading, setLoading] = useState(false)
 
-	const [tvshows, setTvshows] = useState<Media[]>([])
+	const [movies, setMovies] = useState<Media[]>([])
 
 	useEffect(() => {
 		updatePaginatedData({
-			route: 'tvshows',
-			setData: setTvshows,
+			route: 'movies',
+			setData: setMovies,
 			setLoading,
 			search,
 			page,
@@ -46,14 +45,14 @@ const SelectTvshow: React.FC<SelectTvshowProps> = ({
 		<ModalContainer
 			isOpen={isOpen}
 			handleClose={() => setIsOpen(false)}
-			display="Select a TV show"
+			display="Select a movie"
 		>
 			<Container>
 				<div className="search">
 					<FaSearch size={25} />
 					<input
 						type="text"
-						placeholder="Search for a TV show"
+						placeholder="Search for a movie"
 						value={search}
 						onChange={e => setSearch(e.target.value)}
 						autoFocus
@@ -68,14 +67,14 @@ const SelectTvshow: React.FC<SelectTvshowProps> = ({
 						totalPages={totalPages}
 						loading={loading}
 						style={{minHeight: 'calc(85vh - 12rem)'}}
-						noResults={tvshows.length === 0 && search != ''}
+						noResults={movies.length === 0 && search != ''}
 					>
-						{tvshows.map(item => (
+						{movies.map(item => (
 							<MediaCard
 								media={item}
 								showOverview
 								key={item.id}
-								link={`/user/tvshows/${item.id}/add?status=${statusKey}`}
+								link={`/user/movies/${item.id}/add?watched=${watched}`}
 								onClick={() => setIsOpen(false)}
 							/>
 						))}
@@ -86,4 +85,4 @@ const SelectTvshow: React.FC<SelectTvshowProps> = ({
 	)
 }
 
-export default SelectTvshow
+export default SelectMovie

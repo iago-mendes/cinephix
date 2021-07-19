@@ -1,9 +1,9 @@
 import Image from 'next/image'
 
-import {banners} from '../../assets/db/banners'
-import Container from '../../styles/components/modals/SelectBanner'
-import getBanner from '../../utils/getBanner'
-import ModalContainer from './Container'
+import Container from './styles'
+import {banners} from '../../../assets/db/banners'
+import getBanner from '../../../utils/getBanner'
+import ModalContainer from '../Container'
 
 interface SelectBannerModalProps {
 	isOpen: boolean

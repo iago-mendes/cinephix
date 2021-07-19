@@ -4,13 +4,13 @@ import {motion} from 'framer-motion'
 import {FiX} from 'react-icons/fi'
 import {Trans, t} from '@lingui/macro'
 
-import Container from '../../styles/components/modals/SortTvshows'
-import useClickOutside from '../../hooks/useClickOutside'
-import {UserTvshowListed as UserTvshow} from '../../models/userTvshow'
-import {TvshowList} from '../../pages/user/tvshows/index'
-import getTotalRating from '../../utils/getTotalRating'
-import api from '../../services/api'
-import {useAuth} from '../../hooks/useAuth'
+import Container from './styles'
+import useClickOutside from '../../../hooks/useClickOutside'
+import {UserTvshowListed as UserTvshow} from '../../../models/userTvshow'
+import {TvshowList} from '../../../pages/user/tvshows/index'
+import getTotalRating from '../../../utils/getTotalRating'
+import api from '../../../services/api'
+import {useAuth} from '../../../hooks/useAuth'
 
 interface SortTvshowsModalProps {
 	statusKey: string

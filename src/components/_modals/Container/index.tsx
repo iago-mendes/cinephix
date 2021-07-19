@@ -2,8 +2,8 @@ import {FiX} from 'react-icons/fi'
 import {BiExpand} from 'react-icons/bi'
 import Link from 'next/link'
 
-import Container from '../../styles/components/modals/Container'
-import {useAvoidScroll} from '../../hooks/useAvoidScroll'
+import Container from './styles'
+import {useAvoidScroll} from '../../../hooks/useAvoidScroll'
 
 type Props = {
 	isOpen: boolean

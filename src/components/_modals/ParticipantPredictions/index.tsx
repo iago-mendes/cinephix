@@ -1,10 +1,10 @@
-import Container from '../../styles/components/modals/ParticipantPredictions'
-import ModalContainer from './Container'
-import {GroupParticipant} from '../../models/group'
-import EventCelebrityCard from '../_cards/EventCelebrity'
-import {EventCelebrity, EventMedia} from '../../models/event'
-import EventMediaCard from '../_cards/EventMedia'
-import WinnerSign from '../WinnerSign'
+import Container from './styles'
+import ModalContainer from '../Container'
+import {GroupParticipant} from '../../../models/group'
+import EventCelebrityCard from '../../_cards/EventCelebrity'
+import {EventCelebrity, EventMedia} from '../../../models/event'
+import EventMediaCard from '../../_cards/EventMedia'
+import WinnerSign from '../../WinnerSign'
 
 interface ParticipantPredictionsModalProps {
 	isOpen: boolean

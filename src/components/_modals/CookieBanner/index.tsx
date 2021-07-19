@@ -4,7 +4,7 @@ import {FiX} from 'react-icons/fi'
 import {motion} from 'framer-motion'
 import {Trans} from '@lingui/macro'
 
-import Container from '../../styles/components/modals/CookieBanner'
+import Container from './styles'
 
 const CookieBanner: React.FC = () => {
 	const {push, pathname} = useRouter()
