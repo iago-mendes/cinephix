@@ -7,6 +7,7 @@ import MediaCard, {Media} from '../cards/Media'
 import GridPaginate from '../../components/GridPaginate'
 import {updatePaginatedData} from '../../utils/updatePaginatedData'
 import ModalContainer from './Container'
+import {useUserStatus} from '../../contexts/UserStatus'
 
 interface SelectTvshowProps {
 	isOpen: boolean
@@ -20,6 +21,8 @@ const SelectTvshow: React.FC<SelectTvshowProps> = ({
 	setIsOpen,
 	statusKey
 }) => {
+	const {typingControllerProps} = useUserStatus()
+
 	const [search, setSearch] = useState('')
 	const [page, setPage] = useState(1)
 	const [totalPages, setTotalPages] = useState(1)
@@ -55,6 +58,7 @@ const SelectTvshow: React.FC<SelectTvshowProps> = ({
 						onChange={e => setSearch(e.target.value)}
 						autoFocus
 						maxLength={100}
+						{...typingControllerProps}
 					/>
 				</div>
 				<div className="scroll">

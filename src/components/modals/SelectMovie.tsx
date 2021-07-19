@@ -7,6 +7,7 @@ import MediaCard, {Media} from '../cards/Media'
 import GridPaginate from '../../components/GridPaginate'
 import {updatePaginatedData} from '../../utils/updatePaginatedData'
 import ModalContainer from './Container'
+import {useUserStatus} from '../../contexts/UserStatus'
 
 interface SelectMovieProps {
 	isOpen: boolean
@@ -20,6 +21,8 @@ const SelectMovie: React.FC<SelectMovieProps> = ({
 	setIsOpen,
 	watched
 }) => {
+	const {typingControllerProps} = useUserStatus()
+
 	const [search, setSearch] = useState('')
 	const [page, setPage] = useState(1)
 	const [totalPages, setTotalPages] = useState(1)
@@ -55,6 +58,7 @@ const SelectMovie: React.FC<SelectMovieProps> = ({
 						onChange={e => setSearch(e.target.value)}
 						autoFocus
 						maxLength={100}
+						{...typingControllerProps}
 					/>
 				</div>
 				<div className="scroll">
