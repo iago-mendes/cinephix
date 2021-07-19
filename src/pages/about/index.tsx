@@ -1,5 +1,3 @@
-import Image from 'next/image'
-
 import Container from '../../styles/pages/about/index'
 import SEOHead from '../../components/SEOHead'
 import logoName from '../../assets/images/logo/name.svg'
@@ -13,15 +11,10 @@ const About: React.FC = () => {
 
 			<header>
 				<div className="icon">
-					<Image
-						src={logoIcon}
-						width={1000}
-						height={1000}
-						layout="responsive"
-					/>
+					<img src={logoIcon} alt="Cinephix" />
 				</div>
 				<div className="name">
-					<Image src={logoName} width={1000} height={200} layout="responsive" />
+					<img src={logoName} alt="Cinephix" />
 				</div>
 			</header>
 

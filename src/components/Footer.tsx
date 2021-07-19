@@ -5,7 +5,6 @@ import {Trans} from '@lingui/macro'
 import logoName from '../assets/images/logo/name.svg'
 import logoIcon from '../assets/images/logo/icon.svg'
 import useDimensions from '../hooks/useDimensions'
-import Image from 'next/image'
 
 const Footer: React.FC = () => {
 	const {inMobile} = useDimensions()
@@ -19,10 +18,10 @@ const Footer: React.FC = () => {
 					<Link href="/">
 						<div className="logos">
 							<div className="icon">
-								<Image src={logoIcon} alt="Cinephix" />
+								<img src={logoIcon} alt="Cinephix" />
 							</div>
 							<div className="name">
-								<Image src={logoName} alt="Cinephix" />
+								<img src={logoName} alt="Cinephix" />
 							</div>
 						</div>
 					</Link>

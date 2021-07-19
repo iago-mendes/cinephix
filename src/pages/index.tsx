@@ -71,13 +71,31 @@ const Home: React.FC<HomeProps> = ({staticHome}) => {
 			<header>
 				<div className="left icons">
 					<div className="img">
-						<Image src={camera} alt="Camera" layout="responsive" />
+						<Image
+							src={camera}
+							alt="Camera"
+							width={1000}
+							height={1000}
+							layout="responsive"
+						/>
 					</div>
 					<div className="img">
-						<Image src={glasses} alt="Glasses" layout="responsive" />
+						<Image
+							src={glasses}
+							alt="Glasses"
+							width={1000}
+							height={1000}
+							layout="responsive"
+						/>
 					</div>
 					<div className="img">
-						<Image src={film} alt="Film" layout="responsive" />
+						<Image
+							src={film}
+							alt="Film"
+							width={1000}
+							height={1000}
+							layout="responsive"
+						/>
 					</div>
 				</div>
 				<div className="logos">
@@ -100,13 +118,31 @@ const Home: React.FC<HomeProps> = ({staticHome}) => {
 				</div>
 				<div className="right icons">
 					<div className="img">
-						<Image src={marker} alt="Marker" layout="responsive" />
+						<Image
+							src={marker}
+							alt="Marker"
+							width={1000}
+							height={1000}
+							layout="responsive"
+						/>
 					</div>
 					<div className="img">
-						<Image src={popcorn} alt="Popcorn" layout="responsive" />
+						<Image
+							src={popcorn}
+							alt="Popcorn"
+							width={1000}
+							height={1000}
+							layout="responsive"
+						/>
 					</div>
 					<div className="img">
-						<Image src={microfone} alt="Microfone" layout="responsive" />
+						<Image
+							src={microfone}
+							alt="Microfone"
+							width={1000}
+							height={1000}
+							layout="responsive"
+						/>
 					</div>
 				</div>
 				<SearchBox

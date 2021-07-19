@@ -65,6 +65,11 @@ export default createGlobalStyle`
 		text-decoration: none;
 	}
 
+	img {
+		max-width: 100%;
+		max-height: 100%;
+	}
+
 	#__next
 	{
 		
