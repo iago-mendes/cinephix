@@ -1,9 +1,9 @@
 import {useEffect, useState} from 'react'
 import {FiX} from 'react-icons/fi'
-import useDimensions from '../../hooks/useDimensions'
 
-import Container from '../../styles/components/ads/Banner'
-import HorizontalAd from './Horizontal'
+import Container from './styles'
+import HorizontalAd from '../Horizontal'
+import useDimensions from '../../../hooks/useDimensions'
 
 const BannerAd: React.FC = () => {
 	const [show, setShow] = useState(false)

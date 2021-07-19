@@ -3,9 +3,9 @@ import {useEffect, useState} from 'react'
 import {FiX} from 'react-icons/fi'
 import {Trans} from '@lingui/macro'
 
-import Container from '../../styles/components/ads/Modal'
-import {LargeSkyscraperAd} from '../../utils/adUnits'
-import ModalContainer from '../_modals/Container'
+import Container from './styles'
+import {LargeSkyscraperAd} from '../../../utils/adUnits'
+import ModalContainer from '../../_modals/Container'
 
 const ModalAd: React.FC = () => {
 	const {pathname} = useRouter()
