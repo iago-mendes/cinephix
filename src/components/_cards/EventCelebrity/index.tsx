@@ -2,10 +2,10 @@ import Image from 'next/image'
 import Link from 'next/link'
 import {FiCalendar} from 'react-icons/fi'
 
-import Container from '../../styles/components/cards/EventCelebrity'
-import {EventCelebrity} from '../../models/event'
-import truncateText from '../../utils/truncateText'
-import formatDate from '../../utils/formatDate'
+import Container from './styles'
+import {EventCelebrity} from '../../../models/event'
+import truncateText from '../../../utils/truncateText'
+import formatDate from '../../../utils/formatDate'
 
 interface EventCelebrityCardProps {
 	eventCelebrity: EventCelebrity

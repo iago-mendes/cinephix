@@ -1,7 +1,8 @@
-import Container from '../../styles/components/cards/Event'
-import {EventListed} from '../../models/event'
-import truncateText from '../../utils/truncateText'
 import Link from 'next/link'
+
+import Container from './styles'
+import {EventListed} from '../../../models/event'
+import truncateText from '../../../utils/truncateText'
 
 interface EventCardProps {
 	event: EventListed

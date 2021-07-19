@@ -1,8 +1,8 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
-import Container from '../../styles/components/cards/Carousel'
-import truncateText from '../../utils/truncateText'
+import Container from './styles'
+import truncateText from '../../../utils/truncateText'
 
 interface CarouselCardProps {
 	image: string

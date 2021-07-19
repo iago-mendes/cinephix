@@ -2,10 +2,10 @@ import Image from 'next/image'
 import {FiCalendar, FiUser} from 'react-icons/fi'
 import Link from 'next/link'
 
-import Container from '../../styles/components/cards/Celebrity'
-import {Media} from './Media'
-import formatDate from '../../utils/formatDate'
-import truncateText from '../../utils/truncateText'
+import Container from './styles'
+import {Media} from '../Media'
+import formatDate from '../../../utils/formatDate'
+import truncateText from '../../../utils/truncateText'
 
 export interface Celebrity {
 	id: number
