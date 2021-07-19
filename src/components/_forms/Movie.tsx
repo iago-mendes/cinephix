@@ -7,7 +7,7 @@ import {MdClear} from 'react-icons/md'
 import Switch from 'react-switch'
 import {Trans, t} from '@lingui/macro'
 
-import Container, {RangeInput} from '../../styles/components/forms/global'
+import Container, {RangeInput} from './styles'
 import api from '../../services/api'
 import MovieDetails, {loadingMovie} from '../../models/movie'
 import {selectStyles} from '../../styles/global'

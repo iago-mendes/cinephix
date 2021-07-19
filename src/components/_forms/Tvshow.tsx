@@ -6,7 +6,7 @@ import {FiCheck, FiX} from 'react-icons/fi'
 import {MdClear} from 'react-icons/md'
 import {Trans, t} from '@lingui/macro'
 
-import Container, {RangeInput} from '../../styles/components/forms/global'
+import Container, {RangeInput} from './styles'
 import api from '../../services/api'
 import TvshowDetails, {loadingTvshow} from '../../models/tvshow'
 import {selectStyles} from '../../styles/global'
