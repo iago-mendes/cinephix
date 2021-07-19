@@ -16,7 +16,7 @@ import formatDate from '../../utils/formatDate'
 import MovieDetails from '../../models/movie'
 import {useAuth} from '../../hooks/useAuth'
 import UserMovie, {defaultUserMovie} from '../../models/userMovie'
-import getVenue from '../../utils/getVenue'
+import {Venue} from '../../components/Venue'
 import getTotalRating from '../../utils/getTotalRating'
 import SEOHead from '../../components/SEOHead'
 
@@ -113,7 +113,9 @@ const Movie: React.FC<MovieProps> = ({movie}) => {
 								<label>
 									<Trans>My venue</Trans>
 								</label>
-								<span>{getVenue(userMovie.venue)}</span>
+								<span>
+									<Venue venue={userMovie.venue} />
+								</span>
 							</div>
 						)}
 						{Object.values(userMovie.ratings).length !== 0 && (

@@ -13,7 +13,7 @@ import {selectStyles} from '../../styles/global'
 import {useAuth} from '../../hooks/useAuth'
 import successAlert from '../../utils/alerts/success'
 import errorAlert from '../../utils/alerts/error'
-import calcTotalRating from '../../utils/getTotalRating'
+import getTotalRating from '../../utils/getTotalRating'
 import Ratings, {defaultTvshowRatings} from '../../models/ratings'
 import {UserTvshowDetails} from '../../models/userTvshow'
 import {venues} from '../../assets/db/venues'
@@ -217,7 +217,7 @@ const TvshowForm: React.FC<TvshowFormProps> = ({method}) => {
 							<label>
 								<Trans>Total:</Trans>
 							</label>
-							<span>{calcTotalRating(ratings) || 'not rated'}</span>
+							<span>{getTotalRating(ratings) || 'not rated'}</span>
 						</div>
 						{Object.entries(ratings).map(([ratingKey, value]) => (
 							<div className="rating" key={ratingKey}>

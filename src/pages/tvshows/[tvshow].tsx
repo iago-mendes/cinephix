@@ -27,7 +27,7 @@ import {
 } from '../../models/userTvshow'
 import getTotalRating from '../../utils/getTotalRating'
 import getStatusLabel from '../../utils/getStatusLabel'
-import getVenue from '../../utils/getVenue'
+import {Venue} from '../../components/Venue'
 import SEOHead from '../../components/SEOHead'
 
 export interface TvshowDetails {
@@ -159,7 +159,9 @@ const Tvshow: React.FC<TvshowProps> = ({tvshow}) => {
 								<label>
 									<Trans>My venue</Trans>
 								</label>
-								<span>{getVenue(userTvshow.venue)}</span>
+								<span>
+									<Venue venue={userTvshow.venue} />
+								</span>
 							</div>
 						)}
 						{Object.values(userTvshow.ratings).length !== 0 && (

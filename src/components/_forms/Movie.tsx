@@ -14,7 +14,7 @@ import {selectStyles} from '../../styles/global'
 import {useAuth} from '../../hooks/useAuth'
 import successAlert from '../../utils/alerts/success'
 import errorAlert from '../../utils/alerts/error'
-import calcTotalRating from '../../utils/getTotalRating'
+import getTotalRating from '../../utils/getTotalRating'
 import Ratings, {defaultMovieRatings} from '../../models/ratings'
 import UserMovie from '../../models/userMovie'
 import {SelectOption} from '../../models'
@@ -192,7 +192,7 @@ const MovieForm: React.FC<MovieFormProps> = ({method}) => {
 							<label>
 								<Trans>Total:</Trans>
 							</label>
-							<span>{calcTotalRating(ratings) || 'not rated'}</span>
+							<span>{getTotalRating(ratings) || 'not rated'}</span>
 						</div>
 						{Object.entries(ratings).map(([ratingKey, value]) => (
 							<div className="rating" key={ratingKey}>

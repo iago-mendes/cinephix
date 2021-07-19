@@ -1,6 +1,10 @@
 import {venues} from '../assets/db/venues'
 
-function getVenue(venue: string) {
+type Props = {
+	venue: string
+}
+
+export function Venue({venue}: Props) {
 	function getColor() {
 		const venueOption = venues.find(({name}) => name === venue)
 
@@ -17,5 +21,3 @@ function getVenue(venue: string) {
 		</>
 	)
 }
-
-export default getVenue

@@ -6,7 +6,7 @@ import {useRouter} from 'next/router'
 import Container from './styles'
 import getTotalRating from '../../../utils/getTotalRating'
 import {UserMovieListed} from '../../../models/userMovie'
-import getVenue from '../../../utils/getVenue'
+import {Venue} from '../../Venue'
 import getRatingLabel from '../../../utils/getRatingLabel'
 import api from '../../../services/api'
 import {useAuth} from '../../../hooks/useAuth'
@@ -75,7 +75,9 @@ const UserMovieModal: React.FC<UserMovieModalProps> = ({
 					{movie.venue && (
 						<div className="group">
 							<label>Venue</label>
-							<span>{getVenue(movie.venue)}</span>
+							<span>
+								<Venue venue={movie.venue} />
+							</span>
 						</div>
 					)}
 					{movie.watched && (
