@@ -3,10 +3,10 @@ import {FiTrash} from 'react-icons/fi'
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
 
-import Container from '../styles/components/RemoveButton'
-import successAlert from '../utils/alerts/success'
-import errorAlert from '../utils/alerts/error'
-import api from '../services/api'
+import Container from './styles'
+import successAlert from '../../utils/alerts/success'
+import errorAlert from '../../utils/alerts/error'
+import api from '../../services/api'
 
 const MySwal = withReactContent(Swal)
 

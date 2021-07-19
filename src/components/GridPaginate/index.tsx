@@ -8,8 +8,8 @@ import {
 import {CSSProperties} from 'styled-components'
 import {t} from '@lingui/macro'
 
-import Container from '../styles/components/GridPaginate'
-import Loading from './Loading'
+import Container from './styles'
+import Loading from '../Loading'
 
 interface GridPaginateProps {
 	page: number

@@ -2,7 +2,7 @@ import {useEffect, useState} from 'react'
 import {t} from '@lingui/macro'
 
 import Loading from '../../../../components/Loading'
-import TvshowForm from '../../../../components/forms/Tvshow'
+import TvshowForm from '../../../../components/_forms/Tvshow'
 import {useAuth} from '../../../../hooks/useAuth'
 import RemoveButton from '../../../../components/RemoveButton'
 import SEOHead from '../../../../components/SEOHead'

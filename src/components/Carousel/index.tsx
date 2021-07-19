@@ -1,7 +1,7 @@
 import {Swiper} from 'swiper/react'
 
-import Container from '../styles/components/Carousel'
-import useDimensions from '../hooks/useDimensions'
+import Container from './styles'
+import useDimensions from '../../hooks/useDimensions'
 
 interface CarouselProps {
 	className?: string

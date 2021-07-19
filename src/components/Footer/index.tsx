@@ -1,10 +1,10 @@
 import Link from 'next/link'
-import Container from '../styles/components/Footer'
 import {Trans} from '@lingui/macro'
 
-import logoName from '../assets/images/logo/name.svg'
-import logoIcon from '../assets/images/logo/icon.svg'
-import useDimensions from '../hooks/useDimensions'
+import Container from './styles'
+import logoName from '../../assets/images/logo/name.svg'
+import logoIcon from '../../assets/images/logo/icon.svg'
+import useDimensions from '../../hooks/useDimensions'
 
 const Footer: React.FC = () => {
 	const {inMobile} = useDimensions()

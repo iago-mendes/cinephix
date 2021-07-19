@@ -9,7 +9,7 @@ import {useAuth} from '../../hooks/useAuth'
 import api from '../../services/api'
 import truncateText from '../../utils/truncateText'
 import Link from 'next/link'
-import HorizontalAd from '../../components/ads/Horizontal'
+import HorizontalAd from '../../components/_ads/Horizontal'
 
 const Groups: React.FC = () => {
 	const {user} = useAuth()

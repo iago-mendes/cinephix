@@ -2,7 +2,7 @@ import {useEffect, useState} from 'react'
 import {t} from '@lingui/macro'
 
 import Loading from '../../../../components/Loading'
-import MovieForm from '../../../../components/forms/Movie'
+import MovieForm from '../../../../components/_forms/Movie'
 import RemoveButton from '../../../../components/RemoveButton'
 import SEOHead from '../../../../components/SEOHead'
 import {useRouter} from 'next/router'

@@ -1,6 +1,6 @@
 import Image from 'next/image'
 
-import Container from '../styles/components/HeaderWithBackground'
+import Container from './styles'
 
 interface HeaderWithBackgroundProps {
 	background: StaticImageData

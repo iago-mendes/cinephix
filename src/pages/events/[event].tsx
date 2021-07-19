@@ -9,8 +9,8 @@ import Loading from '../../components/Loading'
 import EventDetails from '../../models/event'
 import SEOHead from '../../components/SEOHead'
 import Carousel from '../../components/Carousel'
-import EventMediaCard from '../../components/cards/EventMedia'
-import EventCelebrityCard from '../../components/cards/EventCelebrity'
+import EventMediaCard from '../../components/_cards/EventMedia'
+import EventCelebrityCard from '../../components/_cards/EventCelebrity'
 
 interface EventProps {
 	event: EventDetails

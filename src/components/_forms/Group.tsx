@@ -15,7 +15,7 @@ import {EventListed} from '../../models/event'
 import successAlert from '../../utils/alerts/success'
 import errorAlert from '../../utils/alerts/error'
 import {useAuth} from '../../hooks/useAuth'
-import SelectBannerModal from '../modals/SelectBanner'
+import SelectBannerModal from '../_modals/SelectBanner'
 import slugify from '../../utils/slugify'
 import {useUserStatus} from '../../contexts/UserStatus'
 

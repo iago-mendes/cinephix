@@ -1,5 +1,5 @@
 import SEOHead from '../../components/SEOHead'
-import GroupForm from '../../components/forms/Group'
+import GroupForm from '../../components/_forms/Group'
 
 const CreateGroup: React.FC = () => {
 	return (

@@ -5,7 +5,7 @@ import {Trans} from '@lingui/macro'
 
 import Container from '../../styles/components/ads/Modal'
 import {LargeSkyscraperAd} from '../../utils/adUnits'
-import ModalContainer from '../modals/Container'
+import ModalContainer from '../_modals/Container'
 
 const ModalAd: React.FC = () => {
 	const {pathname} = useRouter()

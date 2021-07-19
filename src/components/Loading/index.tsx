@@ -1,5 +1,6 @@
 import {CSSProperties} from 'styled-components'
-import Container from '../styles/components/Loading'
+
+import Container from './styles'
 
 interface LoadingProps {
 	style?: CSSProperties

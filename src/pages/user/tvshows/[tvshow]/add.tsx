@@ -1,4 +1,4 @@
-import TvshowForm from '../../../../components/forms/Tvshow'
+import TvshowForm from '../../../../components/_forms/Tvshow'
 import SEOHead from '../../../../components/SEOHead'
 import {t} from '@lingui/macro'
 

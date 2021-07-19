@@ -1,7 +1,7 @@
 import {FaSearch} from 'react-icons/fa'
 
-import Container from '../styles/components/SearchBox'
-import {useUserStatus} from '../contexts/UserStatus'
+import Container from './styles'
+import {useUserStatus} from '../../contexts/UserStatus'
 
 interface SearchBoxProps {
 	search: string

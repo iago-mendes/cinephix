@@ -1,6 +1,6 @@
 import {FaAward} from 'react-icons/fa'
 
-import Container from '../styles/components/WinnerSign'
+import Container from './styles'
 
 const WinnerSign: React.FC = () => {
 	return (

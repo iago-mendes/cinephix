@@ -7,7 +7,7 @@ import oscars from '../../assets/images/backgrounds/oscars.jpg'
 import HeaderWithBackground from '../../components/HeaderWithBackground'
 import SEOHead from '../../components/SEOHead'
 import {EventListed} from '../../models/event'
-import EventCard from '../../components/cards/Event'
+import EventCard from '../../components/_cards/Event'
 
 interface EventsProps {
 	events: EventListed[]

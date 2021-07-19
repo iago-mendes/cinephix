@@ -17,11 +17,11 @@ import {
 	UserMovieListed
 } from '../../../models/userMovie'
 import {selectStyles} from '../../../styles/global'
-import SelectMovie from '../../../components/modals/SelectMovie'
-import UserMovieModal from '../../../components/modals/UserMovie'
+import SelectMovie from '../../../components/_modals/SelectMovie'
+import UserMovieModal from '../../../components/_modals/UserMovie'
 import SEOHead from '../../../components/SEOHead'
 import truncateText from '../../../utils/truncateText'
-import HorizontalAd from '../../../components/ads/Horizontal'
+import HorizontalAd from '../../../components/_ads/Horizontal'
 import {SkeletonLoading} from '../../../utils/skeletonLoading'
 
 const UserMovies: React.FC = () => {
