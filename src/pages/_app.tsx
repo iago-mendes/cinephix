@@ -15,7 +15,7 @@ import CookieBanner from '../components/_modals/CookieBanner'
 import BannerAd from '../components/_ads/Banner'
 import ModalAd from '../components/_ads/Modal'
 import {UserStatusProvider} from '../contexts/UserStatus'
-import {I18nHandler} from '../components/I18nHandler'
+import {I18nHandler} from '../locales/I18nHandler'
 import {AuthProvider} from '../contexts/Auth'
 
 const MyApp: React.FC<AppProps> = ({Component, pageProps}) => {
