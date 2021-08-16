@@ -29,8 +29,8 @@ const Events: React.FC<EventsProps> = ({events}) => {
 				hidePaginate
 				noResultsMessage={t`No events open at the moment!`}
 			>
-				{events.map((event, index) => (
-					<EventCard key={index} event={event} />
+				{events.map(event => (
+					<EventCard key={event.id} event={event} />
 				))}
 			</GridPaginate>
 		</div>

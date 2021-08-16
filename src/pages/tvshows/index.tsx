@@ -65,13 +65,13 @@ const Tvshows: React.FC<TvshowsProps> = ({staticTvshows}) => {
 				loading={loading}
 				noResults={tvshows.length === 0}
 			>
-				{tvshowsWithAd.map((item, index) => {
-					if (item.id < 0) return <CardAd key={index} />
+				{tvshowsWithAd.map(item => {
+					if (item.id < 0) return <CardAd key={item.id} />
 					return (
 						<MediaCard
 							media={item}
 							showOverview
-							key={index}
+							key={item.id}
 							link={`tvshows/${item.id}`}
 						/>
 					)

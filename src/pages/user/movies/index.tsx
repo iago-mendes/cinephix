@@ -231,7 +231,7 @@ const UserMovies: React.FC = () => {
 								else
 									return (
 										<div
-											key={index}
+											key={movie.data.id}
 											className="movie"
 											onClick={() => handleCardClick(movie)}
 										>

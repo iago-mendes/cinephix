@@ -69,10 +69,14 @@ const Celebrities: React.FC<CelebritiesProps> = ({staticCelebrities}) => {
 				loading={loading}
 				noResults={celebrities.length === 0}
 			>
-				{celebritiesWithAd.map((celebrity, index) => {
-					if (celebrity.id < 0) return <CardAd key={index} />
+				{celebritiesWithAd.map(celebrity => {
+					if (celebrity.id < 0) return <CardAd key={celebrity.id} />
 					return (
-						<CelebrityCard celebrity={celebrity} showKnownFor key={index} />
+						<CelebrityCard
+							celebrity={celebrity}
+							showKnownFor
+							key={celebrity.id}
+						/>
 					)
 				})}
 			</GridPaginate>

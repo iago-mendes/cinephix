@@ -65,14 +65,14 @@ const Movies: React.FC<MoviesProps> = ({staticMovies}) => {
 				loading={loading}
 				noResults={movies.length === 0}
 			>
-				{moviesWithAd.map((item, index) => {
-					if (item.id < 0) return <CardAd key={index} />
+				{moviesWithAd.map(item => {
+					if (item.id < 0) return <CardAd key={item.id} />
 					else
 						return (
 							<MediaCard
 								media={item}
 								showOverview
-								key={index}
+								key={item.id}
 								link={`movies/${item.id}`}
 							/>
 						)

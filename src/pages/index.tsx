@@ -159,19 +159,19 @@ const Home: React.FC<HomeProps> = ({staticHome}) => {
 				loading={loading}
 				noResults={home.length === 0}
 			>
-				{homeWithAd.map((item, index) => {
-					if (item.id < 0) return <CardAd key={index} />
+				{homeWithAd.map(item => {
+					if (item.id < 0) return <CardAd key={item.id} />
 					else if (isMedia(item))
 						return (
 							<MediaCard
 								media={item}
 								showOverview
-								key={index}
+								key={item.id}
 								link={`/${item.type}s/${item.id}`}
 							/>
 						)
 					else if (isCelebrity(item))
-						return <CelebrityCard celebrity={item} showKnownFor key={index} />
+						return <CelebrityCard celebrity={item} showKnownFor key={item.id} />
 				})}
 			</GridPaginate>
 		</Container>
