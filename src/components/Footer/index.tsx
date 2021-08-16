@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import {Trans} from '@lingui/macro'
 
 import Container from './styles'
@@ -18,10 +19,10 @@ const Footer: React.FC = () => {
 					<Link href="/">
 						<div className="logos">
 							<div className="icon">
-								<img src={logoIcon} alt="Cinephix" />
+								<Image src={logoIcon} alt="Cinephix" />
 							</div>
 							<div className="name">
-								<img src={logoName} alt="Cinephix" />
+								<Image src={logoName} alt="Cinephix" />
 							</div>
 						</div>
 					</Link>

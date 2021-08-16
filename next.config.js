@@ -1,13 +1,14 @@
 const withPWA = require('next-pwa')
-const withImages = require('next-images')
 
-module.exports = withPWA(withImages({
+module.exports = withPWA({
 	esModule: true,
 	images:
 	{
-		domains: [process.env.NEXT_PUBLIC_API_HOSTNAME, process.env.NEXT_PUBLIC_TMDB_IMG_HOSTNAME],
-		loader: 'imgix',
-		path: ''
+		domains: [
+			process.env.NEXT_PUBLIC_API_HOSTNAME,
+			process.env.NEXT_PUBLIC_TMDB_IMG_HOSTNAME,
+			'lh3.googleusercontent.com'
+		]
 	},
 	pwa:
 	{
@@ -17,6 +18,6 @@ module.exports = withPWA(withImages({
 	i18n:
 	{
     locales: ['en-US', 'pt-BR'],
-    defaultLocale: 'en-US',
+    defaultLocale: 'en-US'
   }
-}))
+})

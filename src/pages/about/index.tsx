@@ -1,8 +1,10 @@
+import Link from 'next/link'
+import Image from 'next/image'
+
 import Container from '../../styles/pages/about/index'
 import SEOHead from '../../components/SEOHead'
 import logoName from '../../assets/images/logo/name.svg'
 import logoIcon from '../../assets/images/logo/icon.svg'
-import Link from 'next/link'
 
 const About: React.FC = () => {
 	return (
@@ -11,10 +13,10 @@ const About: React.FC = () => {
 
 			<header>
 				<div className="icon">
-					<img src={logoIcon} alt="Cinephix" />
+					<Image src={logoIcon} alt="Cinephix" />
 				</div>
 				<div className="name">
-					<img src={logoName} alt="Cinephix" />
+					<Image src={logoName} alt="Cinephix" />
 				</div>
 			</header>
 

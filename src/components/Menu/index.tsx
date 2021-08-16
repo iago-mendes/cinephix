@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import {BiUserCircle} from 'react-icons/bi'
 import {BsFillTriangleFill} from 'react-icons/bs'
 import {useEffect, useState} from 'react'
@@ -63,11 +64,11 @@ const Menu: React.FC = () => {
 			<Link href="/">
 				<div className="logos">
 					<div className="icon">
-						<img src={logoIcon} alt="Cinephix" />
+						<Image src={logoIcon} alt="Cinephix" />
 					</div>
 					{inDesktop && (
 						<div className="name">
-							<img src={logoName} alt="Cinephix" />
+							<Image src={logoName} alt="Cinephix" />
 						</div>
 					)}
 				</div>
