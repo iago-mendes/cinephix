@@ -2,10 +2,11 @@ import Image from 'next/image'
 import {FiCalendar, FiUser} from 'react-icons/fi'
 import Link from 'next/link'
 
-import Container from './styles'
+import {KnownForContainer} from './styles'
 import {Media} from '../Media'
 import formatDate from '../../../utils/formatDate'
 import truncateText from '../../../utils/truncateText'
+import {CardContainer} from '../Container'
 
 export interface Celebrity {
 	id: number
@@ -26,42 +27,34 @@ const CelebrityCard: React.FC<CelebrityCardProps> = ({
 }) => {
 	return (
 		<Link href={`/celebrities/${celebrity.id}`}>
-			<Container as="a" href={`/celebrities/${celebrity.id}`}>
-				<div className="img">
-					<Image
-						src={celebrity.image}
-						width={780}
-						height={1170}
-						layout="responsive"
-					/>
-				</div>
-				<div className="info">
+			<a>
+				<CardContainer imageSrc={celebrity.image}>
 					<h1>{truncateText(celebrity.name, 20)}</h1>
 					<h3>
 						<FiUser size={15} />
 						{celebrity.knownForDepartment}
 					</h3>
 					{showKnownFor && celebrity.knownFor && (
-						<div className="media">
-							<div className="mediaImg">
+						<KnownForContainer>
+							<figure>
 								<Image
 									src={celebrity.knownFor.image}
 									width={780}
 									height={1170}
 									layout="responsive"
 								/>
-							</div>
+							</figure>
 							<div className="mediaInfo">
-								<h1>{truncateText(celebrity.knownFor.title, 35)}</h1>
+								<h2>{truncateText(celebrity.knownFor.title, 35)}</h2>
 								<h3>
 									<FiCalendar size={15} />
 									{formatDate(celebrity.knownFor.date)}
 								</h3>
 							</div>
-						</div>
+						</KnownForContainer>
 					)}
-				</div>
-			</Container>
+				</CardContainer>
+			</a>
 		</Link>
 	)
 }
