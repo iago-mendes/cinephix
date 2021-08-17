@@ -2,7 +2,7 @@ import {useEffect, useState} from 'react'
 import {FaSearch} from 'react-icons/fa'
 
 import Container from './styles'
-import MediaCard, {Media} from '../../_cards/Media'
+import {Media, MediaCard} from '../../_cards/Media'
 import GridPaginate from '../../GridPaginate'
 import {updatePaginatedData} from '../../../utils/updatePaginatedData'
 import ModalContainer from '../Container'

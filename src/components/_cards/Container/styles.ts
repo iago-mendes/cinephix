@@ -11,6 +11,7 @@ export const Container = styled.div<Props>`
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
+	position: relative;
 
 	background-color: ${p => p.theme.primary};
 	width: ${p => p.cardWidth?.mobile || '30rem'};
@@ -19,33 +20,42 @@ export const Container = styled.div<Props>`
 		(${p => p.cardWidth?.mobile || '30rem'} - 2rem) * 0.3 * 1.5 + 2rem
 	);
 
-	border-radius: 1rem;
+	border-radius: 0.5rem;
 	box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
 
 	text-decoration: none;
 
 	cursor: pointer;
-	transition: 0.25s;
+	transition: border-radius 0.2s, filter 0.2s, transform 0.2s;
 
 	:hover {
 		border-radius: 0;
-		background-color: ${p => p.theme.primary}bf;
 
-		.img img {
+		filter: brightness(0.8);
+		transform: scale(0.95);
+
+		> figure {
 			border-radius: 0;
 		}
-	}
 
-	figure {
-		width: 30%;
+		> .info .media-card {
+			border-radius: 0;
 
-		img {
-			border-radius: 1rem;
-			transition: 0.25s;
+			> figure {
+				border-radius: 0;
+			}
 		}
 	}
 
-	.info {
+	> figure {
+		width: 30%;
+		border-radius: 0.5rem;
+		overflow: hidden;
+
+		transition: border-radius 0.2s;
+	}
+
+	> .info {
 		width: 65%;
 		height: 100%;
 
@@ -56,7 +66,7 @@ export const Container = styled.div<Props>`
 
 		color: ${p => p.theme.background};
 
-		h1 {
+		> span.title {
 			font-family: Ubuntu;
 			font-weight: 700;
 
@@ -66,7 +76,7 @@ export const Container = styled.div<Props>`
 			overflow: hidden;
 		}
 
-		h3 {
+		> span.subtitle {
 			font-family: Ubuntu;
 			font-weight: 400;
 
@@ -78,14 +88,63 @@ export const Container = styled.div<Props>`
 			gap: 0.5rem;
 		}
 
-		p {
-			font-family: Roboto;
-			font-weight: 400;
-
+		> p {
 			font-size: 1.2rem;
 			height: 45%;
 
 			overflow: hidden;
+		}
+
+		> .media-card {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+
+			width: 100%;
+			padding: 0.5rem;
+			height: 40%;
+			background-color: rgba(0, 0, 0, 0.25);
+
+			border-radius: 0.5rem;
+			transition: border-radius 0.2s;
+
+			> figure {
+				width: 15%;
+				overflow: hidden;
+
+				border-radius: 0.5rem;
+				transition: border-radius 0.2s;
+			}
+
+			> .info {
+				width: 80%;
+				height: 100%;
+
+				display: flex;
+				flex-direction: column;
+				align-items: flex-start;
+				justify-content: space-between;
+
+				color: ${p => p.theme.background};
+				overflow: hidden;
+
+				span.title {
+					font-family: Ubuntu;
+					font-weight: 700;
+
+					font-size: 1.5rem;
+				}
+
+				span.date {
+					font-family: Ubuntu;
+					font-size: 1.25rem;
+
+					display: flex;
+					align-items: center;
+					justify-content: center;
+					gap: 0.5rem;
+				}
+			}
 		}
 	}
 
@@ -95,7 +154,7 @@ export const Container = styled.div<Props>`
 			(${p => p.cardWidth?.desktop || '40rem'} - 2rem) * 0.3 * 1.5 + 2rem
 		);
 
-		.info {
+		> .info {
 			h1 {
 				font-size: 2.5rem;
 			}

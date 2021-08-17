@@ -4,7 +4,7 @@ import {useRouter} from 'next/router'
 import {t} from '@lingui/macro'
 
 import api from '../../services/api'
-import MediaCard, {Media} from '../../components/_cards/Media'
+import {Media, MediaCard} from '../../components/_cards/Media'
 import GridPaginate from '../../components/GridPaginate'
 import SearchBox from '../../components/SearchBox'
 import cinema from '../../assets/images/backgrounds/cinema.png'

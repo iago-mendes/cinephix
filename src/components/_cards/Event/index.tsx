@@ -1,14 +1,14 @@
 import Link from 'next/link'
 
-import Container from './styles'
+import {Container} from './styles'
 import {EventListed} from '../../../models/event'
 import truncateText from '../../../utils/truncateText'
 
-interface EventCardProps {
+type Props = {
 	event: EventListed
 }
 
-const EventCard: React.FC<EventCardProps> = ({event}) => {
+export function EventCard({event}: Props) {
 	const link = `/events/${event.id}`
 
 	return (
@@ -25,5 +25,3 @@ const EventCard: React.FC<EventCardProps> = ({event}) => {
 		</Link>
 	)
 }
-
-export default EventCard

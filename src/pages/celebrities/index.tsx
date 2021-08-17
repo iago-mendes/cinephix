@@ -3,7 +3,7 @@ import {useEffect, useState} from 'react'
 import {t} from '@lingui/macro'
 
 import api from '../../services/api'
-import CelebrityCard, {Celebrity} from '../../components/_cards/Celebrity'
+import {Celebrity, CelebrityCard} from '../../components/_cards/Celebrity'
 import GridPaginate from '../../components/GridPaginate'
 import SearchBox from '../../components/SearchBox'
 import actors from '../../assets/images/backgrounds/actors.png'
