@@ -6,8 +6,9 @@ import {Container} from './styles'
 import {posterBlurPlaceholder} from '../../../assets/images/placeholders'
 import truncateText from '../../../utils/truncateText'
 import formatDate from '../../../utils/formatDate'
+import {SkeletonLoading} from '../../../utils/skeletonLoading'
 
-type Props = {
+type Props = React.HTMLAttributes<HTMLDivElement> & {
 	imageSrc: string
 	imageBlurData?: string
 	children: ReactNode
@@ -23,6 +24,8 @@ type Props = {
 		title: string
 		date: string
 	}
+
+	isLoading?: boolean
 }
 
 function CardContainerComponent({
@@ -30,10 +33,36 @@ function CardContainerComponent({
 	imageBlurData,
 	children,
 	cardWidth,
-	mediaCard
+	mediaCard,
+	isLoading = false,
+	...props
 }: Props) {
+	if (isLoading)
+		return (
+			<Container cardWidth={cardWidth}>
+				<figure>
+					<SkeletonLoading avoidAnimation opacity={0.9} />
+				</figure>
+				<div className="info">
+					<span className="title">
+						<SkeletonLoading avoidAnimation height="3rem" opacity={0.9} />
+					</span>
+					<div className="details">
+						<span className="venue">
+							<SkeletonLoading
+								avoidAnimation
+								height="1.5rem"
+								width="50%"
+								opacity={0.9}
+							/>
+						</span>
+					</div>
+				</div>
+			</Container>
+		)
+
 	return (
-		<Container cardWidth={cardWidth}>
+		<Container cardWidth={cardWidth} {...props}>
 			<figure>
 				<Image
 					src={imageSrc}

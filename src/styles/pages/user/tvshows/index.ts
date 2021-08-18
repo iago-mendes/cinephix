@@ -101,76 +101,8 @@ const Container = styled.div`
 					padding: 1rem;
 					width: 32rem;
 
-					.tvshow {
-						width: 30rem;
-						padding: 0.5rem;
-						height: calc((30rem - 1rem) * 0.4 * 1.5 + 1rem);
-
+					> div {
 						margin-bottom: 1rem;
-
-						background-color: ${p => p.theme.primary};
-						border-radius: 1rem;
-
-						display: flex;
-						align-items: center;
-						justify-content: space-between;
-
-						cursor: pointer;
-						transition: border-radius 0.25s, background-color 0.25s;
-
-						:hover,
-						:active {
-							border-radius: 0;
-							background-color: ${p => p.theme.primary}bf;
-
-							.img img {
-								border-radius: 0;
-							}
-						}
-
-						.img {
-							width: 40%;
-							height: 100%;
-
-							img {
-								border-radius: 0.5rem;
-								transition: border-radius 0.25s;
-							}
-						}
-
-						.info {
-							display: flex;
-							flex-direction: column;
-							justify-content: space-between;
-
-							padding-top: 1rem;
-							padding-bottom: 1rem;
-
-							width: 50%;
-							height: 100%;
-
-							h2 {
-								font-family: Ubuntu;
-								font-weight: 700;
-								font-size: 2rem;
-
-								color: ${p => p.theme.background};
-
-								word-wrap: break-word;
-							}
-
-							.details {
-								display: flex;
-								flex-direction: column;
-								gap: 1rem;
-
-								font-family: Ubuntu;
-								font-weight: 400;
-								font-size: 1.5rem;
-
-								color: ${p => p.theme.background};
-							}
-						}
 					}
 				}
 
@@ -224,21 +156,6 @@ const Container = styled.div`
 
 			.droppableArea {
 				width: 22rem;
-
-				.tvshow {
-					width: 20rem;
-					height: calc((20rem - 1rem) * 0.4 * 1.5 + 1rem);
-
-					.info {
-						h2 {
-							font-size: 1.5rem;
-						}
-
-						.details {
-							font-size: 1rem;
-						}
-					}
-				}
 			}
 		}
 	}

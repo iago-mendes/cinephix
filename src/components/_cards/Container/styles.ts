@@ -49,6 +49,7 @@ export const Container = styled.div<Props>`
 
 	> figure {
 		width: 30%;
+		height: 100%;
 		border-radius: 0.5rem;
 		overflow: hidden;
 
@@ -65,6 +66,10 @@ export const Container = styled.div<Props>`
 		justify-content: space-between;
 
 		color: ${p => p.theme.background};
+
+		> * {
+			width: 100%;
+		}
 
 		> span.title {
 			font-family: Ubuntu;
@@ -145,6 +150,18 @@ export const Container = styled.div<Props>`
 					gap: 0.5rem;
 				}
 			}
+		}
+
+		> .details {
+			display: flex;
+			flex-direction: column;
+			gap: 1rem;
+
+			font-family: Ubuntu;
+			font-weight: 400;
+			font-size: 1.5rem;
+
+			color: ${p => p.theme.background};
 		}
 	}
 

@@ -6,7 +6,6 @@ import {
 	DropResult,
 	resetServerContext
 } from 'react-beautiful-dnd'
-import Image from 'next/image'
 import {GetServerSideProps} from 'next'
 import {BiQuestionMark} from 'react-icons/bi'
 import {useRouter} from 'next/router'
@@ -18,9 +17,7 @@ import {useAuth} from '../../../hooks/useAuth'
 import UserTvshowModal from '../../../components/_modals/UserTvshow'
 import {FiPlus} from 'react-icons/fi'
 import SelectTvshow from '../../../components/_modals/_select/SelectTvshow'
-import getTotalRating from '../../../utils/getTotalRating'
 import SEOHead from '../../../components/SEOHead'
-import truncateText from '../../../utils/truncateText'
 import {
 	defaultUserTvshowListed,
 	loadingUserTvshowListed,
@@ -30,9 +27,9 @@ import infoAlert from '../../../utils/alerts/info'
 import SortTvshowsModal from '../../../components/_modals/SortTvshows'
 import LoadingModal from '../../../components/_modals/Loading'
 import HorizontalAd from '../../../components/_ads/Horizontal'
-import {SkeletonLoading} from '../../../utils/skeletonLoading'
 import {getStatusOptions} from '../../../assets/db/statusOptions'
 import {getStatusInfo} from '../../../assets/db/statusInfo'
+import {UserMediaCard} from '../../../components/_cards/UserMedia'
 
 export interface TvshowList {
 	[status: string]: UserTvshowListed[]
@@ -187,66 +184,21 @@ const UserTvshows: React.FC = () => {
 												className="droppableArea"
 											>
 												{tvshows.map((tvshow, index) => {
-													// loading
-													if (tvshow.id < 0)
-														return (
-															<div className="tvshow" key={index}>
-																<div className="img">
-																	<SkeletonLoading opacity={0.75} />
-																</div>
-																<div className="info">
-																	<h2>
-																		<SkeletonLoading
-																			height="3rem"
-																			opacity={0.75}
-																		/>
-																	</h2>
-																	<div className="details">
-																		<span className="venue">
-																			<SkeletonLoading
-																				height="1.5rem"
-																				width="50%"
-																				opacity={0.75}
-																			/>
-																		</span>
-																	</div>
-																</div>
-															</div>
-														)
-													else if (tvshow)
+													if (tvshow)
 														return (
 															<Draggable
 																draggableId={String(tvshow.id)}
 																index={index}
-																key={tvshow.id}
+																key={tvshow.id < 0 ? index : tvshow.id}
 															>
 																{provided => (
 																	<div
-																		className="tvshow"
 																		{...provided.draggableProps}
 																		{...provided.dragHandleProps}
 																		ref={provided.innerRef}
 																		onClick={() => handleCardClick(tvshow)}
 																	>
-																		<div className="img">
-																			<Image
-																				src={tvshow.image}
-																				width={780}
-																				height={1170}
-																				layout="responsive"
-																			/>
-																		</div>
-																		<div className="info">
-																			<h2>{truncateText(tvshow.title, 35)}</h2>
-																			<div className="details">
-																				{Object.values(tvshow.ratings)
-																					.length !== 0 &&
-																					getTotalRating(tvshow.ratings, true)}
-																				<span className="venue">
-																					{tvshow.venue}
-																				</span>
-																			</div>
-																		</div>
+																		<UserMediaCard media={tvshow} />
 																	</div>
 																)}
 															</Draggable>

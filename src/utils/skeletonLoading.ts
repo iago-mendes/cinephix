@@ -4,6 +4,8 @@ type SkeletonLoadingProps = {
 	height?: number | string
 	width?: number | string
 	opacity?: number | string
+
+	avoidAnimation?: boolean
 }
 
 export const SkeletonLoading = styled.div<SkeletonLoadingProps>`
@@ -26,7 +28,9 @@ export const SkeletonLoading = styled.div<SkeletonLoadingProps>`
 		width: 150px;
 		background: ${p =>
 			`linear-gradient(to right, transparent 0%, ${p.theme.textBlack} 50%, transparent 100%)`};
-		animation: load 1s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+
+		animation: ${p =>
+			!p.avoidAnimation && 'load 1s cubic-bezier(0.4, 0, 0.2, 1) infinite'};
 	}
 
 	@keyframes load {

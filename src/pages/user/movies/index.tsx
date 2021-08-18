@@ -1,5 +1,4 @@
 import {useEffect, useState} from 'react'
-import Image from 'next/image'
 import {BsFillTriangleFill} from 'react-icons/bs'
 import Select from 'react-select'
 import {FiPlus} from 'react-icons/fi'
@@ -20,9 +19,8 @@ import {selectStyles} from '../../../styles/global'
 import SelectMovie from '../../../components/_modals/_select/SelectMovie'
 import UserMovieModal from '../../../components/_modals/UserMovie'
 import SEOHead from '../../../components/SEOHead'
-import truncateText from '../../../utils/truncateText'
 import HorizontalAd from '../../../components/_ads/Horizontal'
-import {SkeletonLoading} from '../../../utils/skeletonLoading'
+import {UserMediaCard} from '../../../components/_cards/UserMedia'
 
 const UserMovies: React.FC = () => {
 	const {user} = useAuth()
@@ -170,26 +168,11 @@ const UserMovies: React.FC = () => {
 						{movieList
 							.filter(({watched}) => !watched)
 							.map(movie => (
-								<div
+								<UserMediaCard
+									media={movie}
 									key={movie.data.id}
-									className="movie"
 									onClick={() => handleCardClick(movie)}
-								>
-									<div className="img">
-										<Image
-											src={movie.data.image}
-											width={780}
-											height={1170}
-											layout="responsive"
-										/>
-									</div>
-									<div className="info">
-										<h2>{truncateText(movie.data.title, 30)}</h2>
-										<div className="details">
-											<span className="venue">{movie.venue}</span>
-										</div>
-									</div>
-								</div>
+								/>
 							))}
 					</motion.div>
 				</div>
@@ -205,58 +188,13 @@ const UserMovies: React.FC = () => {
 						</button>
 						{movieList
 							.filter(({watched}) => watched)
-							.map((movie, index) => {
-								if (movie.data.id < 0)
-									return (
-										<div key={index} className="movie">
-											<div className="img">
-												<SkeletonLoading opacity={0.75} />
-											</div>
-											<div className="info">
-												<h2>
-													<SkeletonLoading height="3rem" opacity={0.75} />
-												</h2>
-												<div className="details">
-													<span className="venue">
-														<SkeletonLoading
-															height="1.5rem"
-															width="50%"
-															opacity={0.75}
-														/>
-													</span>
-												</div>
-											</div>
-										</div>
-									)
-								else
-									return (
-										<div
-											key={movie.data.id}
-											className="movie"
-											onClick={() => handleCardClick(movie)}
-										>
-											<div className="img">
-												<Image
-													src={movie.data.image}
-													width={780}
-													height={1170}
-													layout="responsive"
-												/>
-											</div>
-											<div className="info">
-												<h2>{truncateText(movie.data.title, 30)}</h2>
-												<div className="details">
-													{Object.values(movie.ratings).length !== 0 && (
-														<div className="ratings">
-															{getTotalRating(movie.ratings, true)}
-														</div>
-													)}
-													<span className="venue">{movie.venue}</span>
-												</div>
-											</div>
-										</div>
-									)
-							})}
+							.map((movie, index) => (
+								<UserMediaCard
+									media={movie}
+									key={movie.data.id < 0 ? index : movie.data.id}
+									onClick={() => handleCardClick(movie)}
+								/>
+							))}
 					</div>
 				</div>
 			</main>
