@@ -16,9 +16,10 @@ import useDimensions from '../../hooks/useDimensions'
 import useClickOutside from '../../hooks/useClickOutside'
 import {useUserStatus} from '../../contexts/UserStatus'
 import {useAvoidScroll} from '../../hooks/useAvoidScroll'
+import {SkeletonLoading} from '../../utils/skeletonLoading'
 
 const Menu: React.FC = () => {
-	const {user, signIn} = useAuth()
+	const {user, signIn, loading} = useAuth()
 	const {inMobile, inDesktop} = useDimensions()
 	const {pathname} = useRouter()
 	const {isTyping} = useUserStatus()
@@ -30,7 +31,7 @@ const Menu: React.FC = () => {
 	const burgerRef = useClickOutside(() => setIsBurgerMenuOpen(false))
 
 	useAvoidScroll(isBurgerMenuOpen)
-
+	useEffect(() => console.log('<< loading >>', loading), [loading])
 	useEffect(() => {
 		setIsBurgerMenuOpen(false)
 	}, [pathname])
@@ -77,7 +78,9 @@ const Menu: React.FC = () => {
 			<div className="container">
 				{inDesktop && <RouteOptions />}
 				<div className="user" ref={userRef}>
-					{user ? (
+					{loading ? (
+						<SkeletonLoading height="3rem" width="10rem" />
+					) : user ? (
 						<button
 							className="dropdown"
 							onClick={() => setIsUserMenuOpen(!isUserMenuOpen)}
@@ -90,9 +93,9 @@ const Menu: React.FC = () => {
 							<BsFillTriangleFill size={10} className="indicator" />
 						</button>
 					) : (
-						<span className="signIn" onClick={signIn}>
+						<button className="signIn" onClick={signIn}>
 							<Trans>Sign in</Trans>
-						</span>
+						</button>
 					)}
 					<UserMenu isOpen={isUserMenuOpen} setIsOpen={setIsUserMenuOpen} />
 				</div>

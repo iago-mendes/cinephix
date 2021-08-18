@@ -77,14 +77,15 @@ const Container = styled.nav<ContainerProps>`
 		.user {
 			position: relative;
 
-			span.signIn {
+			button.signIn {
 				font-family: Ubuntu;
 				font-weight: 700;
 				font-size: 1.75rem;
 				color: ${p => p.theme.primary};
+				background: none;
 
 				border: ${p => p.theme.primary} 2px solid;
-				border-radius: 100rem;
+				border-radius: 0.5rem;
 				padding: 0.5rem;
 				padding-left: 1rem;
 				padding-right: 1rem;
