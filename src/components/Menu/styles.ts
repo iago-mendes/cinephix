@@ -18,6 +18,8 @@ const Container = styled.nav<ContainerProps>`
 	background-color: ${p => p.theme.secondary};
 
 	.logos {
+		z-index: 101;
+
 		height: 75%;
 		width: 20rem;
 
@@ -26,10 +28,10 @@ const Container = styled.nav<ContainerProps>`
 		justify-content: space-between;
 
 		cursor: pointer;
-		transition: 0.25s;
+		transition: transform 0.2s;
 
 		:hover {
-			transform: scale(1.05);
+			transform: scale(0.9);
 		}
 
 		.icon {
