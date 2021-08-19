@@ -3,7 +3,6 @@ import Image from 'next/image'
 import {BiUserCircle} from 'react-icons/bi'
 import {BsFillTriangleFill} from 'react-icons/bs'
 import {useEffect, useState} from 'react'
-import {FiMenu, FiX} from 'react-icons/fi'
 import {useRouter} from 'next/router'
 import {Trans} from '@lingui/macro'
 
