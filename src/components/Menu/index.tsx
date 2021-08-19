@@ -17,6 +17,7 @@ import useClickOutside from '../../hooks/useClickOutside'
 import {useUserStatus} from '../../contexts/UserStatus'
 import {useAvoidScroll} from '../../hooks/useAvoidScroll'
 import {SkeletonLoading} from '../../utils/skeletonLoading'
+import {BurgerButton} from '../BurgerButton'
 
 const Menu: React.FC = () => {
 	const {user, signIn, loading} = useAuth()
@@ -31,7 +32,7 @@ const Menu: React.FC = () => {
 	const burgerRef = useClickOutside(() => setIsBurgerMenuOpen(false))
 
 	useAvoidScroll(isBurgerMenuOpen)
-	useEffect(() => console.log('<< loading >>', loading), [loading])
+
 	useEffect(() => {
 		setIsBurgerMenuOpen(false)
 	}, [pathname])
@@ -42,21 +43,26 @@ const Menu: React.FC = () => {
 		<Container isUserMenuOpen={isUserMenuOpen}>
 			{inMobile && (
 				<div className="burger" ref={burgerRef}>
-					<button
-						className="controller"
-						onClick={() => setIsBurgerMenuOpen(!isBurgerMenuOpen)}
+					<BurgerButton
+						isOpen={isBurgerMenuOpen}
+						setIsOpen={setIsBurgerMenuOpen}
+					/>
+
+					<BurgerMenu
+						initial={false}
+						animate={isBurgerMenuOpen ? 'openned' : 'closed'}
+						variants={{
+							closed: {marginRight: '100vw'},
+							openned: {
+								marginRight: '25vw',
+								transition: {type: 'spring', stiffness: 250, damping: 15}
+							}
+						}}
+						style={{
+							marginBottom: '5rem',
+							height: 'calc(100vh - 5rem)'
+						}}
 					>
-						<FiMenu />
-					</button>
-
-					<BurgerMenu isOpen={isBurgerMenuOpen}>
-						<button
-							className="controller"
-							onClick={() => setIsBurgerMenuOpen(false)}
-						>
-							<FiX />
-						</button>
-
 						<RouteOptions showAbout />
 					</BurgerMenu>
 				</div>

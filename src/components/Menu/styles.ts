@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import {motion} from 'framer-motion'
 
 type ContainerProps = {
 	isUserMenuOpen: boolean
@@ -134,37 +135,11 @@ const Container = styled.nav<ContainerProps>`
 		}
 	}
 
-	button.controller {
-		font-size: 3rem;
-		color: ${p => p.theme.primary};
-
-		background: none;
-		border: none;
-		border-radius: 5rem;
-
-		padding: 0.5rem;
-
-		display: flex;
-		align-items: center;
-		justify-content: center;
-
-		transition: background-color 0.25s, color 0.25s;
-
-		:hover {
-			background-color: ${p => p.theme.primary};
-			color: ${p => p.theme.secondary};
-		}
-	}
-
 	@media (max-width: 1000px) {
 		position: fixed;
 		z-index: 2;
 		bottom: 0;
 		width: 100%;
-
-		.burger {
-			width: 10rem;
-		}
 
 		.logos {
 			width: 6rem;
@@ -195,30 +170,23 @@ const Container = styled.nav<ContainerProps>`
 	}
 `
 
-type BurgerMenuProps = {
-	isOpen: boolean
-}
-
-export const BurgerMenu = styled.div<BurgerMenuProps>`
+export const BurgerMenu = styled(motion.aside)`
 	position: fixed;
-	left: ${p => (p.isOpen ? 0 : '-100vw')};
 	top: 0;
-	z-index: 2;
+	right: 0;
+	left: 0;
+	bottom: 0;
+	z-index: 100;
 
-	width: 75vw;
-	height: calc(100vh - 5rem);
 	background-color: ${p => p.theme.secondary};
 	box-shadow: 5px -5px 5px rgba(0, 0, 0, 0.5);
 
+	overflow-x: hidden;
 	overflow-y: auto;
-	padding: 1rem;
 
-	transition: left 0.25s;
-
-	button.controller {
-		margin-left: auto;
-		margin-bottom: 5rem;
-	}
+	display: flex;
+	align-items: center;
+	justify-content: center;
 
 	.links {
 		flex-direction: column;
