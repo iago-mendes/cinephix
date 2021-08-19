@@ -22,26 +22,6 @@ export default createGlobalStyle`
 		background-color: ${p => p.theme.background};
 
 		overscroll-behavior: contain;
-
-		::-webkit-scrollbar
-		{
-			width: 1rem;
-		}
-
-		::-webkit-scrollbar-track
-		{
-			background-color: ${p => p.theme.primary}26;
-		}
-		
-		::-webkit-scrollbar-thumb
-		{
-			background-color: ${p => p.theme.primary};
-
-			:hover
-			{
-				background-color: ${p => p.theme.primary}bf;
-			}
-		}
 	}
 
 	body.avoid-scroll {
@@ -106,21 +86,39 @@ export default createGlobalStyle`
 		}
 	}
 
-	@media (max-width: 1000px)
-	{
+	@media (min-width: 800px) {
+		* {
+			::-webkit-scrollbar {
+				width: 15px;
+				height: 15px;
+			}
+
+			::-webkit-scrollbar-track {
+				background-color: ${p => p.theme.black};
+			}
+			
+			::-webkit-scrollbar-thumb {
+				background-color: rgba(255, 255, 255, 0.2);
+				border-radius: 0.5rem;
+
+				:hover {
+					background-color: rgba(255, 255, 255, 0.15);
+				}
+			}
+		}
+
+		body.avoid-scroll {
+			padding-right: 15px;
+		}
+	}
+
+	@media (max-width: 799px) {
 		body
 		{
 			-webkit-user-select: none;
 			-moz-user-select: -moz-none;
 			-ms-user-select: none;
 			user-select: none;
-		}
-	}
-
-	@media (min-width: 1001px)
-	{
-		body.avoid-scroll {
-			padding-right: 10px;
 		}
 	}
 `

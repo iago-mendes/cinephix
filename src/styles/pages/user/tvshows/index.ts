@@ -159,27 +159,6 @@ const Container = styled.div`
 			}
 		}
 	}
-
-	@media (min-width: 1001px) {
-		* {
-			::-webkit-scrollbar {
-				height: 1rem;
-				width: 1rem;
-			}
-
-			::-webkit-scrollbar-track {
-				background-color: #242329;
-			}
-
-			::-webkit-scrollbar-thumb {
-				background-color: #4d4d5a;
-
-				:hover {
-					background-color: #3b3b45;
-				}
-			}
-		}
-	}
 `
 
 export default Container

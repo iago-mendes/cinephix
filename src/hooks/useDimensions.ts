@@ -4,8 +4,8 @@ function useDimensions() {
 	const [width, setWidth] = useState(360)
 	const [height, setHeight] = useState(640)
 
-	const inMobile = width <= 1000
-	const inDesktop = width > 1000
+	const inMobile = width < 800
+	const inDesktop = width >= 800
 
 	useEffect(() => {
 		updateDimensions()

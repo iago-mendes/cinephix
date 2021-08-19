@@ -137,7 +137,7 @@ const Container = styled.nav<ContainerProps>`
 		}
 	}
 
-	@media (max-width: 1000px) {
+	@media (max-width: 799px) {
 		position: fixed;
 		z-index: 2;
 		bottom: 0;
@@ -155,6 +155,10 @@ const Container = styled.nav<ContainerProps>`
 				position: absolute;
 				bottom: 0;
 			}
+		}
+
+		.burger {
+			width: 10rem;
 		}
 
 		.container {
