@@ -144,13 +144,13 @@ const Container = styled.nav<ContainerProps>`
 		width: 100%;
 
 		.logos {
-			width: 6rem;
+			width: 5rem;
 			position: relative;
 			justify-content: center;
 
 			.icon {
-				width: 6rem;
-				height: 6rem;
+				width: 5rem;
+				height: 5rem;
 
 				position: absolute;
 				bottom: 0;

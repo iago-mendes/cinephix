@@ -3,6 +3,7 @@ import styled from 'styled-components'
 const Container = styled.div`
 	width: 20rem;
 	direction: ltr;
+	z-index: 200;
 
 	.detail {
 		display: flex;
@@ -98,7 +99,7 @@ const Container = styled.div`
 		}
 	}
 
-	@media (max-width: 1000px) {
+	@media (max-width: 799px) {
 		.detail svg {
 			transform: rotate(180deg);
 		}
