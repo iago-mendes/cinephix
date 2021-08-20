@@ -19,7 +19,7 @@ import {I18nHandler} from '../locales/I18nHandler'
 import {AuthProvider} from '../contexts/Auth'
 
 const MyApp: React.FC<AppProps> = ({Component, pageProps}) => {
-	const {pathname, events} = useRouter()
+	const {events} = useRouter()
 
 	useEffect(() => {
 		const handleRouteChange = (url: URL) => {
@@ -29,10 +29,6 @@ const MyApp: React.FC<AppProps> = ({Component, pageProps}) => {
 		events.on('routeChangeComplete', handleRouteChange)
 		return () => events.off('routeChangeComplete', handleRouteChange)
 	}, [events])
-
-	useEffect(() => {
-		window.scrollTo(0, 0)
-	}, [pathname])
 
 	return (
 		<ThemeProvider theme={theme}>
