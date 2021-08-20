@@ -43,18 +43,14 @@ function CardContainerComponent({
 					<SkeletonLoading avoidAnimation opacity={0.9} />
 				</figure>
 				<div className="info">
-					<span className="title">
-						<SkeletonLoading avoidAnimation height="3rem" opacity={0.9} />
-					</span>
+					<SkeletonLoading avoidAnimation height="3rem" opacity={0.9} />
 					<div className="details">
-						<span className="venue">
-							<SkeletonLoading
-								avoidAnimation
-								height="1.5rem"
-								width="50%"
-								opacity={0.9}
-							/>
-						</span>
+						<SkeletonLoading
+							avoidAnimation
+							height="1.5rem"
+							width="10rem"
+							opacity={0.9}
+						/>
 					</div>
 				</div>
 			</Container>
