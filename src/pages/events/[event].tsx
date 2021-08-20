@@ -7,7 +7,7 @@ import api from '../../services/api'
 import Loading from '../../components/Loading'
 import EventDetails from '../../models/event'
 import SEOHead from '../../components/SEOHead'
-import Carousel from '../../components/Carousel'
+import {Carousel} from '../../components/Carousel'
 import {EventMediaCard} from '../../components/_cards/EventMedia'
 import {EventCelebrityCard} from '../../components/_cards/EventCelebrity'
 
@@ -45,7 +45,9 @@ const Event: React.FC<EventProps> = ({event}) => {
 						<h2 className="name">{category.name}</h2>
 						<p className="description">{category.description}</p>
 					</div>
-					<Carousel className="carousel">
+					<Carousel
+						numberOfItems={category.media.length + category.celebrities.length}
+					>
 						{['movies', 'tvshows'].includes(category.type) &&
 							category.media.map(media => (
 								<EventMediaCard

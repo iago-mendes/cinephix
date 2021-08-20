@@ -2,17 +2,16 @@ import {GetStaticPaths, GetStaticProps} from 'next'
 import {useRouter} from 'next/router'
 import {FiUser} from 'react-icons/fi'
 import {FaBirthdayCake, FaCity} from 'react-icons/fa'
-import Image from 'next/image'
 
-import Container from '../../styles/pages/celebrities/[celebrity]'
 import api from '../../services/api'
 import {Celebrity as CelebrityList} from '../../components/_cards/Celebrity'
-import Loading from '../../components/Loading'
-import Carousel from '../../components/Carousel'
+import {Carousel} from '../../components/Carousel'
 import {CarouselCard} from '../../components/_cards/Carousel'
 import formatDate from '../../utils/formatDate'
 import React from 'react'
 import SEOHead from '../../components/SEOHead'
+import {DetailsPageLayout} from '../../components/_layouts/DetailsPage'
+import {OptimizedImage} from '../../components/OptimizedImage'
 
 interface CelebrityDetails {
 	id: number
@@ -49,13 +48,14 @@ interface CelebrityProps {
 }
 
 const Celebrity: React.FC<CelebrityProps> = ({celebrity}) => {
-	const Router = useRouter()
-
-	if (Router.isFallback)
-		return <Loading style={{marginTop: 'calc(50vh - 5rem)'}} />
+	const {isFallback} = useRouter()
 
 	return (
-		<Container biographyLength={celebrity.biography.length} className="page">
+		<DetailsPageLayout
+			isLoading={isFallback}
+			overviewLength={celebrity.biography.length}
+			className="page"
+		>
 			<SEOHead
 				title={`${celebrity.name} | Cinephix`}
 				description={celebrity.biography}
@@ -63,14 +63,7 @@ const Celebrity: React.FC<CelebrityProps> = ({celebrity}) => {
 			/>
 
 			<main>
-				<div className="img">
-					<Image
-						src={celebrity.image}
-						width={780}
-						height={1170}
-						layout="responsive"
-					/>
-				</div>
+				<OptimizedImage src={celebrity.image} alt={`${celebrity.name} image`} />
 				<div className="info">
 					<h1>{celebrity.name}</h1>
 					<div className="details">
@@ -91,9 +84,9 @@ const Celebrity: React.FC<CelebrityProps> = ({celebrity}) => {
 				</div>
 			</main>
 
-			<div className="cast">
+			<div className="row carousel">
 				<span>Cast ({celebrity.credits.cast.length})</span>
-				<Carousel>
+				<Carousel numberOfItems={celebrity.credits.cast.length}>
 					{celebrity.credits.cast.map(media => (
 						<CarouselCard
 							key={media.id}
@@ -110,9 +103,9 @@ const Celebrity: React.FC<CelebrityProps> = ({celebrity}) => {
 				</Carousel>
 			</div>
 
-			<div className="crew">
+			<div className="row carousel">
 				<span>Crew ({celebrity.credits.crew.length})</span>
-				<Carousel>
+				<Carousel numberOfItems={celebrity.credits.crew.length}>
 					{celebrity.credits.crew.map(media => (
 						<CarouselCard
 							key={media.id}
@@ -128,7 +121,7 @@ const Celebrity: React.FC<CelebrityProps> = ({celebrity}) => {
 					))}
 				</Carousel>
 			</div>
-		</Container>
+		</DetailsPageLayout>
 	)
 }
 

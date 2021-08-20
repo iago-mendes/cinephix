@@ -11,7 +11,7 @@ import GroupInterface, {
 } from '../../../models/group'
 import getBanner from '../../../utils/getBanner'
 import api from '../../../services/api'
-import Carousel from '../../../components/Carousel'
+import {Carousel} from '../../../components/Carousel'
 import truncateText from '../../../utils/truncateText'
 import Loading from '../../../components/Loading'
 import {EventMediaCard} from '../../../components/_cards/EventMedia'
@@ -116,34 +116,35 @@ const Group: React.FC<GroupProps> = ({group: staticGroup}) => {
 
 			<section className="participants">
 				<h2>Participants</h2>
-				<Carousel className="carousel">
+				<Carousel numberOfItems={group.participants.length}>
 					{group.participants.map(participant => (
-						<div
-							key={participant.email}
-							className="participant"
-							onClick={() => openParticipantPredictions(participant)}
-						>
-							<div className="img">
-								<Image
-									src={participant.image}
-									width={100}
-									height={100}
-									layout="responsive"
-								/>
-							</div>
-							<div className="info">
-								<span className="name">
-									{truncateText(participant.name, 20)}
-								</span>
-								<span>{truncateText(participant.email, 15)}</span>
-								{participant.isOwner && <span>Group owner</span>}
-							</div>
+						<div key={participant.email}>
+							<div
+								className="participant"
+								onClick={() => openParticipantPredictions(participant)}
+							>
+								<div className="img">
+									<Image
+										src={participant.image}
+										width={100}
+										height={100}
+										layout="responsive"
+									/>
+								</div>
+								<div className="info">
+									<span className="name">
+										{truncateText(participant.name, 20)}
+									</span>
+									<span>{truncateText(participant.email, 15)}</span>
+									{participant.isOwner && <span>Group owner</span>}
+								</div>
 
-							{participant.isWinner === true && <WinnerSign />}
+								{participant.isWinner === true && <WinnerSign />}
 
-							{participant.points != undefined && (
-								<div className="floatingNumber">{participant.points}</div>
-							)}
+								{participant.points != undefined && (
+									<div className="floatingNumber">{participant.points}</div>
+								)}
+							</div>
 						</div>
 					))}
 				</Carousel>
@@ -156,7 +157,11 @@ const Group: React.FC<GroupProps> = ({group: staticGroup}) => {
 						<div className="header">
 							<h3 className="name">{category.name}</h3>
 						</div>
-						<Carousel className="carousel">
+						<Carousel
+							numberOfItems={
+								category.media.length + category.celebrities.length
+							}
+						>
 							{['movies', 'tvshows'].includes(category.type) &&
 								category.media.map(media => (
 									<EventMediaCard

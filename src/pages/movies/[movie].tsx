@@ -1,15 +1,12 @@
 import {GetStaticPaths, GetStaticProps} from 'next'
 import {useRouter} from 'next/router'
 import {FiCalendar, FiEdit3, FiInfo, FiPlus, FiStar} from 'react-icons/fi'
-import Image from 'next/image'
 import {useEffect, useState} from 'react'
 import {Trans, t} from '@lingui/macro'
 
-import Container from '../../styles/pages/movies/[movie]'
 import api from '../../services/api'
 import {Media} from '../../components/_cards/Media'
-import Loading from '../../components/Loading'
-import Carousel from '../../components/Carousel'
+import {Carousel} from '../../components/Carousel'
 import {CarouselCard} from '../../components/_cards/Carousel'
 import formatDate from '../../utils/formatDate'
 import MovieDetails from '../../models/movie'
@@ -18,13 +15,15 @@ import UserMovie, {defaultUserMovie} from '../../models/userMovie'
 import {Venue} from '../../components/Venue'
 import getTotalRating from '../../utils/getTotalRating'
 import SEOHead from '../../components/SEOHead'
+import {OptimizedImage} from '../../components/OptimizedImage'
+import {DetailsPageLayout} from '../../components/_layouts/DetailsPage'
 
 interface MovieProps {
 	movie: MovieDetails
 }
 
 const Movie: React.FC<MovieProps> = ({movie}) => {
-	const router = useRouter()
+	const {isFallback, push} = useRouter()
 	const {user} = useAuth()
 
 	const [userMovie, setUserMovie] = useState<UserMovie>(defaultUserMovie)
@@ -37,11 +36,12 @@ const Movie: React.FC<MovieProps> = ({movie}) => {
 				.catch(() => setUserMovie(defaultUserMovie))
 	}, [user, movie])
 
-	if (router.isFallback)
-		return <Loading style={{height: 'calc(100vh - 5rem)'}} />
-
 	return (
-		<Container className="page">
+		<DetailsPageLayout
+			isLoading={isFallback}
+			overviewLength={movie.overview.length}
+			className="page"
+		>
 			<SEOHead
 				title={`${movie.title} | Cinephix`}
 				description={movie.overview}
@@ -49,16 +49,9 @@ const Movie: React.FC<MovieProps> = ({movie}) => {
 			/>
 
 			<main>
-				<div className="img">
-					<Image
-						src={movie.image}
-						width={780}
-						height={1170}
-						layout="responsive"
-					/>
-				</div>
+				<OptimizedImage src={movie.image} alt={`${movie.title} image`} />
 				<div className="info">
-					<h1>{movie.title}</h1>
+					<h1 className="title">{movie.title}</h1>
 					<div className="details">
 						<div className="detail">
 							<FiCalendar size={30} />
@@ -73,8 +66,8 @@ const Movie: React.FC<MovieProps> = ({movie}) => {
 							<span>{movie.rating}</span>
 						</div>
 					</div>
-					<p>{movie.overview}</p>
-					<ul>
+					<p className="description">{movie.overview}</p>
+					<ul className="tags">
 						{movie.genres.map(genre => (
 							<li key={genre.id}>{genre.name}</li>
 						))}
@@ -83,22 +76,18 @@ const Movie: React.FC<MovieProps> = ({movie}) => {
 			</main>
 
 			{movie.collection && (
-				<div className="collection">
-					<div className="main">
+				<div className="row collection">
+					<div>
 						<h1>{movie.collection.name}</h1>
-						<div className="img">
-							<Image
-								src={movie.collection.image}
-								width={780}
-								height={1170}
-								layout="responsive"
-							/>
-						</div>
+						<OptimizedImage
+							src={movie.collection.image}
+							alt={`${movie.collection.name} image`}
+						/>
 					</div>
 				</div>
 			)}
 
-			<div className="row userMovie">
+			<div className="row user">
 				{user && userMovie !== defaultUserMovie ? (
 					<>
 						<div className="group">
@@ -128,7 +117,7 @@ const Movie: React.FC<MovieProps> = ({movie}) => {
 						<button
 							className="edit"
 							title={t`Edit`}
-							onClick={() => router.push(`/user/movies/${movie.id}/edit`)}
+							onClick={() => push(`/user/movies/${movie.id}/edit`)}
 						>
 							<FiEdit3 size={30} />
 						</button>
@@ -136,7 +125,7 @@ const Movie: React.FC<MovieProps> = ({movie}) => {
 				) : (
 					<button
 						className="add"
-						onClick={() => router.push(`/user/movies/${movie.id}/add`)}
+						onClick={() => push(`/user/movies/${movie.id}/add`)}
 					>
 						<FiPlus size={30} />
 						<span>
@@ -150,7 +139,7 @@ const Movie: React.FC<MovieProps> = ({movie}) => {
 				<span>
 					<Trans>Cast</Trans> ({movie.credits.cast.length})
 				</span>
-				<Carousel>
+				<Carousel numberOfItems={movie.credits.cast.length}>
 					{movie.credits.cast.map(celebrity => (
 						<CarouselCard
 							key={celebrity.id}
@@ -167,7 +156,7 @@ const Movie: React.FC<MovieProps> = ({movie}) => {
 				<span>
 					<Trans>Crew</Trans> ({movie.credits.crew.length})
 				</span>
-				<Carousel>
+				<Carousel numberOfItems={movie.credits.crew.length}>
 					{movie.credits.crew.map(celebrity => (
 						<CarouselCard
 							key={celebrity.id}
@@ -179,7 +168,7 @@ const Movie: React.FC<MovieProps> = ({movie}) => {
 					))}
 				</Carousel>
 			</div>
-		</Container>
+		</DetailsPageLayout>
 	)
 }
 

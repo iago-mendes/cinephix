@@ -1,11 +1,7 @@
 import styled from 'styled-components'
 
-interface ContainerProps {
-	overviewLength: number
-}
-
-const Container = styled.div<ContainerProps>`
-	main {
+export const Container = styled.div<{overviewLength: number}>`
+	> main {
 		height: calc(100vh - 5rem);
 		padding: 2rem;
 
@@ -14,16 +10,14 @@ const Container = styled.div<ContainerProps>`
 		align-items: center;
 		gap: 2rem;
 
-		.img {
+		> figure {
 			width: calc((100vh - 5rem - 4rem) / 1.5);
 			max-width: calc(50% - 5rem);
 
-			img {
-				border-radius: 1rem;
-			}
+			border-radius: 0.5rem;
 		}
 
-		.info {
+		> .info {
 			height: 100%;
 			width: 50%;
 			margin-right: 5rem;
@@ -35,19 +29,23 @@ const Container = styled.div<ContainerProps>`
 
 			color: ${p => p.theme.primary};
 
-			h1 {
+			> h1.title {
 				font-family: Ubuntu;
 				font-weight: 700;
 				font-size: 4rem;
 			}
 
-			.details {
+			> .details {
 				display: flex;
 				flex-direction: column;
 				gap: 2rem;
 
 				padding-left: 5rem;
 				padding-right: 5rem;
+
+				svg {
+					font-size: 3rem;
+				}
 
 				.detail {
 					display: flex;
@@ -76,12 +74,12 @@ const Container = styled.div<ContainerProps>`
 				}
 			}
 
-			p {
+			> p.description {
 				font-family: Roboto;
 				font-size: ${p => (p.overviewLength < 500 ? '2rem' : '1.5rem')};
 			}
 
-			ul {
+			> ul.tags {
 				width: 100%;
 
 				display: grid;
@@ -114,22 +112,62 @@ const Container = styled.div<ContainerProps>`
 		}
 	}
 
-	.row {
+	> .row {
 		display: flex;
-
-		padding: 1rem;
-		padding-top: 3rem;
-		padding-bottom: 3rem;
+		padding: 3rem 0;
 
 		:nth-child(even) {
 			background-color: rgba(0, 0, 0, 0.5);
 		}
 	}
 
-	.userTvshow {
+	> .collection {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: space-around;
+
+		::before,
+		::after {
+			content: '';
+			width: 50%;
+			height: 0.5rem;
+
+			background-color: ${p => p.theme.primary}80;
+			border-radius: 100rem;
+
+			margin: 1rem;
+		}
+
+		> div {
+			display: flex;
+			align-items: center;
+			justify-content: space-around;
+
+			width: 50%;
+
+			h1 {
+				font-family: Ubuntu;
+				font-weight: 700;
+				font-size: 2rem;
+
+				color: ${p => p.theme.primary};
+				width: 50%;
+			}
+
+			figure {
+				width: 15rem;
+				border-radius: 1rem;
+			}
+		}
+	}
+
+	> .user {
 		align-items: center;
 		justify-content: center;
 		gap: 15rem;
+
+		padding: 3rem 1rem;
 
 		.add {
 			display: flex;
@@ -210,35 +248,35 @@ const Container = styled.div<ContainerProps>`
 		}
 	}
 
-	.carousel {
+	> .carousel {
 		flex-direction: column;
 		gap: 3rem;
 
-		span {
+		> span {
 			font-family: Roboto;
 			font-weight: 700;
 			font-size: 3rem;
 			color: ${p => p.theme.primary};
 
-			margin-left: 5rem;
+			margin-left: 1rem;
 			padding-left: 1rem;
 			border-left: ${p => p.theme.primary} 5px solid;
 		}
 	}
 
 	@media (max-width: 1024px) {
-		main {
+		> main {
 			height: fit-content;
 
 			flex-direction: column;
 			align-items: center;
 
-			.img {
+			> figure {
 				width: 75vw;
 				max-width: 40rem;
 			}
 
-			.info {
+			> .info {
 				width: 100%;
 				margin: 0;
 				margin-top: 2rem;
@@ -269,7 +307,7 @@ const Container = styled.div<ContainerProps>`
 			}
 		}
 
-		.userTvshow {
+		> .user {
 			flex-direction: column;
 			gap: 2rem;
 
@@ -279,5 +317,3 @@ const Container = styled.div<ContainerProps>`
 		}
 	}
 `
-
-export default Container

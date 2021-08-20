@@ -67,10 +67,6 @@ export const Container = styled.div<Props>`
 
 		color: ${p => p.theme.background};
 
-		> * {
-			width: 100%;
-		}
-
 		> span.title {
 			font-family: Ubuntu;
 			font-weight: 700;

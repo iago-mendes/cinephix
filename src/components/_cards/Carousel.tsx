@@ -3,7 +3,7 @@ import Link from 'next/link'
 import truncateText from '../../utils/truncateText'
 import {CardContainer} from './Container'
 
-type Props = {
+type Props = React.HTMLAttributes<HTMLDivElement> & {
 	image: string
 	primaryDisplay: string
 	secondaryDisplay: string
@@ -15,19 +15,25 @@ export function CarouselCard({
 	image,
 	primaryDisplay,
 	secondaryDisplay,
-	link
+	link,
+	children
 }: Props) {
 	return (
-		<Link href={link}>
-			<a>
-				<CardContainer
-					imageSrc={image}
-					cardWidth={{mobile: '20rem', desktop: '30rem'}}
-				>
-					<span className="title">{truncateText(primaryDisplay, 20)}</span>
-					<span className="subtitle">{truncateText(secondaryDisplay, 20)}</span>
-				</CardContainer>
-			</a>
-		</Link>
+		<div>
+			<Link href={link}>
+				<a>
+					<CardContainer
+						imageSrc={image}
+						cardWidth={{mobile: '20rem', desktop: '30rem'}}
+					>
+						<span className="title">{truncateText(primaryDisplay, 20)}</span>
+						<span className="subtitle">
+							{truncateText(secondaryDisplay, 20)}
+						</span>
+						{children}
+					</CardContainer>
+				</a>
+			</Link>
+		</div>
 	)
 }

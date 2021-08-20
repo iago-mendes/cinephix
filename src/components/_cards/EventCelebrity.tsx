@@ -25,6 +25,7 @@ export function EventCelebrityCard({eventCelebrity, link, children}: Props) {
 						title: media.title,
 						date: media.date
 					}}
+					cardWidth={{mobile: '20rem', desktop: '30rem'}}
 				>
 					<span className="title">{truncateText(celebrity.name, 20)}</span>
 					{children}

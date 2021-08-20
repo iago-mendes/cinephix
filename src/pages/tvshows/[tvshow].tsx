@@ -8,14 +8,11 @@ import {
 	FiPlus,
 	FiEdit3
 } from 'react-icons/fi'
-import Image from 'next/image'
 import {Trans, t} from '@lingui/macro'
 
-import Container from '../../styles/pages/tvshows/[tvshow]'
 import api from '../../services/api'
 import {Media} from '../../components/_cards/Media'
-import Loading from '../../components/Loading'
-import Carousel from '../../components/Carousel'
+import {Carousel} from '../../components/Carousel'
 import {CarouselCard} from '../../components/_cards/Carousel'
 import formatDate from '../../utils/formatDate'
 import React, {useEffect, useState} from 'react'
@@ -28,6 +25,8 @@ import getTotalRating from '../../utils/getTotalRating'
 import getStatusLabel from '../../utils/getStatusLabel'
 import {Venue} from '../../components/Venue'
 import SEOHead from '../../components/SEOHead'
+import {DetailsPageLayout} from '../../components/_layouts/DetailsPage'
+import {OptimizedImage} from '../../components/OptimizedImage'
 
 export interface TvshowDetails {
 	id: number
@@ -66,7 +65,7 @@ interface TvshowProps {
 }
 
 const Tvshow: React.FC<TvshowProps> = ({tvshow}) => {
-	const router = useRouter()
+	const {isFallback, push} = useRouter()
 	const {user} = useAuth()
 
 	const [userTvshow, setUserTvshow] = useState<UserTvshowDetails>(
@@ -81,11 +80,12 @@ const Tvshow: React.FC<TvshowProps> = ({tvshow}) => {
 				.catch(() => setUserTvshow(defaultUserTvshowDetails))
 	}, [user, tvshow])
 
-	if (router.isFallback)
-		return <Loading style={{marginTop: 'calc(50vh - 5rem)'}} />
-
 	return (
-		<Container overviewLength={tvshow.overview.length} className="page">
+		<DetailsPageLayout
+			isLoading={isFallback}
+			overviewLength={tvshow.overview.length}
+			className="page"
+		>
 			<SEOHead
 				title={`${tvshow.title} | Cinephix`}
 				description={tvshow.overview}
@@ -93,30 +93,23 @@ const Tvshow: React.FC<TvshowProps> = ({tvshow}) => {
 			/>
 
 			<main>
-				<div className="img">
-					<Image
-						src={tvshow.image}
-						width={780}
-						height={1170}
-						layout="responsive"
-					/>
-				</div>
+				<OptimizedImage src={tvshow.image} alt={`${tvshow.title} image`} />
 				<div className="info">
-					<h1>{tvshow.title}</h1>
+					<h1 className="title">{tvshow.title}</h1>
 					<div className="details">
 						<div className="detail dates">
-							<FiCalendar size={30} />
+							<FiCalendar />
 							<span>{formatDate(tvshow.startDate)}</span>
-							<FiArrowRight size={30} />
+							<FiArrowRight />
 							<span>{formatDate(tvshow.endDate)}</span>
 						</div>
 						<div className="group">
 							<div className="detail">
-								<FiInfo size={30} />
+								<FiInfo />
 								<span>{tvshow.status}</span>
 							</div>
 							<div className="detail">
-								<FiStar size={30} />
+								<FiStar />
 								<span>{tvshow.rating}</span>
 							</div>
 						</div>
@@ -135,8 +128,8 @@ const Tvshow: React.FC<TvshowProps> = ({tvshow}) => {
 							</div>
 						</div>
 					</div>
-					<p>{tvshow.overview}</p>
-					<ul>
+					<p className="description">{tvshow.overview}</p>
+					<ul className="tags">
 						{tvshow.genres.map(genre => (
 							<li key={genre.id}>{genre.name}</li>
 						))}
@@ -144,7 +137,7 @@ const Tvshow: React.FC<TvshowProps> = ({tvshow}) => {
 				</div>
 			</main>
 
-			<div className="row userTvshow">
+			<div className="row user">
 				{user && userTvshow !== defaultUserTvshowDetails ? (
 					<>
 						<div className="group">
@@ -174,7 +167,7 @@ const Tvshow: React.FC<TvshowProps> = ({tvshow}) => {
 						<button
 							className="edit"
 							title={t`Edit`}
-							onClick={() => router.push(`/user/tvshows/${tvshow.id}/edit`)}
+							onClick={() => push(`/user/tvshows/${tvshow.id}/edit`)}
 						>
 							<FiEdit3 size={30} />
 						</button>
@@ -182,7 +175,7 @@ const Tvshow: React.FC<TvshowProps> = ({tvshow}) => {
 				) : (
 					<button
 						className="add"
-						onClick={() => router.push(`/user/tvshows/${tvshow.id}/add`)}
+						onClick={() => push(`/user/tvshows/${tvshow.id}/add`)}
 					>
 						<FiPlus size={30} />
 						<span>
@@ -196,7 +189,7 @@ const Tvshow: React.FC<TvshowProps> = ({tvshow}) => {
 				<span>
 					<Trans>Cast</Trans> ({tvshow.credits.cast.length})
 				</span>
-				<Carousel>
+				<Carousel numberOfItems={tvshow.credits.cast.length}>
 					{tvshow.credits.cast.map(celebrity => (
 						<CarouselCard
 							key={celebrity.id}
@@ -213,7 +206,7 @@ const Tvshow: React.FC<TvshowProps> = ({tvshow}) => {
 				<span>
 					<Trans>Crew</Trans> ({tvshow.credits.crew.length})
 				</span>
-				<Carousel>
+				<Carousel numberOfItems={tvshow.credits.crew.length}>
 					{tvshow.credits.crew.map(celebrity => (
 						<CarouselCard
 							key={celebrity.id}
@@ -225,7 +218,7 @@ const Tvshow: React.FC<TvshowProps> = ({tvshow}) => {
 					))}
 				</Carousel>
 			</div>
-		</Container>
+		</DetailsPageLayout>
 	)
 }
 

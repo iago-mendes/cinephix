@@ -17,7 +17,10 @@ export function EventMediaCard({media, link, children}: Props) {
 	return (
 		<Link href={link}>
 			<a>
-				<CardContainer imageSrc={media.image}>
+				<CardContainer
+					imageSrc={media.image}
+					cardWidth={{mobile: '20rem', desktop: '30rem'}}
+				>
 					<span className="title">{truncateText(media.title, 35)}</span>
 					<span className="subtitle">
 						<FiCalendar />
