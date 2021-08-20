@@ -50,6 +50,8 @@ interface CelebrityProps {
 const Celebrity: React.FC<CelebrityProps> = ({celebrity}) => {
 	const {isFallback} = useRouter()
 
+	if (!celebrity) return null
+
 	return (
 		<DetailsPageLayout
 			isLoading={isFallback}

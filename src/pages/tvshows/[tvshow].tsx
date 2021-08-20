@@ -80,6 +80,8 @@ const Tvshow: React.FC<TvshowProps> = ({tvshow}) => {
 				.catch(() => setUserTvshow(defaultUserTvshowDetails))
 	}, [user, tvshow])
 
+	if (!tvshow) return null
+
 	return (
 		<DetailsPageLayout
 			isLoading={isFallback}

@@ -36,6 +36,8 @@ const Movie: React.FC<MovieProps> = ({movie}) => {
 				.catch(() => setUserMovie(defaultUserMovie))
 	}, [user, movie])
 
+	if (!movie) return null
+
 	return (
 		<DetailsPageLayout
 			isLoading={isFallback}
