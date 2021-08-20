@@ -84,7 +84,7 @@ const Menu: React.FC = () => {
 				{inDesktop && <RouteOptions />}
 				<div className="user" ref={userRef}>
 					{loading ? (
-						<SkeletonLoading height="3rem" width="10rem" />
+						<SkeletonLoading height="3rem" width="5rem" />
 					) : user ? (
 						<button
 							className="dropdown"
