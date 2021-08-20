@@ -1,6 +1,5 @@
 import {GetStaticPaths, GetStaticProps} from 'next'
 import {useRouter} from 'next/router'
-import {SwiperSlide} from 'swiper/react'
 import {FiPlus} from 'react-icons/fi'
 
 import Container from '../../styles/pages/events/[event]'
@@ -48,22 +47,20 @@ const Event: React.FC<EventProps> = ({event}) => {
 					</div>
 					<Carousel className="carousel">
 						{['movies', 'tvshows'].includes(category.type) &&
-							category.media.map((media, index) => (
-								<SwiperSlide key={index}>
-									<EventMediaCard
-										media={media}
-										link={`/${category.type}/${media.id}`}
-									/>
-								</SwiperSlide>
+							category.media.map(media => (
+								<EventMediaCard
+									key={media.id}
+									media={media}
+									link={`/${category.type}/${media.id}`}
+								/>
 							))}
 						{category.type === 'celebrities' &&
-							category.celebrities.map((eventCelebrity, index) => (
-								<SwiperSlide key={index}>
-									<EventCelebrityCard
-										eventCelebrity={eventCelebrity}
-										link={`/celebrities/${eventCelebrity.celebrity.id}`}
-									/>
-								</SwiperSlide>
+							category.celebrities.map(eventCelebrity => (
+								<EventCelebrityCard
+									key={eventCelebrity.celebrity.id}
+									eventCelebrity={eventCelebrity}
+									link={`/celebrities/${eventCelebrity.celebrity.id}`}
+								/>
 							))}
 					</Carousel>
 				</div>

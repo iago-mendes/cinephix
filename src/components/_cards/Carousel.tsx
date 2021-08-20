@@ -20,7 +20,10 @@ export function CarouselCard({
 	return (
 		<Link href={link}>
 			<a>
-				<CardContainer imageSrc={image}>
+				<CardContainer
+					imageSrc={image}
+					cardWidth={{mobile: '20rem', desktop: '30rem'}}
+				>
 					<span className="title">{truncateText(primaryDisplay, 20)}</span>
 					<span className="subtitle">{truncateText(secondaryDisplay, 20)}</span>
 				</CardContainer>

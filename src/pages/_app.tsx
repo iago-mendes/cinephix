@@ -2,8 +2,8 @@ import {AppProps} from 'next/app'
 import {useRouter} from 'next/router'
 import {useEffect} from 'react'
 import {ThemeProvider} from 'styled-components'
-import SwiperCore, {Navigation} from 'swiper'
-import 'swiper/swiper-bundle.css'
+import 'slick-carousel/slick/slick.css'
+import 'slick-carousel/slick/slick-theme.css'
 
 import Menu from '../components/Menu'
 import GlobalStyle from '../styles/global'
@@ -19,8 +19,6 @@ import {I18nHandler} from '../locales/I18nHandler'
 import {AuthProvider} from '../contexts/Auth'
 
 const MyApp: React.FC<AppProps> = ({Component, pageProps}) => {
-	SwiperCore.use([Navigation])
-
 	const {pathname, events} = useRouter()
 
 	useEffect(() => {

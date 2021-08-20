@@ -8,7 +8,6 @@ import {
 	FiPlus,
 	FiEdit3
 } from 'react-icons/fi'
-import {SwiperSlide} from 'swiper/react'
 import Image from 'next/image'
 import {Trans, t} from '@lingui/macro'
 
@@ -198,15 +197,14 @@ const Tvshow: React.FC<TvshowProps> = ({tvshow}) => {
 					<Trans>Cast</Trans> ({tvshow.credits.cast.length})
 				</span>
 				<Carousel>
-					{tvshow.credits.cast.map((celebrity, index) => (
-						<SwiperSlide key={index}>
-							<CarouselCard
-								image={celebrity.image}
-								primaryDisplay={celebrity.name}
-								secondaryDisplay={celebrity.character}
-								link={`/celebrities/${celebrity.id}`}
-							/>
-						</SwiperSlide>
+					{tvshow.credits.cast.map(celebrity => (
+						<CarouselCard
+							key={celebrity.id}
+							image={celebrity.image}
+							primaryDisplay={celebrity.name}
+							secondaryDisplay={celebrity.character}
+							link={`/celebrities/${celebrity.id}`}
+						/>
 					))}
 				</Carousel>
 			</div>
@@ -216,15 +214,14 @@ const Tvshow: React.FC<TvshowProps> = ({tvshow}) => {
 					<Trans>Crew</Trans> ({tvshow.credits.crew.length})
 				</span>
 				<Carousel>
-					{tvshow.credits.crew.map((celebrity, index) => (
-						<SwiperSlide key={index}>
-							<CarouselCard
-								image={celebrity.image}
-								primaryDisplay={celebrity.name}
-								secondaryDisplay={celebrity.department}
-								link={`/celebrities/${celebrity.id}`}
-							/>
-						</SwiperSlide>
+					{tvshow.credits.crew.map(celebrity => (
+						<CarouselCard
+							key={celebrity.id}
+							image={celebrity.image}
+							primaryDisplay={celebrity.name}
+							secondaryDisplay={celebrity.department}
+							link={`/celebrities/${celebrity.id}`}
+						/>
 					))}
 				</Carousel>
 			</div>

@@ -1,6 +1,5 @@
 import Image from 'next/image'
 import {GetStaticPaths, GetStaticProps} from 'next'
-import {SwiperSlide} from 'swiper/react'
 import {useRouter} from 'next/router'
 import {useEffect, useState} from 'react'
 
@@ -118,35 +117,34 @@ const Group: React.FC<GroupProps> = ({group: staticGroup}) => {
 			<section className="participants">
 				<h2>Participants</h2>
 				<Carousel className="carousel">
-					{group.participants.map((participant, index) => (
-						<SwiperSlide key={index}>
-							<div
-								className="participant"
-								onClick={() => openParticipantPredictions(participant)}
-							>
-								<div className="img">
-									<Image
-										src={participant.image}
-										width={100}
-										height={100}
-										layout="responsive"
-									/>
-								</div>
-								<div className="info">
-									<span className="name">
-										{truncateText(participant.name, 20)}
-									</span>
-									<span>{truncateText(participant.email, 15)}</span>
-									{participant.isOwner && <span>Group owner</span>}
-								</div>
-
-								{participant.isWinner === true && <WinnerSign />}
-
-								{participant.points != undefined && (
-									<div className="floatingNumber">{participant.points}</div>
-								)}
+					{group.participants.map(participant => (
+						<div
+							key={participant.email}
+							className="participant"
+							onClick={() => openParticipantPredictions(participant)}
+						>
+							<div className="img">
+								<Image
+									src={participant.image}
+									width={100}
+									height={100}
+									layout="responsive"
+								/>
 							</div>
-						</SwiperSlide>
+							<div className="info">
+								<span className="name">
+									{truncateText(participant.name, 20)}
+								</span>
+								<span>{truncateText(participant.email, 15)}</span>
+								{participant.isOwner && <span>Group owner</span>}
+							</div>
+
+							{participant.isWinner === true && <WinnerSign />}
+
+							{participant.points != undefined && (
+								<div className="floatingNumber">{participant.points}</div>
+							)}
+						</div>
 					))}
 				</Carousel>
 			</section>
@@ -160,34 +158,32 @@ const Group: React.FC<GroupProps> = ({group: staticGroup}) => {
 						</div>
 						<Carousel className="carousel">
 							{['movies', 'tvshows'].includes(category.type) &&
-								category.media.map((media, index) => (
-									<SwiperSlide key={index}>
-										<EventMediaCard
-											media={media}
-											link={`/${category.type}/${media.id}`}
-										>
-											<div className="floatingNumber">
-												{media.predictionsQuantity}
-											</div>
+								category.media.map(media => (
+									<EventMediaCard
+										key={media.id}
+										media={media}
+										link={`/${category.type}/${media.id}`}
+									>
+										<div className="floatingNumber">
+											{media.predictionsQuantity}
+										</div>
 
-											{media.isResult === true && <WinnerSign />}
-										</EventMediaCard>
-									</SwiperSlide>
+										{media.isResult === true && <WinnerSign />}
+									</EventMediaCard>
 								))}
 							{category.type === 'celebrities' &&
-								category.celebrities.map((eventCelebrity, index) => (
-									<SwiperSlide key={index}>
-										<EventCelebrityCard
-											eventCelebrity={eventCelebrity}
-											link={`/celebrities/${eventCelebrity.celebrity.id}`}
-										>
-											<div className="floatingNumber">
-												{eventCelebrity.predictionsQuantity}
-											</div>
+								category.celebrities.map(eventCelebrity => (
+									<EventCelebrityCard
+										key={eventCelebrity.celebrity.id}
+										eventCelebrity={eventCelebrity}
+										link={`/celebrities/${eventCelebrity.celebrity.id}`}
+									>
+										<div className="floatingNumber">
+											{eventCelebrity.predictionsQuantity}
+										</div>
 
-											{eventCelebrity.isResult === true && <WinnerSign />}
-										</EventCelebrityCard>
-									</SwiperSlide>
+										{eventCelebrity.isResult === true && <WinnerSign />}
+									</EventCelebrityCard>
 								))}
 						</Carousel>
 					</div>

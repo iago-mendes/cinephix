@@ -1,7 +1,6 @@
 import {GetStaticPaths, GetStaticProps} from 'next'
 import {useRouter} from 'next/router'
 import {FiCalendar, FiEdit3, FiInfo, FiPlus, FiStar} from 'react-icons/fi'
-import {SwiperSlide} from 'swiper/react'
 import Image from 'next/image'
 import {useEffect, useState} from 'react'
 import {Trans, t} from '@lingui/macro'
@@ -152,15 +151,14 @@ const Movie: React.FC<MovieProps> = ({movie}) => {
 					<Trans>Cast</Trans> ({movie.credits.cast.length})
 				</span>
 				<Carousel>
-					{movie.credits.cast.map((celebrity, index) => (
-						<SwiperSlide key={index}>
-							<CarouselCard
-								image={celebrity.image}
-								primaryDisplay={celebrity.name}
-								secondaryDisplay={celebrity.character}
-								link={`/celebrities/${celebrity.id}`}
-							/>
-						</SwiperSlide>
+					{movie.credits.cast.map(celebrity => (
+						<CarouselCard
+							key={celebrity.id}
+							image={celebrity.image}
+							primaryDisplay={celebrity.name}
+							secondaryDisplay={celebrity.character}
+							link={`/celebrities/${celebrity.id}`}
+						/>
 					))}
 				</Carousel>
 			</div>
@@ -170,15 +168,14 @@ const Movie: React.FC<MovieProps> = ({movie}) => {
 					<Trans>Crew</Trans> ({movie.credits.crew.length})
 				</span>
 				<Carousel>
-					{movie.credits.crew.map((celebrity, index) => (
-						<SwiperSlide key={index}>
-							<CarouselCard
-								image={celebrity.image}
-								primaryDisplay={celebrity.name}
-								secondaryDisplay={celebrity.department}
-								link={`/celebrities/${celebrity.id}`}
-							/>
-						</SwiperSlide>
+					{movie.credits.crew.map(celebrity => (
+						<CarouselCard
+							key={celebrity.id}
+							image={celebrity.image}
+							primaryDisplay={celebrity.name}
+							secondaryDisplay={celebrity.department}
+							link={`/celebrities/${celebrity.id}`}
+						/>
 					))}
 				</Carousel>
 			</div>

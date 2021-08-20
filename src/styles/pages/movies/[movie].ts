@@ -236,7 +236,7 @@ const Container = styled.div`
 		flex-direction: column;
 		gap: 3rem;
 
-		span {
+		> span {
 			font-family: Roboto;
 			font-weight: 700;
 			font-size: 3rem;

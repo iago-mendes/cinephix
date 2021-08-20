@@ -2,7 +2,6 @@ import {GetStaticPaths, GetStaticProps} from 'next'
 import {useRouter} from 'next/router'
 import {FiUser} from 'react-icons/fi'
 import {FaBirthdayCake, FaCity} from 'react-icons/fa'
-import {SwiperSlide} from 'swiper/react'
 import Image from 'next/image'
 
 import Container from '../../styles/pages/celebrities/[celebrity]'
@@ -95,19 +94,18 @@ const Celebrity: React.FC<CelebrityProps> = ({celebrity}) => {
 			<div className="cast">
 				<span>Cast ({celebrity.credits.cast.length})</span>
 				<Carousel>
-					{celebrity.credits.cast.map((media, index) => (
-						<SwiperSlide key={index}>
-							<CarouselCard
-								image={media.image}
-								primaryDisplay={media.title}
-								secondaryDisplay={media.character}
-								link={
-									media.type === 'movie'
-										? `/movies/${media.id}`
-										: `/tvshows/${media.id}`
-								}
-							/>
-						</SwiperSlide>
+					{celebrity.credits.cast.map(media => (
+						<CarouselCard
+							key={media.id}
+							image={media.image}
+							primaryDisplay={media.title}
+							secondaryDisplay={media.character}
+							link={
+								media.type === 'movie'
+									? `/movies/${media.id}`
+									: `/tvshows/${media.id}`
+							}
+						/>
 					))}
 				</Carousel>
 			</div>
@@ -115,19 +113,18 @@ const Celebrity: React.FC<CelebrityProps> = ({celebrity}) => {
 			<div className="crew">
 				<span>Crew ({celebrity.credits.crew.length})</span>
 				<Carousel>
-					{celebrity.credits.crew.map((media, index) => (
-						<SwiperSlide key={index}>
-							<CarouselCard
-								image={media.image}
-								primaryDisplay={media.title}
-								secondaryDisplay={media.department}
-								link={
-									media.type === 'movie'
-										? `/movies/${media.id}`
-										: `/tvshows/${media.id}`
-								}
-							/>
-						</SwiperSlide>
+					{celebrity.credits.crew.map(media => (
+						<CarouselCard
+							key={media.id}
+							image={media.image}
+							primaryDisplay={media.title}
+							secondaryDisplay={media.department}
+							link={
+								media.type === 'movie'
+									? `/movies/${media.id}`
+									: `/tvshows/${media.id}`
+							}
+						/>
 					))}
 				</Carousel>
 			</div>

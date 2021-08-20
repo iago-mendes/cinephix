@@ -1,31 +1,27 @@
-import {Swiper} from 'swiper/react'
+import Slider from 'react-slick'
 
 import Container from './styles'
-import useDimensions from '../../hooks/useDimensions'
+import {Control} from './control'
 
-interface CarouselProps {
-	className?: string
-}
+type Props = React.HTMLAttributes<HTMLDivElement>
 
-const Carousel: React.FC<CarouselProps> = ({children, className}) => {
-	const {width} = useDimensions()
-
-	function getSlidesPerView() {
-		if (width <= 900) return 1
-		else if (width <= 1250) return 2
-		else return 3
-	}
-
+function Carousel({children, ...props}: Props) {
 	return (
-		<Container className={className}>
-			<Swiper
-				spaceBetween={50}
-				slidesPerView={getSlidesPerView()}
-				navigation
-				className="swiper"
+		<Container {...props}>
+			<Slider
+				lazyLoad="ondemand"
+				centerMode
+				prevArrow={<Control direction="left" />}
+				nextArrow={<Control direction="right" />}
+				slidesToShow={3}
+				slidesToScroll={3}
+				responsive={[
+					{breakpoint: 1050, settings: {slidesToShow: 2}},
+					{breakpoint: 750, settings: {slidesToShow: 1}}
+				]}
 			>
 				{children}
-			</Swiper>
+			</Slider>
 		</Container>
 	)
 }
