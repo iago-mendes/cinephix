@@ -17,10 +17,10 @@ const Container = styled.footer`
 		gap: 1rem;
 
 		cursor: pointer;
-		transition: 0.25s;
+		transition: transform 0.25s;
 
 		:hover {
-			transform: scale(1.05);
+			transform: scale(0.9);
 		}
 
 		.icon {

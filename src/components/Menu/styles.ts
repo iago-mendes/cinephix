@@ -115,10 +115,10 @@ const Container = styled.nav<ContainerProps>`
 				color: ${p => p.theme.primary};
 
 				cursor: pointer;
-				transition: 0.25s;
+				transition: transform 0.2s;
 
 				:hover {
-					transform: scale(1.07);
+					transform: scale(0.9);
 				}
 
 				.img {
@@ -128,7 +128,7 @@ const Container = styled.nav<ContainerProps>`
 				}
 
 				.indicator {
-					transition: 0.25s;
+					transition: transform 0.2s;
 
 					transform: ${p =>
 						p.isUserMenuOpen ? 'rotate(-180deg)' : 'rotate(-90deg)'};
