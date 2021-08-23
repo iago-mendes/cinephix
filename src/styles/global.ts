@@ -50,11 +50,6 @@ export default createGlobalStyle`
 		max-height: 100%;
 	}
 
-	#__next
-	{
-		
-	}
-
 	.page
 	{
 		min-height: calc(100vh - 5rem);
@@ -108,7 +103,7 @@ export default createGlobalStyle`
 		}
 
 		body.avoid-scroll {
-			padding-right: 15px;
+			padding-right: 15px !important;
 		}
 	}
 
