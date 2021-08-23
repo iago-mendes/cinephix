@@ -6,7 +6,7 @@ import {Media, MediaCard} from '../../_cards/Media'
 import GridPaginate from '../../GridPaginate'
 import {updatePaginatedData} from '../../../utils/updatePaginatedData'
 import ModalContainer from '../Container'
-import {useUserStatus} from '../../../contexts/UserStatus'
+import {useUserStatus} from '../../../hooks/useUserStatus'
 
 interface SelectTvshowProps {
 	isOpen: boolean

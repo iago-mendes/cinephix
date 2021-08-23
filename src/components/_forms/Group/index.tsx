@@ -17,7 +17,7 @@ import errorAlert from '../../../utils/alerts/error'
 import {useAuth} from '../../../hooks/useAuth'
 import SelectBannerModal from '../../_modals/SelectBanner'
 import slugify from '../../../utils/slugify'
-import {useUserStatus} from '../../../contexts/UserStatus'
+import {useUserStatus} from '../../../hooks/useUserStatus'
 
 interface GroupFormProps {
 	method: string

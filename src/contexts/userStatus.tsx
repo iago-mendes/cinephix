@@ -1,4 +1,4 @@
-import {createContext, ReactNode, useContext, useState} from 'react'
+import {createContext, ReactNode, useState} from 'react'
 
 type UserStatusContextData = {
 	isTyping: boolean
@@ -6,7 +6,7 @@ type UserStatusContextData = {
 	typingControllerProps: any
 }
 
-const UserStatusContext = createContext({} as UserStatusContextData)
+export const UserStatusContext = createContext({} as UserStatusContextData)
 
 export const UserStatusProvider: React.FC = ({
 	children
@@ -34,8 +34,4 @@ export const UserStatusProvider: React.FC = ({
 			{children}
 		</UserStatusContext.Provider>
 	)
-}
-
-export const useUserStatus = () => {
-	return useContext(UserStatusContext)
 }
