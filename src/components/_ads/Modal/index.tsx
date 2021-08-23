@@ -4,7 +4,7 @@ import {FiX} from 'react-icons/fi'
 import {Trans} from '@lingui/macro'
 
 import Container from './styles'
-import {LargeSkyscraperAd} from '../../../utils/adUnits'
+import {LargeSkyscraperAd} from '../adUnits'
 import ModalContainer from '../../_modals/Container'
 
 const ModalAd: React.FC = () => {

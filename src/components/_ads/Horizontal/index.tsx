@@ -2,7 +2,7 @@ import {Trans} from '@lingui/macro'
 
 import Container from './styles'
 import useDimensions from '../../../hooks/useDimensions'
-import {LeaderboardAd, LargeMobileBannerAd} from '../../../utils/adUnits'
+import {LeaderboardAd, LargeMobileBannerAd} from '../adUnits'
 
 const HorizontalAd: React.FC = () => {
 	const {width} = useDimensions()

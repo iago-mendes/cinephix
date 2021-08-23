@@ -1,6 +1,6 @@
 import Container from './styles'
 import useDimensions from '../../../hooks/useDimensions'
-import {MediumRectangleAd, LargeMobileBannerAd} from '../../../utils/adUnits'
+import {MediumRectangleAd, LargeMobileBannerAd} from '../adUnits'
 
 const CardAd: React.FC = () => {
 	const {width} = useDimensions()
