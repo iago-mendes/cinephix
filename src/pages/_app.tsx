@@ -17,6 +17,7 @@ import ModalAd from '../components/_ads/Modal'
 import {UserStatusProvider} from '../contexts/userStatus'
 import {I18nHandler} from '../locales/I18nHandler'
 import {AuthProvider} from '../contexts/auth'
+import {DimensionsProvider} from '../contexts/dimensions'
 
 const MyApp: React.FC<AppProps> = ({Component, pageProps}) => {
 	const {events} = useRouter()
@@ -32,21 +33,23 @@ const MyApp: React.FC<AppProps> = ({Component, pageProps}) => {
 
 	return (
 		<ThemeProvider theme={theme}>
-			<I18nHandler>
-				<CookieBanner />
-				<BannerAd />
-				<ModalAd />
-				<AuthProvider>
-					<UserStatusProvider>
-						<Menu />
-						<SessionHandler>
-							<Component {...pageProps} />
-						</SessionHandler>
-						<Footer />
-						<GlobalStyle />
-					</UserStatusProvider>
-				</AuthProvider>
-			</I18nHandler>
+			<DimensionsProvider>
+				<I18nHandler>
+					<CookieBanner />
+					<BannerAd />
+					<ModalAd />
+					<AuthProvider>
+						<UserStatusProvider>
+							<Menu />
+							<SessionHandler>
+								<Component {...pageProps} />
+							</SessionHandler>
+							<Footer />
+							<GlobalStyle />
+						</UserStatusProvider>
+					</AuthProvider>
+				</I18nHandler>
+			</DimensionsProvider>
 		</ThemeProvider>
 	)
 }
