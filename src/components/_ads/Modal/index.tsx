@@ -50,7 +50,9 @@ const ModalAd: React.FC = () => {
 						<Trans>Advertisement</Trans>
 					</span>
 
-					<LargeSkyscraperAd />
+					<div>
+						<LargeSkyscraperAd />
+					</div>
 				</main>
 			</Container>
 		</ModalContainer>

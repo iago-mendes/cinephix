@@ -5,7 +5,9 @@ const Container = styled.div`
 	width: 100vw;
 	height: 100vh;
 
-	padding: 1rem 0;
+	padding-top: 1rem;
+	padding-bottom: 7.5rem;
+
 	overflow-y: auto;
 	overflow-x: hidden;
 
@@ -71,33 +73,17 @@ const Container = styled.div`
 			font-size: 1rem;
 		}
 
-		ins {
+		> div {
 			background-color: ${p => p.theme.black}40;
+
+			width: 300px;
+			height: 600px;
 		}
 	}
 
-	@media (min-width: 1001px) {
+	@media (min-width: 1000px) {
 		width: 50vw;
 		height: 90vh;
-
-		::-webkit-scrollbar {
-			width: 1rem;
-		}
-
-		::-webkit-scrollbar-track {
-			background-color: ${p => p.theme.primary}26;
-		}
-
-		::-webkit-scrollbar-thumb {
-			background-color: ${p => p.theme.primary};
-
-			:hover {
-				background-color: ${p => p.theme.primary}bf;
-			}
-		}
-
-		.close {
-		}
 	}
 `
 

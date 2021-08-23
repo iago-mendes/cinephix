@@ -7,9 +7,9 @@ const CardAd: React.FC = () => {
 
 	return (
 		<Container>
-			{width > 600 && <MediumRectangleAd />}
+			{width < 600 && <LargeMobileBannerAd />}
 
-			{width <= 600 && <LargeMobileBannerAd />}
+			{width >= 600 && <MediumRectangleAd />}
 		</Container>
 	)
 }

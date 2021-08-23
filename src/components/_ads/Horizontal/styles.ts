@@ -28,8 +28,16 @@ const Container = styled.div`
 		font-size: 1rem;
 	}
 
-	ins {
+	> div {
 		background-color: ${p => p.theme.black}40;
+
+		width: 320px;
+		height: 100px;
+
+		@media (min-width: 800px) {
+			width: 728px;
+			height: 90px;
+		}
 	}
 `
 

@@ -15,9 +15,11 @@ const HorizontalAd: React.FC = () => {
 				<Trans>Advertisement</Trans>
 			</span>
 
-			{width >= 800 && <LeaderboardAd />}
+			<div>
+				{width < 800 && <LargeMobileBannerAd />}
 
-			{width < 800 && <LargeMobileBannerAd />}
+				{width >= 800 && <LeaderboardAd />}
+			</div>
 		</Container>
 	)
 }
