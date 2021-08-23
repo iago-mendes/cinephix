@@ -1,6 +1,6 @@
 export const analyticsId = String(process.env.NEXT_PUBLIC_GA_TRACKING_ID)
 
-export const pageview = (url: URL) => {
+export function pageview(url: URL) {
 	window.gtag('config', analyticsId, {page_path: url})
 }
 
