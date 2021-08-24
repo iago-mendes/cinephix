@@ -1,5 +1,5 @@
 import {GetStaticProps} from 'next'
-import {useEffect, useState} from 'react'
+import {useState} from 'react'
 import {useRouter} from 'next/router'
 import {t} from '@lingui/macro'
 
@@ -11,7 +11,7 @@ import cinema from '../../assets/images/backgrounds/cinema.png'
 import HeaderWithBackground from '../../components/HeaderWithBackground'
 import SEOHead from '../../components/SEOHead'
 import CardAd from '../../components/_ads/Card'
-import {updatePaginatedData} from '../../utils/updatePaginatedData'
+import {usePaginatedData} from '../../hooks/usePaginatedData'
 
 interface MoviesProps {
 	staticMovies: Media[]
@@ -32,19 +32,17 @@ const Movies: React.FC<MoviesProps> = ({staticMovies}) => {
 			? movies
 			: [...movies.slice(0, 10), {...movies[9], id: -1}, ...movies.slice(10)]
 
-	useEffect(() => {
-		updatePaginatedData({
-			route: 'movies',
-			setData: setMovies,
-			setLoading,
-			search,
-			page,
-			setPage,
-			setTotalPages,
-			defaultData: staticMovies,
-			language
-		})
-	}, [search, page])
+	usePaginatedData({
+		route: 'movies',
+		setData: setMovies,
+		setLoading,
+		search,
+		page,
+		setPage,
+		setTotalPages,
+		defaultData: staticMovies,
+		language
+	})
 
 	return (
 		<div className="page">

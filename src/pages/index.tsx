@@ -1,5 +1,5 @@
 import {GetStaticProps} from 'next'
-import {useEffect, useState} from 'react'
+import {useState} from 'react'
 import Image from 'next/image'
 import {t} from '@lingui/macro'
 
@@ -20,7 +20,7 @@ import SearchBox from '../components/SearchBox'
 import GridPaginate from '../components/GridPaginate'
 import SEOHead from '../components/SEOHead'
 import CardAd from '../components/_ads/Card'
-import {updatePaginatedData} from '../utils/updatePaginatedData'
+import {usePaginatedData} from '../hooks/usePaginatedData'
 import {useRouter} from 'next/router'
 
 interface HomeProps {
@@ -42,19 +42,17 @@ const Home: React.FC<HomeProps> = ({staticHome}) => {
 			? home
 			: [...home.slice(0, 10), {...home[9], id: -1}, ...home.slice(10)]
 
-	useEffect(() => {
-		updatePaginatedData({
-			route: 'home',
-			setData: setHome,
-			setLoading,
-			search,
-			page,
-			setPage,
-			setTotalPages,
-			defaultData: staticHome,
-			language
-		})
-	}, [search, page])
+	usePaginatedData({
+		route: 'home',
+		setData: setHome,
+		setLoading,
+		search,
+		page,
+		setPage,
+		setTotalPages,
+		defaultData: staticHome,
+		language
+	})
 
 	function isMedia(item: Media | Celebrity): item is Media {
 		return 'title' in item

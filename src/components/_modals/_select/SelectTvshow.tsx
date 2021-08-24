@@ -1,10 +1,10 @@
-import {useEffect, useState} from 'react'
+import {useState} from 'react'
 import {FaSearch} from 'react-icons/fa'
 
 import Container from './styles'
 import {Media, MediaCard} from '../../_cards/Media'
 import GridPaginate from '../../GridPaginate'
-import {updatePaginatedData} from '../../../utils/updatePaginatedData'
+import {usePaginatedData} from '../../../hooks/usePaginatedData'
 import ModalContainer from '../Container'
 import {useUserStatus} from '../../../hooks/useUserStatus'
 
@@ -29,17 +29,15 @@ const SelectTvshow: React.FC<SelectTvshowProps> = ({
 
 	const [tvshows, setTvshows] = useState<Media[]>([])
 
-	useEffect(() => {
-		updatePaginatedData({
-			route: 'tvshows',
-			setData: setTvshows,
-			setLoading,
-			search,
-			page,
-			setPage,
-			setTotalPages
-		})
-	}, [search, page])
+	usePaginatedData({
+		route: 'tvshows',
+		setData: setTvshows,
+		setLoading,
+		search,
+		page,
+		setPage,
+		setTotalPages
+	})
 
 	return (
 		<ModalContainer

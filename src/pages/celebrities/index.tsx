@@ -1,5 +1,5 @@
 import {GetStaticProps} from 'next'
-import {useEffect, useState} from 'react'
+import {useState} from 'react'
 import {t} from '@lingui/macro'
 
 import api from '../../services/api'
@@ -10,7 +10,7 @@ import actors from '../../assets/images/backgrounds/actors.png'
 import HeaderWithBackground from '../../components/HeaderWithBackground'
 import SEOHead from '../../components/SEOHead'
 import CardAd from '../../components/_ads/Card'
-import {updatePaginatedData} from '../../utils/updatePaginatedData'
+import {usePaginatedData} from '../../hooks/usePaginatedData'
 import {useRouter} from 'next/router'
 
 interface CelebritiesProps {
@@ -36,19 +36,17 @@ const Celebrities: React.FC<CelebritiesProps> = ({staticCelebrities}) => {
 					...celebrities.slice(10)
 			  ]
 
-	useEffect(() => {
-		updatePaginatedData({
-			route: 'celebrities',
-			setData: setCelebrities,
-			setLoading,
-			search,
-			page,
-			setPage,
-			setTotalPages,
-			defaultData: staticCelebrities,
-			language
-		})
-	}, [search, page])
+	usePaginatedData({
+		route: 'celebrities',
+		setData: setCelebrities,
+		setLoading,
+		search,
+		page,
+		setPage,
+		setTotalPages,
+		defaultData: staticCelebrities,
+		language
+	})
 
 	return (
 		<div className="page">

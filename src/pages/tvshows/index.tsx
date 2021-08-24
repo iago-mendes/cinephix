@@ -1,5 +1,5 @@
 import {GetStaticProps} from 'next'
-import {useEffect, useState} from 'react'
+import {useState} from 'react'
 import {t} from '@lingui/macro'
 
 import api from '../../services/api'
@@ -10,7 +10,7 @@ import tv from '../../assets/images/backgrounds/tv.png'
 import HeaderWithBackground from '../../components/HeaderWithBackground'
 import SEOHead from '../../components/SEOHead'
 import CardAd from '../../components/_ads/Card'
-import {updatePaginatedData} from '../../utils/updatePaginatedData'
+import {usePaginatedData} from '../../hooks/usePaginatedData'
 import {useRouter} from 'next/router'
 
 interface TvshowsProps {
@@ -32,19 +32,17 @@ const Tvshows: React.FC<TvshowsProps> = ({staticTvshows}) => {
 			? tvshows
 			: [...tvshows.slice(0, 10), {...tvshows[9], id: -1}, ...tvshows.slice(10)]
 
-	useEffect(() => {
-		updatePaginatedData({
-			route: 'tvshows',
-			setData: setTvshows,
-			setLoading,
-			search,
-			page,
-			setPage,
-			setTotalPages,
-			defaultData: staticTvshows,
-			language
-		})
-	}, [search, page])
+	usePaginatedData({
+		route: 'tvshows',
+		setData: setTvshows,
+		setLoading,
+		search,
+		page,
+		setPage,
+		setTotalPages,
+		defaultData: staticTvshows,
+		language
+	})
 
 	return (
 		<div className="page">
