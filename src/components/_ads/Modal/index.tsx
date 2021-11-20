@@ -8,6 +8,7 @@ import {LargeSkyscraperAd} from '../adUnits'
 import ModalContainer from '../../_modals/Container'
 
 const ModalAd: React.FC = () => {
+	return null
 	const {pathname} = useRouter()
 
 	const [isOpen, setIsOpen] = useState(false)

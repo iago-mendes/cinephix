@@ -77,10 +77,10 @@ export default class MyDocument extends Document {
 					/>
 
 					{/* Google AdSense */}
-					<script
+					{/* <script
 						async
 						src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
-					/>
+					/> */}
 
 					{/* PWA */}
 					<meta name="application-name" content={pwa.name} />

@@ -5,6 +5,7 @@ import useDimensions from '../../../hooks/useDimensions'
 import {LeaderboardAd, LargeMobileBannerAd} from '../adUnits'
 
 const HorizontalAd: React.FC = () => {
+	return null
 	const {width} = useDimensions()
 
 	if (width < 360) return null

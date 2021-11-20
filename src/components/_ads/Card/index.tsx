@@ -3,6 +3,7 @@ import useDimensions from '../../../hooks/useDimensions'
 import {MediumRectangleAd, LargeMobileBannerAd} from '../adUnits'
 
 const CardAd: React.FC = () => {
+	return null
 	const {width} = useDimensions()
 
 	return (

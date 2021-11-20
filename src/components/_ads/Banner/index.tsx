@@ -6,6 +6,7 @@ import HorizontalAd from '../Horizontal'
 import useDimensions from '../../../hooks/useDimensions'
 
 const BannerAd: React.FC = () => {
+	return null
 	const [show, setShow] = useState(false)
 	const {inMobile} = useDimensions()
 
