@@ -64,7 +64,7 @@ function CardContainerComponent({
 				{mediaCard && (
 					<div className="media-card">
 						<OptimizedImage
-							src={imageSrc}
+							src={mediaCard.imageSrc}
 							blurData={imageBlurData}
 							className="media-card-image-container"
 						/>
