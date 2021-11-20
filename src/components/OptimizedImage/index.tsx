@@ -8,13 +8,10 @@ type Props = React.HTMLAttributes<HTMLDivElement> & {
 	alt?: string
 }
 
-function OptimizedImageComponent({src, blurData, alt, ...props}: Props) {
+function OptimizedImageComponent({src, alt, ...props}: Props) {
 	return (
 		<Container {...props}>
-			<img
-				src={src}
-				alt={alt}
-			/>
+			<img src={src} alt={alt} />
 		</Container>
 	)
 }
