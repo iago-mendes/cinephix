@@ -17,6 +17,7 @@ import getTotalRating from '../../utils/getTotalRating'
 import SEOHead from '../../components/SEOHead'
 import {OptimizedImage} from '../../components/OptimizedImage'
 import {DetailsPageLayout} from '../../components/_layouts/DetailsPage'
+import truncateText from '../../utils/truncateText'
 
 interface MovieProps {
 	movie: MovieDetails
@@ -80,7 +81,7 @@ const Movie: React.FC<MovieProps> = ({movie}) => {
 			{movie.collection && (
 				<div className="row collection">
 					<div>
-						<h1>{movie.collection.name}</h1>
+						<h1>{truncateText(movie.collection.name, 50)}</h1>
 						<OptimizedImage
 							src={movie.collection.image}
 							alt={`${movie.collection.name} image`}

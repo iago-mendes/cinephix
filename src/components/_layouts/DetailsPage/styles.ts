@@ -130,7 +130,7 @@ export const Container = styled.div<{overviewLength: number}>`
 		::before,
 		::after {
 			content: '';
-			width: 50%;
+			width: 90%;
 			height: 0.5rem;
 
 			background-color: ${p => p.theme.primary}80;
@@ -144,7 +144,7 @@ export const Container = styled.div<{overviewLength: number}>`
 			align-items: center;
 			justify-content: space-around;
 
-			width: 50%;
+			width: 90%;
 
 			h1 {
 				font-family: Ubuntu;
@@ -261,6 +261,19 @@ export const Container = styled.div<{overviewLength: number}>`
 			margin-left: 1rem;
 			padding-left: 1rem;
 			border-left: ${p => p.theme.primary} 5px solid;
+		}
+	}
+
+	@media (min-width: 500px) {
+		> .collection {
+			::before,
+			::after {
+				width: 50%;
+			}
+
+			> div {
+				width: 50%;
+			}
 		}
 	}
 
