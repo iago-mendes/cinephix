@@ -72,7 +72,6 @@ export const Container = styled.div<Props>`
 			font-weight: 700;
 
 			font-size: 1.75rem;
-			height: 35%;
 
 			overflow: hidden;
 		}
@@ -91,7 +90,6 @@ export const Container = styled.div<Props>`
 
 		> p {
 			font-size: 1.2rem;
-			height: 45%;
 
 			overflow: hidden;
 		}
