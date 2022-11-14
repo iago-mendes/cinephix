@@ -30,6 +30,10 @@ const Container = styled.footer`
 		.name {
 			width: 100%;
 		}
+
+		img {
+			height: fit-content;
+		}
 	}
 
 	.attribution {
