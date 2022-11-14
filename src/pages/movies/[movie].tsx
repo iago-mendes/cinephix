@@ -24,7 +24,7 @@ interface MovieProps {
 }
 
 const Movie: React.FC<MovieProps> = ({movie}) => {
-	const {isFallback, push} = useRouter()
+	const {isFallback, push, locale} = useRouter()
 	const {user} = useAuth()
 
 	const [userMovie, setUserMovie] = useState<UserMovie>(defaultUserMovie)
@@ -58,7 +58,7 @@ const Movie: React.FC<MovieProps> = ({movie}) => {
 					<div className="details">
 						<div className="detail">
 							<FiCalendar size={30} />
-							<span>{formatDate(movie.date)}</span>
+							<span>{formatDate(movie.date, locale)}</span>
 						</div>
 						<div className="detail">
 							<FiInfo size={30} />

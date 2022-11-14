@@ -65,7 +65,7 @@ interface TvshowProps {
 }
 
 const Tvshow: React.FC<TvshowProps> = ({tvshow}) => {
-	const {isFallback, push} = useRouter()
+	const {isFallback, push, locale} = useRouter()
 	const {user} = useAuth()
 
 	const [userTvshow, setUserTvshow] = useState<UserTvshowDetails>(
@@ -101,9 +101,9 @@ const Tvshow: React.FC<TvshowProps> = ({tvshow}) => {
 					<div className="details">
 						<div className="detail dates">
 							<FiCalendar />
-							<span>{formatDate(tvshow.startDate)}</span>
+							<span>{formatDate(tvshow.startDate, locale)}</span>
 							<FiArrowRight />
-							<span>{formatDate(tvshow.endDate)}</span>
+							<span>{formatDate(tvshow.endDate, locale)}</span>
 						</div>
 						<div className="group">
 							<div className="detail">

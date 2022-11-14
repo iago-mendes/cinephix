@@ -1,5 +1,6 @@
 import {ReactNode, memo} from 'react'
 import {FiCalendar} from 'react-icons/fi'
+import {useRouter} from 'next/router'
 
 import {Container} from './styles'
 import truncateText from '../../../utils/truncateText'
@@ -36,6 +37,8 @@ function CardContainerComponent({
 	isLoading = false,
 	...props
 }: Props) {
+	const {locale} = useRouter()
+
 	if (isLoading)
 		return (
 			<Container cardWidth={cardWidth}>
@@ -72,7 +75,7 @@ function CardContainerComponent({
 							<span className="title">{truncateText(mediaCard.title, 17)}</span>
 							<span className="date">
 								<FiCalendar />
-								{formatDate(mediaCard.date)}
+								{formatDate(mediaCard.date, locale)}
 							</span>
 						</div>
 					</div>

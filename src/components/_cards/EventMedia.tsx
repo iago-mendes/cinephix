@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import {ReactNode} from 'react'
 import {FiCalendar} from 'react-icons/fi'
+import {useRouter} from 'next/router'
 
 import {EventMedia} from '../../models/event'
 import truncateText from '../../utils/truncateText'
@@ -14,6 +15,8 @@ type Props = {
 }
 
 export function EventMediaCard({media, link, children}: Props) {
+	const {locale} = useRouter()
+
 	return (
 		<Link href={link}>
 			<CardContainer
@@ -23,7 +26,7 @@ export function EventMediaCard({media, link, children}: Props) {
 				<span className="title">{truncateText(media.title, 35)}</span>
 				<span className="subtitle">
 					<FiCalendar />
-					{formatDate(media.date)}
+					{formatDate(media.date, locale)}
 				</span>
 				<p>{truncateText(media.overview, 120)}</p>
 				{children}

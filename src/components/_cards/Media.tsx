@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import {FiCalendar} from 'react-icons/fi'
+import {useRouter} from 'next/router'
 
 import formatDate from '../../utils/formatDate'
 import truncateText from '../../utils/truncateText'
@@ -29,13 +30,15 @@ export function MediaCard({
 	link,
 	onClick = () => {}
 }: Props) {
+	const {locale} = useRouter()
+
 	return (
 		<Link href={link} onClick={onClick}>
 			<CardContainer imageSrc={media.image}>
 				<span className="title">{truncateText(media.title, 35)}</span>
 				<span className="subtitle">
 					<FiCalendar />
-					{formatDate(media.date)}
+					{formatDate(media.date, locale)}
 				</span>
 				{showOverview && <p>{truncateText(media.overview, 120)}</p>}
 			</CardContainer>

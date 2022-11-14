@@ -1,18 +1,19 @@
 import {format, Locale} from 'date-fns'
 import {enUS, ptBR} from 'date-fns/locale'
-import {useRouter} from 'next/router'
 
 const locales = {
 	'en-US': enUS,
 	'pt-BR': ptBR
 }
 
-export function formatDate(unformatedDate: string | undefined) {
+export function formatDate(
+	unformatedDate: string | undefined,
+	routerLocale: string
+) {
 	if (!unformatedDate || unformatedDate === '') return ''
 
 	const date = new Date(unformatedDate)
 
-	const {locale: routerLocale} = useRouter()
 	const locale: Locale = Object.keys(locales).includes(routerLocale)
 		? locales[routerLocale]
 		: enUS

@@ -48,7 +48,7 @@ interface CelebrityProps {
 }
 
 const Celebrity: React.FC<CelebrityProps> = ({celebrity}) => {
-	const {isFallback} = useRouter()
+	const {isFallback, locale} = useRouter()
 
 	if (!celebrity) return null
 
@@ -75,7 +75,7 @@ const Celebrity: React.FC<CelebrityProps> = ({celebrity}) => {
 						</div>
 						<div className="detail">
 							<FaBirthdayCake size={30} />
-							<span>{formatDate(celebrity.birthday)}</span>
+							<span>{formatDate(celebrity.birthday, locale)}</span>
 						</div>
 						<div className="detail">
 							<FaCity size={30} />

@@ -5,6 +5,7 @@ import Link from 'next/link'
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
 import {Trans, t} from '@lingui/macro'
+import {useRouter} from 'next/router'
 
 import Container from '../../styles/pages/user/index'
 import Loading from '../../components/Loading'
@@ -20,6 +21,7 @@ const MySwal = withReactContent(Swal)
 
 const User: React.FC = () => {
 	const {user, signOut} = useAuth()
+	const {locale} = useRouter()
 
 	const [userInfo, setUserInfo] = useState<UserInfo>(defaultUser)
 	const [groupsNumber, setGroupsNumber] = useState(0)
@@ -79,7 +81,7 @@ const User: React.FC = () => {
 					<h2>{user.email}</h2>
 					<p>
 						<Trans>Member since</Trans>{' '}
-						<strong>{formatDate(userInfo.joinedAt)}</strong>
+						<strong>{formatDate(userInfo.joinedAt, locale)}</strong>
 					</p>
 				</div>
 				<button className="delete" onClick={handleDelete}>
