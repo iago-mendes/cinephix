@@ -1,6 +1,6 @@
 import {GetStaticProps} from 'next'
 import {useState} from 'react'
-import Image from 'next/image'
+import Image from 'next/legacy/image'
 import {t} from '@lingui/macro'
 
 import logoName from '../assets/images/logo/name.svg'

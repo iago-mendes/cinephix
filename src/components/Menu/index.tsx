@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import Image from 'next/image'
+import Image from 'next/legacy/image'
 import {BiUserCircle} from 'react-icons/bi'
 import {BsFillTriangleFill} from 'react-icons/bs'
 import {useEffect, useState} from 'react'

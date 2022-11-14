@@ -1,6 +1,6 @@
 import {ChangeEvent, FormEvent, useEffect, useState} from 'react'
 import Select from 'react-select'
-import Image from 'next/image'
+import Image from 'next/legacy/image'
 import {useRouter} from 'next/router'
 import {FiCheck, FiX} from 'react-icons/fi'
 import {MdClear} from 'react-icons/md'

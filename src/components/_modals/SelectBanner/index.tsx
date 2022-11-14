@@ -1,4 +1,4 @@
-import Image from 'next/image'
+import Image from 'next/legacy/image'
 
 import Container from './styles'
 import {banners} from '../../../assets/db/banners'

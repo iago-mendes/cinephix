@@ -1,7 +1,7 @@
 import {useEffect, useState} from 'react'
 import Select from 'react-select'
 import {useRouter} from 'next/router'
-import Image from 'next/image'
+import Image from 'next/legacy/image'
 import {FiCheck, FiMinus, FiPlus, FiX} from 'react-icons/fi'
 
 import Container from './styles'
