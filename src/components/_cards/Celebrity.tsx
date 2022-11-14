@@ -21,25 +21,23 @@ type Props = {
 export function CelebrityCard({celebrity, showKnownFor = false}: Props) {
 	return (
 		<Link href={`/celebrities/${celebrity.id}`}>
-			<a>
-				<CardContainer
-					imageSrc={celebrity.image}
-					mediaCard={
-						showKnownFor &&
-						celebrity.knownFor && {
-							imageSrc: celebrity.knownFor.image,
-							title: celebrity.knownFor.title,
-							date: celebrity.knownFor.date
-						}
+			<CardContainer
+				imageSrc={celebrity.image}
+				mediaCard={
+					showKnownFor &&
+					celebrity.knownFor && {
+						imageSrc: celebrity.knownFor.image,
+						title: celebrity.knownFor.title,
+						date: celebrity.knownFor.date
 					}
-				>
-					<span className="title">{truncateText(celebrity.name, 20)}</span>
-					<span className="subtitle">
-						<FiUser />
-						{celebrity.knownForDepartment}
-					</span>
-				</CardContainer>
-			</a>
+				}
+			>
+				<span className="title">{truncateText(celebrity.name, 20)}</span>
+				<span className="subtitle">
+					<FiUser />
+					{celebrity.knownForDepartment}
+				</span>
+			</CardContainer>
 		</Link>
 	)
 }

@@ -34,10 +34,13 @@ const ModalContainer: React.FC<Props> = ({
 			<div className="modal-content">
 				<header>
 					{expandLink && (
-						<Link href={expandLink}>
-							<a className="expand" title="Expand" onClick={handleClose}>
-								<BiExpand size={25} />
-							</a>
+						<Link
+							href={expandLink}
+							className="expand"
+							title="Expand"
+							onClick={handleClose}
+						>
+							<BiExpand size={25} />
 						</Link>
 					)}
 

@@ -67,7 +67,7 @@ const Menu: React.FC = () => {
 				</div>
 			)}
 
-			<Link href="/">
+			<Link href="/" legacyBehavior>
 				<div className="logos">
 					<div className="icon">
 						<Image src={logoIcon} alt="Cinephix" />

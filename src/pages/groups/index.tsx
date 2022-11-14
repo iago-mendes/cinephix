@@ -45,21 +45,15 @@ const Groups: React.FC = () => {
 					<FiPlus size={30} />
 				</button>
 				{groups.map((group, index) => (
-					<Link href={`/groups/${group.urlId}`} key={index}>
-						<a className="group">
-							<span className="nickname">
-								{truncateText(group.nickname, 20)}
-							</span>
-							<p className="description">
-								{truncateText(group.description, 35)}
-							</p>
-							<div className="event">
-								<svg width={30} height={30}>
-									<rect width={30} height={30} fill={group.event.color} />
-								</svg>
-								<span className="name">{group.event.name}</span>
-							</div>
-						</a>
+					<Link href={`/groups/${group.urlId}`} key={index} className="group">
+						<span className="nickname">{truncateText(group.nickname, 20)}</span>
+						<p className="description">{truncateText(group.description, 35)}</p>
+						<div className="event">
+							<svg width={30} height={30}>
+								<rect width={30} height={30} fill={group.event.color} />
+							</svg>
+							<span className="name">{group.event.name}</span>
+						</div>
 					</Link>
 				))}
 			</main>

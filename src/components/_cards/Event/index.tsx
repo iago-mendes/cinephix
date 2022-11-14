@@ -12,7 +12,7 @@ export function EventCard({event}: Props) {
 	const link = `/events/${event.id}`
 
 	return (
-		<Link href={link}>
+		<Link href={link} legacyBehavior>
 			<Container as="a" href={link}>
 				<svg width={50} height={50}>
 					<rect width={50} height={50} fill={event.color} />

@@ -17,20 +17,18 @@ export function EventCelebrityCard({eventCelebrity, link, children}: Props) {
 
 	return (
 		<Link href={link}>
-			<a>
-				<CardContainer
-					imageSrc={celebrity.image}
-					mediaCard={{
-						imageSrc: media.image,
-						title: media.title,
-						date: media.date
-					}}
-					cardWidth={{mobile: '20rem', desktop: '30rem'}}
-				>
-					<span className="title">{truncateText(celebrity.name, 20)}</span>
-					{children}
-				</CardContainer>
-			</a>
+			<CardContainer
+				imageSrc={celebrity.image}
+				mediaCard={{
+					imageSrc: media.image,
+					title: media.title,
+					date: media.date
+				}}
+				cardWidth={{mobile: '20rem', desktop: '30rem'}}
+			>
+				<span className="title">{truncateText(celebrity.name, 20)}</span>
+				{children}
+			</CardContainer>
 		</Link>
 	)
 }

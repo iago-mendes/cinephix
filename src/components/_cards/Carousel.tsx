@@ -21,18 +21,14 @@ export function CarouselCard({
 	return (
 		<div>
 			<Link href={link}>
-				<a>
-					<CardContainer
-						imageSrc={image}
-						cardWidth={{mobile: '20rem', desktop: '30rem'}}
-					>
-						<span className="title">{truncateText(primaryDisplay, 20)}</span>
-						<span className="subtitle">
-							{truncateText(secondaryDisplay, 20)}
-						</span>
-						{children}
-					</CardContainer>
-				</a>
+				<CardContainer
+					imageSrc={image}
+					cardWidth={{mobile: '20rem', desktop: '30rem'}}
+				>
+					<span className="title">{truncateText(primaryDisplay, 20)}</span>
+					<span className="subtitle">{truncateText(secondaryDisplay, 20)}</span>
+					{children}
+				</CardContainer>
 			</Link>
 		</div>
 	)

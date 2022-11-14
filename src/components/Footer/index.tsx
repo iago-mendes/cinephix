@@ -16,7 +16,7 @@ const Footer: React.FC = () => {
 				<Attribution />
 			) : (
 				<>
-					<Link href="/">
+					<Link href="/" legacyBehavior>
 						<div className="logos">
 							<div className="icon">
 								<Image src={logoIcon} alt="Cinephix" />

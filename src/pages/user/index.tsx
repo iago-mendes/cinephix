@@ -92,28 +92,22 @@ const User: React.FC = () => {
 
 			<div className="links">
 				<Link href="/groups">
-					<a>
-						<span>
-							<Trans>My groups</Trans> ({groupsNumber})
-							<FiArrowRight size={40} />
-						</span>
-					</a>
+					<span>
+						<Trans>My groups</Trans> ({groupsNumber})
+						<FiArrowRight size={40} />
+					</span>
 				</Link>
 				<Link href="/user/tvshows">
-					<a>
-						<span>
-							<Trans>My TV shows</Trans> ({userInfo.tvshows.length})
-							<FiArrowRight size={40} />
-						</span>
-					</a>
+					<span>
+						<Trans>My TV shows</Trans> ({userInfo.tvshows.length})
+						<FiArrowRight size={40} />
+					</span>
 				</Link>
 				<Link href="/user/movies">
-					<a>
-						<span>
-							<Trans>My movies</Trans> ({userInfo.movies.length})
-							<FiArrowRight size={40} />
-						</span>
-					</a>
+					<span>
+						<Trans>My movies</Trans> ({userInfo.movies.length})
+						<FiArrowRight size={40} />
+					</span>
 				</Link>
 			</div>
 		</Container>
