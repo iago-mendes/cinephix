@@ -8,6 +8,7 @@ import api from '../../../services/api'
 import RemoveButton from '../../../components/RemoveButton'
 
 const EditGroup: React.FC = () => {
+	return null
 	const {query} = useRouter()
 	const {group: urlId} = query
 

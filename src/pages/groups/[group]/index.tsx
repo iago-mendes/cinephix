@@ -1,4 +1,4 @@
-import Image from 'next/legacy/image'
+import Image from 'next/image'
 import {GetStaticPaths, GetStaticProps} from 'next'
 import {useRouter} from 'next/router'
 import {useEffect, useState} from 'react'
@@ -27,6 +27,7 @@ interface GroupProps {
 }
 
 const Group: React.FC<GroupProps> = ({group: staticGroup}) => {
+	return null
 	const {user} = useAuth()
 	const {isFallback, push, pathname} = useRouter()
 
@@ -87,6 +88,7 @@ const Group: React.FC<GroupProps> = ({group: staticGroup}) => {
 				<div className="img">
 					<Image
 						src={getBanner(group.banner)}
+						alt={`${group.nickname}'s banner`}
 						width={1500}
 						height={750}
 						layout="responsive"
@@ -126,6 +128,7 @@ const Group: React.FC<GroupProps> = ({group: staticGroup}) => {
 								<div className="img">
 									<Image
 										src={participant.image}
+										alt={`${participant.name}'s image`}
 										width={100}
 										height={100}
 										layout="responsive"

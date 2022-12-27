@@ -93,12 +93,12 @@ const User: React.FC = () => {
 			</main>
 
 			<div className="links">
-				<Link href="/groups">
+				{/* <Link href="/groups">
 					<span>
 						<Trans>My groups</Trans> ({groupsNumber})
 						<FiArrowRight size={40} />
 					</span>
-				</Link>
+				</Link> */}
 				<Link href="/user/tvshows">
 					<span>
 						<Trans>My TV shows</Trans> ({userInfo.tvshows.length})

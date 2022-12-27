@@ -12,6 +12,7 @@ import Link from 'next/link'
 import HorizontalAd from '../../components/_ads/Horizontal'
 
 const Groups: React.FC = () => {
+	return null
 	const {user} = useAuth()
 	const {push, locale: language} = useRouter()
 

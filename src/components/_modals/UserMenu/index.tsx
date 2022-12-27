@@ -85,9 +85,9 @@ const UserMenu: React.FC<UserMenuProps> = ({isOpen, setIsOpen}) => {
 						<Trans>
 							<Link href="/user">My profile</Link>
 						</Trans>
-						<Trans>
+						{/* <Trans>
 							<Link href="/groups">My groups</Link>
-						</Trans>
+						</Trans> */}
 						<Trans>
 							<Link href="/user/tvshows">My TV shows</Link>
 						</Trans>
