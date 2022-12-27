@@ -71,7 +71,7 @@ const TvshowForm: React.FC<TvshowFormProps> = ({method}) => {
 			api
 				.get(`tvshows/${tvshowId}`, {params: {language}})
 				.then(({data}: {data: TvshowDetails}) => setTvshow(data))
-	}, [tvshowId])
+	}, [language, tvshowId])
 
 	useEffect(() => {
 		if (method === 'put' && user && tvshowId)
@@ -87,7 +87,7 @@ const TvshowForm: React.FC<TvshowFormProps> = ({method}) => {
 					})
 					setRatings(tmpRatings)
 				})
-	}, [user, tvshowId])
+	}, [user, tvshowId, method, language, ratings])
 
 	useEffect(() => {
 		if (statusKey) setStatus(statusKey)

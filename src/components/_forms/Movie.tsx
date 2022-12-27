@@ -49,7 +49,7 @@ const MovieForm: React.FC<MovieFormProps> = ({method}) => {
 			api
 				.get(`movies/${movieId}`, {params: {language}})
 				.then(({data}: {data: MovieDetails}) => setMovie(data))
-	}, [movieId])
+	}, [language, movieId])
 
 	useEffect(() => {
 		if (method === 'put' && user && !Number.isNaN(movieId))
@@ -65,7 +65,7 @@ const MovieForm: React.FC<MovieFormProps> = ({method}) => {
 					})
 					setRatings(tmpRatings)
 				})
-	}, [user, movieId])
+	}, [user, movieId, method, language, ratings])
 
 	useEffect(() => {
 		if (watchedFromRoute != undefined) setWatched(watchedFromRoute)

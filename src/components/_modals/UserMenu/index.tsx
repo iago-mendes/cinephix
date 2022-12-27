@@ -22,7 +22,7 @@ const UserMenu: React.FC<UserMenuProps> = ({isOpen, setIsOpen}) => {
 
 	useEffect(() => {
 		setIsOpen(false)
-	}, [pathname])
+	}, [pathname, setIsOpen])
 
 	function handleSignOut() {
 		setIsOpen(false)

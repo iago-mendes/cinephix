@@ -1,4 +1,5 @@
-import Image from 'next/legacy/image'
+import Image, {StaticImageData} from 'next/legacy/image'
+import {PropsWithChildren} from 'react'
 
 import Container from './styles'
 
@@ -7,11 +8,11 @@ interface HeaderWithBackgroundProps {
 	display: string
 }
 
-const HeaderWithBackground: React.FC<HeaderWithBackgroundProps> = ({
+const HeaderWithBackground = ({
 	background,
 	display,
 	children
-}) => {
+}: PropsWithChildren<HeaderWithBackgroundProps>) => {
 	return (
 		<Container>
 			<div className="background">

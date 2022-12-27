@@ -4,6 +4,7 @@ import Link from 'next/link'
 
 import Container from './styles'
 import {useAvoidScroll} from '../../../hooks/useAvoidScroll'
+import {PropsWithChildren} from 'react'
 
 type Props = {
 	isOpen: boolean
@@ -15,14 +16,14 @@ type Props = {
 	showCompleteContainer?: boolean
 }
 
-const ModalContainer: React.FC<Props> = ({
+const ModalContainer = ({
 	isOpen,
 	handleClose,
 	expandLink,
 	display,
 	showCompleteContainer = true,
 	children
-}) => {
+}: PropsWithChildren<Props>) => {
 	useAvoidScroll(isOpen)
 
 	if (!isOpen) return null

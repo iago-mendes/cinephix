@@ -1,4 +1,4 @@
-import {createContext, ReactNode, useState} from 'react'
+import {createContext, PropsWithChildren, useState} from 'react'
 
 type UserStatusContextData = {
 	isTyping: boolean
@@ -8,11 +8,7 @@ type UserStatusContextData = {
 
 export const UserStatusContext = createContext({} as UserStatusContextData)
 
-export const UserStatusProvider: React.FC = ({
-	children
-}: {
-	children: ReactNode
-}) => {
+export const UserStatusProvider = ({children}: PropsWithChildren) => {
 	const [isTyping, setIsTyping] = useState(false)
 	const typingControllerProps = {
 		onFocus: toggleTypingStatus,

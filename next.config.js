@@ -1,7 +1,9 @@
-const withPWA = require('next-pwa')
+const withPWA = require('next-pwa')({
+	dest: 'public',
+	disable: process.env.NODE_ENV === 'development'
+})
 
 module.exports = withPWA({
-	esModule: true,
 	images:
 	{
 		domains: [
@@ -9,11 +11,6 @@ module.exports = withPWA({
 			process.env.NEXT_PUBLIC_TMDB_IMG_HOSTNAME,
 			'lh3.googleusercontent.com'
 		]
-	},
-	pwa:
-	{
-		dest: 'public',
-		disable: process.env.NODE_ENV === 'development'
 	},
 	i18n:
 	{

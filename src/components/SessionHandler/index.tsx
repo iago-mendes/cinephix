@@ -1,5 +1,5 @@
 import {useRouter} from 'next/router'
-import {useEffect, useState} from 'react'
+import {PropsWithChildren, useEffect, useState} from 'react'
 import {FiLogIn} from 'react-icons/fi'
 
 import Container from './styles'
@@ -7,7 +7,7 @@ import Loading from '../Loading'
 import {useAuth} from '../../hooks/useAuth'
 import logo from '../../assets/images/logo/name.svg'
 
-const SessionHandler: React.FC = ({children}) => {
+const SessionHandler = ({children}: PropsWithChildren) => {
 	const {user, loading, signIn} = useAuth()
 	const {pathname} = useRouter()
 	const [route, setRoute] = useState('')

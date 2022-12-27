@@ -19,7 +19,7 @@ const ModalAd: React.FC = () => {
 	useEffect(() => {
 		const tmpNavigationCount = navigationCount + 1
 		setNavigationCount(tmpNavigationCount)
-	}, [pathname])
+	}, [navigationCount, pathname])
 
 	useEffect(() => {
 		if (navigationCount === nextAppearance) {
@@ -31,7 +31,7 @@ const ModalAd: React.FC = () => {
 			const tmpMultiplier = multiplier + 1
 			setMultiplier(tmpMultiplier)
 		}
-	}, [navigationCount])
+	}, [multiplier, navigationCount, nextAppearance])
 
 	return (
 		<ModalContainer

@@ -34,16 +34,16 @@ const MakePredictionsModal: React.FC<MakePredictionsModalProps> = ({
 	const event = group.event
 
 	useEffect(() => {
-		if (user && predictions.length === 0) fetchPredictions()
-	}, [user, isOpen])
+		function fetchPredictions() {
+			api
+				.get(`groups/${group.urlId}/participants/${user.email}/raw`)
+				.then(({data}: {data: {predictions: GroupRawPrediction[]}}) => {
+					setPredictions(data.predictions)
+				})
+		}
 
-	function fetchPredictions() {
-		api
-			.get(`groups/${group.urlId}/participants/${user.email}/raw`)
-			.then(({data}: {data: {predictions: GroupRawPrediction[]}}) => {
-				setPredictions(data.predictions)
-			})
-	}
+		if (user && predictions.length === 0) fetchPredictions()
+	}, [user, isOpen, predictions.length, group.urlId])
 
 	function handleSelectPrediction(category: string, guess: number) {
 		const tmpPredictions = [...predictions]

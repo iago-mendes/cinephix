@@ -18,7 +18,7 @@ const EditTvshow: React.FC = () => {
 
 	useEffect(() => {
 		if (user) setRemoveRoute(`/users/${user.email}/tvshows/${tvshow}`)
-	}, [user])
+	}, [tvshow, user])
 
 	if (!tvshow || Number.isNaN(Number(tvshow)))
 		return <Loading style={{marginTop: 'auto', marginBottom: 'auto'}} />

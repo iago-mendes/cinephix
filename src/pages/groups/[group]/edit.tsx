@@ -17,7 +17,7 @@ const EditGroup: React.FC = () => {
 		api.get(`groups/${urlId}/raw`).then(({data}: {data: GroupRaw}) => {
 			setGroup(data)
 		})
-	}, [])
+	}, [urlId])
 
 	return (
 		<div className="page" style={{position: 'relative'}}>

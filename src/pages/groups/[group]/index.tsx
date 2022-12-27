@@ -48,9 +48,9 @@ const Group: React.FC<GroupProps> = ({group: staticGroup}) => {
 			if (!participant) push('/groups')
 			else setIsOwner(participant.isOwner)
 		}
-	}, [user, group])
+	}, [user, group, push])
 
-	useEffect(updateGroup, [pathname])
+	useEffect(updateGroup, [group.urlId, pathname])
 
 	function openParticipantPredictions(participant: GroupParticipant) {
 		setSelectedParticipant(participant)

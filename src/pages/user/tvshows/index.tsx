@@ -1,4 +1,4 @@
-import {useEffect, useState} from 'react'
+import {useCallback, useEffect, useState} from 'react'
 import {
 	DragDropContext,
 	Droppable,
@@ -64,11 +64,7 @@ const UserTvshows: React.FC = () => {
 	const [isSelectTvshowOpen, setIsSelectTvshowOpen] = useState(false)
 	const [selectedStatusKey, setSelectedStatusKey] = useState('')
 
-	useEffect(() => {
-		updateTvshowList()
-	}, [user])
-
-	async function updateTvshowList() {
+	const updateTvshowList = useCallback(async () => {
 		if (!user || !user.email) return setTvshowList(defaultTvshowList)
 
 		await api
@@ -80,7 +76,11 @@ const UserTvshows: React.FC = () => {
 			})
 
 		setLoading(false)
-	}
+	}, [language, user])
+
+	useEffect(() => {
+		updateTvshowList()
+	}, [updateTvshowList, user])
 
 	function handleDragDrop(res: DropResult) {
 		const tmpTvshowList = {...tvshowList}

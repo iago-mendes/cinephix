@@ -1,4 +1,4 @@
-import {ChangeEvent} from 'react'
+import {ChangeEvent, PropsWithChildren} from 'react'
 import {
 	BsChevronBarLeft,
 	BsChevronLeft,
@@ -26,7 +26,7 @@ interface GridPaginateProps {
 	noResultsMessage?: string
 }
 
-const GridPaginate: React.FC<GridPaginateProps> = ({
+const GridPaginate = ({
 	page,
 	setPage,
 	totalPages,
@@ -36,7 +36,7 @@ const GridPaginate: React.FC<GridPaginateProps> = ({
 	children,
 	hidePaginate = false,
 	noResultsMessage = t`No results found!`
-}) => {
+}: PropsWithChildren<GridPaginateProps>) => {
 	function goBack() {
 		if (page > 1) setPage(page - 1)
 	}

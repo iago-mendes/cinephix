@@ -1,4 +1,4 @@
-import {useEffect, useState} from 'react'
+import {useCallback, useEffect, useState} from 'react'
 
 import api from '../services/api'
 
@@ -32,34 +32,7 @@ export function usePaginatedData({
 	const timeoutInterval = 3
 	const [searchTimeout, setSearchTimeout] = useState(timeoutInterval)
 
-	// timer
-	useEffect(() => {
-		const interval = setInterval(() => {
-			setSearchTimeout(prev => (prev < 0 ? prev : prev - 1))
-		}, 1000)
-
-		return () => clearInterval(interval)
-	}, [])
-
-	// page change
-	useEffect(() => {
-		updateData()
-	}, [page])
-
-	// search change
-	useEffect(() => {
-		if (search === '') updateData()
-		else setLoading(true)
-
-		setSearchTimeout(timeoutInterval)
-	}, [search])
-
-	// timer end
-	useEffect(() => {
-		if (searchTimeout === 0 && search !== '') updateData()
-	}, [searchTimeout])
-
-	async function updateData() {
+	const updateData = useCallback(async () => {
 		if (!(search === '' && page === 1)) setLoading(true)
 		else setData(defaultData)
 
@@ -85,5 +58,42 @@ export function usePaginatedData({
 			})
 
 		setLoading(false)
-	}
+	}, [
+		defaultData,
+		language,
+		page,
+		route,
+		search,
+		setData,
+		setLoading,
+		setPage,
+		setTotalPages
+	])
+
+	// timer
+	useEffect(() => {
+		const interval = setInterval(() => {
+			setSearchTimeout(prev => (prev < 0 ? prev : prev - 1))
+		}, 1000)
+
+		return () => clearInterval(interval)
+	}, [])
+
+	// page change
+	useEffect(() => {
+		updateData()
+	}, [page, updateData])
+
+	// search change
+	useEffect(() => {
+		if (search === '') updateData()
+		else setLoading(true)
+
+		setSearchTimeout(timeoutInterval)
+	}, [search, setLoading, updateData])
+
+	// timer end
+	useEffect(() => {
+		if (searchTimeout === 0 && search !== '') updateData()
+	}, [search, searchTimeout, updateData])
 }

@@ -54,7 +54,7 @@ const GroupForm: React.FC<GroupFormProps> = ({method, group}) => {
 
 			setEventOptions(tmpEventOptions)
 		})
-	}, [])
+	}, [method])
 
 	useEffect(() => {
 		const {event: routeEvent} = query
@@ -80,14 +80,14 @@ const GroupForm: React.FC<GroupFormProps> = ({method, group}) => {
 				.filter(email => email != user.email)
 			setParticipantEmails(tmpParticipantEmails)
 		}
-	}, [group])
+	}, [group, method, user.email])
 
 	useEffect(() => {
 		if (method === 'post') {
 			const tmpUrlId = slugify(nickname)
 			setUrlId(tmpUrlId)
 		}
-	}, [nickname])
+	}, [method, nickname])
 
 	function handleAddParticipant() {
 		const tmpParticipantEmails = [...participantEmails]

@@ -24,7 +24,7 @@ const Groups: React.FC = () => {
 				.then(({data}: {data: GroupListed[]}) => {
 					setGroups(data)
 				})
-	}, [user])
+	}, [language, user])
 
 	return (
 		<Container className="page">

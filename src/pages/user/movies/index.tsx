@@ -1,4 +1,4 @@
-import {useEffect, useState} from 'react'
+import {useCallback, useEffect, useState} from 'react'
 import {BsFillTriangleFill} from 'react-icons/bs'
 import Select from 'react-select'
 import {FiPlus} from 'react-icons/fi'
@@ -48,15 +48,26 @@ const UserMovies: React.FC = () => {
 		defaultUserMovieListed
 	)
 
-	useEffect(() => {
-		getMovieList()
-	}, [user])
+	const handleSort = useCallback(
+		(data?: UserMovieListed[]) => {
+			const tmpMovieList = data ? [...data] : [...movieList]
 
-	useEffect(() => {
-		handleSort()
-	}, [sortOption])
+			if (sortOption.value === 'title')
+				tmpMovieList.sort((a, b) => (a.data.title < b.data.title ? -1 : 1))
+			else if (sortOption.value === 'releaseDate')
+				tmpMovieList.sort((a, b) => (a.data.date > b.data.date ? -1 : 1))
+			else if (sortOption.value === 'ratings')
+				tmpMovieList.sort((a, b) =>
+					getTotalRating(a.ratings) < getTotalRating(b.ratings) ? -1 : 1
+				)
 
-	async function getMovieList() {
+			if (data) return tmpMovieList
+			else setMovieList(tmpMovieList)
+		},
+		[movieList, sortOption.value]
+	)
+
+	const getMovieList = useCallback(async () => {
 		if (user) {
 			const {data}: {data: UserMovieListed[]} = await api.get(
 				`users/${user.email}/movies`,
@@ -64,23 +75,15 @@ const UserMovies: React.FC = () => {
 			)
 			setMovieList(handleSort(data))
 		}
-	}
+	}, [handleSort, language, user])
 
-	function handleSort(data?: UserMovieListed[]) {
-		const tmpMovieList = data ? [...data] : [...movieList]
+	useEffect(() => {
+		getMovieList()
+	}, [getMovieList, user])
 
-		if (sortOption.value === 'title')
-			tmpMovieList.sort((a, b) => (a.data.title < b.data.title ? -1 : 1))
-		else if (sortOption.value === 'releaseDate')
-			tmpMovieList.sort((a, b) => (a.data.date > b.data.date ? -1 : 1))
-		else if (sortOption.value === 'ratings')
-			tmpMovieList.sort((a, b) =>
-				getTotalRating(a.ratings) < getTotalRating(b.ratings) ? -1 : 1
-			)
-
-		if (data) return tmpMovieList
-		else setMovieList(tmpMovieList)
-	}
+	useEffect(() => {
+		handleSort()
+	}, [handleSort, sortOption])
 
 	function handleAddClick(watched: boolean) {
 		setSelectMovieWatchedProp(watched)
