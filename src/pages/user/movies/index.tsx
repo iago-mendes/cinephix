@@ -49,8 +49,8 @@ const UserMovies: React.FC = () => {
 	)
 
 	const handleSort = useCallback(
-		(data?: UserMovieListed[]) => {
-			const tmpMovieList = data ? [...data] : [...movieList]
+		(data: UserMovieListed[]) => {
+			const tmpMovieList = [...data]
 
 			if (sortOption.value === 'title')
 				tmpMovieList.sort((a, b) => (a.data.title < b.data.title ? -1 : 1))
@@ -64,7 +64,7 @@ const UserMovies: React.FC = () => {
 			if (data) return tmpMovieList
 			else setMovieList(tmpMovieList)
 		},
-		[movieList, sortOption.value]
+		[sortOption.value]
 	)
 
 	const getMovieList = useCallback(async () => {
@@ -73,17 +73,18 @@ const UserMovies: React.FC = () => {
 				`users/${user.email}/movies`,
 				{params: {language}}
 			)
-			setMovieList(handleSort(data))
+			// setMovieList(handleSort(data))
+			setMovieList(data)
 		}
-	}, [handleSort, language, user])
+	}, [language, user])
 
 	useEffect(() => {
 		getMovieList()
 	}, [getMovieList, user])
 
 	useEffect(() => {
-		handleSort()
-	}, [handleSort, sortOption])
+		handleSort(movieList)
+	}, [handleSort, movieList, sortOption])
 
 	function handleAddClick(watched: boolean) {
 		setSelectMovieWatchedProp(watched)
