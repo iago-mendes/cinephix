@@ -12,6 +12,7 @@ import React from 'react'
 import SEOHead from '../../components/SEOHead'
 import {DetailsPageLayout} from '../../components/_layouts/DetailsPage'
 import {OptimizedImage} from '../../components/OptimizedImage'
+import {NotFoundPageLayout} from '../../components/_layouts/NotFoundPage'
 
 interface CelebrityDetails {
 	id: number
@@ -44,13 +45,13 @@ interface CelebrityDetails {
 }
 
 interface CelebrityProps {
-	celebrity: CelebrityDetails
+	celebrity: CelebrityDetails | null
 }
 
 const Celebrity: React.FC<CelebrityProps> = ({celebrity}) => {
 	const {isFallback, locale} = useRouter()
 
-	if (!celebrity) return null
+	if (!celebrity) return <NotFoundPageLayout />
 
 	return (
 		<DetailsPageLayout
@@ -146,10 +147,12 @@ export const getStaticProps: GetStaticProps = async ctx => {
 	const {celebrity: id} = ctx.params
 	const language = ctx.locale
 
-	const {data: celebrity}: {data: CelebrityDetails} = await api.get(
-		`celebrities/${id}`,
-		{params: {language}}
-	)
+	let celebrity: CelebrityDetails | null = null
+
+	await api
+		.get(`celebrities/${id}`, {params: {language}})
+		.then(({data}: {data: CelebrityDetails}) => (celebrity = data))
+		.catch(error => console.error(error))
 
 	return {
 		props: {celebrity},

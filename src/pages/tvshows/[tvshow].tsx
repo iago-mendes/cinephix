@@ -27,6 +27,7 @@ import {Venue} from '../../components/Venue'
 import SEOHead from '../../components/SEOHead'
 import {DetailsPageLayout} from '../../components/_layouts/DetailsPage'
 import {OptimizedImage} from '../../components/OptimizedImage'
+import {NotFoundPageLayout} from '../../components/_layouts/NotFoundPage'
 
 export interface TvshowDetails {
 	id: number
@@ -61,7 +62,7 @@ export interface TvshowDetails {
 }
 
 interface TvshowProps {
-	tvshow: TvshowDetails
+	tvshow: TvshowDetails | null
 }
 
 const Tvshow: React.FC<TvshowProps> = ({tvshow}) => {
@@ -80,7 +81,7 @@ const Tvshow: React.FC<TvshowProps> = ({tvshow}) => {
 				.catch(() => setUserTvshow(defaultUserTvshowDetails))
 	}, [user, tvshow])
 
-	if (!tvshow) return null
+	if (!tvshow) return <NotFoundPageLayout />
 
 	return (
 		<DetailsPageLayout
@@ -241,9 +242,14 @@ export const getStaticProps: GetStaticProps = async ctx => {
 	const {tvshow: id} = ctx.params
 	const language = ctx.locale
 
-	const {data: tvshow}: {data: TvshowDetails} = await api.get(`tvshows/${id}`, {
-		params: {language}
-	})
+	let tvshow: TvshowDetails | null = null
+
+	await api
+		.get(`tvshows/${id}`, {
+			params: {language}
+		})
+		.then(({data}: {data: TvshowDetails}) => (tvshow = data))
+		.catch(error => console.error(error))
 
 	return {
 		props: {tvshow},

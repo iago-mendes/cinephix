@@ -18,9 +18,10 @@ import SEOHead from '../../components/SEOHead'
 import {OptimizedImage} from '../../components/OptimizedImage'
 import {DetailsPageLayout} from '../../components/_layouts/DetailsPage'
 import truncateText from '../../utils/truncateText'
+import {NotFoundPageLayout} from '../../components/_layouts/NotFoundPage'
 
 interface MovieProps {
-	movie: MovieDetails
+	movie: MovieDetails | null
 }
 
 const Movie: React.FC<MovieProps> = ({movie}) => {
@@ -37,7 +38,7 @@ const Movie: React.FC<MovieProps> = ({movie}) => {
 				.catch(() => setUserMovie(defaultUserMovie))
 	}, [user, movie])
 
-	if (!movie) return null
+	if (!movie) return <NotFoundPageLayout />
 
 	return (
 		<DetailsPageLayout
@@ -192,9 +193,14 @@ export const getStaticProps: GetStaticProps = async ctx => {
 	const {movie: id} = ctx.params
 	const language = ctx.locale
 
-	const {data: movie}: {data: MovieDetails} = await api.get(`movies/${id}`, {
-		params: {language}
-	})
+	let movie: MovieDetails | null = null
+
+	await api
+		.get(`movies/${id}`, {
+			params: {language}
+		})
+		.then(({data}: {data: MovieDetails}) => (movie = data))
+		.catch(error => console.error(error))
 
 	return {
 		props: {movie},
