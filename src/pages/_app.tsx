@@ -16,6 +16,7 @@ import {I18nHandler} from '../locales/I18nHandler'
 import {AuthProvider} from '../contexts/auth'
 import {DimensionsProvider} from '../contexts/dimensions'
 import {useAnalytics} from '../hooks/useAnalytics'
+import {MaintenanceInfo} from '../components/MaintenanceInfo'
 
 const MyApp: React.FC<AppProps> = ({Component, pageProps}) => {
 	useAnalytics()
@@ -23,24 +24,28 @@ const MyApp: React.FC<AppProps> = ({Component, pageProps}) => {
 	return (
 		<ThemeProvider theme={theme}>
 			<GlobalStyle />
-			<AuthProvider>
+			<I18nHandler>
 				<DimensionsProvider>
-					<UserStatusProvider>
-						<I18nHandler>
-							<CookieBanner />
-							<BannerAd />
-							<ModalAd />
-							<>
-								<Menu />
-								<SessionHandler>
-									<Component {...pageProps} />
-								</SessionHandler>
-								<Footer />
-							</>
-						</I18nHandler>
-					</UserStatusProvider>
+					{process.env.NEXT_PUBLIC_MAINTENANCE === 'true' ? (
+						<MaintenanceInfo />
+					) : (
+						<AuthProvider>
+							<UserStatusProvider>
+								<CookieBanner />
+								<BannerAd />
+								<ModalAd />
+								<>
+									<Menu />
+									<SessionHandler>
+										<Component {...pageProps} />
+									</SessionHandler>
+									<Footer />
+								</>
+							</UserStatusProvider>
+						</AuthProvider>
+					)}
 				</DimensionsProvider>
-			</AuthProvider>
+			</I18nHandler>
 		</ThemeProvider>
 	)
 }
